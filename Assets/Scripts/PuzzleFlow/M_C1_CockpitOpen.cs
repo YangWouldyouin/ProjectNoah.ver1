@@ -33,7 +33,7 @@ public class M_C1_CockpitOpen : MonoBehaviour
         // 플로우차트 처음 시작 때 넣고 싶은 것들을 넣는다. 
         // 잠들어 있던 노아가 깨어난다 && 화면이 밝아진다
         //StartCoroutine(NoahWakeUp());
-        StartCoroutine("ResetAI_OpenCockpitDoor");
+        //StartCoroutine("ResetAI_OpenCockpitDoor");
 
     }
 
@@ -47,8 +47,7 @@ public class M_C1_CockpitOpen : MonoBehaviour
         noahAnim_M_C1.SetBool("IsSleeping", false);
     }
 
-
-    IEnumerator ResetAI_OpenCockpitDoor()
+    private void Update()
     {
         // 이 플로우차트는 크게 2 퍼즐로 나눌 수 있다. 
         // 1) <조종석> 에서 AI 활성화시키기
@@ -56,7 +55,7 @@ public class M_C1_CockpitOpen : MonoBehaviour
 
         // 1)AI 가 먼저 활성화 되어야 2) 조종실 문을 열 수 있으므로 
 
-        while(true)
+        while (true)
         {
             if (IsAI) // if 문에서 현재 AI 가 활성화되었는지 확인하고 
             {
@@ -66,12 +65,8 @@ public class M_C1_CockpitOpen : MonoBehaviour
             {
                 ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
             }
-            yield return null;
+
         }
-
-        
-
-
     }
 
     
@@ -143,6 +138,7 @@ public class M_C1_CockpitOpen : MonoBehaviour
         if(PlayerScripts.playerscripts.currentObject.name == "DoorLocked")
         {
             DialogManager.dialogManager.DoorLock();
+            PlayerScripts.playerscripts.currentObject = null;
         }
     }
 }
