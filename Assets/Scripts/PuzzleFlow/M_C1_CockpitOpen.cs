@@ -54,19 +54,16 @@ public class M_C1_CockpitOpen : MonoBehaviour
         // 2) <조종실 문> 을 열기
 
         // 1)AI 가 먼저 활성화 되어야 2) 조종실 문을 열 수 있으므로 
-
-        while (true)
+        if (IsAI) // if 문에서 현재 AI 가 활성화되었는지 확인하고 
         {
-            if (IsAI) // if 문에서 현재 AI 가 활성화되었는지 확인하고 
-            {
-                OpenCockpitDoor(); // 활성화 되었으면 조종실 문 여는 함수를 실행시킨다.
-            }
-            else // AI 가 활성화되기 전이면
-            {
-                ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
-            }
-
+            OpenCockpitDoor(); // 활성화 되었으면 조종실 문 여는 함수를 실행시킨다.
         }
+        else // AI 가 활성화되기 전이면
+        {
+            ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
+        }
+
+
     }
 
     
