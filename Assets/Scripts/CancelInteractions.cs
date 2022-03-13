@@ -17,8 +17,8 @@ public class CancelInteractions : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-
-            if (BiteDestroyButtonController.biteDestroyButtonController.noahBiteObject != null)
+            
+            if (BiteDestroyButtonController.biteDestroyButtonController.noahBiteObject != null) // 여기서 널 레퍼런스 오류가 생기고 있습니다.
             {
                 biteObject = BiteDestroyButtonController.biteDestroyButtonController.noahBiteObject;
             }

@@ -34,7 +34,7 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
     void Start()
     {
         isPointerDown = false;
-        noahBiteObject = null;
+        noahBiteObject = null; // 처음 시작할 때 noahBiteObject 를 null 로 초기화했는데도 발생하고 있습니다.
     }
 
     void Update()
