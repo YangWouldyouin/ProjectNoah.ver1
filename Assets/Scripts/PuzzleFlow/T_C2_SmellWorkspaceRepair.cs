@@ -40,25 +40,26 @@ public class T_C2_SmellWorkspaceRepair : MonoBehaviour
         ObjData HealthMachineData = HealthMachine.GetComponent<ObjData>();
         ObjData HealthMachine_fixPartData = HealthMachine_fixPart.GetComponent<ObjData>();
 
-        if (HealthMachineData.IsPushOrPress)
+        if (HealthMachineData.IsPushOrPress && HealthMachine_fixPartData.IsBite)
         {
-            if (HealthMachine_fixPartData.IsBite)
-            {
-                IsHealthMachineDone = true;
-            }
+            IsHealthMachineDone = true;
         }
     }
 
     public void HealthMachineOpen()
     {
-        //물고 있는 fitPart 물기 해제 -> bool false
-        
-        //fitPart 위치 HM에 자동 장착
+        ObjData HealthMachineData = HealthMachine.GetComponent<ObjData>();
         ObjData HealthMachine_fixPartData = HealthMachine_fixPart.GetComponent<ObjData>();
 
+        //물고 있는 fitPart 물기 해제 -> bool false
+
+        //fitPart 위치 HM에 자동 장착
         HealthMachine_fixPartData.transform.position = new Vector3(-258.092f, 538.404f, 680.078f);
+        HealthMachine_fixPartData.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
         //한 번 물기 하면 더이상 fitPart 상호작용 불가 오브젝트로 변경 -> interaction 스크립트 끄기
+
         //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
+        HealthMachineData.IsCenterButtonChanged = true;
     }
 }
