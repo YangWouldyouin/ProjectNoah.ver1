@@ -2832,10 +2832,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distancePosition: 1.2
   actionss: []
-  barkButton: {fileID: 2094636720}
-  sniffButton: {fileID: 2094636719}
-  insertButton: {fileID: 2094636716}
-  biteButton: {fileID: 1344889428}
+  barkInterButton: {fileID: 0}
+  sniffInterButton: {fileID: 0}
+  biteInterButton: {fileID: 0}
+  noCenterInterButton: {fileID: 0}
+  insertInterButton: {fileID: 0}
+  upDownInterButton: {fileID: 0}
+  observeInterButton: {fileID: 0}
+  insertDisableInterButton: {fileID: 0}
+  upDownDisableInterButton: {fileID: 0}
+  observeDisableInterButton: {fileID: 0}
 --- !u!114 &802645730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2852,10 +2858,11 @@ MonoBehaviour:
   centerButton: {fileID: 2094636717}
   centerPlusButton: {fileID: 2094636722}
   pushOrPressButton: {fileID: 1776473828}
-  IsPushOrPressActive: 1
-  IsBiteActive: 1
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  extraDescription: {fileID: 0}
+  IsPushOrPressActive: 1
+  IsBiteActive: 1
   IsBark: 0
   IsPushOrPress: 0
   IsSniff: 0
@@ -2866,8 +2873,9 @@ MonoBehaviour:
   IsObserve: 0
   IsObservePlus: 0
   IsExtraDescriptionActive: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
-  exterDescription: {fileID: 0}
 --- !u!54 &802645731
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4727,10 +4735,11 @@ MonoBehaviour:
   centerButton: {fileID: 2094636717}
   centerPlusButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  extraDescription: {fileID: 0}
+  IsPushOrPressActive: 0
+  IsBiteActive: 1
   IsBark: 0
   IsPushOrPress: 0
   IsSniff: 0
@@ -4741,8 +4750,9 @@ MonoBehaviour:
   IsObserve: 0
   IsObservePlus: 0
   IsExtraDescriptionActive: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
-  exterDescription: {fileID: 0}
 --- !u!114 &1241510029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4757,10 +4767,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distancePosition: 0.6
   actionss: []
-  barkButton: {fileID: 2094636720}
-  sniffButton: {fileID: 2094636719}
-  insertButton: {fileID: 2094636716}
-  biteButton: {fileID: 1344889428}
+  barkInterButton: {fileID: 0}
+  sniffInterButton: {fileID: 0}
+  biteInterButton: {fileID: 0}
+  noCenterInterButton: {fileID: 0}
+  insertInterButton: {fileID: 0}
+  upDownInterButton: {fileID: 0}
+  observeInterButton: {fileID: 0}
+  insertDisableInterButton: {fileID: 0}
+  upDownDisableInterButton: {fileID: 0}
+  observeDisableInterButton: {fileID: 0}
 --- !u!54 &1241510030
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5492,7 +5508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1599558588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5505,7 +5521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9345ae3f808f38945aad5086e5133f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPack: {fileID: 802645727}
+  cardPack_M_C2: {fileID: 0}
+  desk_M_C2: {fileID: 0}
+  box_M_C2: {fileID: 0}
+  engineRoomDoor_M_C2: {fileID: 0}
 --- !u!4 &1599558589
 Transform:
   m_ObjectHideFlags: 0
@@ -8426,17 +8445,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
---- !u!114 &2094636716 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5474798685694694490, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-  m_PrefabInstance: {fileID: 2094636715}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2094636717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5935888767105174045, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
@@ -8451,28 +8459,6 @@ MonoBehaviour:
 --- !u!114 &2094636718 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5964171522187391306, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-  m_PrefabInstance: {fileID: 2094636715}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2094636719 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6855707438327039935, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-  m_PrefabInstance: {fileID: 2094636715}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2094636720 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6855707438932681381, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
   m_PrefabInstance: {fileID: 2094636715}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -9399,10 +9385,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distancePosition: 0.6
   actionss: []
-  barkButton: {fileID: 2094636720}
-  sniffButton: {fileID: 2094636719}
-  insertButton: {fileID: 2094636716}
-  biteButton: {fileID: 1344889428}
+  barkInterButton: {fileID: 0}
+  sniffInterButton: {fileID: 0}
+  biteInterButton: {fileID: 0}
+  noCenterInterButton: {fileID: 0}
+  insertInterButton: {fileID: 0}
+  upDownInterButton: {fileID: 0}
+  observeInterButton: {fileID: 0}
+  insertDisableInterButton: {fileID: 0}
+  upDownDisableInterButton: {fileID: 0}
+  observeDisableInterButton: {fileID: 0}
 --- !u!114 &6076740532088509946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9419,10 +9411,11 @@ MonoBehaviour:
   centerButton: {fileID: 2094636717}
   centerPlusButton: {fileID: 2094636721}
   pushOrPressButton: {fileID: 2094636718}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  extraDescription: {fileID: 0}
+  IsPushOrPressActive: 1
+  IsBiteActive: 0
   IsBark: 0
   IsPushOrPress: 0
   IsSniff: 0
@@ -9433,8 +9426,9 @@ MonoBehaviour:
   IsObserve: 0
   IsObservePlus: 0
   IsExtraDescriptionActive: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
-  exterDescription: {fileID: 0}
 --- !u!54 &6076740532088509947
 Rigidbody:
   m_ObjectHideFlags: 0

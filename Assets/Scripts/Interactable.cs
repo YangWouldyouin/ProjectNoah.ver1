@@ -8,23 +8,29 @@ public class Interactable : MonoBehaviour
     [SerializeField] float distancePosition; // NPC 와의 약간의 distance
     [SerializeField] Actions[] actionss; // NPC 와의 첫 번째 상호작용
 
-    public Button barkButton, sniffButton, insertButton;
-    public GameObject biteButton;
+    public Button barkInterButton, sniffInterButton;
+    public GameObject biteInterButton;
+
     private Button currentCenterButton, currentPushOrPressButton;
+
+    public Button noCenterInterButton, insertInterButton, upDownInterButton, observeInterButton, insertDisableInterButton, upDownDisableInterButton, observeDisableInterButton;
 
     private GameObject nowInteractObject;
 
-    Outline outline;
+
+    Outline outline; // 마우스 오버시 오브젝트 외곽선
     private void Start()
     {
-        outline = GetComponent<Outline>();
+        outline = GetComponent<Outline>(); // 상호작용 오브젝트로부터 아웃라인 컴포넌트를 가져옴
     }
 
+    /* 마우스 오버시 아웃라인 활성화 */
     public void OnMouseOver()
     {
         outline.enabled = true;
     }
 
+    /* 마우스가 오브젝트로부터 벗어나면 아웃라인 비활성화 */
     public void OnMouseExit()
     {
         outline.enabled = false;
@@ -55,27 +61,108 @@ public class Interactable : MonoBehaviour
         // 2) 플레이어가 npc 위치로 도착하면 npc를 바라보게 각도를 바꿈 
         player.SetDirection(transform.position);
 
-        barkButton.transform.gameObject.SetActive(true);
-        sniffButton.transform.gameObject.SetActive(true);
-        biteButton.transform.gameObject.SetActive(true);
 
+        /* 오브젝트 위에 상호작용 버튼을 띄움 */
+
+        //기본 4가지 상호작용 버튼을 띄움
+        barkInterButton.transform.gameObject.SetActive(true);
+        sniffInterButton.transform.gameObject.SetActive(true);
+        biteInterButton.transform.gameObject.SetActive(true);
+
+        // 누르기 버튼의 경우 - 현재 상호작용 중인 오브젝트가 누르기(밀기)인지, 누르기인지 확인 후 그에 맞는 버튼을 띄움
         currentPushOrPressButton = PlayerScripts.playerscripts.ObjectpushOrpressbutton;
         currentPushOrPressButton.transform.gameObject.SetActive(true);
 
+        // 가운데 버튼을 띄움
         nowInteractObject = PlayerScripts.playerscripts.currentObject;
         if(nowInteractObject!=null)
         {
             ObjData nowInteractData = nowInteractObject.GetComponent<ObjData>();
 
-            if (nowInteractData.IsCenterButtonChanged)
+            if (nowInteractData.IsCenterButtonChanged) // 만약 가운데 버튼이 바뀌었다면 
             {
-                currentCenterButton = PlayerScripts.playerscripts.ObjectCenterPlusButton;
+                if (nowInteractData.IsCenterPlusButtonDisabled) //  바뀐 가운데 버튼이 비활성화 상태이면 
+                {
+                    // 누를 수 없는 버튼을 띄운다.
+                    if (nowInteractData.CenterPlusButton.name == "InsertButton")
+                    {
+                        insertDisableInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if (nowInteractData.CenterPlusButton.name == "UpDownButton")
+                    {
+                        upDownDisableInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if (nowInteractData.CenterPlusButton.name == "ObserveButton")
+                    {
+                        observeDisableInterButton.transform.gameObject.SetActive(true);
+                    }
+                }
+                else // 바뀐 가운데 버튼이 활성화 상태이면 누를 수 있는 버튼을 띄운다. 
+                {
+                    if (nowInteractData.CenterPlusButton.name == "InsertButton")
+                    {
+                        insertInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if (nowInteractData.CenterPlusButton.name == "UpDownButton")
+                    {
+                        upDownInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if (nowInteractData.CenterPlusButton.name == "ObserveButton")
+                    {
+                        observeInterButton.transform.gameObject.SetActive(true);
+                    }
+
+                }
             }
-            else
+            else // 만약 가운데 버튼이 바뀌지 않았다면
             {
-                currentCenterButton = PlayerScripts.playerscripts.ObjectCenterButton;
+                if (nowInteractData.IsCenterButtonDisabled) // 바뀌지 않은 가운데 버튼이 비활성화 상태이면 
+                {
+                    // 누를 수 없는 버튼을 띄운다.
+                    if(nowInteractData.CenterButton.name == "InsertButton")
+                    {
+                        insertDisableInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if(nowInteractData.CenterButton.name == "UpDownButton")
+                    {
+                        upDownDisableInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if(nowInteractData.CenterButton.name == "ObserveButton")
+                    {
+                        observeDisableInterButton.transform.gameObject.SetActive(true);
+                    }
+                    
+                }
+                else // 활성화상태이면 누를 수 있는 버튼을 띄운다. 
+                {
+                    if (nowInteractData.CenterButton.name == "InsertButton")
+                    {
+                        insertInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if (nowInteractData.CenterButton.name == "UpDownButton")
+                    {
+                        upDownInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if (nowInteractData.CenterButton.name == "ObserveButton")
+                    {
+                        observeInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if(nowInteractData.CenterButton.name == "NoCenterButton")
+                    {
+                        noCenterInterButton.transform.gameObject.SetActive(true);
+                    }
+                }
             }
-            currentCenterButton.transform.gameObject.SetActive(true);
+
+            //if (nowInteractData.IsCenterButtonChanged)
+            //{
+            //    currentCenterButton = PlayerScripts.playerscripts.ObjectCenterPlusButton;
+            //}
+            //else
+            //{
+            //    currentCenterButton = PlayerScripts.playerscripts.ObjectCenterButton;
+            //}
+            //currentCenterButton.transform.gameObject.SetActive(true);
         }
 
 
@@ -87,3 +174,5 @@ public class Interactable : MonoBehaviour
         //}     
     }
 }
+
+

@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
 
         //camObserveView = PlayerScripts.playerscripts.PlayerobserveView;
         //camObserveBoxView = PlayerScripts.playerscripts.PlayerobserveBoxView;
-
+        noah.transform.gameObject.SetActive(false);
         aiPanel.SetActive(false);
         ui.SetActive(false);
         //if()
@@ -51,7 +51,7 @@ public class CameraController : MonoBehaviour
         //}
         if(currentObserveObjectData.IsExtraDescriptionActive)
         {
-            objectExtraDescription = currentObserveObjectData.exterDescription;
+            objectExtraDescription = PlayerScripts.playerscripts.PlayerExtraDescription;
             objectExtraDescription.SetActive(true);
         }
         ChangeView(currentView);
