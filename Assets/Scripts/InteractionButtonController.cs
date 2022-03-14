@@ -20,13 +20,7 @@ public class InteractionButtonController : MonoBehaviour
     [SerializeField] GameObject noahPlayer;
 
 
-
-
-
-
-
     public bool isBark = false;
-
 
     /* "오르기" 상호작용 관련 변수*/
     public Rigidbody playerRigidbody;
@@ -70,7 +64,7 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Update()
     {
-
+        //  추후 정리 필요 지금은 무시 
         if (ispush == false)
         {
             ISPUSH = false;
