@@ -339,41 +339,46 @@ public class InteractionButtonController : MonoBehaviour
     void playerInserting()
     {
         noahInsertObject = PlayerScripts.playerscripts.currentObject;
-        ObjData noahInsertData = noahInsertObject.GetComponent<ObjData>();
-         
-        TurnOffInteractionButton();
-        Invoke("ChangeInsertTrue", 0.5f);
-        //InsertArea.SetActive(true);
-
-
-        if (noahInsertData.IsInsert == false)
+        if(noahInsertObject!=null)
         {
+            ObjData noahInsertData = noahInsertObject.GetComponent<ObjData>();
             noahInsertData.IsInsert = true;
-            if (playerAgent.enabled)
-            {
-                playerAgent.updatePosition = false;
-                playerAgent.updateRotation = false;
-                playerAgent.isStopped = true;
-            }
+            TurnOffInteractionButton();
+            Invoke("ChangeInsertTrue", 0.5f);
+            //InsertArea.SetActive(true);
+
+
+            //if (noahInsertData.IsInsert == false)
+            //{
+            //    noahInsertData.IsInsert = true;
+            //    if (playerAgent.enabled)
+            //    {
+            //        playerAgent.updatePosition = false;
+            //        playerAgent.updateRotation = false;
+            //        playerAgent.isStopped = true;
+            //    }
+            //}
+
+            //noahPlayer.transform.position = new Vector3(21.5f, 34.03531f, -1.002877f);
+            //noahPlayer.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            //NoahPlayer.transform.Rotate(0, 0, 0);
+            //Playeragent.isStopped = false;
+
+            //goToWork.SetActive(true);
+            //if (playerAgent.enabled)
+            //{
+            //    playerAgent.updatePosition = true;
+            //    playerAgent.updateRotation = true;
+            //    playerAgent.isStopped = false;
+            //}
+            ////DoorController.doorController.isDoorOpen = true;
+            //noahInsertData.IsInsert = false;
+
+            Invoke("ChangeInsertFalse", 2f);
         }
 
-        noahPlayer.transform.position = new Vector3(21.5f, 34.03531f, -1.002877f);
-        noahPlayer.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        //NoahPlayer.transform.Rotate(0, 0, 0);
-        //Playeragent.isStopped = false;
-
-        DoorController.doorController.isDoorOpen = true;
-        noahInsertData.IsInsert = false;
-        Invoke("ChangeInsertFalse", 0.05f);
-
-        goToWork.SetActive(true);
-        if (playerAgent.enabled)
-        {
-            playerAgent.updatePosition = true;
-            playerAgent.updateRotation = true;
-            playerAgent.isStopped = false;
-        }
 
         //DoorLocked.SetActive(false);
         //DoorUnLocked.SetActive(true);
@@ -384,7 +389,7 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsInserting", true);
     }
 
-    public void ChangeInsertfalse()
+    public void ChangeInsertFalse()
     {
         noahAnim.SetBool("IsInserting", false);
     }

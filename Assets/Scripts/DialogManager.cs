@@ -11,8 +11,7 @@ public class DialogManager : MonoBehaviour
     public TMPro.TextMeshProUGUI dialogText;
     public GameObject AI;
 
-    public Image fadeImage;
-    public GameObject fade;
+
     private int i = 0;
 
     public Image aiIcon;
@@ -27,7 +26,8 @@ public class DialogManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(FadeCoroutine());
+        
+
         if (SceneManager.GetActiveScene().name == "new workroom")
         {
             AI.SetActive(true);
@@ -38,22 +38,7 @@ public class DialogManager : MonoBehaviour
         }
         
     }
-    IEnumerator FadeCoroutine()
-    {
-        Color color = aiIcon.GetComponent<Image>().color;
-        color.a = 0f;
-        aiIcon.GetComponent<Image>().color = color;
 
-        Color fadeColor = fadeImage.GetComponent<Image>().color;
-        fadeColor.a = 1f;
-        while (fadeColor.a>=0)
-        {
-            fadeColor.a -= 0.01f;
-            fadeImage.GetComponent<Image>().color = fadeColor;
-            yield return new WaitForSeconds(0.00001f);
-        }
-        fade.SetActive(false);
-    }
 
     void GenerateData()
     {

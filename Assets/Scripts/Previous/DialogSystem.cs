@@ -29,7 +29,6 @@ public class DialogSystem : MonoBehaviour
     void Start()
     {
         panel.SetActive(false);
-        smellpanel.SetActive(false);
     }
 
     /* 상호작용 도중에 다른 곳으로 이동하면  메시지가 사라지게하는 메서드 */
@@ -41,9 +40,17 @@ public class DialogSystem : MonoBehaviour
 
     public void Smell()
     {
+
         DialogSmellText = PlayerScripts.playerscripts.PlayerSmellText;
-        //smellpanel.SetActive(true);
+        smellpanel.SetActive(true);
         smellText.text = DialogSmellText;
+        StartCoroutine("TurnOffSmellPanel");
+    }
+
+    IEnumerator TurnOffSmellPanel()
+    {
+        yield return new WaitForSeconds(3f);
+        smellpanel.SetActive(false);
     }
 
 

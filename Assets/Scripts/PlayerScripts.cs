@@ -47,6 +47,8 @@ public class PlayerScripts : MonoBehaviour
     public GameObject DoorClickArea;
     public bool isDoorClickAreaClicked = false;
 
+    private Vector3 currentPosition = new Vector3(16.61f, 33.78f, -0.92f);
+
 
 
 
@@ -62,6 +64,7 @@ public class PlayerScripts : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         playerAnim.Init(GetComponentInChildren<Animator>()); // Player 의 자식인 noah_FBX 에 붙어있는 컴포넌트인 animator 초기화
     }
+
 
     void Update()
     {      

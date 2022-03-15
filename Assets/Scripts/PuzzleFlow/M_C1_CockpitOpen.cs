@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class M_C1_CockpitOpen : MonoBehaviour
 {
@@ -25,13 +26,19 @@ public class M_C1_CockpitOpen : MonoBehaviour
 
     /* 기타 필요한 변수들이 있으면 만든다. */
     public Animator noahAnim_M_C1; //
+    public Image fadeImage_M_C1;
+    public GameObject fade_M_C1;
+    public Image aiIcon_M_C1;
 
     private void Start()
     {
         // 플로우차트 처음 시작 때 넣고 싶은 연출들을 넣는다.  
         noahAnim_M_C1.SetBool("IsSleeping", true);
-        StartCoroutine(NoahWakeUp()); // 잠들어 있던 노아가 깨어난다 && 화면이 밝아진다
+        StartCoroutine(NoahWakeUp()); // 잠들어 있던 노아가 깨어난다
+        StartCoroutine(FadeCoroutine()); //화면이 밝아진다
     }
+
+
 
     IEnumerator NoahWakeUp()
     {
@@ -41,6 +48,23 @@ public class M_C1_CockpitOpen : MonoBehaviour
         noahAnim_M_C1.SetBool("IsWaking2", true);
         yield return new WaitForSeconds(1f);
         noahAnim_M_C1.SetBool("IsSleeping", false);
+    }
+
+    IEnumerator FadeCoroutine()
+    {
+        Color color = aiIcon_M_C1.GetComponent<Image>().color;
+        color.a = 0f;
+        aiIcon_M_C1.GetComponent<Image>().color = color;
+
+        Color fadeColor = fadeImage_M_C1.GetComponent<Image>().color;
+        fadeColor.a = 1f;
+        while (fadeColor.a >= 0)
+        {
+            fadeColor.a -= 0.01f;
+            fadeImage_M_C1.GetComponent<Image>().color = fadeColor;
+            yield return new WaitForSeconds(0.00001f);
+        }
+        fade_M_C1.SetActive(false);
     }
 
     private void Update()
@@ -58,8 +82,6 @@ public class M_C1_CockpitOpen : MonoBehaviour
         {
             ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
         }
-
-        
     }
 
     
@@ -87,6 +109,7 @@ public class M_C1_CockpitOpen : MonoBehaviour
         {
             CameraController.cameraController.CancelObserve();
             DialogManager.dialogManager.ResetSystem(); // AI 1 번째 대사 묶음 출력
+            CameraController.cameraController.currentView = consoleLeftData_M_C1.ObserveView; // 앞으로 볼 일 없으므로 초기화
             IsAI_M_C1 = true; // 앞으로 게임이 꺼져도 AI 가 계속 활성화된다. 
 
             /* 나중에 추가할 목록들 */

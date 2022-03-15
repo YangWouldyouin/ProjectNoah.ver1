@@ -60,6 +60,9 @@ public class T_C2_SmellWorkspaceRepair : MonoBehaviour
         HealthMachine_fixPartData.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
 
+        HealthMachine_fixPartData.GetComponent<Rigidbody>().isKinematic = false;
+        HealthMachine_fixPartData.transform.parent = null;
+
         //한 번 물기 하면 더이상 fitPart 상호작용 불가 오브젝트로 변경 -> interaction 스크립트 끄기
 
 
