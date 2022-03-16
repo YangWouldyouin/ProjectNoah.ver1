@@ -823,24 +823,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9032298445570832132, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
   m_PrefabInstance: {fileID: 1068952794}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &169238033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169238025}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 1, b: 0.49019608, a: 1}
-  outlineWidth: 8
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &177136929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1340,7 @@ PrefabInstance:
       objectReference: {fileID: 1451688032}
     - target: {fileID: 469678553, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 565886689723836008, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1744,13 +1726,9 @@ PrefabInstance:
       propertyPath: smellpanel
       value: 
       objectReference: {fileID: 1282012983}
-    - target: {fileID: 6855707438958648802, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6855707439332034731, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8285443200855455090, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2879,7 +2857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9eec2840433414a889e44813c6936a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainView: {fileID: 1631681333}
   objectExtraDescription: {fileID: 2003996785}
   currentView: {fileID: 1631681333}
   noah: {fileID: 1451688030}
@@ -4607,26 +4584,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3454204247060609209, guid: 3be615349f572e640a826a88bc8b9651, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3454204247060609209, guid: 3be615349f572e640a826a88bc8b9651, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 48.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3454204247060609209, guid: 3be615349f572e640a826a88bc8b9651, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 3454204247060609209, guid: 3be615349f572e640a826a88bc8b9651, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3454204247060609209, guid: 3be615349f572e640a826a88bc8b9651, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3be615349f572e640a826a88bc8b9651, type: 3}
 --- !u!1 &1047209817 stripped
@@ -4647,54 +4604,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: barkButton
-      value: 
-      objectReference: {fileID: 365641759}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: biteButton
-      value: 
-      objectReference: {fileID: 365641757}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: sniffButton
-      value: 
-      objectReference: {fileID: 365641758}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: insertButton
-      value: 
-      objectReference: {fileID: 365641752}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: insertEnable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: upDownButton
-      value: 
-      objectReference: {fileID: 365641762}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: upDownEnable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: insertDisable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: observeButton
-      value: 
-      objectReference: {fileID: 365641755}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: observeEnable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: upDownDisable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: observeDisable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: barkInterButton
       value: 
       objectReference: {fileID: 365641759}
@@ -4702,10 +4611,6 @@ PrefabInstance:
       propertyPath: biteInterButton
       value: 
       objectReference: {fileID: 365641757}
-    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: distancePosition
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: sniffInterButton
       value: 
@@ -4746,10 +4651,6 @@ PrefabInstance:
       propertyPath: pushOrPressButton
       value: 
       objectReference: {fileID: 365641745}
-    - target: {fileID: 2651352401969364946, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: IsPushOrPressActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4835016166140723761, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_Name
       value: MovableObjects
@@ -4798,38 +4699,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7474894756349361048, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8192174013510878098, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8192174013510878098, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8192174013510878098, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8192174013510878098, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538215326029, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: barkButton
-      value: 
-      objectReference: {fileID: 365641759}
-    - target: {fileID: 8519345538215326029, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: biteButton
-      value: 
-      objectReference: {fileID: 365641757}
-    - target: {fileID: 8519345538215326029, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: sniffButton
-      value: 
-      objectReference: {fileID: 365641758}
     - target: {fileID: 8519345538215326030, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: centerButton
       value: 
@@ -4838,54 +4707,6 @@ PrefabInstance:
       propertyPath: pushOrPressButton
       value: 
       objectReference: {fileID: 365641745}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: barkButton
-      value: 
-      objectReference: {fileID: 365641759}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: biteButton
-      value: 
-      objectReference: {fileID: 365641757}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: sniffButton
-      value: 
-      objectReference: {fileID: 365641758}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: insertButton
-      value: 
-      objectReference: {fileID: 365641752}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: insertEnable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: upDownButton
-      value: 
-      objectReference: {fileID: 365641762}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: upDownEnable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: insertDisable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: observeButton
-      value: 
-      objectReference: {fileID: 365641755}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: observeEnable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: upDownDisable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: observeDisable
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: barkInterButton
       value: 
@@ -4927,14 +4748,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1161556836}
     - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: IsBite
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: IsBiteActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: centerButton
       value: 
       objectReference: {fileID: 365641756}
@@ -4942,22 +4755,6 @@ PrefabInstance:
       propertyPath: pushOrPressButton
       value: 
       objectReference: {fileID: 365641753}
-    - target: {fileID: 8519345538468102398, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: m_Size.x
-      value: 5.001816
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102398, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: m_Size.y
-      value: 3.5710602
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102398, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: m_Center.x
-      value: 0.19747162
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519345538468102398, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-      propertyPath: m_Center.y
-      value: 1.0304489
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
 --- !u!1 &1068952795 stripped
@@ -4975,24 +4772,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8861855297580357928, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
   m_PrefabInstance: {fileID: 1068952794}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1068952811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068952797}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0.23529409, g: 0.90588236, b: 0.28850126, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &1073637637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8365,17 +8144,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 365641751}
     - target: {fileID: 1654680055073099154, guid: 1cbc965ec14977746b7cd75b439d103c, type: 3}
-      propertyPath: fade
-      value: 
-      objectReference: {fileID: 365641748}
-    - target: {fileID: 1654680055073099154, guid: 1cbc965ec14977746b7cd75b439d103c, type: 3}
       propertyPath: aiIcon
       value: 
       objectReference: {fileID: 365641749}
-    - target: {fileID: 1654680055073099154, guid: 1cbc965ec14977746b7cd75b439d103c, type: 3}
-      propertyPath: fadeImage
-      value: 
-      objectReference: {fileID: 365641747}
     - target: {fileID: 1654680055073099154, guid: 1cbc965ec14977746b7cd75b439d103c, type: 3}
       propertyPath: dialogText
       value: 
@@ -8383,10 +8154,6 @@ PrefabInstance:
     - target: {fileID: 1654680055073099155, guid: 1cbc965ec14977746b7cd75b439d103c, type: 3}
       propertyPath: m_Name
       value: DialogManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1654680055073099155, guid: 1cbc965ec14977746b7cd75b439d103c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1654680055073099157, guid: 1cbc965ec14977746b7cd75b439d103c, type: 3}
       propertyPath: m_RootOrder

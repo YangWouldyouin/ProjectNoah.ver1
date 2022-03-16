@@ -7,14 +7,15 @@ public class CameraController : MonoBehaviour
     public static CameraController cameraController { get; private set; }
 
     //private Transform camObserveView, camObserveBoxView;
-    [SerializeField] Transform mainView;
+    //[SerializeField] Transform mainView;
 
 
 
     public GameObject objectExtraDescription;
 
 
-
+    private Vector3 originPosition;
+    private Vector3 originRotation;
     public Transform currentView;
 
     [SerializeField] GameObject noah;
@@ -26,16 +27,30 @@ public class CameraController : MonoBehaviour
     private Transform observeView;
     private Transform observePlusView;
 
+    CameraFollow cameraFollow;
+
     private void Awake()
     {
         cameraController = this;
     }
 
+    private void Start()
+    {
+        cameraFollow = GetComponent<CameraFollow>();
+    }
+
     public void ObserveButtonClick()
     {
+        originPosition = transform.position;
+        originRotation = transform.rotation.eulerAngles;
+        //mainView = this.transform;
         currentObserveObject = PlayerScripts.playerscripts.currentObject;
         ObjData currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
-
+        if(cameraFollow!=null)
+        {
+            cameraFollow.enabled = false;
+        }
+        
         //camObserveView = PlayerScripts.playerscripts.PlayerobserveView;
         //camObserveBoxView = PlayerScripts.playerscripts.PlayerobserveBoxView;
         noah.transform.gameObject.SetActive(false);
@@ -60,11 +75,23 @@ public class CameraController : MonoBehaviour
 
     public void CancelObserve()
     {
+        currentObserveObject = PlayerScripts.playerscripts.currentObject;
+        ObjData currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
+        if (currentObserveObjectData.IsExtraDescriptionActive)
+        {
+            objectExtraDescription.SetActive(false);
+        }
         aiPanel.SetActive(true);
         ui.SetActive(true);
         noah.transform.gameObject.SetActive(true);
-        objectExtraDescription.SetActive(false);
-        ChangeView(mainView);
+        if (cameraFollow != null)
+        {
+            cameraFollow.enabled = true;
+        }
+        
+        ComeBackView(originPosition, originRotation);
+
+
     }
 
     /* 전환 효과 없는 카메라 전환 메서드 */
@@ -74,6 +101,12 @@ public class CameraController : MonoBehaviour
         transform.rotation = view.rotation;
         //mainCamera.transform.position = view.position;
         //mainCamera.transform.rotation = view.rotation;
+    }
+
+    void ComeBackView(Vector3 originPos, Vector3 originRot)
+    {
+        transform.position = originPos;
+        transform.rotation = Quaternion.Euler(originRot);
     }
 }
 

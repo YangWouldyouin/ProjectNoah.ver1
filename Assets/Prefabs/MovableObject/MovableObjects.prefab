@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 7474894756349361048}
   - component: {fileID: 2651352401969364946}
   - component: {fileID: 433270856078974270}
+  - component: {fileID: 169238033}
   m_Layer: 0
   m_Name: box
   m_TagString: Untagged
@@ -144,7 +145,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
@@ -160,16 +161,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4aa32d132225d4caf0b25bfc021739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
   smellText: Steel
   centerButton: {fileID: 0}
+  centerPlusButton: {fileID: 0}
   pushOrPressButton: {fileID: 0}
   observeView: {fileID: 7723280082620438566}
-  observeBoxView: {fileID: 0}
-  playerBiteObject: {fileID: 9032298445570832132}
-  playerPushObject: {fileID: 9032298445570832132}
-  playerClimbObject: {fileID: 9032298445570832132}
-  interactionButtonPosition: {x: 1050, y: 450, z: 0}
+  observePlusView: {fileID: 0}
+  extraDescription: {fileID: 0}
+  IsPushOrPressActive: 1
+  IsBiteActive: 0
+  IsBark: 0
+  IsPushOrPress: 0
+  IsSniff: 0
+  IsBite: 0
+  IsDestroy: 0
+  IsUpDown: 0
+  IsInsert: 0
+  IsObserve: 0
+  IsObservePlus: 0
+  IsExtraDescriptionActive: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
 --- !u!114 &433270856078974270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,13 +195,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c923382cf72fa04d8bb12a211717b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distancePosition: 1.2
+  distancePosition: 0.6
   actionss:
   - {fileID: 0}
-  barkButton: {fileID: 0}
-  sniffButton: {fileID: 0}
-  insertButton: {fileID: 0}
-  biteButton: {fileID: 0}
+  barkInterButton: {fileID: 0}
+  sniffInterButton: {fileID: 0}
+  biteInterButton: {fileID: 0}
+  noCenterInterButton: {fileID: 0}
+  insertInterButton: {fileID: 0}
+  upDownInterButton: {fileID: 0}
+  observeInterButton: {fileID: 0}
+  insertDisableInterButton: {fileID: 0}
+  upDownDisableInterButton: {fileID: 0}
+  observeDisableInterButton: {fileID: 0}
+--- !u!114 &169238033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9032298445570832132}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0.49019608, a: 1}
+  outlineWidth: 8
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &1565269924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -407,6 +444,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3005438095694122558, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005438095694122558, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005438095694122558, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005438095694122558, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.79
       objectReference: {fileID: 0}
@@ -416,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3005438095694122558, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.0292344
+      value: -5.52
       objectReference: {fileID: 0}
     - target: {fileID: 3005438095694122558, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -447,6 +496,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3332610376716356944, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
+      propertyPath: IsBiteActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332610376716356944, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
       propertyPath: centerButton
       value: 
       objectReference: {fileID: 0}
@@ -456,19 +509,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3332610376716356946, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
       propertyPath: m_Size.x
-      value: 1.1885166
+      value: 5.001816
       objectReference: {fileID: 0}
     - target: {fileID: 3332610376716356946, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
       propertyPath: m_Size.y
-      value: 1.6290855
+      value: 3.5710602
       objectReference: {fileID: 0}
     - target: {fileID: 3332610376716356946, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
       propertyPath: m_Center.x
-      value: -0.12014866
+      value: 0.19747162
       objectReference: {fileID: 0}
     - target: {fileID: 3332610376716356946, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
       propertyPath: m_Center.y
-      value: 0.059461594
+      value: 1.0304489
       objectReference: {fileID: 0}
     - target: {fileID: 3332610376716356959, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
       propertyPath: barkButton
@@ -496,8 +549,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
+--- !u!1 &8861855297580357928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2521636093988050052, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
+  m_PrefabInstance: {fileID: 6342480985472814508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8192174013510878098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3005438095694122558, guid: 622191d74fff27647a45bd7a84c3563c, type: 3}
   m_PrefabInstance: {fileID: 6342480985472814508}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1068952811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8861855297580357928}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.23529409, g: 0.90588236, b: 0.28850126, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
