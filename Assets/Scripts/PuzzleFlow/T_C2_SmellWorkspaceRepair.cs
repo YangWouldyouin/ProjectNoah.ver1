@@ -39,10 +39,6 @@ public class T_C2_SmellWorkspaceRepair : MonoBehaviour
     {
         ObjData HealthMachineData = HealthMachine.GetComponent<ObjData>();
         ObjData HealthMachine_fixPartData = HealthMachine_fixPart.GetComponent<ObjData>();
-        if(HealthMachineData.IsObserve)
-        {
-            CameraController.cameraController.currentView = HealthMachineData.ObserveView;
-        }
         if (HealthMachineData.IsPushOrPress && HealthMachine_fixPartData.IsBite)
         {
             IsHealthMachineDone = true;
