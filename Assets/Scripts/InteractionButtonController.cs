@@ -257,7 +257,7 @@ public class InteractionButtonController : MonoBehaviour
     }
     void noahJump()
     {
-        noahPlayer.transform.position = new Vector3(risePosition.x - 1f, 34.69f, risePosition.z);
+        noahPlayer.transform.position = new Vector3(risePosition.x, risePosition.y + 0.2f, risePosition.z);
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&

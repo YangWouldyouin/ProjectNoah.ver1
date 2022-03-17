@@ -9,13 +9,10 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
 { 
     public static BiteDestroyButtonController biteDestroyButtonController { get; private set; }
 
-
     void Awake()
     {
         biteDestroyButtonController = this;
     }
-
-    
 
     public Animator playerAnimation;
 
@@ -39,10 +36,6 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
 
     void Update()
     {
-
-
-
-
         if (isPointerDown)
         {
             pointerDownTimer += Time.deltaTime;
@@ -103,8 +96,6 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
                 biteDestroyButton.GetComponent<Image>().sprite = biteButtonClicked;
             }
         }
-
-
     }
 
     void ChangeBiteTrue()

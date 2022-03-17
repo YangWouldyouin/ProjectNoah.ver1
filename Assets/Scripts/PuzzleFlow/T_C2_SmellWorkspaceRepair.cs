@@ -66,6 +66,7 @@ public class T_C2_SmellWorkspaceRepair : MonoBehaviour
 
 
         //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
-        HealthMachineData.IsCenterButtonChanged = true;
+        HealthMachineData.IsCenterButtonDisabled = false;
+        //HealthMachineData.IsCenterButtonChanged = true;
     }
 }

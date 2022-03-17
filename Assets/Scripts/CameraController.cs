@@ -6,16 +6,9 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController cameraController { get; private set; }
 
-    //private Transform camObserveView, camObserveBoxView;
-    //[SerializeField] Transform mainView;
-
-
-
     public GameObject objectExtraDescription;
 
-
-    private Vector3 originPosition;
-    private Vector3 originRotation;
+    private Vector3 originPosition, originRotation;
     public Transform currentView;
 
     [SerializeField] GameObject noah;
@@ -24,8 +17,7 @@ public class CameraController : MonoBehaviour
 
     private GameObject currentObserveObject;
 
-    private Transform observeView;
-    private Transform observePlusView;
+    //private Transform observeView, observePlusView;
 
     CameraFollow cameraFollow;
 
@@ -43,7 +35,6 @@ public class CameraController : MonoBehaviour
     {
         originPosition = transform.position;
         originRotation = transform.rotation.eulerAngles;
-        //mainView = this.transform;
         currentObserveObject = PlayerScripts.playerscripts.currentObject;
         ObjData currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
         if(cameraFollow!=null)
@@ -87,11 +78,8 @@ public class CameraController : MonoBehaviour
         if (cameraFollow != null)
         {
             cameraFollow.enabled = true;
-        }
-        
+        }        
         ComeBackView(originPosition, originRotation);
-
-
     }
 
     /* 전환 효과 없는 카메라 전환 메서드 */

@@ -21,10 +21,11 @@ public class M_C2_FindEnginespaceKey : MonoBehaviour
     /* 이번 플로우차트에서 쓰이는 상호작용 오브젝트 목록 */
     // 움직일 수 있는 오브젝트와 못 움직이는 오브젝트 모두 넣는다.
     // 이름 짓기 규칙 : 오브젝트 이름 + 플로우차트 넘버링
-    public GameObject cardPack_M_C2;
+    //public GameObject cardPack_M_C2;
     public GameObject desk_M_C2;
     public GameObject box_M_C2;
-    public GameObject engineRoomDoor_M_C2;
+
+    //public GameObject engineRoomDoor_M_C2;
 
     // Start is called before the first frame update
     void Start()
@@ -55,23 +56,29 @@ public class M_C2_FindEnginespaceKey : MonoBehaviour
 
     public void CanSeeCard()
     {
-        /* 함수 첫 시작에서 앞에서 정했던 이번 플로우차트에서 쓰이는 오브젝트들의 각각의 데이터가 저장되어있는 ObjData 컴포넌트를 모두 불러온다. */
-        // 이름 짓기 규칙 : 오브젝트 이름 + Data + 플로우차트 넘버링
-        //ObjData consoleLeftData_M_C1 = consoleLeft_M_C1.GetComponent<ObjData>();
+        ObjData deskData_M_C2 = desk_M_C2.GetComponent<ObjData>();
+        ObjData boxData_M_C2 = box_M_C2.GetComponent<ObjData>();
 
-        ObjData cardPackData = cardPack_M_C2.GetComponent<ObjData>();
 
-        if (cardPackData.IsDestroy)//파괴하기
-        {
+        // < 1번쨰 가운데 버튼 비활성화 -> 활성화, 버튼 바뀌고, 2번째 가운데 버튼 비활성화 -> 활성화 시나리오 >
 
-            Invoke("Disapppear", 2f);
-            //Destroy(cardPack);
-            IsDisappearPack_M_C2 = true;
-        }
+        // <박스> 를 "끼우기" 하면 <책상> 의 관찰하기 버튼 활성화, <책상> "관찰하기" 하면 <책상> 의 가운데 버튼이 비활성화된 오르기"로 변함
+        // <부품> 을 "물기" 하고 && <박스>를 "끼우기" 하고 && <책상> 을 "관찰하기"  하면 <책상> 의 가운데 버튼이 활성화된 오르기로 변함
+        
+
+        //ObjData cardPackData_M_C2 = cardPack_M_C2.GetComponent<ObjData>();
+
+        //if (cardPackData_M_C2.IsDestroy)//파괴하기
+        //{
+
+        //    Invoke("Disapppear", 2f);
+        //    //Destroy(cardPack);
+        //    IsDisappearPack_M_C2 = true;
+        //}
     }
 
-    void Disapppear()
-    {
-        cardPack_M_C2.SetActive(false);
-    }
+    //void Disapppear()
+    //{
+    //    cardPack_M_C2.SetActive(false);
+    //}
 }
