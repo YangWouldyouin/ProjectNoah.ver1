@@ -179,9 +179,10 @@ public class CancelInteractions : MonoBehaviour
     }
     void PutDownObject()
     {
+        Vector3 putDownYpos = BiteDestroyButtonController.biteDestroyButtonController.biteObjectFallPosition;  
         biteObject.GetComponent<Rigidbody>().isKinematic = false; 
         biteObject.transform.parent = null;
-        biteObject.transform.position = new Vector3(biteObject.transform.position.x, 33.8f, biteObject.transform.position.z);
+        biteObject.transform.position = new Vector3(biteObject.transform.position.x, putDownYpos.y, biteObject.transform.position.z);
     }
 
     void Observing2Animation()

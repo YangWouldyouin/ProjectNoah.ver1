@@ -27,6 +27,7 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
     public GameObject noahBiteObject;
     public GameObject noahDestroyObject;
     public GameObject myMouth;
+    public Vector3 biteObjectFallPosition;
 
     void Start()
     {
@@ -77,8 +78,10 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        
         noahBiteObject = PlayerScripts.playerscripts.currentObject;
-        if(noahBiteObject!=null)
+        biteObjectFallPosition = noahBiteObject.transform.position;
+        if (noahBiteObject!=null)
         {
             ObjData noahBiteData = noahBiteObject.GetComponent<ObjData>();
             if (noahBiteData.ISBiteActive)
