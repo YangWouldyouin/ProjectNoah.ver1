@@ -138,10 +138,13 @@ public class M_C1_CockpitOpen : MonoBehaviour
     {
         ObjData cockpitDoorData_M_C1 = cockpitDoor_M_C1.GetComponent<ObjData>();
         ObjData envirPipeData_M_C1 = envirPipe_M_C1.GetComponent<ObjData>();
-        ObjData boxData_M_C1 = box_M_C1.GetComponent<ObjData>();
+
+
 
         if (cockpitDoorData_M_C1.IsInsert)
         {
+            // 문여는 애니메이션
+            // 
             IsCockpitDoorOpen_M_C1 = true; // 문 해금
         }
         if (envirPipeData_M_C1.IsBite)
@@ -152,6 +155,7 @@ public class M_C1_CockpitOpen : MonoBehaviour
         {
             cockpitDoorData_M_C1.IsCenterButtonDisabled = true; // 끼우기 버튼 비활성화
         }
+
 
     }
 }

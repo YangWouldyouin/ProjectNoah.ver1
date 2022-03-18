@@ -268,7 +268,7 @@ public class InteractionButtonController : MonoBehaviour
         noahPushObject = PlayerScripts.playerscripts.currentObject;
         noahpushobject = noahPushObject;
         pushObjectName = noahPushObject.name;
-        //PlayerManager.playermanager.ISPUSH = true;
+        //PlayerManager.playermanager.ISPUSH = true; 
         ispush = true;
         ISPUSH = true;
         TurnOffInteractionButton();

@@ -47,6 +47,8 @@ public class PlayerScripts : MonoBehaviour
     public GameObject DoorClickArea;
     public bool isDoorClickAreaClicked = false;
 
+    public bool IsClicked = false;
+
 
     private void Awake()
     {
@@ -134,7 +136,9 @@ public class PlayerScripts : MonoBehaviour
                     MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
                     if (sqrLen < DistanceBetweenPlayerandNPC)
                     {
-                        interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능                  
+                        IsClicked = true;
+                        interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능     
+                        IsClicked = false;
                     } // 순서가 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
                 }
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 

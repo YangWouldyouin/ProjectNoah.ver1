@@ -12,24 +12,29 @@ public class UnLockDoor : MonoBehaviour
 
     public GameObject PlayerDoorOpenPosition, PlayerOriginPosition;
     public GameObject DoorOpenPosition;
+
+    public GameObject changeScene;
     //GoToWork;
 
     private void LateUpdate()
     {
+
+
+
         if (PlayerScripts.playerscripts.isPipeInserted && PlayerScripts.playerscripts.isDoorClickAreaClicked)
         {
             ///InteractionButtonController.interactionButtonController.ChangeInsertFalse();
             //InteractionButtonController.interactionButtonController.TurnOffInsertArea();
 
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f;
 
             OpenDoorPlayer.transform.position = Vector3.Lerp(PlayerOriginPosition.transform.position, PlayerDoorOpenPosition.transform.position, Time.deltaTime * 20);
             transform.position = Vector3.Lerp(transform.position, DoorOpenPosition.transform.position, Time.deltaTime * 6);
             
             if (OpenDoorPlayer.transform.position.z>0.05f)
             {
-                //GoToWork.SetActive(true);
-                PlayerScripts.playerscripts.isDoorClickAreaClicked = false;
+                changeScene.SetActive(true);
+                //PlayerScripts.playerscripts.isDoorClickAreaClicked = false;
             }
         }
     }
