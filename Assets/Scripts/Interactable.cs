@@ -39,7 +39,8 @@ public class Interactable : MonoBehaviour
     /* NPC 의 위치를 반환하는 메서드 */
     public Vector3 InteractPosition()
     {
-        return transform.position + transform.right*distancePosition;
+        //return transform.position + transform.right*distancePosition;
+        return transform.position;
     }
 
     /* 플레이어가 NPC를 클릭하면 1)NPC 위치로 갈때까지 기다렸다가 도착하면 2) NPC 를 바라보는 방향으로 플레이어를 돌리고, 3) 상호작용들을 실행하는 메서드 */
@@ -59,7 +60,7 @@ public class Interactable : MonoBehaviour
         Debug.Log("Player arrived");
 
         // 2) 플레이어가 npc 위치로 도착하면 npc를 바라보게 각도를 바꿈 
-        player.SetDirection(transform.position);
+        //player.SetDirection(transform.position);
 
 
         /* 오브젝트 위에 상호작용 버튼을 띄움 */

@@ -52,15 +52,14 @@ public class T_C2_SmellWorkspaceRepair : MonoBehaviour
 
 
         //물고 있는 fitPart 물기 해제 -> bool false
+        HealthMachine_fixPartData.IsBite = false;
 
+        HealthMachine_fixPartData.GetComponent<Rigidbody>().isKinematic = false;
+        HealthMachine_fixPartData.transform.parent = null;
 
         //fitPart 위치 HM에 자동 장착
         HealthMachine_fixPartData.transform.position = new Vector3(-258.092f, 538.404f, 680.078f);
         HealthMachine_fixPartData.transform.rotation = Quaternion.Euler(-90, 0, 0);
-
-
-        HealthMachine_fixPartData.GetComponent<Rigidbody>().isKinematic = false;
-        HealthMachine_fixPartData.transform.parent = null;
 
         //한 번 물기 하면 더이상 fitPart 상호작용 불가 오브젝트로 변경 -> interaction 스크립트 끄기
         //gameObject.GetComponent<Interactable>().enabled = false;
