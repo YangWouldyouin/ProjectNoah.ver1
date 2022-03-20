@@ -303,6 +303,7 @@ public class InteractionButtonController : MonoBehaviour
                 noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 로 저장
                 Invoke("ChangePressTrue", 0.5f); // 버튼이 눌러지고 0.5초 후 누르기 누르기 동작 시작
                 Invoke("ChangePressFalse", 2f); // 2초 후 누르기 끝내고 다시 Idle 상태로 돌아감
+                Invoke("PressFalse", 2f);
             }
             else // 실제로는 누르기 불가능한 오브젝트 이므로 동작만 보여준다. 
             {
@@ -319,6 +320,7 @@ public class InteractionButtonController : MonoBehaviour
     }
     void ChangePressFalse()
     {
+
         noahAnim.SetBool("IsPressing", false);
     }
 
@@ -331,6 +333,13 @@ public class InteractionButtonController : MonoBehaviour
     void JustPlayPushAnimationFalse()
     {
         noahAnim.SetBool("IsNonePushing", false);
+    }
+
+    void PressFalse()
+    {
+        noahPushOrPressObject = PlayerScripts.playerscripts.currentObject;
+        ObjData noahPushOrPressData = noahPushOrPressObject.GetComponent<ObjData>();
+        noahPushOrPressData.IsPushOrPress = false; 
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
