@@ -85,8 +85,8 @@ public class M_C1_CockpitOpen : MonoBehaviour
         }
         else // AI 가 활성화되기 전이면
         {
-            inter();
-            //ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
+            //inter();
+            ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
         }
     }
 
