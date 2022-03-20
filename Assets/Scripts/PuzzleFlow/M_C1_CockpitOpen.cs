@@ -30,12 +30,16 @@ public class M_C1_CockpitOpen : MonoBehaviour
     public GameObject fade_M_C1;
     public Image aiIcon_M_C1;
 
+    Interactable interactable_door;
+
     private void Start()
     {
         // 플로우차트 처음 시작 때 넣고 싶은 연출들을 넣는다.  
         noahAnim_M_C1.SetBool("IsSleeping", true);
         StartCoroutine(NoahWakeUp()); // 잠들어 있던 노아가 깨어난다
         StartCoroutine(FadeCoroutine()); //화면이 밝아진다
+
+        interactable_door = cockpitDoor_M_C1.GetComponent<Interactable>();
     }
 
 
@@ -81,11 +85,19 @@ public class M_C1_CockpitOpen : MonoBehaviour
         }
         else // AI 가 활성화되기 전이면
         {
-            ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
+            inter();
+            //ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
         }
     }
 
-    
+    void inter()
+    {
+        ObjData boxData_M_C1 = box_M_C1.GetComponent<ObjData>();
+        if (boxData_M_C1.IsUpDown)
+        {
+            interactable_door.enabled = false;
+        }
+    }
 
 
     /* 플로우차트를 크게 n개로 나눌 수 있으면 나눠서 함수를 만든다. */
@@ -111,6 +123,7 @@ public class M_C1_CockpitOpen : MonoBehaviour
             CameraController.cameraController.CancelObserve();
             DialogManager.dialogManager.ResetSystem(); // AI 1 번째 대사 묶음 출력
             CameraController.cameraController.currentView = consoleLeftData_M_C1.ObserveView; // 앞으로 볼 일 없으므로 초기화
+
             IsAI_M_C1 = true; // 앞으로 게임이 꺼져도 AI 가 계속 활성화된다. 
 
             /* 나중에 추가할 목록들 */
