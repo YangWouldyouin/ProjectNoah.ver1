@@ -137,7 +137,9 @@ public class PlayerScripts : MonoBehaviour
                     if (sqrLen < DistanceBetweenPlayerandNPC)
                     {
                         IsClicked = true;
-                        //interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능     
+                        if(!objData.IsNotInteractable)
+                            interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
+                        
                         IsClicked = false;
                     } // 순서가 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
                 }
