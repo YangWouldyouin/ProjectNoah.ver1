@@ -26,16 +26,16 @@ public class T_C4_SmellLivingRepair : MonoBehaviour
         {
             if (IsTrashDoorDone)
             {
-                Invoke("TrashDoorDone", 1.5f);
+                Invoke("TrashBTDone", 1.5f);
             }
             else
             {
-                TrashDoor_fixPart_Putting();
+                TrashBT_fixPart_Putting();
             }
         }
     }
 
-    public void TrashDoor_fixPart_Putting()
+    public void TrashBT_fixPart_Putting()
     {
         ObjData TrashBTData = TrashBT.GetComponent<ObjData>();
         ObjData TrashBT_fixPartData = TrashBT_fixPart.GetComponent<ObjData>();
@@ -45,7 +45,7 @@ public class T_C4_SmellLivingRepair : MonoBehaviour
         }
     }
 
-    public void TrashDoorDone()
+    public void TrashBTDone()
     {
         ObjData TrashBTData = TrashBT.GetComponent<ObjData>();
         ObjData TrashBT_fixPartData = TrashBT_fixPart.GetComponent<ObjData>();
@@ -58,14 +58,11 @@ public class T_C4_SmellLivingRepair : MonoBehaviour
         TrashBT_fixPartData.transform.parent = null;
 
         //fitPart 위치 HM에 자동 장착
-        TrashBT_fixPartData.transform.position = new Vector3(0.05031f, 0.01183f, 0.05614f);
+        TrashBT_fixPartData.transform.position = new Vector3(-27.279f, 1.182999f, 35.614f);
         TrashBT_fixPartData.transform.rotation = Quaternion.Euler(0, -90, 0);
 
         //한 번 물기 하면 더이상 fitPart 상호작용 불가 오브젝트로 변경 -> interaction 스크립트 끄기
-        //gameObject.GetComponent<Interactable>().enabled = false;
-
-        //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
-        TrashBTData.IsCenterButtonDisabled = false;
-        //HealthMachineData.IsCenterButtonChanged = true;
+        TrashBT_fixPartData.IsNotInteractable = true;
+        TrashBTData.IsNotInteractable = true;
     }
 }

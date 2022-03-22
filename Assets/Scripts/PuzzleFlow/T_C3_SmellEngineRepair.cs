@@ -6,10 +6,11 @@ public class T_C3_SmellEngineRepair : MonoBehaviour
 {
     private GameObject nowObject_T_C3_SmellEngineRepair;
 
-    public static bool IsFueltankDone = false;
+    public static bool IsFuelabsorberDone = false;
 
-    public GameObject Fueltank;
-    public GameObject Fueltank_fixPart;
+    public GameObject Fuelabsorber_Body;
+    public GameObject Fuelabsorber_fixPart;
+    public GameObject Fuelabsorber;
 
     // Start is called before the first frame update
     void Start()
@@ -24,48 +25,51 @@ public class T_C3_SmellEngineRepair : MonoBehaviour
 
         if (nowObject_T_C3_SmellEngineRepair != null)
         {
-            if (IsFueltankDone)
+            if (IsFuelabsorberDone)
             {
-                Invoke("FueltankDone", 1.5f);
+                Invoke("FuelabsorberDone", 1.5f);
             }
             else
             {
-                Fueltank_fixPart_Putting();
+                Fuelabsorber_fixPart_Putting();
             }
         }
     }
 
-    public void Fueltank_fixPart_Putting()
+    public void Fuelabsorber_fixPart_Putting()
     {
-        ObjData FueltankData = Fueltank.GetComponent<ObjData>();
-        ObjData Fueltank_fixPartData = Fueltank_fixPart.GetComponent<ObjData>();
-        if (FueltankData.IsPushOrPress && Fueltank_fixPartData.IsBite)
+        ObjData Fuelabsorber_BodyData = Fuelabsorber_Body.GetComponent<ObjData>();
+        ObjData Fuelabsorber_fixPartData = Fuelabsorber_fixPart.GetComponent<ObjData>();
+        if (Fuelabsorber_BodyData.IsPushOrPress && Fuelabsorber_fixPartData.IsBite)
         {
-            IsFueltankDone = true;
+            IsFuelabsorberDone = true;
         }
     }
 
-    public void FueltankDone()
+    public void FuelabsorberDone()
     {
-        ObjData FueltankData = Fueltank.GetComponent<ObjData>();
-        ObjData Fueltank_fixPartData = Fueltank_fixPart.GetComponent<ObjData>();
-
+        ObjData Fuelabsorber_BodyData = Fuelabsorber_Body.GetComponent<ObjData>();
+        ObjData Fuelabsorber_fixPartData = Fuelabsorber_fixPart.GetComponent<ObjData>();
+        ObjData FuelabsorberData = Fuelabsorber.GetComponent<ObjData>();
 
         //물고 있는 fitPart 물기 해제 -> bool false
-        Fueltank_fixPartData.IsBite = false;
+        Fuelabsorber_fixPartData.IsBite = false;
 
-        Fueltank_fixPartData.GetComponent<Rigidbody>().isKinematic = false;
-        Fueltank_fixPartData.transform.parent = null;
+        Fuelabsorber_fixPartData.GetComponent<Rigidbody>().isKinematic = false;
+        Fuelabsorber_fixPartData.transform.parent = null;
 
         //fitPart 위치 HM에 자동 장착
-        Fueltank_fixPartData.transform.position = new Vector3(0f, 0f, 0f);
-        Fueltank_fixPartData.transform.rotation = Quaternion.Euler(0, 0, 0);
+        Fuelabsorber_fixPartData.transform.position = new Vector3(-1.82f, 0.509f, 0.25f);
+        Fuelabsorber_fixPartData.transform.rotation = Quaternion.Euler(0, 90, 90);
 
         //한 번 물기 하면 더이상 fitPart 상호작용 불가 오브젝트로 변경 -> interaction 스크립트 끄기
-        //gameObject.GetComponent<Interactable>().enabled = false;
+        Fuelabsorber_fixPartData.IsNotInteractable = true;
+        Fuelabsorber_BodyData.IsNotInteractable = true;
+        FuelabsorberData.IsNotInteractable = false;
 
-        //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
-        FueltankData.IsCenterButtonDisabled = false;
-        //HealthMachineData.IsCenterButtonChanged = true;
+        //오브젝트 끄기
+        Fuelabsorber.SetActive(true);
+        Fuelabsorber_fixPart.SetActive(false);
+        Fuelabsorber_Body.SetActive(false);
     }
 }
