@@ -77,17 +77,27 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
         }
 
 
-        if (IsSmartFarmOpen_T_C2 == true)
-        {
-            Vector3 speed = Vector3.zero;
-            FarmWindow_T_C2.transform.position = Vector3.SmoothDamp(transform.position, Target.position, ref speed, 0.01f);
+       // if (IsSmartFarmOpen_T_C2 == true)
+        //{
+           // Vector3 speed = Vector3.zero;
+            //FarmWindow_T_C2.transform.position = Vector3.SmoothDamp(transform.position, Target.position, ref speed, 0.01f);
         //    //FarmWindow_T_C2.transform.position =  Vector3.Lerp(OriginPosition, LaterPosition, Time.deltaTime * 1);
         //    //FarmWindow_T_C2.transform.position = Vector3.Lerp(transform.position,new Vector3(-282.26f, 526.4f, 699.771f), Time.deltaTime * 0.01f);
-        }
+        //}
 
     }
 
 
+    //void loofdoor()
+    //{
+    //    Debug.Log("멍청한 문");
+    //    for (int i = 1; i <= 2; i++)
+    //    {
+    //        float a = i - (-264.83f);
+    //        FarmWindow_T_C2.transform.position += new Vector3(a, 506.4f, 679.771f);
+
+    //    }
+    //}
 
 
 
@@ -165,7 +175,7 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
             CameraController.cameraController.CancelObserve();
             //Debug.Log("망가진 줄을 빼고 관찰하기를 해제했어요");
 
-            Invoke("BrokenLine2Disapppear", 2f);
+            Invoke("BrokenLine2Disapppear", 4f);
             //Debug.Log("망가진 줄을 없애버렸어요");
             IsLineGone_T_C2 = true; // 망가진 줄이 빠졌다는 걸 업데이트에 알린다.
         }
@@ -341,12 +351,15 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
             //FarmWindow_T_C2.transform.position = Vector3.MoveTowards(transform.position, Target.position, Time.deltaTime * 0.5f);
 
             //FarmWindow_T_C2.transform.Translate(Vector3.right * Time.deltaTime);
-            //Invoke("WindowDisapppear", 2f); //2초후 문 사라지기 코드를 실행한다.
+            Invoke("WindowDisapppear", 2f); //2초후 문 사라지기 코드를 실행한다.
 
             //Vector3 speed = Vector3.zero;
             //FarmWindow_T_C2.transform.position = Vector3.SmoothDamp(transform.position, Target.position, ref speed, 0.01f);
 
+
             IsSmartFarmOpen_T_C2 = true; // 항상 팜 문이 열려있는 것이 True가 된다.
+
+            //Invoke("loofdoor", 1f);
 
         }
 
@@ -354,10 +367,10 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
 
     }
 
-    //void WindowDisapppear() // 스마트팜 입구 사라지기
-    //{
-    //    FarmWindow_T_C2.SetActive(false);
-    //}
+    void WindowDisapppear() // 스마트팜 입구 사라지기
+    {
+        FarmWindow_T_C2.SetActive(false);
+    }
 
 }
 
