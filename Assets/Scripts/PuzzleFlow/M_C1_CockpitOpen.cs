@@ -15,10 +15,10 @@ public class M_C1_CockpitOpen : MonoBehaviour
     /* 이번 플로우차트에서 쓰이는 상호작용 오브젝트 목록 */
     // 움직일 수 있는 오브젝트와 못 움직이는 오브젝트 모두 넣는다.
     // 이름 짓기 규칙 : 오브젝트 이름 + 플로우차트 넘버링
-    public GameObject consoleCenter_M_C1;
+    //public GameObject consoleCenter_M_C1;
     public GameObject box_M_C1;
     public GameObject envirPipe_M_C1;
-    public GameObject consoleAIResetButton_M_C1;
+    //public GameObject consoleAIResetButton_M_C1;
 
     // 플로우차트 하나를 크게 n 개로 나눌 수 있으면 오브젝트들도 엔터로 구분한다.
     public GameObject cockpitDoor_M_C1;
@@ -26,6 +26,8 @@ public class M_C1_CockpitOpen : MonoBehaviour
 
     /* 기타 필요한 변수들이 있으면 만든다. */
     public Animator noahAnim_M_C1; //
+    public Animator cockpitDoorAnimM_C1;
+
     public Image fadeImage_M_C1;
     public GameObject fade_M_C1;
     public Image aiIcon_M_C1;
@@ -40,7 +42,7 @@ public class M_C1_CockpitOpen : MonoBehaviour
         StartCoroutine(FadeCoroutine()); //화면이 밝아진다
 
 
-        resetButtonOutline = consoleAIResetButton_M_C1.GetComponent<Outline>();
+        //resetButtonOutline = consoleAIResetButton_M_C1.GetComponent<Outline>();
 
     }
 
@@ -87,10 +89,20 @@ public class M_C1_CockpitOpen : MonoBehaviour
         }
         else // AI 가 활성화되기 전이면
         {
-            ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
+            openDoor();
+            //ResetAI(); // 계속해서 AI 활성화 시키는 함수를 실행시킨다. 
         }
     }
 
+    void openDoor()
+    {
+        ObjData boxData_M_C1 = box_M_C1.GetComponent<ObjData>();
+        if(boxData_M_C1.IsUpDown)
+        {
+            cockpitDoorAnimM_C1.SetBool("IsOpening", true);
+            cockpitDoorAnimM_C1.SetBool("Open", true);
+        }
+    }
     void EnableCockpitDoor()
     {
         ObjData boxData_M_C1 = box_M_C1.GetComponent<ObjData>();
@@ -110,10 +122,10 @@ public class M_C1_CockpitOpen : MonoBehaviour
     {
         /* 함수 첫 시작에서 앞에서 정했던 이번 플로우차트에서 쓰이는 오브젝트들의 각각의 데이터가 저장되어있는 ObjData 컴포넌트를 모두 불러온다. */
         // 이름 짓기 규칙 : 오브젝트 이름 + Data + 플로우차트 넘버링
-        ObjData consoleCenteData_M_C1 = consoleCenter_M_C1.GetComponent<ObjData>();
+        //ObjData consoleCenteData_M_C1 = consoleCenter_M_C1.GetComponent<ObjData>();
         ObjData boxData_M_C1 = box_M_C1.GetComponent<ObjData>();
         ObjData envirPipeData_M_C1 = envirPipe_M_C1.GetComponent<ObjData>();
-        ObjData consoleAIResetButtonData_M_C1 = consoleAIResetButton_M_C1.GetComponent<ObjData>();
+        //ObjData consoleAIResetButtonData_M_C1 = consoleAIResetButton_M_C1.GetComponent<ObjData>();
 
 
 
@@ -122,30 +134,30 @@ public class M_C1_CockpitOpen : MonoBehaviour
 
         // 예를 들어 조종석 AI 활성화 퍼즐의 경우, <재가동 버튼> 의 "밀기" 버튼을 누르는 것이 
         //마지막 단계이므로 눌러졌는지 확인하는 ConsoleLeftAIResetButtoneData.IsPushOrPress를 첫 번쨰 if 문에 넣었다. */
-        if (consoleAIResetButtonData_M_C1.IsPushOrPress)
-        {
-            CameraController.cameraController.CancelObserve();
-            DialogManager.dialogManager.ResetSystem(); // AI 1 번째 대사 묶음 출력
-            CameraController.cameraController.currentView = consoleCenteData_M_C1.ObserveView; // 앞으로 볼 일 없으므로 초기화
+        //if (consoleAIResetButtonData_M_C1.IsPushOrPress)
+        //{
+        //    CameraController.cameraController.CancelObserve();
+        //    DialogManager.dialogManager.ResetSystem(); // AI 1 번째 대사 묶음 출력
+        //    //CameraController.cameraController.currentView = consoleCenteData_M_C1.ObserveView; // 앞으로 볼 일 없으므로 초기화
 
-            IsAI_M_C1 = true; // 앞으로 게임이 꺼져도 AI 가 계속 활성화된다. 
+        //    IsAI_M_C1 = true; // 앞으로 게임이 꺼져도 AI 가 계속 활성화된다. 
 
-            /* 나중에 추가할 목록들 */
-            // <시스템 재가동 버튼> 상호작용 비활성화(이후에 누르는 일 없도록)
-            // return true; // 엔딩 수집 페이지 갱신, 게임 세이브 분기점
-        }
+        //    /* 나중에 추가할 목록들 */
+        //    // <시스템 재가동 버튼> 상호작용 비활성화(이후에 누르는 일 없도록)
+        //    // return true; // 엔딩 수집 페이지 갱신, 게임 세이브 분기점
+        //}
 
         /* <박스> "오르기" && <조종석> "관찰하기" && <파이프> "물기" 전부 true 이면 */
-        if (consoleCenteData_M_C1.IsObserve && boxData_M_C1.IsUpDown && envirPipeData_M_C1.IsBite)
-        {
-            // <조종석> 의 "관찰하기" 뷰를 ObservePlusView 로 넣는다. 
-            CameraController.cameraController.currentView = consoleCenteData_M_C1.ObservePlusView; //관찰 뷰 : < 시스템 재가동 버튼> 이 보이는 위치
-            consoleCenteData_M_C1.IsExtraDescriptionActive = true; // 버튼 추가 설명을 활성화한다. 
-        }
-        else
-        {// 박스 없이 그냥 <조종석> 을 "관찷하기" 했으므로 관찰하기 뷰를 일반 뷰인 ObserveView 로 넣는다
-            CameraController.cameraController.currentView = consoleCenteData_M_C1.ObserveView; // 관찰 뷰 : 안 보이는 위치
-        }
+        //if (consoleCenteData_M_C1.IsObserve && boxData_M_C1.IsUpDown && envirPipeData_M_C1.IsBite)
+        //{
+        //    // <조종석> 의 "관찰하기" 뷰를 ObservePlusView 로 넣는다. 
+        //    CameraController.cameraController.currentView = consoleCenteData_M_C1.ObservePlusView; //관찰 뷰 : < 시스템 재가동 버튼> 이 보이는 위치
+        //    consoleCenteData_M_C1.IsExtraDescriptionActive = true; // 버튼 추가 설명을 활성화한다. 
+        //}
+        //else
+        //{// 박스 없이 그냥 <조종석> 을 "관찷하기" 했으므로 관찰하기 뷰를 일반 뷰인 ObserveView 로 넣는다
+        //    CameraController.cameraController.currentView = consoleCenteData_M_C1.ObserveView; // 관찰 뷰 : 안 보이는 위치
+        //}
     }
 
 
