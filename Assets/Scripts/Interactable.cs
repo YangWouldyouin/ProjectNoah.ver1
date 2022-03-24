@@ -27,13 +27,19 @@ public class Interactable : MonoBehaviour
     /* 마우스 오버시 아웃라인 활성화 */
     public void OnMouseOver()
     {
-        outline.enabled = true;
+        if(outline!=null)
+        {
+            outline.enabled = true;
+        }
     }
 
     /* 마우스가 오브젝트로부터 벗어나면 아웃라인 비활성화 */
     public void OnMouseExit()
     {
-        outline.enabled = false;
+        if(outline != null)
+        { 
+            outline.enabled = false;
+        }
     }
 
     /* NPC 의 위치를 반환하는 메서드 */
