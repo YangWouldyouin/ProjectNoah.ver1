@@ -32,6 +32,12 @@ public class M_C1_CockpitOpen : MonoBehaviour
     public GameObject fade_M_C1;
     public Image aiIcon_M_C1;
 
+    /* 끼우기 관련 변수들 */
+    public GameObject insertArea_M_C1;
+    public GameObject cockpitDoorInsertAnswer_M_C1;
+    public Button insertAnswerButton;
+    public bool IsInsertAreaClicked = false;
+
     private Outline resetButtonOutline;
 
     private void Start()
@@ -44,7 +50,14 @@ public class M_C1_CockpitOpen : MonoBehaviour
 
         //resetButtonOutline = consoleAIResetButton_M_C1.GetComponent<Outline>();
 
+
+
     }
+    private void Awake()
+    {
+        insertAnswerButton.onClick.AddListener(ClickInsertArea);
+    }
+
 
 
 
@@ -94,15 +107,42 @@ public class M_C1_CockpitOpen : MonoBehaviour
         }
     }
 
+    void ClickInsertArea()
+    {
+        IsInsertAreaClicked = true;
+        Invoke("UnclickInsertArea", 2f);
+    }
+
+    void UnclickInsertArea()
+    {
+        IsInsertAreaClicked = false;
+    }
+
     void openDoor()
     {
-        ObjData boxData_M_C1 = box_M_C1.GetComponent<ObjData>();
-        if(boxData_M_C1.IsUpDown)
+        ObjData cockpitDoorData_M_C1 = cockpitDoor_M_C1.GetComponent<ObjData>();
+        ObjData boxData_M_C1 = box_M_C1.GetComponent<ObjData>();      
+        ObjData cockpitDoorInsertAnswerData_M_C1 = cockpitDoorInsertAnswer_M_C1.GetComponent<ObjData>();
+        BoxCollider cockpitDoorCollider = cockpitDoor_M_C1.GetComponent<BoxCollider>();
+        if (cockpitDoorData_M_C1.IsInsert)        
         {
-            cockpitDoorAnimM_C1.SetBool("IsOpening", true);
-            cockpitDoorAnimM_C1.SetBool("Open", true);
+            insertArea_M_C1.SetActive(true); // 끼우기 영역을 켠다. 
+            cockpitDoorInsertAnswer_M_C1.SetActive(true); // 정답 영역을 켠다. 
+            //cockpitDoorCollider.enabled = false;
+            if(IsInsertAreaClicked && InsertDetect.insertDetect.Isdetected)
+            {
+                cockpitDoorAnimM_C1.SetBool("IsOpening", true);
+                cockpitDoorAnimM_C1.SetBool("Open", true);
+            }
         }
+
+        //if(boxData_M_C1.IsUpDown)
+        //{
+        //    cockpitDoorAnimM_C1.SetBool("IsOpening", true);
+        //    cockpitDoorAnimM_C1.SetBool("Open", true);
+        //}
     }
+
     void EnableCockpitDoor()
     {
         ObjData boxData_M_C1 = box_M_C1.GetComponent<ObjData>();

@@ -12,7 +12,7 @@ public class CancelInteractions : MonoBehaviour
     public GameObject noahPosition;
     public GameObject moveableGroup;
     private GameObject upDownObject, biteObject, pushObject, noahNovepushobject, observeObject;
-
+    NavMeshObstacle cancelBiteObstacle;
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
@@ -80,6 +80,8 @@ public class CancelInteractions : MonoBehaviour
                     ObjData cancelBiteData = biteObject.GetComponent<ObjData>();
                     if (cancelBiteData.IsBite)
                     {
+                        cancelBiteObstacle = biteObject.GetComponent<NavMeshObstacle>();
+                        cancelBiteObstacle.enabled = true;
                         playerAnimation.SetBool("IsPutDowning", true);
                         Invoke("CancelBitingAnimation", 1f);
                         Invoke("PutDownObject", 0.5f);

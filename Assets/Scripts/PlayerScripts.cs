@@ -40,13 +40,6 @@ public class PlayerScripts : MonoBehaviour
 
     public GameObject currentObject;
 
-
-    public bool IsDoorLocked = true;
-    public bool IsDoorClicked= false;
-    public bool isPipeInserted = false;
-    public GameObject DoorClickArea;
-    public bool isDoorClickAreaClicked = false;
-
     public bool IsClicked = false;
 
 
@@ -91,25 +84,6 @@ public class PlayerScripts : MonoBehaviour
         {
             if (hit.collider != null) // 무언가를 치면
             {
-
-
-                if(hit.collider.name == "DoorUnLocked"&&UnLockDoor.unlockDoor.isDoorPipeInserted)
-                {
-                    isPipeInserted = true;
-                    DoorClickArea.SetActive(true);
-                    Time.timeScale = 0;
-                    
-                }
-                if (hit.collider.name == "OpenDoorClickArea")
-                {
-                    isDoorClickAreaClicked = true;
-                    DoorClickArea.SetActive(false);
-
-                }
-
-
-
-
                 PlayerPosition = this.gameObject.transform.position;
                 Interactable interactable = hit.collider.GetComponent<Interactable>(); // interactable : 부딪힌 오브젝트 or NPC 에 붙어있는 Interactable 컴포넌트         
                 ObjData objData = hit.collider.GetComponent<ObjData>();
@@ -128,6 +102,7 @@ public class PlayerScripts : MonoBehaviour
                 if (interactable != null) // 부딪힌 오브젝트에 interactable 컴포넌트가 붙어있으면
                 {
                     currentObject = hit.collider.gameObject;
+
                     NPCPosition = interactable.transform.position;
 
                     Vector3 offset = PlayerPosition - NPCPosition;
@@ -136,13 +111,13 @@ public class PlayerScripts : MonoBehaviour
                     MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
                     if (sqrLen < DistanceBetweenPlayerandNPC)
                     {
+                        objData.IsClicked = true;
                         IsClicked = true;
-                        if(!objData.IsNotInteractable)
+                        Invoke("ClickFalse", 2f);
+                        if (!objData.IsNotInteractable)
                         {
                             interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
-                        }
-   
-                        
+                        }                      
                         IsClicked = false;
                     } // 순서가 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
                 }
@@ -157,6 +132,12 @@ public class PlayerScripts : MonoBehaviour
                 }
             }
         }
+    }
+
+    void ClickFalse()
+    {
+        ObjData currentData = currentObject.GetComponent<ObjData>();
+        currentData.IsClicked = false;
     }
 
     public string PlayerSmellText { get { return smellData; } }

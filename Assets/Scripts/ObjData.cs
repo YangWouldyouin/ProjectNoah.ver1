@@ -42,7 +42,7 @@ public class ObjData : MonoBehaviour
 
     /* 상호작용하면 값이 바뀌는 데이터 목록 */
     public bool IsNotInteractable = false;
-
+    public bool IsClicked = false;
     public bool IsBark = false;
     public bool IsPushOrPress = false;
     public bool IsSniff = false;

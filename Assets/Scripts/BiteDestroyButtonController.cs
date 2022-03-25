@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 { 
@@ -28,6 +29,7 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
     public GameObject noahDestroyObject;
     public GameObject myMouth;
     public Vector3 biteObjectFallPosition;
+    private NavMeshObstacle biteNavMeshObstacle;
 
     void Start()
     {
@@ -80,6 +82,9 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
     {
         
         noahBiteObject = PlayerScripts.playerscripts.currentObject;
+        biteNavMeshObstacle = noahBiteObject.GetComponent<NavMeshObstacle>();
+        biteNavMeshObstacle.enabled = false;
+        /* 다시 구워야 함 */
         biteObjectFallPosition = noahBiteObject.transform.position;
         if (noahBiteObject!=null)
         {
