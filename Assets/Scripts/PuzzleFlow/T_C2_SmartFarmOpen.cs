@@ -36,6 +36,7 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
     //private Vector3 OriginPosition = new Vector3(-264.83f, 506.4f, 679.771f);
     //private Vector3 LaterPosition = new Vector3(-262.35f, 506.4f, 679.771f);
 
+    public Animator smartFarmDoorAnim;
 
     void Start()
     {
@@ -77,27 +78,8 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
         }
 
 
-       // if (IsSmartFarmOpen_T_C2 == true)
-        //{
-           // Vector3 speed = Vector3.zero;
-            //FarmWindow_T_C2.transform.position = Vector3.SmoothDamp(transform.position, Target.position, ref speed, 0.01f);
-        //    //FarmWindow_T_C2.transform.position =  Vector3.Lerp(OriginPosition, LaterPosition, Time.deltaTime * 1);
-        //    //FarmWindow_T_C2.transform.position = Vector3.Lerp(transform.position,new Vector3(-282.26f, 526.4f, 699.771f), Time.deltaTime * 0.01f);
-        //}
-
     }
 
-
-    //void loofdoor()
-    //{
-    //    Debug.Log("멍청한 문");
-    //    for (int i = 1; i <= 2; i++)
-    //    {
-    //        float a = i - (-264.83f);
-    //        FarmWindow_T_C2.transform.position += new Vector3(a, 506.4f, 679.771f);
-
-    //    }
-    //}
 
 
 
@@ -119,7 +101,6 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
 
         if (IronPlateData.IsBite) // 합판에 (관찰하기 상태에서) 물기를 사용하면
         {
-            //CameraController.cameraController.CancelObserve(); //관찰하기 뷰를 종료한다. - 관찰하기 뷰 종료하면 유저 입장에서 과정이 늘어서 뺐는데 넣을까?
 
             // 부모 자식 관계를 해제한다.
             IronPlate_T_C2.GetComponent<Rigidbody>().isKinematic = false;
@@ -343,23 +324,15 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
         if (IsRepairCompletion_T_C2 == true && ManagementMachineData.IsBark) // 수리완료가 사실(True)이면서 기계에 짖기를 사용했다면,
         {
             Debug.Log("스마트팜 기계를 고쳤고 본체기계에 짖기를 했어요");
+            
+            // 다른 코드에 있는 값을 불러오고 싶을 때 
             //slowmove = GameObject.Find("SmartFarm_Dome_Door").GetComponent<ObjectSlowMove>();
             //slowmove.abc();
 
-            //FarmWindow_T_C2.transform.position = Vector3.Lerp(transform.position, Target.position, Time.deltaTime * 0.5f);
-            //FarmWindow_T_C2.transform.position += new Vector3(-264.83f, 506.4f, 679.771f);
-            //FarmWindow_T_C2.transform.position = Vector3.MoveTowards(transform.position, Target.position, Time.deltaTime * 0.5f);
-
-            //FarmWindow_T_C2.transform.Translate(Vector3.right * Time.deltaTime);
-            Invoke("WindowDisapppear", 2f); //2초후 문 사라지기 코드를 실행한다.
-
-            //Vector3 speed = Vector3.zero;
-            //FarmWindow_T_C2.transform.position = Vector3.SmoothDamp(transform.position, Target.position, ref speed, 0.01f);
-
+            Invoke("WindowAnim", 2f); //2초후 문 열리기 코드를 실행한다.
 
             IsSmartFarmOpen_T_C2 = true; // 항상 팜 문이 열려있는 것이 True가 된다.
 
-            //Invoke("loofdoor", 1f);
 
         }
 
@@ -367,9 +340,10 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
 
     }
 
-    void WindowDisapppear() // 스마트팜 입구 사라지기
+    void WindowAnim() // 스마트팜 입구 열리는 애니메이션
     {
-        FarmWindow_T_C2.SetActive(false);
+        smartFarmDoorAnim.SetBool("FarmDoorMoving", true);
+        smartFarmDoorAnim.SetBool("FarmDoorStop", true);
     }
 
 }
