@@ -8029,6 +8029,9 @@ MonoBehaviour:
   drug: {fileID: 1796415092}
   specificDrug: {fileID: 634053062}
   mainCom: {fileID: 6076740532088509948}
+  IsSmellDrug: 0
+  IsReportDrug: 0
+  IsDetox: 0
 --- !u!4 &1509898372
 Transform:
   m_ObjectHideFlags: 0
@@ -11449,11 +11452,12 @@ GameObject:
   - component: {fileID: 2067551459}
   - component: {fileID: 2067551458}
   - component: {fileID: 2067551457}
-  - component: {fileID: 2067551456}
   - component: {fileID: 2067551455}
   - component: {fileID: 2067551454}
   - component: {fileID: 2067551453}
   - component: {fileID: 2067551460}
+  - component: {fileID: 2067551461}
+  - component: {fileID: 2067551456}
   m_Layer: 0
   m_Name: drugSmellSpace
   m_TagString: Untagged
@@ -11473,7 +11477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4aa32d132225d4caf0b25bfc021739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smellText: "\uC774\uC0C1\uD55C \uB0C4\uC0C8"
+  smellText: "[\uB0C4\uC0C8] \uC774\uC0C1\uD55C \uB0C4\uC0C8"
   centerButton: {fileID: 2094636717}
   centerPlusButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
@@ -11537,8 +11541,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &2067551456
-CapsuleCollider:
+--- !u!64 &2067551456
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11547,10 +11551,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &2067551457
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11608,8 +11612,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067551452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -263.2, y: 539.27, z: 675.35}
-  m_LocalScale: {x: 8.376427, y: 1.0644388, z: 8.376427}
+  m_LocalPosition: {x: -263.2, y: 538.52, z: 675.35}
+  m_LocalScale: {x: 8.376427, y: -0.02495247, z: 8.376427}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 32
@@ -11632,6 +11636,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &2067551461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067551452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0476c48e0203b75468660157356f66f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canSmellSpace: {fileID: 2067551452}
 --- !u!1001 &2072002223
 PrefabInstance:
   m_ObjectHideFlags: 0
