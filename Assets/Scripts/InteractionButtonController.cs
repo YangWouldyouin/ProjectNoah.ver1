@@ -16,11 +16,9 @@ public class InteractionButtonController : MonoBehaviour
     public Button barkButton, pushButton, pressButton, sniffButton, biteButton, 
         upDownButton, insertButton, noCenterButton, observeButton, insertDisableButton, observeDisableButton, upDownDisableButton;
 
-
     [SerializeField] GameObject noahPlayer;
 
-
-    public bool isBark = false;
+    //public bool isBark = false;
 
     /* "오르기" 상호작용 관련 변수*/
     public Rigidbody playerRigidbody;
@@ -37,15 +35,11 @@ public class InteractionButtonController : MonoBehaviour
 
 
     /* 정리 필요한 변수들 */
-    public GameObject goToWork;
     public GameObject noahPushObject;
     public static GameObject noahpushobject;
     public static bool ISPUSH = false;
     public bool ispush = false;
     public static string pushObjectName;
-    public GameObject InsertArea, DoorLocked, DoorUnLocked;
-
-
 
     void Awake()
     {
@@ -354,43 +348,8 @@ public class InteractionButtonController : MonoBehaviour
             noahInsertData.IsInsert = true;
             TurnOffInteractionButton();
             Invoke("ChangeInsertTrue", 0.5f);
-            //InsertArea.SetActive(true);
-
-
-            //if (noahInsertData.IsInsert == false)
-            //{
-            //    noahInsertData.IsInsert = true;
-            //    if (playerAgent.enabled)
-            //    {
-            //        playerAgent.updatePosition = false;
-            //        playerAgent.updateRotation = false;
-            //        playerAgent.isStopped = true;
-            //    }
-            //}
-
-            //noahPlayer.transform.position = new Vector3(21.5f, 34.03531f, -1.002877f);
-            //noahPlayer.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            //NoahPlayer.transform.Rotate(0, 0, 0);
-            //Playeragent.isStopped = false;
-
-            //goToWork.SetActive(true);
-            //if (playerAgent.enabled)
-            //{
-            //    playerAgent.updatePosition = true;
-            //    playerAgent.updateRotation = true;
-            //    playerAgent.isStopped = false;
-            //}
-            ////DoorController.doorController.isDoorOpen = true;
-            //noahInsertData.IsInsert = false;
-
             Invoke("ChangeInsertFalse", 2f);
         }
-
-
-
-        //DoorLocked.SetActive(false);
-        //DoorUnLocked.SetActive(true);
     }
 
     void ChangeInsertTrue()
@@ -401,10 +360,5 @@ public class InteractionButtonController : MonoBehaviour
     public void ChangeInsertFalse()
     {
         noahAnim.SetBool("IsInserting", false);
-    }
-
-    public void TurnOffInsertArea()
-    {
-        InsertArea.SetActive(false);
     }
 }
