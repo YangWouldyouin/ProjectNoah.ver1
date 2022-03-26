@@ -47,7 +47,7 @@ public class CancelInteractions : MonoBehaviour
                         //Invoke("Observing2Animation", 0.00000001f);
                         Invoke("CancelObserving2Animation", 1f);
                         Invoke("CancelObservingAnimation", 1f);
-                        cancelObserveData.IsObserve = false;
+                       //cancelObserveData.IsObserve = false;
                         break;
                     }
                     else

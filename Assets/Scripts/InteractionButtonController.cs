@@ -159,9 +159,9 @@ public class InteractionButtonController : MonoBehaviour
         ObjData noahObserveData = noahObserveObject.GetComponent<ObjData>();
         noahObserveData.IsObserve = true;
         TurnOffInteractionButton();
+
         Invoke("ChangeObserveTrue", 0.5f); // 2개의 관찰하기 동작을 실행함
         Invoke("ChangeObserve2True", 1f);
-
         Invoke("ChangeObserveFalse", 2); // 관찰하기 동작을 끝냄
 
         Invoke("ChangeCameraView", 2); // 2초 후 관찰하기 화면으로 전환
@@ -301,8 +301,10 @@ public class InteractionButtonController : MonoBehaviour
             }
             else // 실제로는 누르기 불가능한 오브젝트 이므로 동작만 보여준다. 
             {
+                noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 
                 Invoke("JustPlayPushAnimationTrue", 0.5f);
                 Invoke("JustPlayPushAnimationFalse", 2f);
+                Invoke("PressFalse", 2f);
             }
         }
 

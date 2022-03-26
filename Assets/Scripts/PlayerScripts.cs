@@ -31,7 +31,6 @@ public class PlayerScripts : MonoBehaviour
     private string smellData;
     private Button pushOrPressButtonData, centerButtonData, centerPlusButtonData;
     private Transform observeData, observePlusData; // ObservePlusData : 박스 위에서 관찰 등
-    private GameObject extraButtonDescriptionData;
     
     /* 상호작용 버튼 생성 위치 관련 변수 */
     private Vector3 interactionButtonPosition;
@@ -97,7 +96,6 @@ public class PlayerScripts : MonoBehaviour
                     centerPlusButtonData = objData.CenterPlusButton;
                     observeData = objData.ObserveView;
                     observePlusData = objData.ObservePlusView;
-                    extraButtonDescriptionData = objData.ExtraDescription;
                 }
 
                 if (interactable != null) // 부딪힌 오브젝트에 interactable 컴포넌트가 붙어있으면
@@ -133,7 +131,6 @@ public class PlayerScripts : MonoBehaviour
     public Button ObjectCenterPlusButton { get { return centerPlusButtonData; } }
     public Transform PlayerobserveView { get { return observeData; } }
     public Transform PlayerobserveBoxView { get { return observePlusData; } }
-    public GameObject PlayerExtraDescription { get { return extraButtonDescriptionData; } }
 
     /*  플레이어가 목적지에 도착하면 True 를 반환하는 메서드  */
     public bool CheckIfArrived()

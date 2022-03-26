@@ -34,7 +34,6 @@ public class ObjData : MonoBehaviour
     public Button CenterPlusButton { get { return centerPlusButton; } }
     public Transform ObserveView { get { return observeView; } }
     public Transform ObservePlusView { get { return observePlusView; } }
-    public GameObject ExtraDescription { get { return extraDescription; } }
     public bool ISPushOrPressActive { get { return IsPushOrPressActive; } }
     public bool ISBiteActive { get { return IsBiteActive; } }
 
@@ -54,7 +53,6 @@ public class ObjData : MonoBehaviour
     public bool IsObserve = false;
 
     public bool IsObservePlus = false;
-    public bool IsExtraDescriptionActive = false;
 
     public bool IsCenterButtonDisabled = false; // true면 첫 번째 가운데 버튼 비활성화
     public bool IsCenterPlusButtonDisabled = false; // true면 두 번째 가운데 버튼 비활성화

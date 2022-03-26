@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController cameraController { get; private set; }
 
-    public GameObject objectExtraDescription;
+    //public GameObject objectExtraDescription;
 
     private Vector3 originPosition, originRotation;
     public Transform currentView;
@@ -20,6 +20,9 @@ public class CameraController : MonoBehaviour
     //private Transform observeView, observePlusView;
 
     CameraFollow cameraFollow;
+
+    ObjData currentObserveObjectData;
+    Outline currentObjectOutline;
 
     private void Awake()
     {
@@ -35,8 +38,13 @@ public class CameraController : MonoBehaviour
     {
         originPosition = transform.position;
         originRotation = transform.rotation.eulerAngles;
+
         currentObserveObject = PlayerScripts.playerscripts.currentObject;
-        ObjData currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
+
+        currentObjectOutline = currentObserveObject.GetComponent<Outline>();
+        currentObjectOutline.OutlineWidth = 0;
+
+        currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
         if(cameraFollow!=null)
         {
             cameraFollow.enabled = false;
@@ -55,31 +63,39 @@ public class CameraController : MonoBehaviour
         //{
 
         //}
-        if(currentObserveObjectData.IsExtraDescriptionActive)
-        {
-            objectExtraDescription = PlayerScripts.playerscripts.PlayerExtraDescription;
-            objectExtraDescription.SetActive(true);
-        }
+        //if(currentObserveObjectData.IsExtraDescriptionActive)
+        //{
+        //    objectExtraDescription = PlayerScripts.playerscripts.PlayerExtraDescription;
+        //    objectExtraDescription.SetActive(true);
+        //}
         ChangeView(currentView);
 
     }
 
     public void CancelObserve()
     {
-        currentObserveObject = PlayerScripts.playerscripts.currentObject;
-        ObjData currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
-        if (currentObserveObjectData.IsExtraDescriptionActive)
-        {
-            objectExtraDescription.SetActive(false);
-        }
+        //currentObserveObject = PlayerScripts.playerscripts.currentObject;
+       //ObjData currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
+        //if (currentObserveObjectData.IsExtraDescriptionActive)
+        //{
+        //    objectExtraDescription.SetActive(false);
+        //}
         aiPanel.SetActive(true);
         ui.SetActive(true);
         noah.transform.gameObject.SetActive(true);
+
         if (cameraFollow != null)
         {
             cameraFollow.enabled = true;
-        }        
+        }
+
+        currentObjectOutline = currentObserveObject.GetComponent<Outline>();
+        currentObjectOutline.OutlineWidth = 8;
+
         ComeBackView(originPosition, originRotation);
+
+        currentObserveObjectData.IsObserve = false;
+
     }
 
     /* 전환 효과 없는 카메라 전환 메서드 */
