@@ -41,6 +41,8 @@ public class InteractionButtonController : MonoBehaviour
     public bool ispush = false;
     public static string pushObjectName;
 
+    public TMPro.TextMeshProUGUI pushObjectText;
+
     void Awake()
     {
         interactionButtonController = this;
@@ -260,6 +262,8 @@ public class InteractionButtonController : MonoBehaviour
     void playerPush()
     {
         noahPushObject = PlayerScripts.playerscripts.currentObject;
+        ObjData pushObjData = noahPushObject.GetComponent<ObjData>();
+        pushObjectText.text = "Noah N.113 - " + pushObjData.ObjectName;
         noahpushobject = noahPushObject;
         pushObjectName = noahPushObject.name;
         //PlayerManager.playermanager.ISPUSH = true; 
@@ -349,8 +353,10 @@ public class InteractionButtonController : MonoBehaviour
             ObjData noahInsertData = noahInsertObject.GetComponent<ObjData>();
             noahInsertData.IsInsert = true;
             TurnOffInteractionButton();
+            noahPlayer.transform.position = noahInsertObject.transform.position + new Vector3(1, 0, 1);
+            noahPlayer.transform.rotation = noahInsertObject.transform.rotation;
             Invoke("ChangeInsertTrue", 0.5f);
-            Invoke("ChangeInsertFalse", 2f);
+            //Invoke("ChangeInsertFalse", 2f);
         }
     }
 

@@ -407,6 +407,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead34b38921b09e4fafa7a4851798dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &165226163 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1832655260, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 821441997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &165843744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 162648, guid: cc990f4eda1da5b469dbce762b0e70ba, type: 3}
@@ -962,6 +973,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &310804474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 969244475, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 821441997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &312193332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,6 +2074,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 821442001}
     - target: {fileID: 6271890255095929717, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
+      propertyPath: objectNameTag
+      value: 
+      objectReference: {fileID: 310804474}
+    - target: {fileID: 6271890255095929717, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
+      propertyPath: objectNameText
+      value: 
+      objectReference: {fileID: 165226163}
+    - target: {fileID: 6271890255095929717, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: interactionButtons
       value: 
       objectReference: {fileID: 821442002}
@@ -2926,6 +2950,10 @@ PrefabInstance:
       propertyPath: playerAnimation
       value: 
       objectReference: {fileID: 562652589}
+    - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
+      propertyPath: CancelObjectText
+      value: 
+      objectReference: {fileID: 1204737327}
     - target: {fileID: 1997109241220282434, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -4228,7 +4256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9eec2840433414a889e44813c6936a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectExtraDescription: {fileID: 0}
   currentView: {fileID: 0}
   noah: {fileID: 0}
   aiPanel: {fileID: 0}
@@ -5840,6 +5867,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1204737327 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6456488355577275160, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 821441997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1228281169
 GameObject:
   m_ObjectHideFlags: 0
@@ -6598,15 +6636,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4aa32d132225d4caf0b25bfc021739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: "\uC4F0\uB808\uAE30 \uBD80\uD488"
   smellText: "[\uB0C4\uC0C8] \uC4F0\uB808\uAE30"
   centerButton: {fileID: 821442013}
   centerPlusButton: {fileID: 0}
   pushOrPressButton: {fileID: 821442007}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  extraDescription: {fileID: 0}
   IsPushOrPressActive: 0
   IsBiteActive: 1
+  IsClicked: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -6617,7 +6656,6 @@ MonoBehaviour:
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
-  IsExtraDescriptionActive: 0
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
@@ -7317,15 +7355,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4aa32d132225d4caf0b25bfc021739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: 
   smellText: "[\uB0C4\uC0C8] \uC4F0\uB808\uAE30"
   centerButton: {fileID: 821442013}
   centerPlusButton: {fileID: 0}
   pushOrPressButton: {fileID: 821442007}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  extraDescription: {fileID: 0}
   IsPushOrPressActive: 1
   IsBiteActive: 0
+  IsClicked: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -7336,7 +7375,6 @@ MonoBehaviour:
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
-  IsExtraDescriptionActive: 0
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0

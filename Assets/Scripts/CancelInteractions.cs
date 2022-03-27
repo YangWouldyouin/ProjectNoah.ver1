@@ -12,6 +12,7 @@ public class CancelInteractions : MonoBehaviour
     public GameObject noahPosition;
     public GameObject moveableGroup;
     private GameObject upDownObject, biteObject, pushObject, noahNovepushobject, observeObject;
+    public TMPro.TextMeshProUGUI CancelObjectText;
 
     void Update()
     {
@@ -80,6 +81,7 @@ public class CancelInteractions : MonoBehaviour
                     ObjData cancelBiteData = biteObject.GetComponent<ObjData>();
                     if (cancelBiteData.IsBite)
                     {
+
                         playerAnimation.SetBool("IsPutDowning", true);
                         Invoke("CancelBitingAnimation", 1f);
                         Invoke("PutDownObject", 0.5f);
@@ -113,7 +115,7 @@ public class CancelInteractions : MonoBehaviour
 
                 }
             }
-
+            CancelObjectText.text = "Noah N.113";
 
             ///* 관찰하기 취소 */
             //if (observeObject!=null)
@@ -130,8 +132,8 @@ public class CancelInteractions : MonoBehaviour
             //        //Invoke("Observing2Animation", 0.00000001f);
             //        Invoke("CancelObserving2Animation", 1f);
             //        Invoke("CancelObservingAnimation", 1f);
-                    
-                    
+
+
             //        cancelObserveData.IsObserve = false;
 
             //    }
@@ -154,7 +156,7 @@ public class CancelInteractions : MonoBehaviour
             //    }
             //}
 
-        
+
 
 
             ///* 물기 취소 */

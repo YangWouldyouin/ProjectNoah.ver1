@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static int Hp = 100;
     public bool isBark = false;
 
+    public bool IsAI_M_C1 = false;
+
     private void Awake()
     {
         gameManager = this;
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
             Hp -= 10;
             isBark = false;
         }
+
 
 
         //if (Input.GetKeyDown(KeyCode.Q))

@@ -7,7 +7,7 @@ public class ObjData : MonoBehaviour
 {
     /* 값이 바뀌지 않는 데이터 목록 */
     //public int id;
-    //[SerializeField] string objectName;
+    [SerializeField] string objectName;
 
     [SerializeField] string smellText;
 
@@ -21,13 +21,12 @@ public class ObjData : MonoBehaviour
 
     [SerializeField] Transform observePlusView;
 
-    [SerializeField] GameObject extraDescription;
-
     [SerializeField] bool IsPushOrPressActive; // 진짜 누르기,밀기가 가능하면 true, 사실 안되고 그냥 애니메이션만 보여줄거면 false
 
     [SerializeField] bool IsBiteActive; // 진짜 물기가 가능하면 true, 아니면 false
 
     // 위 목록을 다른 스크립트에서 쓸 수 있도록 한 것들
+    public string ObjectName { get { return objectName; } }
     public string SmellText { get { return smellText; } }
     public Button PushOrPressButton { get { return pushOrPressButton; } }
     public Button CenterButton { get { return centerButton; } }
@@ -40,6 +39,7 @@ public class ObjData : MonoBehaviour
 
 
     /* 상호작용하면 값이 바뀌는 데이터 목록 */
+    public bool IsClicked = false;
     public bool IsNotInteractable = false;
 
     public bool IsBark = false;

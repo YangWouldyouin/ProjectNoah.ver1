@@ -55,31 +55,13 @@ public class CameraController : MonoBehaviour
         noah.transform.gameObject.SetActive(false);
         aiPanel.SetActive(false);
         ui.SetActive(false);
-        //if()
-        //{
-        //    currentView = currentObserveObjectData.ObserveView;
-        //}
-        //else
-        //{
 
-        //}
-        //if(currentObserveObjectData.IsExtraDescriptionActive)
-        //{
-        //    objectExtraDescription = PlayerScripts.playerscripts.PlayerExtraDescription;
-        //    objectExtraDescription.SetActive(true);
-        //}
         ChangeView(currentView);
 
     }
 
     public void CancelObserve()
     {
-        //currentObserveObject = PlayerScripts.playerscripts.currentObject;
-       //ObjData currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
-        //if (currentObserveObjectData.IsExtraDescriptionActive)
-        //{
-        //    objectExtraDescription.SetActive(false);
-        //}
         aiPanel.SetActive(true);
         ui.SetActive(true);
         noah.transform.gameObject.SetActive(true);

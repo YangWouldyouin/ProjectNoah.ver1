@@ -28,7 +28,7 @@ public class PlayerScripts : MonoBehaviour
     public Sprite BiteButtonimage;
 
     /* 상호작용 오브젝트로부터 받아온 데이터 담는 변수 */
-    private string smellData;
+    private string objectNameData, smellData;
     private Button pushOrPressButtonData, centerButtonData, centerPlusButtonData;
     private Transform observeData, observePlusData; // ObservePlusData : 박스 위에서 관찰 등
     
@@ -38,7 +38,12 @@ public class PlayerScripts : MonoBehaviour
     public GameObject interactionButtons;
 
     public GameObject currentObject;
+    private ObjData objData;
 
+    public GameObject objectNameTag;
+    public TMPro.TextMeshProUGUI objectNameText;
+
+    public Vector3 offset;
 
     public bool IsClicked = false;
 
@@ -86,10 +91,11 @@ public class PlayerScripts : MonoBehaviour
             {
                 PlayerPosition = this.gameObject.transform.position;
                 Interactable interactable = hit.collider.GetComponent<Interactable>(); // interactable : 부딪힌 오브젝트 or NPC 에 붙어있는 Interactable 컴포넌트         
-                ObjData objData = hit.collider.GetComponent<ObjData>();
+                objData = hit.collider.GetComponent<ObjData>();
 
                 if (objData != null)
                 {
+                    objectNameData = objData.ObjectName;
                     smellData = objData.SmellText;
                     pushOrPressButtonData = objData.PushOrPressButton;
                     centerButtonData = objData.CenterButton;
@@ -109,28 +115,43 @@ public class PlayerScripts : MonoBehaviour
                     MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
                     if (sqrLen < DistanceBetweenPlayerandNPC)
                     {
-                        IsClicked = true;
-                        if(!objData.IsNotInteractable)
+                        objData.IsClicked = true;
+                        Invoke("UnClickObject", 1f);
+                        if (!objData.IsNotInteractable)
                         {
+                            Invoke("NameTagAppear", 1f);
                             interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
+
                         }                     
-                        IsClicked = false;
                     } // 순서가 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
                 }
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 
                 {
                     MovePlayer(hit.point); // hit.point : 이동 목적지
+                    if(hit.collider.name == "ChangeScene")
+                    {
+                        Invoke("ChangePlayerScene", 1f);
+                    }
                 }
             }
         }
     }
-
+    public string PlayerObjectName { get { return objectNameData; } }
     public string PlayerSmellText { get { return smellData; } }
     public Button ObjectpushOrpressbutton { get { return pushOrPressButtonData; } }
     public Button ObjectCenterButton { get { return centerButtonData; } }
     public Button ObjectCenterPlusButton { get { return centerPlusButtonData; } }
     public Transform PlayerobserveView { get { return observeData; } }
     public Transform PlayerobserveBoxView { get { return observePlusData; } }
+
+    void UnClickObject()
+    {
+        if(objData!=null)
+        {
+            objData.IsClicked = false;
+        }
+        
+    }
 
     /*  플레이어가 목적지에 도착하면 True 를 반환하는 메서드  */
     public bool CheckIfArrived()
@@ -145,6 +166,7 @@ public class PlayerScripts : MonoBehaviour
         agent.SetDestination(targetPosition);
         biteButton.GetComponent<Image>().sprite = BiteButtonimage;
         InteractionButtonController.interactionButtonController.TurnOffInteractionButton();
+        objectNameTag.SetActive(false);
     }
 
     /* 플레이어가 NPC 를 바라보도록 각도를 바꿔주는 메서드 */
@@ -159,6 +181,15 @@ public class PlayerScripts : MonoBehaviour
         SceneManager.LoadScene(transferMapName);
     }
 
+    void NameTagAppear()
+    {
+        if (objectNameData != null)
+        {
+            objectNameTag.transform.position = Input.mousePosition + offset;
+            objectNameTag.SetActive(true);
+            objectNameText.text = objectNameData;
+        }
+    }
     /* 이 메서드가 없으면 스크립터블 오브젝트는 프로그램이 종료되어도 저장한 것을 계속 저장함 */
     //private void OnApplicationQuit()
     //{
