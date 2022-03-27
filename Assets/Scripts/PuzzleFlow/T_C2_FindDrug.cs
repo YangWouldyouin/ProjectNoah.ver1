@@ -9,12 +9,17 @@ public class T_C2_FindDrug : MonoBehaviour
     public GameObject canSmellSpace;
     public float smellRange; //냄새맡을 확률
 
+    public GameObject player;
+    private Transform drugPos;
+    public float speed; //바라보는 속도
+
     public GameObject drugBag;
     public GameObject drug;
     public GameObject specificDrug;
 
     private Outline drugBagOutline;
     private Outline drugCheckerOutline;
+    private Outline drugCheckerWholeOutline;
 
     public GameObject drugChecker;
     public GameObject drugCheckerLED;
@@ -26,6 +31,8 @@ public class T_C2_FindDrug : MonoBehaviour
     public bool IsCheckDrug = false;
     public bool IsDetox = false;
 
+    public bool canFollowDrug = false;
+
     //public Transform Target;
 
     // Start is called before the first frame update
@@ -34,8 +41,10 @@ public class T_C2_FindDrug : MonoBehaviour
         //아웃라인
         drugBagOutline = drugBag.GetComponent<Outline>();
         drugCheckerOutline = drugChecker.GetComponent<Outline>();
+        drugCheckerWholeOutline = drugCheckerWhole.GetComponent<Outline>();
 
-        smellRange = 2;
+        drugPos = drug.GetComponent<Transform>();
+
     }
 
     // Update is called once per frame
@@ -68,10 +77,20 @@ public class T_C2_FindDrug : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         ObjData canSmellSpaceData = canSmellSpace.GetComponent<ObjData>();
-        smellRange = Random.Range(0, 3);
+        
+        if (other.gameObject.name == "Player")
+        {
+            smellRange = Random.Range(0, 3);
+
+            if (smellRange <= 1)
+            {
+                canSmellSpaceData.IsNotInteractable = false;
+            }
+        }
+        
 
     }
-    public void OnTriggerStay(Collider other)
+    /*public void OnTriggerStay(Collider other)
     {
         ObjData canSmellSpaceData = canSmellSpace.GetComponent<ObjData>();
 
@@ -83,7 +102,7 @@ public class T_C2_FindDrug : MonoBehaviour
                 canSmellSpaceData.IsNotInteractable = false;
             }
         }
-    }
+    }*/
 
     public void OnTriggerExit(Collider other)
     {
@@ -92,6 +111,7 @@ public class T_C2_FindDrug : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             canSmellSpaceData.IsNotInteractable = true;
+            CancelInvoke("followDrug");
         }
     }
 
@@ -107,6 +127,8 @@ public class T_C2_FindDrug : MonoBehaviour
         ObjData drugData = drug.GetComponent<ObjData>();
 
         ObjData drugCheckerWholeData = drugCheckerWhole.GetComponent<ObjData>();
+        Interactable drugChecherWholeCan = drugCheckerWhole.GetComponent<Interactable>();
+        drugCheckerWholeOutline = drugCheckerWhole.GetComponent<Outline>();
         
         ObjData drugCheckerData = drugChecker.GetComponent<ObjData>();
         Interactable drugCheckerCan = drugChecker.GetComponent<Interactable>();
@@ -117,21 +139,35 @@ public class T_C2_FindDrug : MonoBehaviour
 
         if (canSmellSpaceData.IsSniff) //마약 상호작용 활성화
         {
+            Invoke("followDrug", 2f);
+            //Invoke("dontFollowDrug", 5f);
+
             drugBagCan.enabled = true;
             drugBagOutline.OutlineWidth = 8;
+
+            /*if (canSmellSpaceData.IsSniff == false)
+            {
+                Invoke("dontFollowDrug", 3f);
+            }*/
+
         }
 
-        if (drugBagData.IsBite) //마약 발견 및 물기
+        if (drugBagData.IsDestroy) //마약 발견 및 물기
         {
             Invoke("noBag", 1.5f);
             Invoke("cantSmell", 0f);
+
+            CancelInvoke("followDrug");
         }
 
-        if (drugCheckerWholeData.IsObserve) //관찰하기 하면 약물 넣기 활성화
+        if (drugCheckerWholeData.IsObserve) //관찰하기 하면 약물 넣기 활성화 & 검사기 비활성화(관찰하기 두 번 하는거 방지)
         {
             CameraController.cameraController.currentView = drugCheckerWholeData.ObserveView;
             drugCheckerCan.enabled = true;
             drugCheckerOutline.OutlineWidth = 8;
+
+            drugChecherWholeCan.enabled = false;
+            drugCheckerWholeOutline.OutlineWidth = 0;
         }
 
         if (drugCheckerWholeData.IsObserve == false) //관찰하기 해제하면 약물 넣기 비활성화
@@ -205,4 +241,19 @@ public class T_C2_FindDrug : MonoBehaviour
     {
         specificDrug.SetActive(false);
     }
+
+    void followDrug() //마약 바라보게 하기
+    {
+        ObjData canSmellSpaceData = canSmellSpace.GetComponent<ObjData>();
+
+        canSmellSpaceData.IsNotInteractable = true;
+
+        Vector3 dir = drugPos.transform.position - player.transform.position;
+        player.transform.rotation = Quaternion.Lerp(player.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * speed);
+    }
+
+    /*void dontFollowDrug() //마약 바라보게 하기 해제
+    {
+        CancelInvoke("followDrug");
+    }*/
 }
