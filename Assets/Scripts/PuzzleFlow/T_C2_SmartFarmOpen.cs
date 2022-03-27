@@ -324,10 +324,6 @@ public class T_C2_SmartFarmOpen : MonoBehaviour
         if (IsRepairCompletion_T_C2 == true && ManagementMachineData.IsBark) // 수리완료가 사실(True)이면서 기계에 짖기를 사용했다면,
         {
             Debug.Log("스마트팜 기계를 고쳤고 본체기계에 짖기를 했어요");
-            
-            // 다른 코드에 있는 값을 불러오고 싶을 때 
-            //slowmove = GameObject.Find("SmartFarm_Dome_Door").GetComponent<ObjectSlowMove>();
-            //slowmove.abc();
 
             Invoke("WindowAnim", 2f); //2초후 문 열리기 코드를 실행한다.
 
