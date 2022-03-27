@@ -39,11 +39,13 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
     {
         if (isPointerDown)
         {
+            noahBiteObject = PlayerScripts.playerscripts.currentObject;
+            ObjData noahBiteData = noahBiteObject.GetComponent<ObjData>();
             pointerDownTimer += Time.deltaTime;
             if (pointerDownTimer >= requiredChangeTime)
             {
                 ChangeBiteToDestroyButton();
-
+                noahBiteData.IsDestroy = true;
                 Invoke("ChangeDestroyTrue", 1f);
                 InteractionButtonController.interactionButtonController.TurnOffInteractionButton();
 
