@@ -47,6 +47,8 @@ public class PlayerScripts : MonoBehaviour
 
     public bool IsClicked = false;
 
+    public Animator noahAnim;
+
 
     private void Awake()
     {
@@ -68,7 +70,15 @@ public class PlayerScripts : MonoBehaviour
         if(Input.GetMouseButtonDown(0)&&!Extensions.IsMouseOverUI()&&(!agent.isStopped))
         {
            Onclick();
-           rectTransform.anchoredPosition = Input.mousePosition;
+            if (Input.mousePosition.y >= 570)
+            {
+                rectTransform.anchoredPosition = Input.mousePosition + new Vector3(0, -150, 0);
+            }
+            else
+            {
+                rectTransform.anchoredPosition = Input.mousePosition;
+            }
+
         }
 
         // 회전하는 중이고(참) && 플레이어의 현재 각도와 초기 각도가 다르면??  // Q. 여기 if 문이 뭔일하는지 솔직히 모르겠음
@@ -112,7 +122,24 @@ public class PlayerScripts : MonoBehaviour
                     Vector3 offset = PlayerPosition - NPCPosition;
                     float sqrLen = offset.sqrMagnitude; // 플레이어의 이동 전 현재 위치와 오브젝트 사이의 거리
 
-                    MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
+                    if (!InteractionButtonController.interactionButtonController.IsInserting)
+                    {
+                        MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
+                        //MovePlayer(transform.position); // NPC 의 위치로 플레이어를 이동시킴
+                    }
+                    {
+                        //MovePlayer(transform.position); // NPC 의 위치로 플레이어를 이동시킴
+                        //MovePlayer(hit.point); // hit.point : 이동 목적지
+                    }
+                    //else
+                    //{
+                    //    MovePlayer(transform.position);
+                    //}
+
+                    
+
+
+
                     if (sqrLen < DistanceBetweenPlayerandNPC)
                     {
                         objData.IsClicked = true;
@@ -127,8 +154,22 @@ public class PlayerScripts : MonoBehaviour
                 }
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 
                 {
-                    MovePlayer(hit.point); // hit.point : 이동 목적지
-                    if(hit.collider.name == "ChangeScene")
+                    //if(objData!=null)
+                    //{
+                    //    if (!objData.IsNotInteractable)
+                    //    {
+                    //        MovePlayer(hit.point); // hit.point : 이동 목적지
+                    //    }
+                    //}
+
+                    if (!InteractionButtonController.interactionButtonController.IsInserting)
+                    {
+                        MovePlayer(hit.point); // hit.point : 이동 목적지
+                            //MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
+                        //MovePlayer(transform.position); // NPC 의 위치로 플레이어를 이동시킴
+                    }
+
+                    if (hit.collider.name == "ChangeScene")
                     {
                         Invoke("ChangePlayerScene", 1f);
                     }

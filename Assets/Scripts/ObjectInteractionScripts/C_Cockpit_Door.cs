@@ -52,8 +52,6 @@ public class C_Cockpit_Door : MonoBehaviour
 
                 if(cockpitDoorData_M_C1.IsInsert)
                 {
-                    // 플레이어 이동
-                    
                     cockpitDoorData_M_C1.IsNotInteractable = true; // 문 상호작용 비활성화
                     cockpitDoorOutine_M_C1_2.OutlineWidth = 0;
 
@@ -69,6 +67,7 @@ public class C_Cockpit_Door : MonoBehaviour
                         cockpitDoorAnim_M_C1_2.SetBool("IsDoorOpened", true);
                         changeScene_M_C1_2.SetActive(true); // 업무공간 이동
                         cockpitDoorData_M_C1.IsInsert = false;
+                        InteractionButtonController.interactionButtonController.IsInserting = false;
                     }
                 }
             }
