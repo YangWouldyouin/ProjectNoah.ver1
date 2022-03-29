@@ -68,8 +68,13 @@ public class C_Cockpit_Door : MonoBehaviour
                         changeScene_M_C1_2.SetActive(true); // 업무공간 이동
                         cockpitDoorData_M_C1.IsInsert = false;
                         InteractionButtonController.interactionButtonController.IsInserting = false;
+                        GameManager.gameManager.IsCockpitDoorOpened_M_C1 = true;
                     }
                 }
+            }
+            else
+            {
+                cockpitDoorData_M_C1.IsCenterButtonDisabled = true; // 문 끼우기 버튼 비활성화
             }
         }
         

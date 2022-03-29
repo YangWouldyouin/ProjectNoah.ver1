@@ -123,7 +123,7 @@ public class Interactable : MonoBehaviour
                     }
 
                 }
-            }
+        }
             else // 만약 가운데 버튼이 바뀌지 않았다면
             {
                 if (nowInteractData.IsCenterButtonDisabled) // 바뀌지 않은 가운데 버튼이 비활성화 상태이면 
