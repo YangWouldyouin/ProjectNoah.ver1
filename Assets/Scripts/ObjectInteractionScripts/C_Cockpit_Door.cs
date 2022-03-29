@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class C_Cockpit_Door : MonoBehaviour
 {
-
     public GameObject envirPipe_M_C1_2; // 자식으로부터 가져오기
-
     public GameObject cockpitDoor_M_C1_2;
 
 
@@ -65,7 +63,7 @@ public class C_Cockpit_Door : MonoBehaviour
 
                         cockpitDoorAnim_M_C1_2.SetBool("IsDoorOpenStart", true); // 문 열리는 애니메이션
                         cockpitDoorAnim_M_C1_2.SetBool("IsDoorOpened", true);
-                        changeScene_M_C1_2.SetActive(true); // 업무공간 이동
+                        changeScene_M_C1_2.SetActive(true); // 업무공간 이동, 이후 항상 setActive 상태!!
                         cockpitDoorData_M_C1.IsInsert = false;
                         InteractionButtonController.interactionButtonController.IsInserting = false;
                         GameManager.gameManager.IsCockpitDoorOpened_M_C1 = true;
