@@ -46,6 +46,7 @@ public class C_Cockpit_Door : MonoBehaviour
             {
                 DialogManager.dialogManager.DoorLock(); // AI 대사 나옴
             }
+
             if(envirPipeData_M_C1_2.IsBite)
             {
                 cockpitDoorData_M_C1.IsCenterButtonDisabled = false; // 문 끼우기 버튼 활성화
@@ -68,6 +69,7 @@ public class C_Cockpit_Door : MonoBehaviour
                         changeScene_M_C1_2.SetActive(true); // 업무공간 이동
                         cockpitDoorData_M_C1.IsInsert = false;
                         InteractionButtonController.interactionButtonController.IsInserting = false;
+                        DialogManager.dialogManager.DoorLockEnd();
                         GameManager.gameManager.IsCockpitDoorOpened_M_C1 = true;
                     }
                 }

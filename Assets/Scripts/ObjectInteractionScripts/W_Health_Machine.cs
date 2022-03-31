@@ -15,7 +15,8 @@ public class W_Health_Machine : MonoBehaviour
     Outline healthMachine_FixPartOutline_T_C2;
 
     private float heathMachineRepairTimer_T_C2 = 0;
-    private float heathMachineRepairHintTime = 10f;
+    public float heathMachineRepairHintTime = 60f;
+
 
 
 
@@ -79,6 +80,7 @@ public class W_Health_Machine : MonoBehaviour
 
         //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
         healthMachineData_T_C2.IsCenterButtonDisabled = false;
+        DialogManager.dialogManager.HealthMachineEnd();
 
         // 생체기계 고치기 1회성 임무가 끝남 
         GameManager.gameManager.IsHealthMachineFixedT_C2 = true;
