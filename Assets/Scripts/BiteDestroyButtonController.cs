@@ -27,7 +27,9 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
     public GameObject noahBiteObject;
     public GameObject noahDestroyObject;
     public GameObject myMouth;
-    public Vector3 biteObjectFallPosition;
+    public Vector3 biteObjectFallPosition, biteObjectFallRotation;
+
+    public TMPro.TextMeshProUGUI biteObjectText;
 
     void Start()
     {
@@ -82,10 +84,13 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
     {
         
         noahBiteObject = PlayerScripts.playerscripts.currentObject;
+
         biteObjectFallPosition = noahBiteObject.transform.position;
+        biteObjectFallRotation = noahBiteObject.transform.eulerAngles;
         if (noahBiteObject!=null)
         {
             ObjData noahBiteData = noahBiteObject.GetComponent<ObjData>();
+            biteObjectText.text = "Noah N.113 - " + noahBiteData.ObjectName;
             if (noahBiteData.ISBiteActive)
             {
                 noahBiteData.IsBite = true;

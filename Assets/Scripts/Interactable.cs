@@ -18,6 +18,8 @@ public class Interactable : MonoBehaviour
     private GameObject nowInteractObject;
 
 
+
+
     Outline outline; // 마우스 오버시 오브젝트 외곽선
     private void Start()
     {
@@ -68,6 +70,7 @@ public class Interactable : MonoBehaviour
         // 2) 플레이어가 npc 위치로 도착하면 npc를 바라보게 각도를 바꿈 
         //player.SetDirection(transform.position);
 
+        
 
         /* 오브젝트 위에 상호작용 버튼을 띄움 */
 
@@ -120,7 +123,7 @@ public class Interactable : MonoBehaviour
                     }
 
                 }
-            }
+        }
             else // 만약 가운데 버튼이 바뀌지 않았다면
             {
                 if (nowInteractData.IsCenterButtonDisabled) // 바뀌지 않은 가운데 버튼이 비활성화 상태이면 
