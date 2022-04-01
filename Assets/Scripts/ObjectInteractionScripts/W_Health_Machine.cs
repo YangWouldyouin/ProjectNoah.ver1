@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class W_Health_Machine : MonoBehaviour
 {
+    // @@@@@ 나중에 정기 상태 체크 임무 추가 @@@@@@
     private bool IsHealthMachineDone = false;
 
     public GameObject healthMachine_T_C2;
@@ -78,7 +79,7 @@ public class W_Health_Machine : MonoBehaviour
         healthMachine_FixPartOutline_T_C2.OutlineWidth = 0; // 마우스 오버해도 외곽선 x
 
         //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
-        healthMachineData_T_C2.IsCenterButtonDisabled = false;
+        healthMachineData_T_C2.IsCenterButtonDisabled = false; // @ 앞으로 정기 임무에 쓰여야 하므로 게임이 종료되어도 항상 이상태 유지!!, 부품도 항상 상태체크기계에 있으면서 상호작용x
 
         // 생체기계 고치기 1회성 임무가 끝남 
         GameManager.gameManager.IsHealthMachineFixedT_C2 = true;
