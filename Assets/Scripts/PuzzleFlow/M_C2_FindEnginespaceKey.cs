@@ -78,11 +78,13 @@ public class M_C2_FindEnginespaceKey : MonoBehaviour
     public void CanSeeCard()
     {
         ObjData cardPackData = cardPack_M_C2.GetComponent<ObjData>();
+        ObjData EngineKeyData = EngineKey_M_C2.GetComponent<ObjData>();
 
 
         if (cardPackData.IsDestroy)//파괴하기
         {
-
+            EngineKeyData.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            EngineKeyData.transform.parent = null;
             Invoke("Disapppear", 3f);
             //Destroy(cardPack);
             IsDisappearPack_M_C2 = true;
@@ -90,6 +92,7 @@ public class M_C2_FindEnginespaceKey : MonoBehaviour
 
 
     }
+
 
     void Disapppear()
     {
