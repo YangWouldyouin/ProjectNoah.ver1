@@ -11,6 +11,9 @@ public class T_C2_SmellWorkspaceRepair : MonoBehaviour
     public GameObject HealthMachine;
     public GameObject HealthMachine_fixPart;
 
+    public GameObject Report_GUI;
+    private bool IsReported = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,5 +70,40 @@ public class T_C2_SmellWorkspaceRepair : MonoBehaviour
         //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
         HealthMachineData.IsCenterButtonDisabled = false;
         //HealthMachineData.IsCenterButtonChanged = true;
+
+        Invoke("Report_Popup", 1f);
+    }
+
+    public void Report_Popup()
+    {
+        if(IsReported)
+        {
+            Report_GUI.SetActive(false);
+        }
+        else
+        {
+            Report_GUI.SetActive(true);
+        }
+    }
+
+    public void Report()
+    {
+        //if 더미 데이터 다운 퍼즐이 완료되지 않았다면
+        //보고하기 데이터 이동
+        //else 더미 데이터 이동
+        
+        Debug.Log("보고하기");
+        IsReported = true;
+        Report_GUI.SetActive(false);
+    }
+
+    public void Cancle()
+    {
+        //if 더미 데이터 다운 퍼즐이 완료되지 않았다면
+        //cancleCount += 1;
+        
+        Debug.Log("취소하기");
+        IsReported = true;
+        Report_GUI.SetActive(false);
     }
 }
