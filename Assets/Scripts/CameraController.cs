@@ -77,7 +77,7 @@ public class CameraController : MonoBehaviour
         currentObjectOutline.OutlineWidth = 8;
 
         ComeBackView(originPosition, originRotation);
-
+        currentObserveObjectData.IsNotInteractable = false;
         currentObserveObjectData.IsObserve = false;
 
     }

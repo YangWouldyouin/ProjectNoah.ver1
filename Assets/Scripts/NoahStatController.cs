@@ -12,6 +12,7 @@ public class NoahStatController : MonoBehaviour
     [SerializeField] Image[] statBar;
 
     [SerializeField] TMPro.TextMeshProUGUI conditionText;
+    [SerializeField] 
 
     private int statColorIndex = 3;
     private int statBarIndex = 9;
@@ -20,6 +21,7 @@ public class NoahStatController : MonoBehaviour
     void Start()
     {
         StartCoroutine("StatBar");
+        conditionText.transform.gameObject.SetActive(true);
     }
         
 

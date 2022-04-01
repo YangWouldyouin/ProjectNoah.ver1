@@ -7,25 +7,26 @@ public class W_Health_Machine : MonoBehaviour
     // @@@@@ 나중에 정기 상태 체크 임무 추가 @@@@@@
     private bool IsHealthMachineDone = false;
 
-    public GameObject healthMachine_T_C2;
-    public GameObject healthMachine_FixPart_T_C2;
+    public GameObject healthMachine_HM;
+    public GameObject healthMachineFixPart_HM;
 
-    ObjData healthMachineData_T_C2;
-    ObjData healthMachine_FixPartData_T_C2;
+    ObjData healthMachineData_HM;
+    ObjData healthMachineFixPartData_HM;
 
-    Outline healthMachine_FixPartOutline_T_C2;
+    Outline healthMachineFixPartOutline_HM;
 
-    private float heathMachineRepairTimer_T_C2 = 0;
-    private float heathMachineRepairHintTime = 10f;
+    private float heathMachineRepairTimer_HM = 0;
+    public float heathMachineRepairHintTime_HM = 60f;
+
 
 
 
     void Start()
     {
-        healthMachineData_T_C2 = healthMachine_T_C2.GetComponent<ObjData>();
-        healthMachine_FixPartData_T_C2 = healthMachine_FixPart_T_C2.GetComponent<ObjData>();
+        healthMachineData_HM = healthMachine_HM.GetComponent<ObjData>();
+        healthMachineFixPartData_HM = healthMachineFixPart_HM.GetComponent<ObjData>();
 
-        healthMachine_FixPartOutline_T_C2 = healthMachine_FixPart_T_C2.GetComponent<Outline>();
+        healthMachineFixPartOutline_HM = healthMachineFixPart_HM.GetComponent<Outline>();
 
         DialogManager.dialogManager.HealthMachineRepairIntro(); //AI: 상태 체크 기계 연결이 되어 있지 않았다 스크립트
     }
@@ -48,15 +49,15 @@ public class W_Health_Machine : MonoBehaviour
     }
     public void HMfixPart_Putting()
     {
-        heathMachineRepairTimer_T_C2 += Time.deltaTime;
-        float maxTimer = Mathf.FloorToInt((heathMachineRepairTimer_T_C2 % 3600) % 60);
-        if(maxTimer>= heathMachineRepairHintTime)
+        heathMachineRepairTimer_HM += Time.deltaTime;
+        float maxTimer = Mathf.FloorToInt((heathMachineRepairTimer_HM % 3600) % 60);
+        if(maxTimer>= heathMachineRepairHintTime_HM)
         {
            DialogManager.dialogManager.HealthMachineRepairHint(); // 아직 못 풀었을 경우 heathMachineRepairHintTime 마다 1번씩 힌트 제공
-           heathMachineRepairTimer_T_C2 = 0;
+           heathMachineRepairTimer_HM = 0;
         }
 
-        if (healthMachineData_T_C2.IsPushOrPress && healthMachine_FixPartData_T_C2.IsBite)
+        if (healthMachineData_HM.IsPushOrPress && healthMachineFixPartData_HM.IsBite)
         {
             IsHealthMachineDone = true;
         }
@@ -65,21 +66,26 @@ public class W_Health_Machine : MonoBehaviour
     public void HealthMachineOpen()
     {
         
-        healthMachine_FixPartData_T_C2.IsBite = false; //물고 있는 fitPart 물기 해제 -> bool false
+        healthMachineFixPartData_HM.IsBite = false; //물고 있는 fitPart 물기 해제 -> bool false
 
-        healthMachine_FixPartData_T_C2.GetComponent<Rigidbody>().isKinematic = false;
-        healthMachine_FixPartData_T_C2.transform.parent = null;
+        healthMachineFixPartData_HM.GetComponent<Rigidbody>().isKinematic = false;
+        healthMachineFixPartData_HM.transform.parent = null;
 
         //fitPart 위치 HM에 자동 장착
-        healthMachine_FixPartData_T_C2.transform.position = new Vector3(-258.092f, 538.404f, 680.078f);
-        healthMachine_FixPartData_T_C2.transform.rotation = Quaternion.Euler(-90, 0, 0);
+        healthMachineFixPartData_HM.transform.position = new Vector3(-258.092f, 538.404f, 680.078f);
+        healthMachineFixPartData_HM.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
         //한 번 물기 하면 더이상 fitPart 상호작용 불가 오브젝트로 변경 -> interaction 스크립트 끄기
-        healthMachine_FixPartData_T_C2.GetComponent<Interactable>().enabled = false;
-        healthMachine_FixPartOutline_T_C2.OutlineWidth = 0; // 마우스 오버해도 외곽선 x
+        healthMachineFixPartData_HM.GetComponent<Interactable>().enabled = false;
+        healthMachineFixPartOutline_HM.OutlineWidth = 0; // 마우스 오버해도 외곽선 x
 
         //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
+<<<<<<< HEAD
         healthMachineData_T_C2.IsCenterButtonDisabled = false; // @ 앞으로 정기 임무에 쓰여야 하므로 게임이 종료되어도 항상 이상태 유지!!, 부품도 항상 상태체크기계에 있으면서 상호작용x
+=======
+        healthMachineData_HM.IsCenterButtonDisabled = false;
+        DialogManager.dialogManager.HealthMachineEnd();
+>>>>>>> 0fcac82fd1d521c5a68db0b2b9da975fdb053afc
 
         // 생체기계 고치기 1회성 임무가 끝남 
         GameManager.gameManager.IsHealthMachineFixedT_C2 = true;
