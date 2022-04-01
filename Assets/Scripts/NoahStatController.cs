@@ -21,6 +21,7 @@ public class NoahStatController : MonoBehaviour
     void Start()
     {
         StartCoroutine("StatBar");
+        conditionText.transform.gameObject.SetActive(true);
     }
         
 

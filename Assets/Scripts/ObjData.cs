@@ -7,6 +7,7 @@ public class ObjData : MonoBehaviour
 {
     /* 값이 바뀌지 않는 데이터 목록 */
     //public int id;
+    [Tooltip("오브젝트 정보")]
     [SerializeField] string objectName;
 
     [SerializeField] string smellText;
@@ -37,7 +38,7 @@ public class ObjData : MonoBehaviour
     public bool ISBiteActive { get { return IsBiteActive; } }
 
 
-
+    [Tooltip("상호작용 시 바뀌는 데이터 목록 (평소에 건드리지 x)")]
     /* 상호작용하면 값이 바뀌는 데이터 목록 */
     public bool IsClicked = false;
     public bool IsNotInteractable = false;
