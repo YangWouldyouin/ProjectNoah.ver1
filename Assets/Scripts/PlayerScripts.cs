@@ -28,10 +28,9 @@ public class PlayerScripts : MonoBehaviour
     public Sprite BiteButtonimage;
 
     /* 상호작용 오브젝트로부터 받아온 데이터 담는 변수 */
-    private string smellData;
+    private string objectNameData, smellData;
     private Button pushOrPressButtonData, centerButtonData, centerPlusButtonData;
     private Transform observeData, observePlusData; // ObservePlusData : 박스 위에서 관찰 등
-    private GameObject extraButtonDescriptionData;
     
     /* 상호작용 버튼 생성 위치 관련 변수 */
     private Vector3 interactionButtonPosition;
@@ -39,9 +38,16 @@ public class PlayerScripts : MonoBehaviour
     public GameObject interactionButtons;
 
     public GameObject currentObject;
+    private ObjData objData;
 
+    public GameObject objectNameTag;
+    public TMPro.TextMeshProUGUI objectNameText;
+
+    public Vector3 offset;
 
     public bool IsClicked = false;
+
+    public Animator noahAnim;
 
 
     private void Awake()
@@ -64,7 +70,15 @@ public class PlayerScripts : MonoBehaviour
         if(Input.GetMouseButtonDown(0)&&!Extensions.IsMouseOverUI()&&(!agent.isStopped))
         {
            Onclick();
-           rectTransform.anchoredPosition = Input.mousePosition;
+            if (Input.mousePosition.y >= 570)
+            {
+                rectTransform.anchoredPosition = Input.mousePosition + new Vector3(0, -150, 0);
+            }
+            else
+            {
+                rectTransform.anchoredPosition = Input.mousePosition;
+            }
+
         }
 
         // 회전하는 중이고(참) && 플레이어의 현재 각도와 초기 각도가 다르면??  // Q. 여기 if 문이 뭔일하는지 솔직히 모르겠음
@@ -87,17 +101,17 @@ public class PlayerScripts : MonoBehaviour
             {
                 PlayerPosition = this.gameObject.transform.position;
                 Interactable interactable = hit.collider.GetComponent<Interactable>(); // interactable : 부딪힌 오브젝트 or NPC 에 붙어있는 Interactable 컴포넌트         
-                ObjData objData = hit.collider.GetComponent<ObjData>();
+                objData = hit.collider.GetComponent<ObjData>();
 
                 if (objData != null)
                 {
+                    objectNameData = objData.ObjectName;
                     smellData = objData.SmellText;
                     pushOrPressButtonData = objData.PushOrPressButton;
                     centerButtonData = objData.CenterButton;
                     centerPlusButtonData = objData.CenterPlusButton;
                     observeData = objData.ObserveView;
                     observePlusData = objData.ObservePlusView;
-                    extraButtonDescriptionData = objData.ExtraDescription;
                 }
 
                 if (interactable != null) // 부딪힌 오브젝트에 interactable 컴포넌트가 붙어있으면
@@ -108,32 +122,76 @@ public class PlayerScripts : MonoBehaviour
                     Vector3 offset = PlayerPosition - NPCPosition;
                     float sqrLen = offset.sqrMagnitude; // 플레이어의 이동 전 현재 위치와 오브젝트 사이의 거리
 
-                    MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
+                    if (!InteractionButtonController.interactionButtonController.IsInserting)
+                    {
+                        MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
+                        //MovePlayer(transform.position); // NPC 의 위치로 플레이어를 이동시킴
+                    }
+                    {
+                        //MovePlayer(transform.position); // NPC 의 위치로 플레이어를 이동시킴
+                        //MovePlayer(hit.point); // hit.point : 이동 목적지
+                    }
+                    //else
+                    //{
+                    //    MovePlayer(transform.position);
+                    //}
+
+                    
+
+
+
                     if (sqrLen < DistanceBetweenPlayerandNPC)
                     {
-                        IsClicked = true;
-                        if(!objData.IsNotInteractable)
+                        objData.IsClicked = true;
+                        Invoke("UnClickObject", 1f);
+                        if (!objData.IsNotInteractable)
                         {
+                            Invoke("NameTagAppear", 1f);
                             interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
-                        }                     
-                        IsClicked = false;
+                        }   
                     } // 순서가 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
                 }
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 
                 {
-                    MovePlayer(hit.point); // hit.point : 이동 목적지
+                    //if(objData!=null)
+                    //{
+                    //    if (!objData.IsNotInteractable)
+                    //    {
+                    //        MovePlayer(hit.point); // hit.point : 이동 목적지
+                    //    }
+                    //}
+
+                    if (!InteractionButtonController.interactionButtonController.IsInserting)
+                    {
+                        MovePlayer(hit.point); // hit.point : 이동 목적지
+                            //MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
+                        //MovePlayer(transform.position); // NPC 의 위치로 플레이어를 이동시킴
+                    }
+
+                    if (hit.collider.name == "ChangeScene")
+                    {
+                        Invoke("ChangePlayerScene", 1f);
+                    }
                 }
             }
         }
     }
-
+    public string PlayerObjectName { get { return objectNameData; } }
     public string PlayerSmellText { get { return smellData; } }
     public Button ObjectpushOrpressbutton { get { return pushOrPressButtonData; } }
     public Button ObjectCenterButton { get { return centerButtonData; } }
     public Button ObjectCenterPlusButton { get { return centerPlusButtonData; } }
     public Transform PlayerobserveView { get { return observeData; } }
     public Transform PlayerobserveBoxView { get { return observePlusData; } }
-    public GameObject PlayerExtraDescription { get { return extraButtonDescriptionData; } }
+
+    void UnClickObject()
+    {
+        if(objData!=null)
+        {
+            objData.IsClicked = false;
+        }
+        
+    }
 
     /*  플레이어가 목적지에 도착하면 True 를 반환하는 메서드  */
     public bool CheckIfArrived()
@@ -148,6 +206,7 @@ public class PlayerScripts : MonoBehaviour
         agent.SetDestination(targetPosition);
         biteButton.GetComponent<Image>().sprite = BiteButtonimage;
         InteractionButtonController.interactionButtonController.TurnOffInteractionButton();
+        objectNameTag.SetActive(false);
     }
 
     /* 플레이어가 NPC 를 바라보도록 각도를 바꿔주는 메서드 */
@@ -162,6 +221,15 @@ public class PlayerScripts : MonoBehaviour
         SceneManager.LoadScene(transferMapName);
     }
 
+    void NameTagAppear()
+    {
+        if (objectNameData != null)
+        {
+            objectNameTag.transform.position = Input.mousePosition + offset;
+            objectNameTag.SetActive(true);
+            objectNameText.text = objectNameData;
+        }
+    }
     /* 이 메서드가 없으면 스크립터블 오브젝트는 프로그램이 종료되어도 저장한 것을 계속 저장함 */
     //private void OnApplicationQuit()
     //{
