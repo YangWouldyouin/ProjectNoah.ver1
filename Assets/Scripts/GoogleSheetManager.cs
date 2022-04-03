@@ -17,7 +17,7 @@ public class GoogleSheetManager : MonoBehaviour
     void Start()
     {
         StartCoroutine("GetGoogleSpreadSheet");
-        //printAI();
+        printAI(0);
         
     }
 
@@ -45,14 +45,13 @@ public class GoogleSheetManager : MonoBehaviour
             /* 같은 ID 의 대사 모두 출력 */
             do // 1번은 무조건 실행 (ID)
             {
-                
+                tempString.Add(row[5]);
                 //contextList.Add(row[5]);
                 //print(row[5]); // 대사 1개 출력
                 if (++i < data.Length)
                 {
                     row = data[i].Split('\t');
-                    tempString.Add(row[5]);
-                    dialogNum++;
+                    
                 }
                 else
                 {
@@ -69,16 +68,22 @@ public class GoogleSheetManager : MonoBehaviour
         }
         string[] temp = tempString.ToArray();
         AIDialogueDic.Add(dialogKey, temp);
+
         //googleDialogues = dialogueList.ToArray();
+        for (int k = 0; k < AIDialogueDic[0].Length; k++)
+        {
+            print(AIDialogueDic[0][k]);
+        }
+
+
     }
 
-    void printAI()
+    void printAI(int n)
     {
-        //for(int k =0; k < ; k++)
-        //{
-        //    print(temp[k]);
-        //    //print(AIDialogueDic[num][k]);
-        //}
+        for(int k =0; k <=AIDialogueDic[n].Length; k++)
+        {
+            print(AIDialogueDic[n][k]);
+        }
     }
 }
 
