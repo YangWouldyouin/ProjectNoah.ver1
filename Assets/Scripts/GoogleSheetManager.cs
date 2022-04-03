@@ -74,11 +74,11 @@ public class GoogleSheetManager : MonoBehaviour
 
     void printAI()
     {
-        for(int k =0; k < ; k++)
-        {
-            print(temp[k]);
-            //print(AIDialogueDic[num][k]);
-        }
+        //for(int k =0; k < ; k++)
+        //{
+        //    print(temp[k]);
+        //    //print(AIDialogueDic[num][k]);
+        //}
     }
 }
 
