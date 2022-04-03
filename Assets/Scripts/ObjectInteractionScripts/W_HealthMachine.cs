@@ -28,7 +28,7 @@ public class W_HealthMachine : MonoBehaviour
 
         healthMachineFixPartOutline_HM = healthMachineFixPart_HM.GetComponent<Outline>();
 
-        DialogManager.dialogManager.HealthMachineRepairIntro(); //AI: 상태 체크 기계 연결이 되어 있지 않았다 스크립트
+        //DialogManager.dialogManager.HealthMachineRepairIntro(); //AI: 상태 체크 기계 연결이 되어 있지 않았다 스크립트
     }
 
     void Update()
@@ -53,7 +53,7 @@ public class W_HealthMachine : MonoBehaviour
         float maxTimer = Mathf.FloorToInt((heathMachineRepairTimer_HM % 3600) % 60);
         if (maxTimer >= heathMachineRepairHintTime_HM)
         {
-            DialogManager.dialogManager.HealthMachineRepairHint(); // 아직 못 풀었을 경우 heathMachineRepairHintTime 마다 1번씩 힌트 제공
+            //DialogManager.dialogManager.HealthMachineRepairHint(); // 아직 못 풀었을 경우 heathMachineRepairHintTime 마다 1번씩 힌트 제공
             heathMachineRepairTimer_HM = 0;
         }
 
@@ -81,7 +81,7 @@ public class W_HealthMachine : MonoBehaviour
 
         //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
         healthMachineData_HM.IsCenterButtonDisabled = false;
-        DialogManager.dialogManager.HealthMachineEnd();
+        //DialogManager.dialogManager.HealthMachineEnd();
 
         // 생체기계 고치기 1회성 임무가 끝남 
         GameManager.gameManager.IsHealthMachineFixedT_C2 = true;

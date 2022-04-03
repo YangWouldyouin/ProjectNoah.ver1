@@ -90,7 +90,7 @@ public class W_SmartFarm : MonoBehaviour
             {
                 if (!IsDialogPrinted_SF)
                 {
-                    DialogManager.dialogManager.SmartFarmObserve();
+                    //DialogManager.dialogManager.SmartFarmObserve();
                     IsDialogPrinted_SF = true;
                 }
             }
@@ -157,7 +157,7 @@ public class W_SmartFarm : MonoBehaviour
                         //CameraController.cameraController.CancelObserve(); // 관찰하기 뷰 해제
                         // 이 자리에는 소리 값이 들어갈 예정 - 지금 AI대사 치는 것처럼 기계에 '짖기'를 사용하세요 라는 음성이 들릴 예정이다.
                         fixedLineData_SF.IsBite = false; // 물고 있는 상태를 false로 바꿔줘야 확실하게 모계에서 벗어날 수 있다.
-                        DialogManager.dialogManager.SmartFarmAfterFixSpeaker();
+                        //DialogManager.dialogManager.SmartFarmAfterFixSpeaker();
                         IsRepairCompletion_SF = true;
                     }
                 }
@@ -235,6 +235,6 @@ public class W_SmartFarm : MonoBehaviour
     {
         smartFarmDoorAnim_HM.SetBool("FarmDoorMoving", true);
         smartFarmDoorAnim_HM.SetBool("FarmDoorStop", true);
-        DialogManager.dialogManager.SmartFarmOpenEnd();
+        //DialogManager.dialogManager.SmartFarmOpenEnd();
     }
 }

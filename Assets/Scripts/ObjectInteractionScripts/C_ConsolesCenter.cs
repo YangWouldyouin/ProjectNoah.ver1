@@ -125,7 +125,7 @@ public class C_ConsolesCenter : MonoBehaviour
                         consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화 (앞으로 누를 일 없음)
                         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
 
-                        DialogManager.dialogManager.ResetSystem(); // AI 1 번째 대사 묶음 출력
+                        //DialogManager.dialogManager.ResetSystem(); // AI 1 번째 대사 묶음 출력
 
                         GameManager.gameManager.IsAI_M_C1 = true; // return true; // 엔딩 수집 페이지 갱신, 게임 세이브 분기점
                     }

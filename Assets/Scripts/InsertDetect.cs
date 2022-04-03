@@ -7,7 +7,7 @@ public class InsertDetect : MonoBehaviour
     public static InsertDetect insertDetect { get; private set; }
 
     public bool Isdetected = false;
-    public string insertObject = "EnvirPipe";
+    public string insertObject;
 
     private void Awake()
     {

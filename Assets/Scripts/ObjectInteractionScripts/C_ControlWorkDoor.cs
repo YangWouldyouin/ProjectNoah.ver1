@@ -12,6 +12,7 @@ public class C_ControlWorkDoor : MonoBehaviour
     ObjData cockpitDoorData_CWD;
 
     public Button insertAreaButton_CWD;
+    public Image stopMoving_CWD;
     private bool IsInsertAreaClicked_CWD = false;
     private float insertTimer_CWD = 0f;
 
@@ -41,7 +42,7 @@ public class C_ControlWorkDoor : MonoBehaviour
         {
             if (cockpitDoorData_CWD.IsClicked)
             {
-                DialogManager.dialogManager.DoorLock(); // AI 대사 나옴
+                //DialogManager.dialogManager.DoorLock(); // AI 대사 나옴
             }
 
             if (envirPipeData_CWD.IsBite)
@@ -52,7 +53,7 @@ public class C_ControlWorkDoor : MonoBehaviour
                 {
                     cockpitDoorData_CWD.IsNotInteractable = true; // 문 상호작용 비활성화
                     cockpitDoorOutine_CWD.OutlineWidth = 0;
-
+                    stopMoving_CWD.transform.gameObject.SetActive(true); // 플레이어 못 움직이도록 화면에 투명한 이미지 활성화
                     insertAreaButton_CWD.transform.gameObject.SetActive(true); // 끼우기 영역 활성화
 
                     if (IsInsertAreaClicked_CWD && InsertDetect.insertDetect.Isdetected)// 끼우기 영역 안에 들어왔을 때 영역을 클릭하면
@@ -64,11 +65,11 @@ public class C_ControlWorkDoor : MonoBehaviour
                         cockpitDoorAnim_CWD.SetBool("IsDoorOpenStart", true); // 문 열리는 애니메이션
                         cockpitDoorAnim_CWD.SetBool("IsDoorOpened", true);
                         changeScene_CWD.SetActive(true); // 업무공간 이동
-                        cockpitDoorData_CWD.IsInsert = false;
 
-                        InteractionButtonController.interactionButtonController.IsInserting = false;
-                        DialogManager.dialogManager.DoorLockEnd();
+                        stopMoving_CWD.transform.gameObject.SetActive(false); // 플레이어 다시 움직일 수 있도록 화면의 투명한 이미지 비활성화
+                        //DialogManager.dialogManager.DoorLockEnd();
                         GameManager.gameManager.IsCockpitDoorOpened_M_C1 = true;
+                        cockpitDoorData_CWD.IsInsert = false;
                     }
                 }
             }

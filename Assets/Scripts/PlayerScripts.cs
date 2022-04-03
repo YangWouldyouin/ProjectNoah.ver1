@@ -122,24 +122,6 @@ public class PlayerScripts : MonoBehaviour
                     Vector3 offset = PlayerPosition - NPCPosition;
                     float sqrLen = offset.sqrMagnitude; // 플레이어의 이동 전 현재 위치와 오브젝트 사이의 거리
 
-                    if (!InteractionButtonController.interactionButtonController.IsInserting)
-                    {
-                        MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
-                        //MovePlayer(transform.position); // NPC 의 위치로 플레이어를 이동시킴
-                    }
-                    {
-                        //MovePlayer(transform.position); // NPC 의 위치로 플레이어를 이동시킴
-                        //MovePlayer(hit.point); // hit.point : 이동 목적지
-                    }
-                    //else
-                    //{
-                    //    MovePlayer(transform.position);
-                    //}
-
-                    
-
-
-
                     if (sqrLen < DistanceBetweenPlayerandNPC)
                     {
                         objData.IsClicked = true;
@@ -147,26 +129,14 @@ public class PlayerScripts : MonoBehaviour
                         if (!objData.IsNotInteractable)
                         {
                             Invoke("NameTagAppear", 1f);
+                            MovePlayer(interactable.InteractPosition());
                             interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
                         }   
                     } // 순서가 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
                 }
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 
                 {
-                    //if(objData!=null)
-                    //{
-                    //    if (!objData.IsNotInteractable)
-                    //    {
-                    //        MovePlayer(hit.point); // hit.point : 이동 목적지
-                    //    }
-                    //}
-
-                    if (!InteractionButtonController.interactionButtonController.IsInserting)
-                    {
-                        MovePlayer(hit.point); // hit.point : 이동 목적지
-                            //MovePlayer(interactable.InteractPosition()); // NPC 의 위치로 플레이어를 이동시킴
-                        //MovePlayer(transform.position); // NPC 의 위치로 플레이어를 이동시킴
-                    }
+                    MovePlayer(hit.point);
 
                     if (hit.collider.name == "ChangeScene")
                     {

@@ -40,7 +40,6 @@ public class InteractionButtonController : MonoBehaviour
     public static bool ISPUSH = false;
     public bool ispush = false;
     public static string pushObjectName;
-    public bool IsInserting = false;
 
     public TMPro.TextMeshProUGUI pushObjectText;
 
@@ -348,7 +347,6 @@ public class InteractionButtonController : MonoBehaviour
     /* 끼우기 */
     void playerInserting()
     {
-        IsInserting = true;
         noahInsertObject = PlayerScripts.playerscripts.currentObject;
         if(noahInsertObject!=null)
         {
