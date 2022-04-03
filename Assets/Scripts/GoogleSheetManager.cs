@@ -52,7 +52,7 @@ public class GoogleSheetManager : MonoBehaviour
                 {
                     row = data[i].Split('\t');
                     tempString.Add(row[5]);
-                    print()
+
                     dialogNum++;
                 }
                 else
