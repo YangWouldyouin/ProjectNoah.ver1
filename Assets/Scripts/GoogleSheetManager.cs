@@ -52,7 +52,6 @@ public class GoogleSheetManager : MonoBehaviour
                 {
                     row = data[i].Split('\t');
                     tempString.Add(row[5]);
-
                     dialogNum++;
                 }
                 else
@@ -69,13 +68,13 @@ public class GoogleSheetManager : MonoBehaviour
             //dialogueList.Add(dialogue);
         }
         string[] temp = tempString.ToArray();
-        //AIDialogueDic.Add(dialogKey, tempString.ToArray());
+        AIDialogueDic.Add(dialogKey, temp);
         //googleDialogues = dialogueList.ToArray();
     }
 
     void printAI()
     {
-        for(int k =0; k < temp.Length; k++)
+        for(int k =0; k < ; k++)
         {
             print(temp[k]);
             //print(AIDialogueDic[num][k]);
