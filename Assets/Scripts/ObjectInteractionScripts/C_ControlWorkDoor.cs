@@ -22,6 +22,9 @@ public class C_ControlWorkDoor : MonoBehaviour
     Outline cockpitDoorOutine_CWD;
     public GameObject changeScene_CWD;
 
+    public GameObject dialogManager_CWD;
+    DialogManager dialogManager;
+
     private void Awake()
     {
         insertAreaButton_CWD.onClick.AddListener(CheckInsertTrueFor2Sec);
@@ -29,6 +32,8 @@ public class C_ControlWorkDoor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialogManager_CWD.GetComponent<DialogManager>();
+
         envirPipeData_CWD = envirPipe_CWD.GetComponent<ObjData>();
         cockpitDoorData_CWD = cockpitDoor_CWD.GetComponent<ObjData>();
 
@@ -42,7 +47,7 @@ public class C_ControlWorkDoor : MonoBehaviour
         {
             if (cockpitDoorData_CWD.IsClicked)
             {
-                //DialogManager.dialogManager.DoorLock(); // AI 대사 나옴
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
             }
 
             if (envirPipeData_CWD.IsBite)
@@ -67,7 +72,7 @@ public class C_ControlWorkDoor : MonoBehaviour
                         changeScene_CWD.SetActive(true); // 업무공간 이동
 
                         stopMoving_CWD.transform.gameObject.SetActive(false); // 플레이어 다시 움직일 수 있도록 화면의 투명한 이미지 비활성화
-                        //DialogManager.dialogManager.DoorLockEnd();
+                        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(4));
                         GameManager.gameManager.IsCockpitDoorOpened_M_C1 = true;
                         cockpitDoorData_CWD.IsInsert = false;
                     }

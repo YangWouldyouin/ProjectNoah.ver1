@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     //public GameObject objectExtraDescription;
 
     private Vector3 originPosition, originRotation;
+    [HideInInspector]
     public Transform currentView;
 
     [SerializeField] GameObject noah;

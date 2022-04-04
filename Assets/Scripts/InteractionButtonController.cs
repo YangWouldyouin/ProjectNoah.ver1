@@ -26,12 +26,8 @@ public class InteractionButtonController : MonoBehaviour
     private Vector3 risePosition;
 
     /* 현재 상호작용 중인 오브젝트를 받아오기 위한 변수 */
-    public GameObject noahPushOrPressObject;
-    public GameObject noahSniffObject;
-    public GameObject noahBarkObject;
-    public GameObject noahUpDownObject;
-    public GameObject noahInsertObject;
-    public GameObject noahObserveObject;
+    [HideInInspector]
+    public GameObject noahPushOrPressObject, noahSniffObject, noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject;
 
 
     /* 정리 필요한 변수들 */

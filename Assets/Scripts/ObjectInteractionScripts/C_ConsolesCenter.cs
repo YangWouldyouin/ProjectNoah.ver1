@@ -29,11 +29,17 @@ public class C_ConsolesCenter : MonoBehaviour
     public GameObject fade_CC;
     public Image aiIcon_CC;
 
+    public GameObject dialogManager_CC;
+    DialogManager dialogManager;
+
+
     float timer_CC = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialogManager_CC.GetComponent<DialogManager>();
+
         if (!GameManager.gameManager.IsAI_M_C1)
         {
             // 플로우차트 처음 시작 때 넣고 싶은 연출들을 넣는다.  
@@ -124,8 +130,7 @@ public class C_ConsolesCenter : MonoBehaviour
 
                         consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화 (앞으로 누를 일 없음)
                         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
-
-                        //DialogManager.dialogManager.ResetSystem(); // AI 1 번째 대사 묶음 출력
+                        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
 
                         GameManager.gameManager.IsAI_M_C1 = true; // return true; // 엔딩 수집 페이지 갱신, 게임 세이브 분기점
                     }
