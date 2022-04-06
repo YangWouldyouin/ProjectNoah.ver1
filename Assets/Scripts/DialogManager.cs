@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class DialogManager : MonoBehaviour
 {
     public static DialogManager dialogManager { get; private set; }
     GoogleSheetManager googleSheetManager;
 
     public TMPro.TextMeshProUGUI dialogText;
+
+    [SerializeField] C_ControlWorkDoor c_ControlWorkDoor;
 
     //public gameobject ai;
     //public image aiicon;
@@ -21,6 +24,8 @@ public class DialogManager : MonoBehaviour
     private void Start()
     {
         googleSheetManager = GetComponent<GoogleSheetManager>();
+
+        c_ControlWorkDoor.Printed += PrintDialog;
     }
 
     public string getTalk(int id, int talkIndex)

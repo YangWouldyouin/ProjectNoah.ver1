@@ -17,7 +17,7 @@ public class InteractionButtonController : MonoBehaviour
         upDownButton, insertButton, noCenterButton, observeButton, insertDisableButton, observeDisableButton, upDownDisableButton;
 
     [SerializeField] GameObject noahPlayer;
-
+    private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
     //public bool isBark = false;
 
     /* "오르기" 상호작용 관련 변수*/
@@ -110,13 +110,13 @@ public class InteractionButtonController : MonoBehaviour
 
     void ChangeBarkTrue()
     {
-        noahAnim.SetBool("IsBarking", true); // 동작 전환은 애니메이터의 bool 변수값을 바꿔서 전환시킬 수 있다. 
+        noahAnim.SetBool(IsBarking, true); // 동작 전환은 애니메이터의 bool 변수값을 바꿔서 전환시킬 수 있다. 
         // Asset 폴더 - Animation - playerAnmationController 를 클릭하면 현재 애니메이션 동작들이 어떻게 연결되어있고 동작 사이의 bool 변수들이 있다. 
     }
 
     void ChangeBarkFalse()
     {
-        noahAnim.SetBool("IsBarking", false);
+        noahAnim.SetBool(IsBarking, false);
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&

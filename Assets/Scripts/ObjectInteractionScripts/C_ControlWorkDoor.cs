@@ -25,6 +25,14 @@ public class C_ControlWorkDoor : MonoBehaviour
     public GameObject dialogManager_CWD;
     DialogManager dialogManager;
 
+    GameData gameData_CWD = new GameData();
+
+    public delegate void PrintDialogHandler(int a);
+    public event PrintDialogHandler Printed;
+
+
+
+
     private void Awake()
     {
         insertAreaButton_CWD.onClick.AddListener(CheckInsertTrueFor2Sec);
@@ -32,6 +40,7 @@ public class C_ControlWorkDoor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         dialogManager = dialogManager_CWD.GetComponent<DialogManager>();
 
         envirPipeData_CWD = envirPipe_CWD.GetComponent<ObjData>();
@@ -40,15 +49,28 @@ public class C_ControlWorkDoor : MonoBehaviour
         cockpitDoorOutine_CWD = cockpitDoor_CWD.GetComponent<Outline>();
     }
 
+    public void Printdialog()
+    {
+        if (cockpitDoorData_CWD.IsClicked)
+        {
+            Printed.Invoke(3);
+            //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.gameManager.IsAI_M_C1)
+
+
+        GameData gameData_CWD = SaveSystem.Load("save_001");
+
+        if (gameData_CWD.IsAIAwake_M_C1)
         {
-            if (cockpitDoorData_CWD.IsClicked)
-            {
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
-            }
+            //if (cockpitDoorData_CWD.IsClicked)
+            //{
+            //    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
+            //}
 
             if (envirPipeData_CWD.IsBite)
             {
@@ -73,7 +95,11 @@ public class C_ControlWorkDoor : MonoBehaviour
 
                         stopMoving_CWD.transform.gameObject.SetActive(false); // 플레이어 다시 움직일 수 있도록 화면의 투명한 이미지 비활성화
                         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(4));
-                        GameManager.gameManager.IsCockpitDoorOpened_M_C1 = true;
+                   
+                        gameData_CWD.IsCWDoorOpened_M_C1 = true;
+                        SaveSystem.Save(gameData_CWD, "save_001");
+                        //GameManager.gameManager.IsCockpitDoorOpened_M_C1 = true;
+
                         cockpitDoorData_CWD.IsInsert = false;
                     }
                 }
