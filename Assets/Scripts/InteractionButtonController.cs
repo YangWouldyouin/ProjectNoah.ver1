@@ -48,7 +48,7 @@ public class InteractionButtonController : MonoBehaviour
         sniffButton.onClick.AddListener(playerSniff);
         observeButton.onClick.AddListener(playerObserve);
         upDownButton.onClick.AddListener(playerRising);
-        insertButton.onClick.AddListener(playerInserting);
+        //insertButton.onClick.AddListener(playerInserting);
         pushButton.onClick.AddListener(playerPush);
         pressButton.onClick.AddListener(playerPress);
     }
@@ -341,28 +341,28 @@ public class InteractionButtonController : MonoBehaviour
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 끼우기 */
-    void playerInserting()
-    {
-        noahInsertObject = PlayerScripts.playerscripts.currentObject;
-        if(noahInsertObject!=null)
-        {
-            ObjData noahInsertData = noahInsertObject.GetComponent<ObjData>();
-            noahInsertData.IsInsert = true;
-            TurnOffInteractionButton();
-            noahPlayer.transform.position = noahInsertObject.transform.position + new Vector3(1, 0, 1);
-            noahPlayer.transform.rotation = noahInsertObject.transform.rotation;
-            Invoke("ChangeInsertTrue", 0.5f);
-            //Invoke("ChangeInsertFalse", 2f);
-        }
-    }
+    //void playerInserting()
+    //{
+    //    noahInsertObject = PlayerScripts.playerscripts.currentObject;
+    //    if(noahInsertObject!=null)
+    //    {
+    //        ObjData noahInsertData = noahInsertObject.GetComponent<ObjData>();
+    //        noahInsertData.IsInsert = true;
+    //        TurnOffInteractionButton();
+    //        noahPlayer.transform.position = noahInsertObject.transform.position + new Vector3(1, 0, 1);
+    //        noahPlayer.transform.rotation = noahInsertObject.transform.rotation;
+    //        Invoke("ChangeInsertTrue", 0.5f);
+    //        //Invoke("ChangeInsertFalse", 2f);
+    //    }
+    //}
 
-    void ChangeInsertTrue()
-    {
-        noahAnim.SetBool("IsInserting", true);
-    }
+    //void ChangeInsertTrue()
+    //{
+    //    noahAnim.SetBool("IsInserting", true);
+    //}
 
-    public void ChangeInsertFalse()
-    {
-        noahAnim.SetBool("IsInserting", false);
-    }
+    //public void ChangeInsertFalse()
+    //{
+    //    noahAnim.SetBool("IsInserting", false);
+    //}
 }

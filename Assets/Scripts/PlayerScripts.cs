@@ -49,7 +49,6 @@ public class PlayerScripts : MonoBehaviour
 
     public Animator noahAnim;
 
-
     private void Awake()
     {
         playerscripts = this;
