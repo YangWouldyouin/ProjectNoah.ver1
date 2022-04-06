@@ -27,11 +27,6 @@ public class C_ControlWorkDoor : MonoBehaviour
 
     GameData gameData_CWD = new GameData();
 
-    public delegate void PrintDialogHandler(int a);
-    public event PrintDialogHandler Printed;
-
-
-
 
     private void Awake()
     {
@@ -49,15 +44,6 @@ public class C_ControlWorkDoor : MonoBehaviour
         cockpitDoorOutine_CWD = cockpitDoor_CWD.GetComponent<Outline>();
     }
 
-    public void Printdialog()
-    {
-        if (cockpitDoorData_CWD.IsClicked)
-        {
-            Printed.Invoke(3);
-            //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -67,10 +53,10 @@ public class C_ControlWorkDoor : MonoBehaviour
 
         if (gameData_CWD.IsAIAwake_M_C1)
         {
-            //if (cockpitDoorData_CWD.IsClicked)
-            //{
-            //    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
-            //}
+            if (cockpitDoorData_CWD.IsClicked)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
+            }
 
             if (envirPipeData_CWD.IsBite)
             {
@@ -98,7 +84,6 @@ public class C_ControlWorkDoor : MonoBehaviour
                    
                         gameData_CWD.IsCWDoorOpened_M_C1 = true;
                         SaveSystem.Save(gameData_CWD, "save_001");
-                        //GameManager.gameManager.IsCockpitDoorOpened_M_C1 = true;
 
                         cockpitDoorData_CWD.IsInsert = false;
                     }

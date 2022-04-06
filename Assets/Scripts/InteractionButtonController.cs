@@ -14,7 +14,7 @@ public class InteractionButtonController : MonoBehaviour
     public Animator noahAnim; // 애니메이션 전환 위한 변수
  
     public Button barkButton, pushButton, pressButton, sniffButton, biteButton, 
-        upDownButton, insertButton, noCenterButton, observeButton, insertDisableButton, observeDisableButton, upDownDisableButton;
+        upDownButton, insertButton, noCenterButton, observeButton, insertDisableButton, observeDisableButton, upDownDisableButton, eatButton, eatDisableButton;
 
     [SerializeField] GameObject noahPlayer;
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
@@ -27,7 +27,7 @@ public class InteractionButtonController : MonoBehaviour
 
     /* 현재 상호작용 중인 오브젝트를 받아오기 위한 변수 */
     [HideInInspector]
-    public GameObject noahPushOrPressObject, noahSniffObject, noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject;
+    public GameObject noahPushOrPressObject, noahSniffObject, noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
 
 
     /* 정리 필요한 변수들 */
@@ -46,6 +46,7 @@ public class InteractionButtonController : MonoBehaviour
         /* 각 상호작용 버튼에 함수를 추가한다. */
         barkButton.onClick.AddListener(playerBark);
         sniffButton.onClick.AddListener(playerSniff);
+        eatButton.onClick.AddListener(playerEat);
         observeButton.onClick.AddListener(playerObserve);
         upDownButton.onClick.AddListener(playerRising);
         insertButton.onClick.AddListener(playerInserting);
@@ -78,6 +79,7 @@ public class InteractionButtonController : MonoBehaviour
         pushButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
         noCenterButton.transform.gameObject.SetActive(false);
+        eatButton.transform.gameObject.SetActive(false);
         upDownButton.transform.gameObject.SetActive(false);
         insertButton.transform.gameObject.SetActive(false);
         observeButton.transform.gameObject.SetActive(false);
@@ -208,14 +210,14 @@ public class InteractionButtonController : MonoBehaviour
             }
 
             Invoke("ChangeRiseTrue", 0.5f); // 오르기 동작 5개를 실행함
-            Invoke("ChangeRise2True", 0.5f);
-            Invoke("ChangeRise3True", 0.5f);
-            Invoke("ChangeRise4True", 0.5f);
-            Invoke("ChangeRise5True", 0.5f);
+            Invoke("ChangeRise2True", 1f);
+            Invoke("ChangeRise3True", 1.1f);
+            Invoke("ChangeRise4True", 1.2f);
+            Invoke("ChangeRise5True", 1.3f);
 
             Invoke("noahJump", 1f); // 동작 실행중에 플레이어의 위치를 바꿈
 
-            Invoke("ChangeRiseFalse", 2); // 오르기 동작을 끝냄 
+            Invoke("ChangeRiseFalse", 1.3f); // 오르기 동작을 끝냄 
 
             playerAgent.isStopped = false;
         }
@@ -365,4 +367,48 @@ public class InteractionButtonController : MonoBehaviour
     {
         noahAnim.SetBool("IsInserting", false);
     }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    /* 먹기 */
+    void playerEat()
+    {
+        noahEatObject = PlayerScripts.playerscripts.currentObject;
+        if(noahEatObject!=null)
+        {
+            ObjData noahEatData = noahEatObject.GetComponent<ObjData>();
+            noahEatData.IsEaten = true;
+            TurnOffInteractionButton();
+            Invoke("ChangeEat1True", 1f);
+            Invoke("ChangeEat2True", 2f);
+            Invoke("ChangeEat3True", 3f);
+            Invoke("DestroyEatObject", 3.1f);
+            Invoke("ChangeEat1False", 4f);
+        }
+    }
+
+    void ChangeEat1True()
+    {
+        noahAnim.SetBool("IsEating1", true);
+    }
+
+    void ChangeEat2True()
+    {
+        noahAnim.SetBool("IsEating2", true);
+    }
+    void ChangeEat3True()
+    {
+        noahAnim.SetBool("IsEating3", true);
+    }
+
+    void DestroyEatObject()
+    {
+        Destroy(noahEatObject);
+    }
+
+    void ChangeEat1False()
+    {
+        noahAnim.SetBool("IsEating1", false);
+    }
+
 }

@@ -1465,14 +1465,6 @@ PrefabInstance:
       propertyPath: playerAnimation
       value: 
       objectReference: {fileID: 1451688032}
-    - target: {fileID: 6602769642679801738, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6855707438074342452, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6855707438144792615, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1560,18 +1552,6 @@ PrefabInstance:
     - target: {fileID: 6855707438144792635, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_Name
       value: BaseCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6855707438327039921, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6855707438561525015, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6855707438932681383, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
@@ -3736,6 +3716,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 0}
   biteInterButton: {fileID: 0}
   noCenterInterButton: {fileID: 0}
+  eatInterButton: {fileID: 0}
+  eatDisableInterButton: {fileID: 0}
   insertInterButton: {fileID: 0}
   upDownInterButton: {fileID: 0}
   observeInterButton: {fileID: 0}
@@ -4293,6 +4275,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 394078238, guid: 3be615349f572e640a826a88bc8b9651, type: 3}
   m_PrefabInstance: {fileID: 1047209816}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &877847944 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7098666978973914692, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &881628300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5074,6 +5067,10 @@ PrefabInstance:
       value: 0.8025156
       objectReference: {fileID: 0}
     - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: eatInterButton
+      value: 
+      objectReference: {fileID: 877847944}
+    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: barkInterButton
       value: 
       objectReference: {fileID: 365641759}
@@ -5105,6 +5102,10 @@ PrefabInstance:
       propertyPath: noCenterInterButton
       value: 
       objectReference: {fileID: 365641756}
+    - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: eatDisableInterButton
+      value: 
+      objectReference: {fileID: 1997569587}
     - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: insertDisableInterButton
       value: 
@@ -5270,6 +5271,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 365641745}
     - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: eatInterButton
+      value: 
+      objectReference: {fileID: 877847944}
+    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: barkInterButton
       value: 
       objectReference: {fileID: 365641759}
@@ -5277,6 +5282,10 @@ PrefabInstance:
       propertyPath: biteInterButton
       value: 
       objectReference: {fileID: 365641757}
+    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: distancePosition
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: sniffInterButton
       value: 
@@ -5298,6 +5307,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 365641756}
     - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: eatDisableInterButton
+      value: 
+      objectReference: {fileID: 1997569587}
+    - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: insertDisableInterButton
       value: 
       objectReference: {fileID: 1576387470}
@@ -5316,7 +5329,7 @@ PrefabInstance:
     - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: centerButton
       value: 
-      objectReference: {fileID: 365641756}
+      objectReference: {fileID: 877847944}
     - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: pushOrPressButton
       value: 
@@ -5455,6 +5468,7 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
@@ -5480,6 +5494,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 365641758}
   biteInterButton: {fileID: 365641757}
   noCenterInterButton: {fileID: 365641756}
+  eatInterButton: {fileID: 877847944}
+  eatDisableInterButton: {fileID: 1997569587}
   insertInterButton: {fileID: 365641752}
   upDownInterButton: {fileID: 365641762}
   observeInterButton: {fileID: 365641755}
@@ -7878,6 +7894,7 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
@@ -7903,6 +7920,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 365641758}
   biteInterButton: {fileID: 365641757}
   noCenterInterButton: {fileID: 365641756}
+  eatInterButton: {fileID: 877847944}
+  eatDisableInterButton: {fileID: 1997569587}
   insertInterButton: {fileID: 365641752}
   upDownInterButton: {fileID: 365641762}
   observeInterButton: {fileID: 365641755}
@@ -8697,6 +8716,7 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
@@ -8722,6 +8742,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 365641758}
   biteInterButton: {fileID: 365641757}
   noCenterInterButton: {fileID: 365641756}
+  eatInterButton: {fileID: 877847944}
+  eatDisableInterButton: {fileID: 1997569587}
   insertInterButton: {fileID: 365641752}
   upDownInterButton: {fileID: 365641762}
   observeInterButton: {fileID: 365641755}
@@ -10159,6 +10181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText: {fileID: 365641750}
+  c_ControlWorkDoor: {fileID: 477391876}
 --- !u!1001 &1918014620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10471,6 +10494,17 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1997569587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4368355665860952303, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1999607118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11004,6 +11038,7 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
@@ -11029,6 +11064,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 365641758}
   biteInterButton: {fileID: 365641757}
   noCenterInterButton: {fileID: 365641756}
+  eatInterButton: {fileID: 877847944}
+  eatDisableInterButton: {fileID: 1997569587}
   insertInterButton: {fileID: 365641752}
   upDownInterButton: {fileID: 365641762}
   observeInterButton: {fileID: 365641755}

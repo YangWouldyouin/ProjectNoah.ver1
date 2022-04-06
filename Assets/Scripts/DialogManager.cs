@@ -12,7 +12,6 @@ public class DialogManager : MonoBehaviour
 
     public TMPro.TextMeshProUGUI dialogText;
 
-    [SerializeField] C_ControlWorkDoor c_ControlWorkDoor;
 
     //public gameobject ai;
     //public image aiicon;
@@ -24,8 +23,6 @@ public class DialogManager : MonoBehaviour
     private void Start()
     {
         googleSheetManager = GetComponent<GoogleSheetManager>();
-
-        c_ControlWorkDoor.Printed += PrintDialog;
     }
 
     public string getTalk(int id, int talkIndex)
@@ -38,23 +35,13 @@ public class DialogManager : MonoBehaviour
 
     public IEnumerator PrintAIDialog(int dialogNum)
     {
-        int num = dialogNum;
-
-        if (num != dialogNum)
+        for (int i = 0; i < googleSheetManager.AIDialogueDic[dialogNum].Length; i++)
         {
-            num = dialogNum;
-        }
+            string talkdata = getTalk(dialogNum, i);
 
-        else
-        {
-            for (int i = 0; i < googleSheetManager.AIDialogueDic[num].Length; i++)
-            {
-                string talkdata = getTalk(num, i);
+            dialogText.text = talkdata;
 
-                dialogText.text = talkdata;
-
-                yield return new WaitForSeconds(1f);
-            }
+            yield return new WaitForSeconds(1f);
         }
     }
 

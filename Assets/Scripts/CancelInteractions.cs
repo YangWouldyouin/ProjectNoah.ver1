@@ -115,7 +115,7 @@ public class CancelInteractions : MonoBehaviour
 
                 }
             }
-            //CancelObjectText.text = "Noah N.113";
+            CancelObjectText.text = "Noah N.113";
 
             ///* 관찰하기 취소 */
             //if (observeObject!=null)

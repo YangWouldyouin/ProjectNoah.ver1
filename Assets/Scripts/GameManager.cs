@@ -7,10 +7,11 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager { get; private set; }
 
     /* 1회성 임무 ( 한번 끝내면 다시 안함 ) */
-    //public bool IsAI_M_C1 = false; // 항상 AI 활성화
+    //GamaData 로 옯김
+    //public bool IsAI_M_C1 = false; / /항상 AI 활성화
     //public bool IsCockpitDoorOpened_M_C1 = false; // 항상 조종실에서 업무공간 이동 가능
-    public bool IsHealthMachineFixedT_C2 = false; // 정기적으로 상태 측정 임무 수행 가능
-    public bool IsSmartFarmOpen_T_C2 = false; // 항상 스마트팜 열려있고, 정기적으로 스마트팜 임무 수행 가능
+    //public bool IsHealthMachineFixedT_C2 = false; // 정기적으로 상태 측정 임무 수행 가능
+    //public bool IsSmartFarmOpen_T_C2 = false; // 항상 스마트팜 열려있고, 정기적으로 스마트팜 임무 수행 가능
 
     //엔진실 카드키가 들어있는 카드팩이 파괴
     public bool IsDisappearPack_M_C2 = false; 
@@ -27,10 +28,6 @@ public class GameManager : MonoBehaviour
 
 
 
-    public static int Hp = 100;
-    public bool isBark = false;
-
-
 
     private void Awake()
     {
@@ -41,13 +38,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(isBark == true) // 짖으면
-        {
-            Hp -= 10;
-            isBark = false;
-        }
-
-
 
         //if (Input.GetKeyDown(KeyCode.Q))
         //{

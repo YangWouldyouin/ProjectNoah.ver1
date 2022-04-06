@@ -27,11 +27,18 @@ public class W_SmartFarm : MonoBehaviour
     private Outline inputLiner2Outline_SF;
     private Outline ironPlateOutline_SF;
 
+    public GameObject dialogManager_SF;
+    DialogManager dialogManager;
+
     private float dialogTimer_SF = 0f;
-    private bool IsDialogPrinted_SF = true; 
+    private bool IsDialogPrinted_SF = true;
+
+    GameData gameData_SF = new GameData();
 
     void Start()
     {
+        dialogManager = dialogManager_SF.GetComponent<DialogManager>();
+
         ironPlateData_SF = ironPlate_SF.GetComponent<ObjData>();
         managementMachineData_SF = managementMachine_SF.GetComponent<ObjData>();
         brokenLine2Data_SF = brokenLine2_SF.GetComponent<ObjData>();
@@ -46,7 +53,9 @@ public class W_SmartFarm : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.gameManager.IsSmartFarmOpen_T_C2) // 퍼즐을 완료하면 팜이 열린 상태를 유지한다.
+        GameData gameData_SF = SaveSystem.Load("save_001");
+
+        if (!gameData_SF.IsSmartFarmOpen_T_C2) // 퍼즐을 완료하면 팜이 열린 상태를 유지한다.
         {
             if (!IsDisappearIron_SF) // 판이 파괴되어 있지 않은 상태이면 판을 파괴하는 코드를 실행하겠다. 
             {
@@ -90,7 +99,7 @@ public class W_SmartFarm : MonoBehaviour
             {
                 if (!IsDialogPrinted_SF)
                 {
-                    //DialogManager.dialogManager.SmartFarmObserve();
+                    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(8));
                     IsDialogPrinted_SF = true;
                 }
             }
@@ -157,7 +166,7 @@ public class W_SmartFarm : MonoBehaviour
                         //CameraController.cameraController.CancelObserve(); // 관찰하기 뷰 해제
                         // 이 자리에는 소리 값이 들어갈 예정 - 지금 AI대사 치는 것처럼 기계에 '짖기'를 사용하세요 라는 음성이 들릴 예정이다.
                         fixedLineData_SF.IsBite = false; // 물고 있는 상태를 false로 바꿔줘야 확실하게 모계에서 벗어날 수 있다.
-                        //DialogManager.dialogManager.SmartFarmAfterFixSpeaker();
+                        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(9));
                         IsRepairCompletion_SF = true;
                     }
                 }
@@ -227,14 +236,17 @@ public class W_SmartFarm : MonoBehaviour
     {
         if (managementMachineData_SF.IsBark) // 기계에 짖기를 사용했다면,
         {
-            Invoke("WindowAnimAndDialog", 2f); //2초후 문 열리기 & AI 완료 대사를 실행한다.       
-            GameManager.gameManager.IsSmartFarmOpen_T_C2 = true; // 항상 팜 문이 열려있는 것이 True가 된다.
+            Invoke("WindowAnimAndDialog", 2f); //2초후 문 열리기 & AI 완료 대사를 실행한다.
+            gameData_SF.IsSmartFarmOpen_T_C2 = true; // 항상 팜 문이 열려있는 것이 True가 된다.
+            SaveSystem.Save(gameData_SF, "save_001");
+
         }
     }
     void WindowAnimAndDialog() // 스마트팜 입구 열리는 애니메이션 & 대사
     {
         smartFarmDoorAnim_HM.SetBool("FarmDoorMoving", true);
         smartFarmDoorAnim_HM.SetBool("FarmDoorStop", true);
-        //DialogManager.dialogManager.SmartFarmOpenEnd();
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
+
     }
 }

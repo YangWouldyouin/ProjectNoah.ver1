@@ -15,6 +15,8 @@ public class SLManager : MonoBehaviour
 
             character.IsAIAwake_M_C1 = false;
             character.IsCWDoorOpened_M_C1 = false;
+            character.IsHealthMachineFixed_T_C2 = false;
+            character.IsSmartFarmOpen_T_C2 = false;
 
             SaveSystem.Save(character, "save_001");
         }
@@ -23,7 +25,8 @@ public class SLManager : MonoBehaviour
         if (Input.GetKeyDown("l"))
         {
             GameData loadData = SaveSystem.Load("save_001");
-            Debug.Log(string.Format("LoadData Result => IsAIAwake : {0}, IsCWDoorOpened : {1} ", loadData.IsAIAwake_M_C1, loadData.IsCWDoorOpened_M_C1));
+            Debug.Log(string.Format("LoadData Result => IsAIAwake : {0}, IsCWDoorOpened : {1}, IsHealthMachineFixed_T_C2 : {2}, IsSmartFarmOpen_T_C2 : {3} ", 
+                loadData.IsAIAwake_M_C1, loadData.IsCWDoorOpened_M_C1, loadData.IsHealthMachineFixed_T_C2, loadData.IsSmartFarmOpen_T_C2));
         }
     }
 }

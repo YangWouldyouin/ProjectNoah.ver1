@@ -19,22 +19,31 @@ public class W_HealthMachine : MonoBehaviour
     public float heathMachineRepairHintTime_HM = 60f;
 
 
+    public GameObject dialogManager_HM;
+    DialogManager dialogManager;
 
+    GameData gameData_HM = new GameData();
 
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
+        dialogManager = dialogManager_HM.GetComponent<DialogManager>();
+
         healthMachineData_HM = healthMachine_HM.GetComponent<ObjData>();
         healthMachineFixPartData_HM = healthMachineFixPart_HM.GetComponent<ObjData>();
 
         healthMachineFixPartOutline_HM = healthMachineFixPart_HM.GetComponent<Outline>();
-
-        //DialogManager.dialogManager.HealthMachineRepairIntro(); //AI: 상태 체크 기계 연결이 되어 있지 않았다 스크립트
+        //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5)); //AI: 상태 체크 기계 연결이 되어 있지 않았다 스크립트 
     }
 
     void Update()
     {
+        GameData gameData_HM = SaveSystem.Load("save_001");
         // 1회성 임무인 "상태 체크 기계 고치기" 를 안했으면 
-        if (!GameManager.gameManager.IsHealthMachineFixedT_C2)
+        if (!gameData_HM.IsHealthMachineFixed_T_C2)
         {
             if (IsHealthMachineDone)
             {
@@ -53,7 +62,7 @@ public class W_HealthMachine : MonoBehaviour
         float maxTimer = Mathf.FloorToInt((heathMachineRepairTimer_HM % 3600) % 60);
         if (maxTimer >= heathMachineRepairHintTime_HM)
         {
-            //DialogManager.dialogManager.HealthMachineRepairHint(); // 아직 못 풀었을 경우 heathMachineRepairHintTime 마다 1번씩 힌트 제공
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(6)); // 아직 못 풀었을 경우 heathMachineRepairHintTime 마다 1번씩 힌트 제공
             heathMachineRepairTimer_HM = 0;
         }
 
@@ -81,10 +90,12 @@ public class W_HealthMachine : MonoBehaviour
 
         //HM 가운데 버튼 오르기 버튼으로 변경->업데이트
         healthMachineData_HM.IsCenterButtonDisabled = false;
-        //DialogManager.dialogManager.HealthMachineEnd();
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(7));
 
         // 생체기계 고치기 1회성 임무가 끝남 
-        GameManager.gameManager.IsHealthMachineFixedT_C2 = true;
+        gameData_HM.IsHealthMachineFixed_T_C2 = true;
+        SaveSystem.Save(gameData_HM, "save_001");
+        //GameManager.gameManager.IsHealthMachineFixedT_C2 = true;
     }
 }
 

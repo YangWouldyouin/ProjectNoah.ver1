@@ -22,11 +22,13 @@ public class GoogleSheetManager : MonoBehaviour
         {
             googleSheetManager = this;
         }
+
+        StartCoroutine("GetGoogleSpreadSheet");
     }
 
     void Start()
     {
-        StartCoroutine("GetGoogleSpreadSheet");
+        
     }
 
     IEnumerator GetGoogleSpreadSheet()

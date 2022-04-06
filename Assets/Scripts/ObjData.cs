@@ -47,6 +47,7 @@ public class ObjData : MonoBehaviour
     public bool IsBite = false;
     public bool IsDestroy = false;
     public bool IsUpDown = false;
+    public bool IsEaten = false;
     public bool IsInsert = false;
     public bool IsObserve = false;
     public bool IsObservePlus = false;

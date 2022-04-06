@@ -2940,6 +2940,10 @@ PrefabInstance:
       propertyPath: playerAnimation
       value: 
       objectReference: {fileID: 562652589}
+    - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
+      propertyPath: CancelObjectText
+      value: 
+      objectReference: {fileID: 821442016}
     - target: {fileID: 1997109241220282434, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -3937,6 +3941,39 @@ MonoBehaviour:
 --- !u!114 &821442015 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6855707438932681381, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 821441997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &821442016 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9008733174439686969, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 821441997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &821442017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4368355665860952303, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 821441997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &821442018 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7098666978973914692, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
   m_PrefabInstance: {fileID: 821441997}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -6708,6 +6745,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 821442014}
   biteInterButton: {fileID: 821442001}
   noCenterInterButton: {fileID: 821442013}
+  eatInterButton: {fileID: 821442018}
+  eatDisableInterButton: {fileID: 821442017}
   insertInterButton: {fileID: 821442012}
   upDownInterButton: {fileID: 821442011}
   observeInterButton: {fileID: 821442010}
@@ -6735,7 +6774,8 @@ MonoBehaviour:
   observePlusView: {fileID: 0}
   IsPushOrPressActive: 0
   IsBiteActive: 1
-  IsClicked: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -6743,13 +6783,13 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
-  IsCenterButtonDisabled: 0
-  IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
   IsCollision: 0
+  IsClicked: 0
 --- !u!65 &1418348242
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7432,6 +7472,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 821442014}
   biteInterButton: {fileID: 821442001}
   noCenterInterButton: {fileID: 821442013}
+  eatInterButton: {fileID: 821442018}
+  eatDisableInterButton: {fileID: 821442017}
   insertInterButton: {fileID: 821442012}
   upDownInterButton: {fileID: 821442011}
   observeInterButton: {fileID: 821442010}
@@ -7459,7 +7501,8 @@ MonoBehaviour:
   observePlusView: {fileID: 0}
   IsPushOrPressActive: 1
   IsBiteActive: 0
-  IsClicked: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -7467,13 +7510,13 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
-  IsCenterButtonDisabled: 0
-  IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
   IsCollision: 0
+  IsClicked: 0
 --- !u!65 &1574249347
 BoxCollider:
   m_ObjectHideFlags: 0

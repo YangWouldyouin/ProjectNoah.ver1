@@ -1537,6 +1537,10 @@ PrefabInstance:
       propertyPath: playerAnimation
       value: 
       objectReference: {fileID: 458128226}
+    - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
+      propertyPath: CancelObjectText
+      value: 
+      objectReference: {fileID: 1373624286}
     - target: {fileID: 1997109241220282434, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2570,7 +2574,8 @@ MonoBehaviour:
   observePlusView: {fileID: 0}
   IsPushOrPressActive: 0
   IsBiteActive: 1
-  IsClicked: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -2578,13 +2583,13 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
-  IsCenterButtonDisabled: 0
-  IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
   IsCollision: 0
+  IsClicked: 0
 --- !u!114 &386324068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2603,6 +2608,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 1379266587}
   biteInterButton: {fileID: 1914583707}
   noCenterInterButton: {fileID: 525403100}
+  eatInterButton: {fileID: 1373624285}
+  eatDisableInterButton: {fileID: 1373624284}
   insertInterButton: {fileID: 1625151004}
   upDownInterButton: {fileID: 1204731273}
   observeInterButton: {fileID: 762626132}
@@ -6155,7 +6162,8 @@ MonoBehaviour:
   observePlusView: {fileID: 0}
   IsPushOrPressActive: 1
   IsBiteActive: 0
-  IsClicked: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -6163,13 +6171,13 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
-  IsCenterButtonDisabled: 0
-  IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
   IsCollision: 0
+  IsClicked: 0
 --- !u!114 &1273908522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6188,6 +6196,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 1379266587}
   biteInterButton: {fileID: 1914583707}
   noCenterInterButton: {fileID: 525403100}
+  eatInterButton: {fileID: 1373624285}
+  eatDisableInterButton: {fileID: 1373624284}
   insertInterButton: {fileID: 1625151004}
   upDownInterButton: {fileID: 1204731273}
   observeInterButton: {fileID: 762626132}
@@ -7252,6 +7262,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88f679cea58c96143a63b73fc85638be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1373624284 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4368355665860952303, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 1373624278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1373624285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7098666978973914692, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 1373624278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1373624286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9008733174439686969, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 1373624278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1379266587 stripped
@@ -8677,7 +8720,8 @@ MonoBehaviour:
   observePlusView: {fileID: 0}
   IsPushOrPressActive: 1
   IsBiteActive: 0
-  IsClicked: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -8685,13 +8729,13 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
-  IsCenterButtonDisabled: 0
-  IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
   IsCollision: 0
+  IsClicked: 0
 --- !u!114 &1708209596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8710,6 +8754,8 @@ MonoBehaviour:
   sniffInterButton: {fileID: 1379266587}
   biteInterButton: {fileID: 1914583707}
   noCenterInterButton: {fileID: 525403100}
+  eatInterButton: {fileID: 1373624285}
+  eatDisableInterButton: {fileID: 1373624284}
   insertInterButton: {fileID: 1625151004}
   upDownInterButton: {fileID: 1204731273}
   observeInterButton: {fileID: 762626132}
@@ -10526,7 +10572,8 @@ MonoBehaviour:
   observePlusView: {fileID: 0}
   IsPushOrPressActive: 0
   IsBiteActive: 0
-  IsClicked: 0
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -10534,13 +10581,13 @@ MonoBehaviour:
   IsBite: 0
   IsDestroy: 0
   IsUpDown: 0
+  IsEaten: 0
   IsInsert: 0
   IsObserve: 0
   IsObservePlus: 0
-  IsCenterButtonDisabled: 0
-  IsCenterPlusButtonDisabled: 0
   IsCenterButtonChanged: 0
   IsCollision: 0
+  IsClicked: 0
 --- !u!1 &2138740810 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4689875895068600051, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}

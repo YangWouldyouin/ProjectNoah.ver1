@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
 
     private Button currentCenterButton, currentPushOrPressButton;
 
-    public Button noCenterInterButton, insertInterButton, upDownInterButton, observeInterButton, insertDisableInterButton, upDownDisableInterButton, observeDisableInterButton;
+    public Button noCenterInterButton, eatInterButton, eatDisableInterButton, insertInterButton, upDownInterButton, observeInterButton, insertDisableInterButton, upDownDisableInterButton, observeDisableInterButton;
 
     private GameObject nowInteractObject;
 
@@ -106,6 +106,10 @@ public class Interactable : MonoBehaviour
                     {
                         observeDisableInterButton.transform.gameObject.SetActive(true);
                     }
+                    else if (nowInteractData.CenterPlusButton.name == "EatButton")
+                    {
+                        eatDisableInterButton.transform.gameObject.SetActive(true);
+                    }
                 }
                 else // 바뀐 가운데 버튼이 활성화 상태이면 누를 수 있는 버튼을 띄운다. 
                 {
@@ -120,6 +124,10 @@ public class Interactable : MonoBehaviour
                     else if (nowInteractData.CenterPlusButton.name == "ObserveButton")
                     {
                         observeInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if (nowInteractData.CenterPlusButton.name == "EatButton")
+                    {
+                        eatInterButton.transform.gameObject.SetActive(true);
                     }
 
                 }
@@ -141,7 +149,11 @@ public class Interactable : MonoBehaviour
                     {
                         observeDisableInterButton.transform.gameObject.SetActive(true);
                     }
-                    
+                    else if (nowInteractData.CenterButton.name == "EatButton")
+                    {
+                        eatDisableInterButton.transform.gameObject.SetActive(true);
+                    }
+
                 }
                 else // 활성화상태이면 누를 수 있는 버튼을 띄운다. 
                 {
@@ -156,6 +168,10 @@ public class Interactable : MonoBehaviour
                     else if (nowInteractData.CenterButton.name == "ObserveButton")
                     {
                         observeInterButton.transform.gameObject.SetActive(true);
+                    }
+                    else if (nowInteractData.CenterButton.name == "EatButton")
+                    {
+                        eatInterButton.transform.gameObject.SetActive(true);
                     }
                     else if(nowInteractData.CenterButton.name == "NoCenterButton")
                     {

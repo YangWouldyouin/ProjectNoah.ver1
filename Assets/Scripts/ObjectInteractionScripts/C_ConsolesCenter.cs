@@ -31,6 +31,7 @@ public class C_ConsolesCenter : MonoBehaviour
 
     public GameObject dialogManager_CC;
     DialogManager dialogManager;
+
     GameData gameData_CC = new GameData();
 
     float timer_CC = 0;
