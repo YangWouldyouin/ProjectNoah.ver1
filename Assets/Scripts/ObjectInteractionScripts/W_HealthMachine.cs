@@ -20,11 +20,6 @@ public class W_HealthMachine : MonoBehaviour
 
     public GameObject dialogManager_HM;
     DialogManager dialogManager;
-
-    private void Awake()
-    {
-        
-    }
     void Start()
     {
         dialogManager = dialogManager_HM.GetComponent<DialogManager>();
