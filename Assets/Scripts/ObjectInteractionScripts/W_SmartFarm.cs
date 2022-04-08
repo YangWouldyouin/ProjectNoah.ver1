@@ -33,8 +33,6 @@ public class W_SmartFarm : MonoBehaviour
     private float dialogTimer_SF = 0f;
     private bool IsDialogPrinted_SF = true;
 
-    GameData gameData_SF = new GameData();
-
     void Start()
     {
         dialogManager = dialogManager_SF.GetComponent<DialogManager>();
@@ -53,9 +51,7 @@ public class W_SmartFarm : MonoBehaviour
 
     void Update()
     {
-        GameData gameData_SF = SaveSystem.Load("save_001");
-
-        if (!gameData_SF.IsSmartFarmOpen_T_C2) // 퍼즐을 완료하면 팜이 열린 상태를 유지한다.
+        if (!GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2) // 퍼즐을 완료하면 팜이 열린 상태를 유지한다.
         {
             if (!IsDisappearIron_SF) // 판이 파괴되어 있지 않은 상태이면 판을 파괴하는 코드를 실행하겠다. 
             {
@@ -237,8 +233,8 @@ public class W_SmartFarm : MonoBehaviour
         if (managementMachineData_SF.IsBark) // 기계에 짖기를 사용했다면,
         {
             Invoke("WindowAnimAndDialog", 2f); //2초후 문 열리기 & AI 완료 대사를 실행한다.
-            gameData_SF.IsSmartFarmOpen_T_C2 = true; // 항상 팜 문이 열려있는 것이 True가 된다.
-            SaveSystem.Save(gameData_SF, "save_001");
+            GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2 = true; // 항상 팜 문이 열려있는 것이 True가 된다.
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         }
     }

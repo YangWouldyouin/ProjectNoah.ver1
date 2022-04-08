@@ -25,9 +25,6 @@ public class C_ControlWorkDoor : MonoBehaviour
     public GameObject dialogManager_CWD;
     DialogManager dialogManager;
 
-    GameData gameData_CWD = new GameData();
-
-
     private void Awake()
     {
         insertAreaButton_CWD.onClick.AddListener(CheckInsertTrueFor2Sec);
@@ -47,11 +44,7 @@ public class C_ControlWorkDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        GameData gameData_CWD = SaveSystem.Load("save_001");
-
-        if (gameData_CWD.IsAIAwake_M_C1)
+        if (GameManager.gameManager._gameData.IsAIAwake_M_C1)
         {
             if (cockpitDoorData_CWD.IsClicked)
             {
@@ -81,9 +74,9 @@ public class C_ControlWorkDoor : MonoBehaviour
 
                         stopMoving_CWD.transform.gameObject.SetActive(false); // 플레이어 다시 움직일 수 있도록 화면의 투명한 이미지 비활성화
                         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(4));
-                   
-                        gameData_CWD.IsCWDoorOpened_M_C1 = true;
-                        SaveSystem.Save(gameData_CWD, "save_001");
+
+                        GameManager.gameManager._gameData.IsCWDoorOpened_M_C1 = true;
+                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                         cockpitDoorData_CWD.IsInsert = false;
                     }

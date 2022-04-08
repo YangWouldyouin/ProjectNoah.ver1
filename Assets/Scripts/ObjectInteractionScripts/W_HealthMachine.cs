@@ -18,11 +18,8 @@ public class W_HealthMachine : MonoBehaviour
     private float heathMachineRepairTimer_HM = 0;
     public float heathMachineRepairHintTime_HM = 60f;
 
-
     public GameObject dialogManager_HM;
     DialogManager dialogManager;
-
-    GameData gameData_HM = new GameData();
 
     private void Awake()
     {
@@ -41,9 +38,8 @@ public class W_HealthMachine : MonoBehaviour
 
     void Update()
     {
-        GameData gameData_HM = SaveSystem.Load("save_001");
         // 1회성 임무인 "상태 체크 기계 고치기" 를 안했으면 
-        if (!gameData_HM.IsHealthMachineFixed_T_C2)
+        if (!GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2)
         {
             if (IsHealthMachineDone)
             {
@@ -93,8 +89,8 @@ public class W_HealthMachine : MonoBehaviour
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(7));
 
         // 생체기계 고치기 1회성 임무가 끝남 
-        gameData_HM.IsHealthMachineFixed_T_C2 = true;
-        SaveSystem.Save(gameData_HM, "save_001");
+        GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //GameManager.gameManager.IsHealthMachineFixedT_C2 = true;
     }
 }

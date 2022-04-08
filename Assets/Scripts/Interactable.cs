@@ -6,19 +6,18 @@ using UnityEngine.UI;
 public class Interactable : MonoBehaviour
 {
     [SerializeField] float distancePosition; // NPC 와의 약간의 distance
+
+    [HideInInspector]
     [SerializeField] Actions[] actionss; // NPC 와의 첫 번째 상호작용
 
-    public Button barkInterButton, sniffInterButton;
-    public GameObject biteInterButton;
+    //public Button barkInterButton, sniffInterButton;
+    //public GameObject biteInterButton;
 
     private Button currentCenterButton, currentPushOrPressButton;
 
-    public Button noCenterInterButton, eatInterButton, eatDisableInterButton, insertInterButton, upDownInterButton, observeInterButton, insertDisableInterButton, upDownDisableInterButton, observeDisableInterButton;
+    //public Button noCenterInterButton, eatInterButton, eatDisableInterButton, insertInterButton, upDownInterButton, observeInterButton, insertDisableInterButton, upDownDisableInterButton, observeDisableInterButton;
 
     private GameObject nowInteractObject;
-
-
-
 
     Outline outline; // 마우스 오버시 오브젝트 외곽선
     private void Start()
@@ -70,14 +69,12 @@ public class Interactable : MonoBehaviour
         // 2) 플레이어가 npc 위치로 도착하면 npc를 바라보게 각도를 바꿈 
         //player.SetDirection(transform.position);
 
-        
-
         /* 오브젝트 위에 상호작용 버튼을 띄움 */
 
         //기본 4가지 상호작용 버튼을 띄움
-        barkInterButton.transform.gameObject.SetActive(true);
-        sniffInterButton.transform.gameObject.SetActive(true);
-        biteInterButton.transform.gameObject.SetActive(true);
+        BaseCanvas._baseCanvas.barkButton.transform.gameObject.SetActive(true);
+        BaseCanvas._baseCanvas.sniffButton.transform.gameObject.SetActive(true);
+        BaseCanvas._baseCanvas.biteDestroyButton.transform.gameObject.SetActive(true);
 
         // 누르기 버튼의 경우 - 현재 상호작용 중인 오브젝트가 누르기(밀기)인지, 누르기인지 확인 후 그에 맞는 버튼을 띄움
         currentPushOrPressButton = PlayerScripts.playerscripts.ObjectpushOrpressbutton;
@@ -96,38 +93,38 @@ public class Interactable : MonoBehaviour
                     // 누를 수 없는 버튼을 띄운다.
                     if (nowInteractData.CenterPlusButton.name == "InsertButton")
                     {
-                        insertDisableInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.insertDisableButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterPlusButton.name == "UpDownButton")
                     {
-                        upDownDisableInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.upDownDisableButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterPlusButton.name == "ObserveButton")
                     {
-                        observeDisableInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterPlusButton.name == "EatButton")
                     {
-                        eatDisableInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.eatDisableButton.transform.gameObject.SetActive(true);
                     }
                 }
                 else // 바뀐 가운데 버튼이 활성화 상태이면 누를 수 있는 버튼을 띄운다. 
                 {
                     if (nowInteractData.CenterPlusButton.name == "InsertButton")
                     {
-                        insertInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.insertButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterPlusButton.name == "UpDownButton")
                     {
-                        upDownInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.upDownButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterPlusButton.name == "ObserveButton")
                     {
-                        observeInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.observeButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterPlusButton.name == "EatButton")
                     {
-                        eatInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.eatButton.transform.gameObject.SetActive(true);
                     }
 
                 }
@@ -139,19 +136,19 @@ public class Interactable : MonoBehaviour
                     // 누를 수 없는 버튼을 띄운다.
                     if(nowInteractData.CenterButton.name == "InsertButton")
                     {
-                        insertDisableInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.insertDisableButton.transform.gameObject.SetActive(true);
                     }
                     else if(nowInteractData.CenterButton.name == "UpDownButton")
                     {
-                        upDownDisableInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.upDownDisableButton.transform.gameObject.SetActive(true);
                     }
                     else if(nowInteractData.CenterButton.name == "ObserveButton")
                     {
-                        observeDisableInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterButton.name == "EatButton")
                     {
-                        eatDisableInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.eatDisableButton.transform.gameObject.SetActive(true);
                     }
 
                 }
@@ -159,23 +156,23 @@ public class Interactable : MonoBehaviour
                 {
                     if (nowInteractData.CenterButton.name == "InsertButton")
                     {
-                        insertInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.insertButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterButton.name == "UpDownButton")
                     {
-                        upDownInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.upDownButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterButton.name == "ObserveButton")
                     {
-                        observeInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.observeButton.transform.gameObject.SetActive(true);
                     }
                     else if (nowInteractData.CenterButton.name == "EatButton")
                     {
-                        eatInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.eatButton.transform.gameObject.SetActive(true);
                     }
                     else if(nowInteractData.CenterButton.name == "NoCenterButton")
                     {
-                        noCenterInterButton.transform.gameObject.SetActive(true);
+                        BaseCanvas._baseCanvas.noCenterButton.transform.gameObject.SetActive(true);
                     }
                 }
             }

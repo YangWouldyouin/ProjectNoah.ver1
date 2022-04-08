@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2480,20 +2480,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noahAnim: {fileID: 0}
-  barkButton: {fileID: 6855707438932681381}
-  pushButton: {fileID: 6855707438074342450}
-  pressButton: {fileID: 5964171522187391306}
-  sniffButton: {fileID: 6855707438327039935}
-  biteButton: {fileID: 6855707438561525009}
-  upDownButton: {fileID: 1183551823353776727}
-  insertButton: {fileID: 5474798685694694490}
-  noCenterButton: {fileID: 5935888767105174045}
-  observeButton: {fileID: 6855707438332471591}
-  insertDisableButton: {fileID: 1403770004184295563}
-  observeDisableButton: {fileID: 1819972190806278959}
-  upDownDisableButton: {fileID: 5456262333619189239}
-  eatButton: {fileID: 7098666978973914692}
-  eatDisableButton: {fileID: 4368355665860952303}
   noahPlayer: {fileID: 0}
   playerRigidbody: {fileID: 0}
   playerAgent: {fileID: 0}
@@ -4173,6 +4159,7 @@ GameObject:
   - component: {fileID: 6855707438144792632}
   - component: {fileID: 6855707438144792633}
   - component: {fileID: 6855707438144792634}
+  - component: {fileID: 1550029551}
   m_Layer: 5
   m_Name: BaseCanvas
   m_TagString: Untagged
@@ -4267,6 +4254,32 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1550029551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855707438144792635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7dc94794ad92b458c7647f62e378e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barkButton: {fileID: 6855707438932681381}
+  sniffButton: {fileID: 6855707438327039935}
+  biteDestroyButton: {fileID: 6855707438561525015}
+  pushButton: {fileID: 6855707438074342450}
+  pressButton: {fileID: 5964171522187391306}
+  noCenterButton: {fileID: 5935888767105174045}
+  upDownButton: {fileID: 1183551823353776727}
+  observeButton: {fileID: 6855707438332471591}
+  insertButton: {fileID: 5474798685694694490}
+  eatButton: {fileID: 7098666978973914692}
+  upDownDisableButton: {fileID: 5456262333619189239}
+  observeDisableButton: {fileID: 1819972190806278959}
+  insertDisableButton: {fileID: 1403770004184295563}
+  eatDisableButton: {fileID: 4368355665860952303}
 --- !u!1 &6855707438327039921
 GameObject:
   m_ObjectHideFlags: 0

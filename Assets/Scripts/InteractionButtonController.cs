@@ -12,9 +12,6 @@ public class InteractionButtonController : MonoBehaviour
     public static InteractionButtonController interactionButtonController { get; private set; }
 
     public Animator noahAnim; // 애니메이션 전환 위한 변수
- 
-    public Button barkButton, pushButton, pressButton, sniffButton, biteButton, 
-        upDownButton, insertButton, noCenterButton, observeButton, insertDisableButton, observeDisableButton, upDownDisableButton, eatButton, eatDisableButton;
 
     [SerializeField] GameObject noahPlayer;
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
@@ -29,31 +26,35 @@ public class InteractionButtonController : MonoBehaviour
     [HideInInspector]
     public GameObject noahPushOrPressObject, noahSniffObject, noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
 
-
-    /* 정리 필요한 변수들 */
+    /* 정리 필요한 변수들 */   
+    [HideInInspector]
     public GameObject noahPushObject;
     public static GameObject noahpushobject;
     public static bool ISPUSH = false;
+    [Header("정리 필요한 변수들")]
     public bool ispush = false;
     public static string pushObjectName;
-
     public TMPro.TextMeshProUGUI pushObjectText;
 
     void Awake()
     {
         interactionButtonController = this;
 
-        /* 각 상호작용 버튼에 함수를 추가한다. */
-        barkButton.onClick.AddListener(playerBark);
-        sniffButton.onClick.AddListener(playerSniff);
-        eatButton.onClick.AddListener(playerEat);
-        observeButton.onClick.AddListener(playerObserve);
-        upDownButton.onClick.AddListener(playerRising);
-        insertButton.onClick.AddListener(playerInserting);
-        pushButton.onClick.AddListener(playerPush);
-        pressButton.onClick.AddListener(playerPress);
+
     }
 
+    private void Start()
+    {
+        /* 각 상호작용 버튼에 함수를 추가한다. */
+        BaseCanvas._baseCanvas.barkButton.onClick.AddListener(playerBark);
+        BaseCanvas._baseCanvas.sniffButton.onClick.AddListener(playerSniff);
+        BaseCanvas._baseCanvas.eatButton.onClick.AddListener(playerEat);
+        BaseCanvas._baseCanvas.observeButton.onClick.AddListener(playerObserve);
+        BaseCanvas._baseCanvas.upDownButton.onClick.AddListener(playerRising);
+        BaseCanvas._baseCanvas.insertButton.onClick.AddListener(playerInserting);
+        BaseCanvas._baseCanvas.pushButton.onClick.AddListener(playerPush);
+        BaseCanvas._baseCanvas.pressButton.onClick.AddListener(playerPress);
+    }
 
     private void Update()
     {
@@ -75,19 +76,19 @@ public class InteractionButtonController : MonoBehaviour
     /* 5가지 상호작용 버튼 중 하나를 선택하고 나서 이 함수를 실행하면 상호작용 버튼이 꺼진다. */
     public void TurnOffInteractionButton()
     {
-        barkButton.transform.gameObject.SetActive(false);
-        pushButton.transform.gameObject.SetActive(false);
-        pressButton.transform.gameObject.SetActive(false);
-        noCenterButton.transform.gameObject.SetActive(false);
-        eatButton.transform.gameObject.SetActive(false);
-        upDownButton.transform.gameObject.SetActive(false);
-        insertButton.transform.gameObject.SetActive(false);
-        observeButton.transform.gameObject.SetActive(false);
-        sniffButton.transform.gameObject.SetActive(false);
-        biteButton.transform.gameObject.SetActive(false);
-        insertDisableButton.transform.gameObject.SetActive(false);
-        upDownDisableButton.transform.gameObject.SetActive(false);
-        observeDisableButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.barkButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.pushButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.pressButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.noCenterButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.eatButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.upDownButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.insertButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.observeButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.sniffButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.biteDestroyButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.insertDisableButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.upDownDisableButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(false);
 
     }
 

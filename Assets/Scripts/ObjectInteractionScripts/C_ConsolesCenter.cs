@@ -32,8 +32,6 @@ public class C_ConsolesCenter : MonoBehaviour
     public GameObject dialogManager_CC;
     DialogManager dialogManager;
 
-    GameData gameData_CC = new GameData();
-
     float timer_CC = 0;
 
     // Start is called before the first frame update
@@ -41,8 +39,7 @@ public class C_ConsolesCenter : MonoBehaviour
     {
         dialogManager = dialogManager_CC.GetComponent<DialogManager>();
 
-        GameData gameData_CC = SaveSystem.Load("save_001");
-        if (!gameData_CC.IsAIAwake_M_C1)
+        if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
         {
             // 플로우차트 처음 시작 때 넣고 싶은 연출들을 넣는다.  
             noahAnim_CC.SetBool("IsSleeping", true);
@@ -134,9 +131,8 @@ public class C_ConsolesCenter : MonoBehaviour
                         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
                         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
 
-                        
-                        gameData_CC.IsAIAwake_M_C1 = true;
-                        SaveSystem.Save(gameData_CC, "save_001");
+                        GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
+                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                         //GameManager.gameManager.IsAI_M_C1 = true; // 게임 세이브 분기점
                     }
 

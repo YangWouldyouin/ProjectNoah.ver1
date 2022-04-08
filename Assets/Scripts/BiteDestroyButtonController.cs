@@ -24,9 +24,11 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
     public Button biteDestroyButton; // PlayerScripts - MovePlayer 에서 버튼 이미지 BiteButtonImage 로 바꿈
     public Sprite biteButtonImage, biteButtonMouseOver, biteButtonClicked, destroyButtonMouseOver;
 
-    public GameObject noahBiteObject;
-    public GameObject noahDestroyObject;
+    
+    public GameObject noahBiteObject, noahDestroyObject;
     public GameObject myMouth;
+
+    [HideInInspector]
     public Vector3 biteObjectFallPosition, biteObjectFallRotation;
 
     public TMPro.TextMeshProUGUI biteObjectText;
