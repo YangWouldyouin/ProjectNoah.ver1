@@ -194,79 +194,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 54c45fb1b6164d64e8a021545e9ca5f5, type: 3}
   m_PrefabInstance: {fileID: 14468006}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &15847606
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 33.799
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542559592625264742, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5581144339895293020, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_Name
-      value: PlayerManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5581144339895293020, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5667099007574896633, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: IsAI_M_C1
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5667099007574896633, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5667099007574896633, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
-      propertyPath: IsCockpitDoorOpened_M_C1
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
 --- !u!4 &21703038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 407744, guid: 9d58753be3de52144b11334649da54a6, type: 3}
@@ -2428,6 +2355,7 @@ GameObject:
   - component: {fileID: 425090987}
   - component: {fileID: 425090986}
   - component: {fileID: 425090988}
+  - component: {fileID: 425090989}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -2475,6 +2403,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlWorkDoorAnim: {fileID: 2099261506}
   ChangeScene: {fileID: 367272305}
+--- !u!114 &425090989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425090985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0cc7324c12e5945a6177aad627a1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameData:
+    IsAIAwake_M_C1: 0
+    IsCWDoorOpened_M_C1: 0
+    IsHealthMachineFixed_T_C2: 0
+    IsSmartFarmOpen_T_C2: 0
+  IsTrashDoorFixed_L_L1: 0
+  IsFuelabsorberFixed_E_E1: 0
+  IsDisappearPack_M_C2: 0
+  IsOpenCabinetDoor_M_C2: 0
+  IsFindRubbe_M_C2: 0
+  IsEngineDoorFix_M_C2: 0
+  IsEngineRoomOpen_M_C2: 0
+  IsAIDogHealthReport: 0
+  IsSmartFarmMissionDone: 0
 --- !u!114 &427659780 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5456262333619189239, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
@@ -3692,7 +3646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5821126055207646715, guid: f5f946b75f8f81e4899794df28ef91b2, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5821126055207646715, guid: f5f946b75f8f81e4899794df28ef91b2, type: 3}
       propertyPath: m_AnchorMax.x

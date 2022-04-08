@@ -32,10 +32,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         gameManager = this;
+        _gameData = SaveSystem.Load("save_001");
     }
     private void Start()
     {
-        _gameData = SaveSystem.Load("save_001");
+        
 
     }
 }
