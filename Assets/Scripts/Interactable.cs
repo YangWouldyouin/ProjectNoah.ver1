@@ -109,10 +109,18 @@ public class Interactable : MonoBehaviour
                 }
                 else // 바뀐 가운데 버튼이 활성화 상태이면 누를 수 있는 버튼을 띄운다. 
                 {
-                    if (nowInteractData.CenterPlusButton.name == "InsertButton")
+                    if (player.insertFunc != null)
                     {
+                        insertInterButton.onClick.AddListener(player.insertFunc.InsertSomething);
                         insertInterButton.transform.gameObject.SetActive(true);
                     }
+
+                    //if (nowInteractData.CenterPlusButton.name == "InsertButton")
+                    //{
+                        
+
+
+                    //}
                     else if (nowInteractData.CenterPlusButton.name == "UpDownButton")
                     {
                         upDownInterButton.transform.gameObject.SetActive(true);
@@ -147,7 +155,11 @@ public class Interactable : MonoBehaviour
                 {
                     if (nowInteractData.CenterButton.name == "InsertButton")
                     {
-                        insertInterButton.transform.gameObject.SetActive(true);
+                        if (player.insertFunc != null)
+                        {
+                            insertInterButton.onClick.AddListener(player.insertFunc.InsertSomething);
+                            insertInterButton.transform.gameObject.SetActive(true);
+                        }
                     }
                     else if (nowInteractData.CenterButton.name == "UpDownButton")
                     {

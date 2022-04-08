@@ -27,7 +27,7 @@ public class C_ControlWorkDoor : MonoBehaviour
 
     GameData gameData_CWD = new GameData();
 
-    public delegate void PrintDialogHandler(int a);
+    public delegate void PrintDialogHandler();
     public event PrintDialogHandler Printed;
 
 
@@ -47,22 +47,47 @@ public class C_ControlWorkDoor : MonoBehaviour
         cockpitDoorData_CWD = cockpitDoor_CWD.GetComponent<ObjData>();
 
         cockpitDoorOutine_CWD = cockpitDoor_CWD.GetComponent<Outline>();
+
+        Printed += PrintControlDoorDialog;
+    }
+    
+    public void PrintControlDoorDialog()
+    {
+        Debug.Log("print4");
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
     }
 
-    public void Printdialog()
+
+    void Printdialog()
     {
+        Debug.Log("print1");
         if (cockpitDoorData_CWD.IsClicked)
         {
-            Printed.Invoke(3);
-            //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
+            Debug.Log("print2");
+            if(Printed!=null)
+            {
+                Debug.Log("print3");
+                Printed.Invoke();
+            }
+        }
+    }
+
+    void DeleteDialog()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Printed -= PrintControlDoorDialog;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Printdialog();
+        ///DeleteDialog();
 
 
+        GameData gameData_CWD = GameManager.gameManager.gameData_CC;
         GameData gameData_CWD = SaveSystem.Load("save_001");
 
         if (gameData_CWD.IsAIAwake_M_C1)

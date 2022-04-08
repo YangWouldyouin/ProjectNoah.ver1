@@ -30,11 +30,12 @@ public class GameManager : MonoBehaviour
     public static int Hp = 100;
     public bool isBark = false;
 
-
+    public GameData gameData_CC;
 
     private void Awake()
     {
         gameManager = this;
+        gameData_CC = new GameData();
     }
 
 

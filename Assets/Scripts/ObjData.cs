@@ -40,6 +40,7 @@ public class ObjData : MonoBehaviour
     public bool IsCenterButtonDisabled = false; // true면 첫 번째 가운데 버튼 비활성화
     public bool IsCenterPlusButtonDisabled = false; // true면 두 번째 가운데 버튼 비활성화
     public bool IsNotInteractable = false;
+    
     [Header("상호작용 시 바뀌는 데이터 목록 (평소에 건드리지 x)")]
     public bool IsBark = false;
     public bool IsPushOrPress = false;

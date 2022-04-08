@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Insert_Pipe : MonoBehaviour
+public class Insert_Pipe : MonoBehaviour, IInsertController
 {
-    public Button insertPipeButton;
+
+    //public Button insertPipeButton;
 
     [HideInInspector]
     public GameObject noahInsertObject;
@@ -13,21 +14,7 @@ public class Insert_Pipe : MonoBehaviour
     public GameObject noahInsertModel;
     public Animator noahPipeAnim;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    /* ³¢¿ì±â */
-    void playerInserting()
+    public void InsertSomething()
     {
         noahInsertObject = PlayerScripts.playerscripts.currentObject;
         if (noahInsertObject != null)
@@ -41,6 +28,8 @@ public class Insert_Pipe : MonoBehaviour
             //Invoke("ChangeInsertFalse", 2f);
         }
     }
+
+    /* ³¢¿ì±â */
 
     void ChangeInsertTrue()
     {

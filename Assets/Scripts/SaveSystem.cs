@@ -5,6 +5,7 @@ using System.IO;
 
 public static class SaveSystem
 {
+	// 저장 위치 : C:\Users\hr\AppData\LocalLow\DefaultCompany\projectNoah\saves (사용자디렉토리/AppData/LocalLow/회사이름/프로덕트이름), 파일 이름 : save_001.json
 	private static string SavePath => Application.persistentDataPath + "/saves/";
 
 	public static void Save(GameData saveData, string saveFileName)
