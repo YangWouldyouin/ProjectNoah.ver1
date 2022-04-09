@@ -29,10 +29,19 @@ public class GameManager : MonoBehaviour
     public bool IsAIDogHealthReport = false; // 상태 체크 업무
     public bool IsSmartFarmMissionDone = false; // 스마트팜 업무
 
+
     private void Awake()
     {
         gameManager = this;
         _gameData = SaveSystem.Load("save_001");
+
+        if (_gameData == null)
+        {
+            GameData gameData = new GameData();
+            SaveSystem.Save(gameData, "save_001");
+
+            _gameData = gameData;
+        }
     }
 }
 
