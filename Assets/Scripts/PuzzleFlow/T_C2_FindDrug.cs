@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class T_C2_FindDrug : MonoBehaviour
 {
-    private GameObject nowObject_T_C2_FindDrug;
+    //private GameObject nowObject_T_C2_FindDrug;
 
     public GameObject canSmellSpace;
     public float smellRange; //냄새맡을 확률
@@ -39,11 +39,17 @@ public class T_C2_FindDrug : MonoBehaviour
 
     public bool canFollowDrug = false;
 
+
+    public GameObject dialogManager_FD;
+    DialogManager dialogManager;
+
     //public Transform Target;
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        dialogManager = dialogManager_FD.GetComponent<DialogManager>();
+
         //아웃라인
         drugBagOutline = drugBag.GetComponent<Outline>();
         drugCheckerInsert01Outline = drugCheckerInsert01.GetComponent<Outline>();
@@ -58,17 +64,21 @@ public class T_C2_FindDrug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        nowObject_T_C2_FindDrug = PlayerScripts.playerscripts.currentObject;
-
-        if (nowObject_T_C2_FindDrug != null)
+        if (!GameManager.gameManager._gameData.IsFindDrugDone_T_C2)
         {
             if (IsCheckDrug)
             {
-                Invoke("detoxDrug", 0f);
+                detoxDrug();
 
                 if (IsDetox)
                 {
                     Invoke("noSpecificDrug", 0.5f);
+
+                    GameManager.gameManager._gameData.IsFindDrugDone_T_C2 = true;
+                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+                    drugCheckerWhole.GetComponent<Interactable>().enabled = false;
+                    drugCheckerWholeOutline.OutlineWidth = 0;
                 }
             }
 
@@ -171,17 +181,20 @@ public class T_C2_FindDrug : MonoBehaviour
             CancelInvoke("followDrug");
         }
 
-        if (drugBagData.IsDestroy) //마약 발견 및 물기
+        if (drugBagData.IsBite && drugBagData.IsDestroy) //마약 발견 및 물기
         {
             drugData.GetComponent<Rigidbody>().isKinematic = true;
             drugData.transform.parent = null;
 
             Invoke("noBag", 1.5f);
-            Invoke("cantSmell", 0f);
-
-            CancelInvoke("followDrug");
 
             //drugData.IsBite = false;
+        }
+
+        if (drugBagData.IsDestroy)
+        {
+            Invoke("cantSmell", 0f);
+            CancelInvoke("followDrug");
         }
 
         if (drugCheckerWholeData.IsObserve) //검사기 비활성화(관찰하기 두 번 하는거 방지)
@@ -210,6 +223,8 @@ public class T_C2_FindDrug : MonoBehaviour
 
             drugCheckerInsert01Can.enabled = true;
             drugCheckerInsert01Outline.OutlineWidth = 8;
+
+            //Invoke("noDrug", 0f);
         }
 
         if (drugData.IsBite && drugCheckerInsert01Data.IsPushOrPress) //마약 체크
@@ -286,6 +301,7 @@ public class T_C2_FindDrug : MonoBehaviour
             //Debug.Log("마약 해독 완료~!");
         }
 
+
     }
     
     void cantSmell() //냄새맡기 구역 비활성화
@@ -311,6 +327,8 @@ public class T_C2_FindDrug : MonoBehaviour
     void noDrug() //마약 사라지게 하기
     {
         ObjData drugData = drug.GetComponent<ObjData>();
+        Interactable drugCan = drug.GetComponent<Interactable>();
+
         Interactable drugCheckerInsert01Can = drugCheckerInsert01.GetComponent<Interactable>();
 
         drugData.IsBite = false;
@@ -318,18 +336,24 @@ public class T_C2_FindDrug : MonoBehaviour
         drugData.GetComponent<Rigidbody>().isKinematic = false;
         drugData.transform.parent = null;
 
-        drugData.transform.position = new Vector3(-249.0776f, 538.895f, 669.806f);
-        drugData.transform.rotation = Quaternion.Euler(0, 0, 90);
+        drug.transform.position = new Vector3(-249.0776f, 538.895f, 669.806f);
+        drug.transform.rotation = Quaternion.Euler(0, 0, 90);
+        drug.transform.localScale = new Vector3(1f, 1f, 1f);
 
-        drugData.GetComponent<Interactable>().enabled = false;
+        drugCan.GetComponent<Interactable>().enabled = false;
 
         drugCheckerInsert01Can.enabled = false;
         drugCheckerInsert01Outline.OutlineWidth = 0;
+
+        drugCan.GetComponent<Interactable>().enabled = false;
+        drug.GetComponent<Outline>().OutlineWidth = 0;
     }
 
     void noSpecificDrug() //특정 약물 사라지게 하기
     {
-        ObjData specificDrugData = drug.GetComponent<ObjData>();
+        ObjData specificDrugData = specificDrug.GetComponent<ObjData>();
+        Interactable specificDrugCan = specificDrug.GetComponent<Interactable>();
+
         Interactable drugCheckerInsert02Can = drugCheckerInsert01.GetComponent<Interactable>();
 
         specificDrugData.IsBite = false;
@@ -337,10 +361,11 @@ public class T_C2_FindDrug : MonoBehaviour
         specificDrugData.GetComponent<Rigidbody>().isKinematic = false;
         specificDrugData.transform.parent = null;
 
-        specificDrugData.transform.position = new Vector3(-249.0776f, 538.575f, 669.806f);
-        specificDrugData.transform.rotation = Quaternion.Euler(0, 0, 90);
+        specificDrug.transform.position = new Vector3(-249.0776f, 538.575f, 669.806f);
+        specificDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
 
-        specificDrugData.GetComponent<Interactable>().enabled = false;
+        specificDrugCan.GetComponent<Interactable>().enabled = false;
+        specificDrug.GetComponent<Outline>().OutlineWidth = 0f;
 
         drugCheckerInsert02Can.enabled = false;
         drugCheckerInsert02Outline.OutlineWidth = 0;
@@ -352,7 +377,7 @@ public class T_C2_FindDrug : MonoBehaviour
 
         canSmellSpaceData.IsNotInteractable = true;
 
-        Vector3 dir = drugPos.transform.position - player.transform.position;
+        Vector3 dir = drug.transform.position - player.transform.position;
         player.transform.rotation = Quaternion.Lerp(player.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * speed);
     }
 
