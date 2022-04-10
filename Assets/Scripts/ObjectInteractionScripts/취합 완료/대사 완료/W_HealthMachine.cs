@@ -28,14 +28,22 @@ public class W_HealthMachine : MonoBehaviour
         healthMachineFixPartData_HM = healthMachineFixPart_HM.GetComponent<ObjData>();
 
         healthMachineFixPartOutline_HM = healthMachineFixPart_HM.GetComponent<Outline>();
+
+
         //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5)); //AI: 상태 체크 기계 연결이 되어 있지 않았다 스크립트 
     }
 
     void Update()
     {
+
         // 1회성 임무인 "상태 체크 기계 고치기" 를 안했으면 
         if (!GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2)
         {
+            if (healthMachineData_HM.IsClicked)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5)); //AI: 상태 체크 기계 연결이 되어 있지 않았다 스크립트
+            }
+
             if (IsHealthMachineDone)
             {
                 Invoke("HealthMachineOpen", 1f);
@@ -86,7 +94,6 @@ public class W_HealthMachine : MonoBehaviour
         // 생체기계 고치기 1회성 임무가 끝남 
         GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        //GameManager.gameManager.IsHealthMachineFixedT_C2 = true;
     }
 }
 

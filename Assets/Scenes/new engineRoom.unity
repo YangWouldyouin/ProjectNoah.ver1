@@ -1921,8 +1921,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentView: {fileID: 0}
   noah: {fileID: 458128230}
-  ui: {fileID: 2138740810}
+  ui: {fileID: 1373624284}
   nameTag: {fileID: 2049634134}
+  noahStat: {fileID: 1373624285}
 --- !u!1 &299266459
 GameObject:
   m_ObjectHideFlags: 0
@@ -3661,13 +3662,24 @@ MonoBehaviour:
     IsCWDoorOpened_M_C1: 0
     IsHealthMachineFixed_T_C2: 0
     IsSmartFarmOpen_T_C2: 0
+    IsFindDrugDone_T_C2: 0
+    IsSmoke_T_C3: 0
+    IsFuelabsorberFixed_E_E1: 0
   IsTrashDoorFixed_L_L1: 0
-  IsFuelabsorberFixed_E_E1: 0
   IsDisappearPack_M_C2: 0
   IsOpenCabinetDoor_M_C2: 0
   IsFindRubbe_M_C2: 0
   IsEngineDoorFix_M_C2: 0
   IsEngineRoomOpen_M_C2: 0
+  IsCanMeteorGet: 0
+  IsSmellDone: 0
+  IsCollectMeteor: 0
+  InputNormalMeteor1: 0
+  InputNormalMeteor2: 0
+  InputNormalMeteor3: 0
+  InputNormalMeteor4: 0
+  InputImportantMeteor1: 0
+  IsyesImportantMeteor: 0
   IsAIDogHealthReport: 0
   IsSmartFarmMissionDone: 0
 --- !u!114 &648408311
@@ -7317,6 +7329,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f679cea58c96143a63b73fc85638be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1373624284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1332645152, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 1373624278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1373624285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5647147047073612754, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 1373624278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1373624286 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9008733174439686969, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
@@ -7957,6 +7979,7 @@ MonoBehaviour:
   noah: {fileID: 0}
   ui: {fileID: 0}
   nameTag: {fileID: 0}
+  noahStat: {fileID: 0}
 --- !u!114 &1557434351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10561,11 +10584,6 @@ MonoBehaviour:
   IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
---- !u!1 &2138740810 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4689875895068600051, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-  m_PrefabInstance: {fileID: 1373624278}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2141721753
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class E_Fuelabsorber : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!GameManager.gameManager.IsFuelabsorberFixed_E_E1)
+        if (!GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1)
         {
             // 플로우차트 처음 시작 때 넣고 싶은 연출들을 넣는다.  
         }
@@ -55,6 +55,7 @@ public class E_Fuelabsorber : MonoBehaviour
         fuelabsorberfixPart_FA.SetActive(false);
         fuelabsorberBody_FA.SetActive(false);
 
-        GameManager.gameManager.IsFuelabsorberFixed_E_E1 = true;
+        GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 }

@@ -1316,8 +1316,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentView: {fileID: 0}
   noah: {fileID: 1274018151}
-  ui: {fileID: 1063437322}
+  ui: {fileID: 2094636722}
   nameTag: {fileID: 2094636716}
+  noahStat: {fileID: 1063437322}
 --- !u!114 &303822636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2184,7 +2185,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 327000816}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 23.13, y: 90, z: 0}
 --- !u!1001 &608341156
 PrefabInstance:
@@ -2666,11 +2667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &698224720 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6392909006923800107, guid: fcd9e2ad80271b74ca82977ce85d796c, type: 3}
-  m_PrefabInstance: {fileID: 6076740532088509940}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &761809573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1073283299, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
@@ -9176,13 +9172,22 @@ MonoBehaviour:
     IsSmartFarmOpen_T_C2: 0
     IsFindDrugDone_T_C2: 0
     IsSmoke_T_C3: 0
+    IsFuelabsorberFixed_E_E1: 0
   IsTrashDoorFixed_L_L1: 0
-  IsFuelabsorberFixed_E_E1: 0
   IsDisappearPack_M_C2: 0
   IsOpenCabinetDoor_M_C2: 0
   IsFindRubbe_M_C2: 0
   IsEngineDoorFix_M_C2: 0
   IsEngineRoomOpen_M_C2: 0
+  IsCanMeteorGet: 0
+  IsSmellDone: 0
+  IsCollectMeteor: 0
+  InputNormalMeteor1: 0
+  InputNormalMeteor2: 0
+  InputNormalMeteor3: 0
+  InputNormalMeteor4: 0
+  InputImportantMeteor1: 0
+  IsyesImportantMeteor: 0
   IsAIDogHealthReport: 0
   IsSmartFarmMissionDone: 0
 --- !u!1 &1241510026 stripped
@@ -10476,7 +10481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPack_M_C2: {fileID: 111138066}
   EngineKey_M_C2: {fileID: 1314934949}
-  UpTable1_M_C2: {fileID: 698224720}
+  UpTable1_M_C2: {fileID: 0}
   UpBox_M_C2: {fileID: 1902461916}
 --- !u!4 &1599558589
 Transform:
@@ -12015,6 +12020,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2094636722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1332645152, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 2094636715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2110473968 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6076740531026520946, guid: fcd9e2ad80271b74ca82977ce85d796c, type: 3}

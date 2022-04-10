@@ -16,6 +16,7 @@ public class GameData
     public bool IsSmoke_T_C3; //소화기(일회용) 사용 시 연기 발생
 
 
+    public bool IsFuelabsorberFixed_E_E1; //엔진실 고치기 임무, 해금해야 연료 돌발 임무 수행 가능
 
     //    //엔진실 카드키가 들어있는 카드팩이 파괴
     //    public bool IsDisappearPack_M_C2;
