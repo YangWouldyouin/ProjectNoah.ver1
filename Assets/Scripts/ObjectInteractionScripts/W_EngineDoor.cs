@@ -110,16 +110,18 @@ public class W_EngineDoor : MonoBehaviour
             CameraController.cameraController.currentView = cabinetFirstFloorData_WED.ObserveView;
             rubberData_WED.IsNotInteractable = false;
             rubbeOutline_WED.OutlineWidth = 8;
+
+            // 고무를 물면 고무를 찾은걸로 판단한다. 
+            if (rubberData_WED.IsBite)
+            {
+                cabinetFirstFloorData_WED.IsObserve = false;
+                CameraController.cameraController.CancelObserve();
+                GameManager.gameManager.IsFindRubbe_M_C2 = true;
+            }
         }
 
 
-        // 고무를 물면 고무를 찾은걸로 판단한다. 
-        if (rubberData_WED.IsBite)
-        {
-            cabinetFirstFloorData_WED.IsObserve = false;
-            CameraController.cameraController.CancelObserve();
-            GameManager.gameManager.IsFindRubbe_M_C2 = true;
-        }
+
 
 
 
@@ -132,7 +134,7 @@ public class W_EngineDoor : MonoBehaviour
 
 
         //고무를 물고 전도체를 물고 망가진 곳에 끼우기를 하면
-        if (rubberData_WED.IsBite && conductionData_WED.IsBite && brokenPartData_WED.IsInsert)
+        if (rubberData_WED.IsBite && conductionData_WED.IsBite && brokenPartData_WED.IsPushOrPress)
         {
             // 끼우기 성공
             // 부모 자식 관계를 해제한다.
@@ -154,7 +156,7 @@ public class W_EngineDoor : MonoBehaviour
         }
 
         // 전도체를 그냥 물고 망가진 곳에 끼우면 
-        else if (conductionData_WED.IsBite && brokenPartData_WED.IsInsert)
+        else if (conductionData_WED.IsBite && brokenPartData_WED.IsPushOrPress)
         {
             // 노아 감전 엔딩
             Debug.Log("감전엔딩 출력");
