@@ -30,6 +30,7 @@ public class T_C1_FindingPlanets : MonoBehaviour
     ObjData confirmButtonData_PR;
 
     // Outline 변수
+    Outline planetRaderOutline_PR;
     Outline leftButtonOutline_PR;
     Outline rightButtonOutline_PR;
     Outline confirmButtonOutline_PR;
@@ -54,9 +55,10 @@ public class T_C1_FindingPlanets : MonoBehaviour
         rightButtonData_PR = rightButton_PR.GetComponent<ObjData>();
         confirmButtonData_PR = confirmButton_PR.GetComponent<ObjData>();
 
-        leftButtonOutline_PR.OutlineWidth = 0;
-        rightButtonOutline_PR.OutlineWidth = 0;
-        confirmButtonOutline_PR.OutlineWidth = 0;
+        leftButtonOutline_PR = leftButton_PR.GetComponent<Outline>();
+        rightButtonOutline_PR = rightButton_PR.GetComponent<Outline>();
+        confirmButtonOutline_PR = confirmButton_PR.GetComponent<Outline>();
+        planetRaderOutline_PR = planetRader_PR.GetComponent<Outline>();
 
         PlanetExplorationTimeStart_PR = false;
     }
@@ -78,16 +80,19 @@ public class T_C1_FindingPlanets : MonoBehaviour
                 {
                     normalPlanet_PR[i].transform.gameObject.SetActive(true);
                 }
-
-                // 피지컬 버튼 3개 활성화
-                leftButtonOutline_PR.OutlineWidth = 8;
-                rightButtonOutline_PR.OutlineWidth = 8;
-                confirmButtonOutline_PR.OutlineWidth = 8;
-
-                leftButtonData_PR.IsNotInteractable = false;
-                rightButtonData_PR.IsNotInteractable = false;
-                confirmButtonData_PR.IsNotInteractable = false;
             }
+            // 피지컬 버튼 3개 활성화
+            leftButtonOutline_PR.OutlineWidth = 8;
+            rightButtonOutline_PR.OutlineWidth = 8;
+            confirmButtonOutline_PR.OutlineWidth = 8;
+
+            leftButtonData_PR.IsNotInteractable = false;
+            rightButtonData_PR.IsNotInteractable = false;
+            confirmButtonData_PR.IsNotInteractable = false;
+
+            // 행성 레이더 기계 비활성화
+            planetRaderOutline_PR.OutlineWidth = 0;
+            planetRaderData_PR.IsNotInteractable = true;
 
             if (leftButtonData_PR.IsPushOrPress)
             {
@@ -97,8 +102,6 @@ public class T_C1_FindingPlanets : MonoBehaviour
             {
                 raderLine_PR.transform.rotation = Quaternion.Euler(0, 0, -5); // 행성 레이더 선 오른쪽으로 이동
             }
-
-
         }
 
         //    // 행성 - 레이더 간 거리 계산하기
@@ -165,6 +168,10 @@ public class T_C1_FindingPlanets : MonoBehaviour
             leftButtonData_PR.IsNotInteractable = true;
             rightButtonData_PR.IsNotInteractable = true;
             confirmButtonData_PR.IsNotInteractable = true;
+
+            // 행성 레이더 기계 활성화
+            planetRaderOutline_PR.OutlineWidth = 8;
+            planetRaderData_PR.IsNotInteractable = false;
         }
     }
 }
