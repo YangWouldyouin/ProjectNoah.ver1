@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] GameObject noah;
 
-    public GameObject ui, nameTag;
+    public GameObject ui, nameTag, noahStat;
 
     private GameObject currentObserveObject;
 
@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour
         //aiPanel.SetActive(false);
         ui.SetActive(false);
         nameTag.SetActive(false);
-
+        noahStat.SetActive(false);
         ChangeView(currentView);
 
     }
@@ -67,6 +67,7 @@ public class CameraController : MonoBehaviour
         //aiPanel.SetActive(true);
         ui.SetActive(true);
         nameTag.SetActive(true);
+        noahStat.SetActive(true);
         noah.transform.gameObject.SetActive(true);
 
         if (cameraFollow != null)
