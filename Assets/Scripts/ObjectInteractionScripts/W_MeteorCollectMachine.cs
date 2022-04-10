@@ -43,8 +43,8 @@ public class W_MeteorCollectMachine : MonoBehaviour
     public Animator meteorBoxAnim_WED;
     public Animator analyticalMachineAnim_WED;
 
-    private int count = 0;
-    private int count1 = 0;
+    //private int count = 0;
+    //private int count1 = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -116,7 +116,7 @@ public class W_MeteorCollectMachine : MonoBehaviour
                 {
                     //Invoke("meteorBoxClose", 10f);
 
-                    StartCoroutine(meteorBoxClose(0f, 10f));
+                    StartCoroutine(meteorBoxClose(0f, 30f));
                 }
             }
         }
@@ -170,7 +170,7 @@ public class W_MeteorCollectMachine : MonoBehaviour
             GameManager.gameManager.IsCanMeteorGet = true;
 
 
-            StartCoroutine(meteorBoxClose(2f, 0f));
+            StartCoroutine(meteorBoxClose(0f, 30f));
 
           //  Invoke("meteorBoxClose", 2f);
 /*            if (count >= 2)
@@ -208,12 +208,12 @@ public class W_MeteorCollectMachine : MonoBehaviour
         //분석기 버튼을 누르면
         if (analyticalMachineButtonData_MCM.IsPushOrPress)
         {
-            Invoke("analyticalMachineOpen", 1f); //문 열리는 애니메이션
+            StartCoroutine(analyticalMachineClose(2f,0f));
 
-/*            if (count1 >= 3)
-            {
-                CancelInvoke("analyticalMachineOpen");
-            }*/
+            /*            if (count1 >= 3)
+                        {
+                            CancelInvoke("analyticalMachineOpen");
+                        }*/
 
             analyticalMachineData_MCM.IsNotInteractable = false; // 상호작용 가능하게
             analyticalMachineOutline_MCM.OutlineWidth = 8;
@@ -266,12 +266,12 @@ public class W_MeteorCollectMachine : MonoBehaviour
 
                         Invoke("analyticalMachineView", 1f);
 
-                        Invoke("analyticalMachineClose", 2f);// 닫히는 애니메이션
+                        StartCoroutine(analyticalMachineOpen());// 닫히는 애니메이션
 
-/*                        if (count1 >= 3)
-                        {
-                            CancelInvoke("analyticalMachineClose");
-                        }*/
+                        /*                        if (count1 >= 3)
+                                                {
+                                                    CancelInvoke("analyticalMachineClose");
+                                                }*/
 
                         GameManager.gameManager.InputNormalMeteor1 = true;
 
@@ -308,10 +308,10 @@ public class W_MeteorCollectMachine : MonoBehaviour
                         Invoke("analyticalMachineView", 1f);
 
                         // 어떤 운석을 임무에 사용할지가 확실하지 않아서 횟수 못맞수도 있겠다.
-                        if (count1 >= 4)
+/*                        if (count1 >= 4)
                         {
                             CancelInvoke("analyticalMachineClose");
-                        }
+                        }*/
 
                         // 닫히는 애니메이션
                         Invoke("analyticalMachineClose", 2f);
@@ -429,24 +429,52 @@ public class W_MeteorCollectMachine : MonoBehaviour
 
     }
 
-    void analyticalMachineOpen()
+    IEnumerator analyticalMachineOpen()
     {
+        yield return new WaitForSeconds(1f);
+
         analyticalMachineAnim_WED.SetBool("isAnalyticalMachineOpen", true);
         analyticalMachineAnim_WED.SetBool("isAnalyticalMachineOpenEnd", true);
         analyticalMachineAnim_WED.SetBool("isAnalyticalMachineClose", false);
         analyticalMachineAnim_WED.SetBool("isAnalyticalMachineCloseEnd", false);
 
-        count1 += 1;
+        //count1 += 1;
     }
 
-    void analyticalMachineClose()
+    IEnumerator analyticalMachineClose(float delay2, float CloseTimeCheck2)
     {
+        yield return new WaitForSeconds(delay2);
+
+
+        bool isAnalyticalTimeOver = false;
+        float closeTime2 = 0f;
+
+        while (isAnalyticalTimeOver == false)
+        {
+            yield return null;
+
+            closeTime2 += Time.deltaTime;
+
+            //현재 시간이>=제한 걸어둔 시간보다 크거나 같으면
+            //isTimeOver = true;가 되어 이 (isTimeOver == false)에서 나가겠다.
+            if (closeTime2 >= CloseTimeCheck2)
+            {
+                isAnalyticalTimeOver = true;
+            }
+
+            //혹은 운석을 물었다면 이 (isTimeOver == false)에서 나가겠다
+            if (normalMeteor1Data_MCM.IsBite)
+            {
+                isAnalyticalTimeOver = true;
+            }
+        }
+
         analyticalMachineAnim_WED.SetBool("isAnalyticalMachineClose", true);
         analyticalMachineAnim_WED.SetBool("isAnalyticalMachineCloseEnd", true);
         analyticalMachineAnim_WED.SetBool("isAnalyticalMachineOpen", false);
         analyticalMachineAnim_WED.SetBool("isAnalyticalMachineOpenEnd", false);
 
-        count1 += 1;
+        //count1 += 1;
     }
 
     void analyticalMachineView()
@@ -459,6 +487,6 @@ public class W_MeteorCollectMachine : MonoBehaviour
     private void Reset()
     {
         Debug.Log("count를 리셋했어요!");
-        count = 1;
+        //count = 1;
     }
 }
