@@ -48,7 +48,7 @@ public class C_PlanetRader : MonoBehaviour
 
     private float PlanetInfoTime_PR = 3.0f; // 행성 정보 팝업 시간
 
-
+    Vector3 recentAngle;
     void Start()
     {
         planetRaderData_PR = planetRader_PR.GetComponent<ObjData>();
@@ -95,64 +95,65 @@ public class C_PlanetRader : MonoBehaviour
             planetRaderOutline_PR.OutlineWidth = 0;
             planetRaderData_PR.IsNotInteractable = true;
 
+
+
+
             if (leftButtonData_PR.IsPushOrPress)
             {
-                raderLine_PR.transform.rotation = Quaternion.Euler(0, 0, 5); // 행성 레이더 선 왼쪽으로 이동
+
+                StartCoroutine("TurnRader");
             }
+
             if (rightButtonData_PR.IsPushOrPress)
             {
-                raderLine_PR.transform.rotation = Quaternion.Euler(0, 0, -5); // 행성 레이더 선 오른쪽으로 이동
+                raderLine_PR.transform.rotation = Quaternion.Euler(0, 0, 5); // 행성 레이더 선 오른쪽으로 이동
+            }
+            //    // 행성 - 레이더 간 거리 계산하기
+            //    PlanetDistance_PR = Vector3.Distance(RaderLine_PR.transform.position, Planet_1_PR.transform.position);
+
+            //    ConfirmButtonData_PR.GetComponent<MeshRenderer>().material.color = Color.red;
+
+            //    if (PlanetDistance_PR <= 1.0f) // 행성 레이더와 행성 1 간 거리가 1 미만일 때,
+            //    {
+            //        // 밑의 코드 말고 NomalPlanet이 SelectPlanet 오브젝트로 변경되기
+            //        //ConfirmButtonData_PR.GetComponent<MeshRenderer>().material.color = Color.green; // 빨간색으로 변환
+            //    }
+
+
+
+            if (confirmButtonData_PR.IsPushOrPress) // 확인 버튼 눌렀을 때
+            {
+                // 기계 상호작용 비활성화 -> 투명 이미지 띄우기
+
+                if (FakePlanet_PR) // 행성이 거짓 행성 일 때
+                {
+                    // 계속 거짓 행성으로 주행함
+                }
+                else // 행성이 진짜 행성 일 때
+                {
+                    PlanetExplorationTimeStart_PR = true; // 타이머 스타트 시작
+
+                    if (PlanetExplorationTime_PR <= 0) // 시간이 0이 됐을 때
+                    {
+                        // AI가 행성 도착 + 분석 완료를 알림
+
+                        //if (PlanetRaderData_PR.IsObserve) // 행성 감지 레이더 관찰 시
+                        //{
+                        //    PlanetInfo_PR.SetActive(true); // 행성 정보 이미지 띄우기
+                        //    if (PlanetInfoTime_PR <= 0)
+                        //    {
+                        //        PlanetReportButton_PR.SetActive(true);
+                        //        if (ExitButtonData_PR.IsClicked)
+                        //        {
+                        //            // 행성 감지 레이더 페이지에서 나가기
+                        //        }
+                        //    }
+                        //}
+                    }
+                }
             }
         }
-
-        //    // 행성 - 레이더 간 거리 계산하기
-        //    PlanetDistance_PR = Vector3.Distance(RaderLine_PR.transform.position, Planet_1_PR.transform.position);
-
-        //    ConfirmButtonData_PR.GetComponent<MeshRenderer>().material.color = Color.red;
-
-        //    if (PlanetDistance_PR <= 1.0f) // 행성 레이더와 행성 1 간 거리가 1 미만일 때,
-        //    {
-        //        // 밑의 코드 말고 NomalPlanet이 SelectPlanet 오브젝트로 변경되기
-        //        //ConfirmButtonData_PR.GetComponent<MeshRenderer>().material.color = Color.green; // 빨간색으로 변환
-        //    }
-
-
-
-        //    if (ConfirmButtonData_PR.IsPushOrPress) // 확인 버튼 눌렀을 때
-        //    {
-        //        // 기계 상호작용 비활성화
-        //        if (FakePlanet_PR == true) // 행성이 거짓 행성 일 때
-        //        {
-        //            // 계속 거짓 행성으로 주행함
-        //        }
-
-        //        else // 행성이 진짜 행성 일 때
-        //        {
-        //            PlanetExplorationTimeStart_PR = true; // 타이머 스타트 시작
-        //            if (PlanetExplorationTime_PR <= 0) // 시간이 0이 됐을 때
-        //            {
-        //                // AI가 행성 도착 + 분석 완료를 알림
-
-        //                //if (PlanetRaderData_PR.IsObserve) // 행성 감지 레이더 관찰 시
-        //                //{
-        //                //    PlanetInfo_PR.SetActive(true); // 행성 정보 이미지 띄우기
-        //                //    if (PlanetInfoTime_PR <= 0)
-        //                //    {
-        //                //        PlanetReportButton_PR.SetActive(true);
-        //                //        if (ExitButtonData_PR.IsClicked)
-        //                //        {
-        //                //            // 행성 감지 레이더 페이지에서 나가기
-        //                //        }
-        //                //    }
-        //                //}
-        //            }
-        //        }
-        //    }
-        //}
-
-
-        // 관찰하기 해제 시 모든 UI 비활성화
-        else
+        else // 관찰하기 해제 시 모든 UI 비활성화
         {
             // 타이머 초기화
             timer_PR = 0;
@@ -163,6 +164,8 @@ public class C_PlanetRader : MonoBehaviour
             {
                 normalPlanet_PR[i].transform.gameObject.SetActive(false);
             }
+
+            // 투명 이미지 비활성화 
 
             // 피지컬 버튼 3개 비활성화
             leftButtonOutline_PR.OutlineWidth = 0;
@@ -177,5 +180,17 @@ public class C_PlanetRader : MonoBehaviour
             planetRaderOutline_PR.OutlineWidth = 8;
             planetRaderData_PR.IsNotInteractable = false;
         }
+
+
+    }
+
+    IEnumerator TurnRader()
+    {
+        yield return new WaitForSeconds(2f);
+        print(raderLine_PR.transform.rotation.z);
+        recentAngle = new Vector3(raderLine_PR.transform.rotation.x, raderLine_PR.transform.rotation.y, raderLine_PR.transform.rotation.z);
+
+        raderLine_PR.transform.Rotate(0, 0, -5); // 행성 레이더 선 왼쪽으로 이동
+        //yield return null;
     }
 }

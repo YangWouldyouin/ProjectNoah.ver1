@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class W_HealthMachine : MonoBehaviour
 {
+    public GameObject Report_GUI;
+    public bool IsReported = false;
+
     // @@@@@ 나중에 정기 상태 체크 임무 추가 @@@@@@
     private bool IsHealthMachineDone = false;
 
@@ -53,8 +56,12 @@ public class W_HealthMachine : MonoBehaviour
                 HMfixPart_Putting();
             }
         }
-
+        else // 기계를 고친 후 보고하기 정기임무 하기 
+        {
+            ReportStatMission();
+        }
     }
+
     public void HMfixPart_Putting()
     {
         heathMachineRepairTimer_HM += Time.deltaTime;
@@ -94,6 +101,53 @@ public class W_HealthMachine : MonoBehaviour
         // 생체기계 고치기 1회성 임무가 끝남 
         GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+    }
+
+
+    public void Report()
+    {
+        //if 더미 데이터 다운 퍼즐이 완료되지 않았다면
+        //보고하기 데이터 이동
+        //else 더미 데이터 이동
+
+        Debug.Log("보고하기");
+        IsReported = true;
+    }
+
+    public void Cancle()
+    {
+        //if 더미 데이터 다운 퍼즐이 완료되지 않았다면
+        
+        Debug.Log("취소하기");
+
+        //cancleCount += 1; // 어디서 확인하는지??
+        GameManager.gameManager._gameData.HealthMachineCancelCount -= 1;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        IsReported = true;
+    }
+
+    public void ReportStatMission()
+    {
+        if (!IsReported)
+        {
+            healthMachineData_HM.IsCenterButtonDisabled = false;
+            if (healthMachineData_HM.IsUpDown)
+            {
+                healthMachineData_HM.IsNotInteractable = true;
+                heathMachineRepairTimer_HM += Time.deltaTime;
+                float maxTimer = Mathf.FloorToInt((heathMachineRepairTimer_HM % 3600) % 60);
+                if (maxTimer >= 2.5f)
+                {
+                    Report_GUI.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            healthMachineData_HM.IsNotInteractable = false;
+            heathMachineRepairTimer_HM = 0;
+            Report_GUI.SetActive(false);
+        }
     }
 }
 

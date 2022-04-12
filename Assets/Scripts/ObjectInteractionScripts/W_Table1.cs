@@ -47,6 +47,14 @@ public class W_Table1 : MonoBehaviour
         //--------------------------
         /*가운데 버튼이 오르기 비활성화->활성화로 바뀐 상태라면 가운데버튼을 '관찰하기'로 바꾸는 걸 트루로 하겠다.*/
 
+        if(dontCardPackData_WT.IsBite)
+        {
+
+        }
+        else
+        {
+
+        }
         if (workroomTableData1_WT.IsUpDown) 
         {
             workroomTableData1_WT.IsCenterButtonChanged = true;

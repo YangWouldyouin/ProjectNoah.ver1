@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class W_EngineDoor : MonoBehaviour
 {
+    private bool IsEngineDoorFix_M_C2 = false;
+
     //카드키 찾기
     public GameObject cardPack_WED; //카드팩
     public GameObject engineKey_WED; //엔진실 카드키
@@ -37,6 +39,7 @@ public class W_EngineDoor : MonoBehaviour
     Outline conductionOutline_WED;
     Outline engineKeyOutline_WED;
     Outline brokenPartOutline_WED;
+    Outline cabinetDoorOutline_WED;
 
 
     public Animator engineDoorAnim_WED;
@@ -63,146 +66,151 @@ public class W_EngineDoor : MonoBehaviour
         insertCardPadOutline_WED = insertCardPad_WED.GetComponent<Outline>();
         conductionOutline_WED = conduction_WED.GetComponent<Outline>();
         engineKeyOutline_WED = engineKey_WED.GetComponent<Outline>();
-        brokenPartOutline_WED = brokenPart_WED.GetComponent<Outline>(); 
-
-        if(GameManager.gameManager.IsEngineDoorFix_M_C2 == false)
-        {
-            // 엔진실 문에 다가가면 전기 끊어진 소리 재생
-            // AI가 문이 고장난 거 같다는 대사 출력
-        }
+        brokenPartOutline_WED = brokenPart_WED.GetComponent<Outline>();
+        cabinetDoorOutline_WED = cabinetDoor_WED.GetComponent<Outline>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //카드키 찾기
-        if (cardPackData_WED.IsDestroy)
+        if(!GameManager.gameManager._gameData.IsWEDoorOpened_M_C2)
         {
-            // 카드팩에서 카드키를 벗어나게 한다.
-            engineKeyData_WED.GetComponent<Rigidbody>().isKinematic = false; 
-            engineKeyData_WED.transform.parent = null;
-            Invoke("Disapppear", 3f);
-            GameManager.gameManager.IsDisappearPack_M_C2 = true;
-        }
+            //if () // 엔진실 문을 클릭하면 
+            //{
+            //    // 엔진실 문에 다가가면 전기 끊어진 소리 재생
+            //    // AI가 문이 고장난 거 같다는 대사 출력
+            //}
 
 
-
-        //캐비닛 문열기
-        if (cabinetDoorData_WED.IsPushOrPress)
-        {
-            Invoke("CabinetOpen", 2f);
-            GameManager.gameManager.IsOpenCabinetDoor_M_C2 = true;
-        }
-
-
-
-        // 캐비닛에 상호작용 가능하게
-        if (GameManager.gameManager.IsOpenCabinetDoor_M_C2 == true)
-        {
-            cabinetFirstFloorData_WED.IsNotInteractable = false; // 상호작용 가능하게
-            cabinetFirstFloorOutline_WED.OutlineWidth = 8;
-        }
-
-
-        //캐비닛에 관찰하기를 하면 캐비닛 안쪽 물건이 상호작용 가능하다.
-        if (cabinetFirstFloorData_WED.IsObserve)
-        {
-            CameraController.cameraController.currentView = cabinetFirstFloorData_WED.ObserveView;
-            rubberData_WED.IsNotInteractable = false;
-            rubbeOutline_WED.OutlineWidth = 8;
-
-            // 고무를 물면 고무를 찾은걸로 판단한다. 
-            if (rubberData_WED.IsBite)
+            // 10.상자를 다시 끌고  InsertCardPad 앞으로 다가온다. 상자 위로 올라가서 아까 물고온 카드를 '넣기' 한다.
+            // (인설트 책상이나 카드 패드랑 노아가 성공적으로 부딪혔으면 콘솔창에 '나는 부딪혔어' 디버그가 뜰거야)
+            if (engineKeyData_WED.IsBite && insertCardPadData_WED.IsPushOrPress)
             {
-                cabinetFirstFloorData_WED.IsObserve = false;
-                CameraController.cameraController.CancelObserve();
-                GameManager.gameManager.IsFindRubbe_M_C2 = true;
+                Invoke("DoorOpen", 2f);
+
+                // 카드키랑 카드 패드 상호작용을 삭제한다
+                insertCardPadData_WED.IsNotInteractable = true;
+                insertCardPadOutline_WED.OutlineWidth = 0;
+
+                engineKeyData_WED.IsNotInteractable = true;
+                engineKeyOutline_WED.OutlineWidth = 0;
+
+                /* 엔진실 열기 완료 */
+                GameManager.gameManager._gameData.IsWEDoorOpened_M_C2 = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+
+
+
+            // 5. 책상으로 다가가 카드팩을 파괴하기 한다. ( 카드키 찾기 )
+            if (cardPackData_WED.IsDestroy)
+            {
+                // 카드팩에서 카드키를 벗어나게 한다.
+                engineKeyData_WED.GetComponent<Rigidbody>().isKinematic = false;
+                engineKeyData_WED.transform.parent = null;
+                Invoke("Disapppear", 3f);
+            }
+
+
+
+
+            /* 고무 찾기 */
+            // 2. 캐비닛에 관찰하기를 하면 캐비닛 안쪽 물건이 상호작용 가능하다.
+            if (cabinetFirstFloorData_WED.IsObserve)
+            {
+                CameraController.cameraController.currentView = cabinetFirstFloorData_WED.ObserveView;
+                rubberData_WED.IsNotInteractable = false;
+                rubbeOutline_WED.OutlineWidth = 8;
+
+                // 3. 캐비닛 안에 있는 고무를 문다.
+                if (rubberData_WED.IsBite)
+                {
+                    CameraController.cameraController.CancelObserve();
+                    cabinetFirstFloorData_WED.IsObserve = false;
+                    
+                }
+            }
+            else // 관찰하기 해제 시 고무 다시 비활성화 
+            {
+                rubberData_WED.IsNotInteractable = true;
+                rubbeOutline_WED.OutlineWidth = 0;
+            }
+            // 1. 엔진실 문 왼쪽 캐비닛 중에 제일 키가 작은 캐비닛을 누르기로 연다.( 캐비닛 문열기 )
+            if (cabinetDoorData_WED.IsPushOrPress)
+            {
+                Invoke("CabinetOpen", 2f);
+            }
+
+
+
+
+
+            /* 기계 수리하기 */
+            //전도체를 그냥 물면
+            if (conductionData_WED.IsBite)
+            {
+                //망가진 곳에 상호작용 가능
+                brokenPartData_WED.IsCenterButtonDisabled = false;
+
+                // 고무를 물고 전도체를 물고 망가진 곳에 끼우기를 하면
+                if (conductionData_WED.IsBite)
+                {
+                    if(brokenPartData_WED.IsPushOrPress)
+                    {
+                        // 끼우기 성공
+                        // 부모 자식 관계를 해제한다.
+                        conduction_WED.GetComponent<Rigidbody>().isKinematic = false;
+                        conduction_WED.transform.parent = null;
+
+                        // 해당 위치, 각도, 크기로 바꾸겠다.
+                        conduction_WED.transform.position = new Vector3(-262.629f, 541.395f, 688.343f); //위치 고정
+                        conduction_WED.transform.rotation = Quaternion.Euler(90, 90, 0); //각도 고정
+
+                        // 망가진 문 부분이랑 끼운 전도체의 상호작용을 삭제한다.
+                        brokenPartData_WED.IsNotInteractable = true;
+                        brokenPartOutline_WED.OutlineWidth = 0;
+
+                        conductionData_WED.IsNotInteractable = true;
+                        conductionOutline_WED.OutlineWidth = 0;
+
+                        IsEngineDoorFix_M_C2 = true;
+                    }
+                }
+                else // 전도체를 그냥 물고 망가진 곳에 끼우면
+                {
+                    if (brokenPartData_WED.IsPushOrPress)
+                    {
+                        {
+                            // 노아 감전 엔딩
+                            Debug.Log("감전엔딩 출력");
+                        }
+                    }
+                }
+            }
+
+
+            if (IsEngineDoorFix_M_C2)
+            {
+                Debug.Log("문이 고쳐진상태입니다.");
+                //AI가 문이 고쳐졌다는 걸 알려준다.
+                //문은 고쳐졌지만 카드 끼기에는 높이가 부족하다는 사실을 알려준다.
+
+                //노아의 높이가 충분하면 상호작용 가능
+                if (insertCardPadData_WED.IsCollision == true)
+                {
+
+                    insertCardPadData_WED.IsNotInteractable = false;
+                    insertCardPadOutline_WED.OutlineWidth = 8;
+
+                }
+                else
+                {
+                    Debug.Log("문은 고쳐졌지만 카드끼기에는 높이가 부족하다 ");
+                    insertCardPadData_WED.IsNotInteractable = true;
+                    insertCardPadOutline_WED.OutlineWidth = 0;
+                }
             }
         }
-
-
-
-
-
-
-        //전도체를 그냥 물면
-        if (conductionData_WED.IsBite)
-        {
-            //망가진 곳에 상호작용 가능
-            brokenPartData_WED.IsCenterButtonDisabled = false;
-        }
-
-
-        //고무를 물고 전도체를 물고 망가진 곳에 끼우기를 하면
-        if (rubberData_WED.IsBite && conductionData_WED.IsBite && brokenPartData_WED.IsPushOrPress)
-        {
-            // 끼우기 성공
-            // 부모 자식 관계를 해제한다.
-            conduction_WED.GetComponent<Rigidbody>().isKinematic = false;
-            conduction_WED.transform.parent = null;
-
-            // 해당 위치, 각도, 크기로 바꾸겠다.
-            conduction_WED.transform.position = new Vector3(-262.629f, 541.395f, 688.343f); //위치 고정
-            conduction_WED.transform.rotation = Quaternion.Euler(90, 90, 0); //각도 고정
-
-            // 망가진 문 부분이랑 끼운 전도체의 상호작용을 삭제한다.
-            brokenPartData_WED.IsNotInteractable = true;
-            brokenPartOutline_WED.OutlineWidth = 0;
-
-            conductionData_WED.IsNotInteractable = true;
-            conductionOutline_WED.OutlineWidth = 0;
-
-            GameManager.gameManager.IsEngineDoorFix_M_C2 = true;
-        }
-
-        // 전도체를 그냥 물고 망가진 곳에 끼우면 
-        else if (conductionData_WED.IsBite && brokenPartData_WED.IsPushOrPress)
-        {
-            // 노아 감전 엔딩
-            Debug.Log("감전엔딩 출력");
-        }
-
-
-        if (GameManager.gameManager.IsEngineDoorFix_M_C2 == true)
-        {
-            Debug.Log("문이 고쳐진상태입니다.");
-            insertCardPadData_WED.IsNotInteractable = false;
-            insertCardPadOutline_WED.OutlineWidth = 8;
-        }
-
-
-        if (insertCardPadData_WED.IsCollision == true)
-        {
-            /* 특수 상호작용 버튼을 비활성화->오르기로 바꿔주겠다는 것이다. 
-            (기본적으로 비활성화 상태라면 인스펙터의 IsCenterButtonDisabled에 체크를 해두자)*/
-
-            insertCardPadData_WED.IsCenterButtonDisabled = false;
-
-        }
-
-        /* IsCenterButtonDisabled => 센터 버튼 비활성화가 트루이면 다시 비활성화 상태로 돌리겠다는 것이다. 
-        책상에서 내려왔을 때 상자 위가 아님을 알면 다시 '오르기'를 비활성화로 바꾸기 위해 넣는 코드*/
-        else
-        {
-            insertCardPadData_WED.IsCenterButtonDisabled = true;
-        }
-
-
-
-
-        if (engineKeyData_WED.IsBite && insertCardPadData_WED.IsPushOrPress)
-        {
-            Invoke("DoorOpen", 2f);
-            GameManager.gameManager.IsEngineRoomOpen_M_C2 = true;
-
-            // 카드키랑 카드 패드 상호작용을 삭제한다
-            insertCardPadData_WED.IsNotInteractable = true;
-            insertCardPadOutline_WED.OutlineWidth = 0;
-
-            engineKeyData_WED.IsNotInteractable = true;
-            engineKeyOutline_WED.OutlineWidth = 0;
-        }
-
     }
 
     void Disapppear()
@@ -222,5 +230,42 @@ public class W_EngineDoor : MonoBehaviour
         engineDoorAnim_WED.SetBool("eCabinetOpen", true);
         engineDoorAnim_WED.SetBool("eCabinetEnd", true);
 
+        // 캐비닛 문 비활성화
+        cabinetDoorData_WED.IsNotInteractable = true;
+        cabinetDoorOutline_WED.OutlineWidth = 0;
+
+        // 캐비닛에 상호작용 가능하게
+        cabinetFirstFloorData_WED.IsNotInteractable = false;
+        cabinetFirstFloorOutline_WED.OutlineWidth = 8;
     }
 }
+
+
+//// 4. 고무를 물고 전도체를 물고 망가진 곳에 끼우기를 하면
+//if (rubberData_WED.IsBite && conductionData_WED.IsBite && brokenPartData_WED.IsPushOrPress)
+//{
+//    // 끼우기 성공
+//    // 부모 자식 관계를 해제한다.
+//    conduction_WED.GetComponent<Rigidbody>().isKinematic = false;
+//    conduction_WED.transform.parent = null;
+
+//    // 해당 위치, 각도, 크기로 바꾸겠다.
+//    conduction_WED.transform.position = new Vector3(-262.629f, 541.395f, 688.343f); //위치 고정
+//    conduction_WED.transform.rotation = Quaternion.Euler(90, 90, 0); //각도 고정
+
+//    // 망가진 문 부분이랑 끼운 전도체의 상호작용을 삭제한다.
+//    brokenPartData_WED.IsNotInteractable = true;
+//    brokenPartOutline_WED.OutlineWidth = 0;
+
+//    conductionData_WED.IsNotInteractable = true;
+//    conductionOutline_WED.OutlineWidth = 0;
+
+//    GameManager.gameManager.IsEngineDoorFix_M_C2 = true;
+//}
+
+//// 전도체를 그냥 물고 망가진 곳에 끼우면 
+//else if (conductionData_WED.IsBite && brokenPartData_WED.IsPushOrPress)
+//{
+//    // 노아 감전 엔딩
+//    Debug.Log("감전엔딩 출력");
+//}
