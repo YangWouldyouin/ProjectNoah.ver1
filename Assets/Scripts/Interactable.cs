@@ -10,6 +10,9 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     [SerializeField] Actions[] actionss; // NPC 와의 첫 번째 상호작용
 
+
+    private GameObject noahPressObject;
+
     //public Button barkInterButton, sniffInterButton;
     //public GameObject biteInterButton;
 
@@ -53,6 +56,16 @@ public class Interactable : MonoBehaviour
     /* 플레이어가 NPC를 클릭하면 1)NPC 위치로 갈때까지 기다렸다가 도착하면 2) NPC 를 바라보는 방향으로 플레이어를 돌리고, 3) 상호작용들을 실행하는 메서드 */
     public void Interact(PlayerScripts player)
     {
+        currentPushOrPressButton = PlayerScripts.playerscripts.ObjectpushOrpressbutton;
+
+        if (player.pressFunc != null)
+        {
+            currentPushOrPressButton.onClick.AddListener(player.pressFunc.OnPressButtonClicked);
+        }
+        else
+        {
+            currentPushOrPressButton.onClick.AddListener(PressBasic);
+        }
         StartCoroutine(WaitforPlayerArriving(player));
     }
 
@@ -77,7 +90,8 @@ public class Interactable : MonoBehaviour
         BaseCanvas._baseCanvas.biteDestroyButton.transform.gameObject.SetActive(true);
 
         // 누르기 버튼의 경우 - 현재 상호작용 중인 오브젝트가 누르기(밀기)인지, 누르기인지 확인 후 그에 맞는 버튼을 띄움
-        currentPushOrPressButton = PlayerScripts.playerscripts.ObjectpushOrpressbutton;
+
+
         currentPushOrPressButton.transform.gameObject.SetActive(true);
 
         // 가운데 버튼을 띄움
@@ -195,6 +209,69 @@ public class Interactable : MonoBehaviour
         //    actionss[i].act(); // actions 클래스의 act() 메서드를 실행함
         //    // q. 이걸로 actions 클래스를 상속받은 다른 클래스들을 전부 부를 수 있는 건가? 
         //}     
+    }
+
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    /* 누르기 - 버튼 등을 누르기 */
+
+    void PressBasic()
+    {
+        noahPressObject = PlayerScripts.playerscripts.currentObject;
+        
+
+
+        if (noahPressObject != null)
+        {
+            ObjData noahPushOrPressData = noahPressObject.GetComponent<ObjData>();
+
+            InteractionButtonController.interactionButtonController.TurnOffInteractionButton();
+
+            if (noahPushOrPressData.ISPushOrPressActive) // 현재 오브젝트가 "누르기" 가능한 오브젝트이면
+            {
+                noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 로 저장
+                Invoke("ChangePressTrue", 0.5f); // 버튼이 눌러지고 0.5초 후 누르기 누르기 동작 시작
+                Invoke("ChangePressFalse", 2f); // 2초 후 누르기 끝내고 다시 Idle 상태로 돌아감
+                //Invoke("PressFalse", 2f);
+            }
+            else // 실제로는 누르기 불가능한 오브젝트 이므로 동작만 보여준다. 
+            {
+                noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 
+                Invoke("JustPlayPushAnimationTrue", 0.5f);
+                Invoke("JustPlayPushAnimationFalse", 2f);
+                Invoke("PressFalse", 2f);
+            }
+        }
+    }
+
+    /* 실제 누르기 애니메이션 동작들 */
+    void ChangePressTrue()
+    {
+        PlayerScripts.playerscripts.noahAnim.SetBool("IsPressing", true);
+    }
+    void ChangePressFalse()
+    {
+
+        PlayerScripts.playerscripts.noahAnim.SetBool("IsPressing", false);
+    }
+
+    /* 누르기 불가능한 오브젝트일 때 보여주기용 동작들 */
+    void JustPlayPushAnimationTrue()
+    {
+        PlayerScripts.playerscripts.noahAnim.SetBool("IsNonePushing", true);
+    }
+
+    void JustPlayPushAnimationFalse()
+    {
+        PlayerScripts.playerscripts.noahAnim.SetBool("IsNonePushing", false);
+    }
+
+    void PressFalse()
+    {
+        noahPressObject = PlayerScripts.playerscripts.currentObject;
+        ObjData noahPushOrPressData = noahPressObject.GetComponent<ObjData>();
+        noahPushOrPressData.IsPushOrPress = false;
     }
 }
 

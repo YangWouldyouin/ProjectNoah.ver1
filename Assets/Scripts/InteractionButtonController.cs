@@ -53,7 +53,7 @@ public class InteractionButtonController : MonoBehaviour
         BaseCanvas._baseCanvas.upDownButton.onClick.AddListener(playerRising);
         BaseCanvas._baseCanvas.insertButton.onClick.AddListener(playerInserting);
         BaseCanvas._baseCanvas.pushButton.onClick.AddListener(playerPush);
-        BaseCanvas._baseCanvas.pressButton.onClick.AddListener(playerPress);
+        //BaseCanvas._baseCanvas.pressButton.onClick.AddListener(playerPress);
     }
 
     private void Update()
@@ -284,62 +284,6 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsPushing2", true);
     }
 
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-    /* 누르기 - 버튼 등을 누르기 */
-    void playerPress()
-    {
-        noahPushOrPressObject = PlayerScripts.playerscripts.currentObject;
-        if(noahPushOrPressObject!=null)
-        {
-            ObjData noahPushOrPressData = noahPushOrPressObject.GetComponent<ObjData>();
-            TurnOffInteractionButton(); // 버튼을 클릭하고 나면 상호작용 버튼을 모두 끈다. 
-
-            if (noahPushOrPressData.ISPushOrPressActive) // 현재 오브젝트가 "누르기" 가능한 오브젝트이면
-            {
-                noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 로 저장
-                Invoke("ChangePressTrue", 0.5f); // 버튼이 눌러지고 0.5초 후 누르기 누르기 동작 시작
-                Invoke("ChangePressFalse", 2f); // 2초 후 누르기 끝내고 다시 Idle 상태로 돌아감
-                Invoke("PressFalse", 2f);
-            }
-            else // 실제로는 누르기 불가능한 오브젝트 이므로 동작만 보여준다. 
-            {
-                noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 
-                Invoke("JustPlayPushAnimationTrue", 0.5f);
-                Invoke("JustPlayPushAnimationFalse", 2f);
-                Invoke("PressFalse", 2f);
-            }
-        }
-
-    }
-    /* 실제 누르기 애니메이션 동작들 */
-    void ChangePressTrue()
-    {
-        noahAnim.SetBool("IsPressing", true);
-    }
-    void ChangePressFalse()
-    {
-
-        noahAnim.SetBool("IsPressing", false);
-    }
-
-    /* 누르기 불가능한 오브젝트일 때 보여주기용 동작들 */
-    void JustPlayPushAnimationTrue()
-    {
-        noahAnim.SetBool("IsNonePushing", true);
-    }
-
-    void JustPlayPushAnimationFalse()
-    {
-        noahAnim.SetBool("IsNonePushing", false);
-    }
-
-    void PressFalse()
-    {
-        noahPushOrPressObject = PlayerScripts.playerscripts.currentObject;
-        ObjData noahPushOrPressData = noahPushOrPressObject.GetComponent<ObjData>();
-        noahPushOrPressData.IsPushOrPress = false; 
-    }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 

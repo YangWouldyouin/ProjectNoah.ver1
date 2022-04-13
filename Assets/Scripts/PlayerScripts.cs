@@ -48,7 +48,7 @@ public class PlayerScripts : MonoBehaviour
     public bool IsClicked = false;
 
     public Animator noahAnim;
-
+    public IPressController pressFunc;
 
     private void Awake()
     {
@@ -102,7 +102,7 @@ public class PlayerScripts : MonoBehaviour
                 PlayerPosition = this.gameObject.transform.position;
                 Interactable interactable = hit.collider.GetComponent<Interactable>(); // interactable : 부딪힌 오브젝트 or NPC 에 붙어있는 Interactable 컴포넌트         
                 objData = hit.collider.GetComponent<ObjData>();
-
+                pressFunc = hit.collider.GetComponent<IPressController>();
                 if (objData != null)
                 {
                     objectNameData = objData.ObjectName;
@@ -125,7 +125,7 @@ public class PlayerScripts : MonoBehaviour
                     if (sqrLen < DistanceBetweenPlayerandNPC)
                     {
                         objData.IsClicked = true;
-                        Invoke("UnClickObject", 1f);
+                        //Invoke("UnClickObject", 1f);
                         if (!objData.IsNotInteractable)
                         {
                             Invoke("NameTagAppear", 1f);
