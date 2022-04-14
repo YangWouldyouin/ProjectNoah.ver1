@@ -87,6 +87,7 @@ public class InteractionButtonController : MonoBehaviour
         BaseCanvas._baseCanvas.insertDisableButton.transform.gameObject.SetActive(false);
         BaseCanvas._baseCanvas.upDownDisableButton.transform.gameObject.SetActive(false);
         BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(false);
+        BaseCanvas._baseCanvas.eatDisableButton.transform.gameObject.SetActive(false);
 
     }
 
