@@ -37,6 +37,8 @@ public class C_ConsolesCenter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MissionGenerator.missionGenerator.missionList.Add("조종실 탈출하기");
+        MissionGenerator.missionGenerator.missionList.Add("AI 활성화");
         dialogManager = dialogManager_CC.GetComponent<DialogManager>();
 
         if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
@@ -94,6 +96,8 @@ public class C_ConsolesCenter : MonoBehaviour
     {
         if (consoleCenterData_CC.IsObserve)
         {
+
+            consoleCenterData_CC.IsNotInteractable = true;
             if (boxData_CC.IsUpDown)
             {
                 CameraController.cameraController.currentView = consoleCenterData_CC.ObservePlusView; //관찰 뷰 : < 시스템 재가동 버튼> 이 보이는 위치
@@ -157,6 +161,7 @@ public class C_ConsolesCenter : MonoBehaviour
         }
         else
         {
+            consoleCenterData_CC.IsNotInteractable = false;
             timer_CC = 0; // 관찰시간 텀 타이머 리셋
             consoleDescription_CC.SetActive(false);
 

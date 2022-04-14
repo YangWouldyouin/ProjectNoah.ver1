@@ -5,9 +5,17 @@ using UnityEngine.UI;
 
 public class PlanetRaderTrigger : MonoBehaviour
 {
+    public static PlanetRaderTrigger planetRaderTrigger { get; private set; }
 
     public GameObject[] normalPlanet_PR; // 青己
     public GameObject[] selectPlanet_PR; // 急琶茄 青己
+
+    public bool[] IsPlanetSelected;
+
+    void Awake()
+    {
+        planetRaderTrigger = this;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,7 +26,7 @@ public class PlanetRaderTrigger : MonoBehaviour
             {
                 normalPlanet_PR[i].SetActive(false);
                 selectPlanet_PR[i].SetActive(true);
-        
+                IsPlanetSelected[i] = true;
             }
         }
     }
@@ -31,7 +39,7 @@ public class PlanetRaderTrigger : MonoBehaviour
             {
                 normalPlanet_PR[i].SetActive(true);
                 selectPlanet_PR[i].SetActive(false);
-           
+                IsPlanetSelected[i] = false;
             }
         }
     }

@@ -39,8 +39,6 @@ public class InteractionButtonController : MonoBehaviour
     void Awake()
     {
         interactionButtonController = this;
-
-
     }
 
     private void Start()

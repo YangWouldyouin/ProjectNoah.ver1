@@ -105,10 +105,10 @@ public class W_EngineDoor : MonoBehaviour
             // 5. 책상으로 다가가 카드팩을 파괴하기 한다. ( 카드키 찾기 )
             if (cardPackData_WED.IsDestroy)
             {
-                // 카드팩에서 카드키를 벗어나게 한다.
-                engineKeyData_WED.GetComponent<Rigidbody>().isKinematic = false;
-                engineKeyData_WED.transform.parent = null;
+
                 Invoke("Disapppear", 3f);
+                engineKeyData_WED.IsNotInteractable = false;
+                engineKeyOutline_WED.OutlineWidth = 8;
             }
 
 

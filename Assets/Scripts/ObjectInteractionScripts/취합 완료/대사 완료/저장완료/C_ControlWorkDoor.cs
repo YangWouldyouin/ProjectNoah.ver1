@@ -49,6 +49,7 @@ public class C_ControlWorkDoor : MonoBehaviour
             if (cockpitDoorData_CWD.IsClicked)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
+                
             }
 
             if (envirPipeData_CWD.IsBite)
