@@ -17,6 +17,18 @@ public class GameData
     public bool IsFindDrugDone_T_C2; //마약 보고 혹은 해독하면 다시 안함
     public bool IsSmoke_T_C3; //소화기(일회용) 사용 시 연기 발생
 
+    public bool IsInputDrug_M_C2;
+    public bool IsInputAnswerDrug1_M_C2;
+    public bool IsInputAnswerDrug2_M_C2;
+    public bool IsInputMeteor1_M_C2;
+    public bool IsInputMeteor2_M_C2;
+    public bool IsCompletionDeadDrug_M_C2;
+    public bool IsNoahDead_M_C2;
+    public bool IsWrongBeakerColorChange1_M_C2;
+    public bool IsWrongBeakerColorChange2_M_C2;
+    public bool IsAnswerBeakerColorChange1_M_C2;
+    public bool IsAnswerBeakerColorChange2_M_C2;
+
     public bool IsFuelabsorberFixed_E_E1; //엔진실 고치기 임무, 해금해야 연료 돌발 임무 수행 가능
 
     public int HealthMachineCancelCount = 5;
