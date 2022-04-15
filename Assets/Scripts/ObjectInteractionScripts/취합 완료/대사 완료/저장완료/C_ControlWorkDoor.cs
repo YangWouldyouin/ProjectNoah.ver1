@@ -48,7 +48,9 @@ public class C_ControlWorkDoor : MonoBehaviour
         {
             if (cockpitDoorData_CWD.IsClicked)
             {
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
+                GameManager.gameManager._gameData.S_IsCWDoorOpened_M_C1 = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
                 
             }
 

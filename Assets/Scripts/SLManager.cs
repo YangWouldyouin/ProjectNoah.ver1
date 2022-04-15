@@ -17,7 +17,7 @@ public class SLManager : MonoBehaviour
             character.IsCWDoorOpened_M_C1 = false;
             character.IsHealthMachineFixed_T_C2 = false;
             character.IsSmartFarmOpen_T_C2 = false;
-
+            character.S_IsAIAwake_M_C1 = false;
             SaveSystem.Save(character, "save_001");
         }
 

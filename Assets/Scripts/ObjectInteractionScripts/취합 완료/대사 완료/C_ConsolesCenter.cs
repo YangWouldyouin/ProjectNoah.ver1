@@ -34,11 +34,16 @@ public class C_ConsolesCenter : MonoBehaviour
 
     float timer_CC = 0;
 
+    public Button b1;
+    public Button b2;
+    public Button b3;
+    public Button b4;
+    public Button b5;
+
     // Start is called before the first frame update
     void Start()
     {
-        MissionGenerator.missionGenerator.missionList.Add("조종실 탈출하기");
-        MissionGenerator.missionGenerator.missionList.Add("AI 활성화");
+
         dialogManager = dialogManager_CC.GetComponent<DialogManager>();
 
         if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
@@ -97,6 +102,14 @@ public class C_ConsolesCenter : MonoBehaviour
         if (consoleCenterData_CC.IsObserve)
         {
 
+
+
+            GameManager.gameManager._gameData.S_IsAIAwake_M_C1 = true;
+            MissionGenerator.missionGenerator.missionList.Add(MissionGenerator.missionGenerator.missionDic[0]);
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+
+
             consoleCenterData_CC.IsNotInteractable = true;
             if (boxData_CC.IsUpDown)
             {
@@ -136,6 +149,7 @@ public class C_ConsolesCenter : MonoBehaviour
                         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
 
                         GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
+                        GameManager.gameManager._gameData.S_IsAIAwake_M_C1 = false;
                         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                         //GameManager.gameManager.IsAI_M_C1 = true; // 게임 세이브 분기점
                     }
@@ -171,6 +185,11 @@ public class C_ConsolesCenter : MonoBehaviour
             consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
         }
+
+
+
+
+
     }
 
     void OpenCockpitDoor()
@@ -182,5 +201,14 @@ public class C_ConsolesCenter : MonoBehaviour
     {
         cockpitDoorAnim_CC.SetBool("IsDoorOpened", false);
         cockpitDoorAnim_CC.SetBool("IsDoorOpenStart", false);
+    }
+
+    public void OnConsoleClicked()
+    {
+        b1.transform.gameObject.SetActive(true);
+        b2.transform.gameObject.SetActive(true);
+        b3.transform.gameObject.SetActive(true);
+        b4.transform.gameObject.SetActive(true);
+        b5.transform.gameObject.SetActive(true);
     }
 }

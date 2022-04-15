@@ -87,7 +87,7 @@ public class InteractionButtonController : MonoBehaviour
         BaseCanvas._baseCanvas.insertDisableButton.transform.gameObject.SetActive(false);
         BaseCanvas._baseCanvas.upDownDisableButton.transform.gameObject.SetActive(false);
         BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(false);
-
+        BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(false);
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -250,7 +250,8 @@ public class InteractionButtonController : MonoBehaviour
     }
     void noahJump()
     {
-        noahPlayer.transform.position = new Vector3(risePosition.x, risePosition.y + 0.2f, risePosition.z);
+        //noahPlayer.transform.position = new Vector3(risePosition.x, risePosition.y + 0.2f, risePosition.z);
+        noahPlayer.transform.position = new Vector3(-258.8383f, 539.3379f, 679.89f);
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&

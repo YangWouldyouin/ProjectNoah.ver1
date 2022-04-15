@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Events;
 public class PlayerScripts : MonoBehaviour
 {
+    public UnityEvent unityEvent = new UnityEvent();
     public static PlayerScripts playerscripts { get; private set; }
 
     private NavMeshAgent agent;
@@ -99,6 +100,7 @@ public class PlayerScripts : MonoBehaviour
         {
             if (hit.collider != null) // 무언가를 치면
             {
+                unityEvent.Invoke();
                 PlayerPosition = this.gameObject.transform.position;
                 Interactable interactable = hit.collider.GetComponent<Interactable>(); // interactable : 부딪힌 오브젝트 or NPC 에 붙어있는 Interactable 컴포넌트         
                 objData = hit.collider.GetComponent<ObjData>();

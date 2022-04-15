@@ -58,6 +58,8 @@ public class Interactable : MonoBehaviour
     {
         currentPushOrPressButton = PlayerScripts.playerscripts.ObjectpushOrpressbutton;
 
+
+
         if (player.pressFunc != null)
         {
             currentPushOrPressButton.onClick.AddListener(player.pressFunc.OnPressButtonClicked);
