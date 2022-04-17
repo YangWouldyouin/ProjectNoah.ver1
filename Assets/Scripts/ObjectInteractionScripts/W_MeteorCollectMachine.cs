@@ -174,7 +174,8 @@ public class W_MeteorCollectMachine : MonoBehaviour
 
             CameraController.cameraController.CancelObserve();
 
-            GameManager.gameManager.IsCanMeteorGet = true;
+            GameManager.gameManager._gameData.IsCanMeteorGet_M_C2 = true;
+            //GameManager.gameManager.IsCanMeteorGet = true;
 
 
             StartCoroutine(meteorBoxClose(0f, 30f));
@@ -202,7 +203,8 @@ public class W_MeteorCollectMachine : MonoBehaviour
             analyticalMachineButtonData_MCM.IsNotInteractable = false; // 상호작용 가능하게
             analyticalMachineButtonOutline_MCM.OutlineWidth = 16;
 
-            GameManager.gameManager.IsSmellDone = true;
+            GameManager.gameManager._gameData.IsSmellDone_M_C2 = true;
+            //GameManager.gameManager.IsSmellDone = true;
         }
         else if(analyticalMachineButtonData_MCM.IsCollision == false)
         {
@@ -259,8 +261,9 @@ public class W_MeteorCollectMachine : MonoBehaviour
 
         if(rubber2Data_MCM.IsBite)
         {
-            if (GameManager.gameManager.IsSmellDone == true)
+            if (GameManager.gameManager._gameData.IsSmellDone_M_C2 == true )
             {
+                //GameManager.gameManager.IsSmellDone == true
                 //고무판을 물고 일반 운석을 물면 보고가 가능하다. 
                 if (rubber2Data_MCM.IsBite && normalMeteor1Data_MCM.IsBite)
                 {
@@ -280,7 +283,8 @@ public class W_MeteorCollectMachine : MonoBehaviour
                                                     CancelInvoke("analyticalMachineClose");
                                                 }*/
 
-                        GameManager.gameManager.InputNormalMeteor1 = true;
+                        GameManager.gameManager._gameData.IsInputNormalMeteor1_M_C2 = true;
+                        //GameManager.gameManager.InputNormalMeteor1 = true;
 
                         Invoke("Report_Popup", 4f);
 
@@ -305,7 +309,8 @@ public class W_MeteorCollectMachine : MonoBehaviour
                     if (analyticalMachinePlateData_MCM.IsPushOrPress)
                     {
                         //중요 운석을 넣었는지 확인하는 Bool체크
-                        GameManager.gameManager.IsyesImportantMeteor = true;
+                        GameManager.gameManager._gameData.IsInputImportantMeteor1_M_C2 = true;
+                        //GameManager.gameManager.IsyesImportantMeteor = true;
 
                         importantMeteorData_MCM.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
                         importantMeteorData_MCM.transform.parent = null;
@@ -366,8 +371,9 @@ public class W_MeteorCollectMachine : MonoBehaviour
         IsReported = true;
         Report_GUI.SetActive(false);
 
-        if(GameManager.gameManager.IsyesImportantMeteor == true)
+        if(GameManager.gameManager._gameData.IsyesImportantMeteor_M_C2 == true )
         {
+            //GameManager.gameManager.IsyesImportantMeteor == true
             Debug.Log("지구귀환엔딩");
         }
     }

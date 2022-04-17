@@ -20,21 +20,6 @@ public class GameManager : MonoBehaviour
     //public bool IsEngineDoorFix_M_C2 = false;
     //public bool IsEngineRoomOpen_M_C2 = false;
 
-    //운석 수집
-    public bool IsCanMeteorGet = false;
-    public bool IsSmellDone = false;
-    public bool IsCollectMeteor = false;
-
-    //분석기에 운석 어떤 거 넣었는지 찾기
-    public bool InputNormalMeteor1 = false;
-    public bool InputNormalMeteor2 = false;
-    public bool InputNormalMeteor3 = false;
-    public bool InputNormalMeteor4 = false;
-    public bool InputImportantMeteor1 = false;
-
-    //지구 귀환 엔딩 조건 체크
-    public bool IsyesImportantMeteor = false;
-
 
     /* 정기 임무 ( 일정 시간이 지나면 다시 false 로 바뀌어서 다시 해야함 ) */
     public bool IsAIDogHealthReport = false; // 상태 체크 업무
