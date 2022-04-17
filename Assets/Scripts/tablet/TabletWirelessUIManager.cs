@@ -95,7 +95,7 @@ public class TabletWirelessUIManager : MonoBehaviour
             TW_UploadSelectUI.SetActive(false);
             TW_UploadUI.SetActive(true);
 
-            Invoke("TW_Alert", 3f);
+            Invoke("TW_Alert", 4f);
 
             FakeCoordinateDatafile = true;
 
