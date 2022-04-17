@@ -46,7 +46,7 @@ public class E_StrangeObj : MonoBehaviour
             smoke.Play();
 
             Invoke("NoObj", 1.5f); 
-            Invoke("EndSmoke", 180f);
+            Invoke("EndSmoke", 3f);
 
             //GameManager.gameManager._gameData.IsSmoke_T_C3 = true;
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
