@@ -6,6 +6,7 @@ public class W_MeteorCollectMachine : MonoBehaviour
 {
     private bool meteorCollectanimOpen_MCM = false;
 
+    //운석 수집---------------------------------
     //public GameObject doorCollectMachine_MCM; // 수집 기계 문
     public GameObject meteorCollectMachine_MCM; // 운석 수집 기계
     public GameObject meteorButton_MCM; // 수집 기계 문 열기 버튼
@@ -17,7 +18,6 @@ public class W_MeteorCollectMachine : MonoBehaviour
     public GameObject rubber2_MCM; // 고무판
 
 
-
     //ObjData doorCollectMachineData_MCM;
     ObjData meteorCollectMachineData_MCM;
     ObjData meteorButtonData_MCM;
@@ -27,6 +27,7 @@ public class W_MeteorCollectMachine : MonoBehaviour
     ObjData analyticalMachineButtonData_MCM;
     ObjData analyticalMachinePlateData_MCM;
     ObjData rubber2Data_MCM;
+
 
     Outline meteorButtonOutline_MCM;
     Outline meteorCollectMachineOutline_MCM;
@@ -42,6 +43,12 @@ public class W_MeteorCollectMachine : MonoBehaviour
 
     public Animator meteorBoxAnim_WED;
     public Animator analyticalMachineAnim_WED;
+
+
+
+    //
+
+
 
     //private int count = 0;
     //private int count1 = 0;
