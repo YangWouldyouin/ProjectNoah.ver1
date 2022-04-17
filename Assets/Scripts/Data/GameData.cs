@@ -44,6 +44,22 @@ public class GameData
 
     public int HealthMachineCancelCount = 5;
 
+
+    //운석 수집
+    public bool IsCanMeteorGet_M_C2 = false;
+    public bool IsSmellDone_M_C2 = false;
+    public bool IsCollectMeteor_M_C2 = false;
+
+    //분석기에 운석 어떤 거 넣었는지 찾기
+    public bool IsInputNormalMeteor1_M_C2 = false;
+    public bool IsInputNormalMeteor2_M_C2 = false;
+    public bool IsInputNormalMeteor3_M_C2 = false;
+    public bool IsInputNormalMeteor4_M_C2 = false;
+    public bool IsInputImportantMeteor1_M_C2 = false;
+
+    //지구 귀환 엔딩 조건 체크
+    public bool IsyesImportantMeteor_M_C2 = false;
+
     //    //엔진실 카드키가 들어있는 카드팩이 파괴
     //    public bool IsDisappearPack_M_C2;
     //    // 엔진실 해금
