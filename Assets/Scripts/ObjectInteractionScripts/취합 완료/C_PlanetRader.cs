@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class C_PlanetRader : MonoBehaviour
+public class C_PlanetRader : MonoBehaviour, IInteraction
 {
     /* 오브젝트 */
     public GameObject planetRader_PR; // 행성 감지 레이더 기계
     public GameObject leftButton_PR; // 왼쪽 버튼
     public GameObject rightButton_PR; // 오른쪽 버튼
     public GameObject confirmButton_PR; // 확인버튼
+
+    public GameObject ob;
 
     /* 확대 했을 때 나오는 화면 (UI) */
     public Image raderLine_PR; // 레이더 라인
@@ -24,12 +26,14 @@ public class C_PlanetRader : MonoBehaviour
 
     public Button planetReportButton_PR; //행성 보고 버튼
     public Button exitButton_PR; // 종료 버튼
-
+    public GameObject interactBtn1;
     /* 오브젝트 데이터 */
     ObjData planetRaderData_PR;
     ObjData leftButtonData_PR;
     ObjData rightButtonData_PR;
     ObjData confirmButtonData_PR;
+
+    ObjData obData;
 
     /* Outline 변수 */
     Outline planetRaderOutline_PR;
@@ -53,8 +57,11 @@ public class C_PlanetRader : MonoBehaviour
     private float PlanetInfoTime_PR = 3.0f; // 행성 정보 팝업 시간
 
     Vector3 recentAngle;
+
+    public Button b1, b2, b3, b4, b5;
     void Start()
     {
+        obData = ob.GetComponent<ObjData>();
         planetRaderData_PR = planetRader_PR.GetComponent<ObjData>();
         leftButtonData_PR = leftButton_PR.GetComponent<ObjData>();
         rightButtonData_PR = rightButton_PR.GetComponent<ObjData>();
@@ -223,7 +230,15 @@ public class C_PlanetRader : MonoBehaviour
 
     }
 
-
+    void DiableeButton()
+    {
+        //interactBtn1.SetActive(false);
+        b1.transform.gameObject.SetActive(false);
+        b2.transform.gameObject.SetActive(false);
+        b3.transform.gameObject.SetActive(false);
+        b4.transform.gameObject.SetActive(false);
+        b5.transform.gameObject.SetActive(false);
+    }
 
 
 
@@ -238,5 +253,49 @@ public class C_PlanetRader : MonoBehaviour
         exitButton_PR.transform.gameObject.SetActive(false);
         timer_PR = 0;
         CameraController.cameraController.CancelObserve();
+    }
+
+    public void OnBark()
+    {
+        InteractionButtonController.interactionButtonController.playerBark();
+        planetRaderData_PR.IsBark = true;
+        obData.IsCenterButtonChanged = true;
+        DiableeButton();
+        //throw new System.NotImplementedException();
+    }
+
+    public void OnSniff()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnBiteDestroy()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPushOrPress()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnEat()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnObserve()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUp()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnInsert()
+    {
+        throw new System.NotImplementedException();
     }
 }

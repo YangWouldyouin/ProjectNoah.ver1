@@ -18,103 +18,115 @@ public class CancelInteractions : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            
-            if (BiteDestroyButtonController.biteDestroyButtonController.noahBiteObject != null) // 여기서 널 레퍼런스 오류가 생기고 있습니다.
+            if(PlayerScripts.playerscripts.currentObserveObj != null)
             {
-                biteObject = BiteDestroyButtonController.biteDestroyButtonController.noahBiteObject;
-            }
-            if (InteractionButtonController.interactionButtonController.noahUpDownObject != null)
-            {
-                upDownObject = InteractionButtonController.interactionButtonController.noahUpDownObject;
-            }
-            if (InteractionButtonController.interactionButtonController.noahObserveObject != null)
-            {
-                observeObject = InteractionButtonController.interactionButtonController.noahObserveObject;
+                CameraController.cameraController.CancelObserve();
+                PlayerScripts.playerscripts.currentObserveObj = null;
             }
 
-
-            /* 상호작용 취소 순서 : 관찰 -> 오르기 -> 물기 */
-            for (int i = 3; i>0; i--)
+            if (PlayerScripts.playerscripts.currentPushOrPressObj != null)
             {
-                /* 관찰하기 취소 */
-                if (i==3 && observeObject != null)
-                {   
-                    ObjData cancelObserveData = observeObject.GetComponent<ObjData>();
-                    if (cancelObserveData.IsObserve)
-                    {
-                        CameraController.cameraController.CancelObserve();
-
-                        //Invoke("ObservingAnimation", 0.00000001f);
-                        //Invoke("Observing2Animation", 0.00000001f);
-                        Invoke("CancelObserving2Animation", 1f);
-                        Invoke("CancelObservingAnimation", 1f);
-                       //cancelObserveData.IsObserve = false;
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }/* 오르기 취소 */
-                else if(i == 2 && upDownObject != null)
-                {
-                    ObjData cancelUpDownData = upDownObject.GetComponent<ObjData>();
-                    if (cancelUpDownData.IsUpDown)
-                    {
-                        if (Agent.enabled)
-                        {
-                            noahPosition.transform.position = new Vector3(upDownObject.transform.localPosition.x, 33.78f, upDownObject.transform.localPosition.z);
-                            Agent.updatePosition = true;
-                            Agent.updateRotation = true;
-                            Agent.isStopped = false;
-                        }
-                        cancelUpDownData.IsUpDown = false;
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }/* 물기 취소 */
-                else if(i==1&& biteObject != null)
-                {
-                    ObjData cancelBiteData = biteObject.GetComponent<ObjData>();
-                    if (cancelBiteData.IsBite)
-                    {
-
-                        playerAnimation.SetBool("IsPutDowning", true);
-                        Invoke("CancelBitingAnimation", 1f);
-                        Invoke("PutDownObject", 0.5f);
-                        cancelBiteData.IsBite = false;
-                        break;
-                    }
-                }
+                print(PlayerScripts.playerscripts.currentPushOrPressObj);
+                playerAnimation.SetBool("IsPushing", false);
+                //pushObject.transform.parent = moveableGroup.transform;
+                PlayerScripts.playerscripts.currentPushOrPressObj.GetComponent<Rigidbody>().isKinematic = false;   //makes the rigidbody not be acted upon by forces
+                //pushObject.GetComponent<Rigidbody>().useGravity = true;
+                PlayerScripts.playerscripts.currentPushOrPressObj.transform.parent= moveableGroup.transform;
+                //PlayerScripts.playerscripts.currentPushOrPressObj = null;
             }
+
+            //if (BiteDestroyButtonController.biteDestroyButtonController.noahBiteObject != null) // 여기서 널 레퍼런스 오류가 생기고 있습니다.
+            //{
+            //    biteObject = BiteDestroyButtonController.biteDestroyButtonController.noahBiteObject;
+            //}
+            //if (InteractionButtonController.interactionButtonController.noahUpDownObject != null)
+            //{
+            //    upDownObject = InteractionButtonController.interactionButtonController.noahUpDownObject;
+            //}
+            //if (InteractionButtonController.interactionButtonController.noahObserveObject != null)
+            //{
+            //    observeObject = InteractionButtonController.interactionButtonController.noahObserveObject;
+            //}
+
+
+            ///* 상호작용 취소 순서 : 관찰 -> 오르기 -> 물기 */
+            //for (int i = 3; i>0; i--)
+            //{
+            //    /* 관찰하기 취소 */
+            //    if (i==3 && observeObject != null)
+            //    {   
+            //        ObjData cancelObserveData = observeObject.GetComponent<ObjData>();
+            //        if (cancelObserveData.IsObserve)
+            //        {
+            //            CameraController.cameraController.CancelObserve();
+
+            //            //Invoke("ObservingAnimation", 0.00000001f);
+            //            //Invoke("Observing2Animation", 0.00000001f);
+            //            Invoke("CancelObserving2Animation", 1f);
+            //            Invoke("CancelObservingAnimation", 1f);
+            //           //cancelObserveData.IsObserve = false;
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            continue;
+            //        }
+            //    }/* 오르기 취소 */
+            //    else if(i == 2 && upDownObject != null)
+            //    {
+            //        ObjData cancelUpDownData = upDownObject.GetComponent<ObjData>();
+            //        if (cancelUpDownData.IsUpDown)
+            //        {
+            //            if (Agent.enabled)
+            //            {
+            //                noahPosition.transform.position = new Vector3(upDownObject.transform.localPosition.x, 33.78f, upDownObject.transform.localPosition.z);
+            //                Agent.updatePosition = true;
+            //                Agent.updateRotation = true;
+            //                Agent.isStopped = false;
+            //            }
+            //            cancelUpDownData.IsUpDown = false;
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            continue;
+            //        }
+            //    }/* 물기 취소 */
+            //    else if(i==1&& biteObject != null)
+            //    {
+            //        ObjData cancelBiteData = biteObject.GetComponent<ObjData>();
+            //        if (cancelBiteData.IsBite)
+            //        {
+
+            //            playerAnimation.SetBool("IsPutDowning", true);
+            //            Invoke("CancelBitingAnimation", 1f);
+            //            Invoke("PutDownObject", 0.5f);
+            //            cancelBiteData.IsBite = false;
+            //            break;
+            //        }
+            //    }
+            //}
 
             /* 밀기 취소 */
-            if (InteractionButtonController.ISPUSH)
-            {
-                pushObject = InteractionButtonController.interactionButtonController.noahPushObject;
-                noahNovepushobject = SaveDataWhenSceneChange.savedata.obj;
+            //if (InteractionButtonController.ISPUSH)
+            //{
 
-                if (pushObject != null)
-                {
-                    playerAnimation.SetBool("IsPushing", false);
-                    pushObject.transform.SetParent(null, true);
-                    pushObject.transform.parent = moveableGroup.transform;
-                    InteractionButtonController.interactionButtonController.ispush = false;
-                }
+            //InteractionButtonController.interactionButtonController.noahPushObject;
+            //noahNovepushobject = SaveDataWhenSceneChange.savedata.obj;
 
-                if (noahNovepushobject != null)
-                {
-                    playerAnimation.SetBool("IsPushing", false);
-                    noahNovepushobject.transform.SetParent(null, true);
-                    noahNovepushobject.transform.parent = moveableGroup.transform; // 다시 무바블오브젝트의 자식으로 넣기
-                    InteractionButtonController.interactionButtonController.ispush = false;
+            //InteractionButtonController.interactionButtonController.ispush = false;
+            //}
+
+            //if (noahNovepushobject != null)
+            //{
+            //    playerAnimation.SetBool("IsPushing", false);
+            //    noahNovepushobject.transform.SetParent(null, true);
+            //    noahNovepushobject.transform.parent = moveableGroup.transform; // 다시 무바블오브젝트의 자식으로 넣기
+            //    InteractionButtonController.interactionButtonController.ispush = false;
 
 
-                }
-            }
+            //}
+
             CancelObjectText.text = "Noah N.113";
 
             ///* 관찰하기 취소 */

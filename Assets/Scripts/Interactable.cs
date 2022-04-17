@@ -22,29 +22,29 @@ public class Interactable : MonoBehaviour
 
     private GameObject nowInteractObject;
 
-    Outline outline; // 마우스 오버시 오브젝트 외곽선
-    private void Start()
-    {
-        outline = GetComponent<Outline>(); // 상호작용 오브젝트로부터 아웃라인 컴포넌트를 가져옴
-    }
+    //Outline outline; // 마우스 오버시 오브젝트 외곽선
+    //private void Start()
+    //{
+    //    outline = GetComponent<Outline>(); // 상호작용 오브젝트로부터 아웃라인 컴포넌트를 가져옴
+    //}
 
-    /* 마우스 오버시 아웃라인 활성화 */
-    public void OnMouseOver()
-    {
-        if(outline!=null)
-        {
-            outline.enabled = true;
-        }
-    }
+    ///* 마우스 오버시 아웃라인 활성화 */
+    //public void OnMouseOver()
+    //{
+    //    if(outline!=null)
+    //    {
+    //        outline.enabled = true;
+    //    }
+    //}
 
-    /* 마우스가 오브젝트로부터 벗어나면 아웃라인 비활성화 */
-    public void OnMouseExit()
-    {
-        if(outline != null)
-        { 
-            outline.enabled = false;
-        }
-    }
+    ///* 마우스가 오브젝트로부터 벗어나면 아웃라인 비활성화 */
+    //public void OnMouseExit()
+    //{
+    //    if(outline != null)
+    //    { 
+    //        outline.enabled = false;
+    //    }
+    //}
 
     /* NPC 의 위치를 반환하는 메서드 */
     public Vector3 InteractPosition()
@@ -56,7 +56,7 @@ public class Interactable : MonoBehaviour
     /* 플레이어가 NPC를 클릭하면 1)NPC 위치로 갈때까지 기다렸다가 도착하면 2) NPC 를 바라보는 방향으로 플레이어를 돌리고, 3) 상호작용들을 실행하는 메서드 */
     public void Interact(PlayerScripts player)
     {
-        currentPushOrPressButton = PlayerScripts.playerscripts.ObjectpushOrpressbutton;
+        //currentPushOrPressButton = PlayerScripts.playerscripts.ObjectpushOrpressbutton;
 
 
 
@@ -107,38 +107,38 @@ public class Interactable : MonoBehaviour
                 if (nowInteractData.IsCenterPlusButtonDisabled) //  바뀐 가운데 버튼이 비활성화 상태이면 
                 {
                     // 누를 수 없는 버튼을 띄운다.
-                    if (nowInteractData.CenterPlusButton.name == "InsertButton")
+                    if (nowInteractData.CenterButton2.name == "InsertButton")
                     {
                         BaseCanvas._baseCanvas.insertDisableButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterPlusButton.name == "UpDownButton")
+                    else if (nowInteractData.CenterButton2.name == "UpDownButton")
                     {
                         BaseCanvas._baseCanvas.upDownDisableButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterPlusButton.name == "ObserveButton")
+                    else if (nowInteractData.CenterButton2.name == "ObserveButton")
                     {
                         BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterPlusButton.name == "EatButton")
+                    else if (nowInteractData.CenterButton2.name == "EatButton")
                     {
                         BaseCanvas._baseCanvas.eatDisableButton.transform.gameObject.SetActive(true);
                     }
                 }
                 else // 바뀐 가운데 버튼이 활성화 상태이면 누를 수 있는 버튼을 띄운다. 
                 {
-                    if (nowInteractData.CenterPlusButton.name == "InsertButton")
+                    if (nowInteractData.CenterButton2.name == "InsertButton")
                     {
                         BaseCanvas._baseCanvas.insertButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterPlusButton.name == "UpDownButton")
+                    else if (nowInteractData.CenterButton2.name == "UpDownButton")
                     {
                         BaseCanvas._baseCanvas.upDownButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterPlusButton.name == "ObserveButton")
+                    else if (nowInteractData.CenterButton2.name == "ObserveButton")
                     {
                         BaseCanvas._baseCanvas.observeButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterPlusButton.name == "EatButton")
+                    else if (nowInteractData.CenterButton2.name == "EatButton")
                     {
                         BaseCanvas._baseCanvas.eatButton.transform.gameObject.SetActive(true);
                     }
@@ -150,19 +150,19 @@ public class Interactable : MonoBehaviour
                 if (nowInteractData.IsCenterButtonDisabled) // 바뀌지 않은 가운데 버튼이 비활성화 상태이면 
                 {
                     // 누를 수 없는 버튼을 띄운다.
-                    if(nowInteractData.CenterButton.name == "InsertButton")
+                    if(nowInteractData.CenterButton1.name == "InsertButton")
                     {
                         BaseCanvas._baseCanvas.insertDisableButton.transform.gameObject.SetActive(true);
                     }
-                    else if(nowInteractData.CenterButton.name == "UpDownButton")
+                    else if(nowInteractData.CenterButton1.name == "UpDownButton")
                     {
                         BaseCanvas._baseCanvas.upDownDisableButton.transform.gameObject.SetActive(true);
                     }
-                    else if(nowInteractData.CenterButton.name == "ObserveButton")
+                    else if(nowInteractData.CenterButton1.name == "ObserveButton")
                     {
                         BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterButton.name == "EatButton")
+                    else if (nowInteractData.CenterButton1.name == "EatButton")
                     {
                         BaseCanvas._baseCanvas.eatDisableButton.transform.gameObject.SetActive(true);
                     }
@@ -170,23 +170,23 @@ public class Interactable : MonoBehaviour
                 }
                 else // 활성화상태이면 누를 수 있는 버튼을 띄운다. 
                 {
-                    if (nowInteractData.CenterButton.name == "InsertButton")
+                    if (nowInteractData.CenterButton1.name == "InsertButton")
                     {
                         BaseCanvas._baseCanvas.insertButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterButton.name == "UpDownButton")
+                    else if (nowInteractData.CenterButton1.name == "UpDownButton")
                     {
                         BaseCanvas._baseCanvas.upDownButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterButton.name == "ObserveButton")
+                    else if (nowInteractData.CenterButton1.name == "ObserveButton")
                     {
                         BaseCanvas._baseCanvas.observeButton.transform.gameObject.SetActive(true);
                     }
-                    else if (nowInteractData.CenterButton.name == "EatButton")
+                    else if (nowInteractData.CenterButton1.name == "EatButton")
                     {
                         BaseCanvas._baseCanvas.eatButton.transform.gameObject.SetActive(true);
                     }
-                    else if(nowInteractData.CenterButton.name == "NoCenterButton")
+                    else if(nowInteractData.CenterButton1.name == "NoCenterButton")
                     {
                         BaseCanvas._baseCanvas.noCenterButton.transform.gameObject.SetActive(true);
                     }
@@ -230,20 +230,20 @@ public class Interactable : MonoBehaviour
 
             InteractionButtonController.interactionButtonController.TurnOffInteractionButton();
 
-            if (noahPushOrPressData.ISPushOrPressActive) // 현재 오브젝트가 "누르기" 가능한 오브젝트이면
-            {
-                noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 로 저장
-                Invoke("ChangePressTrue", 0.5f); // 버튼이 눌러지고 0.5초 후 누르기 누르기 동작 시작
-                Invoke("ChangePressFalse", 2f); // 2초 후 누르기 끝내고 다시 Idle 상태로 돌아감
-                Invoke("PressFalse", 1f);
-            }
-            else // 실제로는 누르기 불가능한 오브젝트 이므로 동작만 보여준다. 
-            {
-                noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 
-                Invoke("JustPlayPushAnimationTrue", 0.5f);
-                Invoke("JustPlayPushAnimationFalse", 2f);
-                Invoke("PressFalse", 1f);
-            }
+            //if (noahPushOrPressData.ISPushOrPressActive) // 현재 오브젝트가 "누르기" 가능한 오브젝트이면
+            //{
+            //    noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 로 저장
+            //    Invoke("ChangePressTrue", 0.5f); // 버튼이 눌러지고 0.5초 후 누르기 누르기 동작 시작
+            //    Invoke("ChangePressFalse", 2f); // 2초 후 누르기 끝내고 다시 Idle 상태로 돌아감
+            //    Invoke("PressFalse", 1f);
+            //}
+            //else // 실제로는 누르기 불가능한 오브젝트 이므로 동작만 보여준다. 
+            //{
+            //    noahPushOrPressData.IsPushOrPress = true; // 현재 상호작용 중인 오브젝트의 데이터에서 누르기 == true 
+            //    Invoke("JustPlayPushAnimationTrue", 0.5f);
+            //    Invoke("JustPlayPushAnimationFalse", 2f);
+            //    Invoke("PressFalse", 1f);
+            //}
         }
     }
 

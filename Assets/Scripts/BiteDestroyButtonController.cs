@@ -93,20 +93,14 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
         {
             ObjData noahBiteData = noahBiteObject.GetComponent<ObjData>();
             biteObjectText.text = "Noah N.113 - " + noahBiteData.ObjectName;
-            if (noahBiteData.ISBiteActive)
-            {
-                noahBiteData.IsBite = true;
-                biteDestroyButton.GetComponent<Image>().sprite = biteButtonClicked;
-                isPointerDown = true;
+            noahBiteData.IsBite = true;
+            biteDestroyButton.GetComponent<Image>().sprite = biteButtonClicked;
+            isPointerDown = true;
 
-                Invoke("ChangeBiteTrue", 0.5f);
-                Invoke("PlayerPickUp", 0.7f);
-                Invoke("ChangeBiteFalse", 1);
-            }
-            else
-            {
-                biteDestroyButton.GetComponent<Image>().sprite = biteButtonClicked;
-            }
+            Invoke("ChangeBiteTrue", 0.5f);
+            Invoke("PlayerPickUp", 0.7f);
+            Invoke("ChangeBiteFalse", 1);
+            biteDestroyButton.GetComponent<Image>().sprite = biteButtonClicked;
         }
     }
 
@@ -137,10 +131,10 @@ public class BiteDestroyButtonController : MonoBehaviour, IPointerEnterHandler, 
         if (noahDestroyObject != null)
         {
             ObjData noahBiteDestroyData = noahBiteObject.GetComponent<ObjData>();
-            if (noahBiteDestroyData.ISBiteActive)
-            {
-                noahBiteDestroyData.IsDestroy = true;
-            }
+            //if (noahBiteDestroyData.ISBiteActive)
+            //{
+            //    noahBiteDestroyData.IsDestroy = true;
+            //}
         }
     }
 

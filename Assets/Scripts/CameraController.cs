@@ -42,10 +42,10 @@ public class CameraController : MonoBehaviour
 
         currentObserveObject = PlayerScripts.playerscripts.currentObject;
 
-        currentObjectOutline = currentObserveObject.GetComponent<Outline>();
-        currentObjectOutline.OutlineWidth = 0;
+        //currentObjectOutline = currentObserveObject.GetComponent<Outline>();
+        //currentObjectOutline.OutlineWidth = 0;
 
-        currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
+        //currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
         if(cameraFollow!=null)
         {
             cameraFollow.enabled = false;
@@ -75,12 +75,12 @@ public class CameraController : MonoBehaviour
             cameraFollow.enabled = true;
         }
 
-        currentObjectOutline = currentObserveObject.GetComponent<Outline>();
-        currentObjectOutline.OutlineWidth = 8;
+        //currentObjectOutline = currentObserveObject.GetComponent<Outline>();
+        //currentObjectOutline.OutlineWidth = 8;
 
         ComeBackView(originPosition, originRotation);
-        currentObserveObjectData.IsNotInteractable = false;
-        currentObserveObjectData.IsObserve = false;
+        //currentObserveObjectData.IsNotInteractable = false;
+        //currentObserveObjectData.IsObserve = false;
 
     }
 

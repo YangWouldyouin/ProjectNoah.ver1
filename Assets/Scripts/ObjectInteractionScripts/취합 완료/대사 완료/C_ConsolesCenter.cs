@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class C_ConsolesCenter : MonoBehaviour
+public class C_ConsolesCenter : MonoBehaviour, IInteraction
 {
+    [Header("< 오브젝트 정보 >")]
+
     /* 이 오브젝트와 상호작용 하는 변수들 */
     public GameObject box_CC;
     public GameObject envirPipe_CC;
@@ -33,27 +35,21 @@ public class C_ConsolesCenter : MonoBehaviour
     DialogManager dialogManager;
 
     float timer_CC = 0;
+    public GameObject interactBtn;
+    public Button barkButton_C_Console, sniffButton_C_Console, biteButton_C_Console, pressButton_C_Console, observeButton_C_Console;
 
-    public Button b1;
-    public Button b2;
-    public Button b3;
-    public Button b4;
-    public Button b5;
+    public GameObject planetRader_CC; // 행성 감지 레이더 기계
+    ObjData planetRaderData_CC;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        dialogManager = dialogManager_CC.GetComponent<DialogManager>();
-
-        if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
-        {
-            // 플로우차트 처음 시작 때 넣고 싶은 연출들을 넣는다.  
-            noahAnim_CC.SetBool("IsSleeping", true);
-            StartCoroutine(NoahWakeUp()); // 잠들어 있던 노아가 깨어난다
-            StartCoroutine(FadeCoroutine()); //화면이 밝아진다
-        }
-
+        /* 각 상호작용 버튼에 함수를 넣는다 */
+        barkButton_C_Console.onClick.AddListener(OnBark);
+        sniffButton_C_Console.onClick.AddListener(OnSniff);
+        biteButton_C_Console.onClick.AddListener(OnBiteDestroy);
+        pressButton_C_Console.onClick.AddListener(OnPushOrPress);
+        observeButton_C_Console.onClick.AddListener(OnObserve);
 
         consoleCenterData_CC = consoleCenter_CC.GetComponent<ObjData>();
         boxData_CC = box_CC.GetComponent<ObjData>();
@@ -66,8 +62,27 @@ public class C_ConsolesCenter : MonoBehaviour
 
         consoleUnLockButtonOutline_CC = consoleUnLockButton_CC.GetComponent<Outline>();
         consoleUnLockButtonOutline_CC.OutlineWidth = 0;
+
+        dialogManager = dialogManager_CC.GetComponent<DialogManager>();
+
+        if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        {
+            // 플로우차트 처음 시작 때 넣고 싶은 연출들을 넣는다.  
+            noahAnim_CC.SetBool("IsSleeping", true);
+            StartCoroutine(NoahWakeUp()); // 잠들어 있던 노아가 깨어난다
+            StartCoroutine(FadeCoroutine()); //화면이 밝아진다
+        }
     }
 
+    /* 상호작용 버튼 끄는 함수 */
+    void DiableButton()
+    {
+        barkButton_C_Console.transform.gameObject.SetActive(false);
+        sniffButton_C_Console.transform.gameObject.SetActive(false);
+        biteButton_C_Console.transform.gameObject.SetActive(false);
+        pressButton_C_Console.transform.gameObject.SetActive(false);
+        observeButton_C_Console.transform.gameObject.SetActive(false);
+    }
 
     IEnumerator NoahWakeUp()
     {
@@ -96,101 +111,77 @@ public class C_ConsolesCenter : MonoBehaviour
         fade_CC.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+
+
+    public void OnObserve()
     {
-        if (consoleCenterData_CC.IsObserve)
+        if(boxData_CC.IsUpDown)
         {
-
-
-
-            GameManager.gameManager._gameData.S_IsAIAwake_M_C1 = true;
-            MissionGenerator.missionGenerator.missionList.Add(MissionGenerator.missionGenerator.missionDic[0]);
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-
-
-            consoleCenterData_CC.IsNotInteractable = true;
-            if (boxData_CC.IsUpDown)
-            {
-                CameraController.cameraController.currentView = consoleCenterData_CC.ObservePlusView; //관찰 뷰 : < 시스템 재가동 버튼> 이 보이는 위치
-
-                timer_CC += Time.deltaTime;
-                float seconds = Mathf.FloorToInt((timer_CC % 3600) % 60);
-                if (seconds >= 2f) // 관찰하기 애니메이션 후 관찰화면으로 넘어가는데 2초 정도 걸리므로 2초 후 버튼 설명 띄움
-                {
-                    consoleDescription_CC.SetActive(true);
-                    consoleUnLockButtonData_CC.IsNotInteractable = false;
-                    consoleUnLockButtonOutline_CC.OutlineWidth = 10;
-                }
-
-                if (consoleUnLockButtonData_CC.IsPushOrPress)
-                {
-                    CameraController.cameraController.CancelObserve();
-
-                    Invoke("OpenCockpitDoor", 1f); // 문 열렸다가 닫히는 애니메이션 
-                    Invoke("CloseCockpitDoor", 3f);
-                }
-
-                if (envirPipeData_CC.IsBite) // <파이프> "물기" true 이면
-                {
-                    consoleAIResetButtonData_CC.IsNotInteractable = false; // AI 리셋 버튼 활성화
-                    consoleAIResetButtonOutline_CC.OutlineWidth = 8;
-
-                    if (consoleAIResetButtonData_CC.IsPushOrPress)
-                    {
-                        CameraController.cameraController.CancelObserve();
-
-                        consoleUnLockButtonData_CC.IsNotInteractable = true;
-                        consoleUnLockButtonOutline_CC.OutlineWidth = 0;
-
-                        consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화 (앞으로 누를 일 없음)
-                        consoleAIResetButtonOutline_CC.OutlineWidth = 0;
-                        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
-
-                        GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
-                        GameManager.gameManager._gameData.S_IsAIAwake_M_C1 = false;
-                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                        //GameManager.gameManager.IsAI_M_C1 = true; // 게임 세이브 분기점
-                    }
-
-                }
-                else
-                {
-                    consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화
-                    consoleAIResetButtonOutline_CC.OutlineWidth = 0;
-                }
-
-            }
-            else // 박스 없이 그냥 <조종석> 을 "관찰하기"
-            {
-                CameraController.cameraController.currentView = consoleCenterData_CC.ObserveView; // 관찰 뷰 : 안 보이는 위치
-
-                consoleUnLockButtonData_CC.IsNotInteractable = true;
-                consoleUnLockButtonOutline_CC.OutlineWidth = 0;
-
-                consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화
-                consoleAIResetButtonOutline_CC.OutlineWidth = 0;
-            }
+            // 관찰뷰 : 우;쪽
         }
         else
         {
-            consoleCenterData_CC.IsNotInteractable = false;
-            timer_CC = 0; // 관찰시간 텀 타이머 리셋
-            consoleDescription_CC.SetActive(false);
-
-            consoleUnLockButtonData_CC.IsNotInteractable = true;
-            consoleUnLockButtonOutline_CC.OutlineWidth = 0;
-
-            consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화
-            consoleAIResetButtonOutline_CC.OutlineWidth = 0;
+            // 관찰뷰 : ㅇ래쫃
         }
-
-
-
-
-
+        PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+        CameraController.cameraController.currentView = consoleCenterData_CC.ObservePlusView;
+        InteractionButtonController.interactionButtonController.playerObserve();
+        DiableButton();
+        //throw new System.NotImplementedException();
     }
+
+    public void OnBiteDestroy()
+    {
+        DiableButton();
+    }
+
+    public void OnPushOrPress()
+    {
+        consoleCenterData_CC.IsPushOrPress = true;
+        // 손으로 누르는 애니메이션 보여줌
+        InteractionButtonController.interactionButtonController.playerPressHand();
+        // 1초 뒤에 Ispushorpress 를 false 로 바꿈
+        DiableButton();
+    }
+
+    public void OnBark()
+    {
+        consoleCenterData_CC.IsBark = true;
+        // 애니메이션 보여줌
+        InteractionButtonController.interactionButtonController.playerBark();
+        // 상호작용 버튼을 끔
+        DiableButton();
+    }
+
+    public void OnSniff()
+    {
+        consoleCenterData_CC.IsSniff = true;
+        // 애니메이션 보여주고 냄새 텍스트 띄움
+        InteractionButtonController.interactionButtonController.playerSniff();
+        // 상호작용 버튼을 끔
+        DiableButton();
+    }
+
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+    public void OnUp()
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public void OnInsert()
+    {
+ 
+    }
+
+    public void OnEat()
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     void OpenCockpitDoor()
     {
@@ -201,14 +192,5 @@ public class C_ConsolesCenter : MonoBehaviour
     {
         cockpitDoorAnim_CC.SetBool("IsDoorOpened", false);
         cockpitDoorAnim_CC.SetBool("IsDoorOpenStart", false);
-    }
-
-    public void OnConsoleClicked()
-    {
-        b1.transform.gameObject.SetActive(true);
-        b2.transform.gameObject.SetActive(true);
-        b3.transform.gameObject.SetActive(true);
-        b4.transform.gameObject.SetActive(true);
-        b5.transform.gameObject.SetActive(true);
     }
 }

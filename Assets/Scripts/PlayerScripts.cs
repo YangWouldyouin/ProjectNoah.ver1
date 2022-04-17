@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
+
 public class PlayerScripts : MonoBehaviour
 {
-    public UnityEvent unityEvent = new UnityEvent();
     public static PlayerScripts playerscripts { get; private set; }
+    private void Awake()
+    {
+        playerscripts = this;
+        rectTransform = interactionButtons.GetComponent<RectTransform>();
+    }
 
     private NavMeshAgent agent;
     private Camera mainCamera;
@@ -16,10 +20,6 @@ public class PlayerScripts : MonoBehaviour
 
     private bool turning; // default : false
     private Quaternion targetRot; // 플레이어의 처음 각도
-
-    /* 플레이어와 NPC 사이의 거리가 얼마나 가까우면 상호작용 버튼 나타나게 할지 */
-    private Vector3 PlayerPosition, NPCPosition = new Vector3();
-    private float DistanceBetweenPlayerandNPC = 25f;
 
     /* 문 클릭 시 이동할 씬*/
     public string transferMapName;
@@ -29,33 +29,32 @@ public class PlayerScripts : MonoBehaviour
     public Sprite BiteButtonimage;
 
     /* 상호작용 오브젝트로부터 받아온 데이터 담는 변수 */
+    [HideInInspector]
+    public GameObject currentObject;
+    private ObjData objData;
     private string objectNameData, smellData;
-    private Button pushOrPressButtonData, centerButtonData, centerPlusButtonData;
     private Transform observeData, observePlusData; // ObservePlusData : 박스 위에서 관찰 등
-    
+    private Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteDestroyBtn, pushOrPressBtn, centerBtn;
+
+    /* 상호작용 취소할 때 사용하는 변수 */
+    [HideInInspector]
+    public GameObject currentPushOrPressObj, currentBiteObj, currentObserveObj, currentUpObj, currentInsertObj;
+
     /* 상호작용 버튼 생성 위치 관련 변수 */
     private Vector3 interactionButtonPosition;
     private RectTransform rectTransform;
     public GameObject interactionButtons;
 
-    public GameObject currentObject;
-    private ObjData objData;
 
+    /* 네임태그 관련 변수 */
     public GameObject objectNameTag;
     public TMPro.TextMeshProUGUI objectNameText;
-
     public Vector3 offset;
 
+    /* 정리 필요한 변수 */
     public bool IsClicked = false;
-
     public Animator noahAnim;
     public IPressController pressFunc;
-
-    private void Awake()
-    {
-        playerscripts = this;
-        rectTransform = interactionButtons.GetComponent<RectTransform>();
-    }
 
     void Start()
     {
@@ -86,11 +85,11 @@ public class PlayerScripts : MonoBehaviour
         if(turning&&transform.rotation!=targetRot)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 15f * Time.deltaTime); // a 각도와 b 각도 사이를 보간해줌
-        }
-        // NavMeshAgent 의 Velocity 전달, vector --> magnitude
+        } // NavMeshAgent 의 Velocity 전달, vector --> magnitude
         playerAnim.UpdateAnimation(agent.velocity.sqrMagnitude); // 두 점간의 거리     
     }
 
+    // 순서 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
     void Onclick()
     {
         RaycastHit hit; //  충돌이 일어나면 코드 실행, 
@@ -100,41 +99,69 @@ public class PlayerScripts : MonoBehaviour
         {
             if (hit.collider != null) // 무언가를 치면
             {
-                unityEvent.Invoke();
-                PlayerPosition = this.gameObject.transform.position;
+                //PlayerPosition = this.gameObject.transform.position;
                 Interactable interactable = hit.collider.GetComponent<Interactable>(); // interactable : 부딪힌 오브젝트 or NPC 에 붙어있는 Interactable 컴포넌트         
                 objData = hit.collider.GetComponent<ObjData>();
                 pressFunc = hit.collider.GetComponent<IPressController>();
                 if (objData != null)
                 {
+                    // 오브젝트 기본 정보를 가져옴
                     objectNameData = objData.ObjectName;
                     smellData = objData.SmellText;
-                    pushOrPressButtonData = objData.PushOrPressButton;
-                    centerButtonData = objData.CenterButton;
-                    centerPlusButtonData = objData.CenterPlusButton;
+                    centerButton1Data = objData.CenterButton1;
+                    centerButton2Data = objData.CenterButton2;
+
                     observeData = objData.ObserveView;
                     observePlusData = objData.ObservePlusView;
-                }
 
-                if (interactable != null) // 부딪힌 오브젝트에 interactable 컴포넌트가 붙어있으면
-                {
-                    currentObject = hit.collider.gameObject;
-                    NPCPosition = interactable.transform.position;
+                    // 오브젝트 기본 버튼을 가져옴
+                    barkBtn = objData.BarkButton;
+                    sniffBtn = objData.SniffButton;
+                    biteDestroyBtn = objData.BiteDestroyButton;
+                    pushOrPressBtn = objData.PushOrPressButton;
 
-                    Vector3 offset = PlayerPosition - NPCPosition;
-                    float sqrLen = offset.sqrMagnitude; // 플레이어의 이동 전 현재 위치와 오브젝트 사이의 거리
-
-                    if (sqrLen < DistanceBetweenPlayerandNPC)
+                    /* 오브젝트 추가 버튼을 특정 조건을 만족했는지 확인 후 가져옴 */
+                    if(objData.IsCenterButtonChanged)
                     {
-                        objData.IsClicked = true;
-                        //Invoke("UnClickObject", 1f);
-                        if (!objData.IsNotInteractable)
+                        if(objData.IsCenterPlusButtonDisabled)
                         {
-                            Invoke("NameTagAppear", 1f);
-                            MovePlayer(interactable.InteractPosition());
-                            interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
-                        }   
-                    } // 순서가 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
+                            centerBtn = objData.CenterDisableButton2;
+                        }
+                        else
+                        {
+                            centerBtn = objData.CenterButton2;
+                        }                       
+                    }
+                    else
+                    {
+                        if(objData.IsCenterButtonDisabled)
+                        {
+                            centerBtn = objData.CenterDisableButton1;
+                        }
+                        else
+                        {
+                            centerBtn = objData.CenterButton1;
+                        }                     
+                    }
+
+                    currentObject = hit.collider.gameObject;
+
+                    objData.IsClicked = true;
+                    //Invoke("UnClickObject", 1f);
+                    if (!objData.IsNotInteractable)
+                    {
+                        Invoke("NameTagAppear", 1f);
+                        MovePlayer(objData.transform.position);
+
+                        /* 상호작용 버튼 활성화 */
+                        barkBtn.transform.gameObject.SetActive(true);
+                        sniffBtn.transform.gameObject.SetActive(true);
+                        biteDestroyBtn.transform.gameObject.SetActive(true);
+                        pushOrPressBtn.transform.gameObject.SetActive(true);
+                        centerBtn.transform.gameObject.SetActive(true);
+
+                        //interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
+                    }
                 }
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 
                 {
@@ -145,14 +172,37 @@ public class PlayerScripts : MonoBehaviour
                         Invoke("ChangePlayerScene", 1f);
                     }
                 }
+
+
+                //if (interactable != null) // 부딪힌 오브젝트에 interactable 컴포넌트가 붙어있으면
+                //{
+                //    currentObject = hit.collider.gameObject;
+
+                //    objData.IsClicked = true;
+                //    //Invoke("UnClickObject", 1f);
+                //    if (!objData.IsNotInteractable)
+                //    {
+                //        Invoke("NameTagAppear", 1f);
+                //        MovePlayer(interactable.InteractPosition());
+
+                //        // 상호작용 버튼 활성화
+                //        barkBtn.transform.gameObject.SetActive(true);
+                //        sniffBtn.transform.gameObject.SetActive(true);
+                //        biteDestroyBtn.transform.gameObject.SetActive(true);
+                //        pushOrPressBtn.transform.gameObject.SetActive(true);
+                //        centerBtn.transform.gameObject.SetActive(true);
+
+                //        //interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
+                //    }
+                //}
+
             }
         }
     }
     public string PlayerObjectName { get { return objectNameData; } }
     public string PlayerSmellText { get { return smellData; } }
-    public Button ObjectpushOrpressbutton { get { return pushOrPressButtonData; } }
-    public Button ObjectCenterButton { get { return centerButtonData; } }
-    public Button ObjectCenterPlusButton { get { return centerPlusButtonData; } }
+    public Button ObjectCenterButton { get { return centerButton1Data; } }
+    public Button ObjectCenterPlusButton { get { return centerButton2Data; } }
     public Transform PlayerobserveView { get { return observeData; } }
     public Transform PlayerobserveBoxView { get { return observePlusData; } }
 
@@ -161,8 +211,7 @@ public class PlayerScripts : MonoBehaviour
         if(objData!=null)
         {
             objData.IsClicked = false;
-        }
-        
+        }       
     }
 
     /*  플레이어가 목적지에 도착하면 True 를 반환하는 메서드  */
@@ -176,8 +225,21 @@ public class PlayerScripts : MonoBehaviour
     {
         turning = false; // 움직일때마다 turning 을 거짓으로 만듬
         agent.SetDestination(targetPosition);
-        biteButton.GetComponent<Image>().sprite = BiteButtonimage;
-        InteractionButtonController.interactionButtonController.TurnOffInteractionButton();
+        //biteButton.GetComponent<Image>().sprite = BiteButtonimage;
+        //biteDestroyBtn.GetComponent<Image>().sprite = BiteButtonimage;
+
+        //IbarkBtnnteractionButtonController.interactionButtonController.TurnOffInteractionButton();
+        if(barkBtn!=null)
+            barkBtn.transform.gameObject.SetActive(false);
+        if(sniffBtn!=null)
+            sniffBtn.transform.gameObject.SetActive(false);
+        if(biteDestroyBtn!=null)
+            biteDestroyBtn.transform.gameObject.SetActive(false);
+        if(pushOrPressBtn!=null)
+            pushOrPressBtn.transform.gameObject.SetActive(false);
+        if (centerBtn != null)
+            centerBtn.transform.gameObject.SetActive(false);
+
         objectNameTag.SetActive(false);
     }
 

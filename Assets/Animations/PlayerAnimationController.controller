@@ -135,7 +135,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsPressing
+    m_ConditionEvent: IsHeadPressing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 663741998944739607}
@@ -183,7 +183,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Press
+  m_Name: Press(head)
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -518,7 +518,7 @@ BlendTree:
     m_Motion: {fileID: -3100369314251171874, guid: 7a8c9cf71147f554da6309aa366c1337, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
+    m_TimeScale: 1.5
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
     m_Mirror: 0
@@ -881,7 +881,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsNonePushing
+    m_ConditionEvent: IsHandPressing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 663741998944739607}
@@ -1447,12 +1447,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: IsNonePushing
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: IsPushing
     m_Type: 4
     m_DefaultFloat: 0
@@ -1525,12 +1519,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: IsPressing
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: IsInserting
     m_Type: 4
     m_DefaultFloat: 0
@@ -1556,6 +1544,18 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: IsEating3
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: IsHeadPressing
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: IsHandPressing
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1607,7 +1607,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: IdleWalk
-  m_Speed: 1
+  m_Speed: 1.1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4610072200897208168}
@@ -1776,7 +1776,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IsPressing
+    m_ConditionEvent: IsHeadPressing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7918715472990379293}
@@ -1905,7 +1905,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IsNonePushing
+    m_ConditionEvent: IsHandPressing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5941608739339464985}
@@ -2109,7 +2109,7 @@ AnimatorStateMachine:
     m_Position: {x: 330, y: -160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7918715472990379293}
-    m_Position: {x: 550, y: 200, z: 0}
+    m_Position: {x: 550, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4685903134167673394}
     m_Position: {x: -260, y: 190, z: 0}
@@ -2124,7 +2124,7 @@ AnimatorStateMachine:
     m_Position: {x: 200, y: 510, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5941608739339464985}
-    m_Position: {x: 550, y: 130, z: 0}
+    m_Position: {x: 550, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -820315422181174964}
     m_Position: {x: 720, y: -160, z: 0}
@@ -2545,7 +2545,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NonePush
+  m_Name: Press(hand)
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class C_ControlWorkDoor : MonoBehaviour
+public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 {
     public GameObject envirPipe_CWD; // 자식으로부터 가져오기
     public GameObject cockpitDoor_CWD;
@@ -103,4 +103,46 @@ public class C_ControlWorkDoor : MonoBehaviour
         }
     }
 
+    public void OnBark()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSniff()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnBiteDestroy()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPushOrPress()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnEat()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnObserve()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUp()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnInsert()
+    {
+        InteractionButtonController.interactionButtonController.insertPosOffset = new Vector3(1, 0, 1);
+        InteractionButtonController.interactionButtonController.insertRotOffset = new Vector3(0, 0, 0);
+        InteractionButtonController.interactionButtonController.PlayerInsert1();
+        InteractionButtonController.interactionButtonController.PlayerInsert2();
+    }
 }

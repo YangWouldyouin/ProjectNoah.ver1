@@ -8,8 +8,8 @@ public class BaseCanvas : MonoBehaviour
     [Header("기본 상호작용 버튼")]
     public Button barkButton;
     public Button sniffButton;
-    public GameObject biteDestroyButton;
-
+    //public GameObject biteDestroyButton;
+    public Button biteDestroyButton;
     public Button pushButton;
     public Button pressButton;
 
