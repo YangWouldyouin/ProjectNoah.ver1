@@ -63,7 +63,6 @@ public class PlayerScripts : MonoBehaviour
         playerAnim.Init(GetComponentInChildren<Animator>()); // Player 의 자식인 noah_FBX 에 붙어있는 컴포넌트인 animator 초기화
     }
 
-
     void Update()
     {      
         // 왼쪽 마우스 클릭 && 마우스가 UI 위에 있지 않음
@@ -102,7 +101,6 @@ public class PlayerScripts : MonoBehaviour
                 //PlayerPosition = this.gameObject.transform.position;
                 Interactable interactable = hit.collider.GetComponent<Interactable>(); // interactable : 부딪힌 오브젝트 or NPC 에 붙어있는 Interactable 컴포넌트         
                 objData = hit.collider.GetComponent<ObjData>();
-                pressFunc = hit.collider.GetComponent<IPressController>();
                 if (objData != null)
                 {
                     // 오브젝트 기본 정보를 가져옴

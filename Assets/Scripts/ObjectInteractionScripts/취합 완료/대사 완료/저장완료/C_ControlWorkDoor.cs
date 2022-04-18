@@ -140,9 +140,10 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
     public void OnInsert()
     {
+        /* "끼우기" 시 이동할 위치와 각도 넣기 */
         InteractionButtonController.interactionButtonController.insertPosOffset = new Vector3(1, 0, 1);
         InteractionButtonController.interactionButtonController.insertRotOffset = new Vector3(0, 0, 0);
+        /* 끼우기 애니메이션 & 이동 */
         InteractionButtonController.interactionButtonController.PlayerInsert1();
-        InteractionButtonController.interactionButtonController.PlayerInsert2();
     }
 }

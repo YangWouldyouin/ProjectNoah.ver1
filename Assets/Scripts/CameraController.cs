@@ -42,11 +42,13 @@ public class CameraController : MonoBehaviour
 
         currentObserveObject = PlayerScripts.playerscripts.currentObject;
 
-        //currentObjectOutline = currentObserveObject.GetComponent<Outline>();
-        //currentObjectOutline.OutlineWidth = 0;
+        currentObjectOutline = currentObserveObject.GetComponent<Outline>();
+        currentObjectOutline.OutlineWidth = 0;
 
-        //currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
-        if(cameraFollow!=null)
+        currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
+        currentObserveObjectData.IsNotInteractable = true;
+
+        if (cameraFollow!=null)
         {
             cameraFollow.enabled = false;
         }

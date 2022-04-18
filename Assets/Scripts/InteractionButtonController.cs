@@ -58,7 +58,7 @@ public class InteractionButtonController : MonoBehaviour
         BaseCanvas._baseCanvas.eatButton.onClick.AddListener(playerEat);
         BaseCanvas._baseCanvas.observeButton.onClick.AddListener(playerObserve);
         BaseCanvas._baseCanvas.upDownButton.onClick.AddListener(PlayerRise1);
-        BaseCanvas._baseCanvas.insertButton.onClick.AddListener(playerInserting);
+        //BaseCanvas._baseCanvas.insertButton.onClick.AddListener(playerInserting);
         BaseCanvas._baseCanvas.pushButton.onClick.AddListener(playerPush1);
         //BaseCanvas._baseCanvas.pressButton.onClick.AddListener(playerPress);
     }
@@ -154,7 +154,7 @@ public class InteractionButtonController : MonoBehaviour
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-    /* 오르기 */
+    /* 오르기 */  // @@ 수정 필요함 @@
     public void PlayerRise1()
     {
         if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔
@@ -196,33 +196,6 @@ public class InteractionButtonController : MonoBehaviour
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-    /* 끼우기 */
-    //void playerInserting()
-    //{
-    //        noahPlayer.transform.position = noahInsertObject.transform.position + new Vector3(1, 0, 1);
-    //        noahPlayer.transform.rotation = noahInsertObject.transform.rotation;
-            
-        
-    //}
-    public void PlayerInsert1()
-    {
-        noahPlayer.transform.position = PlayerScripts.playerscripts.currentInsertObj.transform.position + insertPosOffset;
-        //noahPlayer.transform.eulerAngles = PlayerScripts.playerscripts.currentInsertObj.transform.rotation + insertRotOffset;
-    }
-
-    public void PlayerInsert2()
-    {
-        StartCoroutine(InsertAnim());
-    }
-
-    IEnumerator InsertAnim()
-    {
-        yield return new WaitForSeconds(0.5f);
-        noahAnim.SetBool("IsInserting", true);
-    }
-
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
     /* 누르기 - 상자 등을 밀기 */
     public void playerPush1() // 도착했을 때 위치 조절하면 괜찮아질듯
     {
@@ -256,7 +229,6 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsPushing2", true);
     }
 
-
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     public void playerPressHand()
@@ -284,6 +256,34 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsHeadPressing", true);
         yield return new WaitForSeconds(0.5f);
         noahAnim.SetBool("IsHeadPressing", false);
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    /* 끼우기 */
+    //void playerInserting()
+    //{
+    //        noahPlayer.transform.position = noahInsertObject.transform.position + new Vector3(1, 0, 1);
+    //        noahPlayer.transform.rotation = noahInsertObject.transform.rotation;
+
+
+    //}
+    public void PlayerInsert1()
+    {
+        noahPlayer.transform.position = PlayerScripts.playerscripts.currentInsertObj.transform.position + insertPosOffset;
+        noahPlayer.transform.eulerAngles = PlayerScripts.playerscripts.currentInsertObj.transform.eulerAngles + insertRotOffset;
+        StartCoroutine(InsertAnim());
+    }
+
+    public void PlayerInsert2()
+    {
+        StartCoroutine(InsertAnim());
+    }
+
+    IEnumerator InsertAnim()
+    {
+        yield return new WaitForSeconds(0.5f);
+        noahAnim.SetBool("IsInserting", true);
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
