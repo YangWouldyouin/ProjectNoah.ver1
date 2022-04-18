@@ -55,9 +55,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         consoleAIResetButtonOutline_CC = consoleAIResetButton_CC.GetComponent<Outline>();
         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
 
-        consoleCenterOutline_CC = consoleCenter_CC.GetComponent<Outline>();
-        consoleCenterOutline_CC.OutlineWidth = 0;
-
         dialogManager = dialogManager_CC.GetComponent<DialogManager>();
 
         if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
@@ -99,13 +96,9 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     void Update()
     {
         /* 어쩔 수 없는 업데이트문... */
-        if(!consoleCenterData_CC.IsObserve)
+        if(consoleCenterData_CC.IsObserve == false)
         {
-            // 조종석 활성화
-            consoleCenterOutline_CC.OutlineWidth = 8;
-            consoleCenterData_CC.IsNotInteractable = false;
-            
-            // AI 리셋 버튼 비활성화
+            // AI 리셋 버튼 비활성화 (서브 오브젝트)
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
             consoleAIResetButtonData_CC.IsNotInteractable = true;
         }
@@ -120,6 +113,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         pressButton_C_Console.transform.gameObject.SetActive(false);
         observeButton_C_Console.transform.gameObject.SetActive(false);
     }
+
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnObserve()
     {
@@ -144,14 +139,14 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
                 {
                     // 탑뷰로 돌아감
                     CameraController.cameraController.CancelObserve();
-                    // AI 리셋 버튼 비활성화
+
+                    // AI 리셋 버튼 비활성화 (서브 오브젝트)
                     consoleAIResetButtonOutline_CC.OutlineWidth = 0;
                     consoleAIResetButtonData_CC.IsNotInteractable = true;
-                    // 조종석 활성화
-                    consoleCenterData_CC.IsNotInteractable = false;
-                    consoleCenterOutline_CC.OutlineWidth = 8;
+
                     // AI 대사 넣기
                     dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
+
                     /* "AI 깨우기 완료" 게임 중간 저장 */ 
                     GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
                     SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -188,6 +183,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         consoleAIResetButtonOutline_CC.OutlineWidth = 8;
     }
 
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
     public void OnBiteDestroy() // @@ 수정 필요 @@
     {
         // 상호작용 버튼을 끔
@@ -195,6 +192,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         // 취소할 때 참고할 오브젝트 저장
         // destroy는??
     }
+
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     /* 밀기&누르기 중 "밀기" 일 때!!! @@  수정 필요 @@
     public void OnPushOrPress()
@@ -219,11 +218,14 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     {
         /* 오브젝트의 누르기 변수 true로 바꿈 */
          consoleCenterData_CC.IsPushOrPress = true;
+
         /* 상호작용 버튼을 끔 */
         DiableButton();
-        /* 손으로 누르는 애니메이션 보여줌 */
-        InteractionButtonController.interactionButtonController.playerPressHand();
-        // InteractionButtonController.interactionButtonController.playerPressHead(); 머리로 누르는 애니메이션 
+
+        /* 애니메이션 보여줌 */
+        InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
+        // InteractionButtonController.interactionButtonController.playerPressHead(); // 머리로 누르는 애니메이션 
+
         /* 2초 뒤에 Ispushorpress 를 false 로 바꿈 */
         StartCoroutine(ChangePressFalse());
     }
@@ -234,6 +236,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         consoleCenterData_CC.IsPushOrPress = false;
     }
 
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
     public void OnBark()
     {
         /* 오브젝트의 짖기 변수 true로 바꿈 */
@@ -243,6 +247,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         /* 애니메이션 보여줌 */
         InteractionButtonController.interactionButtonController.playerBark();
     }
+
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnSniff()
     {
@@ -281,6 +287,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         }
     }
 
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
     public void OnInsert()
     {
         /* 현재 끼우기 오브젝트가 조종석이라는  것을 저장해둠 */
@@ -295,6 +303,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         /* 끼우기 애니메이션 & 이동 */
         InteractionButtonController.interactionButtonController.PlayerInsert1();
     }
+
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnEat()
     {

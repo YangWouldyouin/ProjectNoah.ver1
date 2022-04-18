@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 
     //public GameObject objectExtraDescription;
 
-    private Vector3 originPosition, originRotation;
+    public Vector3 originPosition, originRotation;
     [HideInInspector]
     public Transform currentView;
 
@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
         originPosition = transform.position;
         originRotation = transform.rotation.eulerAngles;
 
-        currentObserveObject = PlayerScripts.playerscripts.currentObject;
+        currentObserveObject = PlayerScripts.playerscripts.currentObserveObj;
 
         currentObjectOutline = currentObserveObject.GetComponent<Outline>();
         currentObjectOutline.OutlineWidth = 0;
@@ -77,13 +77,15 @@ public class CameraController : MonoBehaviour
             cameraFollow.enabled = true;
         }
 
-        //currentObjectOutline = currentObserveObject.GetComponent<Outline>();
-        //currentObjectOutline.OutlineWidth = 8;
+        currentObserveObject = PlayerScripts.playerscripts.currentObserveObj;
 
-        ComeBackView(originPosition, originRotation);
-        //currentObserveObjectData.IsNotInteractable = false;
+        currentObjectOutline = currentObserveObject.GetComponent<Outline>();
+        currentObjectOutline.OutlineWidth = 8;
+  
+        currentObserveObjectData.IsNotInteractable = false;
         //currentObserveObjectData.IsObserve = false;
 
+        ComeBackView(originPosition, originRotation);
     }
 
     /* 전환 효과 없는 카메라 전환 메서드 */

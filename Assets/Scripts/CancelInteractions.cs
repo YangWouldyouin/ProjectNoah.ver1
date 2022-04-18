@@ -21,7 +21,7 @@ public class CancelInteractions : MonoBehaviour
             if(PlayerScripts.playerscripts.currentObserveObj != null)
             {
                 CameraController.cameraController.CancelObserve();
-                PlayerScripts.playerscripts.currentObserveObj = null;
+                //PlayerScripts.playerscripts.currentObserveObj = null;
             }
 
             if (PlayerScripts.playerscripts.currentPushOrPressObj != null)
