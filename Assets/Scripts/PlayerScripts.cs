@@ -87,7 +87,12 @@ public class PlayerScripts : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 15f * Time.deltaTime); // a 각도와 b 각도 사이를 보간해줌
         }
         // NavMeshAgent 의 Velocity 전달, vector --> magnitude
-        playerAnim.UpdateAnimation(agent.velocity.sqrMagnitude); // 두 점간의 거리     
+        playerAnim.UpdateAnimation(agent.velocity.sqrMagnitude); // 두 점간의 거리
+
+        if (currentObject != null)
+        {
+            objectNameTag.transform.position = Camera.main.WorldToScreenPoint(currentObject.transform.position + new Vector3(0, 0.8f, 0));
+        }
     }
 
     void Onclick()
@@ -176,7 +181,7 @@ public class PlayerScripts : MonoBehaviour
         agent.SetDestination(targetPosition);
         biteButton.GetComponent<Image>().sprite = BiteButtonimage;
         InteractionButtonController.interactionButtonController.TurnOffInteractionButton();
-        objectNameTag.SetActive(false);
+        //objectNameTag.SetActive(false);
     }
 
     /* 플레이어가 NPC 를 바라보도록 각도를 바꿔주는 메서드 */
@@ -195,7 +200,7 @@ public class PlayerScripts : MonoBehaviour
     {
         if (objectNameData != null)
         {
-            objectNameTag.transform.position = Input.mousePosition + offset;
+            //objectNameTag.transform.position = Input.mousePosition + offset;
             objectNameTag.SetActive(true);
             objectNameText.text = objectNameData;
         }
