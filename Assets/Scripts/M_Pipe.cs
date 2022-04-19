@@ -29,11 +29,9 @@ public class M_Pipe : MonoBehaviour, IInteraction
         noCenterButton_M_Pipe.transform.gameObject.SetActive(false);
     }
 
-
-
     public void OnBiteDestroy()
     {
-        
+        // 진짜 물기는 BiteDestroy컨트롤러스크립트를붙인다.
     }
 
     public void OnBark()

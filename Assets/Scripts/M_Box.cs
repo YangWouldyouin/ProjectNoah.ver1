@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class M_Box : MonoBehaviour, IInteraction
 {
-    public Button bb1, bb2, bb3, bb4, bb5;
+    public Button barkButton_M_Box, sniffButton_M_Box, biteButton_M_Box, pushButton_M_Box, upButton_M_Box;
     ObjData boxData_M;
 
     public Vector3 pushPos, pushRot;
@@ -15,15 +15,22 @@ public class M_Box : MonoBehaviour, IInteraction
     void Start()
     {
         boxData_M = GetComponent<ObjData>();
+
+        /* 각 상호작용 버튼에 함수를 넣는다 */
+        barkButton_M_Box.onClick.AddListener(OnBark);
+        sniffButton_M_Box.onClick.AddListener(OnSniff);
+        biteButton_M_Box.onClick.AddListener(OnBiteDestroy);
+        pushButton_M_Box.onClick.AddListener(OnPushOrPress);
+        upButton_M_Box.onClick.AddListener(OnObserve);
     }
 
     void DiableButton()
     {
-        bb1.transform.gameObject.SetActive(false);
-        bb2.transform.gameObject.SetActive(false);
-        bb3.transform.gameObject.SetActive(false);
-        bb4.transform.gameObject.SetActive(false);
-        bb5.transform.gameObject.SetActive(false);
+        barkButton_M_Box.transform.gameObject.SetActive(false);
+        sniffButton_M_Box.transform.gameObject.SetActive(false);
+        biteButton_M_Box.transform.gameObject.SetActive(false);
+        pushButton_M_Box.transform.gameObject.SetActive(false);
+        upButton_M_Box.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
@@ -34,7 +41,10 @@ public class M_Box : MonoBehaviour, IInteraction
 
     public void OnBiteDestroy()
     {
-
+        /* 상호작용 버튼을 끔 */
+        DiableButton();
+        /*  물기만 하는 애니메이션 & 물 수 없는 오브젝트임을 알림 */
+        InteractionButtonController.interactionButtonController.PlayerBite();
     }
 
     public void OnPushOrPress()
