@@ -224,10 +224,10 @@ public class PlayerScripts : MonoBehaviour
         turning = false; // 움직일때마다 turning 을 거짓으로 만듬
         agent.SetDestination(targetPosition);
         //biteButton.GetComponent<Image>().sprite = BiteButtonimage;
-        //biteDestroyBtn.GetComponent<Image>().sprite = BiteButtonimage;
+        biteDestroyBtn.GetComponent<Image>().sprite = BiteButtonimage;
 
         //IbarkBtnnteractionButtonController.interactionButtonController.TurnOffInteractionButton();
-        if(barkBtn!=null)
+        if (barkBtn!=null)
             barkBtn.transform.gameObject.SetActive(false);
         if(sniffBtn!=null)
             sniffBtn.transform.gameObject.SetActive(false);

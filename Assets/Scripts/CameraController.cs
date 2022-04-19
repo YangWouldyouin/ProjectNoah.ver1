@@ -34,11 +34,14 @@ public class CameraController : MonoBehaviour
     {
         cameraFollow = GetComponent<CameraFollow>();
     }
-
-    public void ObserveButtonClick()
+    public void SavePosition()
     {
         originPosition = transform.position;
         originRotation = transform.rotation.eulerAngles;
+    }
+    public void ObserveButtonClick()
+    {
+
 
         currentObserveObject = PlayerScripts.playerscripts.currentObserveObj;
 

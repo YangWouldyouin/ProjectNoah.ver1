@@ -42,6 +42,8 @@ public class InteractionButtonController : MonoBehaviour
     public bool ispush = false;
     public static string pushObjectName;
     public TMPro.TextMeshProUGUI pushObjectText;
+    public TMPro.TextMeshProUGUI statText;
+    [SerializeField] GameObject statPanel;
 
     public GameObject myHead;
 
@@ -118,6 +120,27 @@ public class InteractionButtonController : MonoBehaviour
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
+    /* 물기 - 물기 불가능 오브젝트 일 때 */
+
+    public void PlayerBite()
+    {
+        StartCoroutine(BiteAnim());
+    }
+
+    IEnumerator BiteAnim()
+    {
+        yield return new WaitForSeconds(0.5f);
+        noahAnim.SetBool("IsBiting", true);
+        yield return new WaitForSeconds(1f);
+        noahAnim.SetBool("IsBiting", false);
+        statPanel.SetActive(true);
+        statText.text = " 물 수 없는 오브젝트 입니다. ";
+        yield return new WaitForSeconds(3f);
+        statPanel.SetActive(false);
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
     /* 냄새 맡기 */
     public void playerSniff()
     {
@@ -143,6 +166,7 @@ public class InteractionButtonController : MonoBehaviour
 
     public IEnumerator ObserveAnimAndChangeView()
     {
+        CameraController.cameraController.SavePosition();
         yield return new WaitForSeconds(0.5f);
         noahAnim.SetBool("IsObserving", true);
         yield return new WaitForSeconds(1f);

@@ -117,13 +117,13 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnObserve()
-    {
+    {  
         /* 오브젝트의 관찰 변수 true로 바꿈 */
         consoleCenterData_CC.IsObserve = true;
-        /* 상호작용 버튼을 끔 */
-        DiableButton();
         /* 취소할 때 참고할 오브젝트 저장 */
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+        /* 상호작용 버튼을 끔 */
+        DiableButton();
 
         if (boxData_CC.IsUpDown) // 상자에 올라갔으면 
         {
@@ -185,12 +185,13 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-    public void OnBiteDestroy() // @@ 수정 필요 @@
+    /* "물기" 가 안되는 오브젝트 일 때!! */
+    public void OnBiteDestroy() 
     {
-        // 상호작용 버튼을 끔
+        /* 상호작용 버튼을 끔 */
         DiableButton();
-        // 취소할 때 참고할 오브젝트 저장
-        // destroy는??
+        /*  물기만 하는 애니메이션 & 물 수 없는 오브젝트임을 알림 */
+        InteractionButtonController.interactionButtonController.PlayerBite();
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
