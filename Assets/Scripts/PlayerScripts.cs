@@ -72,7 +72,7 @@ public class PlayerScripts : MonoBehaviour
            Onclick();
             if (Input.mousePosition.y >= 570)
             {
-                rectTransform.anchoredPosition = Input.mousePosition + new Vector3(0, -150, 0);
+                rectTransform.anchoredPosition = Input.mousePosition + new Vector3(0, -400, 0);
             }
             else
             {

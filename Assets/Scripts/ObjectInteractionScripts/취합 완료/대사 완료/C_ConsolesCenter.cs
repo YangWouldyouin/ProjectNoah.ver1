@@ -8,7 +8,6 @@ public class C_ConsolesCenter : MonoBehaviour
     public GameObject box_CC;
     public GameObject envirPipe_CC;
     public GameObject consoleAIResetButton_CC;
-    public GameObject consoleUnLockButton_CC;
     public GameObject consoleCenter_CC;
 
     /* 이 오브젝트와 상호작용 하는 변수들의 데이터 */
@@ -16,13 +15,10 @@ public class C_ConsolesCenter : MonoBehaviour
     ObjData boxData_CC;
     ObjData envirPipeData_CC;
     ObjData consoleAIResetButtonData_CC;
-    ObjData consoleUnLockButtonData_CC;
 
     /* 기타 필요한 변수들 */
     Outline consoleAIResetButtonOutline_CC;
-    Outline consoleUnLockButtonOutline_CC;
     public GameObject consoleDescription_CC;
-    public Animator cockpitDoorAnim_CC;
     public Animator noahAnim_CC;
 
     public Image fadeImage_CC;
@@ -37,8 +33,6 @@ public class C_ConsolesCenter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MissionGenerator.missionGenerator.missionList.Add("조종실 탈출하기");
-        MissionGenerator.missionGenerator.missionList.Add("AI 활성화");
         dialogManager = dialogManager_CC.GetComponent<DialogManager>();
 
         if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
@@ -54,13 +48,9 @@ public class C_ConsolesCenter : MonoBehaviour
         boxData_CC = box_CC.GetComponent<ObjData>();
         envirPipeData_CC = envirPipe_CC.GetComponent<ObjData>();
         consoleAIResetButtonData_CC = consoleAIResetButton_CC.GetComponent<ObjData>();
-        consoleUnLockButtonData_CC = consoleUnLockButton_CC.GetComponent<ObjData>();
 
         consoleAIResetButtonOutline_CC = consoleAIResetButton_CC.GetComponent<Outline>();
         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
-
-        consoleUnLockButtonOutline_CC = consoleUnLockButton_CC.GetComponent<Outline>();
-        consoleUnLockButtonOutline_CC.OutlineWidth = 0;
     }
 
 
@@ -107,17 +97,8 @@ public class C_ConsolesCenter : MonoBehaviour
                 if (seconds >= 2f) // 관찰하기 애니메이션 후 관찰화면으로 넘어가는데 2초 정도 걸리므로 2초 후 버튼 설명 띄움
                 {
                     consoleDescription_CC.SetActive(true);
-                    consoleUnLockButtonData_CC.IsNotInteractable = false;
-                    consoleUnLockButtonOutline_CC.OutlineWidth = 10;
                 }
 
-                if (consoleUnLockButtonData_CC.IsPushOrPress)
-                {
-                    CameraController.cameraController.CancelObserve();
-
-                    Invoke("OpenCockpitDoor", 1f); // 문 열렸다가 닫히는 애니메이션 
-                    Invoke("CloseCockpitDoor", 3f);
-                }
 
                 if (envirPipeData_CC.IsBite) // <파이프> "물기" true 이면
                 {
@@ -128,8 +109,6 @@ public class C_ConsolesCenter : MonoBehaviour
                     {
                         CameraController.cameraController.CancelObserve();
 
-                        consoleUnLockButtonData_CC.IsNotInteractable = true;
-                        consoleUnLockButtonOutline_CC.OutlineWidth = 0;
 
                         consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화 (앞으로 누를 일 없음)
                         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
@@ -152,8 +131,6 @@ public class C_ConsolesCenter : MonoBehaviour
             {
                 CameraController.cameraController.currentView = consoleCenterData_CC.ObserveView; // 관찰 뷰 : 안 보이는 위치
 
-                consoleUnLockButtonData_CC.IsNotInteractable = true;
-                consoleUnLockButtonOutline_CC.OutlineWidth = 0;
 
                 consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화
                 consoleAIResetButtonOutline_CC.OutlineWidth = 0;
@@ -165,22 +142,8 @@ public class C_ConsolesCenter : MonoBehaviour
             timer_CC = 0; // 관찰시간 텀 타이머 리셋
             consoleDescription_CC.SetActive(false);
 
-            consoleUnLockButtonData_CC.IsNotInteractable = true;
-            consoleUnLockButtonOutline_CC.OutlineWidth = 0;
-
             consoleAIResetButtonData_CC.IsNotInteractable = true; // AI 리셋 버튼 비활성화
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
         }
-    }
-
-    void OpenCockpitDoor()
-    {
-        cockpitDoorAnim_CC.SetBool("IsDoorOpenStart", true);
-        cockpitDoorAnim_CC.SetBool("IsDoorOpened", true);
-    }
-    void CloseCockpitDoor()
-    {
-        cockpitDoorAnim_CC.SetBool("IsDoorOpened", false);
-        cockpitDoorAnim_CC.SetBool("IsDoorOpenStart", false);
     }
 }
