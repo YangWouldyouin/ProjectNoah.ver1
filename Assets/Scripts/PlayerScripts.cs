@@ -68,7 +68,7 @@ public class PlayerScripts : MonoBehaviour
         // 왼쪽 마우스 클릭 && 마우스가 UI 위에 있지 않음
         if(Input.GetMouseButtonDown(0)&&!Extensions.IsMouseOverUI()&&(!agent.isStopped))
         {
-           Onclick();
+            Onclick();
             if (Input.mousePosition.y >= 570)
             {
                 rectTransform.anchoredPosition = Input.mousePosition + new Vector3(0, -150, 0);
@@ -224,7 +224,7 @@ public class PlayerScripts : MonoBehaviour
         turning = false; // 움직일때마다 turning 을 거짓으로 만듬
         agent.SetDestination(targetPosition);
         //biteButton.GetComponent<Image>().sprite = BiteButtonimage;
-        biteDestroyBtn.GetComponent<Image>().sprite = BiteButtonimage;
+        
 
         //IbarkBtnnteractionButtonController.interactionButtonController.TurnOffInteractionButton();
         if (barkBtn!=null)
@@ -232,7 +232,11 @@ public class PlayerScripts : MonoBehaviour
         if(sniffBtn!=null)
             sniffBtn.transform.gameObject.SetActive(false);
         if(biteDestroyBtn!=null)
+        {            
             biteDestroyBtn.transform.gameObject.SetActive(false);
+            biteDestroyBtn.GetComponent<Image>().sprite = BiteButtonimage;
+        }
+            
         if(pushOrPressBtn!=null)
             pushOrPressBtn.transform.gameObject.SetActive(false);
         if (centerBtn != null)
