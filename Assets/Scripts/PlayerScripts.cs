@@ -74,6 +74,10 @@ public class PlayerScripts : MonoBehaviour
             {
                 rectTransform.anchoredPosition = Input.mousePosition + new Vector3(0, -400, 0);
             }
+            else if(Input.mousePosition.x >= 1100)
+            {
+                rectTransform.anchoredPosition = Input.mousePosition + new Vector3(-400, 0, 0);
+            }
             else
             {
                 rectTransform.anchoredPosition = Input.mousePosition;
