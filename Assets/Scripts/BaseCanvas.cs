@@ -15,7 +15,7 @@ public class BaseCanvas : MonoBehaviour
 
     [Header("추가 상호작용 버튼")]
     public Button noCenterButton;
-
+    
     public Button upDownButton;
     public Button observeButton;
     public Button insertButton;
@@ -39,5 +39,4 @@ public class BaseCanvas : MonoBehaviour
     {
         _baseCanvas = this;
     }
-
 }

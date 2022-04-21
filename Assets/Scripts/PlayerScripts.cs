@@ -37,9 +37,9 @@ public class PlayerScripts : MonoBehaviour
     private Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteDestroyBtn, pushOrPressBtn, centerBtn;
 
     /* 상호작용 취소할 때 사용하는 변수 */
-
+    [HideInInspector]
     public GameObject currentPushOrPressObj, currentBiteObj, currentObserveObj, currentUpObj, currentInsertObj;
-
+    [HideInInspector]
     public Vector3 biteFallPos, biteFallRot, biteOriginScale, pushOriginScale;
 
     /* 상호작용 버튼 생성 위치 관련 변수 */
@@ -65,9 +65,9 @@ public class PlayerScripts : MonoBehaviour
     }
 
     void Update()
-    {
+    {      
         // 왼쪽 마우스 클릭 && 마우스가 UI 위에 있지 않음
-        if (Input.GetMouseButtonDown(0) && !Extensions.IsMouseOverUI() && (!agent.isStopped))
+        if(Input.GetMouseButtonDown(0)&&!Extensions.IsMouseOverUI()&&(!agent.isStopped))
         {
             Onclick();
             if (Input.mousePosition.y >= 570)
@@ -81,7 +81,7 @@ public class PlayerScripts : MonoBehaviour
         }
 
         // 회전하는 중이고(참) && 플레이어의 현재 각도와 초기 각도가 다르면??  // Q. 여기 if 문이 뭔일하는지 솔직히 모르겠음
-        if (turning && transform.rotation != targetRot)
+        if(turning&&transform.rotation!=targetRot)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 15f * Time.deltaTime); // a 각도와 b 각도 사이를 보간해줌
         } // NavMeshAgent 의 Velocity 전달, vector --> magnitude
@@ -119,27 +119,27 @@ public class PlayerScripts : MonoBehaviour
                     pushOrPressBtn = objData.PushOrPressButton;
 
                     /* 오브젝트 추가 버튼을 특정 조건을 만족했는지 확인 후 가져옴 */
-                    if (objData.IsCenterButtonChanged)
+                    if(objData.IsCenterButtonChanged)
                     {
-                        if (objData.IsCenterPlusButtonDisabled)
+                        if(objData.IsCenterPlusButtonDisabled)
                         {
                             centerBtn = objData.CenterDisableButton2;
                         }
                         else
                         {
                             centerBtn = objData.CenterButton2;
-                        }
+                        }                       
                     }
                     else
                     {
-                        if (objData.IsCenterButtonDisabled)
+                        if(objData.IsCenterButtonDisabled)
                         {
                             centerBtn = objData.CenterDisableButton1;
                         }
                         else
                         {
                             centerBtn = objData.CenterButton1;
-                        }
+                        }                     
                     }
 
                     currentObject = hit.collider.gameObject;
@@ -206,17 +206,17 @@ public class PlayerScripts : MonoBehaviour
 
     void UnClickObject()
     {
-        if (objData != null)
+        if(objData!=null)
         {
             objData.IsClicked = false;
-        }
+        }       
     }
 
     /*  플레이어가 목적지에 도착하면 True 를 반환하는 메서드  */
     public bool CheckIfArrived()
     {
         // NavMeshAgent.pathPending : 계산 중이지만 아직 준비가 되지 않은 경로 -> false 면 계산 완료되었다는 뜻
-        return (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance); // 경로가 계산완료됨 && 남은거리보다 감속거리가 더 큼 -> 참 반환
+        return (!agent.pathPending && agent.remainingDistance<=agent.stoppingDistance); // 경로가 계산완료됨 && 남은거리보다 감속거리가 더 큼 -> 참 반환
     }
 
     void MovePlayer(Vector3 targetPosition)
@@ -224,20 +224,20 @@ public class PlayerScripts : MonoBehaviour
         turning = false; // 움직일때마다 turning 을 거짓으로 만듬
         agent.SetDestination(targetPosition);
         //biteButton.GetComponent<Image>().sprite = BiteButtonimage;
-
+        
 
         //IbarkBtnnteractionButtonController.interactionButtonController.TurnOffInteractionButton();
-        if (barkBtn != null)
+        if (barkBtn!=null)
             barkBtn.transform.gameObject.SetActive(false);
-        if (sniffBtn != null)
+        if(sniffBtn!=null)
             sniffBtn.transform.gameObject.SetActive(false);
-        if (biteDestroyBtn != null)
-        {
+        if(biteDestroyBtn!=null)
+        {            
             biteDestroyBtn.transform.gameObject.SetActive(false);
             biteDestroyBtn.GetComponent<Image>().sprite = BiteButtonimage;
         }
-
-        if (pushOrPressBtn != null)
+            
+        if(pushOrPressBtn!=null)
             pushOrPressBtn.transform.gameObject.SetActive(false);
         if (centerBtn != null)
             centerBtn.transform.gameObject.SetActive(false);

@@ -17,7 +17,7 @@ public class ObjData : MonoBehaviour
     [SerializeField] Button sniffButton;
     [SerializeField] Button biteDestroyButton;
     [SerializeField] Button pushOrPressButton;
-
+    
     [Header("< 추가 상호작용 버튼 >")]
     [SerializeField] Button centerButton1; // 가운데 추가행동 : 관찰, 오르기 등, 가운데 버튼 비활성화이면 NoCenterButton 넣으면 됨
     [SerializeField] Button centerDisableButton1;
@@ -26,10 +26,10 @@ public class ObjData : MonoBehaviour
     [SerializeField] Button centerDisableButton2;
 
     [SerializeField] GameObject interactButton; // 가운데 버튼 비활성화 상태에서 활성화로 바뀔 때 바뀌는 버튼을 넣으면 됨
-                                                //[SerializeField] Button pushOrPressButton; // 물건 옮기기 : PushButton // 버튼 누르기 or 그냥 누르는 애니메이션만 보여줄 때(실제로는 누르기가 안되는 오브젝트일 때) : PressButton
+    //[SerializeField] Button pushOrPressButton; // 물건 옮기기 : PushButton // 버튼 누르기 or 그냥 누르는 애니메이션만 보여줄 때(실제로는 누르기가 안되는 오브젝트일 때) : PressButton
 
-
-
+  
+    
     [SerializeField] Transform observeView;
 
     [SerializeField] Transform observePlusView;
@@ -59,7 +59,7 @@ public class ObjData : MonoBehaviour
 
 
     public GameObject InteractButton { get { return interactButton; } }
-    public Transform ObserveView { get { return observeView; } }
+    public Transform ObserveView { get { return observeView; } } 
     public Transform ObservePlusView { get { return observePlusView; } }
 
     //public bool ISBiteActive { get { return IsBiteActive; } }
@@ -69,7 +69,7 @@ public class ObjData : MonoBehaviour
 
     public bool IsCenterButtonDisabled = false; // true면 첫 번째 가운데 버튼 비활성화
     public bool IsCenterPlusButtonDisabled = false; // true면 두 번째 가운데 버튼 비활성화
-
+    
     public bool IsNotInteractable = false;
 
 
@@ -111,5 +111,4 @@ public class ObjData : MonoBehaviour
             outline.enabled = false;
         }
     }
-
 }

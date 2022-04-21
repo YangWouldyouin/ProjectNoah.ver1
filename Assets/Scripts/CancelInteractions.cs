@@ -122,7 +122,7 @@ public class CancelInteractions : MonoBehaviour
                 }
             }
 
-            if (pushObject != null)
+            if(pushObject!=null)
             {
                 ObjData cancelPushData = pushObject.GetComponent<ObjData>();
                 cancelPushData.IsPushOrPress = false;
@@ -130,7 +130,7 @@ public class CancelInteractions : MonoBehaviour
                 pushObject.transform.SetParent(null, true);
                 //pushObject.transform.localScale = PlayerScripts.playerscripts.pushOriginScale;
                 //pushObject.transform.parent = moveableGroup.transform; // 다시 무바블오브젝트의 자식으로 넣기
-
+                
                 //InteractionButtonController.interactionButtonController.ispush = false;
             }
             /* 밀기 취소 */
@@ -219,7 +219,7 @@ public class CancelInteractions : MonoBehaviour
     }
     void PutDownObject()
     {
-        biteObject.GetComponent<Rigidbody>().isKinematic = false;
+        biteObject.GetComponent<Rigidbody>().isKinematic = false; 
         biteObject.transform.parent = null;
 
         biteObject.transform.localScale = PlayerScripts.playerscripts.biteOriginScale;

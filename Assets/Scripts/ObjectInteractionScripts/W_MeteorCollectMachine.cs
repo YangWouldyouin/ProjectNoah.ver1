@@ -6,7 +6,6 @@ public class W_MeteorCollectMachine : MonoBehaviour
 {
     private bool meteorCollectanimOpen_MCM = false;
 
-    //운석 수집---------------------------------
     //public GameObject doorCollectMachine_MCM; // 수집 기계 문
     public GameObject meteorCollectMachine_MCM; // 운석 수집 기계
     public GameObject meteorButton_MCM; // 수집 기계 문 열기 버튼
@@ -18,6 +17,7 @@ public class W_MeteorCollectMachine : MonoBehaviour
     public GameObject rubber2_MCM; // 고무판
 
 
+
     //ObjData doorCollectMachineData_MCM;
     ObjData meteorCollectMachineData_MCM;
     ObjData meteorButtonData_MCM;
@@ -27,7 +27,6 @@ public class W_MeteorCollectMachine : MonoBehaviour
     ObjData analyticalMachineButtonData_MCM;
     ObjData analyticalMachinePlateData_MCM;
     ObjData rubber2Data_MCM;
-
 
     Outline meteorButtonOutline_MCM;
     Outline meteorCollectMachineOutline_MCM;
@@ -43,12 +42,6 @@ public class W_MeteorCollectMachine : MonoBehaviour
 
     public Animator meteorBoxAnim_WED;
     public Animator analyticalMachineAnim_WED;
-
-
-
-    //
-
-
 
     //private int count = 0;
     //private int count1 = 0;
@@ -174,8 +167,7 @@ public class W_MeteorCollectMachine : MonoBehaviour
 
             CameraController.cameraController.CancelObserve();
 
-            GameManager.gameManager._gameData.IsCanMeteorGet_M_C2 = true;
-            //GameManager.gameManager.IsCanMeteorGet = true;
+            GameManager.gameManager.IsCanMeteorGet = true;
 
 
             StartCoroutine(meteorBoxClose(0f, 30f));
@@ -203,8 +195,7 @@ public class W_MeteorCollectMachine : MonoBehaviour
             analyticalMachineButtonData_MCM.IsNotInteractable = false; // 상호작용 가능하게
             analyticalMachineButtonOutline_MCM.OutlineWidth = 16;
 
-            GameManager.gameManager._gameData.IsSmellDone_M_C2 = true;
-            //GameManager.gameManager.IsSmellDone = true;
+            GameManager.gameManager.IsSmellDone = true;
         }
         else if(analyticalMachineButtonData_MCM.IsCollision == false)
         {
@@ -261,9 +252,8 @@ public class W_MeteorCollectMachine : MonoBehaviour
 
         if(rubber2Data_MCM.IsBite)
         {
-            if (GameManager.gameManager._gameData.IsSmellDone_M_C2 == true )
+            if (GameManager.gameManager.IsSmellDone == true)
             {
-                //GameManager.gameManager.IsSmellDone == true
                 //고무판을 물고 일반 운석을 물면 보고가 가능하다. 
                 if (rubber2Data_MCM.IsBite && normalMeteor1Data_MCM.IsBite)
                 {
@@ -283,8 +273,7 @@ public class W_MeteorCollectMachine : MonoBehaviour
                                                     CancelInvoke("analyticalMachineClose");
                                                 }*/
 
-                        GameManager.gameManager._gameData.IsInputNormalMeteor1_M_C2 = true;
-                        //GameManager.gameManager.InputNormalMeteor1 = true;
+                        GameManager.gameManager.InputNormalMeteor1 = true;
 
                         Invoke("Report_Popup", 4f);
 
@@ -309,8 +298,7 @@ public class W_MeteorCollectMachine : MonoBehaviour
                     if (analyticalMachinePlateData_MCM.IsPushOrPress)
                     {
                         //중요 운석을 넣었는지 확인하는 Bool체크
-                        GameManager.gameManager._gameData.IsInputImportantMeteor1_M_C2 = true;
-                        //GameManager.gameManager.IsyesImportantMeteor = true;
+                        GameManager.gameManager.IsyesImportantMeteor = true;
 
                         importantMeteorData_MCM.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
                         importantMeteorData_MCM.transform.parent = null;
@@ -371,9 +359,8 @@ public class W_MeteorCollectMachine : MonoBehaviour
         IsReported = true;
         Report_GUI.SetActive(false);
 
-        if(GameManager.gameManager._gameData.IsyesImportantMeteor_M_C2 == true )
+        if(GameManager.gameManager.IsyesImportantMeteor == true)
         {
-            //GameManager.gameManager.IsyesImportantMeteor == true
             Debug.Log("지구귀환엔딩");
         }
     }

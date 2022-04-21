@@ -18,14 +18,14 @@ public class BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPoint
     private Animator playerAnimation;
 
     private bool isPointerDown = false;
-    private float requiredChangeTime = 0.5f;
+    private  float requiredChangeTime = 0.5f;
     private float pointerDownTimer = 0;
 
 
     int i = 0;
     // public Button biteDestroyButton; // PlayerScripts - MovePlayer 에서 버튼 이미지 BiteButtonImage 로 바꿈
     GameObject noahBiteObject, noahDestroyObject;
-
+    
 
     void Start()
     {
@@ -37,7 +37,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPoint
         playerAnimation = BaseCanvas._baseCanvas.playerAnimation;
         myMouth = BaseCanvas._baseCanvas.myMouth;
         biteText = BaseCanvas._baseCanvas.biteObjectText;
-
+ 
     }
 
 
@@ -137,7 +137,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPoint
         noahBiteObject.transform.SetParent(myMouth.transform, true);
         noahBiteObject.transform.localPosition = mouthPos; // sets the position of the object to your mouth position
         noahBiteObject.transform.localEulerAngles = mouthRot; // sets the position of the object to your mouth position
-
+        
     }
 
     void Update()
@@ -155,7 +155,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPoint
 
                 Invoke("DeleteObject", 2f);
                 Invoke("ChangeDestroyFalse", 3f);
-
+                
                 Reset();
             }
         }
@@ -184,7 +184,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPoint
     }
     void ChangeDestroyFalse()
     {
-
+        
         playerAnimation.SetBool("IsDestroying", false);
         DiableButton();
     }
@@ -269,4 +269,3 @@ public class BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPoint
     //    playerAnimation.SetBool("IsDestroying", false);
     //}
 }
-

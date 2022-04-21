@@ -35,7 +35,7 @@ public class InteractionButtonController : MonoBehaviour
 
 
     public Vector3 pushPos, pushRot;
-    /* 정리 필요한 변수들 */
+    /* 정리 필요한 변수들 */   
     [HideInInspector]
     public GameObject noahPushObject;
     public static GameObject noahpushobject;
@@ -223,10 +223,10 @@ public class InteractionButtonController : MonoBehaviour
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 누르기 - 상자 등을 밀기 */
-    public void playerPush1()
+    public void playerPush1() 
     {
         noahPushObject = PlayerScripts.playerscripts.currentObject;
-        if (noahPushObject != null)
+        if (noahPushObject!=null)
         {
             Invoke("ChangePushTrue1", 0.5f);
             Invoke("ChangePushTrue2", 1f);
@@ -242,7 +242,7 @@ public class InteractionButtonController : MonoBehaviour
 
     public void PlayerPush2()
     {
-        Invoke("AddPushObject", 1f);
+        Invoke("AddPushObject", 1f);        
     }
 
     void AddPushObject()

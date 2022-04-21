@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3542559592625264742}
   - component: {fileID: 5667099007574896633}
+  - component: {fileID: 1212734939}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -43,10 +44,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0cc7324c12e5945a6177aad627a1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsAI_M_C1: 0
-  IsCockpitDoorOpened_M_C1: 0
-  IsHealthMachineFixedT_C2: 0
-  IsSmartFarmOpen_T_C2: 0
-  IsHealthMachineDone: 0
+  _gameData:
+    S_IsAIAwake_M_C1: 0
+    S_IsCWDoorOpened_M_C1: 0
+    S_IsHealthMachineFixed_T_C2: 0
+    IsAIAwake_M_C1: 0
+    IsCWDoorOpened_M_C1: 0
+    IsHealthMachineFixed_T_C2: 0
+    IsSmartFarmOpen_T_C2: 0
+    IsWEDoorOpened_M_C2: 0
+    IsFindDrugDone_T_C2: 0
+    IsSmoke_T_C3: 0
+    IsFuelabsorberFixed_E_E1: 0
+    HealthMachineCancelCount: 5
+  IsTrashDoorFixed_L_L1: 0
+  IsCanMeteorGet: 0
+  IsSmellDone: 0
+  IsCollectMeteor: 0
+  InputNormalMeteor1: 0
+  InputNormalMeteor2: 0
+  InputNormalMeteor3: 0
+  InputNormalMeteor4: 0
+  InputImportantMeteor1: 0
+  IsyesImportantMeteor: 0
+  IsAIDogHealthReport: 0
   IsSmartFarmMissionDone: 0
-  isBark: 0
+--- !u!114 &1212734939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581144339895293020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899684144a4c53d47bfa30a222398bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

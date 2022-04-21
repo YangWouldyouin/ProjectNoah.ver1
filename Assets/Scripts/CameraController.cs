@@ -51,11 +51,11 @@ public class CameraController : MonoBehaviour
         currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
         currentObserveObjectData.IsNotInteractable = true;
 
-        if (cameraFollow != null)
+        if (cameraFollow!=null)
         {
             cameraFollow.enabled = false;
         }
-
+        
         //camObserveView = PlayerScripts.playerscripts.PlayerobserveView;
         //camObserveBoxView = PlayerScripts.playerscripts.PlayerobserveBoxView;
         noah.transform.gameObject.SetActive(false);
@@ -84,7 +84,7 @@ public class CameraController : MonoBehaviour
 
         currentObjectOutline = currentObserveObject.GetComponent<Outline>();
         currentObjectOutline.OutlineWidth = 8;
-
+  
         currentObserveObjectData.IsNotInteractable = false;
         currentObserveObjectData.IsObserve = false;
 
