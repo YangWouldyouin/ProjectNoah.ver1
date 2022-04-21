@@ -52,7 +52,7 @@ public class Outline : MonoBehaviour {
   private class ListVector3 {
     public List<Vector3> data;
   }
-
+  [Header("< 외곽선 >")]
   [SerializeField]
   private Mode outlineMode;
 

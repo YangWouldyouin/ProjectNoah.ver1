@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+[RequireComponent(typeof(Outline))]
 public class ObjData : MonoBehaviour
 {
     /* 값이 바뀌지 않는 데이터 목록 */
@@ -92,6 +93,8 @@ public class ObjData : MonoBehaviour
     public bool IsCollision = false; // 책상 올라가려고 추가한 것이다. UpUP, M_C2_FindEnginespaceKey 코드 참고
     public bool IsClicked = false;
 
+  
+
     Outline outline; // 마우스 오버시 오브젝트 외곽선
     private void Start()
     {
@@ -116,3 +119,35 @@ public class ObjData : MonoBehaviour
         }
     }
 }
+
+#if UNITY_EDITOR
+    [UnityEditor.CustomEditor(typeof(ObjData))]
+
+    public class ObjDataAndOutlineEditor : UnityEditor.Editor
+{
+    private ObjData _objdata;
+    private Outline _outline;
+    private UnityEditor.Editor _objDataAndOutlineEditor;
+
+    private void OnEnable()
+    {
+        _objdata = (ObjData)target;
+        _outline = _objdata.GetComponent<Outline>();
+
+        _outline.hideFlags = HideFlags.HideInInspector;
+        _objDataAndOutlineEditor = CreateEditor(_outline);
+    }
+
+    private void OnDisable()
+    {
+        _outline.hideFlags = HideFlags.None;
+    }
+
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        _objDataAndOutlineEditor.OnInspectorGUI();
+    }
+}
+#endif

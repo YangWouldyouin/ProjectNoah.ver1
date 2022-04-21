@@ -24,24 +24,24 @@ public class MissionGenerator : MonoBehaviour
     }
     private void Start()
     {
-        missionDic.Add(0, "AI 활성화");
-        missionDic.Add(1, "조종실 탈출");
-        missionDic.Add(2, "상태 체크 기계 수리");
-        missionDic.Add(3, "스마트팜 수리");
-        missionDic.Add(4, "연료 기계 수리");
+        //missionDic.Add(0, "AI 활성화");
+        //missionDic.Add(1, "조종실 탈출");
+        //missionDic.Add(2, "상태 체크 기계 수리");
+        //missionDic.Add(3, "스마트팜 수리");
+        //missionDic.Add(4, "연료 기계 수리");
 
-        if (GameManager.gameManager._gameData.S_IsAIAwake_M_C1)
-        {
-            missionList.Add(missionDic[0]);
-        }
-        else if(GameManager.gameManager._gameData.S_IsCWDoorOpened_M_C1)
-        {
-            missionList.Add(missionDic[1]);
-        }
-        else if(GameManager.gameManager._gameData.S_IsHealthMachineFixed_T_C2)
-        {
-            missionList.Add(missionDic[2]);
-        }
+        //if (GameManager.gameManager._gameData.S_IsAIAwake_M_C1)
+        //{
+        //    missionList.Add(missionDic[0]);
+        //}
+        //else if(GameManager.gameManager._gameData.S_IsCWDoorOpened_M_C1)
+        //{
+        //    missionList.Add(missionDic[1]);
+        //}
+        //else if(GameManager.gameManager._gameData.S_IsHealthMachineFixed_T_C2)
+        //{
+        //    missionList.Add(missionDic[2]);
+        //}
     }
 
 
@@ -76,7 +76,7 @@ public class MissionGenerator : MonoBehaviour
             GameObject newMission = Instantiate(missionPanel, new Vector3(0, 13.25f - i * 55, 0), transform.rotation) as GameObject;
             TMPro.TextMeshProUGUI textget = newMission.GetComponentInChildren<TMPro.TextMeshProUGUI>();
             textget.text = missionList[i];
-            newMission.transform.SetParent(GameObject.FindGameObjectWithTag("aa").transform, false);
+            newMission.transform.SetParent(GameObject.FindGameObjectWithTag("aa").transform, true);
 
             newMission.SetActive(true);
             yield return new WaitForSeconds(0.05f);

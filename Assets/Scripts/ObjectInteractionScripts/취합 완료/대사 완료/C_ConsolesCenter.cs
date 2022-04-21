@@ -124,6 +124,9 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         /* 상호작용 버튼을 끔 */
         DiableButton();
+        /* 임무 리스트에 "AI 깨우기" 미션 추가 */
+
+
 
         if (boxData_CC.IsUpDown) // 상자에 올라갔으면 
         {
