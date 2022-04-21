@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 
     //public GameObject objectExtraDescription;
 
-    private Vector3 originPosition, originRotation;
+    public Vector3 originPosition, originRotation;
     [HideInInspector]
     public Transform currentView;
 
@@ -34,23 +34,28 @@ public class CameraController : MonoBehaviour
     {
         cameraFollow = GetComponent<CameraFollow>();
     }
-
-    public void ObserveButtonClick()
+    public void SavePosition()
     {
         originPosition = transform.position;
         originRotation = transform.rotation.eulerAngles;
+    }
+    public void ObserveButtonClick()
+    {
 
-        currentObserveObject = PlayerScripts.playerscripts.currentObject;
+
+        currentObserveObject = PlayerScripts.playerscripts.currentObserveObj;
 
         currentObjectOutline = currentObserveObject.GetComponent<Outline>();
         currentObjectOutline.OutlineWidth = 0;
 
         currentObserveObjectData = currentObserveObject.GetComponent<ObjData>();
-        if(cameraFollow!=null)
+        currentObserveObjectData.IsNotInteractable = true;
+
+        if (cameraFollow != null)
         {
             cameraFollow.enabled = false;
         }
-        
+
         //camObserveView = PlayerScripts.playerscripts.PlayerobserveView;
         //camObserveBoxView = PlayerScripts.playerscripts.PlayerobserveBoxView;
         noah.transform.gameObject.SetActive(false);
@@ -75,13 +80,15 @@ public class CameraController : MonoBehaviour
             cameraFollow.enabled = true;
         }
 
+        currentObserveObject = PlayerScripts.playerscripts.currentObserveObj;
+
         currentObjectOutline = currentObserveObject.GetComponent<Outline>();
         currentObjectOutline.OutlineWidth = 8;
 
-        ComeBackView(originPosition, originRotation);
         currentObserveObjectData.IsNotInteractable = false;
         currentObserveObjectData.IsObserve = false;
 
+        ComeBackView(originPosition, originRotation);
     }
 
     /* 전환 효과 없는 카메라 전환 메서드 */
