@@ -209,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC67C\uCABD \uC774\uB3D9 \uBC84\uD2BC"
   smellText: 
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 0}
   sniffButton: {fileID: 0}
   biteDestroyButton: {fileID: 0}
@@ -471,7 +472,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8bb1f4c9e5497b6468ad0d1e841fe25f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8bb1f4c9e5497b6468ad0d1e841fe25f, type: 3}
       propertyPath: m_LocalScale.x
@@ -2193,6 +2194,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 0, z: 5}
   m_Center: {x: 2.5, y: 0, z: 2.5}
+--- !u!1 &221332064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 221332065}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &221332065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221332064}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 20.79, y: 33.614, z: -1.14}
+  m_LocalScale: {x: 2.5000002, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 477391875}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &225347441 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9008733174439686969, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
@@ -2434,7 +2465,7 @@ RectTransform:
   - {fileID: 1033483439}
   - {fileID: 153129044}
   m_Father: {fileID: 477391875}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2987,6 +3018,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 851676282}
   - {fileID: 2042152409}
   - {fileID: 1515308560}
   - {fileID: 1095252562}
@@ -3748,7 +3780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018315550425481055, guid: 2bc624baa82dbbb428df208aa98102b8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3018315550425481055, guid: 2bc624baa82dbbb428df208aa98102b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4912,6 +4944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uBC15\uC2A4"
   smellText: Steel
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 1636205274}
   sniffButton: {fileID: 181941552}
   biteDestroyButton: {fileID: 489869017}
@@ -5046,7 +5079,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2b16f4d37bde9dc4c8b4285c176824e9, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b16f4d37bde9dc4c8b4285c176824e9, type: 3}
       propertyPath: m_LocalScale.x
@@ -5151,6 +5184,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 221332065}
   - {fileID: 2099261505}
   - {fileID: 367272308}
   - {fileID: 1702008490}
@@ -6432,6 +6466,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1425086596}
   - {fileID: 476599044}
   - {fileID: 656124582}
   - {fileID: 2126670}
@@ -7156,6 +7191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uD655\uC778 \uBC84\uD2BC"
   smellText: 
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 0}
   sniffButton: {fileID: 0}
   biteDestroyButton: {fileID: 0}
@@ -8579,6 +8615,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 414908, guid: cc990f4eda1da5b469dbce762b0e70ba, type: 3}
   m_PrefabInstance: {fileID: 592299943}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &851676281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 851676282}
+  m_Layer: 0
+  m_Name: Console Destination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &851676282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851676281}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 9.03, y: 33.614, z: -1.32}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 355075156}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &852228901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10478,6 +10544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC870\uC885\uC11D"
   smellText: "\uC0C8 \uC7A5\uB09C\uAC10"
+  interactionDestination: {fileID: 851676282}
   barkButton: {fileID: 173800861}
   sniffButton: {fileID: 778847543}
   biteDestroyButton: {fileID: 1706671272}
@@ -10766,7 +10833,7 @@ RectTransform:
   - {fileID: 1034569140}
   - {fileID: 1877028843}
   m_Father: {fileID: 355075156}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11033,6 +11100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC624\uB978\uCABD \uC774\uB3D9 \uBC84\uD2BC"
   smellText: 
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 0}
   sniffButton: {fileID: 0}
   biteDestroyButton: {fileID: 0}
@@ -12805,6 +12873,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 083615048b056bf4689577da587bc2d8, type: 3}
   m_PrefabInstance: {fileID: 1424963027}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1425086595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1425086596}
+  m_Layer: 0
+  m_Name: PlanetRader Destination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1425086596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425086595}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 8.42, y: 33.614, z: -3.3899999}
+  m_LocalScale: {x: 2.5000005, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 579428200}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &1430644991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 407744, guid: 9d58753be3de52144b11334649da54a6, type: 3}
@@ -12920,7 +13018,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8bb1f4c9e5497b6468ad0d1e841fe25f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8bb1f4c9e5497b6468ad0d1e841fe25f, type: 3}
       propertyPath: m_LocalScale.x
@@ -13533,6 +13631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 0}
   sniffButton: {fileID: 0}
   biteDestroyButton: {fileID: 0}
@@ -13668,7 +13767,7 @@ Transform:
   m_Children:
   - {fileID: 579643151}
   m_Father: {fileID: 355075156}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 33.776}
 --- !u!1 &1533467020
 GameObject:
@@ -14110,7 +14209,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ad906d3b1e6a2334c8fe6b6807beb98c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad906d3b1e6a2334c8fe6b6807beb98c, type: 3}
       propertyPath: m_LocalScale.x
@@ -14569,6 +14668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uBC15\uC2A4"
   smellText: Steel
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 1636205274}
   sniffButton: {fileID: 181941552}
   biteDestroyButton: {fileID: 489869017}
@@ -15303,6 +15403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uD30C\uC774\uD504"
   smellText: Steel
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 1622413109}
   sniffButton: {fileID: 884339612}
   biteDestroyButton: {fileID: 2113188153}
@@ -15572,6 +15673,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   IsClicked: 0
   noahAnim: {fileID: 0}
+  transitionSpeed: 0
 --- !u!195 &1669327544
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16154,7 +16256,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477391875}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1702008491
 MonoBehaviour:
@@ -16749,6 +16851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uD589\uC131 \uAE30\uACC4"
   smellText: 
+  interactionDestination: {fileID: 1425086596}
   barkButton: {fileID: 1448201632}
   sniffButton: {fileID: 251858521}
   biteDestroyButton: {fileID: 1974730977}
@@ -17802,6 +17905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uBC15\uC2A4"
   smellText: Steel
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 1636205274}
   sniffButton: {fileID: 181941552}
   biteDestroyButton: {fileID: 489869017}
@@ -18295,7 +18399,7 @@ RectTransform:
   - {fileID: 790766003}
   - {fileID: 1829106364}
   m_Father: {fileID: 579428200}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -18943,7 +19047,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0428f257c1956dd4b886825c293945ed, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0428f257c1956dd4b886825c293945ed, type: 3}
       propertyPath: m_LocalScale.x
@@ -19401,7 +19505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412410, guid: 4eefebe457be66c4bb1c7b678fc1baf6, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 412410, guid: 4eefebe457be66c4bb1c7b678fc1baf6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19522,6 +19626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC870\uC885\uC2E4 \uBB38"
   smellText: 
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 0}
   sniffButton: {fileID: 0}
   biteDestroyButton: {fileID: 0}
@@ -19900,6 +20005,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1832655260}
     - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: transitionSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
       propertyPath: interactionButtons
       value: 
       objectReference: {fileID: 365641761}
@@ -19909,7 +20018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.98
+      value: 20.53
       objectReference: {fileID: 0}
     - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19917,7 +20026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.48
+      value: -1.32
       objectReference: {fileID: 0}
     - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
       propertyPath: m_LocalRotation.w

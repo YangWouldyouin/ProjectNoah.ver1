@@ -12,6 +12,8 @@ public class ObjData : MonoBehaviour
 
     [SerializeField] string smellText;
 
+    [SerializeField] Transform interactionDestination;
+
     [Header("< 기본 상호작용 버튼 >")]
     [SerializeField] Button barkButton;
     [SerializeField] Button sniffButton;
@@ -34,6 +36,7 @@ public class ObjData : MonoBehaviour
 
     [SerializeField] Transform observePlusView;
 
+
     //[SerializeField] bool IsPushOrPressActive; // 진짜 누르기,밀기가 가능하면 true, 사실 안되고 그냥 애니메이션만 보여줄거면 false
 
     //[SerializeField] bool IsBiteActive; // 진짜 물기가 가능하면 true, 아니면 false
@@ -45,6 +48,7 @@ public class ObjData : MonoBehaviour
     // 위 목록을 다른 스크립트에서 쓸 수 있도록 한 것들
     public string ObjectName { get { return objectName; } }
     public string SmellText { get { return smellText; } }
+    public Transform InteractionDestination { get { return interactionDestination; } }
 
     public Button BarkButton { get { return barkButton; } }
     public Button SniffButton { get { return sniffButton; } }

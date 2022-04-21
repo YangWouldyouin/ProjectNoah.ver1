@@ -33,7 +33,7 @@ public class PlayerScripts : MonoBehaviour
     public GameObject currentObject;
     private ObjData objData;
     private string objectNameData, smellData;
-    private Transform observeData, observePlusData; // ObservePlusData : 박스 위에서 관찰 등
+    private Transform interactionDestinationData, observeData, observePlusData;
     private Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteDestroyBtn, pushOrPressBtn, centerBtn;
 
     /* 상호작용 취소할 때 사용하는 변수 */
@@ -57,6 +57,8 @@ public class PlayerScripts : MonoBehaviour
     public Animator noahAnim;
     public IPressController pressFunc;
 
+    public int transitionSpeed;
+
     void Start()
     {
         mainCamera = Camera.main; // Scene 에서 MainCamera 라고 Tag 가 첫번째로 활성화된 카메라를 나타냄
@@ -77,14 +79,15 @@ public class PlayerScripts : MonoBehaviour
             else
             {
                 rectTransform.anchoredPosition = Input.mousePosition;
+                
             }
         }
 
         // 회전하는 중이고(참) && 플레이어의 현재 각도와 초기 각도가 다르면??  // Q. 여기 if 문이 뭔일하는지 솔직히 모르겠음
-        if(turning&&transform.rotation!=targetRot)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 15f * Time.deltaTime); // a 각도와 b 각도 사이를 보간해줌
-        } // NavMeshAgent 의 Velocity 전달, vector --> magnitude
+        //if(turning&&transform.rotation!=targetRot)
+        //{
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 15f * Time.deltaTime); // a 각도와 b 각도 사이를 보간해줌
+        //} // NavMeshAgent 의 Velocity 전달, vector --> magnitude
         playerAnim.UpdateAnimation(agent.velocity.sqrMagnitude); // 두 점간의 거리     
     }
 
@@ -108,7 +111,7 @@ public class PlayerScripts : MonoBehaviour
                     smellData = objData.SmellText;
                     centerButton1Data = objData.CenterButton1;
                     centerButton2Data = objData.CenterButton2;
-
+                    interactionDestinationData = objData.InteractionDestination;
                     observeData = objData.ObserveView;
                     observePlusData = objData.ObservePlusView;
 
@@ -149,8 +152,18 @@ public class PlayerScripts : MonoBehaviour
                     if (!objData.IsNotInteractable)
                     {
                         Invoke("NameTagAppear", 1f);
-                        MovePlayer(objData.transform.position);
-
+                        //MovePlayer(objData.InteractionDestination);
+                        if (interactionDestinationData!=null)
+                        {
+                            MovePlayer(objData.InteractionDestination.position);
+                            //MovePlayer(objData.InteractionDestination.position);
+                            StartCoroutine(WaitforPlayerArriving());
+                        }
+                        else
+                        {
+                            MovePlayer(objData.transform.position);
+                        }
+                        
                         /* 상호작용 버튼 활성화 */
                         barkBtn.transform.gameObject.SetActive(true);
                         sniffBtn.transform.gameObject.SetActive(true);
@@ -218,13 +231,22 @@ public class PlayerScripts : MonoBehaviour
         // NavMeshAgent.pathPending : 계산 중이지만 아직 준비가 되지 않은 경로 -> false 면 계산 완료되었다는 뜻
         return (!agent.pathPending && agent.remainingDistance<=agent.stoppingDistance); // 경로가 계산완료됨 && 남은거리보다 감속거리가 더 큼 -> 참 반환
     }
+    IEnumerator WaitforPlayerArriving()
+    {
+        // 1) 플레이어가 도착하지 않았으면 코루틴으로 딜레이하면서 기다림
+        while (!CheckIfArrived())
+        {
+            yield return null;
+        }
+        SetDirection(objData.InteractionDestination);
+       // turning = false;
+    }
 
-    void MovePlayer(Vector3 targetPosition)
+        void MovePlayer(Vector3 targetPosition)
     {
         turning = false; // 움직일때마다 turning 을 거짓으로 만듬
         agent.SetDestination(targetPosition);
         //biteButton.GetComponent<Image>().sprite = BiteButtonimage;
-        
 
         //IbarkBtnnteractionButtonController.interactionButtonController.TurnOffInteractionButton();
         if (barkBtn!=null)
@@ -246,11 +268,12 @@ public class PlayerScripts : MonoBehaviour
     }
 
     /* 플레이어가 NPC 를 바라보도록 각도를 바꿔주는 메서드 */
-    public void SetDirection(Vector3 targetDirection) // targetDirection : NPC 의 각도
+    public void SetDirection(Transform targetDirection) // targetDirection : NPC 의 각도
     {
         turning = true;
-        targetRot = Quaternion.LookRotation(targetDirection - transform.position);
+        transform.rotation = targetDirection.rotation;
     }
+
 
     void ChangePlayerScene()
     {
