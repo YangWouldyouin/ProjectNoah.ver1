@@ -9,18 +9,13 @@ public class BiteDestroyButtonController : MonoBehaviour
 { 
     public static BiteDestroyButtonController biteDestroyButtonController { get; private set; }
 
-    public Animator playerAnimation;
+    ////public Animator playerAnimation;
 
-    [SerializeField] float requiredHoldTime = 1f;
-    [SerializeField] float requiredChangeTime = 0.5f;
-    float pointerDownTimer = 0;
+    ////public Sprite biteButtonImage, biteButtonMouseOver, biteButtonClicked, destroyButtonMouseOver;
 
-    //public Button biteDestroyButton; // PlayerScripts - MovePlayer 에서 버튼 이미지 BiteButtonImage 로 바꿈
-    public Sprite biteButtonImage, biteButtonMouseOver, biteButtonClicked, destroyButtonMouseOver;
+    ////public GameObject myMouth;
 
-    public GameObject myMouth;
-
-    public TMPro.TextMeshProUGUI biteObjectText;
+    ////public TMPro.TextMeshProUGUI biteObjectText;
 
     void Awake()
     {

@@ -2980,9 +2980,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1759098427}
     - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: myMouth
+      value: 
+      objectReference: {fileID: 141263448}
+    - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: biteObjectText
+      value: 
+      objectReference: {fileID: 1314259620}
+    - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: biteButtonImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 1bd0bd1f3006e1646a446179bf267f33, type: 3}
+    - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: playerAnimation
+      value: 
+      objectReference: {fileID: 589206858}
+    - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: biteButtonClicked
+      value: 
+      objectReference: {fileID: 21300000, guid: 59ab32cfd4fa14b419800273f5eed7aa, type: 3}
+    - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: biteDestroyButton
       value: 
       objectReference: {fileID: 365641765}
+    - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: biteButtonMouseOver
+      value: 
+      objectReference: {fileID: 21300000, guid: 63a2ac804889dde409a9f3329667ae0a, type: 3}
+    - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: destroyButtonMouseOver
+      value: 
+      objectReference: {fileID: 21300000, guid: f393a928dfe296146b75b600b5446649, type: 3}
     - target: {fileID: 565886689723836008, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3407,6 +3435,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6855707438561525009, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6855707438561525011, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6855707438561525015, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3571,7 +3607,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 365641744}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365641757}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -4189,7 +4225,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &425090988
 MonoBehaviour:
@@ -4822,11 +4858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ed9715987642140a8cdad8c999a42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bb1: {fileID: 1636205274}
-  bb2: {fileID: 181941552}
-  bb3: {fileID: 489869017}
-  bb4: {fileID: 1217540527}
-  bb5: {fileID: 1482050249}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   boxRisePos: {x: 0, y: 34.65, z: 0}
@@ -5122,7 +5153,6 @@ GameObject:
   - component: {fileID: 489869019}
   - component: {fileID: 489869018}
   - component: {fileID: 489869017}
-  - component: {fileID: 489869016}
   m_Layer: 5
   m_Name: BiteDestroyButton
   m_TagString: BiteButton1
@@ -5149,34 +5179,6 @@ RectTransform:
   m_AnchoredPosition: {x: 314.75, y: 321.25}
   m_SizeDelta: {x: 136, y: 113}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &489869016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 489869014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967c6f4f21d2417419f381741421ba52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barkButton_m_Pipe: {fileID: 1636205274}
-  pressButton_m_Pipe: {fileID: 1217540527}
-  sniffButton_m_Pipe: {fileID: 181941552}
-  noCenterButton_m_Pipe: {fileID: 1482050249}
-  biteDestroyButton_m_Pipe: {fileID: 489869014}
-  biteButtonImages: {fileID: 0}
-  biteButtonMouseOvers: {fileID: 0}
-  biteButtonClickeds: {fileID: 0}
-  destroyButtonMouseOvers: {fileID: 0}
-  biteObjectFallPosition: {x: 0, y: 0, z: 0}
-  biteObjectFallRotation: {x: 0, y: 0, z: 0}
-  requiredHoldTime: 1
-  requiredChangeTime: 0.5
-  pipe_M: {fileID: 1612877503}
-  noahBiteObject: {fileID: 0}
-  noahDestroyObject: {fileID: 0}
 --- !u!114 &489869017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6657,6 +6659,10 @@ MonoBehaviour:
   currentObserveObj: {fileID: 0}
   currentUpObj: {fileID: 0}
   currentInsertObj: {fileID: 0}
+  biteFallPos: {x: 0, y: 0, z: 0}
+  biteFallRot: {x: 0, y: 0, z: 0}
+  biteOriginScale: {x: 0, y: 0, z: 0}
+  pushOriginScale: {x: 0, y: 0, z: 0}
   interactionButtons: {fileID: 365641761}
   objectNameTag: {fileID: 969244475}
   objectNameText: {fileID: 1832655260}
@@ -7238,7 +7244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5821126055207646715, guid: f5f946b75f8f81e4899794df28ef91b2, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5821126055207646715, guid: f5f946b75f8f81e4899794df28ef91b2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10093,7 +10099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3454204246791854781, guid: 3be615349f572e640a826a88bc8b9651, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3454204246791854781, guid: 3be615349f572e640a826a88bc8b9651, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10331,13 +10337,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovableObjects
       objectReference: {fileID: 0}
+    - target: {fileID: 5620100056232988935, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620100056232988935, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620100056232988935, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6065046185144290324, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6694210594478865464, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6694210594478865464, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10427,6 +10445,22 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.12676775
       objectReference: {fileID: 0}
+    - target: {fileID: 8192174013510878098, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192174013510878098, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192174013510878098, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33.897
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192174013510878098, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8519345538215326030, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: centerButton
       value: 
@@ -10492,17 +10526,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1161556836}
     - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: barkButton
+      value: 
+      objectReference: {fileID: 1622413109}
+    - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: objectName
       value: "\uD30C\uC774\uD504"
       objectReference: {fileID: 0}
+    - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: sniffButton
+      value: 
+      objectReference: {fileID: 884339612}
     - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: centerButton
       value: 
       objectReference: {fileID: 365641756}
     - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: centerButton1
+      value: 
+      objectReference: {fileID: 753795353}
+    - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: biteDestroyButton
+      value: 
+      objectReference: {fileID: 2113188153}
+    - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: pushOrPressButton
       value: 
-      objectReference: {fileID: 365641753}
+      objectReference: {fileID: 2137320878}
     - target: {fileID: 8519345538468102398, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_Size.x
       value: 4.5754547
@@ -10519,12 +10569,16 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.11495077
       objectReference: {fileID: 0}
+    - target: {fileID: 8861855297580357928, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9032298445570832132, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
 --- !u!1 &1068952795 stripped
 GameObject:
@@ -10704,12 +10758,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b5870335bc70b47975e19755742d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box_CC: {fileID: 460668036}
+  box_CC: {fileID: 1612877503}
   envirPipe_CC: {fileID: 1068952797}
   consoleAIResetButton_CC: {fileID: 1515308552}
   consoleCenter_CC: {fileID: 1081180974}
   consoleDescription_CC: {fileID: 1877028842}
-  cockpitDoorAnim_CC: {fileID: 2099261506}
   noahAnim_CC: {fileID: 589206858}
   fadeImage_CC: {fileID: 587027136}
   fade_CC: {fileID: 1034569139}
@@ -12072,7 +12125,7 @@ PrefabInstance:
       objectReference: {fileID: 1314259620}
     - target: {fileID: 1997109241220282434, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1997109241220282434, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12209,7 +12262,7 @@ Transform:
   m_Children:
   - {fileID: 589206862}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1323778186
 PrefabInstance:
@@ -13355,7 +13408,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6271890255095929715, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6271890255095929715, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13642,19 +13695,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1482050250}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1612877507}
-        m_TargetAssemblyTypeName: M_Box, Assembly-CSharp
-        m_MethodName: OnUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1482050250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14130,6 +14171,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 26.875, y: 90, z: 112.515}
+--- !u!1 &1535551385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1535551386}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1535551386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535551385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1068952806}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1538053763
 GameObject:
   m_ObjectHideFlags: 0
@@ -14837,7 +14908,7 @@ Transform:
   m_Children:
   - {fileID: 460668037}
   m_Father: {fileID: 1068952806}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1612877505
 MonoBehaviour:
@@ -14910,11 +14981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ed9715987642140a8cdad8c999a42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bb1: {fileID: 1636205274}
-  bb2: {fileID: 181941552}
-  bb3: {fileID: 489869017}
-  bb4: {fileID: 1217540527}
-  bb5: {fileID: 1482050249}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   boxRisePos: {x: 0, y: 34.65, z: 0}
@@ -15557,6 +15623,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639896481}
   m_CullTransparentMesh: 1
+--- !u!1 &1640516782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6277781198287389018, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+  m_PrefabInstance: {fileID: 1068952794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1640516783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640516782}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.23529409, g: 0.90588236, b: 0.8025156, a: 1}
+  outlineWidth: 8
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!54 &1640516784
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640516782}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1640516785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640516782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4aa32d132225d4caf0b25bfc021739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: "\uD30C\uC774\uD504"
+  smellText: Steel
+  barkButton: {fileID: 1622413109}
+  sniffButton: {fileID: 884339612}
+  biteDestroyButton: {fileID: 2113188153}
+  pushOrPressButton: {fileID: 2137320878}
+  centerButton1: {fileID: 753795353}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  interactButton: {fileID: 0}
+  observeView: {fileID: 0}
+  observePlusView: {fileID: 0}
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
+  IsNotInteractable: 0
+  IsBark: 0
+  IsPushOrPress: 0
+  IsSniff: 0
+  IsBite: 0
+  IsDestroy: 0
+  IsUpDown: 0
+  IsEaten: 0
+  IsInsert: 0
+  IsObserve: 0
+  IsObservePlus: 0
+  IsCenterButtonChanged: 0
+  IsCollision: 0
+  IsClicked: 0
+--- !u!65 &1640516786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640516782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7261257, y: 1.3400269, z: 2.5086713}
+  m_Center: {x: 6.5817804, y: -0.08506775, z: 0.048609495}
 --- !u!1 &1665119338
 GameObject:
   m_ObjectHideFlags: 0
@@ -15608,15 +15767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d10319dbc4c95440ba36fc35eb03453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimation: {fileID: 0}
-  requiredHoldTime: 1
-  requiredChangeTime: 0.5
-  biteButtonImage: {fileID: 21300000, guid: 1bd0bd1f3006e1646a446179bf267f33, type: 3}
-  biteButtonMouseOver: {fileID: 21300000, guid: 63a2ac804889dde409a9f3329667ae0a, type: 3}
-  biteButtonClicked: {fileID: 21300000, guid: 59ab32cfd4fa14b419800273f5eed7aa, type: 3}
-  destroyButtonMouseOver: {fileID: 21300000, guid: f393a928dfe296146b75b600b5446649, type: 3}
-  myMouth: {fileID: 0}
-  biteObjectText: {fileID: 1314259620}
 --- !u!114 &1665119341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15785,6 +15935,10 @@ MonoBehaviour:
   currentObserveObj: {fileID: 0}
   currentUpObj: {fileID: 0}
   currentInsertObj: {fileID: 0}
+  biteFallPos: {x: 0, y: 0, z: 0}
+  biteFallRot: {x: 0, y: 0, z: 0}
+  biteOriginScale: {x: 0, y: 0, z: 0}
+  pushOriginScale: {x: 0, y: 0, z: 0}
   interactionButtons: {fileID: 0}
   objectNameTag: {fileID: 0}
   objectNameText: {fileID: 0}
@@ -16873,7 +17027,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1759098429
 MonoBehaviour:
@@ -17973,7 +18127,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1068952806}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1888348818
 MonoBehaviour:
@@ -17987,11 +18141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ed9715987642140a8cdad8c999a42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bb1: {fileID: 1636205274}
-  bb2: {fileID: 181941552}
-  bb3: {fileID: 489869017}
-  bb4: {fileID: 1217540527}
-  bb5: {fileID: 1482050249}
   pushPos: {x: 0, y: -10, z: 0}
   pushRot: {x: 0, y: 90, z: 20}
   boxRisePos: {x: 0, y: 0, z: 0}
@@ -18362,7 +18511,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1915457785
 MonoBehaviour:
@@ -18803,15 +18952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d10319dbc4c95440ba36fc35eb03453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimation: {fileID: 0}
-  requiredHoldTime: 1
-  requiredChangeTime: 0.5
-  biteButtonImage: {fileID: 21300000, guid: 1bd0bd1f3006e1646a446179bf267f33, type: 3}
-  biteButtonMouseOver: {fileID: 21300000, guid: 63a2ac804889dde409a9f3329667ae0a, type: 3}
-  biteButtonClicked: {fileID: 21300000, guid: 59ab32cfd4fa14b419800273f5eed7aa, type: 3}
-  destroyButtonMouseOver: {fileID: 21300000, guid: f393a928dfe296146b75b600b5446649, type: 3}
-  myMouth: {fileID: 0}
-  biteObjectText: {fileID: 1314259620}
 --- !u!222 &1974730980
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19904,18 +20044,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2113188150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d10319dbc4c95440ba36fc35eb03453, type: 3}
+  m_Script: {fileID: 11500000, guid: 967c6f4f21d2417419f381741421ba52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimation: {fileID: 589206858}
-  requiredHoldTime: 1
-  requiredChangeTime: 0.5
-  biteButtonImage: {fileID: 21300000, guid: 1bd0bd1f3006e1646a446179bf267f33, type: 3}
-  biteButtonMouseOver: {fileID: 21300000, guid: 63a2ac804889dde409a9f3329667ae0a, type: 3}
-  biteButtonClicked: {fileID: 21300000, guid: 59ab32cfd4fa14b419800273f5eed7aa, type: 3}
-  destroyButtonMouseOver: {fileID: 21300000, guid: f393a928dfe296146b75b600b5446649, type: 3}
-  myMouth: {fileID: 141263448}
-  biteObjectText: {fileID: 1314259620}
+  biteDestroyButton: {fileID: 2113188150}
+  barkButton: {fileID: 1622413109}
+  sniffButton: {fileID: 884339612}
+  pushOrPressButton: {fileID: 2137320878}
+  centerButton1: {fileID: 753795353}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  mouthPos: {x: 0, y: 0, z: 0}
+  mouthRot: {x: 0, y: 0, z: 0}
 --- !u!114 &2113188153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19959,19 +20100,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2113188154}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: cam, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2113188154
 MonoBehaviour:
   m_ObjectHideFlags: 0

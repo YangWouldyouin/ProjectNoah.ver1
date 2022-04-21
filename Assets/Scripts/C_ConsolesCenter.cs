@@ -22,7 +22,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     Outline consoleAIResetButtonOutline_CC;
     Outline consoleCenterOutline_CC;
     public GameObject consoleDescription_CC;
-    public Animator cockpitDoorAnim_CC;
+
     public Animator noahAnim_CC;
 
     public Image fadeImage_CC;
@@ -318,15 +318,4 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-    void OpenCockpitDoor()
-    {
-        cockpitDoorAnim_CC.SetBool("IsDoorOpenStart", true);
-        cockpitDoorAnim_CC.SetBool("IsDoorOpened", true);
-    }
-    void CloseCockpitDoor()
-    {
-        cockpitDoorAnim_CC.SetBool("IsDoorOpened", false);
-        cockpitDoorAnim_CC.SetBool("IsDoorOpenStart", false);
-    }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class M_Box : MonoBehaviour, IInteraction
 {
-    public Button barkButton_M_Box, sniffButton_M_Box, biteButton_M_Box, pushButton_M_Box, upButton_M_Box;
+    Button barkButton_M_Box, sniffButton_M_Box, biteButton_M_Box, pushButton_M_Box, upButton_M_Box;
     ObjData boxData_M;
 
     public Vector3 pushPos, pushRot;
@@ -17,11 +17,20 @@ public class M_Box : MonoBehaviour, IInteraction
         boxData_M = GetComponent<ObjData>();
 
         /* 각 상호작용 버튼에 함수를 넣는다 */
+        barkButton_M_Box = boxData_M.BarkButton;
         barkButton_M_Box.onClick.AddListener(OnBark);
+
+        sniffButton_M_Box = boxData_M.SniffButton;
         sniffButton_M_Box.onClick.AddListener(OnSniff);
+
+        biteButton_M_Box = boxData_M.BiteDestroyButton;
         biteButton_M_Box.onClick.AddListener(OnBiteDestroy);
+
+        pushButton_M_Box = boxData_M.PushOrPressButton;
         pushButton_M_Box.onClick.AddListener(OnPushOrPress);
-        upButton_M_Box.onClick.AddListener(OnObserve);
+
+        upButton_M_Box = boxData_M.CenterButton1;
+        upButton_M_Box.onClick.AddListener(OnUp);
     }
 
     void DiableButton()
@@ -49,10 +58,14 @@ public class M_Box : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        PlayerScripts.playerscripts.currentPushOrPressObj = this.gameObject;
+        /* 상호작용 버튼을 끔 */
+        DiableButton();
+
         InteractionButtonController.interactionButtonController.playerPush1();
-        this.transform.localPosition = pushPos; // sets the position of the object to your mouth position
-        this.transform.localEulerAngles = pushRot; // sets the position of the object to your mouth position
+
+        InteractionButtonController.interactionButtonController.pushPos = new Vector3(0, 0, 0);
+        InteractionButtonController.interactionButtonController.pushRot = new Vector3(0, 0, 0);
+        
         InteractionButtonController.interactionButtonController.PlayerPush2();
     }
 

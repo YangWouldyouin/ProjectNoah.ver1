@@ -37,14 +37,15 @@ public class PlayerScripts : MonoBehaviour
     private Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteDestroyBtn, pushOrPressBtn, centerBtn;
 
     /* 상호작용 취소할 때 사용하는 변수 */
-    [HideInInspector]
+
     public GameObject currentPushOrPressObj, currentBiteObj, currentObserveObj, currentUpObj, currentInsertObj;
+
+    public Vector3 biteFallPos, biteFallRot, biteOriginScale, pushOriginScale;
 
     /* 상호작용 버튼 생성 위치 관련 변수 */
     private Vector3 interactionButtonPosition;
     private RectTransform rectTransform;
     public GameObject interactionButtons;
-
 
     /* 네임태그 관련 변수 */
     public GameObject objectNameTag;
@@ -77,7 +78,6 @@ public class PlayerScripts : MonoBehaviour
             {
                 rectTransform.anchoredPosition = Input.mousePosition;
             }
-
         }
 
         // 회전하는 중이고(참) && 플레이어의 현재 각도와 초기 각도가 다르면??  // Q. 여기 if 문이 뭔일하는지 솔직히 모르겠음

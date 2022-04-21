@@ -13,7 +13,7 @@ public class M_Pipe : MonoBehaviour, IInteraction
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton_M_Pipe.onClick.AddListener(OnBark);
         sniffButton_M_Pipe.onClick.AddListener(OnSniff);
-        biteButton_M_Pipe.onClick.AddListener(OnBiteDestroy);
+        //biteButton_M_Pipe.onClick.AddListener(OnBiteDestroy);
         pressButton_M_Pipe.onClick.AddListener(OnPushOrPress);
 
         pipeData_M = GetComponent<ObjData>();

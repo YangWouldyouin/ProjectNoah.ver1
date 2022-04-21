@@ -26,6 +26,14 @@ public class BaseCanvas : MonoBehaviour
     public Button insertDisableButton;
     public Button eatDisableButton;
 
+    [Header("BiteDestroy ฐüทร")]
+    public Animator playerAnimation;
+
+    public Sprite biteButtonImage, biteButtonMouseOver, biteButtonClicked, destroyButtonMouseOver;
+
+    public GameObject myMouth;
+
+    public TMPro.TextMeshProUGUI biteObjectText;
     // Start is called before the first frame update
     void Awake()
     {

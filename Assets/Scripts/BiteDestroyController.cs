@@ -5,70 +5,76 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class M_Pipe_BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+public class BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
-    public Button barkButton_m_Pipe, pressButton_m_Pipe, sniffButton_m_Pipe, noCenterButton_m_Pipe;
-
-    public GameObject biteDestroyButton_m_Pipe;
-    Sprite biteButtonImage, biteButtonMouseOver, biteButtonClicked, destroyButtonMouseOver;
-    GameObject myMouth;
-    TMPro.TextMeshProUGUI biteText;
-    Animator playerAnimation;
-
-    [HideInInspector]
-    public Vector3 biteObjectFallPosition, biteObjectFallRotation;
-    
+    public GameObject biteDestroyButton;
+    public Button barkButton, sniffButton, pushOrPressButton, centerButton1, centerDisableButton1, centerButton2, centerDisableButton2;
 
 
-    bool isPointerDown = false;
-    [SerializeField] float requiredHoldTime = 1f;
-    [SerializeField] float requiredChangeTime = 0.5f;
-    float pointerDownTimer = 0;
+    public Vector3 mouthPos, mouthRot = new Vector3(0, 0, 0);
+    private Sprite biteButtonImage, biteButtonMouseOver, biteButtonClicked, destroyButtonMouseOver;
+    private GameObject myMouth;
+    private TMPro.TextMeshProUGUI biteText;
+    private Animator playerAnimation;
 
-    ObjData pipeData_m;
-    public GameObject pipe_M;
+    private bool isPointerDown = false;
+    private  float requiredChangeTime = 0.5f;
+    private float pointerDownTimer = 0;
 
+
+    int i = 0;
     // public Button biteDestroyButton; // PlayerScripts - MovePlayer 에서 버튼 이미지 BiteButtonImage 로 바꿈
-
     GameObject noahBiteObject, noahDestroyObject;
+    
 
     void Start()
     {
-        biteButtonImage = BiteDestroyButtonController.biteDestroyButtonController.biteButtonImage;
-        biteButtonMouseOver = BiteDestroyButtonController.biteDestroyButtonController.biteButtonMouseOver;
-        biteButtonClicked = BiteDestroyButtonController.biteDestroyButtonController.biteButtonClicked;
-        destroyButtonMouseOver = BiteDestroyButtonController.biteDestroyButtonController.destroyButtonMouseOver;
+        biteButtonImage = BaseCanvas._baseCanvas.biteButtonImage;
+        biteButtonMouseOver = BaseCanvas._baseCanvas.biteButtonMouseOver;
+        biteButtonClicked = BaseCanvas._baseCanvas.biteButtonClicked;
+        destroyButtonMouseOver = BaseCanvas._baseCanvas.destroyButtonMouseOver;
 
-        playerAnimation = BiteDestroyButtonController.biteDestroyButtonController.playerAnimation;
-        myMouth = BiteDestroyButtonController.biteDestroyButtonController.myMouth;
-        biteText = BiteDestroyButtonController.biteDestroyButtonController.biteObjectText;
-
-        isPointerDown = false;
-        noahBiteObject = null;
-        pipeData_m = pipe_M.GetComponent<ObjData>();
+        playerAnimation = BaseCanvas._baseCanvas.playerAnimation;
+        myMouth = BaseCanvas._baseCanvas.myMouth;
+        biteText = BaseCanvas._baseCanvas.biteObjectText;
+ 
     }
 
 
     /* 상호작용 버튼 끄는 함수 */
-    void DiableButton()
+    public void DiableButton()
     {
-        barkButton_m_Pipe.transform.gameObject.SetActive(false);
-        biteDestroyButton_m_Pipe.transform.gameObject.SetActive(false);
-        pressButton_m_Pipe.transform.gameObject.SetActive(false);
-        sniffButton_m_Pipe.transform.gameObject.SetActive(false);
-        noCenterButton_m_Pipe.transform.gameObject.SetActive(false);
+
+        barkButton.transform.gameObject.SetActive(false);
+        sniffButton.transform.gameObject.SetActive(false);
+        biteDestroyButton.transform.gameObject.SetActive(false);
+        pushOrPressButton.transform.gameObject.SetActive(false);
+        centerButton1.transform.gameObject.SetActive(false);
+
+        if (centerDisableButton1 != null)
+        {
+            centerDisableButton1.transform.gameObject.SetActive(false);
+        }
+        if (centerDisableButton2 != null)
+        {
+            centerDisableButton2.transform.gameObject.SetActive(false);
+        }
+        if (centerButton2 != null)
+        {
+            centerButton2.transform.gameObject.SetActive(false);
+        }
     }
 
     /* 마우스오버시 마우스오버이미지로 변경 */
     public void OnPointerEnter(PointerEventData eventData)
     {
-        biteDestroyButton_m_Pipe.GetComponent<Image>().sprite = biteButtonMouseOver;
+        biteDestroyButton.GetComponent<Image>().sprite = biteButtonMouseOver;
     }
 
     /* 마우스 밖으로 나가면 기본이미지로 변경 */
     public void OnPointerExit(PointerEventData eventData)
     {
-        biteDestroyButton_m_Pipe.GetComponent<Image>().sprite = biteButtonImage;
+        biteDestroyButton.GetComponent<Image>().sprite = biteButtonImage;
     }
 
     /* 마우스 클릭 후 떼면 상호작용 버튼 비활성화, 롱버튼 타이머  & IsPointerDown 리셋 */
@@ -93,21 +99,24 @@ public class M_Pipe_BiteDestroyController : MonoBehaviour, IPointerEnterHandler,
 
         if (noahBiteObject != null)
         {
-            PlayerScripts.playerscripts.currentObserveObj = noahBiteObject;
+            PlayerScripts.playerscripts.currentBiteObj = noahBiteObject;
 
-            biteObjectFallPosition = noahBiteObject.transform.position;
-            biteObjectFallRotation = noahBiteObject.transform.eulerAngles;
+            PlayerScripts.playerscripts.biteFallPos = noahBiteObject.transform.position;
+            PlayerScripts.playerscripts.biteFallRot = noahBiteObject.transform.eulerAngles;
+            PlayerScripts.playerscripts.biteOriginScale = noahBiteObject.transform.localScale;
 
             ObjData noahBiteData = noahBiteObject.GetComponent<ObjData>();
             biteText.text = "Noah N.113 - " + noahBiteData.ObjectName;
             noahBiteData.IsBite = true;
+
             isPointerDown = true;
-            biteDestroyButton_m_Pipe.GetComponent<Image>().sprite = biteButtonClicked;
+            biteDestroyButton.GetComponent<Image>().sprite = biteButtonClicked;
             Invoke("ChangeBiteTrue", 0.5f);
             Invoke("PlayerPickUp", 0.7f);
             Invoke("ChangeBiteFalse", 1);
         }
     }
+
 
     void ChangeBiteTrue()
     {
@@ -119,13 +128,16 @@ public class M_Pipe_BiteDestroyController : MonoBehaviour, IPointerEnterHandler,
         playerAnimation.SetBool("IsBiting", false);
     }
 
-    void PlayerPickUp()
+    public void PlayerPickUp()
     {
         noahBiteObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
         noahBiteObject.GetComponent<Rigidbody>().useGravity = false;
-        noahBiteObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
-        noahBiteObject.transform.localPosition = new Vector3(0, 0, 0); // sets the position of the object to your mouth position
-        noahBiteObject.transform.localEulerAngles = new Vector3(0, 0, 0); // sets the position of the object to your mouth position
+
+        //noahBiteObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
+        noahBiteObject.transform.SetParent(myMouth.transform, true);
+        noahBiteObject.transform.localPosition = mouthPos; // sets the position of the object to your mouth position
+        noahBiteObject.transform.localEulerAngles = mouthRot; // sets the position of the object to your mouth position
+        
     }
 
     void Update()
@@ -140,8 +152,8 @@ public class M_Pipe_BiteDestroyController : MonoBehaviour, IPointerEnterHandler,
                 ChangeBiteToDestroyButton();
                 noahBiteData.IsDestroy = true;
                 Invoke("ChangeDestroyTrue", 1f);
-                
 
+                Invoke("DeleteObject", 2f);
                 Invoke("ChangeDestroyFalse", 3f);
                 
                 Reset();
@@ -151,7 +163,7 @@ public class M_Pipe_BiteDestroyController : MonoBehaviour, IPointerEnterHandler,
 
     void ChangeBiteToDestroyButton()
     {
-        biteDestroyButton_m_Pipe.GetComponent<Image>().sprite = destroyButtonMouseOver;
+        biteDestroyButton.GetComponent<Image>().sprite = destroyButtonMouseOver;
 
         noahDestroyObject = PlayerScripts.playerscripts.currentObject;
         if (noahDestroyObject != null)
@@ -166,11 +178,20 @@ public class M_Pipe_BiteDestroyController : MonoBehaviour, IPointerEnterHandler,
         playerAnimation.SetBool("IsDestroying", true);
     }
 
+    void DeleteObject()
+    {
+        noahDestroyObject.SetActive(false);
+    }
     void ChangeDestroyFalse()
     {
+        
         playerAnimation.SetBool("IsDestroying", false);
         DiableButton();
     }
+
+
+
+
 
 
     //public void OnPointerDown(PointerEventData eventData)

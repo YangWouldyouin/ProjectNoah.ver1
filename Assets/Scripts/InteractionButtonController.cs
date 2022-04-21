@@ -33,6 +33,8 @@ public class InteractionButtonController : MonoBehaviour
     [HideInInspector]
     public GameObject noahPushOrPressObject, noahSniffObject, noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
 
+
+    public Vector3 pushPos, pushRot;
     /* 정리 필요한 변수들 */   
     [HideInInspector]
     public GameObject noahPushObject;
@@ -221,35 +223,45 @@ public class InteractionButtonController : MonoBehaviour
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 누르기 - 상자 등을 밀기 */
-    public void playerPush1() // 도착했을 때 위치 조절하면 괜찮아질듯
+    public void playerPush1() 
     {
         noahPushObject = PlayerScripts.playerscripts.currentObject;
-        ObjData pushObjData = noahPushObject.GetComponent<ObjData>();
-        pushObjectText.text = "Noah N.113 - " + pushObjData.ObjectName;
+        if (noahPushObject!=null)
+        {
+            Invoke("ChangePushTrue1", 0.5f);
+            Invoke("ChangePushTrue2", 1f);
 
+            PlayerScripts.playerscripts.currentPushOrPressObj = noahPushObject;
+
+            ObjData pushObjData = noahPushObject.GetComponent<ObjData>();
+            pushObjectText.text = "Noah N.113 - " + pushObjData.ObjectName;
+            pushObjData.IsPushOrPress = true;
+        }
         ISPUSH = true;
-
-        noahPushObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
-        noahPushObject.GetComponent<Rigidbody>().useGravity = false;
-        //noahPushObject.transform.parent = myHead.transform;
-
-        noahPushObject.transform.parent.position= myHead.transform.position; //makes the object become a child of the parent so that it moves with the mouth
-
-        //noahPushObject.transform.localPosition = new Vector3(0, 0, 0); // sets the position of the object to your mouth position
-        //noahPushObject.transform.localEulerAngles = new Vector3(0, 0, 0); // sets the position of the object to your mouth position  
-        //noahPushObject.transform.parent = noahPlayer.transform; // 밀기 오브젝트를 플레이어의 자식으로 잠시 넣어서 같이 이동하게 함
     }
 
     public void PlayerPush2()
     {
-        StartCoroutine(PushAnim());
+        Invoke("AddPushObject", 1f);        
     }
-    IEnumerator PushAnim()
+
+    void AddPushObject()
     {
-         noahPushObject.transform.parent = noahPlayer.transform; // 밀기 오브젝트를 플레이어의 자식으로 잠시 넣어서 같이 이동하게 함
-        yield return new WaitForSeconds(0.5f);
+        noahPushObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
+        noahPushObject.GetComponent<Rigidbody>().useGravity = false;
+
+        noahPushObject.transform.parent = myHead.transform; //makes the object become a child of the parent so that it moves with the mouth
+
+        noahPushObject.transform.localPosition = pushPos; // sets the position of the object to your mouth position
+        noahPushObject.transform.localEulerAngles = pushRot; // sets the position of the object to yo
+    }
+
+    void ChangePushTrue1()
+    {
         noahAnim.SetBool("IsPushing", true);
-        yield return new WaitForSeconds(0.5f);
+    }
+    void ChangePushTrue2()
+    {
         noahAnim.SetBool("IsPushing2", true);
     }
 
