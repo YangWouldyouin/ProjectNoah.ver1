@@ -9,7 +9,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPoint
 {
     public GameObject biteDestroyButton;
     public Button barkButton, sniffButton, pushOrPressButton, centerButton1, centerDisableButton1, centerButton2, centerDisableButton2;
-
+    
 
     public Vector3 mouthPos, mouthRot = new Vector3(0, 0, 0);
     private Sprite biteButtonImage, biteButtonMouseOver, biteButtonClicked, destroyButtonMouseOver;
@@ -149,13 +149,15 @@ public class BiteDestroyController : MonoBehaviour, IPointerEnterHandler, IPoint
             pointerDownTimer += Time.deltaTime;
             if (pointerDownTimer >= requiredChangeTime)
             {
+
                 ChangeBiteToDestroyButton();
-                noahBiteData.IsDestroy = true;
+                
                 Invoke("ChangeDestroyTrue", 1f);
 
-                Invoke("DeleteObject", 2f);
+                // Invoke("DeleteObject", 2f);
                 Invoke("ChangeDestroyFalse", 3f);
-                
+                noahBiteData.IsDestroy = true;
+
                 Reset();
             }
         }
