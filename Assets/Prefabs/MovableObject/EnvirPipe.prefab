@@ -335,7 +335,6 @@ GameObject:
   - component: {fileID: 3005438095694122558}
   - component: {fileID: 3332610376716356946}
   - component: {fileID: 3332610376716356944}
-  - component: {fileID: 3332610376716356959}
   - component: {fileID: 684185811}
   m_Layer: 0
   m_Name: EnvirPipe
@@ -390,31 +389,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4aa32d132225d4caf0b25bfc021739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectName: 
   smellText: Steel
-  centerButton: {fileID: 0}
-  observeView: {fileID: 0}
-  playerBiteObject: {fileID: 2521636093988050052}
-  playerPushObject: {fileID: 2521636093988050052}
-  interactionButtonPosition: {x: 1050, y: 240, z: 0}
---- !u!114 &3332610376716356959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2521636093988050052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c923382cf72fa04d8bb12a211717b0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distancePosition: 1
-  actionss:
-  - {fileID: 0}
+  interactionDestination: {fileID: 0}
   barkButton: {fileID: 0}
-  pushButton: {fileID: 0}
   sniffButton: {fileID: 0}
   biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
+  pushOrPressButton: {fileID: 0}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  interactButton: {fileID: 0}
+  observeView: {fileID: 0}
+  observePlusView: {fileID: 0}
+  IsCenterButtonDisabled: 0
+  IsCenterPlusButtonDisabled: 0
+  IsNotInteractable: 0
+  IsBark: 0
+  IsPushOrPress: 0
+  IsSniff: 0
+  IsBite: 0
+  IsSmash: 0
+  IsUpDown: 0
+  IsEaten: 0
+  IsInsert: 0
+  IsObserve: 0
+  IsObservePlus: 0
+  IsCenterButtonChanged: 0
+  IsCollision: 0
+  IsClicked: 0
 --- !u!54 &684185811
 Rigidbody:
   m_ObjectHideFlags: 0

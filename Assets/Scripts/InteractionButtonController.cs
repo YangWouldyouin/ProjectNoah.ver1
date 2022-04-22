@@ -146,56 +146,7 @@ public class InteractionButtonController : MonoBehaviour
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-    /* 물기 - 물기 가능한 오브젝트 일 때 */
-
-    public void PlayerBite()
-    {
-        noahBiteObject = PlayerScripts.playerscripts.currentObject;
-
-        if (noahBiteObject != null)
-        {
-            /* 취소할 때 참고할 오브젝트 저장 */
-            PlayerScripts.playerscripts.currentBiteObj = noahBiteObject;
-            /* 취소할 때 참고할 위치와 크기 저장 */
-            PlayerScripts.playerscripts.biteFallPos = noahBiteObject.transform.position;
-            PlayerScripts.playerscripts.biteFallRot = noahBiteObject.transform.eulerAngles;
-            PlayerScripts.playerscripts.biteOriginScale = noahBiteObject.transform.localScale;
-
-            ObjectData = noahBiteObject.GetComponent<ObjData>();
-            objectText.text = "Noah N.113 - " + ObjectData.ObjectName;
-
-            IsPointerDown = true;
-
-            //biteDestroyButton.GetComponent<Image>().sprite = biteButtonClicked;
-            Invoke("ChangeBiteTrue", 0.5f);
-            Invoke("PlayerPickUp", 0.7f);
-            Invoke("ChangeBiteFalse", 1);
-        }
-    }
-
-    void ChangeBiteTrue()
-    {
-        noahAnim.SetBool("IsBiting", true);
-    }
-
-    public void PlayerPickUp()
-    {
-        noahBiteObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
-        noahBiteObject.GetComponent<Rigidbody>().useGravity = false;
-
-        //noahBiteObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
-        noahBiteObject.transform.SetParent(myHead.transform, true);
-
-        noahBiteObject.transform.localPosition = ObjectData.MouthPos; // sets the position of the object to your mouth position
-        noahBiteObject.transform.localEulerAngles = ObjectData.MouthRot; // sets the position of the object to your mouth position
-    }
-
-    void ChangeBiteFalse()
-    {
-        noahAnim.SetBool("IsBiting", false);
-    }
-
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    /* 파괴하기 */
 
     public void PlayerSmash1()
     {

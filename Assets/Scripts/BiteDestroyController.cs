@@ -29,7 +29,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerD
 
     // public Button biteDestroyButton; // PlayerScripts - MovePlayer 에서 버튼 이미지 BiteButtonImage 로 바꿈
     GameObject noahBiteObject, noahDestroyObject;
-    
+    ObjData noahBiteData;
 
     void Start()
     {
@@ -97,7 +97,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerD
             PlayerScripts.playerscripts.biteOriginScale = noahBiteObject.transform.localScale;
 
             /* 물기 변수 참으로 바꿈 */
-            ObjData noahBiteData = noahBiteObject.GetComponent<ObjData>();
+           noahBiteData = noahBiteObject.GetComponent<ObjData>();
             biteText.text = "Noah N.113 - " + noahBiteData.ObjectName;
             noahBiteData.IsBite = true;
 

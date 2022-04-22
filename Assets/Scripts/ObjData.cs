@@ -15,9 +15,6 @@ public class ObjData : MonoBehaviour
 
     [Header("도착 위치 & 각도")]
     [SerializeField] Transform interactionDestination;
-    [Header("물기 위치 & 각도")]
-    [SerializeField] Vector3 mouthPos;
-    [SerializeField] Vector3 mouthRot;
 
     [Header("< 기본 상호작용 버튼 >")]
     [SerializeField] Button barkButton;
@@ -57,9 +54,6 @@ public class ObjData : MonoBehaviour
     public string ObjectName { get { return objectName; } }
     public string SmellText { get { return smellText; } }
     public Transform InteractionDestination { get { return interactionDestination; } }
-
-    public Vector3 MouthPos { get { return mouthPos; } }
-    public Vector3 MouthRot { get { return mouthRot; } }
 
     public Button BarkButton { get { return barkButton; } }
     public Button SniffButton { get { return sniffButton; } }
@@ -132,35 +126,3 @@ public class ObjData : MonoBehaviour
         }
     }
 }
-
-#if UNITY_EDITOR
-    [UnityEditor.CustomEditor(typeof(ObjData))]
-
-    public class ObjDataAndOutlineEditor : UnityEditor.Editor
-{
-    private ObjData _objdata;
-    private Outline _outline;
-    private UnityEditor.Editor _objDataAndOutlineEditor;
-
-    private void OnEnable()
-    {
-        _objdata = (ObjData)target;
-        _outline = _objdata.GetComponent<Outline>();
-
-        _outline.hideFlags = HideFlags.HideInInspector;
-        _objDataAndOutlineEditor = CreateEditor(_outline);
-    }
-
-    private void OnDisable()
-    {
-        _outline.hideFlags = HideFlags.None;
-    }
-
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        _objDataAndOutlineEditor.OnInspectorGUI();
-    }
-}
-#endif
