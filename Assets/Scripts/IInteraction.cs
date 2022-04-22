@@ -7,7 +7,7 @@ public interface IInteraction
     void OnBark();
     void OnSniff();
     void OnBite();
-    void OnDestroy();
+    void OnDestruct();
     void OnPushOrPress();
     void OnEat();
     void OnObserve();

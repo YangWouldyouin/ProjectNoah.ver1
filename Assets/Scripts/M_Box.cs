@@ -106,4 +106,14 @@ public class M_Box : MonoBehaviour, IInteraction
     {
         //throw new System.NotImplementedException();
     }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnDestruct()
+    {
+        throw new System.NotImplementedException();
+    }
 }
