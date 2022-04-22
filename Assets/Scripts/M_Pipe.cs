@@ -5,28 +5,71 @@ using UnityEngine.UI;
 
 public class M_Pipe : MonoBehaviour, IInteraction
 {
-    public Button barkButton_M_Pipe, biteButton_M_Pipe, pressButton_M_Pipe, sniffButton_M_Pipe, noCenterButton_M_Pipe;
-    ObjData pipeData_M;
+   private Button barkButton_M_Pipe, biteButton_M_Pipe, smashButton_M_Pipe, 
+        pressButton_M_Pipe, sniffButton_M_Pipe, noCenterButton_M_Pipe;
+
+    private ObjData pipeData_M;
 
     void Start()
     {
+        pipeData_M = GetComponent<ObjData>();
+
         /* 각 상호작용 버튼에 함수를 넣는다 */
+        barkButton_M_Pipe = pipeData_M.BarkButton;
         barkButton_M_Pipe.onClick.AddListener(OnBark);
+
+        biteButton_M_Pipe = pipeData_M.BiteButton;
+        biteButton_M_Pipe.onClick.AddListener(OnBite);
+
+        smashButton_M_Pipe = pipeData_M.SmashButton;
+        smashButton_M_Pipe.onClick.AddListener(OnSmash);
+
+        sniffButton_M_Pipe = pipeData_M.SniffButton;
         sniffButton_M_Pipe.onClick.AddListener(OnSniff);
-        //biteButton_M_Pipe.onClick.AddListener(OnBiteDestroy);
+
+        pressButton_M_Pipe = pipeData_M.PushOrPressButton;
         pressButton_M_Pipe.onClick.AddListener(OnPushOrPress);
 
-        pipeData_M = GetComponent<ObjData>();
+        noCenterButton_M_Pipe = pipeData_M.CenterButton1;
     }
 
     /* 상호작용 버튼 끄는 함수 */
     void DiableButton()
     {
-        barkButton_M_Pipe.transform.gameObject.SetActive(false);
         biteButton_M_Pipe.transform.gameObject.SetActive(false);
+        smashButton_M_Pipe.transform.gameObject.SetActive(false);
+        barkButton_M_Pipe.transform.gameObject.SetActive(false);
         pressButton_M_Pipe.transform.gameObject.SetActive(false);
         sniffButton_M_Pipe.transform.gameObject.SetActive(false);
         noCenterButton_M_Pipe.transform.gameObject.SetActive(false);
+    }
+
+    public void OnBite()
+    {
+        // 진짜 "물기" 가 되는 오브젝트는 비워둠
+    }
+
+
+    public void OnSmash()
+    {
+        /* 오브젝트의 짖기 변수 true로 바꿈 */
+        pipeData_M.IsSmash = true;
+        /* 상호작용 버튼을 끔 */
+        DiableButton();
+
+        /* 오브젝트 흔드는 애니메이션 시작*/
+        InteractionButtonController.interactionButtonController.PlayerSmash1();
+
+        /* 파괴하기 내용 쓰기 (2초 정도가 애니메이션이 자연스러움) */
+        Invoke(" SmashInteraction", 2f);
+
+        /* 오브젝트 흔드는 애니메이션 끝냄 */
+        InteractionButtonController.interactionButtonController.PlayerSmash2();
+    }
+
+    void SmashInteraction()
+    {
+        // 부모 비활성화, 자식 활성화 등등 각 오브젝트에 맞춰서 필요한 것들 쓰기
     }
 
     public void OnBark()
@@ -101,16 +144,6 @@ public class M_Pipe : MonoBehaviour, IInteraction
     }
 
     public void OnInsert()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnBite()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnDestroy()
     {
         throw new System.NotImplementedException();
     }

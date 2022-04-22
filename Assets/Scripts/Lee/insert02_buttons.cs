@@ -19,7 +19,7 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         sniffButton = Insert02Data.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = Insert02Data.BiteDestroyButton;
+        biteButton = Insert02Data.BiteButton;
         biteButton.onClick.AddListener(OnBiteDestroy);
 
         pressButton = Insert02Data.PushOrPressButton;
@@ -70,7 +70,7 @@ public class insert02_buttons : MonoBehaviour, IInteraction
     public void OnBiteDestroy()
     {
         DisableButton();
-        InteractionButtonController.interactionButtonController.PlayerBite();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
@@ -91,5 +91,15 @@ public class insert02_buttons : MonoBehaviour, IInteraction
     public void OnInsert()
     {
         //throw new System.NotImplementedException();
+    }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
     }
 }

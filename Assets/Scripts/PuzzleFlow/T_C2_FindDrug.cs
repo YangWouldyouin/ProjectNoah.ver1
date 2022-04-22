@@ -181,7 +181,7 @@ public class T_C2_FindDrug : MonoBehaviour
             CancelInvoke("followDrug");
         }
 
-        if (drugBagData.IsBite && drugBagData.IsDestroy) //마약 발견 및 물기
+        if (drugBagData.IsBite && drugBagData.IsSmash) //마약 발견 및 물기
         {
             drugData.GetComponent<Rigidbody>().isKinematic = true;
             drugData.transform.parent = null;
@@ -191,7 +191,7 @@ public class T_C2_FindDrug : MonoBehaviour
             //drugData.IsBite = false;
         }
 
-        if (drugBagData.IsDestroy)
+        if (drugBagData.IsSmash)
         {
             Invoke("cantSmell", 0f);
             CancelInvoke("followDrug");

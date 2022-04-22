@@ -81,7 +81,7 @@ public class M_C2_FindEnginespaceKey : MonoBehaviour
         ObjData EngineKeyData = EngineKey_M_C2.GetComponent<ObjData>();
 
 
-        if (cardPackData.IsDestroy)//파괴하기
+        if (cardPackData.IsSmash)//파괴하기
         {
             EngineKeyData.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
             EngineKeyData.transform.parent = null;

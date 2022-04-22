@@ -22,7 +22,7 @@ public class M_Rubber : MonoBehaviour, IInteraction
         sniffButton_M_Rubber = rubberData_M.SniffButton;
         sniffButton_M_Rubber.onClick.AddListener(OnSniff);
 
-        biteButton_M_Rubber = rubberData_M.BiteDestroyButton;
+        biteButton_M_Rubber = rubberData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
         pressButton_M_Rubber = rubberData_M.PushOrPressButton;
@@ -64,7 +64,7 @@ public class M_Rubber : MonoBehaviour, IInteraction
 
         DisableButton();
 
-        InteractionButtonController.interactionButtonController.PlayerBite();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
 
@@ -112,5 +112,15 @@ public class M_Rubber : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
+    }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
     }
 }

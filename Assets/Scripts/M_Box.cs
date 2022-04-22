@@ -23,7 +23,7 @@ public class M_Box : MonoBehaviour, IInteraction
         sniffButton_M_Box = boxData_M.SniffButton;
         sniffButton_M_Box.onClick.AddListener(OnSniff);
 
-        biteButton_M_Box = boxData_M.BiteDestroyButton;
+        biteButton_M_Box = boxData_M.BiteButton;
         biteButton_M_Box.onClick.AddListener(OnBiteDestroy);
 
         pushButton_M_Box = boxData_M.PushOrPressButton;
@@ -53,7 +53,7 @@ public class M_Box : MonoBehaviour, IInteraction
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /*  물기만 하는 애니메이션 & 물 수 없는 오브젝트임을 알림 */
-        InteractionButtonController.interactionButtonController.PlayerBite();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnPushOrPress()

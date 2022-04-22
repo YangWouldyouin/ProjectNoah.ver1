@@ -216,7 +216,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /*  물기만 하는 애니메이션 & 물 수 없는 오브젝트임을 알림 */
-        InteractionButtonController.interactionButtonController.PlayerBite();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -340,6 +340,16 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         DiableButton();
         /* 먹기 애니메이션 & 오브젝트 사라지게 */
         InteractionButtonController.interactionButtonController.playerEat();
+    }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

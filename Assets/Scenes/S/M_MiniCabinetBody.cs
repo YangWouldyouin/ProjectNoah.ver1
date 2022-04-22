@@ -23,7 +23,7 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
         sniffButton_M_MiniCabinetBody = miniCabinetBodyData_M.SniffButton;
         sniffButton_M_MiniCabinetBody.onClick.AddListener(OnSniff);
 
-        biteButton_M_MiniCabinetBody = miniCabinetBodyData_M.BiteDestroyButton;
+        biteButton_M_MiniCabinetBody = miniCabinetBodyData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
         pressButton_M_MiniCabinetBody = miniCabinetBodyData_M.PushOrPressButton;
@@ -71,7 +71,7 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
 
         DisableButton();
 
-        InteractionButtonController.interactionButtonController.PlayerBite();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
 
@@ -117,4 +117,13 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
     {
     }
 
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
+    }
 }

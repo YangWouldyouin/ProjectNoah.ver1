@@ -22,7 +22,7 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
         sniffButton = drugSmellAreaData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = drugSmellAreaData.BiteDestroyButton;
+        biteButton = drugSmellAreaData.BiteButton;
         biteButton.onClick.AddListener(OnBiteDestroy);
 
         pressButton = drugSmellAreaData.PushOrPressButton;
@@ -73,7 +73,7 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
     public void OnBiteDestroy()
     {
         DisableButton();
-        InteractionButtonController.interactionButtonController.PlayerBite();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
@@ -94,5 +94,15 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
     public void OnInsert()
     {
         //throw new System.NotImplementedException();
+    }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -19,7 +19,7 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         sniffButton = drugBagData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = drugBagData.BiteDestroyButton;
+        biteButton = drugBagData.BiteButton;
         //biteButton.onClick.AddListener(OnBiteDestroy);
 
         pressButton = drugBagData.PushOrPressButton;
@@ -88,4 +88,13 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
+    }
 }

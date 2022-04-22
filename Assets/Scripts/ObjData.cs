@@ -13,12 +13,19 @@ public class ObjData : MonoBehaviour
 
     [SerializeField] string smellText;
 
+    [Header("도착 위치 & 각도")]
     [SerializeField] Transform interactionDestination;
+    [Header("물기 위치 & 각도")]
+    [SerializeField] Vector3 mouthPos;
+    [SerializeField] Vector3 mouthRot;
 
     [Header("< 기본 상호작용 버튼 >")]
     [SerializeField] Button barkButton;
     [SerializeField] Button sniffButton;
-    [SerializeField] Button biteDestroyButton;
+
+    [SerializeField] Button biteButton;
+    [SerializeField] Button smashButton;
+
     [SerializeField] Button pushOrPressButton;
     
     [Header("< 추가 상호작용 버튼 >")]
@@ -51,9 +58,15 @@ public class ObjData : MonoBehaviour
     public string SmellText { get { return smellText; } }
     public Transform InteractionDestination { get { return interactionDestination; } }
 
+    public Vector3 MouthPos { get { return mouthPos; } }
+    public Vector3 MouthRot { get { return mouthRot; } }
+
     public Button BarkButton { get { return barkButton; } }
     public Button SniffButton { get { return sniffButton; } }
-    public Button BiteDestroyButton { get { return biteDestroyButton; } }
+
+    public Button BiteButton { get { return biteButton; } }
+    public Button SmashButton { get { return smashButton; } }
+
     public Button PushOrPressButton { get { return pushOrPressButton; } }
 
     public Button CenterButton1 { get { return centerButton1; } }
@@ -83,7 +96,7 @@ public class ObjData : MonoBehaviour
     public bool IsPushOrPress = false;
     public bool IsSniff = false;
     public bool IsBite = false;
-    public bool IsDestroy = false;
+    public bool IsSmash = false;
     public bool IsUpDown = false;
     public bool IsEaten = false;
     public bool IsInsert = false;

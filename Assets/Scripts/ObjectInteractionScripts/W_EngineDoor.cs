@@ -103,7 +103,7 @@ public class W_EngineDoor : MonoBehaviour
 
 
             // 5. 책상으로 다가가 카드팩을 파괴하기 한다. ( 카드키 찾기 )
-            if (cardPackData_WED.IsDestroy)
+            if (cardPackData_WED.IsSmash)
             {
 
                 Invoke("Disapppear", 3f);

@@ -24,7 +24,7 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
         sniffButton = chair04Data.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = chair04Data.BiteDestroyButton;
+        biteButton = chair04Data.BiteButton;
         biteButton.onClick.AddListener(OnBiteDestroy);
 
         pressButton = chair04Data.PushOrPressButton;
@@ -78,7 +78,7 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
     public void OnBiteDestroy()
     {
         DisableButton();
-        InteractionButtonController.interactionButtonController.PlayerBite();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
@@ -103,5 +103,15 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
     public void OnInsert()
     {
         //throw new System.NotImplementedException();
+    }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
     }
 }

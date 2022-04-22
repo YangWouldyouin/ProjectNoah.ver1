@@ -179,4 +179,14 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             cockpitDoorData_CWD.IsInsert = false;
         }
     }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
+    }
 }

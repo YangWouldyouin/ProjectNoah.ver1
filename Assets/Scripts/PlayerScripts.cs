@@ -34,7 +34,7 @@ public class PlayerScripts : MonoBehaviour
     private ObjData objData;
     private string objectNameData, smellData;
     private Transform interactionDestinationData, observeData, observePlusData;
-    private Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteDestroyBtn, pushOrPressBtn, centerBtn;
+    private  Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteBtn, smashBtn, pushOrPressBtn, centerBtn;
 
     /* 상호작용 취소할 때 사용하는 변수 */
     [HideInInspector]
@@ -109,8 +109,8 @@ public class PlayerScripts : MonoBehaviour
                     // 오브젝트 기본 정보를 가져옴
                     objectNameData = objData.ObjectName;
                     smellData = objData.SmellText;
-                    centerButton1Data = objData.CenterButton1;
-                    centerButton2Data = objData.CenterButton2;
+                    //centerButton1Data = objData.CenterButton1;
+                    //centerButton2Data = objData.CenterButton2;
                     interactionDestinationData = objData.InteractionDestination;
                     observeData = objData.ObserveView;
                     observePlusData = objData.ObservePlusView;
@@ -118,7 +118,8 @@ public class PlayerScripts : MonoBehaviour
                     // 오브젝트 기본 버튼을 가져옴
                     barkBtn = objData.BarkButton;
                     sniffBtn = objData.SniffButton;
-                    biteDestroyBtn = objData.BiteDestroyButton;
+                    biteBtn = objData.BiteButton;
+                    smashBtn = objData.SmashButton;
                     pushOrPressBtn = objData.PushOrPressButton;
 
                     /* 오브젝트 추가 버튼을 특정 조건을 만족했는지 확인 후 가져옴 */
@@ -167,7 +168,7 @@ public class PlayerScripts : MonoBehaviour
                         /* 상호작용 버튼 활성화 */
                         barkBtn.transform.gameObject.SetActive(true);
                         sniffBtn.transform.gameObject.SetActive(true);
-                        biteDestroyBtn.transform.gameObject.SetActive(true);
+                        biteBtn.transform.gameObject.SetActive(true);
                         pushOrPressBtn.transform.gameObject.SetActive(true);
                         centerBtn.transform.gameObject.SetActive(true);
 
@@ -212,8 +213,8 @@ public class PlayerScripts : MonoBehaviour
     }
     public string PlayerObjectName { get { return objectNameData; } }
     public string PlayerSmellText { get { return smellData; } }
-    public Button ObjectCenterButton { get { return centerButton1Data; } }
-    public Button ObjectCenterPlusButton { get { return centerButton2Data; } }
+    //public Button ObjectCenterButton { get { return centerButton1Data; } }
+    //public Button ObjectCenterPlusButton { get { return centerButton2Data; } }
     public Transform PlayerobserveView { get { return observeData; } }
     public Transform PlayerobserveBoxView { get { return observePlusData; } }
 
@@ -242,7 +243,7 @@ public class PlayerScripts : MonoBehaviour
        // turning = false;
     }
 
-        void MovePlayer(Vector3 targetPosition)
+    void MovePlayer(Vector3 targetPosition)
     {
         turning = false; // 움직일때마다 turning 을 거짓으로 만듬
         agent.SetDestination(targetPosition);
@@ -250,20 +251,30 @@ public class PlayerScripts : MonoBehaviour
 
         //IbarkBtnnteractionButtonController.interactionButtonController.TurnOffInteractionButton();
         if (barkBtn!=null)
+        {
             barkBtn.transform.gameObject.SetActive(false);
-        if(sniffBtn!=null)
-            sniffBtn.transform.gameObject.SetActive(false);
-        if(biteDestroyBtn!=null)
-        {            
-            biteDestroyBtn.transform.gameObject.SetActive(false);
-            biteDestroyBtn.GetComponent<Image>().sprite = BiteButtonimage;
         }
-            
+        if(sniffBtn!=null)
+        {
+            sniffBtn.transform.gameObject.SetActive(false);
+        }
+        if(biteBtn!=null)
+        {            
+            biteBtn.transform.gameObject.SetActive(false);
+            //biteBtn.GetComponent<Image>().sprite = BiteButtonimage;
+        }       
+        if(smashBtn!=null)
+        {
+            smashBtn.transform.gameObject.SetActive(false);
+        }
         if(pushOrPressBtn!=null)
+        {
             pushOrPressBtn.transform.gameObject.SetActive(false);
+        }
         if (centerBtn != null)
+        {
             centerBtn.transform.gameObject.SetActive(false);
-
+        }
         objectNameTag.SetActive(false);
     }
 

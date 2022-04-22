@@ -19,7 +19,7 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
         sniffButton = machineData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = machineData.BiteDestroyButton;
+        biteButton = machineData.BiteButton;
         biteButton.onClick.AddListener(OnBiteDestroy);
 
         pressButton = machineData.PushOrPressButton;
@@ -70,7 +70,7 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
     public void OnBiteDestroy()
     {
         DisableButton();
-        InteractionButtonController.interactionButtonController.PlayerBite();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
@@ -95,5 +95,15 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
     public void OnInsert()
     {
         //throw new System.NotImplementedException();
+    }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
     }
 }

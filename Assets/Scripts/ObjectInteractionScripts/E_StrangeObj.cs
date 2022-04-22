@@ -37,7 +37,7 @@ public class E_StrangeObj : MonoBehaviour
             smoke.transform.parent = strangeObj.transform;
         }
 
-        if (strangeObjData.IsBite && strangeObjData.IsDestroy)
+        if (strangeObjData.IsBite && strangeObjData.IsSmash)
         {
             smoke.GetComponent<Rigidbody>().isKinematic = true;
             smoke.transform.parent = null;

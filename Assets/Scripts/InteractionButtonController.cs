@@ -31,7 +31,8 @@ public class InteractionButtonController : MonoBehaviour
 
     /* 현재 상호작용 중인 오브젝트를 받아오기 위한 변수 */
     [HideInInspector]
-    public GameObject noahPushOrPressObject, noahSniffObject, noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
+    public GameObject noahBiteObject, noahPushOrPressObject, noahSniffObject, 
+        noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
 
 
     public Vector3 pushPos, pushRot;
@@ -43,12 +44,14 @@ public class InteractionButtonController : MonoBehaviour
     [Header("정리 필요한 변수들")]
     public bool ispush = false;
     public static string pushObjectName;
-    public TMPro.TextMeshProUGUI pushObjectText;
+    public TMPro.TextMeshProUGUI objectText;
     public TMPro.TextMeshProUGUI statText;
+
     [SerializeField] GameObject statPanel;
 
     public GameObject myHead;
-
+    public bool IsPointerDown = false;
+    ObjData ObjectData;
     void Awake()
     {
         interactionButtonController = this;
@@ -124,7 +127,7 @@ public class InteractionButtonController : MonoBehaviour
 
     /* 물기 - 물기 불가능 오브젝트 일 때 */
 
-    public void PlayerBite()
+    public void PlayerCanNotBite()
     {
         StartCoroutine(BiteAnim());
     }
@@ -139,6 +142,86 @@ public class InteractionButtonController : MonoBehaviour
         statText.text = " 물 수 없는 오브젝트 입니다. ";
         yield return new WaitForSeconds(3f);
         statPanel.SetActive(false);
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    /* 물기 - 물기 가능한 오브젝트 일 때 */
+
+    public void PlayerBite()
+    {
+        noahBiteObject = PlayerScripts.playerscripts.currentObject;
+
+        if (noahBiteObject != null)
+        {
+            /* 취소할 때 참고할 오브젝트 저장 */
+            PlayerScripts.playerscripts.currentBiteObj = noahBiteObject;
+            /* 취소할 때 참고할 위치와 크기 저장 */
+            PlayerScripts.playerscripts.biteFallPos = noahBiteObject.transform.position;
+            PlayerScripts.playerscripts.biteFallRot = noahBiteObject.transform.eulerAngles;
+            PlayerScripts.playerscripts.biteOriginScale = noahBiteObject.transform.localScale;
+
+            ObjectData = noahBiteObject.GetComponent<ObjData>();
+            objectText.text = "Noah N.113 - " + ObjectData.ObjectName;
+
+            IsPointerDown = true;
+
+            //biteDestroyButton.GetComponent<Image>().sprite = biteButtonClicked;
+            Invoke("ChangeBiteTrue", 0.5f);
+            Invoke("PlayerPickUp", 0.7f);
+            Invoke("ChangeBiteFalse", 1);
+        }
+    }
+
+    void ChangeBiteTrue()
+    {
+        noahAnim.SetBool("IsBiting", true);
+    }
+
+    public void PlayerPickUp()
+    {
+        noahBiteObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
+        noahBiteObject.GetComponent<Rigidbody>().useGravity = false;
+
+        //noahBiteObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
+        noahBiteObject.transform.SetParent(myHead.transform, true);
+
+        noahBiteObject.transform.localPosition = ObjectData.MouthPos; // sets the position of the object to your mouth position
+        noahBiteObject.transform.localEulerAngles = ObjectData.MouthRot; // sets the position of the object to your mouth position
+    }
+
+    void ChangeBiteFalse()
+    {
+        noahAnim.SetBool("IsBiting", false);
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    public void PlayerSmash1()
+    {
+        Invoke("ChangeDestroyTrue", 1f);
+        //Invoke("DeleteObject", 2f);
+    }
+
+    public void PlayerSmash2()
+    {
+        Invoke("ChangeDestroyFalse", 3f);
+    }
+
+    void ChangeDestroyTrue()
+    {
+        noahAnim.SetBool("IsDestroying", true);
+    }
+
+    //void DeleteObject()
+    //{
+    //    noahDestroyObject.SetActive(false);
+    //}
+
+    void ChangeDestroyFalse()
+    {
+
+        noahAnim.SetBool("IsDestroying", false);
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -234,7 +317,7 @@ public class InteractionButtonController : MonoBehaviour
             PlayerScripts.playerscripts.currentPushOrPressObj = noahPushObject;
 
             ObjData pushObjData = noahPushObject.GetComponent<ObjData>();
-            pushObjectText.text = "Noah N.113 - " + pushObjData.ObjectName;
+            objectText.text = "Noah N.113 - " + pushObjData.ObjectName;
             pushObjData.IsPushOrPress = true;
         }
         ISPUSH = true;

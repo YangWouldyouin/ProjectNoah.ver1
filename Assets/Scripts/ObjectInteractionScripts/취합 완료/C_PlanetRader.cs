@@ -298,4 +298,14 @@ public class C_PlanetRader : MonoBehaviour, IInteraction
     {
         throw new System.NotImplementedException();
     }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnSmash()
+    {
+        throw new System.NotImplementedException();
+    }
 }
