@@ -29,11 +29,6 @@ public class M_Pipe : MonoBehaviour, IInteraction
         noCenterButton_M_Pipe.transform.gameObject.SetActive(false);
     }
 
-    public void OnBiteDestroy()
-    {
-        // 진짜 물기는 BiteDestroy컨트롤러스크립트를붙인다.
-    }
-
     public void OnBark()
     {
         /* 오브젝트의 짖기 변수 true로 바꿈 */
@@ -52,6 +47,13 @@ public class M_Pipe : MonoBehaviour, IInteraction
         DiableButton();
         /* 애니메이션 보여주고 냄새 텍스트 띄움 */
         InteractionButtonController.interactionButtonController.playerSniff();
+
+        /* 임무 리스트에 "AI 깨우기" 미션 추가 */
+        GameManager.gameManager._gameData.ActiveMissionList[3] = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        MissionGenerator.missionGenerator.IsOn = false;
+        MissionGenerator.missionGenerator.ShowMissionList();
     }
 
     public void OnPushOrPress()
@@ -67,6 +69,13 @@ public class M_Pipe : MonoBehaviour, IInteraction
 
         /* 2초 뒤에 Ispushorpress 를 false 로 바꿈 */
         StartCoroutine(ChangePressFalse());
+
+        /* 임무 리스트에 "AI 깨우기" 미션 추가 */
+        GameManager.gameManager._gameData.ActiveMissionList[1] = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        MissionGenerator.missionGenerator.IsOn = false;
+        MissionGenerator.missionGenerator.ShowMissionList();
     }
 
     IEnumerator ChangePressFalse()
@@ -92,6 +101,16 @@ public class M_Pipe : MonoBehaviour, IInteraction
     }
 
     public void OnInsert()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnBite()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnDestroy()
     {
         throw new System.NotImplementedException();
     }

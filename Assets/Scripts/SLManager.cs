@@ -18,6 +18,8 @@ public class SLManager : MonoBehaviour
             character.IsHealthMachineFixed_T_C2 = false;
             character.IsSmartFarmOpen_T_C2 = false;
             character.S_IsAIAwake_M_C1 = false;
+            character.ActiveMissionList[0] = false;
+            character.ActiveMissionList[3] = false;
             SaveSystem.Save(character, "save_001");
         }
 

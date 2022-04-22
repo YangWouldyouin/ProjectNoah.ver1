@@ -19,6 +19,8 @@ public static class SaveSystem
 		string saveFilePath = SavePath + saveFileName + ".json";
 		File.WriteAllText(saveFilePath, saveJson);
 		Debug.Log("Save Success: " + saveFilePath);
+
+
 	}
 
 	public static GameData Load(string saveFileName)

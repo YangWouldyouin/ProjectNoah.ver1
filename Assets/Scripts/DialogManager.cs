@@ -11,10 +11,19 @@ public class DialogManager : MonoBehaviour
     GoogleSheetManager googleSheetManager;
 
     public TMPro.TextMeshProUGUI dialogText;
+    //public Image dialogPanel;
+    public GameObject dialogPanel;
 
-
+    bool IsDialogStarted = false;
     //public gameobject ai;
     //public image aiicon;
+
+    [Header("타이핑 시간 간격")]
+    public float typingSpeed = 0.05f;
+    [Header("문장 시간 간격")]
+    public float sentenceSpeed = 1.8f;
+
+    public Animator AIPanelAnim;
 
     void awake()
     {
@@ -35,14 +44,56 @@ public class DialogManager : MonoBehaviour
 
     public IEnumerator PrintAIDialog(int dialogNum)
     {
-        for (int i = 0; i < googleSheetManager.AIDialogueDic[dialogNum].Length; i++)
+        if(!IsDialogStarted)
         {
-            string talkdata = getTalk(dialogNum, i);
+            IsDialogStarted = true;
 
-            dialogText.text = talkdata;
-
+            dialogPanel.SetActive(true);
+            AIPanelAnim.SetBool("IsAIPanelActive", true);
+            AIPanelAnim.SetBool("IsAIOpen", true);
             yield return new WaitForSeconds(1f);
+            for (int i = 0; i < googleSheetManager.AIDialogueDic[dialogNum].Length; i++)
+            {             
+                string talkdata = getTalk(dialogNum, i);
+
+                //dialogText.text = talkdata;
+                StartCoroutine(_typing(talkdata));
+                yield return new WaitForSeconds(sentenceSpeed);
+            }
+
+            // 3초 후 대화 패널 비활성화
+            yield return new WaitForSeconds(3f);
+
+            AIPanelAnim.SetBool("IsAIClose", true);
+            AIPanelAnim.SetBool("IsAIOpen", false);
+            AIPanelAnim.SetBool("IsAIPanelActive", false);
+            Invoke("EndPanelAnim", 1f);
+            //dialogPanel.SetActive(false);
+            IsDialogStarted = false;
         }
+        else
+        { // 중첩되서 대사 겹치는 것 방지
+            yield break;
+        }     
+    }
+
+    void EndPanelAnim()
+    {
+        dialogPanel.SetActive(false);
+    }
+    void StartPanelAnim()
+    {
+        AIPanelAnim.SetBool("IsAIPanelActive", true);
+    }
+
+    IEnumerator _typing(string data)
+    {
+        //yield return new WaitForSeconds(2f);
+        for (int i = 0; i <= data.Length; i++)
+        {
+            dialogText.text = data.Substring(0, i);
+            yield return new WaitForSeconds(typingSpeed);
+        }      
     }
 
     public void PrintDialog(int q)

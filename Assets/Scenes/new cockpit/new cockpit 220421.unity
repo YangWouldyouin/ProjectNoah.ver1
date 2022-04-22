@@ -209,13 +209,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC67C\uCABD \uC774\uB3D9 \uBC84\uD2BC"
   smellText: 
-  centerButton: {fileID: 365641756}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteDestroyButton: {fileID: 0}
   pushOrPressButton: {fileID: 365641753}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  interactButton: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -1388,11 +1393,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8ce316d143f3e284d9af19bc677d2abc, type: 3}
   m_PrefabInstance: {fileID: 167265846}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &169238025 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9032298445570832132, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-  m_PrefabInstance: {fileID: 1068952794}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &179251528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2048,21 +2048,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355075155}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2b5870335bc70b47975e19755742d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box_CC: {fileID: 169238025}
+  box_CC: {fileID: 0}
   envirPipe_CC: {fileID: 1068952797}
   consoleAIResetButton_CC: {fileID: 1515308552}
   consoleCenter_CC: {fileID: 1081180974}
   consoleDescription_CC: {fileID: 1877028842}
-  noahAnim_CC: {fileID: 1451688032}
+  noahAnim_CC: {fileID: 0}
   fadeImage_CC: {fileID: 587027136}
   fade_CC: {fileID: 1034569139}
   aiIcon_CC: {fileID: 365641749}
   dialogManager_CC: {fileID: 1915457782}
+  barkButton_C_Console: {fileID: 0}
+  sniffButton_C_Console: {fileID: 0}
+  biteButton_C_Console: {fileID: 0}
+  pressButton_C_Console: {fileID: 0}
+  observeButton_C_Console: {fileID: 0}
+  consoleRisePos: {x: 0, y: 0, z: 0}
 --- !u!1001 &360718728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2122,7 +2128,7 @@ PrefabInstance:
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: noahAnim
       value: 
-      objectReference: {fileID: 1451688032}
+      objectReference: {fileID: 0}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: noahPlayer
       value: 
@@ -2138,15 +2144,19 @@ PrefabInstance:
     - target: {fileID: 416977378, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: myMouth
       value: 
-      objectReference: {fileID: 1451688029}
+      objectReference: {fileID: 0}
     - target: {fileID: 416977378, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: playerAnimation
       value: 
-      objectReference: {fileID: 1451688032}
+      objectReference: {fileID: 0}
     - target: {fileID: 1324210546, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1759098427}
+    - target: {fileID: 1533511079, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 565886689723836008, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3277,6 +3287,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameData:
+    S_IsAIAwake_M_C1: 0
+    S_IsCWDoorOpened_M_C1: 0
+    S_IsHealthMachineFixed_T_C2: 0
     IsAIAwake_M_C1: 0
     IsCWDoorOpened_M_C1: 0
     IsHealthMachineFixed_T_C2: 0
@@ -3284,34 +3297,18 @@ MonoBehaviour:
     IsWEDoorOpened_M_C2: 0
     IsFindDrugDone_T_C2: 0
     IsSmoke_T_C3: 0
-    IsInputMeteor1_M_C2: 0
-    IsInputMeteor2_M_C2: 0
-    IsNoahDead_M_C2: 0
-    IsAnswerBeakerColorChange1_M_C2: 0
-    IsAnswerBeakerColorChange2_M_C2: 0
-    IsWrongBeakerColorChange1_M_C2: 0
-    IsWrongBeakerColorChange2_M_C2: 0
-    IsNoNeed1BeakerColorChange1_M_C2: 0
-    IsNoNeed1BeakerColorChange2_M_C2: 0
-    IsNoNeed2BeakerColorChange1_M_C2: 0
-    IsNoNeed2BeakerColorChange2_M_C2: 0
-    IsBiteWrongMeteor1_M_C2: 0
-    IsBiteWrongMeteor2_M_C2: 0
-    IsBiteWrongMeteor3_M_C2: 0
-    IsBiteWrongMeteor4_M_C2: 0
-    IsBiteAnswerMeteor_M_C2: 0
     IsFuelabsorberFixed_E_E1: 0
     HealthMachineCancelCount: 5
-    IsCanMeteorGet_M_C2: 0
-    IsSmellDone_M_C2: 0
-    IsCollectMeteor_M_C2: 0
-    IsInputNormalMeteor1_M_C2: 0
-    IsInputNormalMeteor2_M_C2: 0
-    IsInputNormalMeteor3_M_C2: 0
-    IsInputNormalMeteor4_M_C2: 0
-    IsInputImportantMeteor1_M_C2: 0
-    IsyesImportantMeteor_M_C2: 0
   IsTrashDoorFixed_L_L1: 0
+  IsCanMeteorGet: 0
+  IsSmellDone: 0
+  IsCollectMeteor: 0
+  InputNormalMeteor1: 0
+  InputNormalMeteor2: 0
+  InputNormalMeteor3: 0
+  InputNormalMeteor4: 0
+  InputImportantMeteor1: 0
+  IsyesImportantMeteor: 0
   IsAIDogHealthReport: 0
   IsSmartFarmMissionDone: 0
 --- !u!114 &427659780 stripped
@@ -3889,7 +3886,7 @@ MonoBehaviour:
   cockpitDoor_CWD: {fileID: 2099261498}
   insertAreaButton_CWD: {fileID: 153129045}
   stopMoving_CWD: {fileID: 1033483437}
-  noahAnim_CWD: {fileID: 1451688032}
+  noahAnim_CWD: {fileID: 0}
   cockpitDoorAnim_CWD: {fileID: 2099261506}
   changeScene_CWD: {fileID: 367272305}
   dialogManager_CWD: {fileID: 1915457782}
@@ -4191,8 +4188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9eec2840433414a889e44813c6936a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originPosition: {x: 0, y: 0, z: 0}
+  originRotation: {x: 0, y: 0, z: 0}
   currentView: {fileID: 1631681333}
-  noah: {fileID: 1451688030}
+  noah: {fileID: 0}
   ui: {fileID: 927462023}
   nameTag: {fileID: 969244475}
   noahStat: {fileID: 500606510}
@@ -4614,7 +4613,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579428199}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5343939100d0dca4dac5cd66f295ca78, type: 3}
   m_Name: 
@@ -4623,6 +4622,7 @@ MonoBehaviour:
   leftButton_PR: {fileID: 2126669}
   rightButton_PR: {fileID: 1150956437}
   confirmButton_PR: {fileID: 656124581}
+  ob: {fileID: 0}
   raderLine_PR: {fileID: 776154750}
   normalPlanet_PR:
   - {fileID: 115139107}
@@ -4643,8 +4643,14 @@ MonoBehaviour:
   planetInfo_PR: []
   planetReportButton_PR: {fileID: 790766004}
   exitButton_PR: {fileID: 1829106365}
+  interactBtn1: {fileID: 0}
   PlanetExploration_PR: 0
   FakePlanet_PR: 0
+  b1: {fileID: 0}
+  b2: {fileID: 0}
+  b3: {fileID: 0}
+  b4: {fileID: 0}
+  b5: {fileID: 0}
 --- !u!4 &579643151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8bb1f4c9e5497b6468ad0d1e841fe25f, type: 3}
@@ -4783,6 +4789,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc990f4eda1da5b469dbce762b0e70ba, type: 3}
+--- !u!224 &594034596 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6394926281617239750, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &595104365
 GameObject:
   m_ObjectHideFlags: 0
@@ -5261,13 +5272,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uD655\uC778 \uBC84\uD2BC"
   smellText: 
-  centerButton: {fileID: 365641756}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteDestroyButton: {fileID: 0}
   pushOrPressButton: {fileID: 365641753}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  interactButton: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -7714,7 +7730,7 @@ PrefabInstance:
     - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: noahPressAnim
       value: 
-      objectReference: {fileID: 1451688032}
+      objectReference: {fileID: 0}
     - target: {fileID: 433270856078974270, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: eatInterButton
       value: 
@@ -7922,7 +7938,7 @@ PrefabInstance:
     - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: noahPressAnim
       value: 
-      objectReference: {fileID: 1451688032}
+      objectReference: {fileID: 0}
     - target: {fileID: 8519345538468102387, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: eatInterButton
       value: 
@@ -8008,11 +8024,6 @@ PrefabInstance:
 --- !u!1 &1068952795 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4835016166140723761, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
-  m_PrefabInstance: {fileID: 1068952794}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1068952796 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8519345538215326036, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
   m_PrefabInstance: {fileID: 1068952794}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1068952797 stripped
@@ -8105,13 +8116,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC870\uC885\uC11D"
   smellText: "\uC1E0 \uB0C4\uC0C8"
-  centerButton: {fileID: 365641755}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteDestroyButton: {fileID: 0}
   pushOrPressButton: {fileID: 365641753}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  interactButton: {fileID: 0}
   observeView: {fileID: 133752665}
   observePlusView: {fileID: 870978389}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -8615,13 +8631,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC624\uB978\uCABD \uC774\uB3D9 \uBC84\uD2BC"
   smellText: 
-  centerButton: {fileID: 365641756}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteDestroyButton: {fileID: 0}
   pushOrPressButton: {fileID: 365641753}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  interactButton: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -9335,7 +9356,7 @@ PrefabInstance:
     - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: playerAnimation
       value: 
-      objectReference: {fileID: 1451688032}
+      objectReference: {fileID: 0}
     - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: CancelObjectText
       value: 
@@ -9390,6 +9411,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
+--- !u!1001 &1290580621
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: biteButton
+      value: 
+      objectReference: {fileID: 365641757}
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: objectNameTag
+      value: 
+      objectReference: {fileID: 969244475}
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: objectNameText
+      value: 
+      objectReference: {fileID: 1832655260}
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: interactionButtons
+      value: 
+      objectReference: {fileID: 365641761}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33.614
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694414, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_Name
+      value: noahPlayer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
 --- !u!1001 &1311767450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9601,6 +9695,138 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1336227908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1336227909}
+  - component: {fileID: 1336227912}
+  - component: {fileID: 1336227911}
+  - component: {fileID: 1336227910}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1336227909
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336227908}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 594034596}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -621.25, y: 347}
+  m_SizeDelta: {x: 63, y: 63}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1336227910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336227908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1336227911}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1759098427}
+        m_TargetAssemblyTypeName: MissionGenerator, Assembly-CSharp
+        m_MethodName: ShowMissionList
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1336227911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336227908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 7c76a14416b85a148b157fafd773096e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1336227912
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336227908}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1339525114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10367,7 +10593,7 @@ PrefabInstance:
     - target: {fileID: 6271890255095929717, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: noahAnim
       value: 
-      objectReference: {fileID: 1451688032}
+      objectReference: {fileID: 0}
     - target: {fileID: 6271890255095929717, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: biteButton
       value: 
@@ -10395,7 +10621,7 @@ PrefabInstance:
     - target: {fileID: 8118700057688735759, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: obj
       value: 
-      objectReference: {fileID: 1068952796}
+      objectReference: {fileID: 0}
     - target: {fileID: 8181831352364077819, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: obj
       value: 
@@ -10403,11 +10629,11 @@ PrefabInstance:
     - target: {fileID: 8181831352364077819, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: C_Box
       value: 
-      objectReference: {fileID: 1068952796}
+      objectReference: {fileID: 0}
     - target: {fileID: 8181831352364077819, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: W_Box
       value: 
-      objectReference: {fileID: 1068952796}
+      objectReference: {fileID: 0}
     - target: {fileID: 8181831352364077819, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: C_EnvirPipe
       value: 
@@ -10418,21 +10644,6 @@ PrefabInstance:
       objectReference: {fileID: 1068952797}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
---- !u!1 &1451688029 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5312959000145541045, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
-  m_PrefabInstance: {fileID: 1451688028}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1451688030 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6614471894544296727, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
-  m_PrefabInstance: {fileID: 1451688028}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1451688032 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6271890256200668767, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
-  m_PrefabInstance: {fileID: 1451688028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!195 &1451688033 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 6271890255095929716, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
@@ -10722,13 +10933,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 365641756}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteDestroyButton: {fileID: 0}
   pushOrPressButton: {fileID: 365641753}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  interactButton: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -11623,13 +11839,23 @@ MonoBehaviour:
   transferMapName: 
   biteButton: {fileID: 0}
   BiteButtonimage: {fileID: 0}
-  interactionButtons: {fileID: 0}
   currentObject: {fileID: 0}
+  currentPushOrPressObj: {fileID: 0}
+  currentBiteObj: {fileID: 0}
+  currentObserveObj: {fileID: 0}
+  currentUpObj: {fileID: 0}
+  currentInsertObj: {fileID: 0}
+  biteFallPos: {x: 0, y: 0, z: 0}
+  biteFallRot: {x: 0, y: 0, z: 0}
+  biteOriginScale: {x: 0, y: 0, z: 0}
+  pushOriginScale: {x: 0, y: 0, z: 0}
+  interactionButtons: {fileID: 0}
   objectNameTag: {fileID: 0}
   objectNameText: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
   IsClicked: 0
   noahAnim: {fileID: 0}
+  transitionSpeed: 0
 --- !u!195 &1669327544
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12524,9 +12750,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f747c1ebe51984e9ae020b1118cea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionList: []
+  missionList:
+  - "\uBA00"
   missionPanel: {fileID: 1564513538}
-  missionText: {fileID: 1910302646}
+  IsOn: 0
+  missionmom: {fileID: 1798193958}
 --- !u!4 &1759098428
 Transform:
   m_ObjectHideFlags: 0
@@ -12539,7 +12767,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1773526883 stripped
 GameObject:
@@ -12622,13 +12850,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uD589\uC131 \uAE30\uACC4"
   smellText: "\uC1E0 \uB0C4\uC0C8"
-  centerButton: {fileID: 365641755}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteDestroyButton: {fileID: 0}
   pushOrPressButton: {fileID: 365641753}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  interactButton: {fileID: 0}
   observeView: {fileID: 1092246095}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -12654,6 +12887,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 415608, guid: 9b848dcfe54c69c48944bd35edf4cd30, type: 3}
   m_PrefabInstance: {fileID: 2078589176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1798193958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6855707438144792635, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1813947325
 PrefabInstance:
@@ -13467,17 +13705,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 083615048b056bf4689577da587bc2d8, type: 3}
   m_PrefabInstance: {fileID: 1905720045}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1910302646 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1910302646, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-  m_PrefabInstance: {fileID: 365641744}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1912240172
 GameObject:
   m_ObjectHideFlags: 0
@@ -14676,13 +14903,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC870\uC885\uC2E4 \uBB38"
   smellText: "\uC0C8 \uAE30\uACC4 \uB0C4\uC0C8\uAC00 \uB09C\uB2E4. "
-  centerButton: {fileID: 365641752}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteDestroyButton: {fileID: 0}
   pushOrPressButton: {fileID: 365641753}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
+  interactButton: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
   IsCenterButtonDisabled: 1
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
