@@ -112,7 +112,7 @@ public class M_Box : MonoBehaviour, IInteraction
         throw new System.NotImplementedException();
     }
 
-    public void OnDestruct()
+    public void OnSmash()
     {
         throw new System.NotImplementedException();
     }
