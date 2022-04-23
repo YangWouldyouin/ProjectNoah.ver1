@@ -21,8 +21,11 @@ public class GameData
 
     public bool IsWEDoorOpened_M_C2; // 항상 업무공간에서 엔진실 이동 가능
 
+    public bool IsCheckDrug; //마약인 것을 확인
+    public bool IsDetox; //마약 해독
     public bool IsFindDrugDone_T_C2; //마약 보고 혹은 해독하면 다시 안함
-    public bool IsSmoke_T_C3; //소화기(일회용) 사용 시 연기 발생
+
+    public bool IsHide; //소화기(일회용) 사용 시 스텔스 효과
 
     public bool IsFuelabsorberFixed_E_E1; //엔진실 고치기 임무, 해금해야 연료 돌발 임무 수행 가능
 

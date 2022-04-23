@@ -3,27 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class insert01_buttons : MonoBehaviour, IInteraction
+public class chair02 : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pressButton;
+    private Button barkButton, sniffButton, biteButton, pressButton, upButton;
 
-    ObjData Insert01Data;
+    ObjData chair01Data;
 
+    public Vector3 chair01Pos;
+
+
+    //public Vector3 areaPos;
+
+    // Start is called before the first frame update
     void Start()
     {
-        Insert01Data = GetComponent<ObjData>();
+        //오브젝트
+        chair01Data = GetComponent<ObjData>();
 
-        barkButton = Insert01Data.BarkButton;
+
+        //버튼
+        barkButton = chair01Data.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = Insert01Data.SniffButton;
+        sniffButton = chair01Data.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = Insert01Data.BiteButton;
-        biteButton.onClick.AddListener(OnBiteDestroy);
+        biteButton = chair01Data.BiteButton;
+        biteButton.onClick.AddListener(OnBite);
 
-        pressButton = Insert01Data.PushOrPressButton;
+        pressButton = chair01Data.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
+
+        upButton = chair01Data.CenterButton1;
+        upButton.onClick.AddListener(OnUp);
 
     }
 
@@ -35,18 +47,19 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         sniffButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
+        upButton.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
     {
-        Insert01Data.IsBark = true;
+        chair01Data.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        Insert01Data.IsSniff = true;
+        chair01Data.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -54,9 +67,9 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        Insert01Data.IsPushOrPress = true;
+        chair01Data.IsPushOrPress = true;
         DisableButton();
-        InteractionButtonController.interactionButtonController.playerPressHead();
+        InteractionButtonController.interactionButtonController.playerPressHand();
 
         StartCoroutine(ChangePressFalse());
     }
@@ -64,14 +77,9 @@ public class insert01_buttons : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        Insert01Data.IsPushOrPress = false;
+        chair01Data.IsPushOrPress = false;
     }
 
-    public void OnBiteDestroy()
-    {
-        DisableButton();
-        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
-    }
 
     public void OnEat()
     {
@@ -85,7 +93,11 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
     public void OnUp()
     {
-        //throw new System.NotImplementedException();
+        if (!chair01Data.IsUpDown)
+        {
+            InteractionButtonController.interactionButtonController.risePosition = chair01Pos;
+            InteractionButtonController.interactionButtonController.PlayerRise2();
+        }
     }
 
     public void OnInsert()
@@ -95,11 +107,12 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        throw new System.NotImplementedException();
+        DisableButton();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnSmash()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }
