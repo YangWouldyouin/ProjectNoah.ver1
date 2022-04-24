@@ -267,6 +267,10 @@ public class InteractionButtonController : MonoBehaviour
 
             PlayerScripts.playerscripts.currentPushOrPressObj = noahPushObject;
 
+            PlayerScripts.playerscripts.pushFallPos = noahPushObject.transform.position;
+            PlayerScripts.playerscripts.pushFallRot = noahPushObject.transform.eulerAngles;
+            PlayerScripts.playerscripts.pushOriginScale = noahPushObject.transform.localScale;
+
             ObjData pushObjData = noahPushObject.GetComponent<ObjData>();
             objectText.text = "Noah N.113 - " + pushObjData.ObjectName;
             pushObjData.IsPushOrPress = true;

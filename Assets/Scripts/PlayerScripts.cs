@@ -40,7 +40,7 @@ public class PlayerScripts : MonoBehaviour
     [HideInInspector]
     public GameObject currentPushOrPressObj, currentBiteObj, currentObserveObj, currentUpObj, currentInsertObj;
     [HideInInspector]
-    public Vector3 biteFallPos, biteFallRot, biteOriginScale, pushOriginScale;
+    public Vector3 biteFallPos, biteFallRot, biteOriginScale, pushFallPos, pushFallRot, pushOriginScale;
 
     /* 상호작용 버튼 생성 위치 관련 변수 */
     private Vector3 interactionButtonPosition;
@@ -103,16 +103,12 @@ public class PlayerScripts : MonoBehaviour
         {
             if (hit.collider != null) // 무언가를 치면
             {
-                //PlayerPosition = this.gameObject.transform.position;
-                Interactable interactable = hit.collider.GetComponent<Interactable>(); // interactable : 부딪힌 오브젝트 or NPC 에 붙어있는 Interactable 컴포넌트         
                 objData = hit.collider.GetComponent<ObjData>();
                 if (objData != null)
                 {
                     // 오브젝트 기본 정보를 가져옴
                     objectNameData = objData.ObjectName;
                     smellData = objData.SmellText;
-                    //centerButton1Data = objData.CenterButton1;
-                    //centerButton2Data = objData.CenterButton2;
                     interactionDestinationData = objData.InteractionDestination;
                     observeData = objData.ObserveView;
                     observePlusData = objData.ObservePlusView;

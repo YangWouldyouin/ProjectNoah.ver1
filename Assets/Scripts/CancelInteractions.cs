@@ -128,9 +128,13 @@ public class CancelInteractions : MonoBehaviour
                 cancelPushData.IsPushOrPress = false;
                 playerAnimation.SetBool("IsPushing", false);
                 pushObject.transform.SetParent(null, true);
+
+                pushObject.transform.localScale = PlayerScripts.playerscripts.pushOriginScale;
+                pushObject.transform.position = new Vector3(pushObject.transform.position.x, PlayerScripts.playerscripts.pushFallPos.y, pushObject.transform.position.z);
+                pushObject.transform.eulerAngles = PlayerScripts.playerscripts.pushFallRot;
                 //pushObject.transform.localScale = PlayerScripts.playerscripts.pushOriginScale;
                 //pushObject.transform.parent = moveableGroup.transform; // 다시 무바블오브젝트의 자식으로 넣기
-                
+
                 //InteractionButtonController.interactionButtonController.ispush = false;
             }
             /* 밀기 취소 */
