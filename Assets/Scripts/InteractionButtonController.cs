@@ -50,7 +50,7 @@ public class InteractionButtonController : MonoBehaviour
     [SerializeField] GameObject statPanel;
 
     public GameObject myHead;
-    public bool IsPointerDown = false;
+
     ObjData ObjectData;
     void Awake()
     {

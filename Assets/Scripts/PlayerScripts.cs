@@ -46,6 +46,8 @@ public class PlayerScripts : MonoBehaviour
     private Vector3 interactionButtonPosition;
     private RectTransform rectTransform;
     public GameObject interactionButtons;
+    public float offsetX, offsetY, offsetZ;
+
 
     /* 네임태그 관련 변수 */
     public GameObject objectNameTag;
@@ -122,8 +124,9 @@ public class PlayerScripts : MonoBehaviour
                     smashBtn = objData.SmashButton;
                     pushOrPressBtn = objData.PushOrPressButton;
 
+                    interactionButtons = objData.InteractButton;
                     /* 오브젝트 추가 버튼을 특정 조건을 만족했는지 확인 후 가져옴 */
-                    if(objData.IsCenterButtonChanged)
+                    if (objData.IsCenterButtonChanged)
                     {
                         if(objData.IsCenterPlusButtonDisabled)
                         {
@@ -147,7 +150,9 @@ public class PlayerScripts : MonoBehaviour
                     }
 
                     currentObject = hit.collider.gameObject;
+                    Vector3 screenPos = mainCamera.WorldToScreenPoint(new Vector3(currentObject.transform.localPosition.x + offsetX, currentObject.transform.localPosition.y + offsetY, currentObject.transform.localPosition.z + offsetZ));
 
+                    
                     objData.IsClicked = true;
                     //Invoke("UnClickObject", 1f);
                     if (!objData.IsNotInteractable)
@@ -164,7 +169,7 @@ public class PlayerScripts : MonoBehaviour
                         {
                             MovePlayer(objData.transform.position);
                         }
-                        
+                        interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
                         /* 상호작용 버튼 활성화 */
                         barkBtn.transform.gameObject.SetActive(true);
                         sniffBtn.transform.gameObject.SetActive(true);

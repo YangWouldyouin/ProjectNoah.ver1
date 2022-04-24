@@ -33,27 +33,36 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     DialogManager dialogManager;
 
     float timer_CC = 0;
-    public Button barkButton_C_Console, sniffButton_C_Console, biteButton_C_Console, pressButton_C_Console, observeButton_C_Console;
+    private  Button barkButton_C_Console, sniffButton_C_Console, biteButton_C_Console, pressButton_C_Console, observeButton_C_Console;
 
     public Vector3 consoleRisePos;
 
     // Start is called before the first frame update
     void Start()
     {
-        /* 각 상호작용 버튼에 함수를 넣는다 */
-        barkButton_C_Console.onClick.AddListener(OnBark);
-        sniffButton_C_Console.onClick.AddListener(OnSniff);
-        biteButton_C_Console.onClick.AddListener(OnBiteDestroy);
-        pressButton_C_Console.onClick.AddListener(OnPushOrPress);
-        observeButton_C_Console.onClick.AddListener(OnObserve);
-
-        consoleCenterData_CC = consoleCenter_CC.GetComponent<ObjData>();
+        consoleCenterData_CC = GetComponent<ObjData>();
         boxData_CC = box_CC.GetComponent<ObjData>();
         envirPipeData_CC = envirPipe_CC.GetComponent<ObjData>();
         consoleAIResetButtonData_CC = consoleAIResetButton_CC.GetComponent<ObjData>();
 
         consoleAIResetButtonOutline_CC = consoleAIResetButton_CC.GetComponent<Outline>();
         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
+
+        /* 각 상호작용 버튼에 함수를 넣는다 */
+        barkButton_C_Console = consoleCenterData_CC.BarkButton;
+        barkButton_C_Console.onClick.AddListener(OnBark);
+
+        sniffButton_C_Console = consoleCenterData_CC.SniffButton;
+        sniffButton_C_Console.onClick.AddListener(OnSniff);
+
+        biteButton_C_Console = consoleCenterData_CC.BiteButton;
+        biteButton_C_Console.onClick.AddListener(OnBite);
+
+        pressButton_C_Console = consoleCenterData_CC.PushOrPressButton;
+        pressButton_C_Console.onClick.AddListener(OnPushOrPress);
+
+        observeButton_C_Console = consoleCenterData_CC.CenterButton1;
+        observeButton_C_Console.onClick.AddListener(OnObserve);
 
         dialogManager = dialogManager_CC.GetComponent<DialogManager>();
 
@@ -211,7 +220,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     /* "물기" 가 안되는 오브젝트 일 때!! */
-    public void OnBiteDestroy() 
+
+    public void OnBite()
     {
         /* 상호작용 버튼을 끔 */
         DiableButton();
@@ -219,25 +229,12 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
-    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-    /* 밀기&누르기 중 "밀기" 일 때!!! @@  수정 필요 @@
-    public void OnPushOrPress()
+    public void OnSmash()
     {
-       오브젝트의 누르기 변수 true로 바꿈 
-       consoleCenterData_CC.IsPushOrPress = true;
-       상호작용 버튼을 끔 
-       DiableButton();
-      밀기 취소할 때 쓰기 위해 오브젝트 저장 
-      PlayerScripts.playerscripts.currentPushOrPressObj = this.gameObject;
-      밀기 함수1 
-      InteractionButtonController.interactionButtonController.playerPush1();
-      오브젝트 밀기 상세 좌표와 각도 넣어주기 
-      this.transform.localPosition = pushPos; 
-      this.transform.localEulerAngles = pushRot; 
-      밀기 함수2 (애니메이션) 
-      InteractionButtonController.interactionButtonController.PlayerPush2();
-    } */
+        //throw new System.NotImplementedException();
+    }
+
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     /* 밀기 & 누르기 중에 "누르기"일 때!!! */
     public void OnPushOrPress()
@@ -250,7 +247,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
         /* 애니메이션 보여줌 */
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
-        // InteractionButtonController.interactionButtonController.playerPressHead(); // 머리로 누르는 애니메이션 
 
         /* 2초 뒤에 Ispushorpress 를 false 로 바꿈 */
         StartCoroutine(ChangePressFalse());
@@ -340,16 +336,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         DiableButton();
         /* 먹기 애니메이션 & 오브젝트 사라지게 */
         InteractionButtonController.interactionButtonController.playerEat();
-    }
-
-    public void OnBite()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnSmash()
-    {
-        throw new System.NotImplementedException();
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

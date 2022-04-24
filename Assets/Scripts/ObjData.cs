@@ -17,6 +17,8 @@ public class ObjData : MonoBehaviour
     [SerializeField] Transform interactionDestination;
 
     [Header("< 기본 상호작용 버튼 >")]
+    [SerializeField] GameObject interactButton; // 가운데 버튼 비활성화 상태에서 활성화로 바뀔 때 바뀌는 버튼을 넣으면 됨
+
     [SerializeField] Button barkButton;
     [SerializeField] Button sniffButton;
 
@@ -32,7 +34,7 @@ public class ObjData : MonoBehaviour
     [SerializeField] Button centerButton2; // 가운데 버튼 비활성화 상태에서 활성화로 바뀔 때 바뀌는 버튼을 넣으면 됨
     [SerializeField] Button centerDisableButton2;
 
-    [SerializeField] GameObject interactButton; // 가운데 버튼 비활성화 상태에서 활성화로 바뀔 때 바뀌는 버튼을 넣으면 됨
+
     //[SerializeField] Button pushOrPressButton; // 물건 옮기기 : PushButton // 버튼 누르기 or 그냥 누르는 애니메이션만 보여줄 때(실제로는 누르기가 안되는 오브젝트일 때) : PressButton
 
   
@@ -54,6 +56,7 @@ public class ObjData : MonoBehaviour
     public string ObjectName { get { return objectName; } }
     public string SmellText { get { return smellText; } }
     public Transform InteractionDestination { get { return interactionDestination; } }
+    public GameObject InteractButton { get { return interactButton; } }
 
     public Button BarkButton { get { return barkButton; } }
     public Button SniffButton { get { return sniffButton; } }
@@ -70,7 +73,7 @@ public class ObjData : MonoBehaviour
     public Button CenterDisableButton2 { get { return centerDisableButton2; } }
 
 
-    public GameObject InteractButton { get { return interactButton; } }
+
     public Transform ObserveView { get { return observeView; } } 
     public Transform ObservePlusView { get { return observePlusView; } }
 
