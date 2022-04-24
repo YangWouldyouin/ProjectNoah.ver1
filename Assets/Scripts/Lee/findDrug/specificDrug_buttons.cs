@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class drug_buttons : MonoBehaviour, IInteraction
+public class specificDrug_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton;
 
-    ObjData drugData;
+    ObjData specificDrugData;
 
     void Start()
     {
-        drugData = GetComponent<ObjData>();
+        specificDrugData = GetComponent<ObjData>();
 
-        barkButton = drugData.BarkButton;
+        barkButton = specificDrugData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = drugData.SniffButton;
+        sniffButton = specificDrugData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = drugData.BiteButton;
-        //biteButton.onClick.AddListener(OnBiteDestroy);
+        biteButton = specificDrugData.BiteButton;
+        biteButton.onClick.AddListener(OnBite);
 
-        pressButton = drugData.PushOrPressButton;
+        pressButton = specificDrugData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
+
     }
 
     void DisableButton()
@@ -36,14 +37,9 @@ public class drug_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        drugData.IsBark = true;
+        specificDrugData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
-    }
-
-    public void OnBiteDestroy()
-    {
-        //throw new System.NotImplementedException();
     }
 
     public void OnEat()
@@ -63,7 +59,7 @@ public class drug_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        drugData.IsPushOrPress = true;
+        specificDrugData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
 
@@ -73,12 +69,12 @@ public class drug_buttons : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        drugData.IsPushOrPress = false;
+        specificDrugData.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        drugData.IsSniff = true;
+        specificDrugData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -90,11 +86,13 @@ public class drug_buttons : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        throw new System.NotImplementedException();
+        //바이트 버튼에 스크립트 넣기
     }
 
     public void OnSmash()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
+
+
 }

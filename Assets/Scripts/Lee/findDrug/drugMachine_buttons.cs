@@ -5,14 +5,32 @@ using UnityEngine.UI;
 
 public class drugMachine_buttons : MonoBehaviour, IInteraction
 {
+    public GameObject insert01;
+    public GameObject insert02;
+
+    ObjData insert01Data;
+    ObjData insert02Data;
+
+    Outline insert01Line;
+    Outline insert02Line;
+    
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
     ObjData machineData;
+    Outline machineLine;
 
-    void start()
+    void Start()
     {
         machineData = GetComponent<ObjData>();
+        machineLine = GetComponent<Outline>();
 
+        insert01Data = insert01.GetComponent<ObjData>();
+        insert01Line = insert01.GetComponent<Outline>();
+
+        insert02Data = insert02.GetComponent<ObjData>();
+        insert02Line = insert02.GetComponent<Outline>();
+
+        //¹öÆ°
         barkButton = machineData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
@@ -20,7 +38,7 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
         sniffButton.onClick.AddListener(OnSniff);
 
         biteButton = machineData.BiteButton;
-        biteButton.onClick.AddListener(OnBiteDestroy);
+        biteButton.onClick.AddListener(OnBite);
 
         pressButton = machineData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
@@ -29,12 +47,25 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
         observeButton.onClick.AddListener(OnObserve);
     }
 
+    void update()
+    {
+        if (machineData.IsObserve == false)
+        {
+            insert01Data.IsNotInteractable = true;
+            insert01Line.OutlineWidth = 0f;
+
+            insert02Data.IsNotInteractable = true;
+            insert02Line.OutlineWidth = 0f;
+        }
+    }
+
     void DisableButton()
     {
         barkButton.transform.gameObject.SetActive(false);
         sniffButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
+        observeButton.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
@@ -67,12 +98,6 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
         machineData.IsPushOrPress = false;
     }
 
-    public void OnBiteDestroy()
-    {
-        DisableButton();
-        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
-    }
-
     public void OnEat()
     {
         //throw new System.NotImplementedException();
@@ -82,9 +107,18 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
     {
         machineData.IsObserve = true;
         DisableButton();
-        PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+        PlayerScripts.playerscripts.currentObserveObj = gameObject;
         CameraController.cameraController.currentView = machineData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
+
+        machineData.IsNotInteractable = true;
+        machineLine.OutlineWidth = 0f;
+
+        insert01Data.IsNotInteractable = false;
+        insert01Line.OutlineWidth = 8f;
+
+        insert02Data.IsNotInteractable = false;
+        insert02Line.OutlineWidth = 8f;
     }
 
     public void OnUp()
@@ -99,11 +133,12 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        throw new System.NotImplementedException();
+        DisableButton();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnSmash()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }

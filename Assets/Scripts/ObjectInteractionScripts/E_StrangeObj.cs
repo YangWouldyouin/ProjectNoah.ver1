@@ -21,13 +21,13 @@ public class E_StrangeObj : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /* void Update()
     {
         if (!GameManager.gameManager._gameData.IsSmoke_T_C3)
         {
             UsingObj();
         }
-    }
+    }*/
 
     public void UsingObj()
     {

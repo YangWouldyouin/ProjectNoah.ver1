@@ -5,14 +5,25 @@ using UnityEngine.UI;
 
 public class drugBag_buttons : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pressButton;
+    public GameObject drug;
+    ObjData drugData;
+    //Outline drugLine;
+
+    public GameObject drugSmellArea;
+
+    private Button barkButton, sniffButton, biteButton, smashButton, pressButton, noCenterButton;
 
     ObjData drugBagData;
 
     void Start()
     {
+        //오브젝트
         drugBagData = GetComponent<ObjData>();
 
+        drugData = GetComponent<ObjData>();
+        //drugLine = GetComponent<Outline>();
+
+        //버튼
         barkButton = drugBagData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
@@ -20,10 +31,20 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         sniffButton.onClick.AddListener(OnSniff);
 
         biteButton = drugBagData.BiteButton;
-        //biteButton.onClick.AddListener(OnBiteDestroy);
+        //biteButton.onClick.AddListener(OnBite);
+
+        smashButton = drugBagData.SmashButton;
+        smashButton.onClick.AddListener(OnSmash);
 
         pressButton = drugBagData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
+
+        noCenterButton = drugBagData.CenterButton1;
+    }
+
+    void update()
+    {
+
     }
 
     void DisableButton()
@@ -32,6 +53,8 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         sniffButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
+        smashButton.transform.gameObject.SetActive(false);
+        noCenterButton.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
@@ -39,11 +62,6 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         drugBagData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
-    }
-
-    public void OnBiteDestroy()
-    {
-        //throw new System.NotImplementedException();
     }
 
     public void OnEat()
@@ -90,11 +108,53 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        throw new System.NotImplementedException();
+        /*
+        //BiteButton에 스크립트 넣기
+        drugData.GetComponent<Rigidbody>().isKinematic = true;
+        drugData.transform.parent = gameObject.transform;
+
+        CancelInvoke("followDrug");
+
+        if (drugBagData.IsSmash)
+        {
+            Invoke("noBag", 1.5f);
+        }*/
     }
 
     public void OnSmash()
     {
-        throw new System.NotImplementedException();
+        drugBagData.IsSmash = true;
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerSmash1();
+        
+        Invoke("NoBag", 2f);
+
+        InteractionButtonController.interactionButtonController.PlayerSmash2();
+    }
+
+    /*void cantSmell() //냄새맡기 구역 비활성화
+    {
+        MeshCollider meshcollider = drugSmellArea.GetComponent<MeshCollider>();
+        meshcollider.enabled = false;
+    }*/
+
+    void NoBag()
+    {
+        MeshCollider meshcollider = drugSmellArea.GetComponent<MeshCollider>();
+        meshcollider.enabled = false;
+
+        drugBagData.GetComponent<Rigidbody>().isKinematic = true;
+        drugBagData.transform.parent = null;
+
+        drugBagData.IsBite = false;
+
+        //gameObject.SetActive(false);
+        drug.SetActive(true);
+
+        drug.transform.position = gameObject.transform.position;
+
+        Destroy(drugSmellArea, 0f);
+        Destroy(gameObject, 0.5f);
     }
 }

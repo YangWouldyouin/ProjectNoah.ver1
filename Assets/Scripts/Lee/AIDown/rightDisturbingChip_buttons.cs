@@ -3,27 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class specificDrug_buttons : MonoBehaviour, IInteraction
+public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pressButton;
+    private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
-    ObjData specificDrugData;
+    ObjData disturbingChipData;
 
     void Start()
     {
-        specificDrugData = GetComponent<ObjData>();
+        disturbingChipData = GetComponent<ObjData>();
 
-        barkButton = specificDrugData.BarkButton;
+        barkButton = disturbingChipData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = specificDrugData.SniffButton;
+        sniffButton = disturbingChipData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = specificDrugData.BiteButton;
-        //biteButton.onClick.AddListener(OnBiteDestroy);
+        biteButton = disturbingChipData.BiteButton;
+        biteButton.onClick.AddListener(OnBite);
 
-        pressButton = specificDrugData.PushOrPressButton;
+        pressButton = disturbingChipData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
+
+        noCenterButton = disturbingChipData.CenterButton1;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "canConnectZone")
+        {
+            if (GameManager.gameManager._gameData.IsHide)
+            {
+                Debug.Log("안전함");
+            }
+
+            else
+            {
+                Debug.Log("님 지금 머하시는????그거 압수");
+                //AI가 경계하는 대사 출력
+
+                GameManager.gameManager._gameData.IsAlert = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+                Destroy(gameObject, 3f);
+            }
+
+        }
     }
 
     void DisableButton()
@@ -32,18 +57,14 @@ public class specificDrug_buttons : MonoBehaviour, IInteraction
         sniffButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
+        noCenterButton.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
     {
-        specificDrugData.IsBark = true;
+        disturbingChipData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
-    }
-
-    public void OnBiteDestroy()
-    {
-        //throw new System.NotImplementedException();
     }
 
     public void OnEat()
@@ -63,7 +84,7 @@ public class specificDrug_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        specificDrugData.IsPushOrPress = true;
+        disturbingChipData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
 
@@ -73,12 +94,12 @@ public class specificDrug_buttons : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        specificDrugData.IsPushOrPress = false;
+        disturbingChipData.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        specificDrugData.IsSniff = true;
+        disturbingChipData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -90,11 +111,11 @@ public class specificDrug_buttons : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        throw new System.NotImplementedException();
+        //버튼에 삽입하기
     }
 
     public void OnSmash()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }
