@@ -33,6 +33,24 @@ public class Checking_bluetooth : MonoBehaviour
             IsCanConnect = true;
             Debug.Log("연결이 가능합니다");
         }
+
+       /*if (other.tag == "chip")
+        {
+            if(GameManager.gameManager._gameData.IsHide)
+            {
+                Debug.Log("안전함");
+            }
+
+            else
+            {
+                Debug.Log("님 지금 머하시는????");
+                //AI가 경계하는 대사 출력
+
+                GameManager.gameManager._gameData.IsAlert = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+
+        }*/
     }
 
     public void OnTriggerExit(Collider other)

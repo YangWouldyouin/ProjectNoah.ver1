@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pressButton;
+    private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
     ObjData disturbingChipData;
 
@@ -24,6 +24,33 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
 
         pressButton = disturbingChipData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
+
+        noCenterButton = disturbingChipData.CenterButton1;
+
+        GameManager.gameManager._gameData.IsHide = true;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "canConnectZone")
+        {
+            if (GameManager.gameManager._gameData.IsHide)
+            {
+                Debug.Log("안전함");
+            }
+
+            else
+            {
+                Debug.Log("님 지금 머하시는????그거 압수");
+                //AI가 경계하는 대사 출력
+
+                GameManager.gameManager._gameData.IsAlert = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+                Destroy(gameObject, 3f);
+            }
+
+        }
     }
 
     void DisableButton()
@@ -32,6 +59,7 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
         sniffButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
+        noCenterButton.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()

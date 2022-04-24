@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pressButton;
+    private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
     ObjData disturbingChipData;
 
@@ -20,10 +20,35 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
         sniffButton.onClick.AddListener(OnSniff);
 
         biteButton = disturbingChipData.BiteButton;
-        //biteButton.onClick.AddListener(OnBiteDestroy);
+        biteButton.onClick.AddListener(OnBite);
 
         pressButton = disturbingChipData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
+
+        noCenterButton = disturbingChipData.CenterButton1;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "canConnectZone")
+        {
+            if (GameManager.gameManager._gameData.IsHide)
+            {
+                Debug.Log("안전함");
+            }
+
+            else
+            {
+                Debug.Log("님 지금 머하시는????그거 압수");
+                //AI가 경계하는 대사 출력
+
+                GameManager.gameManager._gameData.IsAlert = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+                Destroy(gameObject, 3f);
+            }
+
+        }
     }
 
     void DisableButton()
@@ -32,6 +57,7 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
         sniffButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
+        noCenterButton.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
@@ -83,12 +109,12 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
-    void IInteraction.OnBite()
+    public void OnBite()
     {
         //버튼에 삽입하기
     }
 
-    void IInteraction.OnSmash()
+    public void OnSmash()
     {
         //throw new System.NotImplementedException();
     }

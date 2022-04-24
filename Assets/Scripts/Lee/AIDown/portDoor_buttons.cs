@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 public class portDoor_buttons : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pressButton;
+    private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
     ObjData portDoorData;
+    Outline portDoorLine;
+
+    public GameObject portBody;
+    ObjData portBodyData;
+    Outline portBodyLine;
 
     void Start()
     {
         portDoorData = GetComponent<ObjData>();
+        portDoorLine = GetComponent<Outline>();
+
+        portBodyData = portBody.GetComponent<ObjData>();
+        portBodyLine = portBody.GetComponent<Outline>();
 
         barkButton = portDoorData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -22,8 +31,13 @@ public class portDoor_buttons : MonoBehaviour, IInteraction
         biteButton = portDoorData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
+        //smashButton = portDoorData.SmashButton;
+        //smashButton.onClick.AddListener(OnSmash);
+
         pressButton = portDoorData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
+
+        noCenterButton = portDoorData.CenterButton1;
 
     }
 
@@ -35,6 +49,8 @@ public class portDoor_buttons : MonoBehaviour, IInteraction
         sniffButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
+        //smashButton.transform.gameObject.SetActive(false);
+        noCenterButton.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
@@ -57,6 +73,16 @@ public class portDoor_buttons : MonoBehaviour, IInteraction
         portDoorData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
+
+        portDoorData.transform.localRotation = Quaternion.Euler(-10f, 90f, 90f);
+
+        portDoorData.IsNotInteractable = true;
+        portDoorLine.OutlineWidth = 0f;
+
+        portBodyData.IsNotInteractable = false;
+        portBodyLine.OutlineWidth = 8f;
+
+        gameObject.GetComponent<BoxCollider>().enabled = false;
 
         StartCoroutine(ChangePressFalse());
     }
@@ -89,12 +115,29 @@ public class portDoor_buttons : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
+        /*if (GameManager.gameManager._gameData.IsAlert)
+        {
+            Debug.Log("µü °É·È´Ù");
+            GameManager.gameManager._gameData.IsAlert = false;
+
+            Destroy(gameObject, 5f);
+        }*/
+
         DisableButton();
         InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnSmash()
     {
-        //throw new System.NotImplementedException();
+        /*portDoorData.IsSmash = true;
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerSmash1();
+
+        Invoke();
+
+        InteractionButtonController.interactionButtonController.PlayerSmash2();
+        */
     }
+
 }
