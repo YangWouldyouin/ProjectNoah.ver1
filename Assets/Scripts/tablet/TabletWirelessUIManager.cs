@@ -9,7 +9,7 @@ public class TabletWirelessUIManager : MonoBehaviour
     public GameObject TW_UploadSelectUI;
     public GameObject TW_UploadUI;
     public GameObject TW_alertUI;
-    
+
     public Image TW_onoffBT;
 
     public bool TW_WirelessOn = false;
@@ -33,7 +33,7 @@ public class TabletWirelessUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TW_WirelessCheck()
@@ -110,7 +110,7 @@ public class TabletWirelessUIManager : MonoBehaviour
             FakeCoordinateDataText.color = HRTcolor;
         }
     }
-    
+
     public void TW_Alert()
     {
         TW_alertUI.SetActive(true);
