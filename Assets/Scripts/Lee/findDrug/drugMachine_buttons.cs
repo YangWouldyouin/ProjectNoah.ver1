@@ -105,14 +105,23 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
+        /* 오브젝트의 관찰 변수 true로 바꿈 */
         machineData.IsObserve = true;
+
+        /* 상호작용 버튼을 끔 */
         DisableButton();
-        PlayerScripts.playerscripts.currentObserveObj = gameObject;
-        CameraController.cameraController.currentView = machineData.ObserveView;
+
+        /* 취소할 때 참고할 오브젝트 저장 */
+        PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+
+        /* 카메라 컨트롤러에 뷰 전달 */
+        CameraController.cameraController.currentView = machineData.ObserveView; // 관찰 뷰 : 위쪽
+
+        /* 관찰 애니메이션 & 카메라 전환 */
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        machineData.IsNotInteractable = true;
-        machineLine.OutlineWidth = 0f;
+        //machineData.IsNotInteractable = true;
+        //machineLine.OutlineWidth = 0f;
 
         insert01Data.IsNotInteractable = false;
         insert01Line.OutlineWidth = 8f;
