@@ -15,6 +15,7 @@ public class InteractionButtonController : MonoBehaviour
     public Animator noahAnim; // 애니메이션 전환 위한 변수
 
     [SerializeField] GameObject noahPlayer;
+    [SerializeField] GameObject noahFBX;
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
 
     //public bool isBark = false;
@@ -59,6 +60,9 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Start()
     {
+        //playerRigidbody = noahFBX.GetComponent<Rigidbody>();
+        //playerAgent = noahFBX .GetComponent<NavMeshAgent>();
+
         /* 각 상호작용 버튼에 함수를 추가한다. */
         BaseCanvas._baseCanvas.barkButton.onClick.AddListener(playerBark);
         BaseCanvas._baseCanvas.sniffButton.onClick.AddListener(playerSniff);

@@ -77,8 +77,6 @@ public class CancelInteractions : MonoBehaviour
                     if (cancelObserveData.IsObserve)
                     {
                         CameraController.cameraController.CancelObserve();
-                        Invoke("CancelObserving2Animation", 1f);
-                        Invoke("CancelObservingAnimation", 1f);
                         break;
                     }
                     else

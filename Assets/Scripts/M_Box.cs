@@ -11,6 +11,7 @@ public class M_Box : MonoBehaviour, IInteraction
     public Vector3 pushPos, pushRot;
 
     public Vector3 boxRisePos;
+    public Transform boxPos;
 
     void Start()
     {
@@ -56,6 +57,12 @@ public class M_Box : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
+    public void OnSniff()
+    {
+        InteractionButtonController.interactionButtonController.playerSniff();
+        DiableButton();
+    }
+
     public void OnPushOrPress()
     {
         /* 상호작용 버튼을 끔 */
@@ -69,25 +76,24 @@ public class M_Box : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.PlayerPush2();
     }
 
-    public void OnSniff()
-    {
-        InteractionButtonController.interactionButtonController.playerSniff();
-        DiableButton();
-    }
 
     public void OnUp()
     {
-        if(!boxData_M.IsUpDown)
+        DiableButton();
+        if (!boxData_M.IsUpDown)
         {
-            boxRisePos.x = this.transform.position.x;
-            boxRisePos.y = this.transform.position.y;
-            boxRisePos.z = this.transform.position.z;
-            PlayerScripts.playerscripts.currentUpObj = this.gameObject;           
+            PlayerScripts.playerscripts.currentUpObj = this.gameObject;
             boxData_M.IsUpDown = true;
+
+            boxRisePos.x = boxPos.position.x;
+            //boxRisePos.y = transform.position.y;
+            boxRisePos.z = boxPos.position.z;
+
             InteractionButtonController.interactionButtonController.PlayerRise1();
             InteractionButtonController.interactionButtonController.risePosition = boxRisePos;
             InteractionButtonController.interactionButtonController.PlayerRise2();
         }
+
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

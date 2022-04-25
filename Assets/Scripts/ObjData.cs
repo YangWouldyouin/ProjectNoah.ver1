@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-[RequireComponent(typeof(Outline))]
 public class ObjData : MonoBehaviour
 {
     /* 값이 바뀌지 않는 데이터 목록 */
@@ -15,6 +14,9 @@ public class ObjData : MonoBehaviour
 
     [Header("도착 위치 & 각도")]
     [SerializeField] Transform interactionDestination;
+
+    [Header("< 상호작용 버튼 오프셋 >")]
+    [SerializeField] Vector3 buttonOffset;
 
     [Header("< 기본 상호작용 버튼 >")]
     [SerializeField] GameObject interactButton; // 가운데 버튼 비활성화 상태에서 활성화로 바뀔 때 바뀌는 버튼을 넣으면 됨
@@ -37,25 +39,21 @@ public class ObjData : MonoBehaviour
 
     //[SerializeField] Button pushOrPressButton; // 물건 옮기기 : PushButton // 버튼 누르기 or 그냥 누르는 애니메이션만 보여줄 때(실제로는 누르기가 안되는 오브젝트일 때) : PressButton
 
-  
-    
+
+    [Header("< 관찰 뷰 >")]
     [SerializeField] Transform observeView;
 
     [SerializeField] Transform observePlusView;
-
 
     //[SerializeField] bool IsPushOrPressActive; // 진짜 누르기,밀기가 가능하면 true, 사실 안되고 그냥 애니메이션만 보여줄거면 false
 
     //[SerializeField] bool IsBiteActive; // 진짜 물기가 가능하면 true, 아니면 false
 
-
-
-
-
     // 위 목록을 다른 스크립트에서 쓸 수 있도록 한 것들
     public string ObjectName { get { return objectName; } }
     public string SmellText { get { return smellText; } }
     public Transform InteractionDestination { get { return interactionDestination; } }
+    public  Vector3 ButtonOffset { get { return buttonOffset; } }
     public GameObject InteractButton { get { return interactButton; } }
 
     public Button BarkButton { get { return barkButton; } }

@@ -11,7 +11,6 @@ public class PlayerScripts : MonoBehaviour
     private void Awake()
     {
         playerscripts = this;
-        rectTransform = interactionButtons.GetComponent<RectTransform>();
     }
 
     private NavMeshAgent agent;
@@ -24,30 +23,20 @@ public class PlayerScripts : MonoBehaviour
     /* 문 클릭 시 이동할 씬*/
     public string transferMapName;
 
-    /* bite ~ destroy 버튼 예외 처리 */
-    public GameObject biteButton;
-    public Sprite BiteButtonimage;
-
     /* 상호작용 오브젝트로부터 받아온 데이터 담는 변수 */
-    [HideInInspector]
-    public GameObject currentObject;
+
+    public GameObject currentObject, interactionButtons;
     private ObjData objData;
     private string objectNameData, smellData;
     private Transform interactionDestinationData, observeData, observePlusData;
     private  Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteBtn, smashBtn, pushOrPressBtn, centerBtn;
+    private Vector3 interactionButtonOffset;
 
     /* 상호작용 취소할 때 사용하는 변수 */
     [HideInInspector]
     public GameObject currentPushOrPressObj, currentBiteObj, currentObserveObj, currentUpObj, currentInsertObj;
     [HideInInspector]
     public Vector3 biteFallPos, biteFallRot, biteOriginScale, pushFallPos, pushFallRot, pushOriginScale;
-
-    /* 상호작용 버튼 생성 위치 관련 변수 */
-    private Vector3 interactionButtonPosition;
-    private RectTransform rectTransform;
-    public GameObject interactionButtons;
-    public float offsetX, offsetY, offsetZ;
-
 
     /* 네임태그 관련 변수 */
     public GameObject objectNameTag;
@@ -74,15 +63,14 @@ public class PlayerScripts : MonoBehaviour
         if(Input.GetMouseButtonDown(0)&&!Extensions.IsMouseOverUI()&&(!agent.isStopped))
         {
             Onclick();
-            if (Input.mousePosition.y >= 570)
-            {
-                rectTransform.anchoredPosition = Input.mousePosition + new Vector3(0, -150, 0);
-            }
-            else
-            {
-                rectTransform.anchoredPosition = Input.mousePosition;
-                
-            }
+            //if (Input.mousePosition.y >= 570)
+            //{
+            //    rectTransform.anchoredPosition = Input.mousePosition + new Vector3(0, -150, 0);
+            //}
+            //else
+            //{
+            //    rectTransform.anchoredPosition = Input.mousePosition;             
+            //}
         }
 
         // 회전하는 중이고(참) && 플레이어의 현재 각도와 초기 각도가 다르면??  // Q. 여기 if 문이 뭔일하는지 솔직히 모르겠음
@@ -106,13 +94,14 @@ public class PlayerScripts : MonoBehaviour
                 objData = hit.collider.GetComponent<ObjData>();
                 if (objData != null)
                 {
+                    currentObject = hit.collider.gameObject;
                     // 오브젝트 기본 정보를 가져옴
                     objectNameData = objData.ObjectName;
                     smellData = objData.SmellText;
                     interactionDestinationData = objData.InteractionDestination;
                     observeData = objData.ObserveView;
                     observePlusData = objData.ObservePlusView;
-
+                    interactionButtonOffset = objData.ButtonOffset;
                     // 오브젝트 기본 버튼을 가져옴
                     barkBtn = objData.BarkButton;
                     sniffBtn = objData.SniffButton;
@@ -121,6 +110,7 @@ public class PlayerScripts : MonoBehaviour
                     pushOrPressBtn = objData.PushOrPressButton;
 
                     interactionButtons = objData.InteractButton;
+
                     /* 오브젝트 추가 버튼을 특정 조건을 만족했는지 확인 후 가져옴 */
                     if (objData.IsCenterButtonChanged)
                     {
@@ -145,33 +135,26 @@ public class PlayerScripts : MonoBehaviour
                         }                     
                     }
 
-                    currentObject = hit.collider.gameObject;
-                    Vector3 screenPos = mainCamera.WorldToScreenPoint(new Vector3(currentObject.transform.localPosition.x + offsetX, currentObject.transform.localPosition.y + offsetY, currentObject.transform.localPosition.z + offsetZ));
-
                     
+                    Vector3 screenPos = mainCamera.WorldToScreenPoint(new Vector3(currentObject.transform.localPosition.x + interactionButtonOffset.x, currentObject.transform.localPosition.y + interactionButtonOffset.y, currentObject.transform.localPosition.z + interactionButtonOffset.z));
+                
                     objData.IsClicked = true;
                     //Invoke("UnClickObject", 1f);
                     if (!objData.IsNotInteractable)
                     {
                         Invoke("NameTagAppear", 1f);
-                        //MovePlayer(objData.InteractionDestination);
+                        interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
+
                         if (interactionDestinationData!=null)
                         {
-                            MovePlayer(objData.InteractionDestination.position);
-                            //MovePlayer(objData.InteractionDestination.position);
-                            StartCoroutine(WaitforPlayerArriving());
+                            MovePlayer(objData.InteractionDestination.position);                        
                         }
                         else
                         {
-                            MovePlayer(objData.transform.position);
+                            MovePlayer(objData.transform.position);                       
                         }
-                        interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
-                        /* 상호작용 버튼 활성화 */
-                        barkBtn.transform.gameObject.SetActive(true);
-                        sniffBtn.transform.gameObject.SetActive(true);
-                        biteBtn.transform.gameObject.SetActive(true);
-                        pushOrPressBtn.transform.gameObject.SetActive(true);
-                        centerBtn.transform.gameObject.SetActive(true);
+                        StartCoroutine(WaitforPlayerArriving());
+
 
                         //interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
                     }
@@ -214,8 +197,6 @@ public class PlayerScripts : MonoBehaviour
     }
     public string PlayerObjectName { get { return objectNameData; } }
     public string PlayerSmellText { get { return smellData; } }
-    //public Button ObjectCenterButton { get { return centerButton1Data; } }
-    //public Button ObjectCenterPlusButton { get { return centerButton2Data; } }
     public Transform PlayerobserveView { get { return observeData; } }
     public Transform PlayerobserveBoxView { get { return observePlusData; } }
 
@@ -240,17 +221,25 @@ public class PlayerScripts : MonoBehaviour
         {
             yield return null;
         }
-        SetDirection(objData.InteractionDestination);
-       // turning = false;
+        if(objData.InteractionDestination!=null)
+        {
+            SetDirection(objData.InteractionDestination);
+        }
+
+        /* 상호작용 버튼 활성화 */
+        barkBtn.transform.gameObject.SetActive(true);
+        sniffBtn.transform.gameObject.SetActive(true);
+        biteBtn.transform.gameObject.SetActive(true);
+        pushOrPressBtn.transform.gameObject.SetActive(true);
+        centerBtn.transform.gameObject.SetActive(true);
+        // turning = false;
     }
 
     void MovePlayer(Vector3 targetPosition)
     {
         turning = false; // 움직일때마다 turning 을 거짓으로 만듬
         agent.SetDestination(targetPosition);
-        //biteButton.GetComponent<Image>().sprite = BiteButtonimage;
 
-        //IbarkBtnnteractionButtonController.interactionButtonController.TurnOffInteractionButton();
         if (barkBtn!=null)
         {
             barkBtn.transform.gameObject.SetActive(false);
@@ -301,11 +290,6 @@ public class PlayerScripts : MonoBehaviour
             objectNameText.text = objectNameData;
         }
     }
-    /* 이 메서드가 없으면 스크립터블 오브젝트는 프로그램이 종료되어도 저장한 것을 계속 저장함 */
-    //private void OnApplicationQuit()
-    //{
-    //    inventory.Container.Clear();
-    //}
 }
 
 

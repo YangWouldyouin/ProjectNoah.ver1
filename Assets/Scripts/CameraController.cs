@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
     ObjData currentObserveObjectData;
     Outline currentObjectOutline;
 
+    Animator playerAnimation;
+
     private void Awake()
     {
         cameraController = this;
@@ -33,6 +35,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         cameraFollow = GetComponent<CameraFollow>();
+        playerAnimation = BaseCanvas._baseCanvas.playerAnimation;
     }
     public void SavePosition()
     {
@@ -89,6 +92,9 @@ public class CameraController : MonoBehaviour
         currentObserveObjectData.IsObserve = false;
 
         ComeBackView(originPosition, originRotation);
+
+        Invoke("CancelObserving2Animation", 0.5f);
+        Invoke("CancelObservingAnimation", 0.5f);
     }
 
     /* 전환 효과 없는 카메라 전환 메서드 */
@@ -104,6 +110,15 @@ public class CameraController : MonoBehaviour
     {
         transform.position = originPos;
         transform.rotation = Quaternion.Euler(originRot);
+    }
+    void CancelObserving2Animation()
+    {
+        playerAnimation.SetBool("IsObserving2", false);
+    }
+
+    void CancelObservingAnimation()
+    {
+        playerAnimation.SetBool("IsObserving", false);
     }
 }
 

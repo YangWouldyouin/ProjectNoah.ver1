@@ -7,7 +7,6 @@ using UnityEngine.UI;
 // PointerEnterHandler, IPointerExitHandler, IPointerDownHandler, 
 public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    //public GameObject biteDestroyButton;
     public Button biteButton, smashButton, barkButton, sniffButton, pushOrPressButton;
     [Header("추가 상호작용 버튼")]
     public Button centerButton1;
@@ -18,7 +17,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerD
     [Header("물기 위치, 각도")]
     public Vector3 mouthPos;
     public Vector3 mouthRot;
-    // private Sprite biteButtonImage, biteButtonMouseOver, biteButtonClicked, destroyButtonMouseOver;
+
     private GameObject myMouth;
     private TMPro.TextMeshProUGUI biteText;
     private Animator playerAnimation;
@@ -27,21 +26,15 @@ public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerD
     private  float requiredChangeTime = 0.5f;
     private float pointerDownTimer = 0;
 
-    // public Button biteDestroyButton; // PlayerScripts - MovePlayer 에서 버튼 이미지 BiteButtonImage 로 바꿈
-    GameObject noahBiteObject, noahDestroyObject;
     ObjData noahBiteData;
+
+    public GameObject noahBiteObject;
 
     void Start()
     {
-        //biteButtonImage = BaseCanvas._baseCanvas.biteButtonImage;
-        //biteButtonMouseOver = BaseCanvas._baseCanvas.biteButtonMouseOver;
-        //biteButtonClicked = BaseCanvas._baseCanvas.biteButtonClicked;
-        //destroyButtonMouseOver = BaseCanvas._baseCanvas.destroyButtonMouseOver;
-
         playerAnimation = BaseCanvas._baseCanvas.playerAnimation;
         myMouth = BaseCanvas._baseCanvas.myMouth;
         biteText = BaseCanvas._baseCanvas.biteObjectText;
- 
     }
 
 
@@ -84,29 +77,26 @@ public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerD
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        print("bite");
-        noahBiteObject = PlayerScripts.playerscripts.currentObject;
-
-        if (noahBiteObject != null)
+        Debug.Log("0");
+        if (PlayerScripts.playerscripts.currentObject!=null)
         {
-            /* 취소할 때 참고하기 위해 저장 */
+            noahBiteObject = PlayerScripts.playerscripts.currentObject;
+            
             PlayerScripts.playerscripts.currentBiteObj = noahBiteObject;
-
+            /* 취소할 때 참고하기 위해 저장 */
             PlayerScripts.playerscripts.biteFallPos = noahBiteObject.transform.position;
             PlayerScripts.playerscripts.biteFallRot = noahBiteObject.transform.eulerAngles;
             PlayerScripts.playerscripts.biteOriginScale = noahBiteObject.transform.localScale;
-
             /* 물기 변수 참으로 바꿈 */
-           noahBiteData = noahBiteObject.GetComponent<ObjData>();
+            noahBiteData = noahBiteObject.GetComponent<ObjData>();
             biteText.text = "Noah N.113 - " + noahBiteData.ObjectName;
             noahBiteData.IsBite = true;
-
             isPointerDown = true;
-            // biteDestroyButton.GetComponent<Image>().sprite = biteButtonClicked;
             Invoke("ChangeBiteTrue", 0.5f);
             Invoke("PlayerPickUp", 0.7f);
             Invoke("ChangeBiteFalse", 1);
         }
+
     }
 
     void ChangeBiteTrue()
@@ -127,8 +117,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerD
         //noahBiteObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
         noahBiteObject.transform.SetParent(myMouth.transform, true);
         noahBiteObject.transform.localPosition = mouthPos; // sets the position of the object to your mouth position
-        noahBiteObject.transform.localEulerAngles = mouthRot; // sets the position of the object to your mouth position
-        
+        noahBiteObject.transform.localEulerAngles = mouthRot; // sets the position of the object to your mouth position      
     }
 
     void Update()

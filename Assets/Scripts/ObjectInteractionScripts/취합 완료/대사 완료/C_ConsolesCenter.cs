@@ -134,8 +134,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
-
         // AI 깨우기 미션 완료 전이면 
         if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
         {
@@ -163,28 +161,28 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             {
                 StartCoroutine(PrintConsoleDescriptionAndActivateAIButton());
 
-                if (consoleAIResetButtonData_CC.IsPushOrPress) // AI 리셋 버튼을 눌렀으면
-                {
-                    // 탑뷰로 돌아감
-                    CameraController.cameraController.CancelObserve();
+               // if (consoleAIResetButtonData_CC.IsPushOrPress) // AI 리셋 버튼을 눌렀으면
+                //{
+                    //// 탑뷰로 돌아감
+                    //CameraController.cameraController.CancelObserve();
 
-                    // AI 리셋 버튼 비활성화 (서브 오브젝트)
-                    consoleAIResetButtonOutline_CC.OutlineWidth = 0;
-                    consoleAIResetButtonData_CC.IsNotInteractable = true;
+                    //// AI 리셋 버튼 비활성화 (서브 오브젝트)
+                    //consoleAIResetButtonOutline_CC.OutlineWidth = 0;
+                    //consoleAIResetButtonData_CC.IsNotInteractable = true;
 
-                    // AI 대사 넣기
-                    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
+                    //// AI 대사 넣기
+                    //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
 
-                    /* "AI 깨우기 완료" 게임 중간 저장 */ 
-                    GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    ///* "AI 깨우기 완료" 게임 중간 저장 */ 
+                    //GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
+                    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-                    /* 임무 리스트에 "AI 깨우기" 미션 삭제 */
-                    GameManager.gameManager._gameData.ActiveMissionList[0] = false;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    /* 임무 리스트 한번 활성화 */
-                    MissionGenerator.missionGenerator.ActivateMissionList();
-                }
+                    ///* 임무 리스트에 "AI 깨우기" 미션 삭제 */
+                    //GameManager.gameManager._gameData.ActiveMissionList[0] = false;
+                    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    ///* 임무 리스트 한번 활성화 */
+                    //MissionGenerator.missionGenerator.ActivateMissionList();
+                //}
             }
             else // 파이프를 물지 않았으면
             {
