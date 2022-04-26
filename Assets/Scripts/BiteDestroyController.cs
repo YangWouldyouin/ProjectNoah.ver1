@@ -14,32 +14,12 @@ public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerD
     public Button centerButton2;
     public Button centerDisableButton2;
 
-    [Header("물기 위치, 각도")]
-    public Vector3 mouthPos;
-    public Vector3 mouthRot;
-
-    private GameObject myMouth;
-    private TMPro.TextMeshProUGUI biteText;
-    private Animator playerAnimation;
-
     private bool isPointerDown = false;
     private  float requiredChangeTime = 0.5f;
     private float pointerDownTimer = 0;
 
-    ObjData noahBiteData;
-
-    public GameObject noahBiteObject;
-
-    void Start()
-    {
-        playerAnimation = BaseCanvas._baseCanvas.playerAnimation;
-        myMouth = BaseCanvas._baseCanvas.myMouth;
-        biteText = BaseCanvas._baseCanvas.biteObjectText;
-    }
-
-
     /* 상호작용 버튼 끄는 함수 */
-    public void DiableButton()
+    void DiableButton()
     {
         smashButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
@@ -68,59 +48,7 @@ public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerD
         pointerDownTimer = 0;
     }
 
-    /* 마우스 클릭 후 떼면 상호작용 버튼 비활성화, 롱버튼 타이머  & IsPointerDown 리셋 */
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        DiableButton();
-        Reset();
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("0");
-        if (PlayerScripts.playerscripts.currentObject!=null)
-        {
-            noahBiteObject = PlayerScripts.playerscripts.currentObject;
-            
-            PlayerScripts.playerscripts.currentBiteObj = noahBiteObject;
-            /* 취소할 때 참고하기 위해 저장 */
-            PlayerScripts.playerscripts.biteFallPos = noahBiteObject.transform.position;
-            PlayerScripts.playerscripts.biteFallRot = noahBiteObject.transform.eulerAngles;
-            PlayerScripts.playerscripts.biteOriginScale = noahBiteObject.transform.localScale;
-            /* 물기 변수 참으로 바꿈 */
-            noahBiteData = noahBiteObject.GetComponent<ObjData>();
-            biteText.text = "Noah N.113 - " + noahBiteData.ObjectName;
-            noahBiteData.IsBite = true;
-            isPointerDown = true;
-            Invoke("ChangeBiteTrue", 0.5f);
-            Invoke("PlayerPickUp", 0.7f);
-            Invoke("ChangeBiteFalse", 1);
-        }
-
-    }
-
-    void ChangeBiteTrue()
-    {
-        playerAnimation.SetBool("IsBiting", true);
-    }
-
-    void ChangeBiteFalse()
-    {
-        playerAnimation.SetBool("IsBiting", false);
-    }
-
-    public void PlayerPickUp()
-    {
-        noahBiteObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
-        noahBiteObject.GetComponent<Rigidbody>().useGravity = false;
-
-        //noahBiteObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
-        noahBiteObject.transform.SetParent(myMouth.transform, true);
-        noahBiteObject.transform.localPosition = mouthPos; // sets the position of the object to your mouth position
-        noahBiteObject.transform.localEulerAngles = mouthRot; // sets the position of the object to your mouth position      
-    }
-
-    void Update()
+    void ChangeButton(Button smashButton, Button biteButton)
     {
         if (isPointerDown)
         {
@@ -130,16 +58,66 @@ public class BiteDestroyController : MonoBehaviour, IPointerUpHandler, IPointerD
                 /* 0.5초 이상 클릭시 물기 버튼 비활성화, 파괴하기 버튼 활성화 */
                 smashButton.transform.gameObject.SetActive(true);
                 biteButton.transform.gameObject.SetActive(false);
-                //ChangeBiteToDestroyButton();
-                //Invoke("ChangeDestroyTrue", 1f);
-                // Invoke("DeleteObject", 2f);
-                //Invoke("ChangeDestroyFalse", 3f);
-                //noahBiteData.IsDestroy = true;
 
                 Reset();
             }
         }
     }
+
+    /* 마우스 클릭 후 떼면 상호작용 버튼 비활성화, 롱버튼 타이머  & IsPointerDown 리셋 */
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        DiableButton();
+        Reset();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        isPointerDown = true;
+        InteractionButtonController.interactionButtonController.PlayerBite();
+    }
+
+    void Update()
+    {
+        ChangeButton(smashButton, biteButton);
+    }
+
+
+
+
+
+
+    ////void Update()
+    ////{
+    ////    if (isPointerDown)
+    ////    {
+    ////        pointerDownTimer += Time.deltaTime;
+    ////        if (pointerDownTimer >= requiredChangeTime)
+    ////        {
+    ////            /* 0.5초 이상 클릭시 물기 버튼 비활성화, 파괴하기 버튼 활성화 */
+    ////            smashButton.transform.gameObject.SetActive(true);
+    ////            biteButton.transform.gameObject.SetActive(false);
+    ////            //ChangeBiteToDestroyButton();
+    ////            //Invoke("ChangeDestroyTrue", 1f);
+    ////            // Invoke("DeleteObject", 2f);
+    ////            //Invoke("ChangeDestroyFalse", 3f);
+    ////            //noahBiteData.IsDestroy = true;
+
+    ////            Reset();
+    ////        }
+    ////    }
+    ////}
+
+    // void PlayerPickUp(GameObject biteObject)
+    //{
+    //    noahBiteObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
+    //    noahBiteObject.GetComponent<Rigidbody>().useGravity = false;
+
+    //    noahBiteObject.transform.SetParent(myMouth.transform, true);
+    //    noahBiteObject.transform.localPosition = mouthPos; // sets the position of the object to your mouth position
+    //    noahBiteObject.transform.localEulerAngles = mouthRot; // sets the position of the object to your mouth position      
+    //}
+
 
     //void ChangeBiteToDestroyButton()
     //{

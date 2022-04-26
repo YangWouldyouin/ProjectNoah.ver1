@@ -45,6 +45,10 @@ public class ObjData : MonoBehaviour
 
     [SerializeField] Transform observePlusView;
 
+    [Header("< 물기 위치, 각도 >")]
+    [SerializeField] Vector3 bitePos;
+    [SerializeField] Vector3 biteRot;
+
     //[SerializeField] bool IsPushOrPressActive; // 진짜 누르기,밀기가 가능하면 true, 사실 안되고 그냥 애니메이션만 보여줄거면 false
 
     //[SerializeField] bool IsBiteActive; // 진짜 물기가 가능하면 true, 아니면 false
@@ -77,7 +81,8 @@ public class ObjData : MonoBehaviour
 
     //public bool ISBiteActive { get { return IsBiteActive; } }
 
-
+    public Vector3 BitePos { get { return bitePos; } }
+    public Vector3 BiteRot { get { return biteRot; } }
 
 
     public bool IsCenterButtonDisabled = false; // true면 첫 번째 가운데 버튼 비활성화

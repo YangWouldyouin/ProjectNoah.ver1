@@ -52,7 +52,9 @@ public class InteractionButtonController : MonoBehaviour
 
     public GameObject myHead;
 
-    ObjData ObjectData;
+    private Vector3 bitePos, biteRot;
+
+    ObjData objectData;
     void Awake()
     {
         interactionButtonController = this;
@@ -150,6 +152,60 @@ public class InteractionButtonController : MonoBehaviour
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
+    /* 물기 - 가능한 오브젝트 일때 */
+    public void PlayerBite()
+    {
+        if (PlayerScripts.playerscripts.currentObject != null)
+        {
+            noahBiteObject = PlayerScripts.playerscripts.currentObject;
+
+            /* 취소할 때 참고하기 위해 저장 */
+            PlayerScripts.playerscripts.currentBiteObj = noahBiteObject;
+
+            PlayerScripts.playerscripts.biteFallPos = noahBiteObject.transform.position;
+            PlayerScripts.playerscripts.biteFallRot = noahBiteObject.transform.eulerAngles;
+            PlayerScripts.playerscripts.biteOriginScale = noahBiteObject.transform.localScale;
+
+            /* 물기 변수 참으로 바꿈 */
+            objectData = noahBiteObject.GetComponent<ObjData>();
+            objectData.IsBite = true;
+
+            /* 물기 위치 가져옴 */
+            bitePos = objectData.BitePos;
+            biteRot = objectData.BiteRot;
+
+            /* 현재 물고 있는 오브젝트 이름 띄움 */
+            objectText.text = "Noah N.113 - " + objectData.ObjectName;
+
+            Invoke("ChangeBiteTrue", 0.5f);
+            Invoke("PlayerPickUp", 0.7f);
+            Invoke("ChangeBiteFalse", 1);
+        }
+    }
+
+    void ChangeBiteTrue()
+    {
+        noahAnim.SetBool("IsBiting", true);
+    }
+
+    void PlayerPickUp()
+    {
+        noahBiteObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
+        noahBiteObject.GetComponent<Rigidbody>().useGravity = false;
+
+        noahBiteObject.transform.SetParent(myHead.transform, true);
+
+        noahBiteObject.transform.localPosition = bitePos; // sets the position of the object to your mouth position
+        noahBiteObject.transform.localEulerAngles = biteRot; // sets the position of the object to your mouth position      
+    }
+
+    void ChangeBiteFalse()
+    {
+        noahAnim.SetBool("IsBiting", false);
+    }
+
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     /* 파괴하기 */
 
     public void PlayerSmash1()
@@ -218,7 +274,7 @@ public class InteractionButtonController : MonoBehaviour
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-    /* 오르기 */  // @@ 수정 필요함 @@
+    /* 오르기 */  
     public void PlayerRise1()
     {
         if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔

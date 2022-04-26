@@ -68,8 +68,6 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
-
-
         /* 2초 뒤에 Ispushorpress 를 false 로 바꿈 */
         StartCoroutine(ChangePressFalse());
 
@@ -83,9 +81,6 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         Invoke("DelayAnim", 1.5f);
 
 
-
-
-
         /* "AI 깨우기 완료" 게임 중간 저장 */
         GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -93,6 +88,7 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         /* 임무 리스트에 "AI 깨우기" 미션 삭제 */
         GameManager.gameManager._gameData.ActiveMissionList[0] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         /* 임무 리스트 한번 활성화 */
         MissionGenerator.missionGenerator.ActivateMissionList();
     }
