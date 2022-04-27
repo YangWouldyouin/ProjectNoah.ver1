@@ -5375,9 +5375,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 141263448}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: noahFBX
+      value: 
+      objectReference: {fileID: 589206857}
+    - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: noahAnim
       value: 
-      objectReference: {fileID: 589206858}
+      objectReference: {fileID: 1397759963577864829}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: statText
       value: 
@@ -5391,13 +5395,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1397759963577864825}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: objectText
+      value: 
+      objectReference: {fileID: 1314259620}
+    - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: playerAgent
       value: 
       objectReference: {fileID: 589206865}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: playerRigidbody
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1397759963577864831}
     - target: {fileID: 416977378, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: myMouth
       value: 
@@ -5449,7 +5457,7 @@ PrefabInstance:
     - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: playerAnimation
       value: 
-      objectReference: {fileID: 589206858}
+      objectReference: {fileID: 1397759963577864829}
     - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: biteButtonClicked
       value: 
@@ -6981,6 +6989,8 @@ MonoBehaviour:
     IsAIDown: 0
     IsFuelabsorberFixed_E_E1: 0
     HealthMachineCancelCount: 5
+    IsEngineDoorFix_M_C2: 0
+    IsDestroyPack_M_C2: 0
   IsTrashDoorFixed_L_L1: 0
   IsCanMeteorGet: 0
   IsSmellDone: 0
@@ -32095,6 +32105,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6674814239798694414, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
   m_PrefabInstance: {fileID: 5747828323945922679}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1397759963577864829 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1397759963577864827, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+  m_PrefabInstance: {fileID: 5747828323945922679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1397759963577864831 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1397759963577864831, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+  m_PrefabInstance: {fileID: 5747828323945922679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5747828323945922679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32109,7 +32129,7 @@ PrefabInstance:
     - target: {fileID: 1397759963577864828, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
       propertyPath: currentObject
       value: 
-      objectReference: {fileID: 365641757}
+      objectReference: {fileID: 0}
     - target: {fileID: 1397759963577864828, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
       propertyPath: objectNameTag
       value: 
