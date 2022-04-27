@@ -6,14 +6,27 @@ using UnityEngine.UI;
 public class M_MiniCabinetBody : MonoBehaviour,IInteraction
 {
 
+    /*연관있는 오브젝트*/
+    public GameObject M_canRubber;
+
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_MiniCabinetBody, sniffButton_M_MiniCabinetBody, biteButton_M_MiniCabinetBody, pressButton_M_MiniCabinetBody, observeButton_M_MiniCabinetBody;
 
     ObjData miniCabinetBodyData_M;
+    ObjData canRubberData_M;
+    //BoxCollider cabinetCollider;
+
+    /*아웃라인*/
+    Outline rubberOutline_M;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //cabinetCollider = GetComponent<BoxCollider>();
+        /*연관있는 오브젝트*/
+        canRubberData_M = M_canRubber.GetComponent<ObjData>();
+
         miniCabinetBodyData_M = GetComponent<ObjData>();
 
 
@@ -31,6 +44,9 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
 
         observeButton_M_MiniCabinetBody = miniCabinetBodyData_M.CenterButton1;
         observeButton_M_MiniCabinetBody.onClick.AddListener(OnObserve);
+
+        rubberOutline_M = M_canRubber.GetComponent<Outline>();
+
     }
 
     void DisableButton()
@@ -45,15 +61,45 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
     // Update is called once per frame
     void Update()
     {
-
+         if(miniCabinetBodyData_M.IsObserve == false)
+        {
+            canRubberData_M.IsNotInteractable = true;
+            rubberOutline_M.OutlineWidth = 0;
+        }
     }
 
     public void OnObserve()
     {
-        InteractionButtonController.interactionButtonController.playerObserve();
+        miniCabinetBodyData_M.IsObserve = true;
+        //cabinetCollider.isTrigger = false;
+
         DisableButton();
 
+        PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+
         CameraController.cameraController.currentView = miniCabinetBodyData_M.ObserveView;
+
+        InteractionButtonController.interactionButtonController.playerObserve();
+
+
+        Debug.Log("고무판에 상호작용 가능해요");
+        canRubberData_M.IsNotInteractable = false;
+        rubberOutline_M.OutlineWidth = 8;
+        //아웃라인
+
+/*        if (canRubberData_M.IsBite)
+        {
+            CameraController.cameraController.CancelObserve();
+            //miniCabinetBodyData_M.IsObserve = false;
+        }*/
+
+
+/*        else
+        {
+            canRubberData_M.IsNotInteractable = true;
+            rubberOutline_M.OutlineWidth = 0;
+            //아웃라인
+        }*/
     }
 
     public void OnBark()
@@ -67,11 +113,6 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
 
     public void OnBiteDestroy()
     {
-        miniCabinetBodyData_M.IsBite = true;
-
-        DisableButton();
-
-        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
 
@@ -119,11 +160,11 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
 
     public void OnBite()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public void OnSmash()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }

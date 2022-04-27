@@ -33,6 +33,9 @@ public class GameData
 
     public int HealthMachineCancelCount = 5;
 
+    public bool IsEngineDoorFix_M_C2; // 엔진실 문 고쳤는지
+    public bool IsDestroyPack_M_C2; // 팩 파괴했는지
+
     //    //엔진실 카드키가 들어있는 카드팩이 파괴
     //    public bool IsDisappearPack_M_C2;
     //    // 엔진실 해금
