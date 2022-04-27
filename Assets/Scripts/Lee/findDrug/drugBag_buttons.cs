@@ -10,6 +10,7 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
     //Outline drugLine;
 
     public GameObject drugSmellArea;
+    public GameObject smellCheckArea;
 
     private Button barkButton, sniffButton, biteButton, smashButton, pressButton, noCenterButton;
 
@@ -17,13 +18,13 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
     void Start()
     {
-        //¿ÀºêÁ§Æ®
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         drugBagData = GetComponent<ObjData>();
 
         drugData = GetComponent<ObjData>();
         //drugLine = GetComponent<Outline>();
 
-        //¹öÆ°
+        //ï¿½ï¿½Æ°
         barkButton = drugBagData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
@@ -109,7 +110,7 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
     public void OnBite()
     {
         /*
-        //BiteButton¿¡ ½ºÅ©¸³Æ® ³Ö±â
+        //BiteButtonï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ® ï¿½Ö±ï¿½
         drugData.GetComponent<Rigidbody>().isKinematic = true;
         drugData.transform.parent = gameObject.transform;
 
@@ -133,7 +134,7 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.PlayerSmash2();
     }
 
-    /*void cantSmell() //³¿»õ¸Ã±â ±¸¿ª ºñÈ°¼ºÈ­
+    /*void cantSmell() //ï¿½ï¿½ï¿½ï¿½ï¿½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
     {
         MeshCollider meshcollider = drugSmellArea.GetComponent<MeshCollider>();
         meshcollider.enabled = false;
@@ -155,6 +156,7 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         drug.transform.position = gameObject.transform.position;
 
         Destroy(drugSmellArea, 0f);
+        Destroy(smellCheckArea, 0f);
         Destroy(gameObject, 0.5f);
     }
 }

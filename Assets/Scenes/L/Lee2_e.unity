@@ -7789,6 +7789,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1112632265}
     - target: {fileID: 1397759963577864828, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: currentObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397759963577864828, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
       propertyPath: objectNameTag
       value: 
       objectReference: {fileID: 2049634134}
@@ -7892,7 +7896,7 @@ PrefabInstance:
     - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: Agent
       value: 
-      objectReference: {fileID: 1112632267}
+      objectReference: {fileID: 2102715933}
     - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: noahPosition
       value: 
@@ -7904,7 +7908,7 @@ PrefabInstance:
     - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: playerAnimation
       value: 
-      objectReference: {fileID: 1112632265}
+      objectReference: {fileID: 2102715935}
     - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: CancelObjectText
       value: 
@@ -15041,7 +15045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &911679840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16728,11 +16732,6 @@ CanvasRenderer:
 --- !u!95 &1112632265 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5747828324464809277, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
-  m_PrefabInstance: {fileID: 245883694}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &1112632267 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 5747828324464809254, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
   m_PrefabInstance: {fileID: 245883694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1145572072
@@ -18777,21 +18776,41 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-      propertyPath: noahAnim
+      propertyPath: myHead
       value: 
-      objectReference: {fileID: 1112632265}
+      objectReference: {fileID: 1688876823}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-      propertyPath: noahPlayer
+      propertyPath: noahFBX
       value: 
       objectReference: {fileID: 2068315572}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: noahAnim
+      value: 
+      objectReference: {fileID: 2102715935}
+    - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: statText
+      value: 
+      objectReference: {fileID: 1373624286}
+    - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: statPanel
+      value: 
+      objectReference: {fileID: 865881364}
+    - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: noahPlayer
+      value: 
+      objectReference: {fileID: 2102715929}
+    - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: objectText
+      value: 
+      objectReference: {fileID: 744270319}
+    - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: playerAgent
       value: 
-      objectReference: {fileID: 1112632267}
+      objectReference: {fileID: 2102715933}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: playerRigidbody
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2102715937}
     - target: {fileID: 416977378, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: myMouth
       value: 
@@ -18839,7 +18858,7 @@ PrefabInstance:
     - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: playerAnimation
       value: 
-      objectReference: {fileID: 1112632265}
+      objectReference: {fileID: 2102715935}
     - target: {fileID: 1550029551, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: biteButtonClicked
       value: 
@@ -26505,6 +26524,21 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!195 &2102715933 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 1397759963577864829, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+  m_PrefabInstance: {fileID: 245883694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2102715935 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1397759963577864827, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+  m_PrefabInstance: {fileID: 245883694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2102715937 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1397759963577864831, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+  m_PrefabInstance: {fileID: 245883694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2116425048
 PrefabInstance:
   m_ObjectHideFlags: 0

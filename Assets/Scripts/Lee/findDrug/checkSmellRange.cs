@@ -28,7 +28,7 @@ public class checkSmellRange : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            Debug.Log("³ë¾ÆÁøÀÔ!!");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!!");
 
             smellRange = Random.Range(0, 3);
 
@@ -51,7 +51,7 @@ public class checkSmellRange : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            Debug.Log("³ë¾ÆÅ»Ãâ!!");
+            Debug.Log("ï¿½ï¿½ï¿½Å»ï¿½ï¿½!!");
 
             //drugSmellAreaData.IsNotInteractable = true;
             CancelInvoke("followDrug");
@@ -60,7 +60,7 @@ public class checkSmellRange : MonoBehaviour
         }
     }
 
-    public void followDrug() //¸¶¾à ¹Ù¶óº¸°Ô ÇÏ±â
+    public void followDrug() //ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸°ï¿½ ï¿½Ï±ï¿½
     {
         smellAreaData.IsNotInteractable = true;
 
