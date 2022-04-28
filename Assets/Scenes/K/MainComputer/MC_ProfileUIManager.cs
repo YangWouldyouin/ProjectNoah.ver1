@@ -10,11 +10,11 @@ public class MC_ProfileUIManager : MonoBehaviour
     public GameObject RightButton_P;
     public GameObject LeftButton_P;
 
-    int i = 0;
+    public int i = 0;
 
-    public GameObject[] ProfilePage;
-    public string[] PageNum;
+    public GameObject[] ProfilePage; // 페이지 오브젝트
 
+    public Text PageNum; // 페이지넘버
 
     void Start()
     {
@@ -26,20 +26,45 @@ public class MC_ProfileUIManager : MonoBehaviour
         {
             LeftButton_P.SetActive(false);
         }
-        if (i == 5)
+        else
+        {
+            LeftButton_P.SetActive(true);
+        }
+        if (i == 4)
         {
             RightButton_P.SetActive(false);
         }
+        else
+        {
+            RightButton_P.SetActive(true);
+        }
     }
 
-    void OnClickRightButton() // 오른쪽 버튼을 누를 시
+
+    // 페이지 넘기기
+    public void OnClickRightButton() // 오른쪽 버튼을 누를 시
     {
-        i++;
-        // PageNum[i];
+        if(ProfilePage.Length > i)
+        {
+            PageNum.text = (i + 2).ToString() + " / 5"; // 페이지 넘버
+
+            ProfilePage[i].SetActive(false);
+            ProfilePage[i + 1].SetActive(true);
+            i++;
+        }
     }
 
-    void OnClickLeftButton() // 왼쪽 버튼을 누를 시
+    public void OnClickLeftButton() // 왼쪽 버튼을 누를 시
     {
-        i--;
+        if (0 < i)
+        {
+            PageNum.text = (i).ToString() + " / 5"; // 페이지 넘버
+
+            ProfilePage[i].SetActive(false);
+            ProfilePage[i - 1].SetActive(true);
+            i--;
+        }
     }
+
+
 }
