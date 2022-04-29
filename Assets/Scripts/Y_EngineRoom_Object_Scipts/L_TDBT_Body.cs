@@ -12,6 +12,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
     public GameObject TDBT_fixPart;
 
     ObjData TDBT_fixPartData;
+    Outline TDBT_BodyOutline, TDBT_fixPartOutline;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,8 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         TDBT_BodyData_L = GetComponent<ObjData>();
         TDBT_fixPartData = TDBT_fixPart.GetComponent<ObjData>();
 
+        TDBT_BodyOutline = GetComponent<Outline>();
+        TDBT_fixPartOutline = TDBT_fixPart.GetComponent<Outline>();
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_L_TDBT_Body = TDBT_BodyData_L.BarkButton;
 
@@ -83,6 +86,16 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
         TDBT_fixPartData.transform.position = new Vector3(-27.253f, 1.844f, 35.729f);
         TDBT_fixPartData.transform.rotation = Quaternion.Euler(0, -90, 0);
+        TDBT_fixPart.transform.localScale = new Vector3(50f, 50.00002f, 50.00002f);
+
+        //TDBT_fixPartData.enabled = false;
+        //TDBT_BodyData_L.enabled = false;
+
+        TDBT_fixPartData.IsNotInteractable = true;
+        TDBT_BodyData_L.IsNotInteractable = true;
+        TDBT_BodyOutline.OutlineWidth = 0;
+        TDBT_fixPartOutline.OutlineWidth = 0;
+
 
         GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

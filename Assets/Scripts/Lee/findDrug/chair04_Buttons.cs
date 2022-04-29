@@ -7,9 +7,10 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, upButton;
 
-    ObjData chair04Data;
+    ObjData chairData;
 
-    public Vector3 chair04Pos;
+    public Transform chairPos;
+    public Vector3 chairRisePos;
 
     public GameObject SDrug;
     ObjData SDrugData;
@@ -21,25 +22,25 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
     void Start()
     {
         //오브젝트
-        chair04Data = GetComponent<ObjData>();
+        chairData = GetComponent<ObjData>();
 
         SDrugData = SDrug.GetComponent<ObjData>();
         SDrugLine = SDrug.GetComponent<Outline>();
 
         //버튼
-        barkButton = chair04Data.BarkButton;
+        barkButton = chairData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = chair04Data.SniffButton;
+        sniffButton = chairData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = chair04Data.BiteButton;
+        biteButton = chairData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
-        pressButton = chair04Data.PushOrPressButton;
+        pressButton = chairData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        upButton = chair04Data.CenterButton1;
+        upButton = chairData.CenterButton1;
         upButton.onClick.AddListener(OnUp);
 
     }
@@ -57,14 +58,14 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        chair04Data.IsBark = true;
+        chairData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        chair04Data.IsSniff = true;
+        chairData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -72,7 +73,7 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        chair04Data.IsPushOrPress = true;
+        chairData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
 
@@ -82,7 +83,7 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        chair04Data.IsPushOrPress = false;
+        chairData.IsPushOrPress = false;
     }
 
 
@@ -98,9 +99,19 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
 
     public void OnUp()
     {
-        if (!chair04Data.IsUpDown)
+        DisableButton();
+
+        if (!chairData.IsUpDown)
         {
-            InteractionButtonController.interactionButtonController.risePosition = chair04Pos;
+            PlayerScripts.playerscripts.currentUpObj = gameObject;
+
+            chairData.IsUpDown = true;
+
+            chairRisePos.x = chairPos.position.x;
+            chairRisePos.z = chairPos.position.z;
+
+            InteractionButtonController.interactionButtonController.PlayerRise1();
+            InteractionButtonController.interactionButtonController.risePosition = chairRisePos;
             InteractionButtonController.interactionButtonController.PlayerRise2();
 
             SDrugData.IsNotInteractable = false;

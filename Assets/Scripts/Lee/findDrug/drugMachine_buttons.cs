@@ -30,7 +30,7 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
         insert02Data = insert02.GetComponent<ObjData>();
         insert02Line = insert02.GetComponent<Outline>();
 
-        //¹öÆ°
+        //ï¿½ï¿½Æ°
         barkButton = machineData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
@@ -49,14 +49,23 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
 
     void update()
     {
-        if (machineData.IsObserve == false)
+        /*if (machineData.IsObserve == false)
         {
             insert01Data.IsNotInteractable = true;
             insert01Line.OutlineWidth = 0f;
 
             insert02Data.IsNotInteractable = true;
             insert02Line.OutlineWidth = 0f;
-        }
+        }*/
+
+        /*if (machineData.IsObserve)
+        {
+            insert01Data.IsNotInteractable = false;
+            insert01Line.OutlineWidth = 8f;
+
+            insert02Data.IsNotInteractable = false;
+            insert02Line.OutlineWidth = 8f;
+        }*/
     }
 
     void DisableButton()
@@ -105,29 +114,29 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        /* ¿ÀºêÁ§Æ®ÀÇ °üÂû º¯¼ö true·Î ¹Ù²Þ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ trueï¿½ï¿½ ï¿½Ù²ï¿½ */
         machineData.IsObserve = true;
 
-        /* »óÈ£ÀÛ¿ë ¹öÆ°À» ²û */
+        /* ï¿½ï¿½È£ï¿½Û¿ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ */
         DisableButton();
 
-        /* Ãë¼ÒÇÒ ¶§ Âü°íÇÒ ¿ÀºêÁ§Æ® ÀúÀå */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ */
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
 
-        /* Ä«¸Þ¶ó ÄÁÆ®·Ñ·¯¿¡ ºä Àü´Þ */
-        CameraController.cameraController.currentView = machineData.ObserveView; // °üÂû ºä : À§ÂÊ
+        /* Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
+        CameraController.cameraController.currentView = machineData.ObserveView; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½
 
-        /* °üÂû ¾Ö´Ï¸ÞÀÌ¼Ç & Ä«¸Þ¶ó ÀüÈ¯ */
+        /* ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ & Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½È¯ */
         InteractionButtonController.interactionButtonController.playerObserve();
+
+        insert01Data.IsNotInteractable = false;
+        insert01Line.OutlineWidth = 16f;
+
+        insert02Data.IsNotInteractable = false;
+        insert02Line.OutlineWidth = 16f;
 
         //machineData.IsNotInteractable = true;
         //machineLine.OutlineWidth = 0f;
-
-        insert01Data.IsNotInteractable = false;
-        insert01Line.OutlineWidth = 8f;
-
-        insert02Data.IsNotInteractable = false;
-        insert02Line.OutlineWidth = 8f;
     }
 
     public void OnUp()

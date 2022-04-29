@@ -9,6 +9,9 @@ public class tablet : MonoBehaviour, IInteraction
 
     ObjData tabletData;
 
+    public GameObject TabletUI;
+    public GameObject TabletBackBlack;
+    public GameObject TabletBackOn;
 
     void Start()
     {
@@ -28,6 +31,16 @@ public class tablet : MonoBehaviour, IInteraction
 
         observeButton = tabletData.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
+    }
+
+    void Update()
+    {
+        if(tabletData.IsObserve == false)
+        {
+            TabletUI.SetActive(false);
+            TabletBackBlack.SetActive(true);
+            TabletBackOn.SetActive(false);
+        }
     }
 
     void DisableButton()
@@ -70,9 +83,17 @@ public class tablet : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = tabletData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
+        Invoke("TabletOn", 2.5f);
         /*
          타블렛 화면 진입 > 블루투스 온 > 타블렛 블루투스 = true;
-         */
+        */
+    }
+
+    public void TabletOn()
+    {
+        TabletUI.SetActive(true);
+        TabletBackBlack.SetActive(false);
+        TabletBackOn.SetActive(true);
     }
 
     public void OnPushOrPress()

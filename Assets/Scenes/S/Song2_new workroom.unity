@@ -370,13 +370,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC2E4\uD5D8\uC6A9 \uBE44\uCEE42"
   smellText: 
-  centerButton: {fileID: 2094636722}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 1
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -384,7 +393,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -732,6 +741,135 @@ Transform:
   m_Father: {fileID: 617225022}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &104222601
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 370522342, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: biteButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 370522342, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: objectNameTag
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 370522342, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: objectNameText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 370522342, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: interactionButtons
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397759963577864828, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: currentObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397759963577864828, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: objectNameTag
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397759963577864828, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: objectNameText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397759963577864828, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: interactionButtons
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829277968223930612, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: biteButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: objectNameTag
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: objectNameText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: transitionSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747828324464809255, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: interactionButtons
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -266.329
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 538.369
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 679.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694412, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694414, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_Name
+      value: noahPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674814239798694414, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
 --- !u!1001 &111138065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -838,13 +976,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: "[\uB0C4\uC0C8] \uC5F0\uB8CC \uB0C4\uC0C8, \uC6DC \uCF54\uD2BC \uD5A5"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -852,7 +999,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -1040,13 +1187,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC57D\uC774 \uB4E0 \uC2E4\uB9B0\uB354 3"
   smellText: "[\uB0C4\uC0C8] \uB2EC\uCF64\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -1054,7 +1210,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -1170,13 +1326,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -1184,7 +1349,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -1337,13 +1502,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -1351,7 +1525,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -1781,13 +1955,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -1795,7 +1978,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -2043,13 +2226,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uBC84\uD2BC"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -2057,7 +2249,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -2234,13 +2426,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -2248,7 +2449,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -2514,13 +2715,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -2528,7 +2738,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -2684,13 +2894,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: "[\uB0C4\uC0C8] \uC9C4\uD574\uC9C4 \uC774\uC0C1\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -2698,7 +2917,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -2917,8 +3136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9eec2840433414a889e44813c6936a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originPosition: {x: 0, y: 0, z: 0}
+  originRotation: {x: 0, y: 0, z: 0}
   currentView: {fileID: 0}
-  noah: {fileID: 1274018151}
+  noah: {fileID: 0}
   ui: {fileID: 2094636720}
   nameTag: {fileID: 2094636716}
   noahStat: {fileID: 1063437322}
@@ -3421,13 +3642,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D\uBCF4\uAD00\uD568"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 1347807976}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 1922204953}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -3435,7 +3665,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -3547,13 +3777,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC2E4\uD5D8\uC6A9 \uBE44\uCEE41"
   smellText: 
-  centerButton: {fileID: 2094636722}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 1
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -3561,7 +3800,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -3824,13 +4063,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uBC84\uD2BC"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -3838,7 +4086,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -4270,13 +4518,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 1347807976}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 498388120}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 1
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -4284,7 +4541,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -4623,13 +4880,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -4637,7 +4903,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -4950,13 +5216,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 1347807976}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 34162845}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 1
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -4964,7 +5239,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -5047,13 +5322,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D\uBCF4\uAD00\uD568"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 1347807976}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 595585370}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -5061,7 +5345,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -5247,13 +5531,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: "[\uB0C4\uC0C8] \uD574\uB3C5\uC81C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 1776473828}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -5261,7 +5554,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -5484,13 +5777,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC2A4\uB9C8\uD2B8\uD31C \uAD00\uB9AC \uAE30\uACC4"
   smellText: "[\uB0C4\uC0C8] \uD759 \uB0C4\uC0C8"
-  centerButton: {fileID: 1347807976}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 560379452}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -5498,7 +5800,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -5558,13 +5860,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uB9DD\uAC00\uC9C4 \uC804\uC120"
   smellText: "[\uB0C4\uC0C8] \uACE0\uBB34 \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -5572,7 +5883,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -5929,13 +6240,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: zz
-  centerButton: {fileID: 694036324}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 1776473828}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -5943,7 +6263,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -6258,13 +6578,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -6272,7 +6601,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -6724,13 +7053,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uBC84\uD2BC"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -6738,7 +7076,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -6787,7 +7125,7 @@ PrefabInstance:
     - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: playerAnimation
       value: 
-      objectReference: {fileID: 1269691971}
+      objectReference: {fileID: 0}
     - target: {fileID: 1997109241220282434, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -6953,35 +7291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99eda37edd9ffa3428fe567ef23db8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteorBoxButton1_MB: {fileID: 886239819}
-  meteorBoxButton2_MB: {fileID: 1575018045}
-  meteorBoxButton3_MB: {fileID: 396845522}
-  meteorBoxButton4_MB: {fileID: 232968501}
-  meteorBoxButton5_MB: {fileID: 1444387102}
-  meteorBox1_MB: {fileID: 617574199}
-  meteorBox2_MB: {fileID: 1023606413}
-  meteorBox3_MB: {fileID: 1874930732}
-  meteorBox4_MB: {fileID: 355731099}
-  meteorBox5_MB: {fileID: 1146980315}
-  answerMeteor_MB: {fileID: 1433367366}
-  wrongMeteor1_MB: {fileID: 1957105759}
-  wrongMeteor2_MB: {fileID: 246664582}
-  wrongMeteor3_MB: {fileID: 853434471}
-  wrongMeteor4_MB: {fileID: 937582940}
-  cylinderGlassAnswer_MB: {fileID: 137668334}
-  cylinderGlassWrong_MB: {fileID: 1024316601}
-  cylinderGlassNoNeed1_MB: {fileID: 1604963284}
-  cylinderGlassNoNeed2_MB: {fileID: 1001229348}
-  beaker1_MB: {fileID: 370357702}
-  beaker2_MB: {fileID: 4061545}
-  drugInBeaker1_MB: {fileID: 273916177}
-  drugInBeaker2_MB: {fileID: 1972572012}
-  rubber3_MB: {fileID: 227422381}
-  meteorBox1Anim_MB: {fileID: 1714169080}
-  meteorBox2Anim_MB: {fileID: 1187126425}
-  meteorBox3Anim_MB: {fileID: 1499046790}
-  meteorBox4Anim_MB: {fileID: 675722791}
-  meteorBox5Anim_MB: {fileID: 213678926}
 --- !u!1001 &903623937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7097,13 +7406,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -7111,7 +7429,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -7191,13 +7509,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636719}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -7205,7 +7532,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -7405,13 +7732,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 1347807976}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 883727972}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -7419,7 +7755,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -7645,13 +7981,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -7659,7 +8004,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -7945,13 +8290,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -7959,7 +8313,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -8273,13 +8627,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC57D\uC774 \uB4E0 \uC2E4\uB9B0\uB3542"
   smellText: "[\uB0C4\uC0C8] \uAD6C\uBD84\uBD88\uAC00"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -8287,7 +8650,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -8410,13 +8773,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D\uBCF4\uAD00\uD568"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 1347807976}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 522820794}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -8424,7 +8796,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -8592,13 +8964,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC57D\uC774 \uB4E0 \uC2E4\uB9B0\uB354 4"
   smellText: "[\uB0C4\uC0C8] \uB2EC\uCF64\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -8606,7 +8987,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -8719,13 +9100,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -8733,7 +9123,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -8775,13 +9165,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uD569\uD310"
   smellText: "[\uB0C4\uC0C8] \uC1E0 \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -8789,7 +9188,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -9052,7 +9451,7 @@ PrefabInstance:
     - target: {fileID: 6271890255095929717, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: noahAnim
       value: 
-      objectReference: {fileID: 1269691971}
+      objectReference: {fileID: 0}
     - target: {fileID: 6271890255095929717, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
       propertyPath: biteButton
       value: 
@@ -9077,14 +9476,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6271890255095929718, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8181831352364077819, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
---- !u!1 &1123358100 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5312959000145541045, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
-  m_PrefabInstance: {fileID: 1123358099}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1146980315 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0cbe2c7420096a94c942b768dcb8a589, type: 3}
@@ -9122,13 +9520,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D\uBCF4\uAD00\uD568"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 1347807976}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 904851321}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -9136,7 +9543,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -9620,16 +10027,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0cbe2c7420096a94c942b768dcb8a589, type: 3}
   m_PrefabInstance: {fileID: 1247934643}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1269691971 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6271890256200668767, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
-  m_PrefabInstance: {fileID: 1123358099}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1274018151 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6614471894544296727, guid: c6b43faf263d7e34cbe187faa257495c, type: 3}
-  m_PrefabInstance: {fileID: 1123358099}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1291503656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9991,13 +10388,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: "[\uB0C4\uC0C8] \uC5F0\uB8CC \uB0C4\uC0C8, \uC6DC \uCF54\uD2BC \uD5A5"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -10005,7 +10411,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -10415,13 +10821,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D"
   smellText: "[\uB0C4\uC0C8] \uC2E0 \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -10429,7 +10844,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -10578,13 +10993,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uBC84\uD2BC"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -10592,7 +11016,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -11352,13 +11776,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uBC84\uD2BC"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -11366,7 +11799,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -11658,13 +12091,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC57D\uC774 \uB4E0 \uC2E4\uB9B0\uB3541"
   smellText: "[\uB0C4\uC0C8] \uAD6C\uBD84\uBD88\uAC00"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -11672,7 +12114,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -11896,13 +12338,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -11910,7 +12361,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -12322,13 +12773,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636719}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -12336,7 +12796,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -12642,13 +13102,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: "[\uB0C4\uC0C8] \uC774\uC0C1\uD55C \uB0C4\uC0C8 \uC6D0\uC778"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 1776473828}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -12656,7 +13125,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -12812,13 +13281,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -12826,7 +13304,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -13010,13 +13488,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC0C8 \uC804\uC120"
   smellText: "[\uB0C4\uC0C8] \uACE0\uBB34 \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -13024,7 +13511,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -13424,13 +13911,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -13438,7 +13934,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -13561,13 +14057,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D\uBCF4\uAD00\uD568"
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 1347807976}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 692271423}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -13575,7 +14080,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -13924,13 +14429,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: "[\uB0C4\uC0C8] \uC1E0 \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636721}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 1776473828}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -13938,7 +14452,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -14071,13 +14585,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC804\uC120 \uB07C\uC6B0\uB294 \uACF3"
   smellText: "[\uB0C4\uC0C8] \uACE0\uBB34 \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 1
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -14085,7 +14608,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -14296,13 +14819,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC6B4\uC11D "
   smellText: "[\uB0C4\uC0C8] \uB9E4\uCE90\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 1
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -14310,7 +14842,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -14512,13 +15044,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -14526,7 +15067,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -14899,13 +15440,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: "[\uB0C4\uC0C8] \uC774\uC0C1\uD55C \uB0C4\uC0C8"
-  centerButton: {fileID: 2094636717}
-  centerPlusButton: {fileID: 0}
+  interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
+  barkButton: {fileID: 0}
+  sniffButton: {fileID: 0}
+  biteButton: {fileID: 0}
+  smashButton: {fileID: 0}
   pushOrPressButton: {fileID: 2094636718}
+  centerButton1: {fileID: 0}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  IsPushOrPressActive: 0
-  IsBiteActive: 0
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 1
@@ -14913,7 +15463,7 @@ MonoBehaviour:
   IsPushOrPress: 0
   IsSniff: 0
   IsBite: 0
-  IsDestroy: 0
+  IsSmash: 0
   IsUpDown: 0
   IsEaten: 0
   IsInsert: 0
@@ -15069,7 +15619,7 @@ PrefabInstance:
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: noahAnim
       value: 
-      objectReference: {fileID: 1269691971}
+      objectReference: {fileID: 0}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: noahPlayer
       value: 
@@ -15085,11 +15635,11 @@ PrefabInstance:
     - target: {fileID: 416977378, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: myMouth
       value: 
-      objectReference: {fileID: 1123358100}
+      objectReference: {fileID: 0}
     - target: {fileID: 416977378, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: playerAnimation
       value: 
-      objectReference: {fileID: 1269691971}
+      objectReference: {fileID: 0}
     - target: {fileID: 619572306, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -15542,17 +16092,6 @@ MonoBehaviour:
 --- !u!114 &2094636718 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5964171522187391306, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-  m_PrefabInstance: {fileID: 2094636715}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2094636719 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6855707438771366431, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
   m_PrefabInstance: {fileID: 2094636715}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

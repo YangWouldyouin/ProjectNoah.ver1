@@ -9,7 +9,6 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
     ObjData drugBagData;
     Outline drugBagLine;
 
-    public GameObject player;
     public float speed;
 
     public float smellRange;
@@ -47,6 +46,7 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
 
     }
 
+    /*
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == player)
@@ -68,6 +68,7 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
             CancelInvoke("followDrug");
         }
     }
+    */
 
 
     void DisableButton()
@@ -92,7 +93,7 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
 
-        Invoke("followDrug", 2f);
+        //Invoke("followDrug", 2f);
 
         drugBagData.IsNotInteractable = false;
         drugBagLine.OutlineWidth = 8;
@@ -145,11 +146,13 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
-    public void followDrug() //마약 바라보게 하기
+    /*
+     * public void followDrug() //마약 바라보게 하기
     {
         drugSmellAreaData.IsNotInteractable = true;
 
         Vector3 dir = drugBag.transform.position - player.transform.position;
         player.transform.rotation = Quaternion.Lerp(player.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * speed);
     }
+    */
 }

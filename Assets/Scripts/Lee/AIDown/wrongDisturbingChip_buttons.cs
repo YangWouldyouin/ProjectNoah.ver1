@@ -27,7 +27,7 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
 
         noCenterButton = disturbingChipData.CenterButton1;
 
-        //GameManager.gameManager._gameData.IsHide = true;
+        GameManager.gameManager._gameData.IsHide = true;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -36,13 +36,13 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
         {
             if (GameManager.gameManager._gameData.IsHide)
             {
-                Debug.Log("¾ÈÀüÇÔ");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             }
 
             else
             {
-                Debug.Log("´Ô Áö±Ý ¸ÓÇÏ½Ã´Â????±×°Å ¾Ð¼ö");
-                //AI°¡ °æ°èÇÏ´Â ´ë»ç Ãâ·Â
+                Debug.Log("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï½Ã´ï¿½????ï¿½×°ï¿½ ï¿½Ð¼ï¿½");
+                //AIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
                 GameManager.gameManager._gameData.IsAlert = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -113,7 +113,7 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
 
     void IInteraction.OnBite()
     {
-        //¹öÆ°¿¡ »ðÀÔÇÏ±â
+        //ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
         //throw new System.NotImplementedException();
     }
 
