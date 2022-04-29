@@ -59,7 +59,7 @@ public class W_Health_Machine : MonoBehaviour
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
         upDisableButton_W_Health_Machine = Health_MachineData_W.CenterDisableButton1;
 
-        AIReprotMissionTime = true;
+        AIReprotMissionTime = true; //나중에 수정할 것
     }
 
     void DiableButton()
