@@ -34,7 +34,11 @@ public class GameData
     public int HealthMachineCancelCount = 5;
 
     public bool IsEngineDoorFix_M_C2; // 엔진실 문 고쳤는지
-    public bool IsDestroyPack_M_C2; // 팩 파괴했는지
+
+    public bool IsIronDisappear_T_C2; // 스마트팜 망가진 문 열었는지
+
+    public bool IsOutTroubleLine2_T_C2; // 스마트팜 망가진 선을 꺼냈는지
+    public bool IsSmartFarmFix_T_C2;//스마트팜 수리 완료
 
     public bool Is_Tablet_WirelessOn; //태블릿 블루투스 체크
     public bool IsFakeHealthData_Tablet; //태블릿 강아지 더미 상태 데이터
