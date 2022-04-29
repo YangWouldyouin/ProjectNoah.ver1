@@ -18,6 +18,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     ObjData envirPipeData_CC;
     ObjData consoleAIResetButtonData_CC;
 
+
     /* 기타 필요한 변수들 */
     Outline consoleAIResetButtonOutline_CC;
     Outline consoleCenterOutline_CC;

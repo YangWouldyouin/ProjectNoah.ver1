@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class C_AIResetButton : MonoBehaviour, IInteraction
 {
+    public GameObject consoleDoor_CC;
     Outline AIButtonOutline;
     ObjData AIButtonData;
+    //ObjData consoleDoor_CC;
     private Button barkButton, sniffButton, biteButton,
     pressButton, noCenterButton;
 
@@ -18,7 +20,6 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     {
         AIButtonOutline = GetComponent<Outline>();
         AIButtonData = GetComponent<ObjData>();
-
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton = AIButtonData.BarkButton;
         barkButton.onClick.AddListener(OnBark);

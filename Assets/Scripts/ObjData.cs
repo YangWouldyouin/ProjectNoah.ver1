@@ -45,6 +45,10 @@ public class ObjData : MonoBehaviour
 
     [SerializeField] Transform observePlusView;
 
+    [Header("< 오르기 위치 >")]
+    [SerializeField] Transform upPos;
+    [SerializeField] Transform downPos;
+
     [Header("< 물기 위치, 각도 >")]
     [SerializeField] Vector3 bitePos;
     [SerializeField] Vector3 biteRot;
@@ -78,6 +82,9 @@ public class ObjData : MonoBehaviour
 
     public Transform ObserveView { get { return observeView; } } 
     public Transform ObservePlusView { get { return observePlusView; } }
+
+    public Transform UpPos { get { return upPos; } }
+    public Transform DownPos { get { return downPos; } }
 
     //public bool ISBiteActive { get { return IsBiteActive; } }
 

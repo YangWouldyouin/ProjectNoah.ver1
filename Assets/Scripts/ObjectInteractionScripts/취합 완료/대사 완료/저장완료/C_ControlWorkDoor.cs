@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 {
+
+    private Button barkButton, biteButton,
+     pressButton, sniffButton, insertButton, insertDisableButton;
+
     public GameObject envirPipe_CWD; // 자식으로부터 가져오기
     public GameObject cockpitDoor_CWD;
 
@@ -36,11 +40,28 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
         dialogManager = dialogManager_CWD.GetComponent<DialogManager>();
 
         envirPipeData_CWD = envirPipe_CWD.GetComponent<ObjData>();
-        cockpitDoorData_CWD = cockpitDoor_CWD.GetComponent<ObjData>();
+        cockpitDoorData_CWD = GetComponent<ObjData>();
+
+        barkButton = cockpitDoorData_CWD.BarkButton;
+        biteButton = cockpitDoorData_CWD.BiteButton;
+        pressButton = cockpitDoorData_CWD.PushOrPressButton;
+        sniffButton = cockpitDoorData_CWD.SniffButton;
+        insertButton = cockpitDoorData_CWD.CenterButton1;
+        insertDisableButton = cockpitDoorData_CWD.CenterDisableButton1;
 
         cockpitDoorOutine_CWD = cockpitDoor_CWD.GetComponent<Outline>();
     }
 
+    void DisableButton()
+    {
+        barkButton.transform.gameObject.SetActive(false);
+        biteButton.transform.gameObject.SetActive(false);
+        pressButton.transform.gameObject.SetActive(false);
+        sniffButton.transform.gameObject.SetActive(false);
+        insertButton.transform.gameObject.SetActive(false);
+
+        insertDisableButton.transform.gameObject.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -103,41 +124,6 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
         }
     }
 
-    public void OnBark()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnSniff()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnBiteDestroy()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnPushOrPress()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnEat()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnObserve()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnUp()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void OnInsert()
     {
         /* 오브젝트의 끼우기 변수 true로 바꿈 */
@@ -180,12 +166,60 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
         }
     }
 
+    public void OnBark()
+    {
+        /* 오브젝트의 짖기 변수 true로 바꿈 */
+        cockpitDoorData_CWD.IsBark = true;
+        /* 상호작용 버튼을 끔 */
+        DisableButton();
+        /* 애니메이션 보여줌 */
+        InteractionButtonController.interactionButtonController.playerBark();
+    }
+
+    public void OnSniff()
+    {
+        /* 오브젝트의 냄새맡기 변수 true로 바꿈 */
+        cockpitDoorData_CWD.IsSniff = true;
+        /* 상호작용 버튼을 끔 */
+        DisableButton();
+        /* 애니메이션 보여주고 냄새 텍스트 띄움 */
+        InteractionButtonController.interactionButtonController.playerSniff();
+    }
+
+    public void OnPushOrPress()
+    {
+        /* 상호작용 버튼을 끔 */
+        DisableButton();
+
+        /* 애니메이션 보여줌 */
+        InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
+    }
+
+
     public void OnBite()
+    {
+        /* 상호작용 버튼을 끔 */
+        DisableButton();
+        /*  물기만 하는 애니메이션 & 물 수 없는 오브젝트임을 알림 */
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
+    }
+
+    public void OnSmash()
     {
         throw new System.NotImplementedException();
     }
 
-    public void OnSmash()
+    public void OnEat()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnObserve()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUp()
     {
         throw new System.NotImplementedException();
     }
