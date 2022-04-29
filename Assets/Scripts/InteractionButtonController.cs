@@ -316,6 +316,69 @@ public class InteractionButtonController : MonoBehaviour
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
+    /* 내려가기 */
+
+    public void PlayerFall1()
+    {
+        objectData = PlayerScripts.playerscripts.currentUpObj.GetComponent<ObjData>();
+        if(objectData.IsUpDown)
+        {
+            if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔
+            {
+                Vector3 fallrot = noahPlayer.transform.eulerAngles;
+                noahPlayer.transform.eulerAngles = new Vector3(fallrot.x, fallrot.y - 180, fallrot.z);
+
+                noahPlayer.transform.position = new Vector3(PlayerScripts.playerscripts.currentUpObj.transform.localPosition.x, 33.78f, PlayerScripts.playerscripts.currentUpObj.transform.localPosition.z) + transform.forward;
+                playerAgent.updatePosition = true;
+                playerAgent.updateRotation = true;
+                playerAgent.isStopped = false;
+                //Invoke("ChangeFallTrue1", 0.5f);
+                //Invoke("ChangeFallTrue2", 1.1f);
+                //Invoke("ChangeFallTrue3", 1.5f);
+                //Invoke("ChangeFallTrue4", 2.5f);
+                //Invoke("ChangeFallFalse1", 4.5f);
+            }
+            objectData.IsUpDown = false;
+        }
+
+    }
+
+    void ChangeFallTrue1()
+    {
+        noahAnim.SetBool("Falling1", true);
+    }
+
+    void ChangeFallTrue2()
+    {
+        noahAnim.SetBool("Falling2", true);
+    }
+    void ChangeFallTrue3()
+    {
+        noahAnim.SetBool("Falling3", true);
+    }
+    void ChangeFallTrue4()
+    {
+        noahAnim.SetBool("Falling4", true);
+        objectData = PlayerScripts.playerscripts.currentUpObj.GetComponent<ObjData>();
+        Vector3 fallPosition = objectData.DownPos.position;
+        //noahPlayer.transform.position = new Vector3(fallPosition.x - 2, 35.78f, fallPosition.z);
+        noahPlayer.transform.position = fallPosition;
+
+
+    }
+    void ChangeFallFalse1()
+    {
+        noahAnim.SetBool("Falling1", false);
+
+        playerAgent.isStopped = false;
+
+
+        playerAgent.updatePosition = true;
+        playerAgent.updateRotation = true;
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
     /* 누르기 - 상자 등을 밀기 */
     public void playerPush1() 
     {

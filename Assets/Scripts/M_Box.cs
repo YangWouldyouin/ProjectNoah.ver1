@@ -11,7 +11,6 @@ public class M_Box : MonoBehaviour, IInteraction
     public Vector3 pushPos, pushRot;
 
     public Vector3 boxRisePos;
-    public Transform boxPos;
 
     void Start()
     {
@@ -69,8 +68,7 @@ public class M_Box : MonoBehaviour, IInteraction
         DiableButton();
 
         InteractionButtonController.interactionButtonController.playerPush1();
-
-        InteractionButtonController.interactionButtonController.pushPos = new Vector3(0, 0, 0);
+        InteractionButtonController.interactionButtonController.pushPos = new Vector3(-0.011f, -0.384f, -0.229f);
         InteractionButtonController.interactionButtonController.pushRot = new Vector3(0, 0, 0);
         
         InteractionButtonController.interactionButtonController.PlayerPush2();
@@ -85,9 +83,9 @@ public class M_Box : MonoBehaviour, IInteraction
             PlayerScripts.playerscripts.currentUpObj = this.gameObject;
             boxData_M.IsUpDown = true;
 
-            boxRisePos.x = boxPos.position.x;
+            boxRisePos.x = boxData_M.UpPos.position.x;
             //boxRisePos.y = transform.position.y;
-            boxRisePos.z = boxPos.position.z;
+            boxRisePos.z = boxData_M.UpPos.position.z;
 
             InteractionButtonController.interactionButtonController.PlayerRise1();
             InteractionButtonController.interactionButtonController.risePosition = boxRisePos;

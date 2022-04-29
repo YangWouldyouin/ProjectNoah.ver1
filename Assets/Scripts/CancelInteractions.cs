@@ -86,17 +86,19 @@ public class CancelInteractions : MonoBehaviour
                 }/* 오르기 취소 */
                 else if (i == 2 && upDownObject != null)
                 {
+
                     ObjData cancelUpDownData = upDownObject.GetComponent<ObjData>();
                     if (cancelUpDownData.IsUpDown)
                     {
-                        if (Agent.enabled)
-                        {
-                            noahPosition.transform.position = new Vector3(upDownObject.transform.localPosition.x, 33.78f, upDownObject.transform.localPosition.z);
-                            Agent.updatePosition = true;
-                            Agent.updateRotation = true;
-                            Agent.isStopped = false;
-                        }
-                        cancelUpDownData.IsUpDown = false;
+                        //Vector3 fallrot = noahPosition.transform.eulerAngles;
+                        InteractionButtonController.interactionButtonController.PlayerFall1();
+                        //if (Agent.enabled)
+                        //{
+                        //    noahPosition.transform.eulerAngles = new Vector3(fallrot.x, fallrot.y - 180, fallrot.z);
+                        //    Invoke("Delaylittle", 0.5f);
+
+                        //}
+                        //cancelUpDownData.IsUpDown = false;
                         break;
                     }
                     else
@@ -214,7 +216,13 @@ public class CancelInteractions : MonoBehaviour
             //}
         }
     }
-
+    void Delaylittle()
+    {
+        noahPosition.transform.position = new Vector3(upDownObject.transform.localPosition.x, 33.78f, upDownObject.transform.localPosition.z)+transform.forward;
+        Agent.updatePosition = true;
+        Agent.updateRotation = true;
+        Agent.isStopped = false;
+    }
     void CancelBitingAnimation()
     {
         playerAnimation.SetBool("IsPutDowning", false);
