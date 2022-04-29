@@ -30,7 +30,7 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         SDrugData = SDrug.GetComponent<ObjData>();
         SDrugLine = SDrug.GetComponent<Outline>();
 
-        //¹öÆ°
+        //ï¿½ï¿½Æ°
         barkButton = Insert02Data.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
@@ -47,6 +47,15 @@ public class insert02_buttons : MonoBehaviour, IInteraction
 
         D_LEDColor = D_LED.GetComponent<Renderer>();
 
+    }
+
+    void Update()
+    {
+        if(!machineData.IsObserve)
+        {
+            Insert02Data.IsNotInteractable = true;
+            Insert02Line.OutlineWidth = 0f;
+        }
     }
 
     // Update is called once per frame
@@ -83,7 +92,7 @@ public class insert02_buttons : MonoBehaviour, IInteraction
 
         if (SDrugData.IsBite)
         {
-            D_LEDColor.material.color = Color.blue; //°Ë»ç °á°ú »ö»ó º¯È¯
+            D_LEDColor.material.color = Color.blue; //ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 
             GameManager.gameManager._gameData.IsDetox = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -121,9 +130,9 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
-    void NoSDrug() //Æ¯Á¤ ¾à¹° »ç¶óÁö°Ô ÇÏ±â
+    void NoSDrug() //Æ¯ï¿½ï¿½ ï¿½à¹° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï±ï¿½
     {
-        Debug.Log("Æ¯º°ÇÑ ¾à¹° ¾ø¾î");
+        Debug.Log("Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½à¹° ï¿½ï¿½ï¿½ï¿½");
         
         SDrugData.IsBite = false;
 

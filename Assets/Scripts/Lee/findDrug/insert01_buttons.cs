@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class insert01_buttons : MonoBehaviour, IInteraction
 {
+    public GameObject ReportUI;
+    public bool IsReported = false;
+
     public GameObject drug;
     ObjData drugData;
     Outline drugLine;
@@ -30,7 +33,7 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         drugData = drug.GetComponent<ObjData>();
         drugLine = drug.GetComponent<Outline>();
 
-        //��ư
+        //��ư
         barkButton = Insert01Data.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
@@ -47,6 +50,16 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
         LEDColor = LED.GetComponent<Renderer>();
                                            
+    }
+
+    void Update()
+    {
+        if(!machineData.IsObserve)
+        {
+            Insert01Data.IsNotInteractable = true;
+            Insert01Line.OutlineWidth = 0f;
+        }
+
     }
 
     // Update is called once per frame
@@ -82,13 +95,12 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerPressHead();
 
         if (drugData.IsBite)
-        {
-            LEDColor.material.color = Color.red; //�˻� ��� ���� ��ȯ
-            
+        {            
             GameManager.gameManager._gameData.IsCheckDrug = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-            Invoke("NoDrug", 0.5f);
+            Invoke("NoDrug", 1.5f);
+            Invoke("ShowUI", 2f);
         }
 
         StartCoroutine(ChangePressFalse());
@@ -133,9 +145,11 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
     void NoDrug()
     {
-        Debug.Log("�๰����");
+        Debug.Log("�๰����");
         
         drugData.IsBite = false;
+
+        LEDColor.material.color = Color.red; //�˻� ��� ���� ��ȯ
 
         drugData.GetComponent<Rigidbody>().isKinematic = false;
         drugData.transform.parent = null;
@@ -149,5 +163,34 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
         drugData.IsNotInteractable = true;
         drugLine.OutlineWidth = 0f;
+    }
+
+    public void Report()
+    {
+        Debug.Log("보고했음");
+        IsReported = true;
+        ReportUI.SetActive(false);
+    }
+
+    public void Cancel()
+    {
+        Debug.Log("보고하기 취소했음");
+        //GameManager.gameManager._gameData.
+        //거시기... 보고하기 취소했다는거 카운트하기
+        IsReported = true;
+        ReportUI.SetActive(false);
+    }
+
+    public void ShowUI()
+    {
+        if (!IsReported)
+        {
+            ReportUI.SetActive(true);
+        }
+        
+        else
+        {
+            ReportUI.SetActive(false);
+        }
     }
 }
