@@ -30,19 +30,19 @@ public class M_C2_FindLivingspaceKey : MonoBehaviour
     private void Update()
     {
 
-        ObserveCardMachine();
+        //ObserveCardMachine();
 
         if (HasCard_Machine_Living)
         {
             PutLivingRoomKey();
         }
-        else
+/*        else
         {
             FindCardKey();
-        }
+        }*/
     }
 
-    public void ObserveCardMachine()
+/*    public void ObserveCardMachine()
     {
 
         if (BoxData_FLS.IsUpDown)
@@ -69,27 +69,27 @@ public class M_C2_FindLivingspaceKey : MonoBehaviour
                 Card_Machine_LivingData_FLS.IsCenterButtonChanged = false;
             }
         }
-    }
+    }*/
 
-    void FindCardKey()
-    {   
-        if (CabinetData_FLS.IsObserve)
-        {
-            CameraController.cameraController.currentView = CabinetData_FLS.ObserveView; // 관찰하기
-            Card_Key_FLS.SetActive(true);
-            if(Card_KeyData_FLS.IsBite)
+    /*    void FindCardKey()
+        {   
+            if (CabinetData_FLS.IsObserve)
             {
-                CameraController.cameraController.CancelObserve(); // 탑뷰로 돌아오기
-                CabinetData_FLS.IsObserve =false;
-                HasCard_Machine_Living = true;
-            }        
-        }
+                CameraController.cameraController.currentView = CabinetData_FLS.ObserveView; // 관찰하기
+                Card_Key_FLS.SetActive(true);
+                if(Card_KeyData_FLS.IsBite)
+                {
+                    CameraController.cameraController.CancelObserve(); // 탑뷰로 돌아오기
+                    CabinetData_FLS.IsObserve =false;
+                    HasCard_Machine_Living = true;
+                }        
+            }
 
-        if(!CabinetData_FLS.IsObserve&&!Card_KeyData_FLS.IsBite)
-        {
-            Card_Key_FLS.SetActive(false);
-        }
-    }
+            if(!CabinetData_FLS.IsObserve&&!Card_KeyData_FLS.IsBite)
+            {
+                Card_Key_FLS.SetActive(false);
+            }
+        }*/
 
 
     void PutLivingRoomKey() // 생활공간 카드키 카드인식기계에 끼우기

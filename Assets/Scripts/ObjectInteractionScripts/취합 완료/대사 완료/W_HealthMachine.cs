@@ -134,9 +134,11 @@ public class W_HealthMachine : MonoBehaviour
             if (healthMachineData_HM.IsUpDown)
             {
                 healthMachineData_HM.IsNotInteractable = true;
+
+                // 올라가는 애니메이션 2.5초간 기다렷다가 보고하기 팝업 뜨게 하ㅁ
                 heathMachineRepairTimer_HM += Time.deltaTime;
                 float maxTimer = Mathf.FloorToInt((heathMachineRepairTimer_HM % 3600) % 60);
-                if (maxTimer >= 2.5f)
+                if (maxTimer >= 2.5f) //
                 {
                     Report_GUI.SetActive(true);
                 }

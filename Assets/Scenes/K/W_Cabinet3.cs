@@ -10,6 +10,9 @@ pushButton_W_Cabinet3, upButton_W_Cabinet3, upDisableButton_W_Cabinet3, smashBut
 
     ObjData Cabinet3_W;
 
+    /* 사용 오브젝트 */
+    public GameObject Card_Key_W_C3; // 카드키
+    ObjData Card_KeyData_W_C3;
 
     void Start()
     {
@@ -28,6 +31,8 @@ pushButton_W_Cabinet3, upButton_W_Cabinet3, upDisableButton_W_Cabinet3, smashBut
 
         pushButton_W_Cabinet3 = Cabinet3_W.PushOrPressButton;
         pushButton_W_Cabinet3.onClick.AddListener(OnPushOrPress);
+
+        Card_Key_W_C3.SetActive(false); // 카드키 관찰하기 전에 안보이게
     }
 
     /* 상호작용 버튼을 끄는 함수 */
@@ -57,6 +62,14 @@ pushButton_W_Cabinet3, upButton_W_Cabinet3, upDisableButton_W_Cabinet3, smashBut
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         CameraController.cameraController.currentView = Cabinet3_W.ObserveView; // 관찰 뷰 : 위쪽
         InteractionButtonController.interactionButtonController.playerObserve(); // 관찰 애니메이션 & 카메라 전환
+
+        Card_Key_W_C3.SetActive(true);
+
+        if (Card_KeyData_W_C3.IsBite) // '캐비닛' 관찰하기 상태에서 '카드키'를 물었을 때
+        {
+            CameraController.cameraController.CancelObserve(); // 탑뷰로 돌아오기
+            Cabinet3_W.IsObserve = false;
+        }
     }
 
     public void OnPushOrPress()
