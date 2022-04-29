@@ -14,12 +14,14 @@ public class MC_ProfileUIManager : MonoBehaviour
 
     public GameObject[] ProfilePage; // 페이지 오브젝트
 
-    public Text PageNum; // 페이지넘버
+    public Text PageNum_P; // 페이지넘버
 
     void Start()
     {
-
+        ProfilePage[0].SetActive(true);
+        PageNum_P.text = "1 / 5";
     }
+
     void Update()
     {
         if (i == 0)
@@ -46,7 +48,7 @@ public class MC_ProfileUIManager : MonoBehaviour
     {
         if(ProfilePage.Length > i)
         {
-            PageNum.text = (i + 2).ToString() + " / 5"; // 페이지 넘버
+            PageNum_P.text = (i + 2).ToString() + " / 5"; // 페이지 넘버
 
             ProfilePage[i].SetActive(false);
             ProfilePage[i + 1].SetActive(true);
@@ -58,7 +60,7 @@ public class MC_ProfileUIManager : MonoBehaviour
     {
         if (0 < i)
         {
-            PageNum.text = (i).ToString() + " / 5"; // 페이지 넘버
+            PageNum_P.text = (i).ToString() + " / 5"; // 페이지 넘버
 
             ProfilePage[i].SetActive(false);
             ProfilePage[i - 1].SetActive(true);

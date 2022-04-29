@@ -9,7 +9,7 @@ public class MainComputerUIManager : MonoBehaviour
     public GameObject MainMenu_UI; // 메인 화면
 
     /* 메인화면 목록*/
-    public GameObject Journal_UI; // 연구 일지
+    public GameObject Journal_UI; // 연구 일지 목록
     public GameObject MeteorList_UI; // 목표 성분 리스트
     public GameObject DogProfile_UI; // 강아지 현재 상태
     public GameObject Bluetooth_UI; // 블루투스
@@ -42,13 +42,13 @@ public class MainComputerUIManager : MonoBehaviour
 
 
     /* 메인 화면 */
-    public void ChangeJournal() // 메인 -> 연구일지
+    public void ChangeJournal() // 메인 -> 연구일지 목록
     {
         MainMenu_UI.SetActive(false);
         Journal_UI.SetActive(true);
     }
 
-    public void BackMain_Journal() // 연구일지 -> 메인
+    public void BackMain_Journal() // 연구일지 목록 -> 메인
     {
         MainMenu_UI.SetActive(true);
         Journal_UI.SetActive(false);
