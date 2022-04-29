@@ -126,8 +126,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnObserve()
-    {
-        GameManager.gameManager.IsCollectMeteor = true;
+    {  
         /* 오브젝트의 관찰 변수 true로 바꿈 */
         consoleCenterData_CC.IsObserve = true;
         /* 취소할 때 참고할 오브젝트 저장 */
@@ -141,8 +140,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             /* 임무 리스트에 "AI 깨우기" 미션 추가 */
             GameManager.gameManager._gameData.ActiveMissionList[0] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            /* 임무 리스트 한번 활성화 */
-            MissionGenerator.missionGenerator.ActivateMissionList();
         }
         else 
         {
@@ -150,7 +147,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.ActiveMissionList[0] = false; 
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");         
         }
-
+        /* 임무 리스트 한번 활성화 */
+        MissionGenerator.missionGenerator.ActivateMissionList();
 
         if (boxData_CC.IsUpDown) // 상자에 올라갔으면 
         {

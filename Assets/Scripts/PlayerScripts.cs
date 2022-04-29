@@ -20,6 +20,9 @@ public class PlayerScripts : MonoBehaviour
     private bool turning; // default : false
     private Quaternion targetRot; // 플레이어의 처음 각도
 
+    /* 문 클릭 시 이동할 씬*/
+    public string transferMapName;
+
     /* 상호작용 오브젝트로부터 받아온 데이터 담는 변수 */
 
     public GameObject currentObject, interactionButtons;
@@ -152,12 +155,18 @@ public class PlayerScripts : MonoBehaviour
                         }
                         StartCoroutine(WaitforPlayerArriving());
 
+
                         //interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
                     }
                 }
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 
                 {
                     MovePlayer(hit.point);
+
+                    if (hit.collider.name == "ChangeScene")
+                    {
+                        Invoke("ChangePlayerScene", 1f);
+                    }
                 }
 
 
@@ -264,6 +273,12 @@ public class PlayerScripts : MonoBehaviour
     {
         turning = true;
         transform.rotation = targetDirection.rotation;
+    }
+
+
+    void ChangePlayerScene()
+    {
+        SceneManager.LoadScene(transferMapName);
     }
 
     void NameTagAppear()

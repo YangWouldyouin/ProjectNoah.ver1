@@ -86,23 +86,17 @@ public class CancelInteractions : MonoBehaviour
                 }/* 오르기 취소 */
                 else if (i == 2 && upDownObject != null)
                 {
-                 
                     ObjData cancelUpDownData = upDownObject.GetComponent<ObjData>();
                     if (cancelUpDownData.IsUpDown)
                     {
-                        InteractionButtonController.interactionButtonController.PlayerFall1();
-                        //if (Agent.enabled)
-                        //{
-                        //    Invoke("FallingAnim1True", 0.1f);
-                        //    Invoke("FallingAnim2True", 1.1f);
-                        //    Invoke("FallingAnim3True", 1.2f);
-                        //    Invoke("FallingAnim1False", 1.3f);
-                        //    // noahPosition.transform.position = new Vector3(upDownObject.transform.localPosition.x, 33.78f, upDownObject.transform.localPosition.z);
-                        //    Agent.updatePosition = true;
-                        //    Agent.updateRotation = true;
-                        //    Agent.isStopped = false;
-                        //}
-                        //cancelUpDownData.IsUpDown = false;
+                        if (Agent.enabled)
+                        {
+                            noahPosition.transform.position = new Vector3(upDownObject.transform.localPosition.x, 33.78f, upDownObject.transform.localPosition.z);
+                            Agent.updatePosition = true;
+                            Agent.updateRotation = true;
+                            Agent.isStopped = false;
+                        }
+                        cancelUpDownData.IsUpDown = false;
                         break;
                     }
                     else
@@ -253,25 +247,6 @@ public class CancelInteractions : MonoBehaviour
     void CancelObservingAnimation()
     {
         playerAnimation.SetBool("IsObserving", false);
-    }
-
-    void FallingAnim1True()
-    {
-        playerAnimation.SetBool("IsFalling1", true);
-    }
-    void FallingAnim2True()
-    {
-        playerAnimation.SetBool("IsFalling2", true);
-        
-    }
-    void FallingAnim3True()
-    {
-        playerAnimation.SetBool("IsFalling3", true);
-        //noahPosition.transform.position = new Vector3(upDownObject.transform.localPosition.x, 33.78f, upDownObject.transform.localPosition.z);
-    }
-    void FallingAnim1False()
-    {
-        playerAnimation.SetBool("IsFalling1", false);
     }
 
     IEnumerator WaitForSec()
