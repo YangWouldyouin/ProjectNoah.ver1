@@ -12,22 +12,27 @@ public class InteractionButtonController : MonoBehaviour
 {
     public static InteractionButtonController interactionButtonController { get; private set; }
 
-    public Animator noahAnim; // 애니메이션 전환 위한 변수
+    Animator noahAnim; // 애니메이션 전환 위한 변수
 
     [SerializeField] GameObject noahPlayer;
     [SerializeField] GameObject noahFBX;
+
+
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
 
     //public bool isBark = false;
 
     /* "오르기" 상호작용 관련 변수*/
-    public Rigidbody playerRigidbody;
-    public NavMeshAgent playerAgent;
+    Rigidbody playerRigidbody;
+    NavMeshAgent playerAgent;
+
+    [HideInInspector]
     public Vector3 risePosition;
 
     /* "끼우기" 상호작용 관련 변수 */
-
+    [HideInInspector]
     public Vector3 insertPosOffset;
+    [HideInInspector]
     public Vector3 insertRotOffset;
 
     /* 현재 상호작용 중인 오브젝트를 받아오기 위한 변수 */
@@ -62,8 +67,10 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Start()
     {
-        //playerRigidbody = noahFBX.GetComponent<Rigidbody>();
-        //playerAgent = noahFBX .GetComponent<NavMeshAgent>();
+        noahAnim = noahPlayer.GetComponent<Animator>();
+
+        playerRigidbody = noahPlayer.GetComponent<Rigidbody>();
+        playerAgent = noahPlayer.GetComponent<NavMeshAgent>();
 
         /* 각 상호작용 버튼에 함수를 추가한다. */
         BaseCanvas._baseCanvas.barkButton.onClick.AddListener(playerBark);
@@ -283,6 +290,8 @@ public class InteractionButtonController : MonoBehaviour
             playerAgent.updateRotation = false;
             playerAgent.isStopped = true;
             StartCoroutine(RiseAnim1());
+
+
         }
     }
 
@@ -314,6 +323,67 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsRising", false);
     }
 
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    /* 내려오기 */
+
+    public void PlayerFall1()
+    {
+        Vector3 currentRotaion = noahPlayer.transform.eulerAngles;
+
+
+        // 애니메이션 1/2 실행
+        // 앞으로 약간 이동한다. 
+        // 애니메이션 2/2 실행
+
+        objectData = PlayerScripts.playerscripts.currentUpObj.GetComponent<ObjData>();
+        // 180도 회전한다.
+        //noahPlayer.transform.eulerAngles = new Vector3(currentRotaion.x, currentRotaion.y - 180, currentRotaion.z);
+
+        if (objectData.IsUpDown)
+        {
+            if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔
+            {
+
+
+                Invoke("FallingAnim1True", 0.1f);
+                Invoke("FallingAnim2True", 1.1f);
+                Invoke("FallingAnim3True", 1.2f);
+                Invoke("FallingAnim1False", 1.3f);
+
+                playerAgent.updatePosition = true;
+                playerAgent.updateRotation = true;
+                playerAgent.isStopped = false;
+
+                noahPlayer.transform.position = new Vector3(objectData.RisePos.position.x -2, 33.78f, objectData.RisePos.position.z);
+            }
+
+            objectData.IsUpDown = false;
+        }
+    }
+
+    void FallingAnim1True()
+    {
+        noahAnim.SetBool("IsFalling1", true);
+    }
+    void FallingAnim2True()
+    {
+        noahAnim.SetBool("IsFalling2", true);
+
+    }
+    void FallingAnim3True()
+    {
+        noahAnim.SetBool("IsFalling3", true);
+        
+    }
+    void FallingAnim1False()
+    {
+        noahAnim.SetBool("IsFalling1", false);
+
+
+
+
+    }
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 누르기 - 상자 등을 밀기 */

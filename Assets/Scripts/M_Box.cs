@@ -85,9 +85,9 @@ public class M_Box : MonoBehaviour, IInteraction
             PlayerScripts.playerscripts.currentUpObj = this.gameObject;
             boxData_M.IsUpDown = true;
 
-            boxRisePos.x = boxPos.position.x;
+            boxRisePos.x = boxData_M.RisePos.position.x;
             //boxRisePos.y = transform.position.y;
-            boxRisePos.z = boxPos.position.z;
+            boxRisePos.z = boxData_M.RisePos.position.z;
 
             InteractionButtonController.interactionButtonController.PlayerRise1();
             InteractionButtonController.interactionButtonController.risePosition = boxRisePos;

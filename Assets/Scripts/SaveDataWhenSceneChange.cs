@@ -31,6 +31,21 @@ public class SaveDataWhenSceneChange : MonoBehaviour
     public static bool W_isBoxSetActive = false;
     public GameObject W_Box;
 
+
+    public GameObject pipe, box, cardKey;
+
+    public static bool IsPipeInControlActive = false;
+    public static bool IsBoxInControlActive = false;
+    public static bool IsCardKeyInControlActive = false;
+
+    public static bool IsPipeInWorkActive = true;
+    public static bool IsBoxInWorkActive = false;
+    public static bool IsCardKeyInWorkActive = false;
+
+
+
+
+
     private void Awake()
     {
         savedata = this;
@@ -42,148 +57,178 @@ public class SaveDataWhenSceneChange : MonoBehaviour
     }
 
     // 체인을 걸어서 이 함수는 매 씬마다 호출된다.
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    void OnSceneLoaded(Scene currentScene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-        noahplayer = GameObject.Find("Player").transform.Find("Noah_anim_FBX").gameObject;
 
-        if (scene.name == "Cockpit")
+
+        //Debug.Log("OnSceneLoaded: " + scene.name);
+
+        //noahplayer = GameObject.Find("noahPlayer").transform.Find("Noah_anim_FBX").gameObject;
+
+        /* 1. setActive 참인 오브젝트들을 활성화시킴 */
+        //if (currentScene.name == "new cockpit")
+        //{
+        //    if (IsPipeInControlActive)
+        //    {
+        //        pipe.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        pipe.SetActive(false);
+        //    }
+
+        //    if (IsBoxInControlActive)
+        //    {
+        //        box.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        box.SetActive(false);
+        //    }
+
+        //    if (IsCardKeyInControlActive)
+        //    {
+        //        cardKey.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        cardKey.SetActive(false);
+        //    }
+        //}
+        if (currentScene.name == "new workroom 1")
         {
-            /* 1. setActive 참인 오브젝트들을 활성화시킴 */
-            if (C_isBoxSetActive)
+            if (IsPipeInWorkActive)
             {
-                C_Box = GameObject.Find("MovableObjects").transform.Find("box").gameObject;
-                if (C_Box != null)
-                {
-                    C_Box.SetActive(true);
-                    W_isBoxSetActive = false;
-                }
+                pipe.SetActive(true);
             }
             else
             {
-                C_Box = GameObject.Find("MovableObjects").transform.Find("box").gameObject;
-                if (C_Box != null)
-                {
-                    C_Box.SetActive(false);
-                    W_isBoxSetActive = true;
-                }
+                pipe.SetActive(false);
             }
 
-            /* 2. 이전 씬에서 물고 있었던 오브젝트가 있었으면 이것을 플레이어의 자식화시킴 */
-            if (InteractionButtonController.ISPUSH)
+            if (IsBoxInWorkActive)
             {
-                if (obj != null)
-                {
-                    obj = GameObject.Find("MovableObjects").transform.Find(InteractionButtonController.pushObjectName).gameObject;
-                    if (obj != null)
-                    {
-                        obj.SetActive(true);
-                        if (noahplayer != null)
-                        {
-                            obj.transform.parent = noahplayer.transform;
-
-                            /* 3. 이 오브젝트를 다른 씬들에서는 비활성화 시킴 */
-                            if (InteractionButtonController.pushObjectName == "box")
-                            {
-                                C_isBoxSetActive = true;
-                                W_isBoxSetActive = false;
-                            }
-                            if (InteractionButtonController.pushObjectName == "EnvirPipe")
-                            {
-                                C_isEnvirPipeSetActive = true;
-                                W_isEnvirPipeSetActive = false;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        if(scene.name == "Work")
-        {
-            /* 1. setActive 거짓인 오브젝트들을 활성화시킴 */
-            if(W_isBoxSetActive)
-            {
-                W_Box = GameObject.Find("WorkMovableObjects").transform.Find("box").gameObject;
-                if (W_Box != null)
-                {
-                    W_Box.SetActive(true);
-                    C_isBoxSetActive = false;
-                }
+                box.SetActive(true);
             }
             else
             {
-                W_Box = GameObject.Find("WorkMovableObjects").transform.Find("box").gameObject;
-                if (W_Box != null)
-                {
-                    W_Box.SetActive(false);
-                    C_isBoxSetActive = true;
-                }
+                box.SetActive(false);
             }
 
-            /* 2. 이전 씬에서 물고 있었던 오브젝트가 있었으면 그것을 플레이어의 자식화시킴 */
-            if (InteractionButtonController.ISPUSH)
+            if (IsCardKeyInWorkActive)
             {
-                if (obj != null)
-                {
-                    obj = GameObject.Find("WorkMovableObjects").transform.Find(InteractionButtonController.pushObjectName).gameObject;
-                    if (obj != null)
-                    {
-                        obj.SetActive(true);
-                        if (noahplayer != null)
-                        {
-                            obj.transform.parent = noahplayer.transform;
-
-                            /* 3. 이 오브젝트를 다른 씬들에서는 비활성화시킴 */
-                            if (InteractionButtonController.pushObjectName == "box")
-                            {
-                                W_isBoxSetActive = true;
-                                C_isBoxSetActive = false;
-                            }
-                            if (InteractionButtonController.pushObjectName == "EnvirPipe")
-                            {
-                                W_isEnvirPipeSetActive = true;
-                                C_isEnvirPipeSetActive = false;
-                            }
-                        }
-                    }
-                }
+                cardKey.SetActive(true);
+            }
+            else
+            {
+                cardKey.SetActive(false);
             }
         }
+
+
+        //if (scene.name == "Cockpit")
+        //{
+        //    /* 1. setActive 참인 오브젝트들을 활성화시킴 */
+        //    if (C_isBoxSetActive)
+        //    {
+        //        C_Box = GameObject.Find("MovableObjects").transform.Find("box").gameObject;
+        //        if (C_Box != null)
+        //        {
+        //            C_Box.SetActive(true);
+        //            W_isBoxSetActive = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        C_Box = GameObject.Find("MovableObjects").transform.Find("box").gameObject;
+        //        if (C_Box != null)
+        //        {
+        //            C_Box.SetActive(false);
+        //            W_isBoxSetActive = true;
+        //        }
+        //    }
+
+        //    /* 2. 이전 씬에서 "물고" 있었던 오브젝트가 있었으면 이것을 플레이어의 자식화시킴 */
+        //    /* 2. 이전 씬에서 "밀고" 있었던 오브젝트가 있었으면 이것을 플레이어의 자식화시킴 */
+        //    if (InteractionButtonController.ISPUSH)
+        //    {
+        //        if (obj != null)
+        //        {
+        //            obj = GameObject.Find("MovableObjects").transform.Find(InteractionButtonController.pushObjectName).gameObject;
+        //            if (obj != null)
+        //            {
+        //                obj.SetActive(true);
+        //                if (noahplayer != null)
+        //                {
+        //                    obj.transform.parent = noahplayer.transform;
+
+        //                    /* 3. 이 오브젝트를 다른 씬들에서는 비활성화 시킴 */
+        //                    if (InteractionButtonController.pushObjectName == "box")
+        //                    {
+        //                        C_isBoxSetActive = true;
+        //                        W_isBoxSetActive = false;
+        //                    }
+        //                    if (InteractionButtonController.pushObjectName == "EnvirPipe")
+        //                    {
+        //                        C_isEnvirPipeSetActive = true;
+        //                        W_isEnvirPipeSetActive = false;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+        //if(scene.name == "Work")
+        //{
+        //    /* 1. setActive 거짓인 오브젝트들을 활성화시킴 */
+        //    if(W_isBoxSetActive)
+        //    {
+        //        W_Box = GameObject.Find("WorkMovableObjects").transform.Find("box").gameObject;
+        //        if (W_Box != null)
+        //        {
+        //            W_Box.SetActive(true);
+        //            C_isBoxSetActive = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        W_Box = GameObject.Find("WorkMovableObjects").transform.Find("box").gameObject;
+        //        if (W_Box != null)
+        //        {
+        //            W_Box.SetActive(false);
+        //            C_isBoxSetActive = true;
+        //        }
+        //    }
+
+        //    /* 2. 이전 씬에서 물고 있었던 오브젝트가 있었으면 그것을 플레이어의 자식화시킴 */
+        //    if (InteractionButtonController.ISPUSH)
+        //    {
+        //        if (obj != null)
+        //        {
+        //            obj = GameObject.Find("WorkMovableObjects").transform.Find(InteractionButtonController.pushObjectName).gameObject;
+        //            if (obj != null)
+        //            {
+        //                obj.SetActive(true);
+        //                if (noahplayer != null)
+        //                {
+        //                    obj.transform.parent = noahplayer.transform;
+
+        //                    /* 3. 이 오브젝트를 다른 씬들에서는 비활성화시킴 */
+        //                    if (InteractionButtonController.pushObjectName == "box")
+        //                    {
+        //                        W_isBoxSetActive = true;
+        //                        C_isBoxSetActive = false;
+        //                    }
+        //                    if (InteractionButtonController.pushObjectName == "EnvirPipe")
+        //                    {
+        //                        W_isEnvirPipeSetActive = true;
+        //                        C_isEnvirPipeSetActive = false;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
-
-           ///* 1. MovableObjectController 참고해서 참인 움직일 수 있는 오브젝트는 활성화시킴 */
-           // //if(C_isEnvirPipeSetActive)
-           // //{
-           // //    if(C_EnvirPipe!=null)
-           // //    {
-           // //        C_EnvirPipe = GameObject.Find("MovableObjects").transform.Find("EnvirPipe").gameObject;
-           // //        C_EnvirPipe.SetActive(true);
-           // //        W_isEnvirPipeSetActive = false;
-           // //    }
-           // //}
-
-           // if (C_isBoxSetActive)
-           // {
-           //     if (C_Box != null)
-           //     {
-           //         C_Box = GameObject.Find("MovableObjects").transform.Find("Box").gameObject;
-           //         C_Box.SetActive(true);
-           //         W_isBoxSetActive = false;
-           //     }
-           // }
-
-           // /* 2. 이전 씬에서 물고 있었던 오브젝트가 있었으면 이것을 플레이어의 자식화시킴 */
-           // if(isCurrentPushing)
-           // {        
-           //     obj = GameObject.Find("MovableObjects").transform.Find(CurrentPushingObject.name).gameObject;
-           //     if (obj != null)
-           //     {
-           //         if (noahplayer != null)
-           //         {
-           //             obj.transform.parent = noahplayer.transform;
-
-           //         }
-           //     }
-           // }

@@ -45,6 +45,9 @@ public class ObjData : MonoBehaviour
 
     [SerializeField] Transform observePlusView;
 
+    [Header("< 오르기 위치 >")]
+    [SerializeField] Transform risePos;
+
     [Header("< 물기 위치, 각도 >")]
     [SerializeField] Vector3 bitePos;
     [SerializeField] Vector3 biteRot;
@@ -53,8 +56,8 @@ public class ObjData : MonoBehaviour
 
     //[SerializeField] bool IsBiteActive; // 진짜 물기가 가능하면 true, 아니면 false
 
-    // 위 목록을 다른 스크립트에서 쓸 수 있도록 한 것들
-    public string ObjectName { get { return objectName; } }
+    // 위 목록을 다른 스크립트에서 쓸 수 있도록 한 것들\
+    public string ObjectName { get { return objectName; } } // 읽기만 가능, 쓰기 불가능
     public string SmellText { get { return smellText; } }
     public Transform InteractionDestination { get { return interactionDestination; } }
     public  Vector3 ButtonOffset { get { return buttonOffset; } }
@@ -80,6 +83,8 @@ public class ObjData : MonoBehaviour
     public Transform ObservePlusView { get { return observePlusView; } }
 
     //public bool ISBiteActive { get { return IsBiteActive; } }
+
+    public Transform RisePos { get { return risePos; } }
 
     public Vector3 BitePos { get { return bitePos; } }
     public Vector3 BiteRot { get { return biteRot; } }
