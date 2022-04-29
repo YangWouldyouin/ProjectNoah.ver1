@@ -5,6 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    //임무 보고하기 취소 카운트, 2번 이상 취소하기 누르면 게임 오버
+    public int IsReportCancleCount = 0;
+
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
     public bool S_IsAIAwake_M_C1; // 항상 AI 활성화  
     public bool S_IsCWDoorOpened_M_C1; // 항상 조종실에서 업무공간 이동 가능
