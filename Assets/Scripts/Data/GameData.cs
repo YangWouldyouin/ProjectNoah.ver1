@@ -48,6 +48,8 @@ public class GameData
     public bool IsFakeCoordinateData_Tablet; //태블릿거짓좌표해금 판단
     public bool IsFakeCoordinateDatafile_Tablet; //태블릿거짓좌표다운로드 판단
 
+    public bool Is_MainComputer_WirelessOn; //메인컴퓨터 블루트스 체크
+
     //    //엔진실 카드키가 들어있는 카드팩이 파괴
     //    public bool IsDisappearPack_M_C2;
     //    // 엔진실 해금

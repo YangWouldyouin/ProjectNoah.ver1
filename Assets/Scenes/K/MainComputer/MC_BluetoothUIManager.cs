@@ -5,58 +5,140 @@ using UnityEngine.UI;
 
 public class MC_BluetoothUIManager : MonoBehaviour
 {
-    // 메인 페이지
-    public GameObject MainPage_B; // 메인 페이지
+    //// 메인 페이지
+    //public GameObject MainPage_B; // 메인 페이지
 
-    public GameObject UploadButton_B; // 업로드 버튼
-    public GameObject DownloadButton_B; // 다운로드 버튼
-
-
-    // 업, 다운로드 페이지
-    public GameObject UpDownloadPage_B; // 메인 페이지
-
-    public Text UploadPer_P; // 업로드 %
-    public Image Upload_Title_P;
-
-    public Text DownloadPer_P; // 다운로드 %
-    public Image Download_Title_P;
+    //public GameObject UploadButton_B; // 업로드 버튼
+    //public GameObject DownloadButton_B; // 다운로드 버튼
 
 
-    // 블루투스 아이콘
-    public Image BluetoothIcon_Main_B;
-    public Image BluetoothIcon_UpDown_B;
+    //// 업, 다운로드 페이지
+    //public GameObject UpDownloadPage_B; // 메인 페이지
+
+    //public Text UploadPer_P; // 업로드 %
+    //public Image Upload_Title_P;
+
+    //public Text DownloadPer_P; // 다운로드 %
+    //public Image Download_Title_P;
+
+
+    //// 블루투스 아이콘
+    //public Image BluetoothIcon_Main_B;
+    //public Image BluetoothIcon_UpDown_B;
 
 
 
+    //void Start()
+    //{
+    //    MainPage_B.SetActive(true);
+    //    UpDownloadPage_B.SetActive(false);
+    //}
+
+    //void Update()
+    //{
+    //}
+
+    //public void OnClickUpLoadButton()
+    //{
+    //    MainPage_B.SetActive(false);
+    //    UpDownloadPage_B.SetActive(true); // UpDownload 페이지가 켜짐
+
+    //    UploadPer_P.gameObject.SetActive(true); // Upload 파일 켜짐
+    //    Upload_Title_P.gameObject.SetActive(true);
+    //    UploadPer_P.text = "업로드 " + "여기에 0~100 수치" + "%";
+
+    //}
+
+    //public void OnClickDownLoadButton()
+    //{
+    //    MainPage_B.SetActive(false);
+    //    UpDownloadPage_B.SetActive(true); // UpDownload 페이지가 켜짐
+
+    //    DownloadPer_P.gameObject.SetActive(true); // Download 파일 켜짐
+    //    Download_Title_P.gameObject.SetActive(true);
+    //    DownloadPer_P.text = "다운로드 " + "여기에 0~100 수치" + "%";
+    //}
+    
+    public GameObject MCW_MainUI;
+    public GameObject MCW_UploadSelectUI;
+    public GameObject MCW_UploadUI;
+    public GameObject MCW_alertUI;
+
+    public Image MCW_onoffBT; //Wireless on/off 버튼
+
+    public Text OnOffText; 
+    public Text SelectFileNameText; //무슨 파일인지는 모르겠지만 업로드할 파일 이름 텍스트
+
+    public bool FileUpload = false; //무슨 파일인지는 모르겠지만 한 번이라도 업로드했으면 선택불가 and 어두워짐, 나중에 있으면 GameData 변수로 만들어주기
+
+    // Start is called before the first frame update
     void Start()
     {
-        MainPage_B.SetActive(true);
-        UpDownloadPage_B.SetActive(false);
+        MCW_MainUI.SetActive(true);
+        MCW_UploadSelectUI.SetActive(false);
+        MCW_UploadUI.SetActive(false);
+        MCW_alertUI.SetActive(false);
     }
 
-    void Update()
+    public void MCW_WirelessCheck()
     {
+        if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn == false)
+        {
+            GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
+            OnOffText.GetComponent<Text>().text = "무선 연결        ON";
+            Color onoffcolor = MCW_onoffBT.color;
+            onoffcolor.a = 1f;
+            MCW_onoffBT.color = onoffcolor;
+        }
+        else
+        {
+            GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
+            OnOffText.GetComponent<Text>().text = "무선 연결        OFF";
+            Color onoffcolor = MCW_onoffBT.color;
+            onoffcolor.a = 0.3f;
+            MCW_onoffBT.color = onoffcolor;
+        }
     }
 
-    public void OnClickUpLoadButton()
+    public void MCW_SelectFile()
     {
-        MainPage_B.SetActive(false);
-        UpDownloadPage_B.SetActive(true); // UpDownload 페이지가 켜짐
-
-        UploadPer_P.gameObject.SetActive(true); // Upload 파일 켜짐
-        Upload_Title_P.gameObject.SetActive(true);
-        UploadPer_P.text = "업로드 " + "여기에 0~100 수치" + "%";
-
+        if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
+        {
+            MCW_MainUI.SetActive(false);
+            MCW_UploadSelectUI.SetActive(true);
+        }
     }
 
-    public void OnClickDownLoadButton()
+    public void MCW_ChangeUpload_File()
     {
-        MainPage_B.SetActive(false);
-        UpDownloadPage_B.SetActive(true); // UpDownload 페이지가 켜짐
+        if (/*GameManager.gameManager._gameData.IsFakeHealthData_Tablet == false*/FileUpload == false)
+        {
+            MCW_UploadSelectUI.SetActive(false);
+            MCW_UploadUI.SetActive(true);
 
-        DownloadPer_P.gameObject.SetActive(true); // Download 파일 켜짐
-        Download_Title_P.gameObject.SetActive(true);
-        DownloadPer_P.text = "다운로드 " + "여기에 0~100 수치" + "%";
+            Invoke("MCW_Alert", 3f);
+
+            /*GameManager.gameManager._gameData.IsFakeHealthData_Tablet = true;*/
+            FileUpload = true;
+
+            Color HRTcolor = SelectFileNameText.color;  
+            HRTcolor.a = 0.3f;
+            SelectFileNameText.color = HRTcolor;
+        }
     }
 
+    public void MCW_Alert()
+    {
+        MCW_alertUI.SetActive(true);
+
+        Invoke("MCW_Change_MainUI", 2f);
+    }
+
+    public void MCW_Change_MainUI()
+    {
+        MCW_alertUI.SetActive(false);
+        MCW_UploadUI.SetActive(false);
+        MCW_UploadSelectUI.SetActive(false);
+        MCW_MainUI.SetActive(true);
+    }
 }
