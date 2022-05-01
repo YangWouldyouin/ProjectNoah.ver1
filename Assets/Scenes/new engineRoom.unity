@@ -999,7 +999,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 93186457}
   m_OnClick:
     m_PersistentCalls:
@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 25432fdcadffbfd458df3bdf9d9d57a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a15b6a7fd4bbc34aa4f224bc4a1ca99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8155,6 +8155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameData:
+    IsReportCancleCount: 0
     S_IsAIAwake_M_C1: 0
     S_IsCWDoorOpened_M_C1: 0
     S_IsHealthMachineFixed_T_C2: 0
@@ -8173,6 +8174,15 @@ MonoBehaviour:
     IsAIDown: 0
     IsFuelabsorberFixed_E_E1: 0
     HealthMachineCancelCount: 5
+    IsEngineDoorFix_M_C2: 0
+    IsIronDisappear_T_C2: 0
+    IsOutTroubleLine2_T_C2: 0
+    IsSmartFarmFix_T_C2: 0
+    Is_Tablet_WirelessOn: 0
+    IsFakeHealthData_Tablet: 0
+    IsFakeCoordinateData_Tablet: 0
+    IsFakeCoordinateDatafile_Tablet: 0
+    Is_MainComputer_WirelessOn: 0
   IsTrashDoorFixed_L_L1: 0
   IsCanMeteorGet: 0
   IsSmellDone: 0
@@ -8886,6 +8896,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -10183,7 +10195,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 888342706}
   m_OnClick:
     m_PersistentCalls:
@@ -10208,7 +10220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 25432fdcadffbfd458df3bdf9d9d57a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a15b6a7fd4bbc34aa4f224bc4a1ca99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17895,6 +17907,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 1944773072}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: -0.0253, y: -0.025, z: -0.1343}
   biteRot: {x: 180, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -18551,10 +18565,6 @@ MonoBehaviour:
   TW_UploadUI: {fileID: 1091870703}
   TW_alertUI: {fileID: 1497307571}
   TW_onoffBT: {fileID: 928120632}
-  TW_WirelessOn: 0
-  LieHealthData: 0
-  FakeCoordinateData: 0
-  FakeCoordinateDatafile: 0
   OnOffText: {fileID: 850665339}
   HealthReportText: {fileID: 149172329}
   FakeCoordinateDataText: {fileID: 831024784}
@@ -19731,7 +19741,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1852771650}
   m_OnClick:
     m_PersistentCalls:
@@ -19756,7 +19766,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 25432fdcadffbfd458df3bdf9d9d57a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a15b6a7fd4bbc34aa4f224bc4a1ca99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20199,8 +20209,10 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
-  bitePos: {x: 0, y: 0, z: 0}
-  biteRot: {x: 0, y: 0, z: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
+  bitePos: {x: -0.023, y: -0.08, z: -0.543}
+  biteRot: {x: 90, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
   IsNotInteractable: 0
@@ -20696,6 +20708,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -22570,6 +22584,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0

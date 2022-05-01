@@ -81,6 +81,9 @@ public class E_FA_Body : MonoBehaviour, IInteraction
     {
         FA_fuelabsorber.SetActive(true);
 
+        FA_fuelabsorberfixPartData.GetComponent<Rigidbody>().isKinematic = false;
+        FA_fuelabsorberfixPartData.transform.parent = null;
+
         GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
