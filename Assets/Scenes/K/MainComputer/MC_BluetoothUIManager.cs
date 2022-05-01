@@ -100,6 +100,24 @@ public class MC_BluetoothUIManager : MonoBehaviour
             onoffcolor.a = 0.3f;
             MCW_onoffBT.color = onoffcolor;
         }
+
+        if (GameManager.gameManager._gameData.IsFinalBusinessReport_MC)
+        {
+            if (GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC)
+            {
+                Color HRTcolor = FinalBRText.color;
+                HRTcolor.a = 0.3f;
+                FinalBRText.color = HRTcolor;
+            }
+            else
+            {
+                FinalBRText.GetComponent<Text>().text = "업무 보고 파일 최종본";
+
+                Color FCDTcolor = FinalBRText.color;
+                FCDTcolor.a = 1f;
+                FinalBRText.color = FCDTcolor;
+            }
+        }
     }
 
     public void MCW_WirelessCheck()
@@ -111,15 +129,6 @@ public class MC_BluetoothUIManager : MonoBehaviour
         else
         {
             GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
-        }
-
-        if (GameManager.gameManager._gameData.IsFinalBusinessReport_MC)
-        {
-            FinalBRText.GetComponent<Text>().text = "업무 보고 파일 최종본";
-
-            Color FCDTcolor = FinalBRText.color;
-            FCDTcolor.a = 1f;
-            FinalBRText.color = FCDTcolor;
         }
     }
 
@@ -138,30 +147,32 @@ public class MC_BluetoothUIManager : MonoBehaviour
         {
             if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
             {
-                MCW_UploadSelectUI.SetActive(false);
-                MCW_UploadUI.SetActive(true);
+                if (GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC == false)
+                {
+                    MCW_UploadSelectUI.SetActive(false);
+                    MCW_UploadUI.SetActive(true);
 
-                Invoke("MCW_Alert", 3f);
-                MCW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
-                MCW_Alert_BodyText.GetComponent<Text>().text = "[태블릿]에 [업무 보고 파일 최종본]을 성공적으로 업로드했습니다.";
+                    Invoke("MCW_Alert", 3f);
+                    MCW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
+                    MCW_Alert_BodyText.GetComponent<Text>().text = "[태블릿]에 [업무 보고 파일 최종본]을 성공적으로 업로드했습니다.";
 
-                GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
-                GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
+                    GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
+                    GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
 
-                GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC = true;
-
-                Color HRTcolor = FinalBRText.color;
-                HRTcolor.a = 0.3f;
-                FinalBRText.color = HRTcolor;
+                    GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC = true;
+                }
             }
             else
             {
-                MCW_alertUI.SetActive(true);
+                if (GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC == false)
+                {
+                    MCW_alertUI.SetActive(true);
 
-                MCW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
-                MCW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다.";
+                    MCW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
+                    MCW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다.";
 
-                StartCoroutine(MCW_Alert_onetime());
+                    StartCoroutine(MCW_Alert_onetime());
+                }
             }
         }
     }

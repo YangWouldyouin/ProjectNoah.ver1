@@ -53,6 +53,7 @@ public class GameData
     public bool IsFakeHealthData_Tablet; //태블릿 강아지 더미 상태 데이터
     public bool IsFakeCoordinateData_Tablet; //태블릿거짓좌표해금 판단
     public bool IsFakeCoordinateDatafile_Tablet; //태블릿거짓좌표다운로드 판단
+    public bool IsDontFakeCoordinateDatafile_Tablet; //태블릿 거짓좌표다운로드루트 불가
 
     public bool Is_MainComputer_WirelessOn; //메인컴퓨터 블루트스 on/off체크
     public bool IsFinalBusinessReport_MC; //업무 보고 파일 최종본 해금 판단
