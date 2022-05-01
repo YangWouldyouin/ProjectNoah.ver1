@@ -43,14 +43,17 @@ public class GameData
     public bool IsOutTroubleLine2_T_C2; // 스마트팜 망가진 선을 꺼냈는지
     public bool IsSmartFarmFix_T_C2;//스마트팜 수리 완료
 
-    public bool Is_Tablet_WirelessOn; //태블릿 블루투스 체크
+    public bool Is_Tablet_WirelessOn; //태블릿 블루투스 on/off체크
     public bool IsFakeHealthData_Tablet; //태블릿 강아지 더미 상태 데이터
     public bool IsFakeCoordinateData_Tablet; //태블릿거짓좌표해금 판단
     public bool IsFakeCoordinateDatafile_Tablet; //태블릿거짓좌표다운로드 판단
 
-    public bool Is_MainComputer_WirelessOn; //메인컴퓨터 블루트스 체크
+    public bool Is_MainComputer_WirelessOn; //메인컴퓨터 블루트스 on/off체크
 
-    public bool IsComTabletUploadClear;
+    public bool Is_MainSystem_WirelessOn; //메인시스템 블루트스 on/off체크
+    public bool IsCanConnect_C_MS; //메인시스템 블루투스 영역 체크 
+
+    //public bool IsComTabletUploadClear;
 
     //    //엔진실 카드키가 들어있는 카드팩이 파괴
     //    public bool IsDisappearPack_M_C2;
