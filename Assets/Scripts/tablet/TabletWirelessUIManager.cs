@@ -181,6 +181,15 @@ public class TabletWirelessUIManager : MonoBehaviour
 
                     Invoke("TW_Alert_onetime", 3f);
                 }
+                else if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainSystem_WirelessOn && GameManager.gameManager._gameData.IsCanConnect_C_MS == true)
+                {
+                    TW_alertUI.SetActive(true);
+
+                    TW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
+                    TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다.";
+
+                    Invoke("TW_Alert_onetime", 3f);
+                }
             }
         }
     }
