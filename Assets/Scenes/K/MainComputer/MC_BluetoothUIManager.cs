@@ -82,7 +82,7 @@ public class MC_BluetoothUIManager : MonoBehaviour
 
     public void MCW_WirelessCheck()
     {
-        if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn == false)
+        if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn == false)
         {
             GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
             OnOffText.GetComponent<Text>().text = "무선 연결        ON";
