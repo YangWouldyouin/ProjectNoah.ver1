@@ -16,6 +16,8 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
     public GameObject Box_Obj;
     public GameObject Noah_Obj;
 
+    public GameObject T_AnalyticalButton;
+
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_MeteorCollectMachine, sniffButton_T_MeteorCollectMachine, biteButton_T_MeteorCollectMachine,
         pressButton_T_MeteorCollectMachine, observeButton_T_MeteorCollectMachine, observeDisableButton_T_MeteorCollectMachine;
@@ -38,6 +40,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
     BoxCollider Box_Collider;
     BoxCollider MeteorButton_Collider;
     BoxCollider Noah_Collider;
+    BoxCollider AnalyticalButton_Collider;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +50,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
         Box_Collider = Box_Obj.GetComponent<BoxCollider>();
         MeteorButton_Collider = T_DoMeteorButton.GetComponent<BoxCollider>();
         Noah_Collider = Noah_Obj.GetComponent<BoxCollider>();
+        AnalyticalButton_Collider = T_AnalyticalButton.GetComponent<BoxCollider>();
 
         /*ObjData*/
         meteorCollectMachineData_T = GetComponent<ObjData>();
@@ -104,12 +108,15 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
             Box_Collider.enabled = false;
             //collectMachineCollider.enabled = true;
             MeteorButton_Collider.enabled = true;
+            AnalyticalButton_Collider.enabled = true;
+
         }
         else
         {
             Box_Collider.enabled = true;
             //collectMachineCollider.enabled = false;
             MeteorButton_Collider.enabled = false;
+            AnalyticalButton_Collider.enabled = false;
         }
     }
 

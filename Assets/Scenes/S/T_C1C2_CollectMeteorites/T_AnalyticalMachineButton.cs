@@ -11,6 +11,7 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
     public GameObject T_AreNormalMeteor1;
     public GameObject T_AreImportantMeteor;
     public GameObject T_AreAnalyticalMachine;
+    public GameObject T_IsAnalyticalMachinePlate;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_AnalyticalMachineButton, sniffButton_T_AnalyticalMachineButton, biteButton_T_AnalyticalMachineButton,
@@ -32,9 +33,18 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
 
     /*Animator*/
     public Animator analyticalMachineAnim_T;
+
+    /*Collider*/
+    BoxCollider AreAnalyticalMachine_Collider;
+    BoxCollider IsAnalyticalMachinePlate_Collider;
+
     // Start is called before the first frame update
     void Start()
     {
+        /*Collider*/
+        AreAnalyticalMachine_Collider = T_AreAnalyticalMachine.GetComponent<BoxCollider>();
+        IsAnalyticalMachinePlate_Collider = T_IsAnalyticalMachinePlate.GetComponent<BoxCollider>();
+
         /*ObjData*/
         analyticalMachineButtonData_T = GetComponent<ObjData>();
         areAnalyticalMachineData_T = T_AreAnalyticalMachine.GetComponent<ObjData>();
@@ -131,6 +141,7 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
         areAnalyticalMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
         areAnalyticalMachineOutline_T.OutlineWidth = 8;
 
+        AreAnalyticalMachine_Collider.enabled = true;
 
     }
 
@@ -158,6 +169,8 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
         analyticalMachineAnim_T.SetBool("isAnalyticalMachineOpenEnd", true);
         analyticalMachineAnim_T.SetBool("isAnalyticalMachineClose", false);
         analyticalMachineAnim_T.SetBool("isAnalyticalMachineCloseEnd", false);
+
+        IsAnalyticalMachinePlate_Collider.enabled = true;
 
         //count1 += 1;
     }
@@ -197,6 +210,8 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
 
         areAnalyticalMachineData_T.IsNotInteractable = true; // 상호작용 불가능하게
         areAnalyticalMachineOutline_T.OutlineWidth = 0;
+
+        IsAnalyticalMachinePlate_Collider.enabled = false;
 
         //count1 += 1;
     }

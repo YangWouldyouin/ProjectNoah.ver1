@@ -8,6 +8,7 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
     /*연관있는 오브젝트*/
     public GameObject T_IsAnalyticalMachinePlate;
     public GameObject T_IsAnalyticalMachineButton;
+    public GameObject Noah_Obj2;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_AnalyticalMachine, sniffButton_T_AnalyticalMachine, biteButton_T_AnalyticalMachine, 
@@ -24,13 +25,17 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
     Outline isAnalyticalMachineButtonOutline_T;
 
     /*Collider*/
-    BoxCollider analyticalMachineCollider;
+    BoxCollider analyticalMachine_Collider;
+    BoxCollider isAnalyticalMachineButton_Collider; //버튼
+    BoxCollider Noah_Obj2_Collider; //노아
 
     // Start is called before the first frame update
     void Start()
     {
         /*Collider*/
-        analyticalMachineCollider = GetComponent<BoxCollider>();
+        analyticalMachine_Collider = GetComponent<BoxCollider>();
+        Noah_Obj2_Collider = Noah_Obj2.GetComponent<BoxCollider>();
+        isAnalyticalMachineButton_Collider = T_IsAnalyticalMachineButton.GetComponent<BoxCollider>();
 
         /*ObjData*/
         analyticalMachineData_T = GetComponent<ObjData>();
@@ -62,7 +67,9 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
         //관찰하기 상태가 아니라면 콜라이더 감지를 켜준다.
         if (!analyticalMachineData_T.IsObserve)
         {
-            analyticalMachineCollider.isTrigger = true;
+            analyticalMachine_Collider.enabled = true;
+            Noah_Obj2_Collider.enabled = true;
+            isAnalyticalMachineButton_Collider.enabled = true;
 
             isAnalyticalMachinePlateData_T.IsNotInteractable = true; // 접시 상호작용 불 가능하게
             isAnalyticalMachinePlateOutline_T.OutlineWidth = 0;
@@ -125,7 +132,9 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        analyticalMachineCollider.isTrigger = false;
+        analyticalMachine_Collider.enabled = false;
+        Noah_Obj2_Collider.enabled = false;
+        isAnalyticalMachineButton_Collider.enabled = false;
 
         isAnalyticalMachinePlateData_T.IsNotInteractable = false; // 접시 상호작용 가능하게
         isAnalyticalMachinePlateOutline_T.OutlineWidth = 8;

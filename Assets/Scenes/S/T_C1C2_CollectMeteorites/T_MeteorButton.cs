@@ -52,6 +52,7 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
         canMeteorCollectMachineOutline_T = T_canMeteorCollectMachine.GetComponent<Outline>();
         meteorButtonOutline_T = GetComponent<Outline>();
 
+        /*버튼 연결*/
         barkButton_T_MeteorButton = meteorButtonData_T.BarkButton;
         barkButton_T_MeteorButton.onClick.AddListener(OnBark);
 
