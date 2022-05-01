@@ -132,7 +132,7 @@ public class TabletWirelessUIManager : MonoBehaviour
             {
                 if (GameManager.gameManager._gameData.IsCanConnect_C_MS == false)
                 {
-                    if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == true)
+                    if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == false)
                     {
                         TW_UploadSelectUI.SetActive(false);
                         TW_UploadUI.SetActive(true);
@@ -153,7 +153,7 @@ public class TabletWirelessUIManager : MonoBehaviour
             {
                 if (GameManager.gameManager._gameData.IsCanConnect_C_MS == true)
                 {
-                    if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == true)
+                    if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == false)
                     {
                         TW_UploadSelectUI.SetActive(false);
                         TW_UploadUI.SetActive(true);
@@ -172,14 +172,14 @@ public class TabletWirelessUIManager : MonoBehaviour
             }
             else
             {
-                if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == true)
+                if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == false)
                 {
                     TW_alertUI.SetActive(true);
 
                     TW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
                     TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다.";
 
-                    Invoke("TW_Alert_onetime", 2f);
+                    Invoke("TW_Alert_onetime", 3f);
                 }
             }
         }
@@ -189,7 +189,7 @@ public class TabletWirelessUIManager : MonoBehaviour
     {
         TW_alertUI.SetActive(true);
 
-        Invoke("TW_Change_MainUI", 2f);
+        Invoke("TW_Change_MainUI", 3f);
     }
 
     public void TW_Alert_onetime()
