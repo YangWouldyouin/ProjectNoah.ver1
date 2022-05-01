@@ -94,7 +94,7 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
             CameraController.cameraController.currentView = mainComData.ObserveView;
             InteractionButtonController.interactionButtonController.playerObserve();
 
-            //UI ÄÑÁü
+            //UI ï¿½ï¿½ï¿½ï¿½
             Invoke("ShowUI", 3f);
         }
 
@@ -106,7 +106,7 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
         }
 
         /*
-         Å¸ºí·¿ È­¸é ÁøÀÔ > ºí·çÅõ½º ¿Â > Å¸ºí·¿ ºí·çÅõ½º = true;
+         Å¸ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ > ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ > Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = true;
          */
     }
 
@@ -139,18 +139,13 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
         comUI.SetActive(true);
     }
 
-    public void ComConnect()
-    {
-        Debug.Log("ÄÄÇ»ÅÍ ¹«¼±¿¬°á Ä×À½");
-        GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
-    }
 
-    public void UploadClear()
+    /*public void UploadClear()
     {
         if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn && GameManager.gameManager._gameData.Is_Tablet_WirelessOn)
         {
-            Debug.Log("¾÷·ÎµåÇßµÂ!!");
+            Debug.Log("ï¿½ï¿½ï¿½Îµï¿½ï¿½ßµï¿½!!");
             GameManager.gameManager._gameData.IsComTabletUploadClear = true;
         }
-    }
+    }*/
 }
