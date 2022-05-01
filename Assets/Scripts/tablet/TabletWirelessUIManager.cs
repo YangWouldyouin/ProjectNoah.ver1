@@ -31,8 +31,6 @@ public class TabletWirelessUIManager : MonoBehaviour
         TW_UploadSelectUI.SetActive(false);
         TW_UploadUI.SetActive(false);
         TW_alertUI.SetActive(false);
-
-        GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
     }
 
     // Update is called once per frame
