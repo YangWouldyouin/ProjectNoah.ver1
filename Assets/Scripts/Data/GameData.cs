@@ -55,6 +55,8 @@ public class GameData
     public bool IsFakeCoordinateDatafile_Tablet; //태블릿거짓좌표다운로드 판단
 
     public bool Is_MainComputer_WirelessOn; //메인컴퓨터 블루트스 on/off체크
+    public bool IsFinalBusinessReport_MC; //업무 보고 파일 최종본 해금 판단
+    public bool IsFinalBusinessReportFile_MC; //업무 보고 파일 최종본 다운로드
 
     public bool Is_MainSystem_WirelessOn; //메인시스템 블루트스 on/off체크
     public bool IsCanConnect_C_MS; //메인시스템 블루투스 영역 체크 

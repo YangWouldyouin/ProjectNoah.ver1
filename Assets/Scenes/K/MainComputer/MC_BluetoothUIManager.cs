@@ -66,10 +66,11 @@ public class MC_BluetoothUIManager : MonoBehaviour
 
     public Image MCW_onoffBT; //Wireless on/off 버튼
 
-    public Text OnOffText; 
-    public Text SelectFileNameText; //무슨 파일인지는 모르겠지만 업로드할 파일 이름 텍스트
+    public Text OnOffText;
+    public Text FinalBRText;
 
-    public bool FileUpload = false; //무슨 파일인지는 모르겠지만 한 번이라도 업로드했으면 선택불가 and 어두워짐, 나중에 있으면 GameData 변수로 만들어주기
+    public Text MCW_Alert_TitleText;
+    public Text MCW_Alert_BodyText;
 
     // Start is called before the first frame update
     void Start()
@@ -78,13 +79,15 @@ public class MC_BluetoothUIManager : MonoBehaviour
         MCW_UploadSelectUI.SetActive(false);
         MCW_UploadUI.SetActive(false);
         MCW_alertUI.SetActive(false);
+
+        GameManager.gameManager._gameData.IsFinalBusinessReport_MC = true;
+        GameManager.gameManager._gameData.Is_Tablet_WirelessOn = true;
     }
 
-    public void MCW_WirelessCheck()
+    void Update()
     {
-        if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn == false)
+        if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn == true)
         {
-            GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
             OnOffText.GetComponent<Text>().text = "무선 연결        ON";
             Color onoffcolor = MCW_onoffBT.color;
             onoffcolor.a = 1f;
@@ -92,11 +95,31 @@ public class MC_BluetoothUIManager : MonoBehaviour
         }
         else
         {
-            GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
             OnOffText.GetComponent<Text>().text = "무선 연결        OFF";
             Color onoffcolor = MCW_onoffBT.color;
             onoffcolor.a = 0.3f;
             MCW_onoffBT.color = onoffcolor;
+        }
+    }
+
+    public void MCW_WirelessCheck()
+    {
+        if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn == false)
+        {
+            GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
+        }
+        else
+        {
+            GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
+        }
+
+        if (GameManager.gameManager._gameData.IsFinalBusinessReport_MC)
+        {
+            FinalBRText.GetComponent<Text>().text = "업무 보고 파일 최종본";
+
+            Color FCDTcolor = FinalBRText.color;
+            FCDTcolor.a = 1f;
+            FinalBRText.color = FCDTcolor;
         }
     }
 
@@ -111,19 +134,35 @@ public class MC_BluetoothUIManager : MonoBehaviour
 
     public void MCW_ChangeUpload_File()
     {
-        if (/*GameManager.gameManager._gameData.IsFakeHealthData_Tablet == false*/FileUpload == false)
+        if (GameManager.gameManager._gameData.IsFinalBusinessReport_MC)
         {
-            MCW_UploadSelectUI.SetActive(false);
-            MCW_UploadUI.SetActive(true);
+            if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
+            {
+                MCW_UploadSelectUI.SetActive(false);
+                MCW_UploadUI.SetActive(true);
 
-            Invoke("MCW_Alert", 3f);
+                Invoke("MCW_Alert", 3f);
+                MCW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
+                MCW_Alert_BodyText.GetComponent<Text>().text = "[태블릿]에 [업무 보고 파일 최종본]을 성공적으로 업로드했습니다.";
 
-            /*GameManager.gameManager._gameData.IsFakeHealthData_Tablet = true;*/
-            FileUpload = true;
+                GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
+                GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
 
-            Color HRTcolor = SelectFileNameText.color;  
-            HRTcolor.a = 0.3f;
-            SelectFileNameText.color = HRTcolor;
+                GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC = true;
+
+                Color HRTcolor = FinalBRText.color;
+                HRTcolor.a = 0.3f;
+                FinalBRText.color = HRTcolor;
+            }
+            else
+            {
+                MCW_alertUI.SetActive(true);
+
+                MCW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
+                MCW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다.";
+
+                StartCoroutine(MCW_Alert_onetime());
+            }
         }
     }
 
@@ -132,6 +171,12 @@ public class MC_BluetoothUIManager : MonoBehaviour
         MCW_alertUI.SetActive(true);
 
         Invoke("MCW_Change_MainUI", 2f);
+    }
+
+    IEnumerator MCW_Alert_onetime()
+    {
+        yield return new WaitForSeconds(3f);
+        MCW_alertUI.SetActive(false);
     }
 
     public void MCW_Change_MainUI()
