@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class mainCom_workRoom : MonoBehaviour, IInteraction
 {
+    public GameObject comUI;
+    //public bool Isclosed = false;
+    
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
     ObjData mainComData;
@@ -37,6 +40,14 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
 
         observeButton = mainComData.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
+    }
+
+    void Update()
+    {
+        if(!mainComData.IsObserve)
+        {
+            comUI.SetActive(false);
+        }
     }
 
     void DisableButton()
@@ -84,6 +95,7 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
             InteractionButtonController.interactionButtonController.playerObserve();
 
             //UI 켜짐
+            Invoke("ShowUI", 3f);
         }
 
         else
@@ -122,4 +134,23 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
+    public void ShowUI()
+    {
+        comUI.SetActive(true);
+    }
+
+    public void ComConnect()
+    {
+        Debug.Log("컴퓨터 무선연결 켰음");
+        GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
+    }
+
+    public void UploadClear()
+    {
+        if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn && GameManager.gameManager._gameData.Is_Tablet_WirelessOn)
+        {
+            Debug.Log("업로드했돠!!");
+            GameManager.gameManager._gameData.IsComTabletUploadClear = true;
+        }
+    }
 }
