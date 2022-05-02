@@ -8,26 +8,25 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class InteractionButtonController : MonoBehaviour
-
 {
     public static InteractionButtonController interactionButtonController { get; private set; }
 
-    public Animator noahAnim; // 애니메이션 전환 위한 변수
-
     [SerializeField] GameObject noahPlayer;
     [SerializeField] GameObject noahFBX;
+    Animator noahAnim; // 애니메이션 전환 위한 변수
+
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
 
-    //public bool isBark = false;
-
     /* "오르기" 상호작용 관련 변수*/
-    public Rigidbody playerRigidbody;
-    public NavMeshAgent playerAgent;
+    Rigidbody playerRigidbody;
+    NavMeshAgent playerAgent;
+    [HideInInspector]
     public Vector3 risePosition;
 
     /* "끼우기" 상호작용 관련 변수 */
-
+    [HideInInspector]
     public Vector3 insertPosOffset;
+    [HideInInspector]
     public Vector3 insertRotOffset;
 
     /* 현재 상호작용 중인 오브젝트를 받아오기 위한 변수 */
@@ -35,16 +34,8 @@ public class InteractionButtonController : MonoBehaviour
     public GameObject noahBiteObject, noahPushOrPressObject, noahSniffObject, 
         noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
 
+   //[Header("정리 필요한 변수들")]
 
-    public Vector3 pushPos, pushRot;
-    /* 정리 필요한 변수들 */   
-    [HideInInspector]
-    public GameObject noahPushObject;
-    public static GameObject noahpushobject;
-    public static bool ISPUSH = false;
-    [Header("정리 필요한 변수들")]
-    public bool ispush = false;
-    public static string pushObjectName;
     public TMPro.TextMeshProUGUI objectText;
     public TMPro.TextMeshProUGUI statText;
 
@@ -53,8 +44,11 @@ public class InteractionButtonController : MonoBehaviour
     public GameObject myHead;
 
     private Vector3 bitePos, biteRot;
-
     ObjData objectData;
+
+    public PlayerEquipment equipment;
+
+
     void Awake()
     {
         interactionButtonController = this;
@@ -62,9 +56,9 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Start()
     {
-        //playerRigidbody = noahFBX.GetComponent<Rigidbody>();
-        //playerAgent = noahFBX .GetComponent<NavMeshAgent>();
-
+        playerRigidbody = noahPlayer.GetComponent<Rigidbody>();
+        playerAgent = noahPlayer.GetComponent<NavMeshAgent>();
+        noahAnim = noahPlayer.GetComponent<Animator>();
         /* 각 상호작용 버튼에 함수를 추가한다. */
         BaseCanvas._baseCanvas.barkButton.onClick.AddListener(playerBark);
         BaseCanvas._baseCanvas.sniffButton.onClick.AddListener(playerSniff);
@@ -72,23 +66,8 @@ public class InteractionButtonController : MonoBehaviour
         BaseCanvas._baseCanvas.observeButton.onClick.AddListener(playerObserve);
         BaseCanvas._baseCanvas.upDownButton.onClick.AddListener(PlayerRise1);
         //BaseCanvas._baseCanvas.insertButton.onClick.AddListener(playerInserting);
-        BaseCanvas._baseCanvas.pushButton.onClick.AddListener(playerPush1);
+        BaseCanvas._baseCanvas.pushButton.onClick.AddListener(playerPush);
         //BaseCanvas._baseCanvas.pressButton.onClick.AddListener(playerPress);
-    }
-
-    private void Update()
-    {
-        //  추후 정리 필요 지금은 무시 
-        if (ispush == false)
-        {
-            ISPUSH = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.Log("ispush : " + ISPUSH);
-            Debug.Log(pushObjectName);
-        }
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -158,7 +137,7 @@ public class InteractionButtonController : MonoBehaviour
         if (PlayerScripts.playerscripts.currentObject != null)
         {
             noahBiteObject = PlayerScripts.playerscripts.currentObject;
-
+            equipment.biteObjectName = noahBiteObject.name;
             /* 취소할 때 참고하기 위해 저장 */
             PlayerScripts.playerscripts.currentBiteObj = noahBiteObject;
 
@@ -380,41 +359,39 @@ public class InteractionButtonController : MonoBehaviour
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 누르기 - 상자 등을 밀기 */
-    public void playerPush1() 
+    public void playerPush() 
     {
-        noahPushObject = PlayerScripts.playerscripts.currentObject;
-        if (noahPushObject!=null)
+        noahPushOrPressObject = PlayerScripts.playerscripts.currentObject;
+        if (noahPushOrPressObject != null)
         {
+            // 스크립터블오브젝트 변수에 저장
+            equipment.pushObjectName = noahPushOrPressObject.name;
+
             Invoke("ChangePushTrue1", 0.5f);
             Invoke("ChangePushTrue2", 1f);
 
-            PlayerScripts.playerscripts.currentPushOrPressObj = noahPushObject;
+            // 스크립터블오브젝트 변수에 저장
+            equipment.cancelPushPos = noahPushOrPressObject.transform.position;
+            equipment.cancelPushRot = noahPushOrPressObject.transform.eulerAngles;
+            equipment.cancelPushScale = noahPushOrPressObject.transform.localScale;
 
-            PlayerScripts.playerscripts.pushFallPos = noahPushObject.transform.position;
-            PlayerScripts.playerscripts.pushFallRot = noahPushObject.transform.eulerAngles;
-            PlayerScripts.playerscripts.pushOriginScale = noahPushObject.transform.localScale;
+            objectData = noahPushOrPressObject.GetComponent<ObjData>();
+            objectText.text = "Noah N.113 - " + objectData.ObjectName;
+            objectData.IsPushOrPress = true;
 
-            ObjData pushObjData = noahPushObject.GetComponent<ObjData>();
-            objectText.text = "Noah N.113 - " + pushObjData.ObjectName;
-            pushObjData.IsPushOrPress = true;
+            Invoke("AddPushObject", 1f);
         }
-        ISPUSH = true;
-    }
-
-    public void PlayerPush2()
-    {
-        Invoke("AddPushObject", 1f);        
     }
 
     void AddPushObject()
     {
-        noahPushObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
-        noahPushObject.GetComponent<Rigidbody>().useGravity = false;
+        noahPushOrPressObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
+        noahPushOrPressObject.GetComponent<Rigidbody>().useGravity = false;
 
-        noahPushObject.transform.parent = myHead.transform; //makes the object become a child of the parent so that it moves with the mouth
+        noahPushOrPressObject.transform.parent = myHead.transform; //makes the object become a child of the parent so that it moves with the mouth
 
-        noahPushObject.transform.localPosition = pushPos; // sets the position of the object to your mouth position
-        noahPushObject.transform.localEulerAngles = pushRot; // sets the position of the object to yo
+        noahPushOrPressObject.transform.localPosition = objectData.PushPos; // sets the position of the object to your mouth position
+        noahPushOrPressObject.transform.localEulerAngles = objectData.PushRot; // sets the position of the object to yo
     }
 
     void ChangePushTrue1()

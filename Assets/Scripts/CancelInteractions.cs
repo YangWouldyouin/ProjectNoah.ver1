@@ -9,10 +9,14 @@ public class CancelInteractions : MonoBehaviour
     public NavMeshAgent Agent;
     public Animator playerAnimation;
 
+    public GameObject portableObjects;
+
     public GameObject noahPosition;
     public GameObject moveableGroup;
-    private GameObject upDownObject, biteObject, pushObject, noahNovepushobject, observeObject;
+    GameObject upDownObject, biteObject, pushObject, noahNovepushobject, observeObject;
     public TMPro.TextMeshProUGUI CancelObjectText;
+
+    public PlayerEquipment playerObject;
 
     void Update()
     {
@@ -21,7 +25,7 @@ public class CancelInteractions : MonoBehaviour
             observeObject = PlayerScripts.playerscripts.currentObserveObj;
             biteObject = PlayerScripts.playerscripts.currentBiteObj;
             upDownObject = PlayerScripts.playerscripts.currentUpObj;
-            pushObject = PlayerScripts.playerscripts.currentPushOrPressObj;
+            //pushObject = PlayerScripts.playerscripts.currentPushOrPressObj;
             //if (PlayerScripts.playerscripts.currentObserveObj != null)
             //{
             //    CameraController.cameraController.CancelObserve();
@@ -105,37 +109,52 @@ public class CancelInteractions : MonoBehaviour
                     {
                         continue;
                     }
-                }/* 물기 취소 */
-                else if (i == 1 && biteObject != null)
+                }/* 물기 취소   else if (i == 1 && biteObject != null)*/
+                else if (i == 1 && playerObject.biteObjectName!="")
                 {
 
-                    ObjData cancelBiteData = biteObject.GetComponent<ObjData>();
-                    if (cancelBiteData.IsBite)
-                    {
+                    playerAnimation.SetBool("IsPutDowning", true);
+                    Invoke("CancelBitingAnimation", 1f);
+                    Invoke("PutDownObject", 0.5f);
+                    playerObject.biteObjectName = "";
+                    break;
 
-                        playerAnimation.SetBool("IsPutDowning", true);
-                        Invoke("CancelBitingAnimation", 1f);
-                        Invoke("PutDownObject", 0.5f);
-                        cancelBiteData.IsBite = false;
-                        break;
-                    }
+                    //ObjData cancelBiteData = biteObject.GetComponent<ObjData>();
+                    //if (cancelBiteData.IsBite)
+                    //{
+
+                    //    playerAnimation.SetBool("IsPutDowning", true);
+                    //    Invoke("CancelBitingAnimation", 1f);
+                    //    Invoke("PutDownObject", 0.5f);
+                    //    cancelBiteData.IsBite = false;
+                    //    PlayerScripts.playerscripts.currentBiteObj = null;
+                    //    playerObject.biteObject = "";
+                    //    break;
+                    //}
+
+
+
                 }
             }
 
-            if(pushObject!=null)
+            if(playerObject.pushObjectName != "")
             {
+                pushObject = GameObject.Find(playerObject.pushObjectName).gameObject;
+
                 ObjData cancelPushData = pushObject.GetComponent<ObjData>();
                 cancelPushData.IsPushOrPress = false;
+
                 playerAnimation.SetBool("IsPushing", false);
+
                 pushObject.transform.SetParent(null, true);
 
-                pushObject.transform.localScale = PlayerScripts.playerscripts.pushOriginScale;
-                pushObject.transform.position = new Vector3(pushObject.transform.position.x, PlayerScripts.playerscripts.pushFallPos.y, pushObject.transform.position.z);
-                pushObject.transform.eulerAngles = PlayerScripts.playerscripts.pushFallRot;
-                //pushObject.transform.localScale = PlayerScripts.playerscripts.pushOriginScale;
-                //pushObject.transform.parent = moveableGroup.transform; // 다시 무바블오브젝트의 자식으로 넣기
+                pushObject.transform.localScale = playerObject.cancelPushScale;
+                pushObject.transform.position = new Vector3(pushObject.transform.position.x, playerObject.cancelPushPos.y, pushObject.transform.position.z);
+                pushObject.transform.eulerAngles = playerObject.cancelPushRot;
 
-                //InteractionButtonController.interactionButtonController.ispush = false;
+                PlayerScripts.playerscripts.currentPushOrPressObj = null;
+                playerObject.pushObjectName = "";
+                pushObject.transform.parent = portableObjects.transform;
             }
             /* 밀기 취소 */
             //if (InteractionButtonController.ISPUSH)

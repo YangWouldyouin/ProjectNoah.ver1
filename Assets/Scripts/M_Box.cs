@@ -67,13 +67,14 @@ public class M_Box : MonoBehaviour, IInteraction
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
-        InteractionButtonController.interactionButtonController.playerPush1();
-        InteractionButtonController.interactionButtonController.pushPos = new Vector3(-0.011f, -0.384f, -0.229f);
-        InteractionButtonController.interactionButtonController.pushRot = new Vector3(0, 0, 0);
-        
-        InteractionButtonController.interactionButtonController.PlayerPush2();
+        /* 애니메이션 실행 */
+        InteractionButtonController.interactionButtonController.playerPush();
     }
 
+    //InteractionButtonController.interactionButtonController.pushPos = new Vector3(-0.011f, -0.384f, -0.229f);
+    //InteractionButtonController.interactionButtonController.pushRot = new Vector3(0, 0, 0);
+
+    //InteractionButtonController.interactionButtonController.PlayerPush2();
 
     public void OnUp()
     {
