@@ -8,13 +8,18 @@ public class M_Rubber : MonoBehaviour, IInteraction
      /*오브젝트의 상호작용 버튼들*/
      private Button barkButton_M_Rubber, sniffButton_M_Rubber, biteButton_M_Rubber, pressButton_M_Rubber, noCenterButton_M_Rubber;
 
+    /*ObjData*/
     ObjData rubberData_M;
+
+
+    /*Collider*/
+    BoxCollider rubber_Collider;
 
     // Start is called before the first frame update
     void Start()
     {
         rubberData_M = GetComponent<ObjData>();
-
+        rubber_Collider = GetComponent<BoxCollider>();
 
         barkButton_M_Rubber = rubberData_M.BarkButton;
         barkButton_M_Rubber.onClick.AddListener(OnBark);
@@ -43,6 +48,15 @@ public class M_Rubber : MonoBehaviour, IInteraction
     // Update is called once per frame
     void Update()
     {
+        if(rubberData_M.IsBite) // 콜라이더 겹치는 거 방지 물면 콜라이더 꺼주는 거
+        {
+            rubber_Collider.enabled = false;
+        }
+        else
+        {
+            rubber_Collider.enabled = true;
+        }
+
     }
 
     public void OnBark()

@@ -10,7 +10,7 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_InsertCardPad, sniffButton_M_InsertCardPad, biteButton_M_InsertCardPad, 
-        pressButton_M_InsertCardPad, observeButton_M_InsertCardPad;
+        pressButton_M_InsertCardPad, observeButton_M_InsertCardPad, observeDisableButton_M_InsertCardPad;
 
     ObjData insertCardPadData_M;
     ObjData canEngineCardKeyData_M;
@@ -46,6 +46,9 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         observeButton_M_InsertCardPad = insertCardPadData_M.CenterButton1;
         observeButton_M_InsertCardPad.onClick.AddListener(OnObserve);
 
+        observeDisableButton_M_InsertCardPad = insertCardPadData_M.CenterButton2;
+
+
         /*아웃라인*/
         canEngineCardKeyOutline_M = M_canEngineCardKey.GetComponent<Outline>();
         insertCardPadOutline_M = GetComponent<Outline>();
@@ -59,6 +62,8 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         biteButton_M_InsertCardPad.transform.gameObject.SetActive(false);
         pressButton_M_InsertCardPad.transform.gameObject.SetActive(false);
         observeButton_M_InsertCardPad.transform.gameObject.SetActive(false);
+        observeDisableButton_M_InsertCardPad.transform.gameObject.SetActive(false);
+
     }
 
 
@@ -86,6 +91,8 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         insertCardPadData_M.IsObserve = true;
 
         DisableButton();
+
+        insertCardPadData_M.IsCenterButtonChanged = true;
 
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
 

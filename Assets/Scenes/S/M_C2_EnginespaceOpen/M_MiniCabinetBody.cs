@@ -19,11 +19,15 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
     /*아웃라인*/
     Outline rubberOutline_M;
 
+    /*Collider*/
+    BoxCollider rubber_Collider;
 
     // Start is called before the first frame update
     void Start()
     {
         //cabinetCollider = GetComponent<BoxCollider>();
+        rubber_Collider = M_canRubber.GetComponent<BoxCollider>();
+
         /*연관있는 오브젝트*/
         canRubberData_M = M_canRubber.GetComponent<ObjData>();
 
@@ -61,10 +65,22 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
     // Update is called once per frame
     void Update()
     {
-         if(miniCabinetBodyData_M.IsObserve == false)
+
+        if (miniCabinetBodyData_M.IsObserve == false)
         {
-            canRubberData_M.IsNotInteractable = true;
-            rubberOutline_M.OutlineWidth = 0;
+            /*canRubberData_M.IsNotInteractable = true;
+            rubberOutline_M.OutlineWidth = 0;*/
+
+
+            rubber_Collider.enabled = false;
+        }
+
+        if (canRubberData_M.IsBite)
+        {
+            canRubberData_M.IsNotInteractable = false;
+            rubberOutline_M.OutlineWidth = 8;
+
+            rubber_Collider.enabled = true;
         }
     }
 
@@ -85,21 +101,24 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
         Debug.Log("고무판에 상호작용 가능해요");
         canRubberData_M.IsNotInteractable = false;
         rubberOutline_M.OutlineWidth = 8;
+
+        rubber_Collider.enabled = true;
+
         //아웃라인
 
-/*        if (canRubberData_M.IsBite)
-        {
-            CameraController.cameraController.CancelObserve();
-            //miniCabinetBodyData_M.IsObserve = false;
-        }*/
+        /*        if (canRubberData_M.IsBite)
+                {
+                    CameraController.cameraController.CancelObserve();
+                    //miniCabinetBodyData_M.IsObserve = false;
+                }*/
 
 
-/*        else
-        {
-            canRubberData_M.IsNotInteractable = true;
-            rubberOutline_M.OutlineWidth = 0;
-            //아웃라인
-        }*/
+        /*        else
+                {
+                    canRubberData_M.IsNotInteractable = true;
+                    rubberOutline_M.OutlineWidth = 0;
+                    //아웃라인
+                }*/
     }
 
     public void OnBark()

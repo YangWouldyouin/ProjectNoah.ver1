@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class mainCom_workRoom : MonoBehaviour, IInteraction
 {
+    public GameObject comUI;
+    //public bool Isclosed = false;
+    
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
     ObjData mainComData;
@@ -37,6 +40,14 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
 
         observeButton = mainComData.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
+    }
+
+    void Update()
+    {
+        if(!mainComData.IsObserve)
+        {
+            comUI.SetActive(false);
+        }
     }
 
     void DisableButton()
@@ -83,7 +94,8 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
             CameraController.cameraController.currentView = mainComData.ObserveView;
             InteractionButtonController.interactionButtonController.playerObserve();
 
-            //UI ÄÑÁü
+            //UI ï¿½ï¿½ï¿½ï¿½
+            Invoke("ShowUI", 3f);
         }
 
         else
@@ -94,7 +106,7 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
         }
 
         /*
-         Å¸ºí·¿ È­¸é ÁøÀÔ > ºí·çÅõ½º ¿Â > Å¸ºí·¿ ºí·çÅõ½º = true;
+         Å¸ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ > ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ > Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = true;
          */
     }
 
@@ -122,4 +134,18 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
+    public void ShowUI()
+    {
+        comUI.SetActive(true);
+    }
+
+
+    /*public void UploadClear()
+    {
+        if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn && GameManager.gameManager._gameData.Is_Tablet_WirelessOn)
+        {
+            Debug.Log("ï¿½ï¿½ï¿½Îµï¿½ï¿½ßµï¿½!!");
+            GameManager.gameManager._gameData.IsComTabletUploadClear = true;
+        }
+    }*/
 }

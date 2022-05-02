@@ -12,7 +12,7 @@ public class MainComputerUIManager : MonoBehaviour
     public GameObject Journal_UI; // 연구 일지 목록
     public GameObject MeteorList_UI; // 목표 성분 리스트
     public GameObject DogProfile_UI; // 강아지 현재 상태
-    public GameObject Bluetooth_UI; // 블루투스
+    public GameObject Wireless_UI; // 블루투스
 
     /* 연구일지 목록*/
     public GameObject Profile_UI; // 우주 비행사 프로필
@@ -79,13 +79,13 @@ public class MainComputerUIManager : MonoBehaviour
     public void ChangeBluetooth() // 메인 -> 목표 성분 리스트
     {
         MainMenu_UI.SetActive(false);
-        Bluetooth_UI.SetActive(true);
+        Wireless_UI.SetActive(true);
     }
 
     public void BackMain_Bluetooth() // 목표 성분 리스트 -> 메인
     {
         MainMenu_UI.SetActive(true);
-        Bluetooth_UI.SetActive(false);
+        Wireless_UI.SetActive(false);
     }
 
 
