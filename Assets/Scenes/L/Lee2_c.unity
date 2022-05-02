@@ -223,6 +223,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -2137,6 +2139,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -6971,6 +6975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameData:
+    IsReportCancleCount: 0
     S_IsAIAwake_M_C1: 0
     S_IsCWDoorOpened_M_C1: 0
     S_IsHealthMachineFixed_T_C2: 0
@@ -6990,7 +6995,20 @@ MonoBehaviour:
     IsFuelabsorberFixed_E_E1: 0
     HealthMachineCancelCount: 5
     IsEngineDoorFix_M_C2: 0
-    IsDestroyPack_M_C2: 0
+    IsIronDisappear_T_C2: 0
+    IsOutTroubleLine2_T_C2: 0
+    IsSmartFarmFix_T_C2: 0
+    IsBiteimportantMeteor_T_C2: 0
+    IsBiteNormalMeteor1_T_C2: 0
+    IsInputNormalMeteor1_T_C2: 0
+    IsInputImportantMeteor1_T_C2: 0
+    Is_Tablet_WirelessOn: 0
+    IsFakeHealthData_Tablet: 0
+    IsFakeCoordinateData_Tablet: 0
+    IsFakeCoordinateDatafile_Tablet: 0
+    Is_MainComputer_WirelessOn: 0
+    Is_MainSystem_WirelessOn: 0
+    IsCanConnect_C_MS: 0
   IsTrashDoorFixed_L_L1: 0
   IsCanMeteorGet: 0
   IsSmellDone: 0
@@ -7899,7 +7917,6 @@ MonoBehaviour:
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   boxRisePos: {x: 0, y: 34.65, z: 0}
-  boxPos: {fileID: 0}
 --- !u!114 &460668040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7928,6 +7945,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 1888348817}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -11297,6 +11316,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -16991,6 +17012,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 133752665}
   observePlusView: {fileID: 870978389}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -17366,6 +17389,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -17692,7 +17717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df7cd80337f9cc47989eddbe632e7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  insert01: {fileID: 167901436}
+  portDoor: {fileID: 1650842242}
 --- !u!114 &1109120932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17721,11 +17746,13 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 279624702}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
-  IsNotInteractable: 1
+  IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
   IsSniff: 0
@@ -17753,7 +17780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 0.15686275, g: 1, b: 1, a: 1}
-  outlineWidth: 0
+  outlineWidth: 8
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -18139,6 +18166,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -22345,6 +22374,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -23692,6 +23723,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 1888348817}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -23725,7 +23758,6 @@ MonoBehaviour:
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   boxRisePos: {x: 0, y: 34.65, z: 0}
-  boxPos: {fileID: 0}
 --- !u!65 &1612877508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24599,6 +24631,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -24668,11 +24702,13 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
-  IsNotInteractable: 0
+  IsNotInteractable: 1
   IsBark: 0
   IsPushOrPress: 0
   IsSniff: 0
@@ -24713,10 +24749,10 @@ BoxCollider:
   m_GameObject: {fileID: 1650842242}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.010246924, y: 0.014000006, z: 0.053369425}
-  m_Center: {x: -0.0048317853, y: -6.0128487e-18, z: 0.026683182}
+  m_Size: {x: 0.0008330865, y: 0.014000006, z: 0.05336942}
+  m_Center: {x: -0.00012485827, y: -1.2025803e-17, z: 0.026683182}
 --- !u!54 &1650842247
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24745,7 +24781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c591685dc70d94341b0d4af777538a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portBody: {fileID: 1109120930}
+  insert01: {fileID: 167901436}
 --- !u!1 &1665119338
 GameObject:
   m_ObjectHideFlags: 0
@@ -26208,6 +26244,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -27125,6 +27163,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 1092246095}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -28705,7 +28745,6 @@ MonoBehaviour:
   pushPos: {x: 0, y: -10, z: 0}
   pushRot: {x: 0, y: 90, z: 20}
   boxRisePos: {x: 0, y: 0, z: 0}
-  boxPos: {fileID: 0}
 --- !u!114 &1888348819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28752,6 +28791,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 1888348817}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -31493,6 +31534,8 @@ MonoBehaviour:
   centerDisableButton2: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 1
