@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class portDoor_buttons : MonoBehaviour, IInteraction
+public class EnExDoor_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
     ObjData portDoorData;
     Outline portDoorLine;
 
-    public GameObject insert01;
-    ObjData insert01Data;
-    Outline insert01Line;
+    public GameObject extinguisher;
+    ObjData ExData;
+    Outline ExLine;
 
     void Start()
     {
         portDoorData = GetComponent<ObjData>();
         portDoorLine = GetComponent<Outline>();
 
-        insert01Data = insert01.GetComponent<ObjData>();
-        insert01Line = insert01.GetComponent<Outline>();
+        ExData = extinguisher.GetComponent<ObjData>();
+        ExLine = extinguisher.GetComponent<Outline>();
 
         barkButton = portDoorData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -74,13 +74,13 @@ public class portDoor_buttons : MonoBehaviour, IInteraction
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        portDoorData.transform.localRotation = Quaternion.Euler(-10f, 90f, 90f);
+        portDoorData.transform.localRotation = Quaternion.Euler(-90f, 0f, -140f);
 
         portDoorData.IsNotInteractable = true;
         portDoorLine.OutlineWidth = 0f;
 
-        insert01Data.IsNotInteractable = false;
-        insert01Line.OutlineWidth = 8f;
+        ExData.IsNotInteractable = false;
+        ExLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
 

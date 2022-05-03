@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class portBody_buttons : MonoBehaviour, IInteraction
+public class EnExBody_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
@@ -53,7 +53,6 @@ public class portBody_buttons : MonoBehaviour, IInteraction
         if(portBodyData.IsObserve == false)
         {
             gameObject.GetComponent<BoxCollider>().enabled = true;
-            portDoor.GetComponent<BoxCollider>().enabled = false;
 
             portDoorData.IsNotInteractable = true;
             portDoorLine.OutlineWidth = 0f;
@@ -94,20 +93,17 @@ public class portBody_buttons : MonoBehaviour, IInteraction
         portBodyData.IsObserve = true;
         DisableButton();
 
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-
         PlayerScripts.playerscripts.currentObserveObj = gameObject;
         CameraController.cameraController.currentView = portBodyData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        //portBodyData.IsNotInteractable = true;
-        //portBodyLine.OutlineWidth = 0f;
+        portBodyData.IsNotInteractable = true;
+        portBodyLine.OutlineWidth = 0f;
 
-        portDoor.GetComponent<BoxCollider>().enabled = true;
         portDoorData.IsNotInteractable = false;
         portDoorLine.OutlineWidth = 8f;
 
-        //gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
 
         //insert02Data.IsNotInteractable = false;
         //insert02Line.OutlineWidth = 8f;
