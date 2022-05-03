@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     public Vector3 offset;
+    void Start()
+    {
+        target = BaseCanvas._baseCanvas.noahPlayer.transform;
+    }
 
     private void FixedUpdate()
     {

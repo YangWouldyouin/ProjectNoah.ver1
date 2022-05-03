@@ -28,6 +28,17 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
         cockpitDoorData = cockpitDoor_P.GetComponent<ObjData>();
     }
 
+    public void Update()
+    {
+        if (pipeData_M.IsBite == false)
+        {
+            cockpitDoorData.IsCenterButtonDisabled = true;
+        }
+
+        ChangeButton(smashButton, biteButton);
+
+    }
+
     /* 상호작용 버튼 끄는 함수 */
     void DiableButton()
     {
@@ -88,14 +99,6 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
         InteractionButtonController.interactionButtonController.PlayerBite();
     }
 
-    void Update()
-    {
-        ChangeButton(smashButton, biteButton);
-        if(!pipeData_M.IsBite)
-        {
-            cockpitDoorData.IsCenterButtonDisabled = true;
-        }
-    }
 
 
 

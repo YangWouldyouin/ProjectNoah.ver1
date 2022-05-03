@@ -5,8 +5,14 @@ using UnityEngine.UI;
 
 public class C_PlanetRader : MonoBehaviour, IInteraction
 {
+    private Button barkButton, sniffButton, biteButton,
+pressButton, observeButton;
+
+    BoxCollider raderCollider;
+
+
+
     /* 오브젝트 */
-    public GameObject planetRader_PR; // 행성 감지 레이더 기계
     public GameObject leftButton_PR; // 왼쪽 버튼
     public GameObject rightButton_PR; // 오른쪽 버튼
     public GameObject confirmButton_PR; // 확인버튼
@@ -33,8 +39,6 @@ public class C_PlanetRader : MonoBehaviour, IInteraction
     ObjData rightButtonData_PR;
     ObjData confirmButtonData_PR;
 
-    ObjData obData;
-
     /* Outline 변수 */
     Outline planetRaderOutline_PR;
     Outline leftButtonOutline_PR;
@@ -58,143 +62,43 @@ public class C_PlanetRader : MonoBehaviour, IInteraction
 
     Vector3 recentAngle;
 
-    public Button b1, b2, b3, b4, b5;
     void Start()
     {
-        obData = ob.GetComponent<ObjData>();
-        planetRaderData_PR = planetRader_PR.GetComponent<ObjData>();
-        leftButtonData_PR = leftButton_PR.GetComponent<ObjData>();
-        rightButtonData_PR = rightButton_PR.GetComponent<ObjData>();
-        confirmButtonData_PR = confirmButton_PR.GetComponent<ObjData>();
+
+        raderCollider = GetComponent<BoxCollider>();
+        planetRaderData_PR = GetComponent<ObjData>();
+
+        /* 각 상호작용 버튼에 함수를 넣는다 */
+        barkButton = planetRaderData_PR.BarkButton;
+        barkButton.onClick.AddListener(OnBark);
+
+        sniffButton = planetRaderData_PR.SniffButton;
+        sniffButton.onClick.AddListener(OnSniff);
+
+        biteButton = planetRaderData_PR.BiteButton;
+        biteButton.onClick.AddListener(OnBite);
+
+        pressButton = planetRaderData_PR.PushOrPressButton;
+        pressButton.onClick.AddListener(OnPushOrPress);
+
+        observeButton = planetRaderData_PR.CenterButton1;
+        observeButton.onClick.AddListener(OnObserve);
+
 
         leftButtonOutline_PR = leftButton_PR.GetComponent<Outline>();
         rightButtonOutline_PR = rightButton_PR.GetComponent<Outline>();
         confirmButtonOutline_PR = confirmButton_PR.GetComponent<Outline>();
-        planetRaderOutline_PR = planetRader_PR.GetComponent<Outline>();
+        planetRaderOutline_PR = GetComponent<Outline>();
 
-        planetReportButton_PR.onClick.AddListener(ReportPlanet);
-        exitButton_PR.onClick.AddListener(ExitPlanetRader);
+        //planetReportButton_PR.onClick.AddListener(ReportPlanet);
+        //exitButton_PR.onClick.AddListener(ExitPlanetRader);
 
         PlanetExplorationTimeStart_PR = false;
     }
 
     void Update()
     {
-        if (PlanetExplorationTimeStart_PR)
-        {
-            PlanetExplorationTime_PR -= Time.deltaTime;
-            exploreTimer = Mathf.FloorToInt((PlanetExplorationTime_PR % 3600) % 60);
-        }
-
-        // 관찰하기 시 모든 UI 활성화
-        if (planetRaderData_PR.IsObserve)
-        {
-            CameraController.cameraController.currentView = planetRaderData_PR.ObserveView;
-            timer_PR += Time.deltaTime;
-            float seconds = Mathf.FloorToInt((timer_PR % 3600) % 60);
-
-            // 피지컬 버튼 3개 활성화
-            leftButtonOutline_PR.OutlineWidth = 8;
-            rightButtonOutline_PR.OutlineWidth = 8;
-            confirmButtonOutline_PR.OutlineWidth = 8;
-
-            leftButtonData_PR.IsNotInteractable = false;
-            rightButtonData_PR.IsNotInteractable = false;
-            confirmButtonData_PR.IsNotInteractable = false;
-
-            // 행성 레이더 기계 비활성화
-            planetRaderOutline_PR.OutlineWidth = 0;
-            planetRaderData_PR.IsNotInteractable = true;
-
-            if (seconds >= 2f)
-            {
-                if(!PlanetExploration_PR) // 행성 탐사 전이면
-                {
-                    // 레이더 라인 활성화
-                    raderLine_PR.transform.gameObject.SetActive(true);
-                    // 노멀 행성 활성화
-                    for (int i = 0; i < 6; i++)
-                    {
-                        normalPlanet_PR[i].transform.gameObject.SetActive(true);
-                    }
-
-                    if (confirmButtonData_PR.IsPushOrPress) // 확인 버튼 눌렀을 때
-                    {
-                        for (int k = 0; k < 6; k++)
-                        {
-                            if (PlanetRaderTrigger.planetRaderTrigger.IsPlanetSelected[k])
-                            {
-                                exploreText.text = "탐사진행중";
-                                exploreText.transform.gameObject.SetActive(true);
-
-                                for (int i = 0; i < 6; i++)
-                                {
-                                    normalPlanet_PR[i].transform.gameObject.SetActive(false);
-                                    selectPlanet_PR[i].transform.gameObject.SetActive(false);
-                                }
-                                raderLine_PR.transform.gameObject.SetActive(false);
-
-
-                                if (FakePlanet_PR) // 행성이 거짓 행성 일 때
-                                {
-                                    // 계속 거짓 행성으로 주행함
-                                }
-                                else // 행성이 진짜 행성 일 때
-                                {
-                                    PlanetExploration_PR = true; // 행성 탐사 시작
-                                    PlanetExplorationTimeStart_PR = true; // 타이머 스타트 시작
-                                }
-                                break;
-                            }
-                        }
-
-
-                    }
-                }
-                else
-                {
-                    if (exploreTimer <= 0)
-                    {
-                        exploreText.text = "탐사완료";
-                        planetReportButton_PR.transform.gameObject.SetActive(true);
-                        exitButton_PR.transform.gameObject.SetActive(true);
-                    }
-                    else
-                    {
-                        exploreText.text = "탐사진행중";
-                    }
-                    exploreText.transform.gameObject.SetActive(true); // 탐사진행중 활성화                  
-                }
-            }
-        }
-        else // 관찰하기 해제 시 모든 UI 비활성화
-        {
-            // 타이머 초기화
-            timer_PR = 0;
-            // 레이더 라인 비활성화
-            raderLine_PR.transform.gameObject.SetActive(false);
-            // 노멀 행성 비활성화
-            for (int i = 0; i < 6; i++)
-            {
-                normalPlanet_PR[i].transform.gameObject.SetActive(false);
-            }
-            exploreText.transform.gameObject.SetActive(false); // 탐사진행중 비활성화
-            // 피지컬 버튼 3개 비활성화
-            leftButtonOutline_PR.OutlineWidth = 0;
-            rightButtonOutline_PR.OutlineWidth = 0;
-            confirmButtonOutline_PR.OutlineWidth = 0;
-
-            leftButtonData_PR.IsNotInteractable = true;
-            rightButtonData_PR.IsNotInteractable = true;
-            confirmButtonData_PR.IsNotInteractable = true;
-
-            planetReportButton_PR.transform.gameObject.SetActive(false);
-            exitButton_PR.transform.gameObject.SetActive(false);
-
-            // 행성 레이더 기계 활성화
-            planetRaderOutline_PR.OutlineWidth = 8;
-            planetRaderData_PR.IsNotInteractable = false;
-        }
+   
     }
 
 
@@ -222,25 +126,7 @@ public class C_PlanetRader : MonoBehaviour, IInteraction
         {
             normalPlanet_PR[i].transform.gameObject.SetActive(false);
         }
-
-
-
-
-
-
     }
-
-    void DiableeButton()
-    {
-        //interactBtn1.SetActive(false);
-        b1.transform.gameObject.SetActive(false);
-        b2.transform.gameObject.SetActive(false);
-        b3.transform.gameObject.SetActive(false);
-        b4.transform.gameObject.SetActive(false);
-        b5.transform.gameObject.SetActive(false);
-    }
-
-
 
     void ExitPlanetRader()
     {
@@ -255,39 +141,89 @@ public class C_PlanetRader : MonoBehaviour, IInteraction
         CameraController.cameraController.CancelObserve();
     }
 
-    public void OnBark()
+    void DisableButton()
     {
-        InteractionButtonController.interactionButtonController.playerBark();
+        barkButton.transform.gameObject.SetActive(false);
+        sniffButton.transform.gameObject.SetActive(false);
+        biteButton.transform.gameObject.SetActive(false);
+        pressButton.transform.gameObject.SetActive(false);
+        observeButton.transform.gameObject.SetActive(false);
+    }
+
+    public void OnObserve()
+    {
+        raderCollider.enabled = false;
+        /* 오브젝트의 관찰 변수 true로 바꿈 */
+        planetRaderData_PR.IsObserve = true;
+        /* 취소할 때 참고할 오브젝트 저장 */
+        PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+        /* 상호작용 버튼을 끔 */
+        DisableButton();
+        /* 카메라 컨트롤러에 뷰 전달 */
+        CameraController.cameraController.currentView = planetRaderData_PR.ObserveView; // 관찰 뷰 : 위쪽
+        /* 관찰 애니메이션 & 카메라 전환 */
+        InteractionButtonController.interactionButtonController.playerObserve();
+    }
+
+
+
+
+    public void OnBark()
+    {     
         planetRaderData_PR.IsBark = true;
-        obData.IsCenterButtonChanged = true;
-        DiableeButton();
-        //throw new System.NotImplementedException();
+
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnBiteDestroy()
-    {
-        throw new System.NotImplementedException();
+        /* 오브젝트의 냄새맡기 변수 true로 바꿈 */
+        planetRaderData_PR.IsSniff = true;
+        /* 상호작용 버튼을 끔 */
+        DisableButton();
+        /* 애니메이션 보여주고 냄새 텍스트 띄움 */
+        InteractionButtonController.interactionButtonController.playerSniff();
     }
 
     public void OnPushOrPress()
     {
-        throw new System.NotImplementedException();
+        /* 오브젝트의 누르기 변수 true로 바꿈 */
+        planetRaderData_PR.IsPushOrPress = true;
+
+        /* 상호작용 버튼을 끔 */
+        DisableButton();
+
+        /* 애니메이션 보여줌 */
+        InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
+
+        /* 2초 뒤에 Ispushorpress 를 false 로 바꿈 */
+        StartCoroutine(ChangePressFalse());
     }
+
+    IEnumerator ChangePressFalse()
+    {
+        yield return new WaitForSeconds(2f);
+        planetRaderData_PR.IsPushOrPress = false;
+    }
+
+    public void OnBite()
+    {
+        /* 상호작용 버튼을 끔 */
+        DisableButton();
+        /*  물기만 하는 애니메이션 & 물 수 없는 오브젝트임을 알림 */
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
+    }
+
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnEat()
     {
         throw new System.NotImplementedException();
     }
 
-    public void OnObserve()
-    {
-        throw new System.NotImplementedException();
-    }
+
 
     public void OnUp()
     {
@@ -295,11 +231,6 @@ public class C_PlanetRader : MonoBehaviour, IInteraction
     }
 
     public void OnInsert()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnBite()
     {
         throw new System.NotImplementedException();
     }

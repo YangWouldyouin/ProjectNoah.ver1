@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class C_AIResetButton : MonoBehaviour, IInteraction
 {
     public GameObject consoleDoor_CC;
-    Outline AIButtonOutline;
-    ObjData AIButtonData;
+    Outline AIButtonOutline, controlDoorOutline;
+    ObjData AIButtonData, controlDoorData;
     //ObjData consoleDoor_CC;
     private Button barkButton, sniffButton, biteButton,
     pressButton, noCenterButton;
@@ -15,11 +15,14 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     public GameObject dialogManager_AI;
     DialogManager dialogManager;
 
+
     // Start is called before the first frame update
     void Start()
     {
         AIButtonOutline = GetComponent<Outline>();
+        controlDoorOutline = consoleDoor_CC.GetComponent<Outline>();
         AIButtonData = GetComponent<ObjData>();
+        controlDoorData = consoleDoor_CC.GetComponent<ObjData>();
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton = AIButtonData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -92,6 +95,10 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
 
         /* 임무 리스트 한번 활성화 */
         MissionGenerator.missionGenerator.ActivateMissionList();
+
+        /* 조종실 문 활성화 */
+        controlDoorOutline.OutlineWidth = 8;
+        controlDoorData.IsNotInteractable = false;
     }
 
     void DelayAnim()

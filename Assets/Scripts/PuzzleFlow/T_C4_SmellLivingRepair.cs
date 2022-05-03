@@ -11,18 +11,10 @@ public class T_C4_SmellLivingRepair : MonoBehaviour
     public GameObject TrashBT;
     public GameObject TrashBT_fixPart;
 
-    /* Interactable 컴포넌트를 담을 변수 생성 */
-    Interactable TrashBT_Interactable;
-    Interactable TrashBT_fixPartInteractable;
-
     // Start is called before the first frame update
     void Start()
     {
         //AI: 부품 수리 스크립트
-
-        /* 오브젝트 각각에 붙어있는 Interactable 컴포넌트를 가져옴 */
-        TrashBT_Interactable = TrashBT.GetComponent<Interactable>();
-        TrashBT_fixPartInteractable = TrashBT_fixPart.GetComponent<Interactable>();
     }
 
     // Update is called once per frame
@@ -77,7 +69,5 @@ public class T_C4_SmellLivingRepair : MonoBehaviour
         // 마우스 오버시 아웃라인이 생기게 하는 것과 상호작용 버튼이 생기게 하는것 둘다 Interactable  스크립트에서 하기 때문에
         // 이 퍼즐 이후로 더 이상 상호작용이 일어나지 않는 오브젝트일 경우 Interactable 스크립트 컴포넌트를 아예 제거하면
         // 더 이상 상호작용 버튼과 외곽선이 생기지 않는다.
-        Destroy(TrashBT_Interactable);
-        Destroy(TrashBT_fixPartInteractable);
     }
 }

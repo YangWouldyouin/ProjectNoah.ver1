@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class M_Pipe : MonoBehaviour, IInteraction
 {
-   private Button barkButton_M_Pipe, biteButton_M_Pipe, smashButton_M_Pipe, 
+    [SerializeField] PortableObjectData pipeData;
+
+    private Button barkButton_M_Pipe, biteButton_M_Pipe, smashButton_M_Pipe, 
         pressButton_M_Pipe, sniffButton_M_Pipe, noCenterButton_M_Pipe;
 
     private ObjData pipeData_M;
@@ -74,6 +76,7 @@ public class M_Pipe : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
+        //pipeData.IsBark = true;
         /* 오브젝트의 짖기 변수 true로 바꿈 */
         pipeData_M.IsBark = true;
         /* 상호작용 버튼을 끔 */
