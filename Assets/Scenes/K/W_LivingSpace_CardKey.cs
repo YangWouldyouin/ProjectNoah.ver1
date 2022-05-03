@@ -76,14 +76,7 @@ pushButton_W_LS_CardKey, upButton_W_LS_CardKey, upDisableButton_W_LS_CardKey, sm
     {
         LS_CardKeyData_W.IsPushOrPress = true;
         DiableButton();
-        InteractionButtonController.interactionButtonController.playerPush1(); // 밀기 애니메이션
-
-        /* 플레이어 머리 ~ 오브젝트 사이 Position, rotation 을 조절 */
-        InteractionButtonController.interactionButtonController.pushPos = new Vector3(0, 0, 0);
-        InteractionButtonController.interactionButtonController.pushRot = new Vector3(0, 0, 0);
-
-        /* 밀기 위치 조절 */
-        InteractionButtonController.interactionButtonController.PlayerPush2();
+        InteractionButtonController.interactionButtonController.playerPush(); // 밀기 애니메이션
     }
 
     public void OnSniff()

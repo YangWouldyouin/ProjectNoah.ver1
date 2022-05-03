@@ -7,25 +7,22 @@ public class CameraController : MonoBehaviour
     public static CameraController cameraController { get; private set; }
 
     //public GameObject objectExtraDescription;
-
+    [HideInInspector]
     public Vector3 originPosition, originRotation;
     [HideInInspector]
     public Transform currentView;
 
-    [SerializeField] GameObject noah;
+    GameObject noah;
+    Animator playerAnimation;
 
-    public GameObject ui, nameTag, noahStat;
+    GameObject nameTag, noahStat, clock;
 
     private GameObject currentObserveObject;
-
-    //private Transform observeView, observePlusView;
 
     CameraFollow cameraFollow;
 
     ObjData currentObserveObjectData;
     Outline currentObjectOutline;
-
-    Animator playerAnimation;
 
     private void Awake()
     {
@@ -34,8 +31,13 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        clock = BaseCanvas._baseCanvas.clock;
+        noahStat = BaseCanvas._baseCanvas.statPanel;
+        nameTag = BaseCanvas._baseCanvas.objectNameTag;
+        noah = BaseCanvas._baseCanvas.noahFBX;
+        playerAnimation = BaseCanvas._baseCanvas.noahPlayer.GetComponent<Animator>();
+
         cameraFollow = GetComponent<CameraFollow>();
-        playerAnimation = BaseCanvas._baseCanvas.playerAnimation;
     }
     public void SavePosition()
     {
@@ -63,7 +65,7 @@ public class CameraController : MonoBehaviour
         //camObserveBoxView = PlayerScripts.playerscripts.PlayerobserveBoxView;
         noah.transform.gameObject.SetActive(false);
         //aiPanel.SetActive(false);
-        ui.SetActive(false);
+        clock.SetActive(false);
         nameTag.SetActive(false);
         noahStat.SetActive(false);
         ChangeView(currentView);
@@ -73,7 +75,7 @@ public class CameraController : MonoBehaviour
     public void CancelObserve()
     {
         //aiPanel.SetActive(true);
-        ui.SetActive(true);
+        clock.SetActive(true);
         nameTag.SetActive(true);
         noahStat.SetActive(true);
         noah.transform.gameObject.SetActive(true);

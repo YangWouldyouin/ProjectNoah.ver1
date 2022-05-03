@@ -5,25 +5,35 @@ using UnityEngine.AI;
 
 public class CancelInteractions : MonoBehaviour
 {
-    private float objectDistance = 1f;
-    public NavMeshAgent Agent;
-    public Animator playerAnimation;
-
     public GameObject portableObjects;
 
-    public GameObject noahPosition;
-    public GameObject moveableGroup;
-    GameObject upDownObject, biteObject, pushObject, noahNovepushobject, observeObject;
-    public TMPro.TextMeshProUGUI CancelObjectText;
+    private float objectDistance = 1f;
 
-    public PlayerEquipment playerObject;
+    GameObject noahPlayer;
+    NavMeshAgent agent;
+    Animator playerAnimation;
+
+    GameObject upDownObject, biteObject, pushObject, noahNovepushobject, observeObject;
+
+    TMPro.TextMeshProUGUI CancelObjectText;
+
+    PlayerEquipment playerObject;
+
+    private void Start()
+    {
+        noahPlayer = BaseCanvas._baseCanvas.noahPlayer;
+        playerAnimation = noahPlayer.GetComponent<Animator>();
+        agent = noahPlayer.GetComponent<NavMeshAgent>();
+
+        CancelObjectText = BaseCanvas._baseCanvas.objectText;
+    }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
             observeObject = PlayerScripts.playerscripts.currentObserveObj;
-            biteObject = PlayerScripts.playerscripts.currentBiteObj;
+
             upDownObject = PlayerScripts.playerscripts.currentUpObj;
             //pushObject = PlayerScripts.playerscripts.currentPushOrPressObj;
             //if (PlayerScripts.playerscripts.currentObserveObj != null)
@@ -112,31 +122,20 @@ public class CancelInteractions : MonoBehaviour
                 }/* 물기 취소   else if (i == 1 && biteObject != null)*/
                 else if (i == 1 && playerObject.biteObjectName!="")
                 {
-
+                    biteObject = GameObject.Find(playerObject.biteObjectName).gameObject;
+                    ObjData cancelBiteData = biteObject.GetComponent<ObjData>();
+                    cancelBiteData.IsBite = false;
                     playerAnimation.SetBool("IsPutDowning", true);
+
                     Invoke("CancelBitingAnimation", 1f);
-                    Invoke("PutDownObject", 0.5f);
+                    Invoke("PutDownObject", 0.3f);
                     playerObject.biteObjectName = "";
+                    biteObject.transform.parent = portableObjects.transform;
                     break;
-
-                    //ObjData cancelBiteData = biteObject.GetComponent<ObjData>();
-                    //if (cancelBiteData.IsBite)
-                    //{
-
-                    //    playerAnimation.SetBool("IsPutDowning", true);
-                    //    Invoke("CancelBitingAnimation", 1f);
-                    //    Invoke("PutDownObject", 0.5f);
-                    //    cancelBiteData.IsBite = false;
-                    //    PlayerScripts.playerscripts.currentBiteObj = null;
-                    //    playerObject.biteObject = "";
-                    //    break;
-                    //}
-
-
-
                 }
             }
 
+            /* 밀기 취소 */
             if(playerObject.pushObjectName != "")
             {
                 pushObject = GameObject.Find(playerObject.pushObjectName).gameObject;
@@ -152,29 +151,9 @@ public class CancelInteractions : MonoBehaviour
                 pushObject.transform.position = new Vector3(pushObject.transform.position.x, playerObject.cancelPushPos.y, pushObject.transform.position.z);
                 pushObject.transform.eulerAngles = playerObject.cancelPushRot;
 
-                PlayerScripts.playerscripts.currentPushOrPressObj = null;
                 playerObject.pushObjectName = "";
                 pushObject.transform.parent = portableObjects.transform;
             }
-            /* 밀기 취소 */
-            //if (InteractionButtonController.ISPUSH)
-            //{
-
-            //InteractionButtonController.interactionButtonController.noahPushObject;
-            //noahNovepushobject = SaveDataWhenSceneChange.savedata.obj;
-
-            //InteractionButtonController.interactionButtonController.ispush = false;
-            //}
-
-            //if (noahNovepushobject != null)
-            //{
-            //    playerAnimation.SetBool("IsPushing", false);
-            //    noahNovepushobject.transform.SetParent(null, true);
-            //    noahNovepushobject.transform.parent = moveableGroup.transform; // 다시 무바블오브젝트의 자식으로 넣기
-            //    InteractionButtonController.interactionButtonController.ispush = false;
-
-
-            //}
 
             CancelObjectText.text = "Noah N.113";
 
@@ -237,10 +216,10 @@ public class CancelInteractions : MonoBehaviour
     }
     void Delaylittle()
     {
-        noahPosition.transform.position = new Vector3(upDownObject.transform.localPosition.x, 33.78f, upDownObject.transform.localPosition.z)+transform.forward;
-        Agent.updatePosition = true;
-        Agent.updateRotation = true;
-        Agent.isStopped = false;
+        noahPlayer.transform.position = new Vector3(upDownObject.transform.localPosition.x, 33.78f, upDownObject.transform.localPosition.z)+transform.forward;
+        agent.updatePosition = true;
+        agent.updateRotation = true;
+        agent.isStopped = false;
     }
     void CancelBitingAnimation()
     {
@@ -251,9 +230,9 @@ public class CancelInteractions : MonoBehaviour
         biteObject.GetComponent<Rigidbody>().isKinematic = false; 
         biteObject.transform.parent = null;
 
-        biteObject.transform.localScale = PlayerScripts.playerscripts.biteOriginScale;
-        biteObject.transform.position = new Vector3(biteObject.transform.position.x, PlayerScripts.playerscripts.biteFallPos.y, biteObject.transform.position.z);
-        biteObject.transform.eulerAngles = PlayerScripts.playerscripts.biteFallRot;
+        biteObject.transform.localScale = playerObject.cancelBiteScale;
+        biteObject.transform.position = new Vector3(biteObject.transform.position.x, playerObject.cancelBitePos.y, biteObject.transform.position.z);
+        biteObject.transform.eulerAngles = playerObject.cancelBiteRot;
     }
 
     void Observing2Animation()

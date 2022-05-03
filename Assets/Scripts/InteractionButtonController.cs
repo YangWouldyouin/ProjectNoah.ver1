@@ -11,11 +11,8 @@ public class InteractionButtonController : MonoBehaviour
 {
     public static InteractionButtonController interactionButtonController { get; private set; }
 
-    [SerializeField] GameObject noahPlayer;
-    [SerializeField] GameObject noahFBX;
-    Animator noahAnim; // 애니메이션 전환 위한 변수
-
-    private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
+    GameObject noahPlayer, noahFBX, myMouth;
+    Animator noahAnim;
 
     /* "오르기" 상호작용 관련 변수*/
     Rigidbody playerRigidbody;
@@ -34,20 +31,15 @@ public class InteractionButtonController : MonoBehaviour
     public GameObject noahBiteObject, noahPushOrPressObject, noahSniffObject, 
         noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
 
-   //[Header("정리 필요한 변수들")]
+    TMPro.TextMeshProUGUI objectText, statText;
 
-    public TMPro.TextMeshProUGUI objectText;
-    public TMPro.TextMeshProUGUI statText;
+    GameObject statPanel;
 
-    [SerializeField] GameObject statPanel;
-
-    public GameObject myHead;
-
-    private Vector3 bitePos, biteRot;
     ObjData objectData;
 
-    public PlayerEquipment equipment;
+    PlayerEquipment equipment;
 
+    private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
 
     void Awake()
     {
@@ -56,40 +48,19 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Start()
     {
+        noahPlayer = BaseCanvas._baseCanvas.noahPlayer;
+        noahFBX = BaseCanvas._baseCanvas.noahFBX;
+        equipment = BaseCanvas._baseCanvas.equipment;
+
+        objectText = BaseCanvas._baseCanvas.objectText;
+        statText = BaseCanvas._baseCanvas.statText;
+        statPanel = BaseCanvas._baseCanvas.statPanel;
+        myMouth = BaseCanvas._baseCanvas.myMouth;
         playerRigidbody = noahPlayer.GetComponent<Rigidbody>();
         playerAgent = noahPlayer.GetComponent<NavMeshAgent>();
         noahAnim = noahPlayer.GetComponent<Animator>();
-        /* 각 상호작용 버튼에 함수를 추가한다. */
-        BaseCanvas._baseCanvas.barkButton.onClick.AddListener(playerBark);
-        BaseCanvas._baseCanvas.sniffButton.onClick.AddListener(playerSniff);
-        BaseCanvas._baseCanvas.eatButton.onClick.AddListener(playerEat);
-        BaseCanvas._baseCanvas.observeButton.onClick.AddListener(playerObserve);
-        BaseCanvas._baseCanvas.upDownButton.onClick.AddListener(PlayerRise1);
-        //BaseCanvas._baseCanvas.insertButton.onClick.AddListener(playerInserting);
-        BaseCanvas._baseCanvas.pushButton.onClick.AddListener(playerPush);
-        //BaseCanvas._baseCanvas.pressButton.onClick.AddListener(playerPress);
     }
 
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-    /* 5가지 상호작용 버튼 중 하나를 선택하고 나서 이 함수를 실행하면 상호작용 버튼이 꺼진다. */
-    public void TurnOffInteractionButton()
-    {
-        BaseCanvas._baseCanvas.barkButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.pushButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.pressButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.noCenterButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.eatButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.upDownButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.insertButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.observeButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.sniffButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.biteDestroyButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.insertDisableButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.upDownDisableButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(false);
-        BaseCanvas._baseCanvas.observeDisableButton.transform.gameObject.SetActive(false);
-    }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -139,19 +110,14 @@ public class InteractionButtonController : MonoBehaviour
             noahBiteObject = PlayerScripts.playerscripts.currentObject;
             equipment.biteObjectName = noahBiteObject.name;
             /* 취소할 때 참고하기 위해 저장 */
-            PlayerScripts.playerscripts.currentBiteObj = noahBiteObject;
 
-            PlayerScripts.playerscripts.biteFallPos = noahBiteObject.transform.position;
-            PlayerScripts.playerscripts.biteFallRot = noahBiteObject.transform.eulerAngles;
-            PlayerScripts.playerscripts.biteOriginScale = noahBiteObject.transform.localScale;
+            equipment.cancelBitePos = noahBiteObject.transform.position;
+            equipment.cancelBiteRot= noahBiteObject.transform.eulerAngles;
+            equipment.cancelBiteScale = noahBiteObject.transform.localScale;
 
             /* 물기 변수 참으로 바꿈 */
             objectData = noahBiteObject.GetComponent<ObjData>();
             objectData.IsBite = true;
-
-            /* 물기 위치 가져옴 */
-            bitePos = objectData.BitePos;
-            biteRot = objectData.BiteRot;
 
             /* 현재 물고 있는 오브젝트 이름 띄움 */
             objectText.text = "Noah N.113 - " + objectData.ObjectName;
@@ -172,10 +138,10 @@ public class InteractionButtonController : MonoBehaviour
         noahBiteObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
         noahBiteObject.GetComponent<Rigidbody>().useGravity = false;
 
-        noahBiteObject.transform.SetParent(myHead.transform, true);
+        noahBiteObject.transform.SetParent(myMouth.transform, true);
 
-        noahBiteObject.transform.localPosition = bitePos; // sets the position of the object to your mouth position
-        noahBiteObject.transform.localEulerAngles = biteRot; // sets the position of the object to your mouth position      
+        noahBiteObject.transform.localPosition = objectData.BitePos; // sets the position of the object to your mouth position
+        noahBiteObject.transform.localEulerAngles = objectData.BiteRot; // sets the position of the object to your mouth position      
     }
 
     void ChangeBiteFalse()
@@ -388,7 +354,7 @@ public class InteractionButtonController : MonoBehaviour
         noahPushOrPressObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
         noahPushOrPressObject.GetComponent<Rigidbody>().useGravity = false;
 
-        noahPushOrPressObject.transform.parent = myHead.transform; //makes the object become a child of the parent so that it moves with the mouth
+        noahPushOrPressObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
 
         noahPushOrPressObject.transform.localPosition = objectData.PushPos; // sets the position of the object to your mouth position
         noahPushOrPressObject.transform.localEulerAngles = objectData.PushRot; // sets the position of the object to yo

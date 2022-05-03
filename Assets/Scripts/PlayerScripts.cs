@@ -13,6 +13,7 @@ public class PlayerScripts : MonoBehaviour
         playerscripts = this;
     }
 
+    Animator noahAnim;
     private NavMeshAgent agent;
     private Camera mainCamera;
     private PlayerAnimation playerAnim = new PlayerAnimation();
@@ -20,10 +21,7 @@ public class PlayerScripts : MonoBehaviour
     private bool turning; // default : false
     private Quaternion targetRot; // 플레이어의 처음 각도
 
-
-
     /* 상호작용 오브젝트로부터 받아온 데이터 담는 변수 */
-
     public GameObject currentObject;
     private ObjData objData;
     private string objectNameData, smellData;
@@ -34,23 +32,22 @@ public class PlayerScripts : MonoBehaviour
     /* 상호작용 취소할 때 사용하는 변수 */
     [HideInInspector]
     public GameObject interactionButtons, currentPushOrPressObj, currentBiteObj, currentObserveObj, currentUpObj, currentInsertObj;
-    [HideInInspector]
-    public Vector3 biteFallPos, biteFallRot, biteOriginScale;
 
     /* 네임태그 관련 변수 */
-    public GameObject objectNameTag;
-    public TMPro.TextMeshProUGUI objectNameText;
-    public Vector3 offset;
+    GameObject objectNameTag;
+    TMPro.TextMeshProUGUI objectNameText;
+    public Vector3 nameTagOffset;
 
     /* 정리 필요한 변수 */
     public bool IsClicked = false;
-    public Animator noahAnim;
-    public IPressController pressFunc;
     [HideInInspector]
     public int transitionSpeed;
 
     void Start()
     {
+        objectNameTag = BaseCanvas._baseCanvas.objectNameTag;
+        objectNameText = BaseCanvas._baseCanvas.objectNameText;
+        noahAnim = GetComponent<Animator>();
         mainCamera = Camera.main; // Scene 에서 MainCamera 라고 Tag 가 첫번째로 활성화된 카메라를 나타냄
         agent = GetComponent<NavMeshAgent>();
         playerAnim.Init(GetComponentInChildren<Animator>()); // Player 의 자식인 noah_FBX 에 붙어있는 컴포넌트인 animator 초기화
@@ -273,7 +270,7 @@ public class PlayerScripts : MonoBehaviour
     {
         if (objectNameData != null)
         {
-            objectNameTag.transform.position = Input.mousePosition + offset;
+            objectNameTag.transform.position = Input.mousePosition + nameTagOffset;
             objectNameTag.SetActive(true);
             objectNameText.text = objectNameData;
         }
