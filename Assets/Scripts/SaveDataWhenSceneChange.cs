@@ -24,13 +24,17 @@ public class SaveDataWhenSceneChange : MonoBehaviour
     public string transferMapName;
 
 
-    public TMPro.TextMeshProUGUI objectText;
-    public GameObject myHead;
-    public Animator noahAnimator;
+    TMPro.TextMeshProUGUI objectText;
+    GameObject myHead;
+    Animator noahAnimator;
 
 
     void Awake()
     {
+        objectText = BaseCanvas._baseCanvas.objectText;
+        myHead = BaseCanvas._baseCanvas.myMouth;
+        noahAnimator = BaseCanvas._baseCanvas.noahPlayer.GetComponent<Animator>();
+
         /* 현재 씬을 가져와서 그 씬의 포터블오브젝트리스트를 가져옴 */
         int sceneNum = SceneManager.GetActiveScene().buildIndex;
         switch (sceneNum)

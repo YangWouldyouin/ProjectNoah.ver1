@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1397759963577864829}
   m_Layer: 0
   m_Name: noahPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,8 +63,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.28939766, y: 0.88365746, z: 1.0197779}
-  m_Center: {x: -0.004135824, y: -0.058171272, z: -0.17873871}
+  m_Size: {x: 0.28939766, y: 0.88365746, z: 0.71397656}
+  m_Center: {x: -0.004135823, y: -0.058171272, z: -0.025838032}
 --- !u!95 &1397759963577864827
 Animator:
   serializedVersion: 3
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1533ffd28c7f8547ac882591494f176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transferMapName: new workroom
   currentObject: {fileID: 0}
   interactionButtons: {fileID: 0}
   currentPushOrPressObj: {fileID: 0}
@@ -104,17 +103,8 @@ MonoBehaviour:
   currentObserveObj: {fileID: 0}
   currentUpObj: {fileID: 0}
   currentInsertObj: {fileID: 0}
-  biteFallPos: {x: 0, y: 0, z: 0}
-  biteFallRot: {x: 0, y: 0, z: 0}
-  biteOriginScale: {x: 0, y: 0, z: 0}
-  pushFallPos: {x: 0, y: 0, z: 0}
-  pushFallRot: {x: 0, y: 0, z: 0}
-  pushOriginScale: {x: 0, y: 0, z: 0}
-  objectNameTag: {fileID: 0}
-  objectNameText: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
+  nameTagOffset: {x: 0, y: 0, z: 0}
   IsClicked: 0
-  noahAnim: {fileID: 1397759963577864827}
   transitionSpeed: 3
 --- !u!195 &1397759963577864829
 NavMeshAgent:
