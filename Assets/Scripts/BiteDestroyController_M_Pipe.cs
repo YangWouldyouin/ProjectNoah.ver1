@@ -24,16 +24,16 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
 
     void Awake()
     {
-        pipeData_M = pipe_P.GetComponent<ObjData>();
-        cockpitDoorData = cockpitDoor_P.GetComponent<ObjData>();
+        //pipeData_M = pipe_P.GetComponent<ObjData>();
+        //cockpitDoorData = cockpitDoor_P.GetComponent<ObjData>();
     }
 
     public void Update()
     {
-        if (pipeData_M.IsBite == false)
-        {
-            cockpitDoorData.IsCenterButtonDisabled = true;
-        }
+        //if (pipeData_M.IsBite == false)
+        //{
+        //    cockpitDoorData.IsCenterButtonDisabled = true;
+        //}
 
         ChangeButton(smashButton, biteButton);
 
@@ -95,7 +95,7 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
     public void OnPointerDown(PointerEventData eventData)
     {
         isPointerDown = true;
-        cockpitDoorData.IsCenterButtonDisabled = false;
+        //cockpitDoorData.IsCenterButtonDisabled = false;
         InteractionButtonController.interactionButtonController.PlayerBite();
     }
 

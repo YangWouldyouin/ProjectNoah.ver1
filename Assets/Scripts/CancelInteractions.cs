@@ -24,7 +24,7 @@ public class CancelInteractions : MonoBehaviour
         noahPlayer = BaseCanvas._baseCanvas.noahPlayer;
         playerAnimation = noahPlayer.GetComponent<Animator>();
         agent = noahPlayer.GetComponent<NavMeshAgent>();
-
+        playerObject = BaseCanvas._baseCanvas.equipment;
         CancelObjectText = BaseCanvas._baseCanvas.objectText;
     }
 
