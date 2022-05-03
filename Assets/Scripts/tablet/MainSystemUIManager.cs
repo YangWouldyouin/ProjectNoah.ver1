@@ -14,8 +14,6 @@ public class MainSystemUIManager : MonoBehaviour
 
     public Image MS_onoffBT;
 
-    public bool MSWirelessOn = false; //임시 메인 시스템 블루투스 체크
-
     public Text OnOffText;
 
     public void Start()
@@ -26,6 +24,24 @@ public class MainSystemUIManager : MonoBehaviour
         alert.SetActive(false);
         Fold.SetActive(false);
         Open.SetActive(true);
+    }
+
+    public void Update()
+    {
+        if (GameManager.gameManager._gameData.Is_MainSystem_WirelessOn == true)
+        {
+            OnOffText.GetComponent<Text>().text = "무선 연결        ON";
+            Color onoffcolor = MS_onoffBT.color;
+            onoffcolor.a = 1f;
+            MS_onoffBT.color = onoffcolor;
+        }
+        else
+        {
+            OnOffText.GetComponent<Text>().text = "무선 연결        OFF";
+            Color onoffcolor = MS_onoffBT.color;
+            onoffcolor.a = 0.3f;
+            MS_onoffBT.color = onoffcolor;
+        }
     }
 
     public void OpenBT()
@@ -67,35 +83,26 @@ public class MainSystemUIManager : MonoBehaviour
 
     public void MS_WirelessCheck()
     {
-        if (MSWirelessOn == false)
+        if (GameManager.gameManager._gameData.Is_MainSystem_WirelessOn == false)
         {
-            MSWirelessOn = true;
-            OnOffText.GetComponent<Text>().text = "무선 연결        ON";
-            Color onoffcolor = MS_onoffBT.color;
-            onoffcolor.a = 1f;
-            MS_onoffBT.color = onoffcolor;
+            GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = true;
         }
         else
         {
-            MSWirelessOn = false;
-            OnOffText.GetComponent<Text>().text = "무선 연결        OFF";
-            Color onoffcolor = MS_onoffBT.color;
-            onoffcolor.a = 0.3f;
-            MS_onoffBT.color = onoffcolor;
+            GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = false;
         }
     }
 
     public void UploadBT()
     {
-        if (MSWirelessOn)
+        if (GameManager.gameManager._gameData.Is_MainSystem_WirelessOn == true)
         {
             alert.SetActive(true);
-            Alert();
+            Invoke("Alert", 3f);
         }
     }
     public void Alert()
     {
-        Invoke("Alert", 2f);
         alert.SetActive(false);
     }
 }
