@@ -55,6 +55,8 @@ public class GameData
     public bool IsFakeCoordinateDatafile_Tablet; //태블릿거짓좌표다운로드 판단
     public bool IsDontFakeCoordinateDatafile_Tablet; //태블릿 거짓좌표다운로드루트 불가
 
+    public bool IsTabletMoved; //타블렛을 엔진실 특정 구역 밖으로 옮겼는지 체크
+
     public bool Is_MainComputer_WirelessOn; //메인컴퓨터 블루트스 on/off체크
     public bool IsFinalBusinessReport_MC; //업무 보고 파일 최종본 해금 판단
     public bool IsFinalBusinessReportFile_MC; //업무 보고 파일 최종본 다운로드
