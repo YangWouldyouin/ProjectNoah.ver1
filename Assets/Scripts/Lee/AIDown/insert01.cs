@@ -140,7 +140,7 @@ public class insert01 : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
-    void NoChip() //칩 사라지게 하기
+    void NoChip() //특정 약물 사라지게 하기
     {
         Debug.Log("칩 꽂았음");
 
@@ -160,8 +160,6 @@ public class insert01 : MonoBehaviour, IInteraction
 
             insertData.IsNotInteractable = false;
             insertLine.OutlineWidth = 0;
-
-            GameManager.gameManager._gameData.IsAIDown = true;
         }
 
         if (WChip01Data.IsBite)

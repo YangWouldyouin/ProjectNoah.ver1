@@ -11,7 +11,7 @@ public class Checking_bluetooth : MonoBehaviour
     
     //public GameObject canConnect;
 
-    //public static bool IsCanConnect;
+    public static bool IsCanConnect;
 
     //public GameObject tablet;
 
@@ -30,7 +30,7 @@ public class Checking_bluetooth : MonoBehaviour
     {
        if (other.gameObject.name == "tablet")
         {
-            GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
+            IsCanConnect = true;
             Debug.Log("연결이 가능합니다");
         }
 
@@ -57,7 +57,7 @@ public class Checking_bluetooth : MonoBehaviour
     {
         if (other.gameObject.name == "tablet")
         {
-            GameManager.gameManager._gameData.IsCanConnect_C_MS = false;
+            IsCanConnect = false;
             Debug.Log("연결이 불가능합니당 ㅠㅠ");
         }
     }
