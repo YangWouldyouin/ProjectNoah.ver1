@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnExDoor_buttons : MonoBehaviour, IInteraction
+public class LiExDoor_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
@@ -74,7 +74,7 @@ public class EnExDoor_buttons : MonoBehaviour, IInteraction
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        portDoorData.transform.localRotation = Quaternion.Euler(-90f, 0f, -140f);
+        portDoorData.transform.localRotation = Quaternion.Euler(-90f, 0f, 40f);
 
         portDoorData.IsNotInteractable = true;
         portDoorLine.OutlineWidth = 0f;
