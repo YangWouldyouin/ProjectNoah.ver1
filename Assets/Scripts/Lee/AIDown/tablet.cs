@@ -7,7 +7,9 @@ public class tablet : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
-    ObjData tabletData;
+    ObjData tabletObjectData;
+
+    [SerializeField] ObjectData tabletData;
 
     public GameObject TabletUI;
     public GameObject TabletBackBlack;
@@ -15,21 +17,20 @@ public class tablet : MonoBehaviour, IInteraction
 
     void Start()
     {
-        tabletData = GetComponent<ObjData>();
+        tabletObjectData = GetComponent<ObjData>();
 
-        barkButton = tabletData.BarkButton;
+        barkButton = tabletObjectData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = tabletData.SniffButton;
+        sniffButton = tabletObjectData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = tabletData.BiteButton;
-        //biteButton.onClick.AddListener(OnBite);
+        biteButton = tabletObjectData.BiteButton;
 
-        pressButton = tabletData.PushOrPressButton;
+        pressButton = tabletObjectData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        observeButton = tabletData.CenterButton1;
+        observeButton = tabletObjectData.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
     }
 
@@ -80,7 +81,7 @@ public class tablet : MonoBehaviour, IInteraction
         tabletData.IsObserve = true;
         DisableButton();
         PlayerScripts.playerscripts.currentObserveObj = gameObject;
-        CameraController.cameraController.currentView = tabletData.ObserveView;
+        CameraController.cameraController.currentView = tabletObjectData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
         Invoke("TabletOn", 2.5f);
