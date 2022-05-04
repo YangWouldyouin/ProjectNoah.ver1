@@ -49,6 +49,14 @@ public class GameData
     public bool IsInputNormalMeteor1_T_C2; // 일반 운석1을 수집기에 넣는지
     public bool IsInputImportantMeteor1_T_C2; // 특별 운석을 수집기에 넣는지
 
+    public bool IsAnswerInBeaker1_M_C2; // 비커 1에 맞는 운석을 넣었는지
+
+    public bool IsAnswerBeakerColorChange1_M_C2; // 정답 약 때문에 비커 1 색상 변화
+    public bool IsWrongBeakerColorChange1_M_C2; // 틀린 약 때문에 비커 1 색상 변화
+    public bool IsNoNeed1BeakerColorChange1_M_C2; // 필요없는 약1 때문에 비커 1 색상 변화
+    public bool IsNoNeed2BeakerColorChange1_M_C2; // 필요없는 약2 때문에 비커 1 색상 변화
+
+
     public bool Is_Tablet_WirelessOn; //태블릿 블루투스 on/off체크
     public bool IsFakeHealthData_Tablet; //태블릿 강아지 더미 상태 데이터
     public bool IsFakeCoordinateData_Tablet; //태블릿거짓좌표해금 판단

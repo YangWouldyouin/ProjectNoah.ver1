@@ -243,7 +243,7 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
 
         meteorCollectanimOpen_T = false; // 다시 반복할 수 있게
 
-        Debug.Log("다시 반복할 수 있어요");
+        //Debug.Log("다시 반복할 수 있어요");
 
         canMeteorCollectMachineData_T.IsNotInteractable = true; // 상호작용 불가능하게
         canMeteorCollectMachineOutline_T.OutlineWidth = 0;

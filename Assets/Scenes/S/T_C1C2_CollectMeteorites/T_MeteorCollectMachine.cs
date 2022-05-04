@@ -13,8 +13,8 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
     public GameObject T_DoNormalMeteor1;
     public GameObject T_DoImportantMeteor;
     public GameObject T_DoMeteorButton;
-    public GameObject Box_Obj;
-    public GameObject Noah_Obj;
+    public GameObject T_Box_Obj;
+    public GameObject T_Noah_Obj;
 
     public GameObject T_AnalyticalButton;
 
@@ -36,7 +36,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
     Outline doMeteorButtonOutline_T;
 
     /*Collider*/
-    BoxCollider IScollectMachineCollider;
+    BoxCollider IScollectMachine_Collider;
     BoxCollider Box_Collider;
     BoxCollider MeteorButton_Collider;
     BoxCollider Noah_Collider;
@@ -46,10 +46,10 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
     void Start()
     {
         /*Collider*/
-        IScollectMachineCollider = GetComponent<BoxCollider>();
-        Box_Collider = Box_Obj.GetComponent<BoxCollider>();
+        IScollectMachine_Collider = GetComponent<BoxCollider>();
+        Box_Collider = T_Box_Obj.GetComponent<BoxCollider>();
         MeteorButton_Collider = T_DoMeteorButton.GetComponent<BoxCollider>();
-        Noah_Collider = Noah_Obj.GetComponent<BoxCollider>();
+        Noah_Collider = T_Noah_Obj.GetComponent<BoxCollider>();
         AnalyticalButton_Collider = T_AnalyticalButton.GetComponent<BoxCollider>();
 
         /*ObjData*/
@@ -57,7 +57,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
         doNormalMeteor1Data_T = T_DoNormalMeteor1.GetComponent<ObjData>();
         doImportantMeteorData_T = T_DoImportantMeteor.GetComponent<ObjData>();
         doMeteorButtonData_T = T_DoMeteorButton.GetComponent<ObjData>();
-        Box_ObjData_T = Box_Obj.GetComponent<ObjData>();
+        Box_ObjData_T = T_Box_Obj.GetComponent<ObjData>();
 
         /*Outline*/
         meteorCollectMachineOutline_T = GetComponent<Outline>();
@@ -98,9 +98,9 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
             doMeteorButtonData_T.IsNotInteractable = true; // 버튼 상호작용 불가능하게
             doMeteorButtonOutline_T.OutlineWidth = 0;
 
-            IScollectMachineCollider.enabled = false; // 운석 수집기 콜라이더도 꺼준다.
+            IScollectMachine_Collider.enabled = false; // 운석 수집기 콜라이더도 꺼준다.
             Noah_Collider.enabled = false; // 노아 콜라이더도 꺼준다.
-            Debug.Log("false");
+            //Debug.Log("false");
         }
 
         if(Box_ObjData_T.IsUpDown)
