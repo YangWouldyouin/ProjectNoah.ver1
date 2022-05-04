@@ -17,6 +17,8 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
     // Start is called before the first frame update
     void Start()
     {
+        //L_1
+
         TDBT_BodyData_L = GetComponent<ObjData>();
         TDBT_fixPartData = TDBT_fixPart.GetComponent<ObjData>();
 

@@ -34,7 +34,7 @@ public class W_Health_Machine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //workroom 최초 진입 시 상태체크 수리 W_HM_1
+        //W_HM_1
         
         Health_MachineData_W = GetComponent<ObjData>();
         healthMachineFixPartData_HM = healthMachineFixPart_HM.GetComponent<ObjData>();
@@ -190,7 +190,8 @@ public class W_Health_Machine : MonoBehaviour
 
         Health_MachineData_W.IsCenterButtonDisabled = false;
 
-        //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(7));
+        //W_HM_2 : 아래 줄이 언니가 추가해둔 스크립트. 수정해야 할 듯!
+        //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(7)); 
 
         GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -230,19 +231,24 @@ public class W_Health_Machine : MonoBehaviour
         {
             //더미데이터 메인컴퓨터에 업로드
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //확인되었습니다. AI 대사 출력
+            //W_HM_3
         }
         else
         {
+            //현재 스탯 상태 메인 컴퓨터에 업로드 
+
             //if (노아 스탯 < 30) 
             //{
             //    GameManager.gameManager._gameData.IsReportCancleCount += 1;
             //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-            //    //상태 관리 제대로 하지 않으면 임무에서 제외하도록 하겠습니다. AI 대사 출력
+            //    //W_HM_5
             //}
-            
-            //현재 스탯 상태 메인 컴퓨터에 업로드 
+            //else
+            //{
+            //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //    //W_HM_3
+            //}
         }
     }
 
@@ -255,7 +261,7 @@ public class W_Health_Machine : MonoBehaviour
         GameManager.gameManager._gameData.IsReportCancleCount += 1;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        //임무에 성실히 임하지 않으면 임무에서 제외하도록 하겠습니다. AI 대사 출력
+        //W_HM_4
         AIReprotMissionTime = false;
     }
 }

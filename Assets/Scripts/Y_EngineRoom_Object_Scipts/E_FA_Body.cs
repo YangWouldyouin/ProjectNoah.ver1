@@ -17,6 +17,8 @@ public class E_FA_Body : MonoBehaviour, IInteraction
     // Start is called before the first frame update
     void Start()
     {
+        //E_1
+
         FA_BodyData_E = GetComponent<ObjData>();
         FA_fuelabsorberfixPartData = FA_fuelabsorberfixPart.GetComponent<ObjData>();
 
