@@ -12,6 +12,8 @@ public class ObjData : MonoBehaviour
 
     [SerializeField] string smellText;
 
+    [SerializeField] ObjectData objectData;
+
     [Header("도착 위치 & 각도")]
     [SerializeField] Transform interactionDestination;
 
@@ -64,6 +66,8 @@ public class ObjData : MonoBehaviour
     // 위 목록을 다른 스크립트에서 쓸 수 있도록 한 것들
     public string ObjectName { get { return objectName; } }
     public string SmellText { get { return smellText; } }
+    public ObjectData objectDATA { get { return objectData; } }
+
     public Transform InteractionDestination { get { return interactionDestination; } }
     public  Vector3 ButtonOffset { get { return buttonOffset; } }
     public GameObject InteractButton { get { return interactButton; } }
@@ -100,9 +104,8 @@ public class ObjData : MonoBehaviour
 
     public bool IsCenterButtonDisabled = false; // true면 첫 번째 가운데 버튼 비활성화
     public bool IsCenterPlusButtonDisabled = false; // true면 두 번째 가운데 버튼 비활성화
-    
+    public bool IsCenterButtonChanged = false;
     public bool IsNotInteractable = false;
-
 
     [Header("< 상호작용 시 바뀌는 데이터 목록 (평소에 건드리지 x) >")]
     public bool IsBark = false;
@@ -114,8 +117,6 @@ public class ObjData : MonoBehaviour
     public bool IsEaten = false;
     public bool IsInsert = false;
     public bool IsObserve = false;
-    public bool IsObservePlus = false;
-    public bool IsCenterButtonChanged = false;
     public bool IsCollision = false; // 책상 올라가려고 추가한 것이다. UpUP, M_C2_FindEnginespaceKey 코드 참고
     public bool IsClicked = false;
 

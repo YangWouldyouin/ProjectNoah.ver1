@@ -231,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC67C\uCABD \uC774\uB3D9 \uBC84\uD2BC"
   smellText: 
+  objectData: {fileID: 0}
   interactionDestination: {fileID: 0}
   buttonOffset: {x: 0, y: 0, z: 0}
   interactButton: {fileID: 0}
@@ -253,6 +254,7 @@ MonoBehaviour:
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
   IsNotInteractable: 1
   IsBark: 0
   IsPushOrPress: 0
@@ -263,8 +265,6 @@ MonoBehaviour:
   IsEaten: 0
   IsInsert: 0
   IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
 --- !u!4 &6683049 stripped
@@ -7691,6 +7691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uD655\uC778 \uBC84\uD2BC"
   smellText: 
+  objectData: {fileID: 0}
   interactionDestination: {fileID: 0}
   buttonOffset: {x: 0, y: 0, z: 0}
   interactButton: {fileID: 0}
@@ -7713,6 +7714,7 @@ MonoBehaviour:
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
   IsNotInteractable: 1
   IsBark: 0
   IsPushOrPress: 0
@@ -7723,8 +7725,6 @@ MonoBehaviour:
   IsEaten: 0
   IsInsert: 0
   IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
 --- !u!54 &656124585
@@ -9922,6 +9922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f686f88d65b794691ab40528a9e6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pipeData: {fileID: 11400000, guid: 237b984ed555205478ac716c91bcee34, type: 2}
+  C_WorkRoomDoorData: {fileID: 11400000, guid: ec14c1482dfc4654b89d84157932c2f9, type: 2}
   biteButton: {fileID: 877372087}
   smashButton: {fileID: 1272740796}
   barkButton: {fileID: 1050942415}
@@ -9931,8 +9933,6 @@ MonoBehaviour:
   centerDisableButton1: {fileID: 0}
   centerButton2: {fileID: 0}
   centerDisableButton2: {fileID: 0}
-  cockpitDoor_P: {fileID: 2099261498}
-  pipe_P: {fileID: 1068952797}
 --- !u!1001 &881628300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11652,6 +11652,14 @@ PrefabInstance:
       propertyPath: pushOrPressButton
       value: 
       objectReference: {fileID: 43177149}
+    - target: {fileID: 1068952802, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: pipeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 237b984ed555205478ac716c91bcee34, type: 2}
+    - target: {fileID: 1068952802, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: C_WorkRoomDoorData
+      value: 
+      objectReference: {fileID: 11400000, guid: ec14c1482dfc4654b89d84157932c2f9, type: 2}
     - target: {fileID: 4835016166140723761, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_Name
       value: Portable Objects
@@ -11729,6 +11737,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 877372087}
     - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: objectData
+      value: 
+      objectReference: {fileID: 11400000, guid: 237b984ed555205478ac716c91bcee34, type: 2}
+    - target: {fileID: 8519345538468102396, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: smashButton
       value: 
       objectReference: {fileID: 1272740796}
@@ -11762,6 +11774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2015130063, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+    - {fileID: 2015130064, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
 --- !u!1 &1068952795 stripped
 GameObject:
@@ -11990,6 +12003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC870\uC885\uC11D"
   smellText: "\uC0C8 \uC7A5\uB09C\uAC10"
+  objectData: {fileID: 0}
   interactionDestination: {fileID: 851676282}
   buttonOffset: {x: 0, y: 0, z: 0}
   interactButton: {fileID: 28190034}
@@ -12012,6 +12026,7 @@ MonoBehaviour:
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -12022,8 +12037,6 @@ MonoBehaviour:
   IsEaten: 0
   IsInsert: 0
   IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
 --- !u!114 &1081180978
@@ -12746,6 +12759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC624\uB978\uCABD \uC774\uB3D9 \uBC84\uD2BC"
   smellText: 
+  objectData: {fileID: 0}
   interactionDestination: {fileID: 0}
   buttonOffset: {x: 0, y: 0, z: 0}
   interactButton: {fileID: 0}
@@ -12768,6 +12782,7 @@ MonoBehaviour:
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
   IsNotInteractable: 1
   IsBark: 0
   IsPushOrPress: 0
@@ -12778,8 +12793,6 @@ MonoBehaviour:
   IsEaten: 0
   IsInsert: 0
   IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
 --- !u!114 &1150956443
@@ -15718,6 +15731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
+  objectData: {fileID: 0}
   interactionDestination: {fileID: 0}
   buttonOffset: {x: 0, y: 0, z: 0}
   interactButton: {fileID: 81748249}
@@ -15740,6 +15754,7 @@ MonoBehaviour:
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -15750,8 +15765,6 @@ MonoBehaviour:
   IsEaten: 0
   IsInsert: 0
   IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
 --- !u!114 &1515308555
@@ -18373,6 +18386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uD589\uC131 \uAE30\uACC4"
   smellText: 
+  objectData: {fileID: 0}
   interactionDestination: {fileID: 1425086596}
   buttonOffset: {x: 0, y: 0, z: 0}
   interactButton: {fileID: 965228667}
@@ -18395,6 +18409,7 @@ MonoBehaviour:
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -18405,8 +18420,6 @@ MonoBehaviour:
   IsEaten: 0
   IsInsert: 0
   IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
 --- !u!114 &1773526891
@@ -21349,6 +21362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC870\uC885\uC2E4 \uBB38"
   smellText: 
+  objectData: {fileID: 0}
   interactionDestination: {fileID: 221332065}
   buttonOffset: {x: 0, y: 0, z: 0}
   interactButton: {fileID: 1091815921}
@@ -21371,6 +21385,7 @@ MonoBehaviour:
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 1
   IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -21381,8 +21396,6 @@ MonoBehaviour:
   IsEaten: 0
   IsInsert: 0
   IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
 --- !u!54 &2099261502

@@ -28,6 +28,7 @@ public class PlayerScripts : MonoBehaviour
     private Transform interactionDestinationData, observeData, observePlusData;
     private  Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteBtn, smashBtn, pushOrPressBtn, centerBtn;
     private Vector3 interactionButtonOffset;
+    private ObjectData objectData;
 
     /* 상호작용 취소할 때 사용하는 변수 */
     [HideInInspector]
@@ -98,6 +99,7 @@ public class PlayerScripts : MonoBehaviour
                     observeData = objData.ObserveView;
                     observePlusData = objData.ObservePlusView;
                     interactionButtonOffset = objData.ButtonOffset;
+                    objectData = objData.objectDATA;
                     // 오브젝트 기본 버튼을 가져옴
                     barkBtn = objData.BarkButton;
                     sniffBtn = objData.SniffButton;
@@ -108,9 +110,9 @@ public class PlayerScripts : MonoBehaviour
                     interactionButtons = objData.InteractButton;
 
                     /* 오브젝트 추가 버튼을 특정 조건을 만족했는지 확인 후 가져옴 */
-                    if (objData.IsCenterButtonChanged)
+                    if (objectData.IsCenterButtonChanged)
                     {
-                        if(objData.IsCenterPlusButtonDisabled)
+                        if(objectData.IsCenterPlusButtonDisabled)
                         {
                             centerBtn = objData.CenterDisableButton2;
                         }
@@ -121,7 +123,7 @@ public class PlayerScripts : MonoBehaviour
                     }
                     else
                     {
-                        if(objData.IsCenterButtonDisabled)
+                        if(objectData.IsCenterButtonDisabled)
                         {
                             centerBtn = objData.CenterDisableButton1;
                         }
@@ -133,10 +135,10 @@ public class PlayerScripts : MonoBehaviour
 
                     
                     Vector3 screenPos = mainCamera.WorldToScreenPoint(new Vector3(currentObject.transform.localPosition.x + interactionButtonOffset.x, currentObject.transform.localPosition.y + interactionButtonOffset.y, currentObject.transform.localPosition.z + interactionButtonOffset.z));
-                
-                    objData.IsClicked = true;
+
+                    objectData.IsClicked = true;
                     //Invoke("UnClickObject", 1f);
-                    if (!objData.IsNotInteractable)
+                    if (!objectData.IsNotInteractable)
                     {
                         Invoke("NameTagAppear", 1f);
                         interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
@@ -193,9 +195,9 @@ public class PlayerScripts : MonoBehaviour
 
     void UnClickObject()
     {
-        if(objData!=null)
+        if(objectData != null)
         {
-            objData.IsClicked = false;
+            objectData.IsClicked = false;
         }       
     }
 

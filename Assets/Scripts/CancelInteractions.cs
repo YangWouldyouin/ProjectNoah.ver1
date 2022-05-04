@@ -18,6 +18,7 @@ public class CancelInteractions : MonoBehaviour
     TMPro.TextMeshProUGUI CancelObjectText;
 
     PlayerEquipment playerObject;
+    ObjectData cancelObjectData;
 
     private void Start()
     {
@@ -88,7 +89,7 @@ public class CancelInteractions : MonoBehaviour
                 if (i == 3 && observeObject != null)
                 {
                     ObjData cancelObserveData = observeObject.GetComponent<ObjData>();
-                    if (cancelObserveData.IsObserve)
+                    if (cancelObserveData.objectDATA.IsObserve)
                     {
                         CameraController.cameraController.CancelObserve();
                         break;

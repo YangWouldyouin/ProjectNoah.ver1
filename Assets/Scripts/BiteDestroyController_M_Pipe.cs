@@ -7,7 +7,7 @@ using UnityEngine.UI;
 // PointerEnterHandler, IPointerExitHandler, IPointerDownHandler, 
 public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    // [SerializeField] ObjectData pipeData, C_WorkRoomDoorData;
+    [SerializeField] ObjectData pipeData, C_WorkRoomDoorData;
 
     public Button biteButton, smashButton, barkButton, sniffButton, pushOrPressButton;
     [Header("추가 상호작용 버튼")]
@@ -20,22 +20,18 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
     private float requiredChangeTime = 0.5f;
     private float pointerDownTimer = 0;
 
-    private ObjData pipeData_M, cockpitDoorData;
-    public GameObject cockpitDoor_P;
-    public GameObject pipe_P;
-
     void Awake()
     {
-        //pipeData_M = pipe_P.GetComponent<ObjData>();
         //cockpitDoorData = cockpitDoor_P.GetComponent<ObjData>();
     }
 
     public void Update()
     {
-        //if (pipeData_M.IsBite == false)
-        //{
-        //    cockpitDoorData.IsCenterButtonDisabled = true;
-        //}
+
+        if (pipeData.IsBite == false)
+        {
+            C_WorkRoomDoorData.IsCenterButtonDisabled = true;
+        }
 
         ChangeButton(smashButton, biteButton);
 
@@ -97,7 +93,8 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
     public void OnPointerDown(PointerEventData eventData)
     {
         isPointerDown = true;
-        //cockpitDoorData.IsCenterButtonDisabled = false;
+        pipeData.IsBite = true;
+        C_WorkRoomDoorData.IsCenterButtonDisabled = false;
         InteractionButtonController.interactionButtonController.PlayerBite();
     }
 

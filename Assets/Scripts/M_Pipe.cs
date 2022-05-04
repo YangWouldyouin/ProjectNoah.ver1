@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class M_Pipe : MonoBehaviour, IInteraction
 {
-    [SerializeField] ObjectData pipeData, C_WorkRoomDoorData;
+    [SerializeField] ObjectData pipeData;
 
     private Button barkButton_M_Pipe, biteButton_M_Pipe, smashButton_M_Pipe, 
         pressButton_M_Pipe, sniffButton_M_Pipe, noCenterButton_M_Pipe;
@@ -15,7 +15,7 @@ public class M_Pipe : MonoBehaviour, IInteraction
 
     void Start()
     {
-        //pipeData_M = GetComponent<ObjData>();
+        pipeData_M = GetComponent<ObjData>();
         
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton_M_Pipe = pipeData_M.BarkButton;
@@ -57,7 +57,6 @@ public class M_Pipe : MonoBehaviour, IInteraction
     {
         /* 오브젝트의 짖기 변수 true로 바꿈 */
         pipeData.IsSmash = true;
-        pipeData_M.IsSmash = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
@@ -78,9 +77,10 @@ public class M_Pipe : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        //pipeData.IsBark = true;
+
         /* 오브젝트의 짖기 변수 true로 바꿈 */
-        pipeData_M.IsBark = true;
+        pipeData.IsBark = true;
+
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 애니메이션 보여줌 */
@@ -90,8 +90,7 @@ public class M_Pipe : MonoBehaviour, IInteraction
     public void OnSniff()
     {
         /* 오브젝트의 냄새맡기 변수 true로 바꿈 */
-        //pipeData.IsSniff = true;
-        pipeData_M.IsSniff = true;
+        pipeData.IsSniff = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 애니메이션 보여주고 냄새 텍스트 띄움 */
@@ -108,7 +107,7 @@ public class M_Pipe : MonoBehaviour, IInteraction
     public void OnPushOrPress()
     {
         /* 오브젝트의 누르기 변수 true로 바꿈 */
-        pipeData_M.IsPushOrPress = true;
+        pipeData.IsPushOrPress = true;
 
         /* 상호작용 버튼을 끔 */
         DiableButton();
@@ -130,7 +129,7 @@ public class M_Pipe : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        pipeData_M.IsPushOrPress = false;
+        pipeData.IsPushOrPress = false;
     }
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
