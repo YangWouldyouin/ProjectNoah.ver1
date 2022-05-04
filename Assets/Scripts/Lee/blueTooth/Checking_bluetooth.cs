@@ -94,18 +94,25 @@ public class Checking_bluetooth : MonoBehaviour
                 Debug.Log("이상한 칩 나감");
                 GameManager.gameManager._gameData.IsAlert = false;
             }
+
+            else
+            {
+
+            }
         }
     }
 
     public void NoRChip()
     {
-        Destroy(RChip01, 3f);
+        RChip01.SetActive(false);
+        //Destroy(RChip01, 3f);
         GameManager.gameManager._gameData.IsAlert = false;
     }
 
     public void NoWChip()
     {
-        Destroy(WChip01, 3f);
+        WChip01.SetActive(false);
+        //Destroy(WChip01, 3f);
         GameManager.gameManager._gameData.IsAlert = false;
     }
 }
