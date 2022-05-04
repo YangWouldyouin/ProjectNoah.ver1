@@ -15,7 +15,7 @@ public class MC_RecordSoundManager : MonoBehaviour
 
     public string[] RecordTitle;
 
-  
+    public int k = 0; // 페이지 변수
 
     // 재생 이미지
     public Sprite StartIcon_Rec;
@@ -48,10 +48,40 @@ public class MC_RecordSoundManager : MonoBehaviour
         RecordTitle_1_Rec.text = RecordTitle[0];
         RecordTitle_2_Rec.text = RecordTitle[1];
         PageNum_Rec.text = "1 / 3";
+
+
+
     }
 
     void Update()
     {
+        // 페이지 넘버
+        if (k < 1)
+        {
+            LeftButton_Rec.SetActive(false);
+        }
+        else
+        {
+            LeftButton_Rec.SetActive(true);
+        }
+
+        if (k == 2)
+        {
+            RightButton_Rec.SetActive(false);
+        }
+        else
+        {
+            RightButton_Rec.SetActive(true);
+        }
+
+
+        // 음악 재생 끝났을 때
+        if (!Audio_Rec.isPlaying)
+        {
+            PlayButton_1_Rec.GetComponent<Image>().sprite = StartIcon_Rec;
+            PlayButton_2_Rec.GetComponent<Image>().sprite = StartIcon_Rec;
+            Audio_Rec.Stop();
+        }
     }
 
     public void OnClickRightButton() // 오른쪽 버튼을 누를 시
@@ -67,6 +97,10 @@ public class MC_RecordSoundManager : MonoBehaviour
         IsButton1Clicked = false;
         IsButton2Clicked = false;
         Audio_Rec.Stop();
+
+
+        PageNum_Rec.text = (k + 2).ToString() + " / 3"; // 페이지 넘버
+        k++;
     }
 
     public void OnClickLeftButton() // 왼쪽 버튼을 누를 시
@@ -83,6 +117,10 @@ public class MC_RecordSoundManager : MonoBehaviour
         IsButton1Clicked = false;
         IsButton2Clicked = false;
         Audio_Rec.Stop();
+
+
+        PageNum_Rec.text = (k).ToString() + " / 3"; // 페이지 넘버
+        k--;
     }
 
 
@@ -94,7 +132,7 @@ public class MC_RecordSoundManager : MonoBehaviour
         {
             PlayButton_1_Rec.GetComponent<Image>().sprite = StartIcon_Rec;
             Audio_Rec.Stop();
-            // Audio_Rec.clip = RecordAudio[0];
+            Audio_Rec.clip = RecordAudio[0];
             IsButton1Clicked = false;
         }
         else
@@ -107,7 +145,7 @@ public class MC_RecordSoundManager : MonoBehaviour
             }
 
             PlayButton_1_Rec.GetComponent<Image>().sprite = DoneIcon_Rec;
-           // Audio_Rec.clip = RecordAudio[h + s - 2];
+            Audio_Rec.clip = RecordAudio[currentIndex];
             Audio_Rec.Play();
             IsButton1Clicked = true;
         }
@@ -119,7 +157,7 @@ public class MC_RecordSoundManager : MonoBehaviour
         {
             PlayButton_2_Rec.GetComponent<Image>().sprite = StartIcon_Rec;
             Audio_Rec.Stop();
-            // Audio_Rec.clip = RecordAudio[1];
+            Audio_Rec.clip = RecordAudio[1];
             IsButton2Clicked = false;
         }
         else
@@ -132,7 +170,7 @@ public class MC_RecordSoundManager : MonoBehaviour
             }
 
             PlayButton_2_Rec.GetComponent<Image>().sprite = DoneIcon_Rec;
-           // Audio_Rec.clip = RecordAudio[h + j - 2];
+            Audio_Rec.clip = RecordAudio[currentIndex + 1];
             Audio_Rec.Play();
             IsButton2Clicked = true;
         }
