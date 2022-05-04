@@ -15,7 +15,7 @@ public class M_Pipe : MonoBehaviour, IInteraction
 
     void Start()
     {
-        //pipeData_M = GetComponent<ObjData>();
+        pipeData_M = GetComponent<ObjData>();
         
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton_M_Pipe = pipeData_M.BarkButton;

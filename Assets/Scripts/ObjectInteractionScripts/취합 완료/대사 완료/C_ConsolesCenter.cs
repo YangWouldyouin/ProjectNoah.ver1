@@ -38,6 +38,9 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
     public Vector3 consoleRisePos;
 
+    /*UI관련*/
+    public GameObject MainSystem_GUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,6 +115,11 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
             consoleAIResetButtonData_CC.IsNotInteractable = true;
         }
+
+        if (consoleCenterData_CC.IsObserve == false)
+        {
+            MainSystem_GUI.SetActive(false);
+        }
     }
 
     /* 상호작용 버튼 끄는 함수 */
@@ -157,6 +165,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             CameraController.cameraController.currentView = consoleCenterData_CC.ObservePlusView; // 관찰 뷰 : 위쪽
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
+
+            MainSystem_GUI.SetActive(true);
 
             if (envirPipeData_CC.IsBite) // 파이프를 물었으면
             {
