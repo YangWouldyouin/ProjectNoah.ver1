@@ -20,7 +20,7 @@ public class SaveDataWhenSceneChange : MonoBehaviour
 
 
     [SerializeField] List<GameObject> portableObjectList = new List<GameObject>();
-    /* ¹® Å¬¸¯½Ã ÀÌµ¿ÇÒ ¾À */
+    /* ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ */
     public string transferMapName;
 
 
@@ -31,7 +31,7 @@ public class SaveDataWhenSceneChange : MonoBehaviour
 
     void Awake()
     {
-        /* ÇöÀç ¾ÀÀ» °¡Á®¿Í¼­ ±× ¾ÀÀÇ Æ÷ÅÍºí¿ÀºêÁ§Æ®¸®½ºÆ®¸¦ °¡Á®¿È */
+        /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
         int sceneNum = SceneManager.GetActiveScene().buildIndex;
         switch (sceneNum)
         {
@@ -49,7 +49,7 @@ public class SaveDataWhenSceneChange : MonoBehaviour
                 break;
         }
 
-        /* ¾ÀÀÇ Æ÷ÅÍºí ¿ÀºêÁ§Æ® ÃÊ±âÈ­ */
+        /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Íºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ê±ï¿½È­ */
         for(int i =0;  i< currentPortableObjectData.IsObjectActiveList.Count; i++)
         {
             if(currentPortableObjectData.IsObjectActiveList[i]==true)
@@ -65,24 +65,24 @@ public class SaveDataWhenSceneChange : MonoBehaviour
 
 
 
-        /* ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­ */
-        if (playerEquipment.pushObjectName != "") // ¹Ð°í ÀÖ´Â ¿ÀºêÁ§Æ®°¡ ÀÖ´Ù¸é 
+        /* ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ê±ï¿½È­ */
+        if (playerEquipment.pushObjectName != "") // ï¿½Ð°ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ 
         {
-            // ±× ¿ÀºêÁ§Æ®¸¦ ÇÏÀÌ¶óÅ°¿¡¼­ Ã£¾Æ¼­ È°¼ºÈ­
+            // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¶ï¿½Å°ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ È°ï¿½ï¿½È­
             pushObject = GameObject.Find("Portable Objects").transform.Find(playerEquipment.pushObjectName).gameObject;
             pushObject.SetActive(true);
 
-            // ¿ÀºêÁ§Æ® ÀÌ¸§À¸·Î ¸®½ºÆ®ÀÇ ÀÎµ¦½º¸¦ °¡Á®¿È
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.pushObjectName));
-            // ¾ÀÀÇ Æ÷ÅÍºí¿ÀºêÁ§Æ®¸®½ºÆ®ÀÇ ÇØ´ç ¿ÀºêÁ§Æ®ÀÇ °ªÀ» ÂüÀ¸·Î ¼öÁ¤
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             currentPortableObjectData.IsObjectActiveList[idx] = true;
 
-            // Ãë¼Ò¿¡µµ ³Ö¾îÁÜ!!!!!
+            // ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½!!!!!
             playerEquipment.cancelPushPos = pushObject.transform.position;
             playerEquipment.cancelPushRot = pushObject.transform.eulerAngles;
             playerEquipment.cancelPushScale = pushObject.transform.localScale;
 
-            // ³ë¾Æ ¸Ó¸®¿¡ µé¾î°¡°Ô + ¹Ì´Â ¾Ö´Ï¸ÞÀÌ¼Ç 
+            // ï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ + ï¿½Ì´ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ 
             noahAnimator.SetBool("IsPushing", true);
             noahAnimator.SetBool("IsPushing2", true);
 
@@ -97,23 +97,23 @@ public class SaveDataWhenSceneChange : MonoBehaviour
             pushObject.transform.localPosition = portableObjectData.PushPos; // sets the position of the object to your mouth position
             pushObject.transform.localEulerAngles = portableObjectData.PushRot; // sets the position of the object to yo
         }
-        else if (playerEquipment.biteObjectName != "") // ¹°°í ÀÖ´Â ¿ÀºêÁ§Æ®°¡ ÀÖ´Ù¸é 
+        else if (playerEquipment.biteObjectName != "") // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ 
         {
-            // ±× ¿ÀºêÁ§Æ®¸¦ ÇÏÀÌ¶óÅ°¿¡¼­ Ã£¾Æ¼­ È°¼ºÈ­
+            // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¶ï¿½Å°ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ È°ï¿½ï¿½È­
             biteObject = GameObject.Find("Portable Objects").transform.Find(playerEquipment.biteObjectName).gameObject;
             biteObject.SetActive(true);
 
-            // ¿ÀºêÁ§Æ® ÀÌ¸§À¸·Î ¹è¿­ÀÇ ÀÎµ¦½º¸¦ °¡Á®¿È
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.biteObjectName));
-            // ¾ÀÀÇ Æ÷ÅÍºí¿ÀºêÁ§Æ®¸®½ºÆ®ÀÇ ÇØ´ç ¿ÀºêÁ§Æ®ÀÇ °ªÀ» ÂüÀ¸·Î ¼öÁ¤
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             currentPortableObjectData.IsObjectActiveList[idx] = true;
 
-            // Ãë¼Ò¿¡µµ ³Ö¾îÁÜ!!!!!
+            // ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½!!!!!
             playerEquipment.cancelBitePos = biteObject.transform.position;
             playerEquipment.cancelBiteRot = biteObject.transform.eulerAngles;
             playerEquipment.cancelBiteScale = biteObject.transform.localScale;
 
-            // ³ë¾Æ ÀÔ¿¡ µé¾î°¡°Ô
+            // ï¿½ï¿½ï¿½ ï¿½Ô¿ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½
             portableObjectData = biteObject.GetComponent<ObjData>();
             objectText.text = "Noah N.113 - " + portableObjectData.ObjectName;
 
@@ -139,18 +139,18 @@ public class SaveDataWhenSceneChange : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        if (playerEquipment.pushObjectName != "") // ¹Ð°í ÀÖ´Â ¿ÀºêÁ§Æ®°¡ ÀÖÀ¸¸é
+        if (playerEquipment.pushObjectName != "") // ï¿½Ð°ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            // ¿ÀºêÁ§Æ® ÀÌ¸§À¸·Î ¹è¿­ÀÇ ÀÎµ¦½º¸¦ °¡Á®¿È
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.pushObjectName));
-            // ¾ÀÀÇ Æ÷ÅÍºí¿ÀºêÁ§Æ®¸®½ºÆ®ÀÇ ÇØ´ç ¿ÀºêÁ§Æ®ÀÇ °ªÀ» °ÅÁþÀ¸·Î ¼öÁ¤
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             currentPortableObjectData.IsObjectActiveList[idx] =  false;
         }
-        else if(playerEquipment.biteObjectName != "") // ¹°°í ÀÖ´Â ¿ÀºêÁ§Æ®°¡ ÀÖÀ¸¸é
+        else if(playerEquipment.biteObjectName != "") // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            // ¿ÀºêÁ§Æ® ÀÌ¸§À¸·Î ¹è¿­ÀÇ ÀÎµ¦½º¸¦ °¡Á®¿È
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.biteObjectName));
-            // ¾ÀÀÇ Æ÷ÅÍºí¿ÀºêÁ§Æ®¸®½ºÆ®ÀÇ ÇØ´ç ¿ÀºêÁ§Æ®ÀÇ °ªÀ» °ÅÁþÀ¸·Î ¼öÁ¤
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             currentPortableObjectData.IsObjectActiveList[idx] = false;
         }
 

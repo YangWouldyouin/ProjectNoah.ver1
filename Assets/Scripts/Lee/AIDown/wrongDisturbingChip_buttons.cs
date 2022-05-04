@@ -30,7 +30,7 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.IsHide = true;
     }
 
-    public void OnTriggerEnter(Collider other)
+    /*public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "canConnectZone")
         {
@@ -51,7 +51,7 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
             }
 
         }
-    }
+    }*/
 
     void DisableButton()
     {

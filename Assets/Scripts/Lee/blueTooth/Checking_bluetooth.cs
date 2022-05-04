@@ -11,12 +11,23 @@ public class Checking_bluetooth : MonoBehaviour
     
     //public GameObject canConnect;
 
-    public static bool IsCanConnect;
+    public GameObject tablet;
+    public GameObject RChip01;
+    public GameObject WChip01;
+
+    ObjData tabletData;
+    ObjData RChip01Data;
+    ObjData WChip01Data;
+
+    //public static bool IsCanConnect;
 
     //public GameObject tablet;
 
     void Start()
     {
+        tabletData = tablet.GetComponent<ObjData>();
+        RChip01Data = RChip01.GetComponent<ObjData>();
+        WChip01Data = WChip01.GetComponent<ObjData>();
         //dialogManager = dialogManager_CCB.GetComponent<DialogManager>();
     }
 
@@ -28,23 +39,39 @@ public class Checking_bluetooth : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-       if (other.gameObject.name == "tablet")
+        if (other.gameObject.name == "noahPlayer")
         {
-            IsCanConnect = true;
-            Debug.Log("¿¬°áÀÌ °¡´ÉÇÕ´Ï´Ù");
+            /*if (tabletData.IsBite)
+            {
+                GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
+            }*/
+
+            if (RChip01Data.IsBite && GameManager.gameManager._gameData.IsHide)
+            {
+                Debug.Log("ì´ìƒí•œ ì¹© ê°ì§€");
+                GameManager.gameManager._gameData.IsAlert = true;
+                Invoke("NoRChip", 0f);
+            }
+
+            if (WChip01Data.IsBite && GameManager.gameManager._gameData.IsHide)
+            {
+                Debug.Log("ì´ìƒí•œ ì¹© ê°ì§€");
+                GameManager.gameManager._gameData.IsAlert = true;
+                Invoke("NoWChip", 0f);
+            }
         }
 
        /*if (other.tag == "chip")
         {
             if(GameManager.gameManager._gameData.IsHide)
             {
-                Debug.Log("¾ÈÀüÇÔ");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             }
 
             else
             {
-                Debug.Log("´Ô Áö±İ ¸ÓÇÏ½Ã´Â????");
-                //AI°¡ °æ°èÇÏ´Â ´ë»ç Ãâ·Â
+                Debug.Log("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï½Ã´ï¿½????");
+                //AIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
                 GameManager.gameManager._gameData.IsAlert = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -55,11 +82,37 @@ public class Checking_bluetooth : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "tablet")
+        if (other.gameObject.name == "noahPlayer")
         {
-            IsCanConnect = false;
-            Debug.Log("¿¬°áÀÌ ºÒ°¡´ÉÇÕ´Ï´ç ¤Ğ¤Ğ");
+            if (tabletData.IsBite)
+            {
+                GameManager.gameManager._gameData.IsCanConnect_C_MS = false;
+            }
+
+            if (RChip01Data.IsBite || WChip01Data.IsBite)
+            {
+                Debug.Log("ì´ìƒí•œ ì¹© ë‚˜ê°");
+                GameManager.gameManager._gameData.IsAlert = false;
+            }
+
+            else
+            {
+
+            }
         }
     }
 
+    public void NoRChip()
+    {
+        RChip01.SetActive(false);
+        //Destroy(RChip01, 3f);
+        GameManager.gameManager._gameData.IsAlert = false;
+    }
+
+    public void NoWChip()
+    {
+        WChip01.SetActive(false);
+        //Destroy(WChip01, 3f);
+        GameManager.gameManager._gameData.IsAlert = false;
+    }
 }
