@@ -103,7 +103,7 @@ public class CancelInteractions : MonoBehaviour
                 {
 
                     ObjData cancelUpDownData = upDownObject.GetComponent<ObjData>();
-                    if (cancelUpDownData.IsUpDown)
+                    if (cancelUpDownData.objectDATA.IsUpDown)
                     {
                         //Vector3 fallrot = noahPosition.transform.eulerAngles;
                         InteractionButtonController.interactionButtonController.PlayerFall1();
@@ -125,7 +125,7 @@ public class CancelInteractions : MonoBehaviour
                 {
                     biteObject = GameObject.Find(playerObject.biteObjectName).gameObject;
                     ObjData cancelBiteData = biteObject.GetComponent<ObjData>();
-                    cancelBiteData.IsBite = false;
+                    cancelBiteData.objectDATA.IsBite = false;
                     playerAnimation.SetBool("IsPutDowning", true);
 
                     Invoke("CancelBitingAnimation", 1f);
@@ -142,7 +142,7 @@ public class CancelInteractions : MonoBehaviour
                 pushObject = GameObject.Find(playerObject.pushObjectName).gameObject;
 
                 ObjData cancelPushData = pushObject.GetComponent<ObjData>();
-                cancelPushData.IsPushOrPress = false;
+                cancelPushData.objectDATA.IsPushOrPress = false;
 
                 playerAnimation.SetBool("IsPushing", false);
 
