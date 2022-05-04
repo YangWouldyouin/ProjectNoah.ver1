@@ -34,6 +34,8 @@ public class W_Health_Machine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //workroom 최초 진입 시 상태체크 수리 W_HM_1
+        
         Health_MachineData_W = GetComponent<ObjData>();
         healthMachineFixPartData_HM = healthMachineFixPart_HM.GetComponent<ObjData>();
         healthMachineFixPartDataOutline = healthMachineFixPart_HM.GetComponent<Outline>();
