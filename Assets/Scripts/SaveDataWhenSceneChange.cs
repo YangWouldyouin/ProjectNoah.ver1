@@ -72,7 +72,7 @@ public class SaveDataWhenSceneChange : MonoBehaviour
             pushObject = GameObject.Find("Portable Objects").transform.Find(playerEquipment.pushObjectName).gameObject;
             pushObject.SetActive(true);
 
-            // 오브젝트 이름으로 배열의 인덱스를 가져옴
+            // 오브젝트 이름으로 리스트의 인덱스를 가져옴
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.pushObjectName));
             // 씬의 포터블오브젝트리스트의 해당 오브젝트의 값을 참으로 수정
             currentPortableObjectData.IsObjectActiveList[idx] = true;

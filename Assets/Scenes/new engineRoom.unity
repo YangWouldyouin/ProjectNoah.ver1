@@ -5071,6 +5071,7 @@ GameObject:
   - component: {fileID: 293917787}
   - component: {fileID: 293917786}
   - component: {fileID: 293917791}
+  - component: {fileID: 293917792}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -5213,13 +5214,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293917785}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: 0.69, y: 19.64, z: 0}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 2.3, y: 14.1, z: 5.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: -90}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 90}
 --- !u!114 &293917791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5235,6 +5236,19 @@ MonoBehaviour:
   originPosition: {x: 0, y: 0, z: 0}
   originRotation: {x: 0, y: 0, z: 0}
   currentView: {fileID: 0}
+--- !u!114 &293917792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293917785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad11cf787c8a54b9587c29e756a8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &295742951
 GameObject:
   m_ObjectHideFlags: 0
@@ -22809,6 +22823,14 @@ PrefabInstance:
       propertyPath: pushOrPressButton
       value: 
       objectReference: {fileID: 1023614837}
+    - target: {fileID: 1068952802, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: pipeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 237b984ed555205478ac716c91bcee34, type: 2}
+    - target: {fileID: 1068952802, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
+      propertyPath: C_WorkRoomDoorData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fc667819d7b47340bc86e83131e6112, type: 2}
     - target: {fileID: 543450652951519247, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.93
@@ -22941,7 +22963,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 5.96
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2015130063, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
 --- !u!4 &1220303944 stripped
 Transform:

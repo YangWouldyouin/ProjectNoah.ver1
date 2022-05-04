@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class M_Pipe : MonoBehaviour, IInteraction
 {
-    [SerializeField] PortableObjectData pipeData;
+    [SerializeField] ObjectData pipeData, C_WorkRoomDoorData;
 
     private Button barkButton_M_Pipe, biteButton_M_Pipe, smashButton_M_Pipe, 
         pressButton_M_Pipe, sniffButton_M_Pipe, noCenterButton_M_Pipe;
 
     private ObjData pipeData_M;
 
+
     void Start()
     {
-        pipeData_M = GetComponent<ObjData>();
+        //pipeData_M = GetComponent<ObjData>();
         
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton_M_Pipe = pipeData_M.BarkButton;
@@ -55,6 +56,7 @@ public class M_Pipe : MonoBehaviour, IInteraction
     public void OnSmash()
     {
         /* 오브젝트의 짖기 변수 true로 바꿈 */
+        pipeData.IsSmash = true;
         pipeData_M.IsSmash = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
@@ -88,6 +90,7 @@ public class M_Pipe : MonoBehaviour, IInteraction
     public void OnSniff()
     {
         /* 오브젝트의 냄새맡기 변수 true로 바꿈 */
+        //pipeData.IsSniff = true;
         pipeData_M.IsSniff = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();

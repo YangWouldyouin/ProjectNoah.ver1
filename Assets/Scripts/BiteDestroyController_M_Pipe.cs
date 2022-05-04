@@ -7,6 +7,8 @@ using UnityEngine.UI;
 // PointerEnterHandler, IPointerExitHandler, IPointerDownHandler, 
 public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    // [SerializeField] ObjectData pipeData, C_WorkRoomDoorData;
+
     public Button biteButton, smashButton, barkButton, sniffButton, pushOrPressButton;
     [Header("추가 상호작용 버튼")]
     public Button centerButton1;
