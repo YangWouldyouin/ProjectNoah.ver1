@@ -101,7 +101,7 @@ public class strangeObj : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        //¹ÙÀÌÆ® ¹öÆ°¿¡ ½ºÅ©¸³Æ® ³Ö±â
+        //ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ® ï¿½Ö±ï¿½
     }
 
     public void OnSmash()
@@ -115,7 +115,7 @@ public class strangeObj : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.PlayerSmash2();
 
-        //³ë¾Æ°¡ º¸ÀÌÁö ¾Ê¾Æ ´çÈ²ÇÏ´Â AI ´ë»ç
+        //ï¿½ï¿½Æ°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾ï¿½ ï¿½ï¿½È²ï¿½Ï´ï¿½ AI ï¿½ï¿½ï¿½
     }
 
     void ObjSmoke()
@@ -137,11 +137,13 @@ public class strangeObj : MonoBehaviour, IInteraction
         gameObject.SetActive(false);
         Destroy(smoke, 3f);
 
-        Invoke("CantHide", 180f);
+        Invoke("CantHide", 5f);
     }
 
     void CantHide()
     {
+        Debug.Log("ì´ì œ ëª» ìˆ¨ìŒ");
+
         playerLine.OutlineWidth = 0f;
 
         GameManager.gameManager._gameData.IsHide = false;

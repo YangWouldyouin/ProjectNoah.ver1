@@ -28,19 +28,19 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
         noCenterButton = disturbingChipData.CenterButton1;
     }
 
-    public void OnTriggerEnter(Collider other)
+    /*public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "canConnectZone")
         {
             if (GameManager.gameManager._gameData.IsHide)
             {
-                Debug.Log("¾ÈÀüÇÔ");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             }
 
             else
             {
-                Debug.Log("´Ô Áö±Ý ¸ÓÇÏ½Ã´Â????±×°Å ¾Ð¼ö");
-                //AI°¡ °æ°èÇÏ´Â ´ë»ç Ãâ·Â
+                Debug.Log("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï½Ã´ï¿½????ï¿½×°ï¿½ ï¿½Ð¼ï¿½");
+                //AIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
                 GameManager.gameManager._gameData.IsAlert = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -49,7 +49,7 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
             }
 
         }
-    }
+    }*/
 
     void DisableButton()
     {
@@ -111,7 +111,7 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        //¹öÆ°¿¡ »ðÀÔÇÏ±â
+        //ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
     }
 
     public void OnSmash()
