@@ -68,6 +68,8 @@ public class GameData
     public bool IsCanConnect_C_MS; //메인시스템 블루투스 영역 체크 
     public bool IsReturnOfTheEarth;//궤도 변경 성공
 
+    public bool IsPlanetInsertChip_In; // 올바른 교란칩 꽂아 가짜 행성 데이터 변환
+
     /*퍼즐시작*/
     public bool IsStartCollectMeteorites; // 운석 수집 임무 시작
     public bool IsStartPretendDead; // 죽은척 하기 임무 시작
