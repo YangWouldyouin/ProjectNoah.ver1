@@ -12,8 +12,10 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_MiniCabinetBody, sniffButton_M_MiniCabinetBody, biteButton_M_MiniCabinetBody, pressButton_M_MiniCabinetBody, observeButton_M_MiniCabinetBody;
 
-    ObjData miniCabinetBodyData_M;
-    ObjData canRubberData_M;
+    ObjData miniCabinetBodyObjData_M;
+    public ObjectData miniCabinetBodyData_M;
+
+    public ObjectData canRubberData_M;
     //BoxCollider cabinetCollider;
 
     /*아웃라인*/
@@ -29,24 +31,23 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
         rubber_Collider = M_canRubber.GetComponent<BoxCollider>();
 
         /*연관있는 오브젝트*/
-        canRubberData_M = M_canRubber.GetComponent<ObjData>();
 
-        miniCabinetBodyData_M = GetComponent<ObjData>();
+        miniCabinetBodyObjData_M = GetComponent<ObjData>();
 
 
-        barkButton_M_MiniCabinetBody = miniCabinetBodyData_M.BarkButton;
+        barkButton_M_MiniCabinetBody = miniCabinetBodyObjData_M.BarkButton;
         barkButton_M_MiniCabinetBody.onClick.AddListener(OnBark);
 
-        sniffButton_M_MiniCabinetBody = miniCabinetBodyData_M.SniffButton;
+        sniffButton_M_MiniCabinetBody = miniCabinetBodyObjData_M.SniffButton;
         sniffButton_M_MiniCabinetBody.onClick.AddListener(OnSniff);
 
-        biteButton_M_MiniCabinetBody = miniCabinetBodyData_M.BiteButton;
+        biteButton_M_MiniCabinetBody = miniCabinetBodyObjData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_MiniCabinetBody = miniCabinetBodyData_M.PushOrPressButton;
+        pressButton_M_MiniCabinetBody = miniCabinetBodyObjData_M.PushOrPressButton;
         pressButton_M_MiniCabinetBody.onClick.AddListener(OnPushOrPress);
 
-        observeButton_M_MiniCabinetBody = miniCabinetBodyData_M.CenterButton1;
+        observeButton_M_MiniCabinetBody = miniCabinetBodyObjData_M.CenterButton1;
         observeButton_M_MiniCabinetBody.onClick.AddListener(OnObserve);
 
         rubberOutline_M = M_canRubber.GetComponent<Outline>();
@@ -86,14 +87,13 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
 
     public void OnObserve()
     {
-        miniCabinetBodyData_M.IsObserve = true;
         //cabinetCollider.isTrigger = false;
 
         DisableButton();
 
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
 
-        CameraController.cameraController.currentView = miniCabinetBodyData_M.ObserveView;
+        CameraController.cameraController.currentView = miniCabinetBodyObjData_M.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
 
@@ -123,8 +123,6 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
 
     public void OnBark()
     {
-        miniCabinetBodyData_M.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -137,25 +135,14 @@ public class M_MiniCabinetBody : MonoBehaviour,IInteraction
 
     public void OnPushOrPress()
     {
-        miniCabinetBodyData_M.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        miniCabinetBodyData_M.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        miniCabinetBodyData_M.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();

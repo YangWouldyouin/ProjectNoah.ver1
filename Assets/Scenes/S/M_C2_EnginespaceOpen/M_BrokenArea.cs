@@ -12,8 +12,9 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_BrokenArea, sniffButton_M_BrokenArea, biteButton_M_BrokenArea, pressButton_M_BrokenArea, noCenterButton_M_BrokenArea;
 
-    ObjData brokenAreaData_M;
-    ObjData canBrokenDoorConductionData_M;
+    ObjData brokenAreaObjData_M;
+    public ObjectData brokenAreaData_M;
+    public ObjectData canBrokenDoorConductionData_M;
     //ObjData biteRubberData_M;
 
     /*아웃라인*/
@@ -22,23 +23,23 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
 
     void Start()
     {
-        brokenAreaData_M = GetComponent<ObjData>();
-        canBrokenDoorConductionData_M = M_canBrokenDoorConduction.GetComponent<ObjData>();
+        brokenAreaObjData_M = GetComponent<ObjData>();
+
         //biteRubberData_M = M_biteRubber.GetComponent<ObjData>();
 
-        barkButton_M_BrokenArea = brokenAreaData_M.BarkButton;
+        barkButton_M_BrokenArea = brokenAreaObjData_M.BarkButton;
         barkButton_M_BrokenArea.onClick.AddListener(OnBark);
 
-        sniffButton_M_BrokenArea = brokenAreaData_M.SniffButton;
+        sniffButton_M_BrokenArea = brokenAreaObjData_M.SniffButton;
         sniffButton_M_BrokenArea.onClick.AddListener(OnSniff);
 
-        biteButton_M_BrokenArea = brokenAreaData_M.BiteButton;
+        biteButton_M_BrokenArea = brokenAreaObjData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_BrokenArea = brokenAreaData_M.PushOrPressButton;
+        pressButton_M_BrokenArea = brokenAreaObjData_M.PushOrPressButton;
         pressButton_M_BrokenArea.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton_M_BrokenArea = brokenAreaData_M.CenterButton1;
+        noCenterButton_M_BrokenArea = brokenAreaObjData_M.CenterButton1;
 
         /*아웃라인*/
         canBrokenDoorConductionOutline_M = GetComponent<Outline>();
@@ -61,8 +62,6 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
 
     public void OnBark()
     {
-        brokenAreaData_M.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -71,7 +70,6 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
 
     public void OnPushOrPress()
     {
-        brokenAreaData_M.IsPushOrPress = true;
 
         DisableButton();
 
@@ -126,8 +124,6 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
 
     public void OnSniff()
     {
-        brokenAreaData_M.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();

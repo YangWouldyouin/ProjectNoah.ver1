@@ -10,7 +10,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
     public GameObject T_InHealthySweetPotato2;
     public GameObject T_InBadSweetPotato2;
     public GameObject T_InSuperDrug2;
-    public GameObject T_IsFarmButton2;
     public GameObject T_IsGrownHealthy4;
     public GameObject T_IsGrownHealthy5;
     public GameObject T_IsGrownHealthy6;
@@ -20,11 +19,11 @@ public class T_Pot2 : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData Pot2Data_T;
-    ObjData InHealthySweetPotato2Data_T;
-    ObjData InBadSweetPotato2Data_T;
-    ObjData InSuperDrug2Data_T;
-    ObjData IsFarmButton2Data_T;
-    ObjData InUnGrownSweetPotato2Data_T;
+    public ObjectData InHealthySweetPotato2Data_T;
+    public ObjectData InBadSweetPotato2Data_T;
+    public ObjectData InSuperDrug2Data_T;
+    public ObjectData IsFarmButton2Data_T;
+    public ObjectData InUnGrownSweetPotato2Data_T;
 
     /*Collider*/
     BoxCollider Pot2_Collider;
@@ -32,11 +31,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
     void Start()
     {
         Pot2Data_T = GetComponent<ObjData>();
-        InUnGrownSweetPotato2Data_T = InUnGrownSweetPotato2Data_T.GetComponent<ObjData>();
-        IsFarmButton2Data_T = T_IsFarmButton2.GetComponent<ObjData>();
-        InHealthySweetPotato2Data_T = T_InHealthySweetPotato2.GetComponent<ObjData>();
-        InBadSweetPotato2Data_T = T_InBadSweetPotato2.GetComponent<ObjData>();
-        InSuperDrug2Data_T = T_InSuperDrug2.GetComponent<ObjData>();
 
         /*Collider*/
         Pot2_Collider = GetComponent<BoxCollider>();
@@ -90,8 +84,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        Pot2Data_T.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -99,8 +91,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        Pot2Data_T.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -108,13 +98,9 @@ public class T_Pot2 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        Pot2Data_T.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
 
         /*덜자란 고구마를 심으면 -> 고구마가 자란다.*/
         if (InUnGrownSweetPotato2Data_T.IsBite)
@@ -188,12 +174,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
         Debug.Log("생태계 구축 엔딩");
         GameManager.gameManager._gameData.IsMakeForest = true; // 엔딩으로 향하는 거기때문에 저장
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        Pot2Data_T.IsPushOrPress = false;
     }
 
     public void OnBite()

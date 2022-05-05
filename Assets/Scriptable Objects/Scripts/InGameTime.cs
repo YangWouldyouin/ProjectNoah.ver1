@@ -9,6 +9,8 @@ public class InGameTime : ScriptableObject
     public float hours;
 
     public float timer;
+
+    public int missionTimer;
     // Start is called before the first frame update
     void Start()
     {

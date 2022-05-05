@@ -10,7 +10,6 @@ public class T_Pot3 : MonoBehaviour, IInteraction
     public GameObject T_InHealthySweetPotato3;
     public GameObject T_InBadSweetPotato3;
     public GameObject T_InSuperDrug3;
-    public GameObject T_IsFarmButton3;
     public GameObject T_IsGrownHealthy7;
     public GameObject T_IsGrownHealthy8;
     public GameObject T_IsGrownHealthy9;
@@ -20,11 +19,11 @@ public class T_Pot3 : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData Pot3Data_T;
-    ObjData InHealthySweetPotato3Data_T;
-    ObjData InBadSweetPotato3Data_T;
-    ObjData InSuperDrug3Data_T;
-    ObjData IsFarmButton3Data_T;
-    ObjData InUnGrownSweetPotato3Data_T;
+    public ObjectData InHealthySweetPotato3Data_T;
+    public ObjectData InBadSweetPotato3Data_T;
+    public ObjectData InSuperDrug3Data_T;
+    public ObjectData IsFarmButton3Data_T;
+    public ObjectData InUnGrownSweetPotato3Data_T;
 
     /*Collider*/
     BoxCollider Pot3_Collider;
@@ -32,11 +31,6 @@ public class T_Pot3 : MonoBehaviour, IInteraction
     void Start()
     {
         Pot3Data_T = GetComponent<ObjData>();
-        InUnGrownSweetPotato3Data_T = InUnGrownSweetPotato3Data_T.GetComponent<ObjData>();
-        IsFarmButton3Data_T = T_IsFarmButton3.GetComponent<ObjData>();
-        InHealthySweetPotato3Data_T = T_InHealthySweetPotato3.GetComponent<ObjData>();
-        InBadSweetPotato3Data_T = T_InBadSweetPotato3.GetComponent<ObjData>();
-        InSuperDrug3Data_T = T_InSuperDrug3.GetComponent<ObjData>();
 
         /*Collider*/
         Pot3_Collider = GetComponent<BoxCollider>();

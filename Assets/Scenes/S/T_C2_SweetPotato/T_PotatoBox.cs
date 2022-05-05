@@ -7,55 +7,46 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
 {
     /*연관있는 오브젝트*/
     public GameObject SweetPotatoBoxDoor_T;
-    public GameObject IsBadSweetPotato1_T;
-    public GameObject IsHealthySweetPotato1_T;
-    public GameObject IsUnGrownSweetPotato1_T;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_PotatoBox, sniffButton_T_PotatoBox, biteButton_T_PotatoBox,
         pressButton_T_PotatoBox, observeButton_T_PotatoBox, observeDisableButton_T_PotatoBox;
 
     /*ObjData*/
-    ObjData PotatoBoxData_T;
-    ObjData IsBadSweetPotato1Data_T;
-    ObjData IsHealthySweetPotato1Data_T;
-    ObjData IsUnGrownSweetPotato1Data_T;
+    ObjData PotatoBoxObjData_T;
+    public ObjectData PotatoBoxData_T;
+
+    public ObjectData IsBadSweetPotato1Data_T;
+    public ObjectData IsHealthySweetPotato1Data_T;
+    public ObjectData IsUnGrownSweetPotato1Data_T;
 
     /*Outline*/
-    Outline IsBadSweetPotato1Outline_T;
-    Outline IsHealthySweetPotato1Outline_T;
-    Outline IsUnGrownSweetPotato1Outline_T;
+    public Outline IsBadSweetPotato1Outline_T;
+    public Outline IsHealthySweetPotato1Outline_T;
+    public Outline IsUnGrownSweetPotato1Outline_T;
 
     void Start()
     {
         /*ObjData*/
-        PotatoBoxData_T = GetComponent<ObjData>();
-        IsBadSweetPotato1Data_T = IsBadSweetPotato1_T.GetComponent<ObjData>();
-        IsHealthySweetPotato1Data_T = IsHealthySweetPotato1_T.GetComponent<ObjData>();
-        IsUnGrownSweetPotato1Data_T = IsUnGrownSweetPotato1_T.GetComponent<ObjData>();
-
-        /*Outline*/
-        IsBadSweetPotato1Outline_T = IsBadSweetPotato1_T.GetComponent<Outline>();
-        IsHealthySweetPotato1Outline_T = IsHealthySweetPotato1_T.GetComponent<Outline>();
-        IsUnGrownSweetPotato1Outline_T = IsUnGrownSweetPotato1_T.GetComponent<Outline>();
+        PotatoBoxObjData_T = GetComponent<ObjData>();
 
         /*ObjData*/
-        barkButton_T_PotatoBox = PotatoBoxData_T.BarkButton;
+        barkButton_T_PotatoBox = PotatoBoxObjData_T.BarkButton;
         barkButton_T_PotatoBox.onClick.AddListener(OnBark);
 
-        sniffButton_T_PotatoBox = PotatoBoxData_T.SniffButton;
+        sniffButton_T_PotatoBox = PotatoBoxObjData_T.SniffButton;
         sniffButton_T_PotatoBox.onClick.AddListener(OnSniff);
 
-        biteButton_T_PotatoBox = PotatoBoxData_T.BiteButton;
+        biteButton_T_PotatoBox = PotatoBoxObjData_T.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_T_PotatoBox = PotatoBoxData_T.PushOrPressButton;
+        pressButton_T_PotatoBox = PotatoBoxObjData_T.PushOrPressButton;
         pressButton_T_PotatoBox.onClick.AddListener(OnPushOrPress);
 
-        observeButton_T_PotatoBox = PotatoBoxData_T.CenterButton1;
+        observeButton_T_PotatoBox = PotatoBoxObjData_T.CenterButton1;
         observeButton_T_PotatoBox.onClick.AddListener(OnObserve);
 
-        observeDisableButton_T_PotatoBox = PotatoBoxData_T.CenterButton2;
+        observeDisableButton_T_PotatoBox = PotatoBoxObjData_T.CenterButton2;
 
         if(PotatoBoxData_T.IsClicked)
         {
@@ -78,7 +69,6 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
 
     public void OnSmash()
     {
-        PotatoBoxData_T.IsSmash = true;
 
         DisableButton();
 
@@ -98,7 +88,7 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
         // 부모 비활성화, 자식 활성화 등등 각 오브젝트에 맞춰서 필요한 것들 쓰기
         SweetPotatoBoxDoor_T.SetActive(false);
 
-        PotatoBoxData_T.IsCenterButtonChanged = true;
+        PotatoBoxObjData_T.IsCenterButtonChanged = true;
 
         IsBadSweetPotato1Data_T.IsNotInteractable = false; // 상호작용 가능하게
         IsBadSweetPotato1Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.
@@ -117,7 +107,6 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        PotatoBoxData_T.IsBark = true;
 
         DisableButton();
 
@@ -126,25 +115,14 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        PotatoBoxData_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHead();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        PotatoBoxData_T.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        PotatoBoxData_T.IsSniff = true;
 
         DisableButton();
 
@@ -153,13 +131,12 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        PotatoBoxData_T.IsObserve = true;
 
         DisableButton();
 
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
 
-        CameraController.cameraController.currentView = PotatoBoxData_T.ObserveView;
+        CameraController.cameraController.currentView = PotatoBoxObjData_T.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
     }
