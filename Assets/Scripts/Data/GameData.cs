@@ -47,12 +47,17 @@ public class GameData
     public bool IsBiteNormalMeteor1_T_C2; // 일반 운석을 물었는지
 
     public bool IsAnswerInBeaker1_M_C2; // 비커 1에 맞는 운석을 넣었는지
+    public bool IsAnswerInBeaker2_M_C2; // 비커 2에 맞는 운석을 넣었는지
 
     public bool IsAnswerBeakerColorChange1_M_C2; // 정답 약 때문에 비커 1 색상 변화
     public bool IsWrongBeakerColorChange1_M_C2; // 틀린 약 때문에 비커 1 색상 변화
     public bool IsNoNeed1BeakerColorChange1_M_C2; // 필요없는 약1 때문에 비커 1 색상 변화
     public bool IsNoNeed2BeakerColorChange1_M_C2; // 필요없는 약2 때문에 비커 1 색상 변화
 
+    public bool IsAnswerBeakerColorChange2_M_C2; // 정답 약 때문에 비커 2 색상 변화
+    public bool IsWrongBeakerColorChange2_M_C2; // 틀린 약 때문에 비커 2 색상 변화
+    public bool IsNoNeed1BeakerColorChange2_M_C2; // 필요없는 약1 때문에 비커 2 색상 변화
+    public bool IsNoNeed2BeakerColorChange2_M_C2; // 필요없는 약2 때문에 비커 2 색상 변화
 
     public bool Is_Tablet_WirelessOn; //태블릿 블루투스 on/off체크
     public bool IsFakeHealthData_Tablet; //태블릿 강아지 더미 상태 데이터
