@@ -122,6 +122,8 @@ public class GameData
     public bool IsInputImportantMeteor1_T_C2; // 특별 운석 보고 엔딩
     public bool IsMakeForest; // 생태계 구축 엔딩
 
+    public bool IsSuddenDeath; //돌연사 체크
+
     //public bool IsComTabletUploadClear;
 
     //    //엔진실 카드키가 들어있는 카드팩이 파괴
