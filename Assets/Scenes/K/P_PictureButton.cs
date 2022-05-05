@@ -135,7 +135,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     {
         Debug.Log("취소하기");
 
-        GameManager.gameManager._gameData.IsReportCancleCount -= 1; // 임무 보고 카운트 줄어들기
+        GameManager.gameManager._gameData.IsReportCancleCount += 1; // 임무 보고 카운트 줄어들기
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         IsReported = true;
         Debug.Log("임무 보고 카운트 줄어들기 + 저장");
