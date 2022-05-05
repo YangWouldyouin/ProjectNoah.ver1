@@ -7,56 +7,50 @@ public class C_Planet_PortBody_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
-    ObjData portBodyData;
-    Outline portBodyLine;
+    ObjData Planet_PortBodyData_C;
+    Outline Planet_PortBodyLine_C;
 
-    public GameObject portDoor;
-    ObjData portDoorData;
-    Outline portDoorLine;
-
-    /*
-    public GameObject insert02;
-    ObjData insert02Data;
-    Outline insert02Line;
-    */
+    public GameObject PortDoor_C;
+    ObjData PortDoorData_C;
+    Outline PortDoorLine_C;
 
 
     void Start()
     {
-        portBodyData = GetComponent<ObjData>();
-        portBodyLine = GetComponent<Outline>();
+        Planet_PortBodyData_C = GetComponent<ObjData>();
+        Planet_PortBodyLine_C = GetComponent<Outline>();
 
-        portDoorData = portDoor.GetComponent<ObjData>();
-        portDoorLine = portDoor.GetComponent<Outline>();
+        PortDoorData_C = PortDoor_C.GetComponent<ObjData>();
+        PortDoorLine_C = PortDoor_C.GetComponent<Outline>();
 
         //insert02Data = insert02.GetComponent<ObjData>();
         //insert02Line = insert02.GetComponent<Outline>();
 
-        barkButton = portBodyData.BarkButton;
+        barkButton = Planet_PortBodyData_C.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = portBodyData.SniffButton;
+        sniffButton = Planet_PortBodyData_C.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = portBodyData.BiteButton;
+        biteButton = Planet_PortBodyData_C.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
-        pressButton = portBodyData.PushOrPressButton;
+        pressButton = Planet_PortBodyData_C.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        observeButton = portBodyData.CenterButton1;
+        observeButton = Planet_PortBodyData_C.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
     }
 
     void Update()
     {
-        if(portBodyData.IsObserve == false)
+        if(Planet_PortBodyData_C.IsObserve == false)
         {
             gameObject.GetComponent<BoxCollider>().enabled = true;
-            portDoor.GetComponent<BoxCollider>().enabled = false;
+            PortDoor_C.GetComponent<BoxCollider>().enabled = false;
 
-            portDoorData.IsNotInteractable = true;
-            portDoorLine.OutlineWidth = 0f;
+            PortDoorData_C.IsNotInteractable = true;
+            PortDoorLine_C.OutlineWidth = 0f;
 
             //insert02Data.IsNotInteractable = true;
             //insert02Line.OutlineWidth = 0f;
@@ -74,7 +68,7 @@ public class C_Planet_PortBody_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        portBodyData.IsBark = true;
+        Planet_PortBodyData_C.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -91,21 +85,21 @@ public class C_Planet_PortBody_buttons : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        portBodyData.IsObserve = true;
+        Planet_PortBodyData_C.IsObserve = true;
         DisableButton();
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
         PlayerScripts.playerscripts.currentObserveObj = gameObject;
-        CameraController.cameraController.currentView = portBodyData.ObserveView;
+        CameraController.cameraController.currentView = Planet_PortBodyData_C.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
         //portBodyData.IsNotInteractable = true;
         //portBodyLine.OutlineWidth = 0f;
 
-        portDoor.GetComponent<BoxCollider>().enabled = true;
-        portDoorData.IsNotInteractable = false;
-        portDoorLine.OutlineWidth = 8f;
+        PortDoor_C.GetComponent<BoxCollider>().enabled = true;
+        PortDoorData_C.IsNotInteractable = false;
+        PortDoorLine_C.OutlineWidth = 8f;
 
         //gameObject.GetComponent<BoxCollider>().enabled = false;
 
@@ -115,7 +109,7 @@ public class C_Planet_PortBody_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        portBodyData.IsPushOrPress = true;
+        Planet_PortBodyData_C.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
 
@@ -125,12 +119,12 @@ public class C_Planet_PortBody_buttons : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        portBodyData.IsPushOrPress = false;
+        Planet_PortBodyData_C.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        portBodyData.IsSniff = true;
+        Planet_PortBodyData_C.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }

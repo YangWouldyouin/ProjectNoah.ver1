@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class P_Planet_PortDoor_buttons : MonoBehaviour, IInteraction
+public class C_Planet_PortDoor_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
     ObjData Planet_PortDoorData_C;
-    Outline portDoorLine;
+    Outline Planet_PortDoorLine_C;
 
-    public GameObject insert01;
-    ObjData insert01Data;
-    Outline insert01Line;
+    public GameObject Insert_PChip_C;
+    ObjData Insert_PChipData_C;
+    Outline Insert_PChipLine_C;
 
     void Start()
     {
         Planet_PortDoorData_C = GetComponent<ObjData>();
-        portDoorLine = GetComponent<Outline>();
+        Planet_PortDoorLine_C = GetComponent<Outline>();
 
-        insert01Data = insert01.GetComponent<ObjData>();
-        insert01Line = insert01.GetComponent<Outline>();
+        Insert_PChipData_C = Insert_PChip_C.GetComponent<ObjData>();
+        Insert_PChipLine_C = Insert_PChip_C.GetComponent<Outline>();
+
 
         barkButton = Planet_PortDoorData_C.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -40,9 +41,6 @@ public class P_Planet_PortDoor_buttons : MonoBehaviour, IInteraction
         noCenterButton = Planet_PortDoorData_C.CenterButton1;
 
     }
-
-    // Update is called once per frame
-
     void DisableButton()
     {
         barkButton.transform.gameObject.SetActive(false);
@@ -77,10 +75,10 @@ public class P_Planet_PortDoor_buttons : MonoBehaviour, IInteraction
         Planet_PortDoorData_C.transform.localRotation = Quaternion.Euler(-10f, 90f, 90f);
 
         Planet_PortDoorData_C.IsNotInteractable = true;
-        portDoorLine.OutlineWidth = 0f;
+        Planet_PortDoorLine_C.OutlineWidth = 0f;
 
-        insert01Data.IsNotInteractable = false;
-        insert01Line.OutlineWidth = 8f;
+        Insert_PChipData_C.IsNotInteractable = false;
+        Insert_PChipLine_C.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
 

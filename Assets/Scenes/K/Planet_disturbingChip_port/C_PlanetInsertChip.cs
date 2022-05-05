@@ -93,7 +93,6 @@ public class C_PlanetInsertChip : MonoBehaviour, IInteraction
 
         StartCoroutine(ChangePressFalse());
     }
-
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);

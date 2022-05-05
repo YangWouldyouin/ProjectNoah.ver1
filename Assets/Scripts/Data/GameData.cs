@@ -70,6 +70,8 @@ public class GameData
 
     public bool IsPlanetInsertChip_In; // 올바른 교란칩 꽂아 가짜 행성 데이터 변환
 
+    public bool IsTabletUnlock; // 태블릿 잠금여부
+
     /*퍼즐시작*/
     public bool IsStartCollectMeteorites; // 운석 수집 임무 시작
     public bool IsStartPretendDead; // 죽은척 하기 임무 시작

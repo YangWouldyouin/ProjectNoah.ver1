@@ -8919,6 +8919,7 @@ MonoBehaviour:
     Is_MainSystem_WirelessOn: 0
     IsCanConnect_C_MS: 0
     IsReturnOfTheEarth: 0
+    IsPlanetInsertChip_In: 0
     IsStartCollectMeteorites: 0
     IsStartPretendDead: 0
     IsCompleteSmartFarmOpen: 0
@@ -27706,11 +27707,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 01e461dd718d54c43ba5ff0e95e3b6ec, type: 2}
     - target: {fileID: 919132149155446097, guid: 10019bd0bdb23f14b84758f765ac8054, type: 3}
       propertyPath: m_Name
-      value: disturbing chip_PortDoor
+      value: Planet_disturbing chip_PortDoor
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 10019bd0bdb23f14b84758f765ac8054, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10019bd0bdb23f14b84758f765ac8054, type: 3}
@@ -27801,10 +27802,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1358475023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c591685dc70d94341b0d4af777538a73, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ed9c1ae83d97764b94b704d041e1dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  insert01: {fileID: 2036023170}
+  Insert_PChip_C: {fileID: 2036023170}
 --- !u!65 &1358475028
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32434,7 +32435,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 01e461dd718d54c43ba5ff0e95e3b6ec, type: 2}
     - target: {fileID: 919132149155446097, guid: 68703f6ef5349d740a5073ae44caab74, type: 3}
       propertyPath: m_Name
-      value: disturbing chip_PortBody
+      value: Planet_disturbing chip_PortBody
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68703f6ef5349d740a5073ae44caab74, type: 3}
@@ -32457,10 +32458,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639160102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df7cd80337f9cc47989eddbe632e7d7, type: 3}
+  m_Script: {fileID: 11500000, guid: cb5af8af911bf984c997975436c97d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portDoor: {fileID: 1358475023}
+  PortDoor_C: {fileID: 1358475023}
 --- !u!114 &1639160104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40455,7 +40456,7 @@ GameObject:
   - component: {fileID: 2036023173}
   - component: {fileID: 2036023172}
   m_Layer: 0
-  m_Name: insert
+  m_Name: Planet_insert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40484,11 +40485,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2036023170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6405deb91c8ec274eb82dae23dc3c406, type: 3}
+  m_Script: {fileID: 11500000, guid: 59be399071cf4dc4aad300c0ddb3efa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RChip01: {fileID: 1318982551}
-  WChip01: {fileID: 1886406390}
+  Right_Chip_C: {fileID: 1318982551}
+  Wrong_Chip_C: {fileID: 1886406390}
 --- !u!114 &2036023173
 MonoBehaviour:
   m_ObjectHideFlags: 0
