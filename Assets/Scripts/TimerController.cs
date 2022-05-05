@@ -55,4 +55,13 @@ public class TimerController : MonoBehaviour
         dayText.text = string.Format("{0:00}", inGameTime.days + 1);
         hourText.text = string.Format("{0:00}", inGameTime.hours) +":00";
     }
+    IEnumerator Count()
+    {
+        while (inGameTime.missionTimer <= 15)
+        {
+            inGameTime.missionTimer++;
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
 }
