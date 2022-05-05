@@ -23,18 +23,15 @@ public class TimerController : MonoBehaviour
 
         dayText = transform.Find("DayText").GetComponent<TMPro.TextMeshProUGUI>();
         hourText = transform.Find("HourText").GetComponent<TMPro.TextMeshProUGUI>();
-
-
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
-        timeValue += Time.deltaTime;
-        DisplayTime(timeValue);
-        
+        inGameTime.timer += Time.deltaTime;
+        DisplayTime(inGameTime.timer);
+       
     }
 
     void DisplayTime(float timeToDisplay)
@@ -48,10 +45,9 @@ public class TimerController : MonoBehaviour
         inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 720) / 30);
 
 
-
         //float hours = Mathf.FloorToInt(timeToDisplay / 3600);
 
-        //float minutes = Mathf.FloorToInt((timeToDisplay % 3600)/60);
+        //float minutes = Mathf.FloorToInt((timeToDisplay % /*3600)/60*/);
 
         //float seconds = Mathf.FloorToInt((timeToDisplay % 3600) % 60);
 

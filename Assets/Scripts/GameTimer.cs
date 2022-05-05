@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu()]
-public class InGameTime : ScriptableObject
+public class GameTimer : MonoBehaviour
 {
-    public float days;
-    public float hours;
-
-    public float timer;
     // Start is called before the first frame update
     void Start()
     {
