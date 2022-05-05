@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class insert01_buttons : MonoBehaviour, IInteraction
 {
-    public ObjectData insertCheck1Data, insertCheck2Data, drugData, drugMachineData;
+    public ObjectData insertCheck1Data, drugData, drugMachineData;
     public GameObject ReportUI;
     public bool IsReported = false;
 
@@ -50,7 +50,7 @@ public class insert01_buttons : MonoBehaviour, IInteraction
     {
         if(!drugMachineData.IsObserve)
         {
-            Insert01Data.IsNotInteractable = true;
+            insertCheck1Data.IsNotInteractable = true;
             Insert01Line.OutlineWidth = 0f;
         }
 
@@ -69,14 +69,12 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        Insert01Data.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        Insert01Data.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -84,7 +82,6 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        Insert01Data.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
@@ -96,14 +93,6 @@ public class insert01_buttons : MonoBehaviour, IInteraction
             Invoke("NoDrug", 1.5f);
             Invoke("ShowUI", 2f);
         }
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        Insert01Data.IsPushOrPress = false;
     }
 
     public void OnEat()
@@ -152,7 +141,7 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         drug.transform.rotation = Quaternion.Euler(0, 0, 90);
         drug.transform.localScale = new Vector3(1f, 1f, 1f);
 
-        Insert01Data.IsNotInteractable = true;
+        insertCheck1Data.IsNotInteractable = true;
         Insert01Line.OutlineWidth = 0f;
 
         drugData.IsNotInteractable = true;

@@ -39,7 +39,6 @@ public class drug_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        drugData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -62,22 +61,13 @@ public class drug_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        drugData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        drugData.IsPushOrPress = false;
-    }
 
     public void OnSniff()
     {
-        drugData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }

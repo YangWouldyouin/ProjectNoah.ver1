@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class drugBag_buttons : MonoBehaviour, IInteraction
 {
+    public ObjectData drugBagData, drugData;
+    ObjData drugBagObjData;
+
     public GameObject drug;
-    ObjData drugData;
     //Outline drugLine;
 
     public GameObject drugSmellArea;
@@ -14,33 +16,31 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
     private Button barkButton, sniffButton, biteButton, smashButton, pressButton, noCenterButton;
 
-    ObjData drugBagData;
 
     void Start()
     {
         //������Ʈ
-        drugBagData = GetComponent<ObjData>();
+        drugBagObjData = GetComponent<ObjData>();
 
-        drugData = GetComponent<ObjData>();
         //drugLine = GetComponent<Outline>();
 
         //��ư
-        barkButton = drugBagData.BarkButton;
+        barkButton = drugBagObjData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = drugBagData.SniffButton;
+        sniffButton = drugBagObjData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = drugBagData.BiteButton;
+        biteButton = drugBagObjData.BiteButton;
         //biteButton.onClick.AddListener(OnBite);
 
-        smashButton = drugBagData.SmashButton;
+        smashButton = drugBagObjData.SmashButton;
         smashButton.onClick.AddListener(OnSmash);
 
-        pressButton = drugBagData.PushOrPressButton;
+        pressButton = drugBagObjData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton = drugBagData.CenterButton1;
+        noCenterButton = drugBagObjData.CenterButton1;
     }
 
     void update()
@@ -60,7 +60,6 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        drugBagData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -82,22 +81,12 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        drugBagData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        drugBagData.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        drugBagData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -124,7 +113,6 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
     public void OnSmash()
     {
-        drugBagData.IsSmash = true;
         DisableButton();
 
         InteractionButtonController.interactionButtonController.PlayerSmash1();
@@ -145,8 +133,8 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         MeshCollider meshcollider = drugSmellArea.GetComponent<MeshCollider>();
         meshcollider.enabled = false;
 
-        drugBagData.GetComponent<Rigidbody>().isKinematic = true;
-        drugBagData.transform.parent = null;
+        this.GetComponent<Rigidbody>().isKinematic = true;
+        this.transform.parent = null;
 
         drugBagData.IsBite = false;
 

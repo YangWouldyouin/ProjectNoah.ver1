@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class chair02_Buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, upButton;
-
+    public ObjectData chair02Data;
     ObjData chairData;
 
-    public Transform chairPos;
     public Vector3 chairRisePos;
 
     //public Vector3 areaPos;
@@ -51,14 +50,12 @@ public class chair02_Buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        chairData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        chairData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -66,19 +63,9 @@ public class chair02_Buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        chairData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
     }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        chairData.IsPushOrPress = false;
-    }
-
 
     public void OnEat()
     {
@@ -94,14 +81,14 @@ public class chair02_Buttons : MonoBehaviour, IInteraction
     {
         DisableButton();
 
-        if (!chairData.IsUpDown)
+        if (!chair02Data.IsUpDown)
         {
             PlayerScripts.playerscripts.currentUpObj = gameObject;
 
-            chairData.IsUpDown = true;
+            chair02Data.IsUpDown = true;
 
-            chairRisePos.x = chairPos.position.x;
-            chairRisePos.z = chairPos.position.z;
+            chairRisePos.x = chairData.UpPos.position.x;
+            chairRisePos.z = chairData.UpPos.position.z;
 
             InteractionButtonController.interactionButtonController.PlayerRise1();
             InteractionButtonController.interactionButtonController.risePosition = chairRisePos;

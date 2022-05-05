@@ -16,10 +16,12 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
     private Button barkButton_T_ManagementMachine, sniffButton_T_ManagementMachine, biteButton_T_ManagementMachine,
         pressButton_T_ManagementMachine, observeButton_T_canIronPlateDoor;
 
-    ObjData managementMachineData_T;
-    ObjData canIronPlateDoorData_T;
-    ObjData canTroubleLine2Data_T;
-    ObjData canDoLineHome2Data_T;
+    ObjData managementMachineObjData_T;
+    public ObjectData managementMachineData_T;
+
+    public ObjectData canIronPlateDoorData_T;
+    public ObjectData canTroubleLine2Data_T;
+    public ObjectData canDoLineHome2Data_T;
 
     Outline canIronPlateDoorOutline_T;
     Outline canTroubleLine2Outline_T;
@@ -29,10 +31,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
     void Start()
     {
-        managementMachineData_T = GetComponent<ObjData>();
-        canIronPlateDoorData_T = T_canIronPlateDoor.GetComponent<ObjData>();
-        canTroubleLine2Data_T = T_canTroubleLine2.GetComponent<ObjData>();
-        canDoLineHome2Data_T = T_canLineHome2.GetComponent<ObjData>();
+        managementMachineObjData_T = GetComponent<ObjData>();
 
         canIronPlateDoorOutline_T = T_canIronPlateDoor.GetComponent<Outline>();
         canTroubleLine2Outline_T = T_canTroubleLine2.GetComponent<Outline>();
@@ -41,19 +40,19 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
         // ironPlateCollider_T = T_canIronPlateDoor.GetComponent<BoxCollider>();
 
 
-        barkButton_T_ManagementMachine = managementMachineData_T.BarkButton;
+        barkButton_T_ManagementMachine = managementMachineObjData_T.BarkButton;
         barkButton_T_ManagementMachine.onClick.AddListener(OnBark);
 
-        sniffButton_T_ManagementMachine = managementMachineData_T.SniffButton;
+        sniffButton_T_ManagementMachine = managementMachineObjData_T.SniffButton;
         sniffButton_T_ManagementMachine.onClick.AddListener(OnSniff);
 
-        biteButton_T_ManagementMachine = managementMachineData_T.BiteButton;
+        biteButton_T_ManagementMachine = managementMachineObjData_T.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_T_ManagementMachine = managementMachineData_T.PushOrPressButton;
+        pressButton_T_ManagementMachine = managementMachineObjData_T.PushOrPressButton;
         pressButton_T_ManagementMachine.onClick.AddListener(OnPushOrPress);
 
-        observeButton_T_canIronPlateDoor = managementMachineData_T.CenterButton1;
+        observeButton_T_canIronPlateDoor = managementMachineObjData_T.CenterButton1;
         observeButton_T_canIronPlateDoor.onClick.AddListener(OnObserve);
     }
 
@@ -88,7 +87,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             canLineHome2Outline_T.OutlineWidth = 0; // æ∆øÙ∂Û¿Œµµ ≤®¡›¥œ¥Ÿ.
         }
 
-        if (managementMachineData_T .IsBark && GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
+        if (managementMachineData_T.IsBark && GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
         {
             Invoke("SmartFarmOpen", 2f);
 
@@ -111,8 +110,6 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        managementMachineData_T.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -120,8 +117,6 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        managementMachineData_T.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -135,30 +130,19 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        managementMachineData_T.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        managementMachineData_T.IsPushOrPress = false;
     }
 
     public void OnObserve()
     {
-        managementMachineData_T.IsObserve = true;
 
         DisableButton();
 
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
 
-        CameraController.cameraController.currentView = managementMachineData_T.ObserveView;
+        CameraController.cameraController.currentView = managementMachineObjData_T.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
 

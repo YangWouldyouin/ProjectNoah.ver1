@@ -11,20 +11,11 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
     ObjData mainComData;
-
-    public GameObject chair01;
-    public GameObject chair02;
-
-    ObjData chair01Data;
-    ObjData chair02Data;
-
+    public ObjectData mainComputerData, chair01Data, chair02Data;
 
     void Start()
     {
         mainComData = GetComponent<ObjData>();
-
-        chair01Data = chair01.GetComponent<ObjData>();
-        chair02Data = chair02.GetComponent<ObjData>();
 
         barkButton = mainComData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -44,7 +35,7 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(!mainComData.IsObserve)
+        if(!mainComputerData.IsObserve)
         {
             comUI.SetActive(false);
         }
@@ -62,7 +53,6 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        mainComData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -85,7 +75,6 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        mainComData.IsObserve = true;
         DisableButton();
 
         if (chair01Data.IsUpDown || chair02Data.IsUpDown)
@@ -112,7 +101,6 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        mainComData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
     }
@@ -124,7 +112,6 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        mainComData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }

@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class insert02_buttons : MonoBehaviour, IInteraction
 {
-    public GameObject SDrug;
-    ObjData SDrugData;
-    Outline SDrugLine;
+    public ObjectData drugMachineData, specificDrugData, drugInsert2Data;
 
-    public GameObject machine;
-    ObjData machineData;
+    public GameObject SDrug;
+    Outline SDrugLine;
 
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
@@ -25,9 +23,6 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         Insert02Data = GetComponent<ObjData>();
         Insert02Line = GetComponent<Outline>();
 
-        machineData = machine.GetComponent<ObjData>();
-
-        SDrugData = SDrug.GetComponent<ObjData>();
         SDrugLine = SDrug.GetComponent<Outline>();
 
         //��ư
@@ -51,9 +46,9 @@ public class insert02_buttons : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(!machineData.IsObserve)
+        if(!drugMachineData.IsObserve)
         {
-            Insert02Data.IsNotInteractable = true;
+            drugInsert2Data.IsNotInteractable = true;
             Insert02Line.OutlineWidth = 0f;
         }
     }
@@ -90,7 +85,7 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        if (SDrugData.IsBite)
+        if (specificDrugData.IsBite)
         {
             D_LEDColor.material.color = Color.blue; //�˻� ��� ���� ��ȯ
 
@@ -133,16 +128,16 @@ public class insert02_buttons : MonoBehaviour, IInteraction
     void NoSDrug() //Ư�� �๰ ������� �ϱ�
     {
         Debug.Log("Ư���� �๰ ����");
-        
-        SDrugData.IsBite = false;
 
-        SDrugData.GetComponent<Rigidbody>().isKinematic = false;
-        SDrugData.transform.parent = null;
+        specificDrugData.IsBite = false;
+
+        SDrug.GetComponent<Rigidbody>().isKinematic = false;
+        SDrug.transform.parent = null;
 
         SDrug.transform.position = new Vector3(-249.0776f, 538.575f, 669.806f);
         SDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
 
-        SDrugData.IsNotInteractable = false;
+        specificDrugData.IsNotInteractable = false;
         SDrugLine.OutlineWidth = 0;
 
         Insert02Data.IsNotInteractable = false;

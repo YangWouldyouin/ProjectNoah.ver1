@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
 {
+    public ObjectData drugBagData;
+
     public GameObject drugBag;
-    ObjData drugBagData;
     Outline drugBagLine;
 
     public float speed;
@@ -23,7 +24,6 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
     void Start()
     {
         //오브젝트
-        drugBagData = drugBag.GetComponent<ObjData>();
         drugBagLine = drugBag.GetComponent<Outline>();
 
         drugSmellAreaData = GetComponent<ObjData>();
@@ -82,14 +82,12 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        drugSmellAreaData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        drugSmellAreaData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
 
@@ -102,17 +100,8 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        drugSmellAreaData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        drugSmellAreaData.IsPushOrPress = false;
     }
 
     public void OnBite()
