@@ -9,7 +9,7 @@ public class E_FA : MonoBehaviour, IInteraction
 
     ObjData FuelAbsorber_E;
 
-    void Start()
+        void Start()
     {
         FuelAbsorber_E = GetComponent<ObjData>();
 
@@ -43,20 +43,32 @@ public class E_FA : MonoBehaviour, IInteraction
         noCenterButton_E_FuelAbsorber.transform.gameObject.SetActive(false);
     }
 
+    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
+    IEnumerator ChangePressFalse()
+    {
+        yield return new WaitForSeconds(2f);
+        FuelAbsorber_E.IsPushOrPress = false;
+    }
+
     public void OnBark()
     {
+        FuelAbsorber_E.IsBark = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnPushOrPress()
     {
+        FuelAbsorber_E.IsPushOrPress = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
+        StartCoroutine(ChangePressFalse());
+
     }
 
     public void OnSniff()
     {
+        FuelAbsorber_E.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }

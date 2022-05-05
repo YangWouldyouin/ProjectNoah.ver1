@@ -110,6 +110,10 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
     {
         engineDoorAnim_M.SetBool("canEngineDoorOpen", true);
         engineDoorAnim_M.SetBool("canEngineDoorEnd", true);
+
+        /*½º¸¶Æ®ÆÊ ¿ÀÇÂ ÆÛÁñ ¿Ï·á*/
+        GameManager.gameManager._gameData.IsCompleteOpenEngineRoom = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnPushOrPress()

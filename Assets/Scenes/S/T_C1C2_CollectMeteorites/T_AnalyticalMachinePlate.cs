@@ -114,6 +114,8 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
                 GameManager.gameManager._gameData.IsInputImportantMeteor1_T_C2 = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
+                //C-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
                 T_RealImportantMeteor.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
                 T_RealImportantMeteor.transform.parent = null;
 

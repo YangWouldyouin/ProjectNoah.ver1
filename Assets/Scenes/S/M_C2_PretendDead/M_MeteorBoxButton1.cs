@@ -71,6 +71,15 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
 
         noCenterButton_M_MeteorBoxButton1 = MeteorBoxButton1Data_M.CenterButton1;
 
+        /*퍼즐시작
+         사전 운석 임무를 다 수행했다면 임무 시작*/
+        if (GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2)
+        {
+            GameManager.gameManager._gameData.IsStartPretendDead = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            //D-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        }
     }
 
     void DisableButton()

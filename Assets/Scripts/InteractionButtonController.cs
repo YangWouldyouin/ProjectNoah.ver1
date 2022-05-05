@@ -11,8 +11,6 @@ public class InteractionButtonController : MonoBehaviour
 {
     public static InteractionButtonController interactionButtonController { get; private set; }
 
-    public GameObject portableObjects;
-
     GameObject noahPlayer, noahFBX, myMouth;
     Animator noahAnim;
 
@@ -30,14 +28,15 @@ public class InteractionButtonController : MonoBehaviour
 
     /* 현재 상호작용 중인 오브젝트를 받아오기 위한 변수 */
     [HideInInspector]
-    public GameObject noahBiteObject, noahSmashObject, noahPressObject, noahPushObject, noahSniffObject, 
+    public GameObject noahBiteObject, noahPushOrPressObject, noahSniffObject, 
         noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
 
     TMPro.TextMeshProUGUI objectText, statText;
+
     GameObject statPanel;
 
-    ObjData objData, biteData, upDownData, pushData, pressData;
-    //ObjectData objectData;
+    ObjData objectData;
+
     PlayerEquipment equipment;
 
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
@@ -57,7 +56,6 @@ public class InteractionButtonController : MonoBehaviour
         statText = BaseCanvas._baseCanvas.statText;
         statPanel = BaseCanvas._baseCanvas.statPanel;
         myMouth = BaseCanvas._baseCanvas.myMouth;
-
         playerRigidbody = noahPlayer.GetComponent<Rigidbody>();
         playerAgent = noahPlayer.GetComponent<NavMeshAgent>();
         noahAnim = noahPlayer.GetComponent<Animator>();
@@ -69,10 +67,6 @@ public class InteractionButtonController : MonoBehaviour
     /* 짖기 */
     public void playerBark() // 이 함수가 실행되었다는 것은 현재 플레이어가 어떤 오브젝트에 "맡기" 버튼을 클릭했다는 뜻이다.
     {
-        noahBarkObject = PlayerScripts.playerscripts.currentObject;
-        objData = noahBarkObject.GetComponent<ObjData>();
-        objData.objectDATA.IsBark = true;
-
         StartCoroutine(BarkAnim());
     }
 
@@ -88,6 +82,7 @@ public class InteractionButtonController : MonoBehaviour
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 물기 - 물기 불가능 오브젝트 일 때 */
+
     public void PlayerCanNotBite()
     {
         StartCoroutine(BiteAnim());
@@ -110,30 +105,26 @@ public class InteractionButtonController : MonoBehaviour
     /* 물기 - 가능한 오브젝트 일때 */
     public void PlayerBite()
     {
-        if(noahPushObject==null)
+        if (PlayerScripts.playerscripts.currentObject != null)
         {
-            if (PlayerScripts.playerscripts.currentObject != null)
-            {
-                noahBiteObject = PlayerScripts.playerscripts.currentObject;
-                /* 취소할 때 참고하기 위해 저장 */
-                equipment.biteObjectName = noahBiteObject.name;
+            noahBiteObject = PlayerScripts.playerscripts.currentObject;
+            equipment.biteObjectName = noahBiteObject.name;
+            /* 취소할 때 참고하기 위해 저장 */
 
-                equipment.cancelBitePos = noahBiteObject.transform.position;
-                equipment.cancelBiteRot = noahBiteObject.transform.eulerAngles;
-                equipment.cancelBiteScale = noahBiteObject.transform.localScale;
+            equipment.cancelBitePos = noahBiteObject.transform.position;
+            equipment.cancelBiteRot= noahBiteObject.transform.eulerAngles;
+            equipment.cancelBiteScale = noahBiteObject.transform.localScale;
 
-                biteData = noahBiteObject.GetComponent<ObjData>();
-                biteData.objectDATA.IsBite = true;
+            /* 물기 변수 참으로 바꿈 */
+            objectData = noahBiteObject.GetComponent<ObjData>();
+            objectData.IsBite = true;
 
+            /* 현재 물고 있는 오브젝트 이름 띄움 */
+            objectText.text = "Noah N.113 - " + objectData.ObjectName;
 
-
-                /* 현재 물고 있는 오브젝트 이름 띄움 */
-                objectText.text = "Noah N.113 - " + biteData.ObjectName;
-
-                Invoke("ChangeBiteTrue", 0.5f);
-                Invoke("PlayerPickUp", 0.7f);
-                Invoke("ChangeBiteFalse", 1);
-            }
+            Invoke("ChangeBiteTrue", 0.5f);
+            Invoke("PlayerPickUp", 0.7f);
+            Invoke("ChangeBiteFalse", 1);
         }
     }
 
@@ -149,8 +140,8 @@ public class InteractionButtonController : MonoBehaviour
 
         noahBiteObject.transform.SetParent(myMouth.transform, true);
 
-        noahBiteObject.transform.localPosition = biteData.BitePos; // sets the position of the object to your mouth position
-        noahBiteObject.transform.localEulerAngles = biteData.BiteRot; // sets the position of the object to your mouth position      
+        noahBiteObject.transform.localPosition = objectData.BitePos; // sets the position of the object to your mouth position
+        noahBiteObject.transform.localEulerAngles = objectData.BiteRot; // sets the position of the object to your mouth position      
     }
 
     void ChangeBiteFalse()
@@ -158,53 +149,14 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsBiting", false);
     }
 
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-    /* 물기 취소 */
-    public void CancelBite()
-    {
-        noahBiteObject = GameObject.Find(equipment.biteObjectName).gameObject;
-
-        if (noahBiteObject!=null)
-        {
-            biteData = noahBiteObject.GetComponent<ObjData>();
-            biteData.objectDATA.IsBite = false;
-
-            noahAnim.SetBool("IsPutDowning", true);
-            Invoke("CancelBitingAnimation", 1f);
-            Invoke("PutDownObject", 0.3f);
-
-        }
-    }
-    void CancelBitingAnimation()
-    {
-        noahAnim.SetBool("IsPutDowning", false);
-    }
-    void PutDownObject()
-    {
-        noahBiteObject.GetComponent<Rigidbody>().isKinematic = false;
-        noahBiteObject.transform.parent = null;
-
-        noahBiteObject.transform.localScale = equipment.cancelBiteScale;
-        noahBiteObject.transform.position = new Vector3(noahBiteObject.transform.position.x, equipment.cancelBitePos.y, noahBiteObject.transform.position.z);
-        noahBiteObject.transform.eulerAngles = equipment.cancelBiteRot;
-        equipment.biteObjectName = "";
-        noahBiteObject.transform.parent = portableObjects.transform;
-
-        noahBiteObject = null;
-        biteData = null;
-    }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     /* 파괴하기 */
 
     public void PlayerSmash1()
     {
-        noahSmashObject = PlayerScripts.playerscripts.currentObject;
-        objData = noahSmashObject.GetComponent<ObjData>();
-        objData.objectDATA.IsSmash =  true;
-
         Invoke("ChangeDestroyTrue", 1f);
+        //Invoke("DeleteObject", 2f);
     }
 
     public void PlayerSmash2()
@@ -217,6 +169,11 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsDestroying", true);
     }
 
+    //void DeleteObject()
+    //{
+    //    noahDestroyObject.SetActive(false);
+    //}
+
     void ChangeDestroyFalse()
     {
 
@@ -228,10 +185,6 @@ public class InteractionButtonController : MonoBehaviour
     /* 냄새 맡기 */
     public void playerSniff()
     {
-        noahSniffObject = PlayerScripts.playerscripts.currentObject;
-        objData = noahSniffObject.GetComponent<ObjData>();
-        objData.objectDATA.IsSniff = true;
-
         StartCoroutine(SniffAnimAndText());
     }
 
@@ -269,10 +222,6 @@ public class InteractionButtonController : MonoBehaviour
     /* 오르기 */  
     public void PlayerRise1()
     {
-        noahUpDownObject = PlayerScripts.playerscripts.currentObject;
-        upDownData = noahUpDownObject.GetComponent<ObjData>();
-        upDownData.objectDATA.IsUpDown = true;
-
         if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔
         {
             playerAgent.updatePosition = false;
@@ -316,15 +265,15 @@ public class InteractionButtonController : MonoBehaviour
 
     public void PlayerFall1()
     {
-        upDownData = noahUpDownObject.GetComponent<ObjData>();
-        if (upDownData.objectDATA.IsUpDown)
+        objectData = PlayerScripts.playerscripts.currentUpObj.GetComponent<ObjData>();
+        if(objectData.IsUpDown)
         {
             if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔
             {
                 Vector3 fallrot = noahPlayer.transform.eulerAngles;
                 noahPlayer.transform.eulerAngles = new Vector3(fallrot.x, fallrot.y - 180, fallrot.z);
 
-                noahPlayer.transform.position = new Vector3(noahUpDownObject.transform.localPosition.x, 33.78f, noahUpDownObject.transform.localPosition.z) + transform.forward;
+                noahPlayer.transform.position = new Vector3(PlayerScripts.playerscripts.currentUpObj.transform.localPosition.x, 33.78f, PlayerScripts.playerscripts.currentUpObj.transform.localPosition.z) + transform.forward;
                 playerAgent.updatePosition = true;
                 playerAgent.updateRotation = true;
                 playerAgent.isStopped = false;
@@ -334,10 +283,7 @@ public class InteractionButtonController : MonoBehaviour
                 //Invoke("ChangeFallTrue4", 2.5f);
                 //Invoke("ChangeFallFalse1", 4.5f);
             }
-            upDownData.IsUpDown = false;
-
-            noahUpDownObject = null;
-            upDownData = null;
+            objectData.IsUpDown = false;
         }
 
     }
@@ -358,8 +304,8 @@ public class InteractionButtonController : MonoBehaviour
     void ChangeFallTrue4()
     {
         noahAnim.SetBool("Falling4", true);
-        upDownData = noahUpDownObject.GetComponent<ObjData>();
-        Vector3 fallPosition = upDownData.DownPos.position;
+        objectData = PlayerScripts.playerscripts.currentUpObj.GetComponent<ObjData>();
+        Vector3 fallPosition = objectData.DownPos.position;
         //noahPlayer.transform.position = new Vector3(fallPosition.x - 2, 35.78f, fallPosition.z);
         noahPlayer.transform.position = fallPosition;
 
@@ -381,41 +327,37 @@ public class InteractionButtonController : MonoBehaviour
     /* 누르기 - 상자 등을 밀기 */
     public void playerPush() 
     {
-        if(noahBiteObject==null)
+        noahPushOrPressObject = PlayerScripts.playerscripts.currentObject;
+        if (noahPushOrPressObject != null)
         {
-            noahPushObject = PlayerScripts.playerscripts.currentObject;
-            if (noahPushObject != null)
-            {
-                // 스크립터블오브젝트 변수에 저장
-                equipment.pushObjectName = noahPushObject.name;
+            // 스크립터블오브젝트 변수에 저장
+            equipment.pushObjectName = noahPushOrPressObject.name;
 
-                equipment.cancelPushPos = noahPushObject.transform.position;
-                equipment.cancelPushRot = noahPushObject.transform.eulerAngles;
-                equipment.cancelPushScale = noahPushObject.transform.localScale;
+            Invoke("ChangePushTrue1", 0.5f);
+            Invoke("ChangePushTrue2", 1f);
 
-                Invoke("ChangePushTrue1", 0.5f);
-                Invoke("ChangePushTrue2", 1f);
+            // 스크립터블오브젝트 변수에 저장
+            equipment.cancelPushPos = noahPushOrPressObject.transform.position;
+            equipment.cancelPushRot = noahPushOrPressObject.transform.eulerAngles;
+            equipment.cancelPushScale = noahPushOrPressObject.transform.localScale;
 
+            objectData = noahPushOrPressObject.GetComponent<ObjData>();
+            objectText.text = "Noah N.113 - " + objectData.ObjectName;
+            objectData.IsPushOrPress = true;
 
-
-                pushData = noahPushObject.GetComponent<ObjData>();
-                objectText.text = "Noah N.113 - " + pushData.ObjectName;
-                pushData.objectDATA.IsPushOrPress = true;
-
-                Invoke("AddPushObject", 1f);
-            }
+            Invoke("AddPushObject", 1f);
         }
     }
 
     void AddPushObject()
     {
-        noahPushObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
-        noahPushObject.GetComponent<Rigidbody>().useGravity = false;
+        noahPushOrPressObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
+        noahPushOrPressObject.GetComponent<Rigidbody>().useGravity = false;
 
-        noahPushObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
+        noahPushOrPressObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
 
-        noahPushObject.transform.localPosition = pushData.PushPos; // sets the position of the object to your mouth position
-        noahPushObject.transform.localEulerAngles = pushData.PushRot; // sets the position of the object to yo
+        noahPushOrPressObject.transform.localPosition = objectData.PushPos; // sets the position of the object to your mouth position
+        noahPushOrPressObject.transform.localEulerAngles = objectData.PushRot; // sets the position of the object to yo
     }
 
     void ChangePushTrue1()
@@ -428,36 +370,9 @@ public class InteractionButtonController : MonoBehaviour
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-    /* 밀기 취소 */
 
-    public void CancelPush()
-    {
-        noahPushObject = GameObject.Find(equipment.pushObjectName).gameObject;
-
-        pushData = noahPushObject.GetComponent<ObjData>();
-        pushData.objectDATA.IsPushOrPress = false;
-
-        noahAnim.SetBool("IsPushing", false);
-
-        noahPushObject.transform.SetParent(null, true);
-
-        noahPushObject.transform.localScale = equipment.cancelPushScale;
-        noahPushObject.transform.position = new Vector3(noahPushObject.transform.position.x, equipment.cancelPushPos.y, noahPushObject.transform.position.z);
-        noahPushObject.transform.eulerAngles = equipment.cancelPushRot;
-
-        equipment.pushObjectName = "";
-        noahPushObject.transform.parent = portableObjects.transform;
-
-        noahPushObject = null;
-        pushData = null;
-    }
-
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     public void playerPressHand()
     {
-        noahPressObject = PlayerScripts.playerscripts.currentObject;
-        pressData = noahPressObject.GetComponent<ObjData>();
-        pressData.objectDATA.IsPushOrPress = true;
         StartCoroutine(HandPressAnim());
     }
 
@@ -467,17 +382,12 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsHandPressing", true);
         yield return new WaitForSeconds(0.5f);
         noahAnim.SetBool("IsHandPressing", false);
-        yield return new WaitForSeconds(2f);
-        pressData.objectDATA.IsPushOrPress = false;
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     public void playerPressHead()
     {
-        noahPressObject = PlayerScripts.playerscripts.currentObject;
-        pressData = noahPressObject.GetComponent<ObjData>();
-        pressData.objectDATA.IsPushOrPress = true;
         StartCoroutine(HeadPressAnim());
     }
     IEnumerator HeadPressAnim()
@@ -486,36 +396,8 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsHeadPressing", true);
         yield return new WaitForSeconds(0.5f);
         noahAnim.SetBool("IsHeadPressing", false);
-        yield return new WaitForSeconds(2f);
-        pressData.objectDATA.IsPushOrPress = false;
     }
 
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-    /* 먹기 */
-    public void playerEat()
-    {
-        noahEatObject = PlayerScripts.playerscripts.currentObject;
-
-        objData = noahEatObject.GetComponent<ObjData>();
-        objData.objectDATA.IsEaten = true;
-
-        StartCoroutine(EatAnim());
-    }
-
-    IEnumerator EatAnim()
-    {
-        yield return new WaitForSeconds(1f);
-        noahAnim.SetBool("IsEating1", true);
-        yield return new WaitForSeconds(1f);
-        noahAnim.SetBool("IsEating2", true);
-        yield return new WaitForSeconds(1f);
-        noahAnim.SetBool("IsEating3", true);
-        yield return new WaitForSeconds(0.1f);
-        Destroy(noahEatObject);
-        yield return new WaitForSeconds(0.9f);
-        noahAnim.SetBool("IsEating1", false);
-    }
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 끼우기 */
@@ -542,5 +424,28 @@ public class InteractionButtonController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         noahAnim.SetBool("IsInserting", true);
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    /* 먹기 */
+    public void playerEat()
+    {
+        noahEatObject = PlayerScripts.playerscripts.currentObject;
+        StartCoroutine(EatAnim());
+    }
+
+    IEnumerator EatAnim()
+    {
+        yield return new WaitForSeconds(1f);
+        noahAnim.SetBool("IsEating1", true);
+        yield return new WaitForSeconds(1f);
+        noahAnim.SetBool("IsEating2", true);
+        yield return new WaitForSeconds(1f);
+        noahAnim.SetBool("IsEating3", true);
+        yield return new WaitForSeconds(0.1f);
+        Destroy(noahEatObject);
+        yield return new WaitForSeconds(0.9f);
+        noahAnim.SetBool("IsEating1", false);
     }
 }
