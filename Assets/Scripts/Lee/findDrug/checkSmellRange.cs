@@ -60,7 +60,7 @@ public class checkSmellRange : MonoBehaviour
         }
     }
 
-    public void followDrug() //���� �ٶ󺸰� �ϱ�
+    public void followDrug() // 바라봄
     {
         smellAreaData.IsNotInteractable = true;
 

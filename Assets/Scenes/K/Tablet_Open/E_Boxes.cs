@@ -58,6 +58,16 @@ pushButton, smashButton, NoCenterButton_M_Box;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
+    public void OnBite()
+    {
+        // throw new System.NotImplementedException();
+    }
+    public void OnSniff()
+    {
+        Boxes_E.IsSniff = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerSniff();
+    }
 
     public void OnPushOrPress()
     {
@@ -70,6 +80,7 @@ pushButton, smashButton, NoCenterButton_M_Box;
         Invoke("DestroyBoxAnim", 1f); // 1초 뒤 박스 무너지는 애니메이션 실행
         Invoke("DestroyBox", 2f); // 2초 뒤 박스 오브젝트 비활성화
         GameManager.gameManager._gameData.IsNoBoxes = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
@@ -89,11 +100,6 @@ pushButton, smashButton, NoCenterButton_M_Box;
     }
 
 
-
-
-    public void OnBite()
-    {
-    }
     public void OnEat()
     {
     }
@@ -104,9 +110,6 @@ pushButton, smashButton, NoCenterButton_M_Box;
     {
     }
     public void OnSmash()
-    {
-    }
-    public void OnSniff()
     {
     }
     public void OnUp()
