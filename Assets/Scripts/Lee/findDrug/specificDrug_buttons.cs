@@ -5,26 +5,27 @@ using UnityEngine.UI;
 
 public class specificDrug_buttons : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pressButton;
-
-    ObjData specificDrugData;
+    private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
+    public ObjectData specificDrugData; 
+    ObjData specificDrugObjData;
 
     void Start()
     {
-        specificDrugData = GetComponent<ObjData>();
+        specificDrugObjData = GetComponent<ObjData>();
 
-        barkButton = specificDrugData.BarkButton;
+        barkButton = specificDrugObjData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = specificDrugData.SniffButton;
+        sniffButton = specificDrugObjData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = specificDrugData.BiteButton;
+        biteButton = specificDrugObjData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
-        pressButton = specificDrugData.PushOrPressButton;
+        pressButton = specificDrugObjData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
+        noCenterButton = specificDrugObjData.CenterButton1;
     }
 
     void DisableButton()
@@ -33,11 +34,11 @@ public class specificDrug_buttons : MonoBehaviour, IInteraction
         sniffButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
+        noCenterButton.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
     {
-        specificDrugData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -59,22 +60,12 @@ public class specificDrug_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        specificDrugData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        specificDrugData.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        specificDrugData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }

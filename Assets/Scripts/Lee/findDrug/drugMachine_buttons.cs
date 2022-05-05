@@ -8,8 +8,7 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
     public GameObject insert01;
     public GameObject insert02;
 
-    ObjData insert01Data;
-    ObjData insert02Data;
+    public ObjectData insertCheck1Data, insertCheck2Data;
 
     Outline insert01Line;
     Outline insert02Line;
@@ -24,10 +23,7 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
         machineData = GetComponent<ObjData>();
         machineLine = GetComponent<Outline>();
 
-        insert01Data = insert01.GetComponent<ObjData>();
         insert01Line = insert01.GetComponent<Outline>();
-
-        insert02Data = insert02.GetComponent<ObjData>();
         insert02Line = insert02.GetComponent<Outline>();
 
         //��ư
@@ -79,14 +75,12 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        machineData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        machineData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -94,17 +88,8 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        machineData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        machineData.IsPushOrPress = false;
     }
 
     public void OnEat()
@@ -115,7 +100,6 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
     public void OnObserve()
     {
         /* ������Ʈ�� ���� ���� true�� �ٲ� */
-        machineData.IsObserve = true;
 
         /* ��ȣ�ۿ� ��ư�� �� */
         DisableButton();
@@ -129,10 +113,10 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
         /* ���� �ִϸ��̼� & ī�޶� ��ȯ */
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        insert01Data.IsNotInteractable = false;
+        insertCheck1Data.IsNotInteractable = false;
         insert01Line.OutlineWidth = 16f;
 
-        insert02Data.IsNotInteractable = false;
+        insertCheck1Data.IsNotInteractable = false;
         insert02Line.OutlineWidth = 16f;
 
         //machineData.IsNotInteractable = true;

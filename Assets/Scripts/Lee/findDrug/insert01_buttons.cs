@@ -5,15 +5,12 @@ using UnityEngine.UI;
 
 public class insert01_buttons : MonoBehaviour, IInteraction
 {
+    public ObjectData insertCheck1Data, insertCheck2Data, drugData, drugMachineData;
     public GameObject ReportUI;
     public bool IsReported = false;
 
     public GameObject drug;
-    ObjData drugData;
     Outline drugLine;
-
-    public GameObject machine;
-    ObjData machineData;
 
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
@@ -28,9 +25,6 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         Insert01Data = GetComponent<ObjData>();
         Insert01Line = GetComponent<Outline>();
 
-        machineData = machine.GetComponent<ObjData>();
-
-        drugData = drug.GetComponent<ObjData>();
         drugLine = drug.GetComponent<Outline>();
 
         //��ư
@@ -54,7 +48,7 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(!machineData.IsObserve)
+        if(!drugMachineData.IsObserve)
         {
             Insert01Data.IsNotInteractable = true;
             Insert01Line.OutlineWidth = 0f;
@@ -151,8 +145,8 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
         LEDColor.material.color = Color.red; //�˻� ��� ���� ��ȯ
 
-        drugData.GetComponent<Rigidbody>().isKinematic = false;
-        drugData.transform.parent = null;
+        drug.GetComponent<Rigidbody>().isKinematic = false;
+        drug.transform.parent = null;
 
         drug.transform.position = new Vector3(-249.0776f, 538.895f, 669.806f);
         drug.transform.rotation = Quaternion.Euler(0, 0, 90);
