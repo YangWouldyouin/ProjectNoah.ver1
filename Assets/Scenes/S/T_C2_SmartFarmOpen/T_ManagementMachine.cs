@@ -59,7 +59,12 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(managementMachineData_T.IsObserve && GameManager.gameManager._gameData.IsIronDisappear_T_C2)
+        if(managementMachineData_T.IsClicked)
+        {
+            //A-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        }
+
+        if (managementMachineData_T.IsObserve && GameManager.gameManager._gameData.IsIronDisappear_T_C2)
         {
             canTroubleLine2Data_T.IsNotInteractable = false; // 상호작용 가능하게
             canTroubleLine2Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.
@@ -86,6 +91,12 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
         if (managementMachineData_T .IsBark && GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
         {
             Invoke("SmartFarmOpen", 2f);
+
+            /*스마트팜 오픈 퍼즐 완료*/
+            GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            //A-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         }
     }
     void DisableButton()

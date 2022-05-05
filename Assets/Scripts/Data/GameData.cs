@@ -46,9 +46,6 @@ public class GameData
     public bool IsBiteimportantMeteor_T_C2; // 중요 운석을 물었는지
     public bool IsBiteNormalMeteor1_T_C2; // 일반 운석을 물었는지
 
-    public bool IsInputNormalMeteor1_T_C2; // 일반 운석1을 수집기에 넣는지
-    public bool IsInputImportantMeteor1_T_C2; // 특별 운석을 수집기에 넣는지
-
     public bool IsAnswerInBeaker1_M_C2; // 비커 1에 맞는 운석을 넣었는지
 
     public bool IsAnswerBeakerColorChange1_M_C2; // 정답 약 때문에 비커 1 색상 변화
@@ -69,6 +66,20 @@ public class GameData
 
     public bool Is_MainSystem_WirelessOn; //메인시스템 블루트스 on/off체크
     public bool IsCanConnect_C_MS; //메인시스템 블루투스 영역 체크 
+
+
+    /*퍼즐시작*/
+    public bool IsStartCollectMeteorites; // 운석 수집 임무 시작
+    public bool IsStartPretendDead; // 죽은척 하기 임무 시작
+
+    /*퍼즐완료*/
+    public bool IsCompleteSmartFarmOpen; // 스마트팜 오픈 퍼즐 완료
+    public bool IsCompleteFindEngineKey; // 엔진실 카드키 찾기 퍼즐 완료
+    public bool IsCompleteOpenEngineRoom; // 엔진실 카드키 찾기 퍼즐 완료
+    public bool IsInputNormalMeteor1_T_C2; // 일반 운석1을 수집기기에 넣기 완료
+    public bool IsInputImportantMeteor1_T_C2; // 특별 운석을 수집기에 넣기 완료
+    public bool IsCompletePretendDead; // 엔진실 카드키 찾기 퍼즐 완료
+
 
     //public bool IsComTabletUploadClear;
 

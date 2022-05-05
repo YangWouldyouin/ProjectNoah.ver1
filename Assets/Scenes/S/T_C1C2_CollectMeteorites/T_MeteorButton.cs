@@ -67,6 +67,27 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
 
         noCenterButton_T_MeteorButton = meteorButtonData_T.CenterButton1;
 
+
+        /*임무 시작*/
+        //시간이 되면 
+        GameManager.gameManager._gameData.IsStartCollectMeteorites = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        if (GameManager.gameManager._gameData.IsStartCollectMeteorites)
+        {
+            //C-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        }
+
+        if(meteorButtonData_T.IsPushOrPress)
+        {
+            //C-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        }
+
+        if(canNormalMeteor1Data_T.IsBite /*&& 고무를 물고*/
+            || canImportantMeteorData_T.IsBite/*&& 고무를 물고*/)
+        {
+            //C-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        }
     }
 
     void Update()

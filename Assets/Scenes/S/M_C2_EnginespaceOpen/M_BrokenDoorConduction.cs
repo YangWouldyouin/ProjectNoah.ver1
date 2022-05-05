@@ -35,6 +35,11 @@ public class M_BrokenDoorConduction : MonoBehaviour, IInteraction
 
         noCenterButton_M_BrokenDoorConduction = brokenDoorConductionData_M.CenterButton1;
 
+        if(brokenDoorConductionData_M.IsBite)
+        {
+            //B-6 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+        }
+
     }
 
     void Update()

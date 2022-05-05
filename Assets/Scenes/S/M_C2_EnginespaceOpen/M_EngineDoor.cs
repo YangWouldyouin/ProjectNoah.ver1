@@ -12,12 +12,14 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
     public GameObject M_IsBrokenArea;
     public GameObject M_canInsertCardPad;
 
+
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_EngineDoor, sniffButton_M_EngineDoor, biteButton_M_EngineDoor, pressButton_M_EngineDoor, observeButton_M_EngineDoor;
 
     ObjData engineDoorData_M;
     ObjData IsBrokenAreaData_M;
     ObjData canInsertCardPadData_M;
+
 
     /*아웃라인*/
     Outline engineDoorOutline_M;
@@ -32,7 +34,7 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
 
 
 
-        /*연관있는 오브젝트*/
+        /*ObjData*/
         IsBrokenAreaData_M = M_IsBrokenArea.GetComponent<ObjData>();
 
         canInsertCardPadData_M = M_canInsertCardPad.GetComponent<ObjData>();
@@ -65,10 +67,17 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
 
     void Update()
     {
+        if(engineDoorData_M.IsClicked)
+        {
+            //B-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        }
+
         if (GameManager.gameManager._gameData.IsEngineDoorFix_M_C2)
         {
             Invoke("DoorFix", 2f);
         }
+
+        
     }
     void DisableButton()
     {
@@ -91,6 +100,8 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
+        //B-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
         engineDoorData_M.IsObserve = true;
 
         DisableButton();

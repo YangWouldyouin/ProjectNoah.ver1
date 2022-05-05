@@ -79,6 +79,20 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         eatDisableButton_M_Beaker1 = Beaker1Data_M.CenterDisableButton1;
 
+
+        if (Beaker1Data_M.IsEaten)
+        {
+            Invoke(" FakeAI1", 3f);
+        }
+
+    }
+
+    void FakeAI1()
+    {
+        //D-2 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+        GameManager.gameManager._gameData.IsCompletePretendDead = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
     }
 
     void Update()

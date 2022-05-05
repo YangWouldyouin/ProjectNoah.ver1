@@ -43,6 +43,11 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
         /*焼数虞昔*/
         canBrokenDoorConductionOutline_M = GetComponent<Outline>();
         BrokenAreaOutline_M = GetComponent<Outline>();
+
+        if(GameManager.gameManager._gameData.IsEngineDoorFix_M_C2)
+        {
+            //B-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+        }
     }
 
     void DisableButton()

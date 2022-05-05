@@ -58,6 +58,11 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
     void Update()
     {
+        if(table1Data_M.IsClicked)
+        {
+            //B-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        }
+
         /*노아의 높이가 책상 올라갈 높이가 되는지 확인*/
         if (table1Data_M.IsCollision)
         {
@@ -79,8 +84,10 @@ public class M_Table1 : MonoBehaviour, IInteraction
         {
             table1Data_M.IsCenterButtonChanged = false;
 
-/*            canPackData_M.IsNotInteractable = true;
-            canPackOutline_M.OutlineWidth = 0;*/
+            //B-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
+            /*            canPackData_M.IsNotInteractable = true;
+                        canPackOutline_M.OutlineWidth = 0;*/
         }
 
         else
