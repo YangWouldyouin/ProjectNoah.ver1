@@ -5,26 +5,27 @@ using UnityEngine.UI;
 
 public class L_TDBT_Body : MonoBehaviour, IInteraction
 {
-    private Button barkButton_L_TDBT_Body, sniffButton_L_TDBT_Body, biteButton_L_TDBT_Body, pushButton_L_TDBT_Body, noCenterButton_L_TDBT_Body;
+    public ObjectData TDBT_fixPartData;
 
+    private Button barkButton_L_TDBT_Body, sniffButton_L_TDBT_Body, biteButton_L_TDBT_Body, pushButton_L_TDBT_Body, noCenterButton_L_TDBT_Body;
     ObjData TDBT_BodyData_L;
+    PlayerEquipment playerEquipment;
 
     public GameObject TDBT_fixPart;
 
-    ObjData TDBT_fixPartData;
     Outline TDBT_BodyOutline, TDBT_fixPartOutline;
 
-    // Start is called before the first frame update
     void Start()
     {
-        TDBT_BodyData_L = GetComponent<ObjData>();
-        TDBT_fixPartData = TDBT_fixPart.GetComponent<ObjData>();
+        playerEquipment = BaseCanvas._baseCanvas.equipment;
 
         TDBT_BodyOutline = GetComponent<Outline>();
         TDBT_fixPartOutline = TDBT_fixPart.GetComponent<Outline>();
+
+        TDBT_BodyData_L = GetComponent<ObjData>();
+
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_L_TDBT_Body = TDBT_BodyData_L.BarkButton;
-
         barkButton_L_TDBT_Body.onClick.AddListener(OnBark);
 
         sniffButton_L_TDBT_Body = TDBT_BodyData_L.SniffButton;
@@ -51,27 +52,16 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         noCenterButton_L_TDBT_Body.transform.gameObject.SetActive(false);
     }
 
-    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        TDBT_BodyData_L.IsPushOrPress = false;
-    }
-
     public void OnBark()
     {
-        TDBT_BodyData_L.IsBark = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnPushOrPress()
     {
-        TDBT_BodyData_L.IsPushOrPress = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
-        StartCoroutine(ChangePressFalse());
-
 
         if (TDBT_fixPartData.IsBite) // 부품을 물었으면
         {
@@ -81,11 +71,11 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
     public void TrashDoorButtonDone()
     {
-        TDBT_fixPartData.GetComponent<Rigidbody>().isKinematic = false;
-        TDBT_fixPartData.transform.parent = null;
+        TDBT_fixPart.GetComponent<Rigidbody>().isKinematic = false;
+        TDBT_fixPart.transform.parent = null;
 
-        TDBT_fixPartData.transform.position = new Vector3(-27.253f, 1.844f, 35.729f);
-        TDBT_fixPartData.transform.rotation = Quaternion.Euler(0, -90, 0);
+        TDBT_fixPart.transform.position = new Vector3(-27.253f, 1.844f, 35.729f);
+        TDBT_fixPart.transform.rotation = Quaternion.Euler(0, -90, 0);
         TDBT_fixPart.transform.localScale = new Vector3(50f, 50.00002f, 50.00002f);
 
         //TDBT_fixPartData.enabled = false;
@@ -96,6 +86,8 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         TDBT_BodyOutline.OutlineWidth = 0;
         TDBT_fixPartOutline.OutlineWidth = 0;
 
+        TDBT_fixPartData.IsBite = false;
+        playerEquipment.biteObjectName = "";
 
         GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

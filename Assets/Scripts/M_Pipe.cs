@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class M_Pipe : MonoBehaviour, IInteraction
 {
-    [SerializeField] ObjectData pipeData;
+    private ObjData pipeData_M;
 
     private Button barkButton_M_Pipe, biteButton_M_Pipe, smashButton_M_Pipe, 
         pressButton_M_Pipe, sniffButton_M_Pipe, noCenterButton_M_Pipe;
-
-    private ObjData pipeData_M;
-
 
     void Start()
     {
@@ -22,7 +19,6 @@ public class M_Pipe : MonoBehaviour, IInteraction
         barkButton_M_Pipe.onClick.AddListener(OnBark);
 
         biteButton_M_Pipe = pipeData_M.BiteButton;
-        biteButton_M_Pipe.onClick.AddListener(OnBite);
 
         smashButton_M_Pipe = pipeData_M.SmashButton;
         smashButton_M_Pipe.onClick.AddListener(OnSmash);
@@ -47,16 +43,8 @@ public class M_Pipe : MonoBehaviour, IInteraction
         noCenterButton_M_Pipe.transform.gameObject.SetActive(false);
     }
 
-    public void OnBite()
-    {
-        // 진짜 "물기" 가 되는 오브젝트는 비워둠
-    }
-
-
     public void OnSmash()
     {
-        /* 오브젝트의 짖기 변수 true로 바꿈 */
-        pipeData.IsSmash = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
@@ -77,10 +65,6 @@ public class M_Pipe : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-
-        /* 오브젝트의 짖기 변수 true로 바꿈 */
-        pipeData.IsBark = true;
-
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 애니메이션 보여줌 */
@@ -89,34 +73,19 @@ public class M_Pipe : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        /* 오브젝트의 냄새맡기 변수 true로 바꿈 */
-        pipeData.IsSniff = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 애니메이션 보여주고 냄새 텍스트 띄움 */
         InteractionButtonController.interactionButtonController.playerSniff();
-
-        /* 임무 리스트에 "AI 깨우기" 미션 추가 */
-        GameManager.gameManager._gameData.ActiveMissionList[3] = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-        MissionGenerator.missionGenerator.IsOn = false;
-        MissionGenerator.missionGenerator.ShowMissionList();
     }
 
     public void OnPushOrPress()
     {
-        /* 오브젝트의 누르기 변수 true로 바꿈 */
-        pipeData.IsPushOrPress = true;
-
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
         /* 애니메이션 보여줌 */
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
-
-        /* 2초 뒤에 Ispushorpress 를 false 로 바꿈 */
-        StartCoroutine(ChangePressFalse());
 
         /* 임무 리스트에 "AI 깨우기" 미션 추가 */
         GameManager.gameManager._gameData.ActiveMissionList[1] = true;
@@ -126,11 +95,6 @@ public class M_Pipe : MonoBehaviour, IInteraction
         MissionGenerator.missionGenerator.ShowMissionList();
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        pipeData.IsPushOrPress = false;
-    }
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnEat()
@@ -152,4 +116,10 @@ public class M_Pipe : MonoBehaviour, IInteraction
     {
         throw new System.NotImplementedException();
     }
+
+    public void OnBite()
+    {
+        // 진짜 "물기" 가 되는 오브젝트는 비워둠
+    }
+
 }

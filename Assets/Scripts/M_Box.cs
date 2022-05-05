@@ -8,6 +8,8 @@ public class M_Box : MonoBehaviour, IInteraction
     Button barkButton_M_Box, sniffButton_M_Box, biteButton_M_Box, pushButton_M_Box, upButton_M_Box;
     ObjData boxData_M;
 
+    public ObjectData boxData;
+
     public Vector3 pushPos, pushRot;
 
     public Vector3 boxRisePos;
@@ -79,10 +81,10 @@ public class M_Box : MonoBehaviour, IInteraction
     public void OnUp()
     {
         DiableButton();
-        if (!boxData_M.IsUpDown)
+        if (!boxData.IsUpDown)
         {
             PlayerScripts.playerscripts.currentUpObj = this.gameObject;
-            boxData_M.IsUpDown = true;
+            boxData.IsUpDown = true;
 
             boxRisePos.x = boxData_M.UpPos.position.x;
             //boxRisePos.y = transform.position.y;
