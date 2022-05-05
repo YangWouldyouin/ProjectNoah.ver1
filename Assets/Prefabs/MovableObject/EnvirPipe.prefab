@@ -391,7 +391,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: Steel
+  objectData: {fileID: 0}
   interactionDestination: {fileID: 0}
+  buttonOffset: {x: 0, y: 0, z: 0}
+  interactButton: {fileID: 0}
   barkButton: {fileID: 0}
   sniffButton: {fileID: 0}
   biteButton: {fileID: 0}
@@ -401,11 +404,17 @@ MonoBehaviour:
   centerDisableButton1: {fileID: 0}
   centerButton2: {fileID: 0}
   centerDisableButton2: {fileID: 0}
-  interactButton: {fileID: 0}
   observeView: {fileID: 0}
   observePlusView: {fileID: 0}
+  upPos: {fileID: 0}
+  downPos: {fileID: 0}
+  bitePos: {x: 0, y: 0, z: 0}
+  biteRot: {x: 0, y: 0, z: 0}
+  pushPos: {x: 0, y: 0, z: 0}
+  pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -416,8 +425,6 @@ MonoBehaviour:
   IsEaten: 0
   IsInsert: 0
   IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
 --- !u!54 &684185811

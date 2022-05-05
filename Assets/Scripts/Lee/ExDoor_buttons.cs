@@ -7,11 +7,13 @@ public class ExDoor_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
+    public ObjectData hydrantDoorData;
+    public ObjectData extingusherData;
+
     ObjData portDoorData;
     Outline portDoorLine;
 
     public GameObject extinguisher;
-    ObjData ExData;
     Outline ExLine;
 
     void Start()
@@ -19,7 +21,6 @@ public class ExDoor_buttons : MonoBehaviour, IInteraction
         portDoorData = GetComponent<ObjData>();
         portDoorLine = GetComponent<Outline>();
 
-        ExData = extinguisher.GetComponent<ObjData>();
         ExLine = extinguisher.GetComponent<Outline>();
 
         barkButton = portDoorData.BarkButton;
@@ -55,14 +56,12 @@ public class ExDoor_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        portDoorData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        portDoorData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -70,7 +69,6 @@ public class ExDoor_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        portDoorData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
@@ -79,18 +77,10 @@ public class ExDoor_buttons : MonoBehaviour, IInteraction
         portDoorData.IsNotInteractable = true;
         portDoorLine.OutlineWidth = 0f;
 
-        ExData.IsNotInteractable = false;
+        extingusherData.IsNotInteractable = false;
         ExLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        portDoorData.IsPushOrPress = false;
     }
 
     public void OnEat()

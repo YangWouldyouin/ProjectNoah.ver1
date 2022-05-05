@@ -7,11 +7,13 @@ public class ExBody_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
+    public ObjectData hydrantBodyData;
+    public ObjectData hydrantDoorData;
+
     ObjData portBodyData;
     Outline portBodyLine;
 
     public GameObject portDoor;
-    ObjData portDoorData;
     Outline portDoorLine;
 
     /*
@@ -26,7 +28,6 @@ public class ExBody_buttons : MonoBehaviour, IInteraction
         portBodyData = GetComponent<ObjData>();
         portBodyLine = GetComponent<Outline>();
 
-        portDoorData = portDoor.GetComponent<ObjData>();
         portDoorLine = portDoor.GetComponent<Outline>();
 
         //insert02Data = insert02.GetComponent<ObjData>();
@@ -50,11 +51,11 @@ public class ExBody_buttons : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(portBodyData.IsObserve == false)
+        if(hydrantBodyData.IsObserve == false)
         {
             gameObject.GetComponent<BoxCollider>().enabled = true;
 
-            portDoorData.IsNotInteractable = true;
+            hydrantBodyData.IsNotInteractable = true;
             portDoorLine.OutlineWidth = 0f;
 
             //insert02Data.IsNotInteractable = true;
@@ -73,7 +74,6 @@ public class ExBody_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        portBodyData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -90,17 +90,16 @@ public class ExBody_buttons : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        portBodyData.IsObserve = true;
         DisableButton();
 
         PlayerScripts.playerscripts.currentObserveObj = gameObject;
         CameraController.cameraController.currentView = portBodyData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        portBodyData.IsNotInteractable = true;
+        hydrantBodyData.IsNotInteractable = true;
         portBodyLine.OutlineWidth = 0f;
 
-        portDoorData.IsNotInteractable = false;
+        hydrantDoorData.IsNotInteractable = false;
         portDoorLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -111,22 +110,12 @@ public class ExBody_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        portBodyData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        portBodyData.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        portBodyData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }

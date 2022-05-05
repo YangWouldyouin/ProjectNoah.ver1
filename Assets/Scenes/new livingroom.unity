@@ -765,6 +765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f686f88d65b794691ab40528a9e6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pipeData: {fileID: 0}
+  C_WorkRoomDoorData: {fileID: 0}
   biteButton: {fileID: 141414648}
   smashButton: {fileID: 844624172}
   barkButton: {fileID: 478993304}
@@ -774,8 +776,6 @@ MonoBehaviour:
   centerDisableButton1: {fileID: 0}
   centerButton2: {fileID: 0}
   centerDisableButton2: {fileID: 0}
-  cockpitDoor_P: {fileID: 0}
-  pipe_P: {fileID: 0}
 --- !u!114 &141414648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,7 +988,7 @@ RectTransform:
   - {fileID: 1212754922}
   - {fileID: 117141909}
   m_Father: {fileID: 1599570870}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2892,7 +2892,7 @@ PrefabInstance:
       objectReference: {fileID: 428238301}
     - target: {fileID: 6694210594478865464, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6694210594478865464, guid: dacf54edbc6a84648b1fe13a511a43c3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4082,7 +4082,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1418348240}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: L_TDBT_FixPart, Assembly-CSharp
         m_MethodName: OnBark
         m_Mode: 1
@@ -6186,6 +6186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f679cea58c96143a63b73fc85638be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameTime: {fileID: 0}
 --- !u!114 &821442016 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9008733174439686969, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
@@ -7827,7 +7828,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1418348240}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: L_TDBT_FixPart, Assembly-CSharp
         m_MethodName: OnSniff
         m_Mode: 1
@@ -9909,193 +9910,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1418348237
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_RootOrder
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 50.000015
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 50.000015
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -41.01
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 39.16
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071069
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.70710677
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 228ea4c360d60f24ca67387d3b6871e7, type: 2}
-    - target: {fileID: 919132149155446097, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-      propertyPath: m_Name
-      value: TrashBT_fitPart
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 39052fcbe53afca42892948821f7b459, type: 3}
---- !u!1 &1418348239 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 39052fcbe53afca42892948821f7b459, type: 3}
-  m_PrefabInstance: {fileID: 1418348237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1418348240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418348239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a121bafd23d605c41961742189c60e1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1418348241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418348239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea4aa32d132225d4caf0b25bfc021739, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: "\uBD80\uD488"
-  smellText: "[\uB0C4\uC0C8] \uC4F0\uB808\uAE30"
-  interactionDestination: {fileID: 0}
-  buttonOffset: {x: -11, y: -14, z: 0}
-  interactButton: {fileID: 1069769763}
-  barkButton: {fileID: 538445526}
-  sniffButton: {fileID: 995488386}
-  biteButton: {fileID: 1927285394}
-  smashButton: {fileID: 1012132518}
-  pushOrPressButton: {fileID: 1519599566}
-  centerButton1: {fileID: 2070207831}
-  centerDisableButton1: {fileID: 0}
-  centerButton2: {fileID: 0}
-  centerDisableButton2: {fileID: 0}
-  observeView: {fileID: 0}
-  observePlusView: {fileID: 0}
-  upPos: {fileID: 0}
-  downPos: {fileID: 0}
-  bitePos: {x: -0.017, y: 0.029, z: 0.001}
-  biteRot: {x: 90, y: 0, z: 0}
-  pushPos: {x: 0, y: 0, z: 0}
-  pushRot: {x: 0, y: 0, z: 0}
-  IsCenterButtonDisabled: 0
-  IsCenterPlusButtonDisabled: 0
-  IsNotInteractable: 0
-  IsBark: 0
-  IsPushOrPress: 0
-  IsSniff: 0
-  IsBite: 0
-  IsSmash: 0
-  IsUpDown: 0
-  IsEaten: 0
-  IsInsert: 0
-  IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
-  IsCollision: 0
-  IsClicked: 0
---- !u!65 &1418348242
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418348239}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.03371811, y: 0.025998486, z: 0.005256587}
-  m_Center: {x: -0.0009178162, y: 0.00019011044, z: 0.0026281734}
---- !u!54 &1418348243
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418348239}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1418348244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418348239}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0.15686275, g: 1, b: 1, a: 1}
-  outlineWidth: 8
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &1440434611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10677,7 +10491,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1418348240}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: L_TDBT_FixPart, Assembly-CSharp
         m_MethodName: OnPushOrPress
         m_Mode: 1
@@ -10963,7 +10777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed062d30dc40f741bb22960659e52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TDBT_fixPart: {fileID: 1418348239}
+  TDBT_fixPartData: {fileID: 0}
+  TDBT_fixPart: {fileID: 0}
 --- !u!114 &1574249346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10978,6 +10793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: "\uC4F0\uB808\uAE30\uCC98\uB9AC\uC7A5 \uBC84\uD2BC"
   smellText: "[\uB0C4\uC0C8] \uC4F0\uB808\uAE30"
+  objectData: {fileID: 0}
   interactionDestination: {fileID: 0}
   buttonOffset: {x: 0, y: -3, z: -3}
   interactButton: {fileID: 321688681}
@@ -11000,6 +10816,7 @@ MonoBehaviour:
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
   IsCenterPlusButtonDisabled: 0
+  IsCenterButtonChanged: 0
   IsNotInteractable: 0
   IsBark: 0
   IsPushOrPress: 0
@@ -11010,8 +10827,6 @@ MonoBehaviour:
   IsEaten: 0
   IsInsert: 0
   IsObserve: 0
-  IsObservePlus: 0
-  IsCenterButtonChanged: 0
   IsCollision: 0
   IsClicked: 0
 --- !u!65 &1574249347
@@ -11189,6 +11004,7 @@ RectTransform:
   m_Children:
   - {fileID: 321688682}
   - {fileID: 1069769764}
+  - {fileID: 1867947794}
   - {fileID: 1809494664}
   - {fileID: 148481053}
   m_Father: {fileID: 0}
@@ -12512,7 +12328,7 @@ RectTransform:
   - {fileID: 1587647846}
   - {fileID: 1967989369}
   m_Father: {fileID: 1599570870}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12980,6 +12796,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 401754, guid: cfe4210266b68f545972f3428f02b4cf, type: 3}
   m_PrefabInstance: {fileID: 1832530129}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1867947793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1867947794}
+  m_Layer: 5
+  m_Name: ~~~~~~~ portable objects ~~~~~~
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1867947794
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867947793}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1599570870}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1878528190
 GameObject:
   m_ObjectHideFlags: 0
@@ -13643,7 +13494,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1418348240}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: L_TDBT_FixPart, Assembly-CSharp
         m_MethodName: OnBite
         m_Mode: 1
