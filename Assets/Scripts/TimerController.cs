@@ -9,6 +9,9 @@ public class TimerController : MonoBehaviour
     private float timeValue = 0;
     private TMPro.TextMeshProUGUI dayText;
     private TMPro.TextMeshProUGUI hourText;
+
+    InGameTime inGameTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,11 @@ public class TimerController : MonoBehaviour
 
         dayText = transform.Find("DayText").GetComponent<TMPro.TextMeshProUGUI>();
         hourText = transform.Find("HourText").GetComponent<TMPro.TextMeshProUGUI>();
+
+
     }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -36,9 +43,9 @@ public class TimerController : MonoBehaviour
         {
             timeToDisplay = 0;
         }
-        float days = Mathf.FloorToInt(timeToDisplay / 720);
+        inGameTime.days = Mathf.FloorToInt(timeToDisplay / 720);
 
-        float hours = Mathf.FloorToInt((timeToDisplay % 720) / 30);
+        inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 720) / 30);
 
 
 
@@ -49,7 +56,7 @@ public class TimerController : MonoBehaviour
         //float seconds = Mathf.FloorToInt((timeToDisplay % 3600) % 60);
 
         //hourText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        dayText.text = string.Format("{0:00}", days + 1);
-        hourText.text = string.Format("{0:00}", hours)+":00";
+        dayText.text = string.Format("{0:00}", inGameTime.days + 1);
+        hourText.text = string.Format("{0:00}", inGameTime.hours) +":00";
     }
 }
