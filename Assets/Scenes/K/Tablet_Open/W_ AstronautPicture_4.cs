@@ -3,37 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class W_AstronautPicture_1: MonoBehaviour, IInteraction
+public class W_AstronautPicture_4: MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton,
 pushButton, NoCenterButton, smashButton;
 
-    ObjData AstronautPicture_1_W;
+    ObjData AstronautPicture_4_W;
 
-    public GameObject AstronautPicture_1_Image_W;
-    ObjData AstronautPicture_1_ImageData_W;
+    public GameObject AstronautPicture_4_Image_W;
+    ObjData AstronautPicture_4_ImageData_W;
 
     void Start()
     {
-        AstronautPicture_1_W = GetComponent<ObjData>();
-        AstronautPicture_1_ImageData_W = AstronautPicture_1_Image_W.GetComponent<ObjData>();
+        AstronautPicture_4_W = GetComponent<ObjData>();
+        AstronautPicture_4_ImageData_W = AstronautPicture_4_Image_W.GetComponent<ObjData>();
 
 
-        barkButton = AstronautPicture_1_W.BarkButton;
+        barkButton = AstronautPicture_4_W.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = AstronautPicture_1_W.SniffButton;
+        sniffButton = AstronautPicture_4_W.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = AstronautPicture_1_W.BiteButton;
+        biteButton = AstronautPicture_4_W.BiteButton;
 
-        smashButton = AstronautPicture_1_W.SmashButton;
+        smashButton = AstronautPicture_4_W.SmashButton;
         smashButton.onClick.AddListener(OnSmash);
 
-        pushButton = AstronautPicture_1_W.PushOrPressButton;
+        pushButton = AstronautPicture_4_W.PushOrPressButton;
         pushButton.onClick.AddListener(OnPushOrPress);
 
-        NoCenterButton = AstronautPicture_1_W.CenterButton1; // 비활성화 버튼
+        NoCenterButton = AstronautPicture_4_W.CenterButton1; // 비활성화 버튼
     }
     void DiableButton()
     {
@@ -51,32 +51,32 @@ pushButton, NoCenterButton, smashButton;
     }
     public void OnBark()
     {
-        AstronautPicture_1_W.IsBark = true;
+        AstronautPicture_4_W.IsBark = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnBite()
     {
-        AstronautPicture_1_W.IsSniff = true;
+        AstronautPicture_4_W.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
 
     public void OnObserve()
     {
-        AstronautPicture_1_W.IsObserve = true;
+        AstronautPicture_4_W.IsObserve = true;
         DiableButton();
         //PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         //CameraController.cameraController.currentView = LoverPicture_W.ObserveView; // 관찰 뷰 : 위쪽
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        AstronautPicture_1_ImageData_W.gameObject.SetActive(true); // UI로 사진이미지 크게 보여주기
+        AstronautPicture_4_ImageData_W.gameObject.SetActive(true); // UI로 사진이미지 크게 보여주기
     }
 
     public void OnPushOrPress()
     {
-        AstronautPicture_1_W.IsPushOrPress = true;
+        AstronautPicture_4_W.IsPushOrPress = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
         StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
@@ -86,7 +86,7 @@ pushButton, NoCenterButton, smashButton;
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        AstronautPicture_1_W.IsPushOrPress = false;
+        AstronautPicture_4_W.IsPushOrPress = false;
     }
 
 

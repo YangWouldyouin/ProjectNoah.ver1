@@ -27,6 +27,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
     public int ran; // ·£´ý »çÁø
 
+    /* ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ W-1´ë»ç »ðÀÔ ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ */
+
     void Start()
     {
         PictureButton_P = GetComponent<ObjData>();

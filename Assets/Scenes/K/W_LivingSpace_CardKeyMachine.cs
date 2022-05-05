@@ -140,6 +140,13 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
             // LivingDoomDoor_WL.GetComponent<Animator>().Play("LivingDoorHalfOpen");
             Invoke("LivingDoorHalfOpen", 2f); // 문 열리는 애니메이션 실행
+
+            /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Y-3대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+        }
+        else
+        {
+            /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 카드키 안 물었을 때 -> Y-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+            /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 상자에 올라가지 않았을 때 -> Y-2대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
         }
     }
     IEnumerator ChangePressFalse() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴

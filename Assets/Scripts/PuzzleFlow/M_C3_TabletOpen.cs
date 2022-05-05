@@ -69,31 +69,6 @@ public class M_C3_TabletOpen : MonoBehaviour
                 }
             }
         }
-
-
-        //if (NoBoxes == true)
-        //{
-        //    BoxDestroy();
-        //    if (NoAIZone == true)
-        //    {
-        //        GetOutAIZone();
-        //        if (FullEgTablet == true)
-        //        {
-        //            FullBetteryTablet();
-        //            if (OpenTablet == true)
-        //            {
-        //                OpenLockTablet();
-        //                UseTablet = true;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //else
-        //{
-        //    GetOutAIZone();
-        //    UseTablet = false;
-        //}
     }
 
 

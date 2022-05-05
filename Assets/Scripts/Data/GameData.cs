@@ -77,6 +77,9 @@ public class GameData
 
     public bool IsTabletUnlock; // 태블릿 잠금여부
 
+    public bool IsNoBoxes; // 엔진실 박스 없어짐
+    public bool IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨
+
     /*퍼즐시작*/
     public bool IsStartCollectMeteorites; // 운석 수집 임무 시작
     public bool IsStartPretendDead; // 죽은척 하기 임무 시작

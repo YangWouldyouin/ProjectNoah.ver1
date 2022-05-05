@@ -89,6 +89,8 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
+        /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Z-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+
         /* 임무 리스트에 "AI 깨우기" 미션 삭제 */
         GameManager.gameManager._gameData.ActiveMissionList[0] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -99,6 +101,9 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         /* 조종실 문 활성화 */
         controlDoorOutline.OutlineWidth = 8;
         controlDoorData.IsNotInteractable = false;
+        Debug.Log("조종실 문 활성화");
+
+        /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Z-2대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     }
 
     void DelayAnim()

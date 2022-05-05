@@ -158,6 +158,8 @@ pressButton, observeButton;
         CameraController.cameraController.currentView = planetRaderData_PR.ObserveView; // 관찰 뷰 : 위쪽
         /* 관찰 애니메이션 & 카메라 전환 */
         InteractionButtonController.interactionButtonController.playerObserve();
+
+        /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ X-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     }
 
 

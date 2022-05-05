@@ -95,6 +95,9 @@ public class tablet : MonoBehaviour, IInteraction
         TabletBackOn.SetActive(true);
     }
 
+
+
+
     public void OnPushOrPress()
     {
         DisableButton();
