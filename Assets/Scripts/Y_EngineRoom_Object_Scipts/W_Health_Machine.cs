@@ -9,14 +9,15 @@ public class W_Health_Machine : MonoBehaviour
 
     ObjData Health_MachineData_W;
 
+    public ObjectData healthMachineData;
+    public ObjectData healthMachineFixPartData;
+
     public GameObject healthMachineFixPart_HM;
-    ObjData healthMachineFixPartData_HM;
     Outline healthMachineFixPartDataOutline;
 
     public GameObject dialogManager_HM;
     DialogManager dialogManager;
 
-    public Transform healthMachinePos;
     public Vector3 healthMachineRisePos;
 
     public GameObject Report_GUI;
@@ -37,7 +38,6 @@ public class W_Health_Machine : MonoBehaviour
         //W_HM_1
         
         Health_MachineData_W = GetComponent<ObjData>();
-        healthMachineFixPartData_HM = healthMachineFixPart_HM.GetComponent<ObjData>();
         healthMachineFixPartDataOutline = healthMachineFixPart_HM.GetComponent<Outline>();
 
         dialogManager = dialogManager_HM.GetComponent<DialogManager>();
@@ -77,29 +77,18 @@ public class W_Health_Machine : MonoBehaviour
         upDisableButton_W_Health_Machine.transform.gameObject.SetActive(false);
     }
 
-    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        Health_MachineData_W.IsPushOrPress = false;
-    }
-
     public void OnBark()
     {
-        Health_MachineData_W.IsBark = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnPushOrPress()
     {
-        Health_MachineData_W.IsPushOrPress = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
-        StartCoroutine(ChangePressFalse());
 
-
-        if (healthMachineFixPartData_HM.IsBite) // 부품을 물었으면
+        if (healthMachineFixPartData.IsBite) // 부품을 물었으면
         {
             Invoke("HealthMachhineDone", 1.5f);
         }
@@ -107,7 +96,6 @@ public class W_Health_Machine : MonoBehaviour
 
     public void OnSniff()
     {
-        Health_MachineData_W.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -116,15 +104,15 @@ public class W_Health_Machine : MonoBehaviour
     {
         DiableButton();
 
-        if (!Health_MachineData_W.IsUpDown)
+        if (!healthMachineData.IsUpDown)
         {
             PlayerScripts.playerscripts.currentUpObj = this.gameObject;
             /* 오브젝트의 오르기 변수 true 로 바꿈 */
-            Health_MachineData_W.IsUpDown = true;
+            healthMachineData.IsUpDown = true;
 
             /* 실제 노아가 이동할 오르기 위치 좌표에 x, z 값을 넣음 */
-            healthMachineRisePos.x = healthMachinePos.position.x;
-            healthMachineRisePos.z = healthMachinePos.position.z;
+            healthMachineRisePos.x = Health_MachineData_W.UpPos.position.x;
+            healthMachineRisePos.z = Health_MachineData_W.UpPos.position.z;
 
             /* 오르기 애니메이션 1/2 실행 */
             InteractionButtonController.interactionButtonController.PlayerRise1();
@@ -179,16 +167,16 @@ public class W_Health_Machine : MonoBehaviour
 
     public void HealthMachhineDone()
     {
-        healthMachineFixPartData_HM.GetComponent<Rigidbody>().isKinematic = false;
-        healthMachineFixPartData_HM.transform.parent = null;
+        healthMachineFixPart_HM.GetComponent<Rigidbody>().isKinematic = false;
+        healthMachineFixPart_HM.transform.parent = null;
 
-        healthMachineFixPartData_HM.transform.position = new Vector3(-258.092f, 538.404f, 680.078f);
-        healthMachineFixPartData_HM.transform.rotation = Quaternion.Euler(-90, 0, 0);
+        healthMachineFixPart_HM.transform.position = new Vector3(-258.092f, 538.404f, 680.078f);
+        healthMachineFixPart_HM.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
-        healthMachineFixPartData_HM.IsNotInteractable = true;
+        healthMachineFixPartData.IsNotInteractable = true;
         healthMachineFixPartDataOutline.OutlineWidth = 0;
 
-        Health_MachineData_W.IsCenterButtonDisabled = false;
+        healthMachineData.IsCenterButtonDisabled = false;
 
         //W_HM_2 : 아래 줄이 언니가 추가해둔 스크립트. 수정해야 할 듯!
         //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(7)); 

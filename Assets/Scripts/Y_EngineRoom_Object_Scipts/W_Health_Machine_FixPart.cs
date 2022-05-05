@@ -7,6 +7,8 @@ public class W_Health_Machine_FixPart : MonoBehaviour, IInteraction
 {
     private Button barkButton_W_Health_Machine_FixPart, sniffButton_W_Health_Machine_FixPart, biteButton_W_Health_Machine_FixPart, pushButton_W_Health_Machine_FixPart, noCenterButton_W_Health_Machine_FixPart;
 
+    public ObjectData Health_Machine_FixPartData;
+
     ObjData HM_FIxPartData_W;
 
     // Start is called before the first frame update
@@ -43,38 +45,20 @@ public class W_Health_Machine_FixPart : MonoBehaviour, IInteraction
         noCenterButton_W_Health_Machine_FixPart.transform.gameObject.SetActive(false);
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        HM_FIxPartData_W.IsPushOrPress = false;
-    }
-
     public void OnBark()
     {
-        HM_FIxPartData_W.IsBark = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnPushOrPress()
     {
-        HM_FIxPartData_W.IsPushOrPress = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
-        StartCoroutine(ChangePressFalse());
     }
 
     public void OnSniff()
     {
-        HM_FIxPartData_W.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
