@@ -41,7 +41,7 @@ public class GameData
     public bool IsIronDisappear_T_C2; // 스마트팜 망가진 문 열었는지
 
     public bool IsOutTroubleLine2_T_C2; // 스마트팜 망가진 선을 꺼냈는지
-    public bool IsSmartFarmFix_T_C2;//스마트팜 수리 완료
+    public bool IsSmartFarmFix_T_C2;//스마트팜 수리만 완료
 
     public bool IsBiteimportantMeteor_T_C2; // 중요 운석을 물었는지
     public bool IsBiteNormalMeteor1_T_C2; // 일반 운석을 물었는지
@@ -73,35 +73,13 @@ public class GameData
     public bool IsCanConnect_C_MS; //메인시스템 블루투스 영역 체크 
     public bool IsReturnOfTheEarth;//궤도 변경 성공
 
-    public bool IsPlanetInsertChip_In; // 올바른 교란칩 꽂아 가짜 행성 데이터 변환
-
     public bool IsFullChargeTablet; // 태블릿 충전여부
-    public bool IsTabletUnlock; // 태블릿 잠금여부
 
     public bool IsNoBoxes; // 엔진실 박스 없어짐
     public bool IsTabletMoved; // 태블릿 AI 미감지 구역에서 벗어났을 때
-    public bool IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨
 
-    /*퍼즐시작*/
-    public bool IsStartCollectMeteorites; // 운석 수집 임무 시작
-    public bool IsStartPretendDead; // 죽은척 하기 임무 시작
 
-    /*퍼즐완료*/
-    public bool IsCompleteSmartFarmOpen; // 스마트팜 오픈 퍼즐 완료
-    public bool IsCompleteFindEngineKey; // 엔진실 카드키 찾기 퍼즐 완료
-    public bool IsCompleteOpenEngineRoom; // 엔진실 카드키 찾기 퍼즐 완료
-    public bool IsInputNormalMeteor1_T_C2; // 일반 운석1을 수집기기에 넣기 완료
-    public bool IsCompletePretendDead; // 엔진실 카드키 찾기 퍼즐 완료
-
-    public int randomUPic;
-
-    /*엔딩*/
-    public bool IsEatBadSweetPotato; // 상한 고구마 섭취 엔딩
-    public bool IsInputImportantMeteor1_T_C2; // 특별 운석 보고 엔딩
-    public bool IsMakeForest; // 생태계 구축 엔딩
-
-    /*고구마 먹은 거 확인*/
-    public bool[] sweetPotatoEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+    public bool[] sweetPotatoEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false }; //고구마 먹은 거 확인
     public bool Pot1InPotato; // 배양기1에 고구마 심은거 확인
     public bool Pot2InPotato; // 배양기2에 고구마 심은거 확인
     public bool Pot3InPotato; // 배양기3에 고구마 심은거 확인
@@ -117,8 +95,32 @@ public class GameData
     public bool Pot2InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
     public bool Pot3InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
 
-    /*음식 먹은 거 확인*/
-    public bool[] FoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+    public bool[] FoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //음식 먹은 거 확인
+
+
+    /*중요 구간 태블릿을 AI에게 들켰을 경우*/
+    public bool IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨
+
+
+    /*퍼즐시작*/
+    public bool IsStartCollectMeteorites; // 운석 수집 임무 시작
+    public bool IsStartPretendDead; // 죽은척 하기 임무 시작
+
+    /*퍼즐완료*/
+    public bool IsCompleteSmartFarmOpen; // 스마트팜 오픈 퍼즐 완료
+    public bool IsCompleteFindEngineKey; // 엔진실 카드키 찾기 퍼즐 완료
+    public bool IsCompleteOpenEngineRoom; // 엔진실 카드키 찾기 퍼즐 완료
+    public bool IsInputNormalMeteor1_T_C2; // 일반 운석1을 수집기에 넣기 완료 (나중에 보고한 거 기준으로 바꿔야겠다)
+    public bool IsCompletePretendDead; // 엔진실 카드키 찾기 퍼즐 완료
+    public bool IsTabletUnlock; // 태블릿 잠금여부
+    public bool IsPlanetInsertChip_In; // 올바른 교란칩 꽂아 가짜 행성 데이터 변환
+
+    public int randomUPic;
+
+    /*엔딩*/
+    public bool IsEatBadSweetPotato; // 상한 고구마 섭취 엔딩
+    public bool IsInputImportantMeteor1_T_C2; // 특별 운석 보고 엔딩
+    public bool IsMakeForest; // 생태계 구축 엔딩
 
     //public bool IsComTabletUploadClear;
 
