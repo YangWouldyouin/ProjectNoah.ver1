@@ -127,6 +127,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
         biteButton_T_MeteorCollectMachine.transform.gameObject.SetActive(false);
         pressButton_T_MeteorCollectMachine.transform.gameObject.SetActive(false);
         observeButton_T_MeteorCollectMachine.transform.gameObject.SetActive(false);
+        observeDisableButton_T_MeteorCollectMachine.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
