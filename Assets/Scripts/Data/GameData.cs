@@ -117,6 +117,9 @@ public class GameData
     public bool Pot2InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
     public bool Pot3InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
 
+    /*음식 먹은 거 확인*/
+    public bool[] FoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+
     //public bool IsComTabletUploadClear;
 
     //    //엔진실 카드키가 들어있는 카드팩이 파괴
