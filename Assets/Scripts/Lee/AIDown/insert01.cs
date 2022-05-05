@@ -100,6 +100,8 @@ public class insert01 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsAIDown = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
+
+
             Invoke("NoChip", 0.5f);
         }
 

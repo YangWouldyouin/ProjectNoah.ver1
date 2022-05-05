@@ -15,9 +15,11 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
     /* 이 오브젝트와 상호작용 하는 변수들 + 데이터 */
     public GameObject box_WL;
     public GameObject CardKey_WL;
+    public GameObject LivingDoomDoor_WL;
 
     ObjData boxData_WL;
     ObjData CardKeyData_WL;
+    ObjData LivingDoomDoorData_WL;
 
     /* 오브젝트 아웃라인 */
     Outline CardMachineOutline_M; // 카드머신
@@ -35,6 +37,8 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
         LivingSpace_CardKeyMachine_W = GetComponent<ObjData>();
         boxData_WL = box_WL.GetComponent<ObjData>();
         CardKeyData_WL = CardKey_WL.GetComponent<ObjData>();
+        LivingDoomDoorData_WL = LivingDoomDoor_WL.GetComponent<ObjData>();
+
         CardMachineOutline_M = LivingSpace_CardKeyMachine_W.GetComponent<Outline>(); // 카드머신 아웃라인
         LivingCardKeyOutline_M = CardKey_WL.GetComponent<Outline>(); // 카드키 아웃라인
 
@@ -54,6 +58,8 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
         observeButton_W_LS_CardKeyMachine = LivingSpace_CardKeyMachine_W.CenterButton1;
         observeButton_W_LS_CardKeyMachine.onClick.AddListener(OnObserve);
+
+/*        HalfLivingDoorAni_M.SetBool("HalfOpen", false); // 애니메이션 재생 금지*/
     }
 
     /* 상호작용 버튼을 끄는 함수 */
@@ -131,6 +137,8 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
             LivingSpace_CardKeyMachine_W.IsNotInteractable = true;
             CardMachineOutline_M.OutlineWidth = 0;
 
+
+            // LivingDoomDoor_WL.GetComponent<Animator>().Play("LivingDoorHalfOpen");
             Invoke("LivingDoorHalfOpen", 2f); // 문 열리는 애니메이션 실행
         }
     }
@@ -142,7 +150,8 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
     void LivingDoorHalfOpen()
     {
-        HalfLivingDoorAni_M.SetBool("HalfLivingDoorOpen", true); // 생활공간 문 반만 열리기
+        HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
+        HalfLivingDoorAni_M.SetBool("HalfEnd", true);
     }
 
     public void OnSniff()

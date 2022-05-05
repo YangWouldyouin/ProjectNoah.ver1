@@ -80,6 +80,8 @@ public class GameData
     public bool IsInputImportantMeteor1_T_C2; // 특별 운석을 수집기에 넣기 완료
     public bool IsCompletePretendDead; // 엔진실 카드키 찾기 퍼즐 완료
 
+    public int randomUPic;
+
     //public bool IsComTabletUploadClear;
 
     //    //엔진실 카드키가 들어있는 카드팩이 파괴
