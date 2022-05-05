@@ -37,6 +37,15 @@ public class M_Pack : MonoBehaviour, IInteraction
         smashButton_M_Pack.onClick.AddListener(OnSmash);
     }
 
+    void Update()
+    {
+        if(packData_M.IsClicked)
+        {
+            //B-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        }
+
+    }
+
     void DisableButton()
     {
         barkButton_M_Pack.transform.gameObject.SetActive(false);
@@ -117,6 +126,10 @@ public class M_Pack : MonoBehaviour, IInteraction
 
         M_canCardKey.SetActive(true);
         M_canCardKey.transform.position = gameObject.transform.position;
+
+        /*카드키 찾기 퍼즐 완료*/
+        GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
     }
 
