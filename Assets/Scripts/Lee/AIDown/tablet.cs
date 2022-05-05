@@ -82,7 +82,7 @@ public class tablet : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = tabletObjectData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        Invoke("TabletOn", 2.5f);
+        Invoke("TabletOn", 3f);
         /*
          타블렛 화면 진입 > 블루투스 온 > 타블렛 블루투스 = true;
         */
