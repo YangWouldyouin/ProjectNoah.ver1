@@ -88,9 +88,24 @@ public class GameData
     /*엔딩*/
     public bool IsEatBadSweetPotato; // 상한 고구마 섭취 엔딩
     public bool IsInputImportantMeteor1_T_C2; // 특별 운석 보고 엔딩
+    public bool IsMakeForest; // 생태계 구축 엔딩
 
     /*고구마 먹은 거 확인*/
     public bool[] sweetPotatoEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+    public bool Pot1InPotato; // 배양기1에 고구마 심은거 확인
+    public bool Pot2InPotato; // 배양기2에 고구마 심은거 확인
+    public bool Pot3InPotato; // 배양기3에 고구마 심은거 확인
+    public bool IsCanSeePotato1; // 고구마가 나타낸채로 저장
+    public bool IsCanSeePotato2; // 고구마가 나타낸채로 저장
+    public bool IsCanSeePotato3; // 고구마가 나타낸채로 저장
+
+    public bool Pot1InBadPotato; // 배양기1에 상한 고구마 심은거 확인
+    public bool Pot2InBadPotato; // 배양기1에 상한 고구마 심은거 확인
+    public bool Pot3InBadPotato; // 배양기1에 상한 고구마 심은거 확인
+
+    public bool Pot1InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
+    public bool Pot2InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
+    public bool Pot3InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
 
     //public bool IsComTabletUploadClear;
 
