@@ -10,8 +10,6 @@ public class tabletUIManager : MonoBehaviour
     public GameObject WirelessUI;
     public GameObject LockUI;
 
-    public bool TabletUnlock = false;
-
     public void Start()
     {
         DiaryUI.SetActive(false);
@@ -19,12 +17,10 @@ public class tabletUIManager : MonoBehaviour
         WirelessUI.SetActive(false);
         MainUI.SetActive(false);
         LockUI.SetActive(true);
-
-        TabletUnlock = true; //해금퍼즐 후 삭제해야 함 임시 bool 체크
     }
     public void ChangeMain()
     {
-        if(TabletUnlock)
+        if (GameManager.gameManager._gameData.IsTabletUnlock == true)
         {
             MainUI.SetActive(true);
             LockUI.SetActive(false);

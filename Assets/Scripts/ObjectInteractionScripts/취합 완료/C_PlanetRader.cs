@@ -33,6 +33,8 @@ pressButton, observeButton;
     public Button planetReportButton_PR; //행성 보고 버튼
     public Button exitButton_PR; // 종료 버튼
     public GameObject interactBtn1;
+
+
     /* 오브젝트 데이터 */
     ObjData planetRaderData_PR;
     ObjData leftButtonData_PR;
@@ -98,12 +100,7 @@ pressButton, observeButton;
 
     void Update()
     {
-   
     }
-
-
-
-
 
 
     void ReportPlanet()
@@ -111,8 +108,6 @@ pressButton, observeButton;
         exploreText.text = "A 행성 보고 완료";
         planetReportButton_PR.transform.gameObject.SetActive(false);
         exitButton_PR.transform.gameObject.SetActive(false);
-
-
 
 
         PlanetExploration_PR = false;
