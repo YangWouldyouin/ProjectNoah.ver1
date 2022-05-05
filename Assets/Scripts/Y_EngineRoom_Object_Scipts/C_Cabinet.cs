@@ -9,6 +9,7 @@ public class C_Cabinet : MonoBehaviour, IInteraction
     private Button barkButton_C_Cabinet, sniffButton_C_Cabinet, biteButton_C_Cabinet, pushButton_C_Cabinet, observeButton_C_Cabinet;
 
     /* 해당 오브젝트의 ObjData 변수 */
+    public ObjectData cabinetData;
     ObjData CabinetData_C;
 
     BoxCollider cabinetBoxC;
@@ -42,7 +43,7 @@ public class C_Cabinet : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(CabinetData_C.IsObserve == false)
+        if(cabinetData.IsObserve == false)
         {
             cabinetBoxC.enabled = true;
         }
@@ -81,7 +82,6 @@ public class C_Cabinet : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        CabinetData_C.IsObserve = true;
         pipe.SetActive(true);
         cabinetBoxC.enabled = false;
 
@@ -101,24 +101,11 @@ public class C_Cabinet : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        /* 오브젝트의 누르기 변수 true로 바꿈 */
-        CabinetData_C.IsPushOrPress = true;
-
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
         /* 애니메이션 보여줌 */
         InteractionButtonController.interactionButtonController.playerPressHead(); 
-
-        /* 2초 뒤에 IsPushOrPress 를 false 로 바꿈 */
-        StartCoroutine(ChangePressFalse());
-    }
-
-    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        CabinetData_C.IsPushOrPress = false;
     }
 
     public void OnSmash()
