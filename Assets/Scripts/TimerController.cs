@@ -10,7 +10,7 @@ public class TimerController : MonoBehaviour
     private TMPro.TextMeshProUGUI dayText;
     private TMPro.TextMeshProUGUI hourText;
 
-    InGameTime inGameTime;
+    public InGameTime inGameTime;
 
     // Start is called before the first frame update
     void Start()
