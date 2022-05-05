@@ -17,23 +17,29 @@ public class M_Table1 : MonoBehaviour, IInteraction
         biteButton_M_Table1, pressButton_M_Table1, upButton_M_Table1,
         upDisableButton_M_Table1, observeButton_M_Table1;
 
+    /*ObjData*/
     ObjData table1Data_M;
     ObjData canPackData_M;
 
+    /*Outline*/
     Outline canPackOutline_M;
 
+    /*Collider*/
     BoxCollider Table1_Collider;
 
     void Start()
     {
+        /*ObjData*/
         table1Data_M = GetComponent<ObjData>();
         canPackData_M = M_canPack.GetComponent<ObjData>();
 
+        /*Outline*/
         canPackOutline_M = M_canPack.GetComponent<Outline>();
 
-
+        /*Collider*/
         Table1_Collider = GetComponent<BoxCollider>();
 
+        /*버튼 연결*/
         barkButton_M_Table1 = table1Data_M.BarkButton;
         barkButton_M_Table1.onClick.AddListener(OnBark);
 

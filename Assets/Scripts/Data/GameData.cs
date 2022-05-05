@@ -75,7 +75,12 @@ public class GameData
 
     public bool IsPlanetInsertChip_In; // 올바른 교란칩 꽂아 가짜 행성 데이터 변환
 
+    public bool IsFullChargeTablet; // 태블릿 충전여부
     public bool IsTabletUnlock; // 태블릿 잠금여부
+
+    public bool IsNoBoxes; // 엔진실 박스 없어짐
+    public bool IsTabletMoved; // 태블릿 AI 미감지 구역에서 벗어났을 때
+    public bool IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨
 
     /*퍼즐시작*/
     public bool IsStartCollectMeteorites; // 운석 수집 임무 시작
@@ -111,6 +116,9 @@ public class GameData
     public bool Pot1InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
     public bool Pot2InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
     public bool Pot3InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
+
+    /*음식 먹은 거 확인*/
+    public bool[] FoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };
 
     //public bool IsComTabletUploadClear;
 

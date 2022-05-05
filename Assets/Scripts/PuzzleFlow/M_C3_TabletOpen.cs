@@ -22,7 +22,6 @@ public class M_C3_TabletOpen : MonoBehaviour
     private float Charge;
 
     public static bool IsTabletDestroyed = false; // 태블릿 AI에게 들켜 없어졌는가
-
     public static bool NoBoxes = false; // 상자 무너뜨려 없애기
     public static bool UseTablet = false; // 태블릿 완전 해금
 
@@ -69,31 +68,6 @@ public class M_C3_TabletOpen : MonoBehaviour
                 }
             }
         }
-
-
-        //if (NoBoxes == true)
-        //{
-        //    BoxDestroy();
-        //    if (NoAIZone == true)
-        //    {
-        //        GetOutAIZone();
-        //        if (FullEgTablet == true)
-        //        {
-        //            FullBetteryTablet();
-        //            if (OpenTablet == true)
-        //            {
-        //                OpenLockTablet();
-        //                UseTablet = true;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //else
-        //{
-        //    GetOutAIZone();
-        //    UseTablet = false;
-        //}
     }
 
 

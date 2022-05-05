@@ -43,7 +43,7 @@ public class T_NormalMeteor1 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        normalMeteor1Data_T.IsBark = true;
+        //normalMeteor1Data_T.IsBark = true;
 
         DisableButton();
 
@@ -52,25 +52,25 @@ public class T_NormalMeteor1 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        normalMeteor1Data_T.IsPushOrPress = true;
+       // normalMeteor1Data_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         normalMeteor1Data_T.IsPushOrPress = false;
-    }
+    }*/
 
 
     public void OnSniff()
     {
-        normalMeteor1Data_T.IsSniff = true;
+        //normalMeteor1Data_T.IsSniff = true;
 
         DisableButton();
 

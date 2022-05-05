@@ -7,40 +7,53 @@ public class tablet : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
-    ObjData tabletObjectData;
+    ObjData TabletData_C;
+    public ObjectData Tablet_C;
 
-    public ObjectData tabletData;
+    /* 상호작용 오브젝트 */
+    public GameObject TabletUI_C; // 태블릿 UI
+    public GameObject TabletBackBlack_C; // 태블릿 비활성화 화면 (오브젝트 상태 화면)
+    public GameObject TabletBackOn_C; // 태블릿 활성화 화면 (관찰하기 화면)
 
-    public GameObject TabletUI;
-    public GameObject TabletBackBlack;
-    public GameObject TabletBackOn;
+    public GameObject FullEgPad_C; // 충전 된 충전패드
+    public GameObject ZeroEgPad_C; // 충전 안 된 충전패드
+
+    /* 오브젝트 데이터 */
+    ObjData FullEgPadData_C; // 충전 된 충전패드
+    ObjData ZeroEgPadData_C; // 충전 안 된 충전패드
+
+
+    private float timer = 0f; // 태블릿 감지 타이머
+    public float DestroyTime = 5.0f; // 태블릿을 AI가 감지하기까지 걸리는 시간
+    private float Charge; // 태블릿 - 충전패드 거리 계산
+
 
     void Start()
     {
-        tabletObjectData = GetComponent<ObjData>();
+        TabletData_C = GetComponent<ObjData>();
 
-        barkButton = tabletObjectData.BarkButton;
+        barkButton = TabletData_C.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = tabletObjectData.SniffButton;
+        sniffButton = TabletData_C.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = tabletObjectData.BiteButton;
+        biteButton = TabletData_C.BiteButton;
 
-        pressButton = tabletObjectData.PushOrPressButton;
+        pressButton = TabletData_C.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        observeButton = tabletObjectData.CenterButton1;
+        observeButton = TabletData_C.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
     }
 
     void Update()
     {
-        if(tabletData.IsObserve == false)
+        if(Tablet_C.IsObserve == false)
         {
-            TabletUI.SetActive(false);
-            TabletBackBlack.SetActive(true);
-            TabletBackOn.SetActive(false);
+            TabletUI_C.SetActive(false);
+            TabletBackBlack_C.SetActive(true);
+            TabletBackOn_C.SetActive(false);
         }
     }
 
@@ -56,6 +69,7 @@ public class tablet : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
+        TabletData_C.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -65,21 +79,11 @@ public class tablet : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
-    public void OnEat()
-    {
-        //throw new System.NotImplementedException();
-    }
-
-    public void OnInsert()
-    {
-        //throw new System.NotImplementedException();
-    }
-
     public void OnObserve()
     {
         DisableButton();
         PlayerScripts.playerscripts.currentObserveObj = gameObject;
-        CameraController.cameraController.currentView = tabletObjectData.ObserveView;
+        CameraController.cameraController.currentView = TabletData_C.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
         Invoke("TabletOn", 2.5f);
@@ -90,30 +94,33 @@ public class tablet : MonoBehaviour, IInteraction
 
     public void TabletOn()
     {
-        TabletUI.SetActive(true);
-        TabletBackBlack.SetActive(false);
-        TabletBackOn.SetActive(true);
+        TabletUI_C.SetActive(true);
+        TabletBackBlack_C.SetActive(false);
+        TabletBackOn_C.SetActive(true);
     }
+
 
     public void OnPushOrPress()
     {
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
     }
-
-    public void OnSmash()
-    {
-        //throw new System.NotImplementedException();
-    }
-
     public void OnSniff()
     {
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
 
+    public void OnEat()
+    {
+    }
+    public void OnInsert()
+    {
+    }
+    public void OnSmash()
+    {
+    }
     public void OnUp()
     {
-        //throw new System.NotImplementedException();
     }
 }

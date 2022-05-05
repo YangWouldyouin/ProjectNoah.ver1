@@ -77,7 +77,13 @@ pushButton_W_LoverPicture, upButton_W_LoverPicture, upDisableButton_W_LoverPictu
 
         if(TabletData_W.IsObserve)
         {
-            TabletUnlock = true;
+            GameManager.gameManager._gameData.IsTabletUnlock = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+        else
+        {
+            GameManager.gameManager._gameData.IsTabletUnlock = false;
+            // SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
     }
 

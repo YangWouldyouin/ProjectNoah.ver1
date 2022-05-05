@@ -7,7 +7,7 @@ public class T_SuperDrug : MonoBehaviour, IInteraction
 {
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_SuperDrug, sniffButton_T_SuperDrug, biteButton_T_SuperDrug,
-        pressButton_T_SuperDrug, eatButton_T_SuperDrug; // eatDisableButton_T_SuperDrug;
+        pressButton_T_SuperDrug, noCenterButton_T_SuperDrug; // eatDisableButton_T_SuperDrug;
 
 
     /*ObjData*/
@@ -30,8 +30,8 @@ public class T_SuperDrug : MonoBehaviour, IInteraction
         pressButton_T_SuperDrug = SuperDrugData_T.PushOrPressButton;
         pressButton_T_SuperDrug.onClick.AddListener(OnPushOrPress);
 
-        eatButton_T_SuperDrug = SuperDrugData_T.CenterButton1;
-        eatButton_T_SuperDrug.onClick.AddListener(OnEat);
+        noCenterButton_T_SuperDrug = SuperDrugData_T.CenterButton1;
+        //noCenterButton_T_SuperDrug.onClick.AddListener(OnEat);
 
         //eatDisableButton_T_SuperDrug = SuperDrugData_T.CenterDisableButton1;
     }
@@ -42,14 +42,14 @@ public class T_SuperDrug : MonoBehaviour, IInteraction
         sniffButton_T_SuperDrug.transform.gameObject.SetActive(false);
         biteButton_T_SuperDrug.transform.gameObject.SetActive(false);
         pressButton_T_SuperDrug.transform.gameObject.SetActive(false);
-        eatButton_T_SuperDrug.transform.gameObject.SetActive(false);
+        noCenterButton_T_SuperDrug.transform.gameObject.SetActive(false);
         //eatDisableButton_T_SuperDrug.transform.gameObject.SetActive(false);
     }
 
 
     public void OnBark()
     {
-        SuperDrugData_T.IsBark = true;
+        //SuperDrugData_T.IsBark = true;
 
         DisableButton();
 
@@ -58,18 +58,18 @@ public class T_SuperDrug : MonoBehaviour, IInteraction
 
     public void OnEat()
     {
-        SuperDrugData_T.IsEaten = true;
+/*        //SuperDrugData_T.IsEaten = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerEat();
 
-        Debug.Log("슈퍼성장약 섭취 엔딩");
+        Debug.Log("슈퍼성장약 섭취 엔딩");*/
     }
 
     public void OnSniff()
     {
-        SuperDrugData_T.IsSniff = true;
+        //SuperDrugData_T.IsSniff = true;
 
         DisableButton();
 
@@ -78,21 +78,21 @@ public class T_SuperDrug : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        SuperDrugData_T.IsPushOrPress = true;
+        //SuperDrugData_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         SuperDrugData_T.IsPushOrPress = false;
-    }
+    }*/
 
     public void OnBite()
     {

@@ -45,7 +45,7 @@ public class M_WrongMeteor1 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        WrongMeteor1Data_T.IsBark = true;
+        //WrongMeteor1Data_T.IsBark = true;
 
         DisableButton();
 
@@ -54,24 +54,24 @@ public class M_WrongMeteor1 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        WrongMeteor1Data_T.IsPushOrPress = true;
+        //WrongMeteor1Data_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         WrongMeteor1Data_T.IsPushOrPress = false;
-    }
+    }*/
 
     public void OnSniff()
     {
-        WrongMeteor1Data_T.IsSniff = true;
+        //WrongMeteor1Data_T.IsSniff = true;
 
         DisableButton();
 
@@ -81,22 +81,22 @@ public class M_WrongMeteor1 : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnEat()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnInsert()
     {
-        throw new System.NotImplementedException();
+       
     }
 
     public void OnObserve()
     {
-        throw new System.NotImplementedException();
+      
     }
 
     public void OnSmash()

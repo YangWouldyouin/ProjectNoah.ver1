@@ -170,7 +170,7 @@ public class W_Health_Machine : MonoBehaviour
         healthMachineFixPart_HM.GetComponent<Rigidbody>().isKinematic = false;
         healthMachineFixPart_HM.transform.parent = null;
 
-        healthMachineFixPart_HM.transform.position = new Vector3(-258.092f, 538.404f, 680.078f);
+        healthMachineFixPart_HM.transform.position = new Vector3(-258.092f, 0f, 680.078f);
         healthMachineFixPart_HM.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
         healthMachineFixPartData.IsNotInteractable = true;

@@ -49,7 +49,7 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        HealthySweetPotato1Data_T.IsBark = true;
+        //HealthySweetPotato1Data_T.IsBark = true;
 
         DisableButton();
 
@@ -58,7 +58,7 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
 
     public void OnEat()
     {
-        HealthySweetPotato1Data_T.IsEaten = true;
+        //HealthySweetPotato1Data_T.IsEaten = true;
 
         DisableButton();
 
@@ -72,7 +72,7 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        HealthySweetPotato1Data_T.IsSniff = true;
+        //HealthySweetPotato1Data_T.IsSniff = true;
 
         DisableButton();
 
@@ -81,21 +81,21 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        HealthySweetPotato1Data_T.IsPushOrPress = true;
+       // HealthySweetPotato1Data_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         HealthySweetPotato1Data_T.IsPushOrPress = false;
-    }
+    }*/
 
     public void OnBite()
     {
