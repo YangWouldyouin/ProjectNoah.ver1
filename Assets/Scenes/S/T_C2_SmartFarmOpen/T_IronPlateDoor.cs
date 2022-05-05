@@ -44,7 +44,6 @@ public class T_IronPlateDoor : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        ironPlateDoorData_T.IsBark = true;
 
         DisableButton();
 
@@ -53,24 +52,15 @@ public class T_IronPlateDoor : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        ironPlateDoorData_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        ironPlateDoorData_T.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        ironPlateDoorData_T.IsSniff = true;
 
         DisableButton();
 

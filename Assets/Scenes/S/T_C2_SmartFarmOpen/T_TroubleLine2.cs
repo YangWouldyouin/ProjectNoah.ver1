@@ -43,7 +43,6 @@ public class T_TroubleLine2 : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        troubleLine2Data_T.IsSniff = true;
 
         DisableButton();
 
@@ -52,7 +51,7 @@ public class T_TroubleLine2 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        troubleLine2Data_T.IsBark = true;
+
 
         DisableButton();
 
@@ -62,20 +61,15 @@ public class T_TroubleLine2 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        troubleLine2Data_T.IsPushOrPress = true;
+
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
+
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        troubleLine2Data_T.IsPushOrPress = false;
-    }
 
     public void OnBite()
     {
