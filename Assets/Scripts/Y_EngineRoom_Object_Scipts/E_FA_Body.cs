@@ -17,7 +17,11 @@ public class E_FA_Body : MonoBehaviour, IInteraction
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         playerEquipment = BaseCanvas._baseCanvas.equipment;
+=======
+        //E_1
+>>>>>>> 152544cc9e6ee24742d9ba1a35e730ad6c14b366
 
         FA_BodyData_E = GetComponent<ObjData>();
 

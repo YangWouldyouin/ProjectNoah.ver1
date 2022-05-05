@@ -22,6 +22,8 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
     Outline canPackOutline_M;
 
+    BoxCollider Table1_Collider;
+
     void Start()
     {
         table1Data_M = GetComponent<ObjData>();
@@ -29,6 +31,8 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
         canPackOutline_M = M_canPack.GetComponent<Outline>();
 
+
+        Table1_Collider = GetComponent<BoxCollider>();
 
         barkButton_M_Table1 = table1Data_M.BarkButton;
         barkButton_M_Table1.onClick.AddListener(OnBark);
@@ -85,6 +89,16 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
             canPackData_M.IsNotInteractable = false;
             canPackOutline_M.OutlineWidth = 8;
+        }
+
+        if(table1Data_M.IsObserve)
+        {
+            Table1_Collider.enabled = false;
+        }
+
+        else
+        {
+            Table1_Collider.enabled = true;
         }
     }
 
