@@ -140,6 +140,8 @@ public class GameData
     //    public bool IsHealthMachineDone = false;
     //    // 스마트팜 업무
     //    public bool IsSmartFarmMissionDone = false; 
+
+    public bool IsPhotoTime; //사진찍기 임무 진행 체크, 사내 뉴스에서 찍은 사진 확인 후 다시 false
 }
 
 
