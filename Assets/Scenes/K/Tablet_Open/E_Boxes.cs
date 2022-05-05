@@ -4,20 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class E_Boxes : MonoBehaviour, IInteraction
+public class E_Boxes: MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton,
 pushButton, smashButton, NoCenterButton_M_Box;
 
     ObjData Boxes_E;
 
-
+    public Animator BoxDestroyAnimation; // 박스 무너지는 애니메이션
 
 
     void Start()
     {
         Boxes_E = GetComponent<ObjData>();
-
 
 
         barkButton = Boxes_E.BarkButton;
@@ -60,13 +59,6 @@ pushButton, smashButton, NoCenterButton_M_Box;
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
-    public void OnBite()
-    {
-        Boxes_E.IsSniff = true;
-        DiableButton();
-        InteractionButtonController.interactionButtonController.playerSniff();
-    }
-
     public void OnPushOrPress()
     {
         Boxes_E.IsPushOrPress = true;
@@ -74,6 +66,10 @@ pushButton, smashButton, NoCenterButton_M_Box;
         // 머리로 누르는 애니메이션  
         InteractionButtonController.interactionButtonController.playerPressHead(); 
         StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
+
+        Invoke("DestroyBoxAnim", 1f); // 1초 뒤 박스 무너지는 애니메이션 실행
+        Invoke("DestroyBox", 2f); // 2초 뒤 박스 오브젝트 비활성화
+        GameManager.gameManager._gameData.IsNoBoxes = true;
     }
 
     /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
@@ -83,9 +79,21 @@ pushButton, smashButton, NoCenterButton_M_Box;
         Boxes_E.IsPushOrPress = false;
     }
 
+    void DestroyBoxAnim() // 박스 무너지는 애니메이션
+    {
+        BoxDestroyAnimation.SetBool("Destroy", true);
+    }
+    void DestroyBox() // 박스 오브젝트 비활성화
+    {
+        Boxes_E.gameObject.SetActive(false);
+    }
 
 
 
+
+    public void OnBite()
+    {
+    }
     public void OnEat()
     {
     }

@@ -75,9 +75,11 @@ public class GameData
 
     public bool IsPlanetInsertChip_In; // 올바른 교란칩 꽂아 가짜 행성 데이터 변환
 
+    public bool IsFullChargeTablet; // 태블릿 충전여부
     public bool IsTabletUnlock; // 태블릿 잠금여부
 
     public bool IsNoBoxes; // 엔진실 박스 없어짐
+    public bool IsTabletMoved; // 태블릿 AI 미감지 구역에서 벗어났을 때
     public bool IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨
 
     /*퍼즐시작*/

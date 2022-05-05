@@ -1,0 +1,109 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class E_FullEGPad : MonoBehaviour, IInteraction
+{
+    private Button barkButton, sniffButton, biteButton,
+pushButton, smashButton, NoCenterButton;
+
+    ObjData FullEGPad_E;
+
+    /* 상호작용 오브젝트 */
+    public GameObject Tablet_C;
+    ObjData TabletData_C;
+
+    private float Charge; // 태블릿 - 충전패드 거리 계산
+
+    void Start()
+    {
+        FullEGPad_E = GetComponent<ObjData>();
+        TabletData_C = Tablet_C.GetComponent<ObjData>();
+
+
+        barkButton = FullEGPad_E.BarkButton;
+        barkButton.onClick.AddListener(OnBark);
+
+        sniffButton = FullEGPad_E.SniffButton;
+        sniffButton.onClick.AddListener(OnSniff);
+
+        biteButton = FullEGPad_E.BiteButton; // 물기가 되는 오브젝트
+
+        //smashButton_M_Box = boxData_M.SmashButton;
+        //smashButton_M_Box.onClick.AddListener(OnSmash);
+
+        pushButton = FullEGPad_E.PushOrPressButton;
+        pushButton.onClick.AddListener(OnPushOrPress);
+
+        // 비활성화 버튼은 버튼을 가져오기만 한다. 
+        NoCenterButton = FullEGPad_E.CenterButton1;
+    }
+    void DiableButton()
+    {
+        barkButton.transform.gameObject.SetActive(false);
+        sniffButton.transform.gameObject.SetActive(false);
+        biteButton.transform.gameObject.SetActive(false);
+        pushButton.transform.gameObject.SetActive(false);
+        NoCenterButton.transform.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+    }
+
+
+
+
+
+    public void OnBark()
+    {
+        FullEGPad_E.IsBark = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerBark();
+    }
+
+    public void OnBite()
+    {
+        // throw new System.NotImplementedException();
+
+        Charge = Vector3.Distance(Tablet_C.transform.position, FullEGPad_E.transform.position);
+
+        if (Charge <= 1f) // 태블릿과 충전O패드 사이가 1f 이하 일 시
+        {
+            FullEgTablet = true; // 태블랫 충전 됨
+
+            if (TabletData_C.IsObserve) // 태블릿 관찰하기
+            {
+                //if UI화면 확대뷰에서 알맞은 비밀번호를 클릭했을 시
+                {
+                    OpenTablet = true;
+                }
+            }
+
+        }
+    }
+
+
+    public void OnEat()
+    {
+    }
+    public void OnInsert()
+    {
+    }
+    public void OnObserve()
+    {
+    }
+    public void OnPushOrPress()
+    {
+    }
+    public void OnSmash()
+    {
+    }
+    public void OnSniff()
+    {
+    }
+    public void OnUp()
+    {
+    }
+}
