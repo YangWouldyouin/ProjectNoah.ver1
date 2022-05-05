@@ -81,10 +81,16 @@ public class GameData
     public bool IsCompleteFindEngineKey; // 엔진실 카드키 찾기 퍼즐 완료
     public bool IsCompleteOpenEngineRoom; // 엔진실 카드키 찾기 퍼즐 완료
     public bool IsInputNormalMeteor1_T_C2; // 일반 운석1을 수집기기에 넣기 완료
-    public bool IsInputImportantMeteor1_T_C2; // 특별 운석을 수집기에 넣기 완료
     public bool IsCompletePretendDead; // 엔진실 카드키 찾기 퍼즐 완료
 
     public int randomUPic;
+
+    /*엔딩*/
+    public bool IsEatBadSweetPotato; // 상한 고구마 섭취 엔딩
+    public bool IsInputImportantMeteor1_T_C2; // 특별 운석 보고 엔딩
+
+    /*고구마 먹은 거 확인*/
+    public bool[] sweetPotatoEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };
 
     //public bool IsComTabletUploadClear;
 
