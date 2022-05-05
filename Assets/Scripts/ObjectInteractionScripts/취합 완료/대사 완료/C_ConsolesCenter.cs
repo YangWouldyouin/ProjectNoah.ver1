@@ -41,6 +41,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     /*UI관련*/
     public GameObject MainSystem_GUI;
 
+    [SerializeField] ObjectData consoleData_C;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,14 +111,14 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     void Update()
     {
         /* 어쩔 수 없는 업데이트문... */
-        if(consoleCenterData_CC.IsObserve == false)
+        if(consoleData_C.IsObserve == false)
         {
             // AI 리셋 버튼 비활성화 (서브 오브젝트)
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
             consoleAIResetButtonData_CC.IsNotInteractable = true;
         }
 
-        if (consoleCenterData_CC.IsObserve == false)
+        if (consoleData_C.IsObserve == false)
         {
             MainSystem_GUI.SetActive(false);
         }
@@ -135,9 +137,9 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnObserve()
-    {  
+    {
         /* 오브젝트의 관찰 변수 true로 바꿈 */
-        consoleCenterData_CC.IsObserve = true;
+        consoleData_C.IsObserve = true;
         /* 취소할 때 참고할 오브젝트 저장 */
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         /* 상호작용 버튼을 끔 */
@@ -226,7 +228,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public void OnPushOrPress()
     {
         /* 오브젝트의 누르기 변수 true로 바꿈 */
-         consoleCenterData_CC.IsPushOrPress = true;
+        consoleData_C.IsPushOrPress = true;
 
         /* 상호작용 버튼을 끔 */
         DiableButton();
@@ -241,7 +243,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        consoleCenterData_CC.IsPushOrPress = false;
+        consoleData_C.IsPushOrPress = false;
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -249,7 +251,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public void OnBark()
     {
         /* 오브젝트의 짖기 변수 true로 바꿈 */
-        consoleCenterData_CC.IsBark = true;
+        consoleData_C.IsBark = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 애니메이션 보여줌 */
@@ -261,7 +263,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public void OnSniff()
     {
         /* 오브젝트의 냄새맡기 변수 true로 바꿈 */
-        consoleCenterData_CC.IsSniff = true;
+        consoleData_C.IsSniff = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 애니메이션 보여주고 냄새 텍스트 띄움 */
@@ -282,7 +284,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         /* 현재 끼우기 오브젝트가 조종석이라는  것을 저장해둠 */
         PlayerScripts.playerscripts.currentInsertObj = this.gameObject;
         /* 오브젝트의 끼우기 변수 true로 바꿈 */
-        consoleCenterData_CC.IsInsert = true;
+        consoleData_C.IsInsert = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* "끼우기" 시 이동할 위치와 각도 넣기 */
@@ -297,7 +299,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public void OnEat()
     {
         /* 오브젝트의 먹기 변수 true로 바꿈 */
-        consoleCenterData_CC.IsEaten = true;
+        consoleData_C.IsEaten = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 먹기 애니메이션 & 오브젝트 사라지게 */

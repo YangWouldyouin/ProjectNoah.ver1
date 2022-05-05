@@ -18,7 +18,7 @@ public class SaveDataWhenSceneChange : MonoBehaviour
 
     ObjData portableObjectData;
 
-
+    ObjectData portableData;
     [SerializeField] List<GameObject> portableObjectList = new List<GameObject>();
     /* �� Ŭ���� �̵��� �� */
     public string transferMapName;
@@ -141,14 +141,16 @@ public class SaveDataWhenSceneChange : MonoBehaviour
 
         if (playerEquipment.pushObjectName != "") // �а� �ִ� ������Ʈ�� ������
         {
+            pushObject = GameObject.Find(playerEquipment.pushObjectName).gameObject;
             // ������Ʈ �̸����� �迭�� �ε����� ������
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.pushObjectName));
             // ���� ���ͺ�������Ʈ����Ʈ�� �ش� ������Ʈ�� ���� �������� ����
+
             currentPortableObjectData.IsObjectActiveList[idx] =  false;
         }
         else if(playerEquipment.biteObjectName != "") // ���� �ִ� ������Ʈ�� ������
         {
-            // ������Ʈ �̸����� �迭�� �ε����� ������
+            biteObject = GameObject.Find(playerEquipment.biteObjectName).gameObject;
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.biteObjectName));
             // ���� ���ͺ�������Ʈ����Ʈ�� �ش� ������Ʈ�� ���� �������� ����
             currentPortableObjectData.IsObjectActiveList[idx] = false;
