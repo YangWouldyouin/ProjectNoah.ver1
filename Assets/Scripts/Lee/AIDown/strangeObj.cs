@@ -8,18 +8,15 @@ public class strangeObj : MonoBehaviour, IInteraction
     
     private Button barkButton, sniffButton, biteButton, pressButton, smashButton, noCenterButton;
 
+    public ObjectData strangeData;
     ObjData objData;
 
     public ParticleSystem smoke;
-
-    public GameObject player;
-    Outline playerLine;
+    public Outline playerLine;
 
     void Start()
     {
         objData = GetComponent<ObjData>();
-
-        playerLine = player.GetComponent<Outline>();
 
         barkButton = objData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -51,7 +48,6 @@ public class strangeObj : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        objData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -74,22 +70,12 @@ public class strangeObj : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        objData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        objData.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        objData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -106,7 +92,6 @@ public class strangeObj : MonoBehaviour, IInteraction
 
     public void OnSmash()
     {
-        objData.IsSmash = true;
         DisableButton();
 
         InteractionButtonController.interactionButtonController.PlayerSmash1();
@@ -122,10 +107,10 @@ public class strangeObj : MonoBehaviour, IInteraction
     {
         playerLine.OutlineWidth = 10f;
 
-        objData.GetComponent<Rigidbody>().isKinematic = true;
-        objData.transform.parent = null;
+        this.GetComponent<Rigidbody>().isKinematic = true;
+        this.transform.parent = null;
 
-        objData.IsBite = false;
+        strangeData.IsBite = false;
 
         smoke.transform.localScale = new Vector3(1f, 1f, 1f);
         smoke.transform.position = gameObject.transform.position;

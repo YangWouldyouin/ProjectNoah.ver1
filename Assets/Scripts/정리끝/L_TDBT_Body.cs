@@ -17,14 +17,10 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
     void Start()
     {
-<<<<<<< HEAD:Assets/Scripts/정리끝/L_TDBT_Body.cs
+
         playerEquipment = BaseCanvas._baseCanvas.equipment;
-=======
-        //L_1
 
         TDBT_BodyData_L = GetComponent<ObjData>();
-        TDBT_fixPartData = TDBT_fixPart.GetComponent<ObjData>();
->>>>>>> 152544cc9e6ee24742d9ba1a35e730ad6c14b366:Assets/Scripts/Y_EngineRoom_Object_Scipts/L_TDBT_Body.cs
 
         TDBT_BodyOutline = GetComponent<Outline>();
         TDBT_fixPartOutline = TDBT_fixPart.GetComponent<Outline>();

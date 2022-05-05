@@ -7,37 +7,39 @@ public class EnExDoor_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
-    ObjData portDoorData;
+
+    public ObjectData portDoorData;
+    public ObjectData ExDataa;
+    ObjData portDoorObjData;
     Outline portDoorLine;
 
     public GameObject extinguisher;
-    ObjData ExData;
     Outline ExLine;
 
     void Start()
     {
-        portDoorData = GetComponent<ObjData>();
+        portDoorObjData = GetComponent<ObjData>();
+
         portDoorLine = GetComponent<Outline>();
 
-        ExData = extinguisher.GetComponent<ObjData>();
         ExLine = extinguisher.GetComponent<Outline>();
 
-        barkButton = portDoorData.BarkButton;
+        barkButton = portDoorObjData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = portDoorData.SniffButton;
+        sniffButton = portDoorObjData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = portDoorData.BiteButton;
+        biteButton = portDoorObjData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
         //smashButton = portDoorData.SmashButton;
         //smashButton.onClick.AddListener(OnSmash);
 
-        pressButton = portDoorData.PushOrPressButton;
+        pressButton = portDoorObjData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton = portDoorData.CenterButton1;
+        noCenterButton = portDoorObjData.CenterButton1;
 
     }
 
@@ -55,14 +57,12 @@ public class EnExDoor_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        portDoorData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        portDoorData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -70,27 +70,18 @@ public class EnExDoor_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        portDoorData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        portDoorData.transform.localRotation = Quaternion.Euler(-90f, 0f, -140f);
+        portDoorObjData.transform.localRotation = Quaternion.Euler(-90f, 0f, -140f);
 
         portDoorData.IsNotInteractable = true;
         portDoorLine.OutlineWidth = 0f;
 
-        ExData.IsNotInteractable = false;
+        portDoorObjData.IsNotInteractable = false;
         ExLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        portDoorData.IsPushOrPress = false;
     }
 
     public void OnEat()
