@@ -8,7 +8,7 @@ public class M_BrokenDoorConduction : MonoBehaviour, IInteraction
     //public bool fixEngineDoor = false;
 
     /*연관있는 오브젝트*/
-    public GameObject M_canBrokenArea;
+    //public GameObject M_canBrokenArea;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_BrokenDoorConduction, sniffButton_M_BrokenDoorConduction,
@@ -57,7 +57,7 @@ public class M_BrokenDoorConduction : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        brokenDoorConductionData_M.IsBark = true;
+       // brokenDoorConductionData_M.IsBark = true;
 
         DisableButton();
 
@@ -74,27 +74,27 @@ public class M_BrokenDoorConduction : MonoBehaviour, IInteraction
     }
     public void OnPushOrPress()
     {
-        brokenDoorConductionData_M.IsPushOrPress = true;
+       // brokenDoorConductionData_M.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
 
 
     }
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         brokenDoorConductionData_M.IsPushOrPress = false;
-    }
+    }*/
 
 
     public void OnSniff()
     {
-        brokenDoorConductionData_M.IsSniff = true;
+        //brokenDoorConductionData_M.IsSniff = true;
 
         DisableButton();
 

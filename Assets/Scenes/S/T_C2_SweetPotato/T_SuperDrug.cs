@@ -49,7 +49,7 @@ public class T_SuperDrug : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        SuperDrugData_T.IsBark = true;
+        //SuperDrugData_T.IsBark = true;
 
         DisableButton();
 
@@ -58,7 +58,7 @@ public class T_SuperDrug : MonoBehaviour, IInteraction
 
     public void OnEat()
     {
-        SuperDrugData_T.IsEaten = true;
+        //SuperDrugData_T.IsEaten = true;
 
         DisableButton();
 
@@ -69,7 +69,7 @@ public class T_SuperDrug : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        SuperDrugData_T.IsSniff = true;
+        //SuperDrugData_T.IsSniff = true;
 
         DisableButton();
 
@@ -78,21 +78,21 @@ public class T_SuperDrug : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        SuperDrugData_T.IsPushOrPress = true;
+        //SuperDrugData_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         SuperDrugData_T.IsPushOrPress = false;
-    }
+    }*/
 
     public void OnBite()
     {

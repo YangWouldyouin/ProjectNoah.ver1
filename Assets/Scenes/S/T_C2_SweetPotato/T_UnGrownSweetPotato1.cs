@@ -43,7 +43,7 @@ public class T_UnGrownSweetPotato1 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        UnGrownSweetPotato1Data_T.IsBark = true;
+        //UnGrownSweetPotato1Data_T.IsBark = true;
 
         DisableButton();
 
@@ -52,7 +52,7 @@ public class T_UnGrownSweetPotato1 : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        UnGrownSweetPotato1Data_T.IsSniff = true;
+        //UnGrownSweetPotato1Data_T.IsSniff = true;
 
         DisableButton();
 
@@ -61,21 +61,21 @@ public class T_UnGrownSweetPotato1 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        UnGrownSweetPotato1Data_T.IsPushOrPress = true;
+        //UnGrownSweetPotato1Data_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         UnGrownSweetPotato1Data_T.IsPushOrPress = false;
-    }
+    }*/
 
     public void OnBite()
     {

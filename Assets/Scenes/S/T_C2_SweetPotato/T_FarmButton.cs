@@ -42,7 +42,7 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        FarmButtonData_T.IsBark = true;
+        //FarmButtonData_T.IsBark = true;
 
         DisableButton();
 
@@ -51,7 +51,7 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        FarmButtonData_T.IsSniff = true;
+        //FarmButtonData_T.IsSniff = true;
 
         DisableButton();
 
@@ -60,21 +60,21 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        FarmButtonData_T.IsPushOrPress = true;
+        //FarmButtonData_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         FarmButtonData_T.IsPushOrPress = false;
-    }
+    }*/
 
     public void OnBite()
     {

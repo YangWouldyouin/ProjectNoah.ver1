@@ -44,7 +44,7 @@ public class M_CylinderWrong : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        CylinderWrongData_M.IsBark = true;
+        //CylinderWrongData_M.IsBark = true;
 
         DisableButton();
 
@@ -53,25 +53,25 @@ public class M_CylinderWrong : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        CylinderWrongData_M.IsPushOrPress = true;
+        //CylinderWrongData_M.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         CylinderWrongData_M.IsPushOrPress = false;
-    }
+    }*/
 
     public void OnSniff()
     {
-        CylinderWrongData_M.IsSniff = true;
+        //CylinderWrongData_M.IsSniff = true;
 
         DisableButton();
 

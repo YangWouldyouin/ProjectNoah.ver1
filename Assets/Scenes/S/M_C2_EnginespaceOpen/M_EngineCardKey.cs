@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class M_EngineCardKey : MonoBehaviour, IInteraction
 {
     /*연관있는 오브젝트*/
-    public GameObject M_DestroyPack;
+    //public GameObject M_DestroyPack;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_EngineCardKey, sniffButton_M_EngineCardKey, 
@@ -54,7 +54,7 @@ public class M_EngineCardKey : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        engineCardKeyData_M.IsBark = true;
+        //engineCardKeyData_M.IsBark = true;
 
         DisableButton();
 
@@ -64,25 +64,25 @@ public class M_EngineCardKey : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        engineCardKeyData_M.IsPushOrPress = true;
+        //engineCardKeyData_M.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         engineCardKeyData_M.IsPushOrPress = false;
     }
-
+*/
 
     public void OnSniff()
     {
-        engineCardKeyData_M.IsSniff = true;
+        //engineCardKeyData_M.IsSniff = true;
 
         DisableButton();
 
@@ -116,7 +116,7 @@ public class M_EngineCardKey : MonoBehaviour, IInteraction
 
     public void OnUp()
     {
-        throw new System.NotImplementedException();
+        
     }
 
 }

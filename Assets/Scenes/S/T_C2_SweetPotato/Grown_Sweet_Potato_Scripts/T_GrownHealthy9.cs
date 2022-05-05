@@ -49,7 +49,7 @@ public class T_GrownHealthy9 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        GrownHealthy9Data_T.IsBark = true;
+        //GrownHealthy9Data_T.IsBark = true;
 
         DisableButton();
 
@@ -58,7 +58,7 @@ public class T_GrownHealthy9 : MonoBehaviour, IInteraction
 
     public void OnEat()
     {
-        GrownHealthy9Data_T.IsEaten = true;
+        //GrownHealthy9Data_T.IsEaten = true;
 
         DisableButton();
 
@@ -70,7 +70,7 @@ public class T_GrownHealthy9 : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        GrownHealthy9Data_T.IsSniff = true;
+        //GrownHealthy9Data_T.IsSniff = true;
 
         DisableButton();
 
@@ -79,21 +79,21 @@ public class T_GrownHealthy9 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        GrownHealthy9Data_T.IsPushOrPress = true;
+        //GrownHealthy9Data_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         GrownHealthy9Data_T.IsPushOrPress = false;
-    }
+    }*/
 
     public void OnBite()
     {

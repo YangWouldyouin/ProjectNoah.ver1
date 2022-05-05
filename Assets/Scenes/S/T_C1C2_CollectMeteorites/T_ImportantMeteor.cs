@@ -43,7 +43,7 @@ public class T_ImportantMeteor : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        importantMeteorData_T.IsBark = true;
+       // importantMeteorData_T.IsBark = true;
 
         DisableButton();
 
@@ -53,24 +53,24 @@ public class T_ImportantMeteor : MonoBehaviour, IInteraction
  
     public void OnPushOrPress()
     {
-        importantMeteorData_T.IsPushOrPress = true;
+       // importantMeteorData_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
+        //StartCoroutine(ChangePressFalse());
     }
 
-    IEnumerator ChangePressFalse()
+/*    IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
         importantMeteorData_T.IsPushOrPress = false;
-    }
+    }*/
 
     public void OnSniff()
     {
-        importantMeteorData_T.IsSniff = true;
+        //importantMeteorData_T.IsSniff = true;
 
         DisableButton();
 
