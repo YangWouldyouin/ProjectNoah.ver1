@@ -36,6 +36,8 @@ public class CameraController : MonoBehaviour
         playerAnimation = BaseCanvas._baseCanvas.noahPlayer.GetComponent<Animator>();
 
         cameraFollow = GetComponent<CameraFollow>();
+        engineRoomController = GetComponent<HorizontalCameraController>();
+        livingRoomController = GetComponent<LivingRoomCameraController>();
     }
     public void SavePosition()
     {
