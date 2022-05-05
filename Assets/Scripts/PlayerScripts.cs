@@ -108,54 +108,52 @@ public class PlayerScripts : MonoBehaviour
                     pushOrPressBtn = objData.PushOrPressButton;
 
                     interactionButtons = objData.InteractButton;
-
-                    /* 오브젝트 추가 버튼을 특정 조건을 만족했는지 확인 후 가져옴 */
-                    if (objectData.IsCenterButtonChanged)
-                    {
-                        if(objectData.IsCenterPlusButtonDisabled)
-                        {
-                            centerBtn = objData.CenterDisableButton2;
-                        }
-                        else
-                        {
-                            centerBtn = objData.CenterButton2;
-                        }                       
-                    }
-                    else
-                    {
-                        if(objectData.IsCenterButtonDisabled)
-                        {
-                            centerBtn = objData.CenterDisableButton1;
-                        }
-                        else
-                        {
-                            centerBtn = objData.CenterButton1;
-                        }                     
-                    }
-
-                    
                     Vector3 screenPos = mainCamera.WorldToScreenPoint(new Vector3(currentObject.transform.localPosition.x + interactionButtonOffset.x, currentObject.transform.localPosition.y + interactionButtonOffset.y, currentObject.transform.localPosition.z + interactionButtonOffset.z));
-
-                    objectData.IsClicked = true;
-                    //Invoke("UnClickObject", 1f);
-                    if (!objectData.IsNotInteractable)
+                    if(objectData!=null)
                     {
-                        Invoke("NameTagAppear", 1f);
-                        interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
-
-                        if (interactionDestinationData!=null)
+                        /* 오브젝트 추가 버튼을 특정 조건을 만족했는지 확인 후 가져옴 */
+                        if (objectData.IsCenterButtonChanged)
                         {
-                            MovePlayer(objData.InteractionDestination.position);                        
+                            if (objectData.IsCenterPlusButtonDisabled)
+                            {
+                                centerBtn = objData.CenterDisableButton2;
+                            }
+                            else
+                            {
+                                centerBtn = objData.CenterButton2;
+                            }
                         }
                         else
                         {
-                            MovePlayer(objData.transform.position);                       
+                            if (objectData.IsCenterButtonDisabled)
+                            {
+                                centerBtn = objData.CenterDisableButton1;
+                            }
+                            else
+                            {
+                                centerBtn = objData.CenterButton1;
+                            }
                         }
-                        StartCoroutine(WaitforPlayerArriving());
+                        objectData.IsClicked = true;
+                        Invoke("UnClickPortableObject", 1f);
 
 
-                        //interactable.Interact(this); // this : PlayerScript 전달 ( argument ), 현재 PlayerScript 에 있으므로 this 로 전달 가능
-                    }
+                        if (!objectData.IsNotInteractable)
+                        {
+                            Invoke("NameTagAppear", 1f);
+                            interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
+
+                            if (interactionDestinationData != null)
+                            {
+                                MovePlayer(objData.InteractionDestination.position);
+                            }
+                            else
+                            {
+                                MovePlayer(objData.transform.position);
+                            }
+                            StartCoroutine(WaitforPlayerArriving());
+                        }
+                    }                      
                 }
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 
                 {
@@ -193,7 +191,7 @@ public class PlayerScripts : MonoBehaviour
     public Transform PlayerobserveView { get { return observeData; } }
     public Transform PlayerobserveBoxView { get { return observePlusData; } }
 
-    void UnClickObject()
+    void UnClickPortableObject()
     {
         if(objectData != null)
         {

@@ -9,7 +9,7 @@ public class tablet : MonoBehaviour, IInteraction
 
     ObjData tabletObjectData;
 
-    [SerializeField] ObjectData tabletData;
+    public ObjectData tabletData;
 
     public GameObject TabletUI;
     public GameObject TabletBackBlack;
@@ -56,7 +56,6 @@ public class tablet : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        tabletData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -78,7 +77,6 @@ public class tablet : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        tabletData.IsObserve = true;
         DisableButton();
         PlayerScripts.playerscripts.currentObserveObj = gameObject;
         CameraController.cameraController.currentView = tabletObjectData.ObserveView;
@@ -99,7 +97,6 @@ public class tablet : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        tabletData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
     }
@@ -111,7 +108,6 @@ public class tablet : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        tabletData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }

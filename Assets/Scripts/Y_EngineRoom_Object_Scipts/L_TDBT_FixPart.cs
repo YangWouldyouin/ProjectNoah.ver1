@@ -9,14 +9,11 @@ public class L_TDBT_FixPart : MonoBehaviour, IInteraction
 
     ObjData TDBT_FIxPartData_L;
 
-    // Start is called before the first frame update
     void Start()
     {
         TDBT_FIxPartData_L = GetComponent<ObjData>();
-
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_L_TDBT_FixPart = TDBT_FIxPartData_L.BarkButton;
-
         barkButton_L_TDBT_FixPart.onClick.AddListener(OnBark);
 
         sniffButton_L_TDBT_FixPart = TDBT_FIxPartData_L.SniffButton;
@@ -43,38 +40,20 @@ public class L_TDBT_FixPart : MonoBehaviour, IInteraction
         noCenterButton_L_TDBT_FixPart.transform.gameObject.SetActive(false);
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        TDBT_FIxPartData_L.IsPushOrPress = false;
-    }
-
     public void OnBark()
     {
-        TDBT_FIxPartData_L.IsBark = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnPushOrPress()
     {
-        TDBT_FIxPartData_L.IsPushOrPress = true;
         DiableButton();
-        InteractionButtonController.interactionButtonController.playerPressHead();
-        StartCoroutine(ChangePressFalse());
+        InteractionButtonController.interactionButtonController.playerPressHand();
     }
 
     public void OnSniff()
     {
-        TDBT_FIxPartData_L.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
