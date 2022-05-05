@@ -69,6 +69,7 @@ public class GameData
 
     public bool Is_MainSystem_WirelessOn; //메인시스템 블루트스 on/off체크
     public bool IsCanConnect_C_MS; //메인시스템 블루투스 영역 체크 
+    public bool IsReturnOfTheEarth;//궤도 변경 성공
 
     //public bool IsComTabletUploadClear;
 

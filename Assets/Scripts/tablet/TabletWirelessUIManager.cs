@@ -166,6 +166,8 @@ public class TabletWirelessUIManager : MonoBehaviour
                         GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = false;
 
                         GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet = true;
+
+                        GameManager.gameManager._gameData.IsReturnOfTheEarth = true;
                     }
 
                 }

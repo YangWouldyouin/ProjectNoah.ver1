@@ -12,6 +12,8 @@ public class MainSystemUIManager : MonoBehaviour
     public GameObject Fold;
     public GameObject alert;
 
+    public GameObject systemAlert;
+
     public Image MS_onoffBT;
 
     public Text OnOffText;
@@ -42,6 +44,17 @@ public class MainSystemUIManager : MonoBehaviour
             onoffcolor.a = 0.3f;
             MS_onoffBT.color = onoffcolor;
         }
+
+        if (GameManager.gameManager._gameData.IsReturnOfTheEarth)
+        {
+            systemAlert.SetActive(true);
+            Invoke("systemAlertduration", 3f);
+        }
+    }
+
+    public void systemAlertduration()
+    {
+        systemAlert.SetActive(false);
     }
 
     public void OpenBT()
