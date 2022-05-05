@@ -63,6 +63,11 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerEat();
+
+        // 스탯이 올라간다.
+
+        GameManager.gameManager._gameData.sweetPotatoEat[1] = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnSniff()

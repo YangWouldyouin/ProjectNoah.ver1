@@ -63,6 +63,9 @@ public class T_GrownHealthy1 : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerEat();
+
+        GameManager.gameManager._gameData.sweetPotatoEat[2] = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnSniff()

@@ -63,6 +63,11 @@ public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerEat();
+
+        GameManager.gameManager._gameData.sweetPotatoEat[0] = true;
+        // 상한 고구마 섭취 엔딩
+        GameManager.gameManager._gameData.IsEatBadSweetPotato = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnSniff()

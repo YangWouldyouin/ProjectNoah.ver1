@@ -57,6 +57,11 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
 
         observeDisableButton_T_PotatoBox = PotatoBoxData_T.CenterButton2;
 
+        if(PotatoBoxData_T.IsClicked)
+        {
+            //A-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        }
+
     }
 
     void DisableButton()
@@ -105,6 +110,9 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
         IsUnGrownSweetPotato1Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.
 
 
+        //A-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
+
     }
 
     public void OnBark()
@@ -143,6 +151,19 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerSniff();
     }
 
+    public void OnObserve()
+    {
+        PotatoBoxData_T.IsObserve = true;
+
+        DisableButton();
+
+        PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+
+        CameraController.cameraController.currentView = PotatoBoxData_T.ObserveView;
+
+        InteractionButtonController.interactionButtonController.playerObserve();
+    }
+
     public void OnBite()
     {
         
@@ -158,10 +179,6 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
        
     }
 
-    public void OnObserve()
-    {
-        
-    }
 
 
     public void OnUp()
