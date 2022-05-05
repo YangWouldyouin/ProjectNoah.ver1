@@ -5,24 +5,22 @@ using UnityEngine.UI;
 
 public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
 {
-    /*연관있는 오브젝트*/
-    public GameObject T_canFixedLine2;
-
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_SmartFarmLineHome2, sniffButton_T_SmartFarmLineHome2, biteButton_T_SmartFarmLineHome2,
         pressButton_T_SmartFarmLineHome2, noCenterButton_T_SmartFarmLineHome2;
 
     ObjData smartFarmLineHome2Data_T;
-    ObjData canFixedLine2Data_T;
-
     Outline smartFarmLineHomeOutline_T;
+
+    /*연관있는 오브젝트*/
+    public GameObject T_canFixedLine2;
+    public ObjectData canFixedLine2Data_T;
     Outline canFixedLine2Outline_T;
 
 
     void Start()
     {
         smartFarmLineHome2Data_T = GetComponent<ObjData>();
-        canFixedLine2Data_T = T_canFixedLine2.GetComponent<ObjData>();
 
         smartFarmLineHomeOutline_T = GetComponent<Outline>();
         canFixedLine2Outline_T = T_canFixedLine2.GetComponent<Outline>();
@@ -54,8 +52,6 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        smartFarmLineHome2Data_T.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -63,8 +59,6 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        smartFarmLineHome2Data_T.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -72,13 +66,9 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        smartFarmLineHome2Data_T.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
 
         if(canFixedLine2Data_T.IsBite)
         {
@@ -104,13 +94,6 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
     {
         CameraController.cameraController.CancelObserve();
         GameManager.gameManager._gameData.IsSmartFarmFix_T_C2 = true;
-    }
-
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        smartFarmLineHome2Data_T.IsPushOrPress = false;
     }
 
     public void OnSmash()
