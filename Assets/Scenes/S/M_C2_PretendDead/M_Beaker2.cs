@@ -5,6 +5,17 @@ using UnityEngine.UI;
 
 public class M_Beaker2 : MonoBehaviour, IInteraction
 {
+    /*연관있는 오브젝트*/
+    public GameObject M_RubberForBeaker2;
+    public GameObject M_RealAnswerMeteorForBeaker;
+
+    public GameObject M_RealCylinderGlassAnswer;
+    public GameObject M_RealcylinderGlassWrong;
+    public GameObject M_RealCylinderGlassNoNeed1;
+    public GameObject M_RealCylinderGlassNoNeed2;
+
+    public GameObject M_drugInBeaker2;
+
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_Beaker2, sniffButton_M_Beaker2, biteButton_M_Beaker2,
         pressButton_M_Beaker2, eatButton_M_Beaker2, eatDisableButton_M_Beaker2;
@@ -12,13 +23,47 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData Beaker2Data_M;
+    ObjData RubberForBeaker2Data_M;
+    ObjData RealAnswerMeteorForBeakerData_M;
+
+    ObjData RealCylinderGlassAnswerData_M;
+    ObjData RealCylinderGlassWrongData_M;
+    ObjData RealCylinderGlassNoNeed1Data_M;
+    ObjData RealCylinderGlassNoNeed2Data_M;
+
+    ObjData drugInBeaker2Data_M;
+
+    /*Outline*/
+    Outline Beaker2Outline_M;
+    Outline RealAnswerMeteorForBeakerOutline_M;
+
+    /*비커 색 바꾸는 코드*/
+    MeshRenderer ChangeBeaker2;
 
 
     void Start()
     {
+        //색 바꾸는 코드
+        ChangeBeaker2 = M_drugInBeaker2.GetComponent<MeshRenderer>();
+
         /*ObjData*/
         Beaker2Data_M = GetComponent<ObjData>();
+        RubberForBeaker2Data_M = M_RubberForBeaker2.GetComponent<ObjData>();
+        RealAnswerMeteorForBeakerData_M = M_RealAnswerMeteorForBeaker.GetComponent<ObjData>();
 
+        RealCylinderGlassAnswerData_M = M_RealCylinderGlassAnswer.GetComponent<ObjData>();
+        RealCylinderGlassWrongData_M = M_RealcylinderGlassWrong.GetComponent<ObjData>();
+        RealCylinderGlassNoNeed1Data_M = M_RealCylinderGlassNoNeed1.GetComponent<ObjData>();
+        RealCylinderGlassNoNeed2Data_M = M_RealCylinderGlassNoNeed2.GetComponent<ObjData>();
+
+        drugInBeaker2Data_M = M_drugInBeaker2.GetComponent<ObjData>();
+
+        /*Outline*/
+        Beaker2Outline_M = GetComponent<Outline>();
+        RealAnswerMeteorForBeakerOutline_M = M_RealAnswerMeteorForBeaker.GetComponent<Outline>();
+
+
+        /*버튼 연결*/
         barkButton_M_Beaker2 = Beaker2Data_M.BarkButton;
         barkButton_M_Beaker2.onClick.AddListener(OnBark);
 
@@ -36,6 +81,44 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
         eatDisableButton_M_Beaker2 = Beaker2Data_M.CenterButton1;
 
+        if (Beaker2Data_M.IsEaten)
+        {
+            Invoke(" FakeAI2", 3f);
+        }
+
+    }
+
+    void FakeAI2()
+    {
+        //D-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        GameManager.gameManager._gameData.IsCompletePretendDead = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+    }
+
+    void Update()
+    {
+        if (GameManager.gameManager._gameData.IsAnswerInBeaker2_M_C2 && GameManager.gameManager._gameData.IsAnswerBeakerColorChange1_M_C2)
+        {
+            //옳은 약을 만들었다면 운석이 상호작용이 불가능해진다.
+            //answerMeteor_MB.SetActive(false);
+            RealAnswerMeteorForBeakerData_M.IsNotInteractable = true; // 상호작용 가능하게
+            RealAnswerMeteorForBeakerOutline_M.OutlineWidth = 0;
+
+            //대신 비커 중앙의 마시기가 활성화 된다.
+            Beaker2Data_M.IsCenterButtonDisabled = false;
+
+            //색이 변한다.
+            ChangeBeaker2.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
+
+            M_RealAnswerMeteorForBeaker.SetActive(false);
+
+            if (Beaker2Data_M.IsEaten)
+            {
+                Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
+                //쓰러지는 애니메이션 삽입 예정
+            }
+        }
     }
 
     void DisableButton()
@@ -66,6 +149,75 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerPressHead();
 
         StartCoroutine(ChangePressFalse());
+
+        /*고무판을 물고 정답 운석을 비커 2에 넣는다면*/
+        if (/*RubberForBeaker1Data_M.IsBite &&*/ RealAnswerMeteorForBeakerData_M.IsBite)
+        {
+            M_RealAnswerMeteorForBeaker.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            M_RealAnswerMeteorForBeaker.transform.parent = null;
+
+            //운석이 비커 안으로 이동한다.
+            M_RealAnswerMeteorForBeaker.transform.position = new Vector3(-248.367f, 539.986f, 683.427f); //위치 값
+            M_RealAnswerMeteorForBeaker.transform.rotation = Quaternion.Euler(-90, 0, 0); //로테이션 값
+
+            GameManager.gameManager._gameData.IsAnswerInBeaker2_M_C2 = true;
+        }
+
+        //정답 약을 비커 2에 넣었을 때
+        if (RealCylinderGlassAnswerData_M.IsBite)
+        {
+            M_drugInBeaker2.SetActive(true);
+            Debug.Log("색이 변경되었습니다.");
+            ChangeBeaker2.material.color = new Color(173 / 255f, 221 / 255f, 158 / 255f); //부은 약 색으로 비커색이 변한다.
+
+            GameManager.gameManager._gameData.IsAnswerBeakerColorChange2_M_C2 = true;
+            GameManager.gameManager._gameData.IsWrongBeakerColorChange2_M_C2 = false;
+            GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange2_M_C2 = false;
+            GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange2_M_C2 = false;
+        }
+
+        //틀린 약을 비커 1에 넣었을 때
+        if (RealCylinderGlassWrongData_M.IsBite)
+        {
+            Debug.Log("잘못된 약을 비커2에 넣었습니다.");
+            //cylinderInWrong_MB.SetActive(false);
+            M_drugInBeaker2.SetActive(true);
+            ChangeBeaker2.material.color = new Color(255 / 255f, 173 / 255f, 71 / 255f); //부은 약 색으로 비커색이 변한다.
+
+            GameManager.gameManager._gameData.IsAnswerBeakerColorChange2_M_C2 = false;
+            GameManager.gameManager._gameData.IsWrongBeakerColorChange2_M_C2 = true;
+            GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange2_M_C2 = false;
+            GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange2_M_C2 = false;
+        }
+
+        //필요 없는 약1을 비커 1에 넣었을 때
+        if (RealCylinderGlassNoNeed1Data_M.IsBite)
+        {
+            Debug.Log("필요없는 약1을 비커2에 넣었습니다.");
+            //cylinderInWrong_MB.SetActive(false);
+            M_drugInBeaker2.SetActive(true);
+            ChangeBeaker2.material.color = new Color(197 / 255f, 214 / 255f, 255 / 255f); //부은 약 색으로 비커색이 변한다.
+
+            GameManager.gameManager._gameData.IsAnswerBeakerColorChange2_M_C2 = false;
+            GameManager.gameManager._gameData.IsWrongBeakerColorChange2_M_C2 = false;
+            GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange2_M_C2 = true;
+            GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange2_M_C2 = false;
+        }
+
+        //필요 없는 약2을 비커 1에 넣었을 때
+        if (RealCylinderGlassNoNeed2Data_M.IsBite)
+        {
+            Debug.Log("필요없는 약2를 비커2에 넣었습니다.");
+            //cylinderInWrong_MB.SetActive(false);
+            M_drugInBeaker2.SetActive(true);
+            ChangeBeaker2.material.color = new Color(255 / 255f, 144 / 255f, 129 / 255f); //부은 약 색으로 비커색이 변한다.
+
+            GameManager.gameManager._gameData.IsAnswerBeakerColorChange2_M_C2 = false;
+            GameManager.gameManager._gameData.IsWrongBeakerColorChange2_M_C2 = false;
+            GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange2_M_C2 = false;
+            GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange2_M_C2 = true;
+        }
+
     }
 
     IEnumerator ChangePressFalse()

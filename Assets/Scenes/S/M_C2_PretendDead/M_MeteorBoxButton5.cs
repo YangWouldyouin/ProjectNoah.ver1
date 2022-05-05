@@ -5,33 +5,70 @@ using UnityEngine.UI;
 
 public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
 {
+    public bool IsClickMeteorBoxButton5 = false;
+
+    /*연관있는 오브젝트*/
+    public GameObject M_Box_Obj7;
+    public GameObject M_Noah_Obj7;
+    public GameObject M_IsMeteoritesStorage5;
+
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_MeteorBoxButton5, sniffButton_M_MeteorBoxButton5, biteButton_M_MeteorBoxButton5,
         pressButton_M_MeteorBoxButton5, noCenterButton_M_MeteorBoxButton5;
 
 
     /*ObjData*/
-    ObjData MeteorBoxButton5Data_T;
+    ObjData MeteorBoxButton5Data_M;
+    ObjData Box_Obj7Data_M;
+    ObjData Noah_Obj7Data_M;
+    ObjData IsMeteoritesStorage5Data_M;
 
+
+    /*Outline*/
+    Outline IsMeteoritesStorage5Outline_M;
+    Outline MeteorBoxButton5Outline_M;
+
+    /*애니메이션*/
+    public Animator meteorBox5Anim_M;
+
+    /*Collider*/
+    BoxCollider MeteorBoxButton5_Collider;
+    BoxCollider Box7_Collider;
+    BoxCollider Noah7_Collider;
+    BoxCollider IsMeteoritesStorage5_Collider;
 
     void Start()
     {
-        /*ObjData*/
-        MeteorBoxButton5Data_T = GetComponent<ObjData>();
+        /*Collider*/
+        MeteorBoxButton5_Collider = GetComponent<BoxCollider>();
+        Box7_Collider = M_Box_Obj7.GetComponent<BoxCollider>();
+        Noah7_Collider = M_Noah_Obj7.GetComponent<BoxCollider>();
+        IsMeteoritesStorage5_Collider = M_IsMeteoritesStorage5.GetComponent<BoxCollider>();
 
-        barkButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_T.BarkButton;
+        /*Outline*/
+        IsMeteoritesStorage5Outline_M = M_IsMeteoritesStorage5.GetComponent<Outline>();
+        MeteorBoxButton5Outline_M = GetComponent<Outline>();
+
+        /*ObjData*/
+        MeteorBoxButton5Data_M = GetComponent<ObjData>();
+        Box_Obj7Data_M = M_Box_Obj7.GetComponent<ObjData>();
+        IsMeteoritesStorage5Data_M = M_IsMeteoritesStorage5.GetComponent<ObjData>();
+
+
+        /*버튼 연결*/
+        barkButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.BarkButton;
         barkButton_M_MeteorBoxButton5.onClick.AddListener(OnBark);
 
-        sniffButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_T.SniffButton;
+        sniffButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.SniffButton;
         sniffButton_M_MeteorBoxButton5.onClick.AddListener(OnSniff);
 
-        biteButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_T.BiteButton;
+        biteButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_T.PushOrPressButton;
+        pressButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.PushOrPressButton;
         pressButton_M_MeteorBoxButton5.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_T.CenterButton1;
+        noCenterButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.CenterButton1;
 
     }
 
@@ -44,10 +81,67 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
         noCenterButton_M_MeteorBoxButton5.transform.gameObject.SetActive(false);
     }
 
+    void Update()
+    {
+        if (Box_Obj7Data_M.IsUpDown)
+        {
+            Box7_Collider.enabled = false;
+            MeteorBoxButton5_Collider.enabled = true;
+        }
+        else
+        {
+            Box7_Collider.enabled = true;
+            MeteorBoxButton5_Collider.enabled = false;
+            MeteorBoxButton5Data_M.IsCollision = false;
+        }
+
+        /*버튼에 부딪히면 버튼에 상호작용 가능*/
+        if (MeteorBoxButton5Data_M.IsCollision)
+        {
+            MeteorBoxButton5Data_M.IsNotInteractable = false; // 버튼 상호작용 가능하게
+            MeteorBoxButton5Outline_M.OutlineWidth = 8;
+
+            IsMeteoritesStorage5Data_M.IsCenterButtonDisabled = false;  // 관찰하기 활성화
+        }
+        else
+        {
+            MeteorBoxButton5Data_M.IsNotInteractable = true; // 버튼 상호작용 불가능하게
+            MeteorBoxButton5Outline_M.OutlineWidth = 0;
+
+            IsMeteoritesStorage5Data_M.IsCenterButtonDisabled = true; // 관찰하기 비 활성화
+        }
+
+
+        /*운석 보관함에 관찰하기를 하면*/
+        if (IsMeteoritesStorage5Data_M.IsObserve)
+        {
+            IsMeteoritesStorage5_Collider.enabled = false;
+
+            Noah7_Collider.enabled = false; // 노아 콜라이더도 꺼준다.
+
+            MeteorBoxButton5Data_M.IsNotInteractable = true; // 버튼 상호작용 불가능하게
+            MeteorBoxButton5Outline_M.OutlineWidth = 0;
+
+            MeteorBoxButton5_Collider.enabled = false;
+
+        }
+
+        /*운석 보관함에 관찰하면 && 버튼을 1번이라도 클릭했다면,
+          항상 켜지는 거 방지로 조건을 하나 더*/
+        else if (!IsMeteoritesStorage5Data_M.IsObserve && IsClickMeteorBoxButton5 == true)
+        {
+            IsMeteoritesStorage5_Collider.enabled = true;
+
+            Noah7_Collider.enabled = true;
+
+            MeteorBoxButton5_Collider.enabled = true;
+        }
+
+    }
 
     public void OnBark()
     {
-        MeteorBoxButton5Data_T.IsBark = true;
+        MeteorBoxButton5Data_M.IsBark = true;
 
         DisableButton();
 
@@ -56,7 +150,7 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        MeteorBoxButton5Data_T.IsPushOrPress = true;
+        MeteorBoxButton5Data_M.IsPushOrPress = true;
 
         DisableButton();
 
@@ -64,17 +158,35 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
 
         StartCoroutine(ChangePressFalse());
 
+        Invoke("OpenMeteorBox5", 2f);
+
+    }
+
+    void OpenMeteorBox5()
+    {
+        meteorBox5Anim_M.SetBool("isMeteorBox5Open", true);
+        meteorBox5Anim_M.SetBool("isMeteorBox5End", true);
+
+        IsMeteoritesStorage5Data_M.IsNotInteractable = false; // 박스에 상호작용 가능하게
+        IsMeteoritesStorage5Outline_M.OutlineWidth = 8;
+
+        IsClickMeteorBoxButton5 = true;
+
+        /*     MeteorBoxButton1Data_M.IsNotInteractable = true; // 버튼에 두번 다시 상호작용 못하게
+                MeteorBoxButton1Outline_M.OutlineWidth = 0;*/
+
+        //IsMeteoritesStorage1_Collider.enabled = true;
     }
 
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        MeteorBoxButton5Data_T.IsPushOrPress = false;
+        MeteorBoxButton5Data_M.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        MeteorBoxButton5Data_T.IsSniff = true;
+        MeteorBoxButton5Data_M.IsSniff = true;
 
         DisableButton();
 

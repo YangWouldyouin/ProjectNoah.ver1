@@ -20,6 +20,8 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     private Button barkButton_M_Beaker1, sniffButton_M_Beaker1, biteButton_M_Beaker1,
         pressButton_M_Beaker1, eatButton_M_Beaker1, eatDisableButton_M_Beaker1;
 
+    public ObjectData Beaker1Data;
+    public ObjectData AnswerMeteorForBeaker1Data;
 
     /*ObjData*/
     ObjData Beaker1Data_M;
@@ -62,6 +64,8 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         Beaker1Outline_M = GetComponent<Outline>();
         AnswerMeteorForBeakerOutline_M = M_AnswerMeteorForBeaker.GetComponent<Outline>();
 
+
+        /*버튼 연결*/
         barkButton_M_Beaker1 = Beaker1Data_M.BarkButton;
         barkButton_M_Beaker1.onClick.AddListener(OnBark);
 

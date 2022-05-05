@@ -56,7 +56,7 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
         Box_Obj3Data_M = M_Box_Obj3.GetComponent<ObjData>();
         IsMeteoritesStorage1Data_M = M_IsMeteoritesStorage1.GetComponent<ObjData>();
 
-
+        /*버튼 연결*/
         barkButton_M_MeteorBoxButton1 = MeteorBoxButton1Data_M.BarkButton;
         barkButton_M_MeteorBoxButton1.onClick.AddListener(OnBark);
 

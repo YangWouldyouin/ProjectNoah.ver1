@@ -39,7 +39,7 @@ public class M_MeteoritesStorage1 : MonoBehaviour, IInteraction
         meteoritesStorage1_Collider = GetComponent<BoxCollider>();
         IsWrongMeteor1_Collider = M_IsWrongMeteor1.GetComponent<BoxCollider>();
 
-
+        /*버튼 연결*/
         barkButton_M_MeteoritesStorage1 = meteoritesStorage1Data_M.BarkButton;
         barkButton_M_MeteoritesStorage1.onClick.AddListener(OnBark);
 

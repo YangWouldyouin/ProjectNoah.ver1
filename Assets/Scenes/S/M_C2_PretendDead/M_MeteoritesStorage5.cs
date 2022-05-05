@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class M_MeteoritesStorage5 : MonoBehaviour, IInteraction
 {
+    /*연관있는 오브젝트*/
+    public GameObject M_IsWrongMeteor4;
+
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_MeteoritesStorage5, sniffButton_M_MeteoritesStorage5,
         biteButton_M_MeteoritesStorage5, pressButton_M_MeteoritesStorage5, 
@@ -12,14 +15,30 @@ public class M_MeteoritesStorage5 : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData meteoritesStorage5Data_M;
+    ObjData IsWrongMeteor4Data_M;
 
+    /*Outline*/
+    Outline IsWrongMeteor4Outline_M;
+
+
+    /*Collider*/
+    BoxCollider meteoritesStorage5_Collider;
+    BoxCollider IsWrongMeteor4_Collider;
 
     void Start()
     {
         /*ObjData*/
         meteoritesStorage5Data_M = GetComponent<ObjData>();
+        IsWrongMeteor4Data_M = M_IsWrongMeteor4.GetComponent<ObjData>();
 
+        /*Outline*/
+        IsWrongMeteor4Outline_M = M_IsWrongMeteor4.GetComponent<Outline>();
 
+        /*Collider*/
+        meteoritesStorage5_Collider = GetComponent<BoxCollider>();
+        IsWrongMeteor4_Collider = M_IsWrongMeteor4.GetComponent<BoxCollider>();
+
+        /*버튼 연결*/
         barkButton_M_MeteoritesStorage5 = meteoritesStorage5Data_M.BarkButton;
         barkButton_M_MeteoritesStorage5.onClick.AddListener(OnBark);
 
@@ -73,6 +92,9 @@ public class M_MeteoritesStorage5 : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = meteoritesStorage5Data_M.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
+
+        IsWrongMeteor4Data_M.IsNotInteractable = false; // 버튼 상호작용 가능하게
+        IsWrongMeteor4Outline_M.OutlineWidth = 8;
     }
 
     public void OnPushOrPress()
