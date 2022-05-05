@@ -120,7 +120,7 @@ public class ObjData : MonoBehaviour
     public bool IsCollision = false; // 책상 올라가려고 추가한 것이다. UpUP, M_C2_FindEnginespaceKey 코드 참고
     public bool IsClicked = false;
 
-
+  
 
     Outline outline; // 마우스 오버시 오브젝트 외곽선
     private void Start()

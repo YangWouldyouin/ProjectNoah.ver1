@@ -6,8 +6,6 @@ public class InitializeEngineScene : MonoBehaviour
 {
     public GameObject FA_fuelabsorberfixPart;
     public GameObject FA_fuelabsorberBody;
-    public GameObject FA_fuelabsorber;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +15,6 @@ public class InitializeEngineScene : MonoBehaviour
         {
             FA_fuelabsorberfixPart.SetActive(false);
             FA_fuelabsorberBody.SetActive(false);
-            FA_fuelabsorber.SetActive(true);
         }
     }
 

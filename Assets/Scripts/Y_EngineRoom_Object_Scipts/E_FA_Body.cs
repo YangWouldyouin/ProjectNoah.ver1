@@ -5,40 +5,38 @@ using UnityEngine.UI;
 
 public class E_FA_Body : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pushButton, noCenterButton;
-    PlayerEquipment playerEquipment;
+    private Button barkButton_E_FA_Body, sniffButton_E_FA_Body, biteButton_E_FA_Body, pushButton_E_FA_Body, noCenterButton_E_FA_Body;
+
     ObjData FA_BodyData_E;
 
     public GameObject FA_fuelabsorberfixPart;
     public GameObject FA_fuelabsorber;
 
-    public ObjectData FA_fuelabsorberfixPartData;
+    ObjData FA_fuelabsorberfixPartData;
 
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
-        playerEquipment = BaseCanvas._baseCanvas.equipment;
-=======
         //E_1
->>>>>>> 152544cc9e6ee24742d9ba1a35e730ad6c14b366
 
         FA_BodyData_E = GetComponent<ObjData>();
+        FA_fuelabsorberfixPartData = FA_fuelabsorberfixPart.GetComponent<ObjData>();
 
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
-        barkButton = FA_BodyData_E.BarkButton;
-        barkButton.onClick.AddListener(OnBark);
+        barkButton_E_FA_Body = FA_BodyData_E.BarkButton;
 
-        sniffButton = FA_BodyData_E.SniffButton;
-        sniffButton.onClick.AddListener(OnSniff);
+        barkButton_E_FA_Body.onClick.AddListener(OnBark);
 
-        biteButton = FA_BodyData_E.BiteButton;
-        biteButton.onClick.AddListener(OnBite);
+        sniffButton_E_FA_Body = FA_BodyData_E.SniffButton;
+        sniffButton_E_FA_Body.onClick.AddListener(OnSniff);
 
-        pushButton = FA_BodyData_E.PushOrPressButton;
-        pushButton.onClick.AddListener(OnPushOrPress);
+        biteButton_E_FA_Body = FA_BodyData_E.BiteButton;
+        biteButton_E_FA_Body.onClick.AddListener(OnBite);
 
-        noCenterButton = FA_BodyData_E.CenterButton1;
+        pushButton_E_FA_Body = FA_BodyData_E.PushOrPressButton;
+        pushButton_E_FA_Body.onClick.AddListener(OnPushOrPress);
+
+        noCenterButton_E_FA_Body = FA_BodyData_E.CenterButton1;
     }
 
     void DiableButton()
@@ -46,11 +44,18 @@ public class E_FA_Body : MonoBehaviour, IInteraction
         // 비활성화 버튼까지 포함하여 위에서 만든 모든 버튼 변수를 끈다.
 
         // ex. 누르기 버튼, 가운데 버튼이 오르기 버튼인데 처음에 비활성화
-        barkButton.transform.gameObject.SetActive(false);
-        sniffButton.transform.gameObject.SetActive(false);
-        biteButton.transform.gameObject.SetActive(false);
-        pushButton.transform.gameObject.SetActive(false);
-        noCenterButton.transform.gameObject.SetActive(false);
+        barkButton_E_FA_Body.transform.gameObject.SetActive(false);
+        sniffButton_E_FA_Body.transform.gameObject.SetActive(false);
+        biteButton_E_FA_Body.transform.gameObject.SetActive(false);
+        pushButton_E_FA_Body.transform.gameObject.SetActive(false);
+        noCenterButton_E_FA_Body.transform.gameObject.SetActive(false);
+    }
+
+    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
+    IEnumerator ChangePressFalse()
+    {
+        yield return new WaitForSeconds(2f);
+        FA_BodyData_E.IsPushOrPress = false;
     }
 
     public void OnBark()
@@ -62,8 +67,11 @@ public class E_FA_Body : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
+        FA_BodyData_E.IsPushOrPress = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
+        StartCoroutine(ChangePressFalse());
+
 
         if (FA_fuelabsorberfixPartData.IsBite) // 부품을 물었으면
         {
@@ -75,11 +83,8 @@ public class E_FA_Body : MonoBehaviour, IInteraction
     {
         FA_fuelabsorber.SetActive(true);
 
-        FA_fuelabsorberfixPart.GetComponent<Rigidbody>().isKinematic = false;
-        FA_fuelabsorberfixPart.transform.parent = null;
-
-        FA_fuelabsorberfixPartData.IsBite = false;
-        playerEquipment.biteObjectName = "";
+        FA_fuelabsorberfixPartData.GetComponent<Rigidbody>().isKinematic = false;
+        FA_fuelabsorberfixPartData.transform.parent = null;
 
         GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -88,8 +93,9 @@ public class E_FA_Body : MonoBehaviour, IInteraction
         gameObject.SetActive(false);
     }
 
-    public void OnSniff()
+        public void OnSniff()
     {
+        FA_BodyData_E.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
