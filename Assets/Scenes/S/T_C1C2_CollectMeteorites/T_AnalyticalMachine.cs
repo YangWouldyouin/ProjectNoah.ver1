@@ -16,9 +16,11 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
 
 
     /*ObjData*/
-    ObjData analyticalMachineData_T;
-    ObjData isAnalyticalMachinePlateData_T;
-    ObjData isAnalyticalMachineButtonData_T;
+    ObjData analyticalMachineObjData_T;
+    public ObjectData analyticalMachineData_T;
+
+    public ObjectData isAnalyticalMachinePlateData_T;
+    public ObjectData isAnalyticalMachineButtonData_T;
 
     /*Outline*/
     Outline isAnalyticalMachinePlateOutline_T;
@@ -38,27 +40,25 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
         isAnalyticalMachineButton_Collider = T_IsAnalyticalMachineButton.GetComponent<BoxCollider>();
 
         /*ObjData*/
-        analyticalMachineData_T = GetComponent<ObjData>();
-        isAnalyticalMachinePlateData_T = T_IsAnalyticalMachinePlate.GetComponent<ObjData>();
-        isAnalyticalMachineButtonData_T = T_IsAnalyticalMachineButton.GetComponent<ObjData>();
+        analyticalMachineObjData_T = GetComponent<ObjData>();
 
         /*Outline*/
         isAnalyticalMachinePlateOutline_T = T_IsAnalyticalMachinePlate.GetComponent<Outline>();
         isAnalyticalMachineButtonOutline_T = T_IsAnalyticalMachineButton.GetComponent<Outline>();
 
-        barkButton_T_AnalyticalMachine = analyticalMachineData_T.BarkButton;
+        barkButton_T_AnalyticalMachine = analyticalMachineObjData_T.BarkButton;
         barkButton_T_AnalyticalMachine.onClick.AddListener(OnBark);
 
-        sniffButton_T_AnalyticalMachine = analyticalMachineData_T.SniffButton;
+        sniffButton_T_AnalyticalMachine = analyticalMachineObjData_T.SniffButton;
         sniffButton_T_AnalyticalMachine.onClick.AddListener(OnSniff);
 
-        biteButton_T_AnalyticalMachine = analyticalMachineData_T.BiteButton;
+        biteButton_T_AnalyticalMachine = analyticalMachineObjData_T.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_T_AnalyticalMachine = analyticalMachineData_T.PushOrPressButton;
+        pressButton_T_AnalyticalMachine = analyticalMachineObjData_T.PushOrPressButton;
         pressButton_T_AnalyticalMachine.onClick.AddListener(OnPushOrPress);
 
-        observeButton_T_AnalyticalMachine = analyticalMachineData_T.CenterButton1;
+        observeButton_T_AnalyticalMachine = analyticalMachineObjData_T.CenterButton1;
         observeButton_T_AnalyticalMachine.onClick.AddListener(OnObserve);
     }
 
@@ -86,8 +86,6 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
     }
     public void OnBark()
     {
-        analyticalMachineData_T.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -96,25 +94,13 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
  
     public void OnPushOrPress()
     {
-        analyticalMachineData_T.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        analyticalMachineData_T.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        analyticalMachineData_T.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -122,13 +108,11 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        analyticalMachineData_T.IsObserve = true;
-
         DisableButton();
 
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
 
-        CameraController.cameraController.currentView = analyticalMachineData_T.ObserveView;
+        CameraController.cameraController.currentView = analyticalMachineObjData_T.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
 

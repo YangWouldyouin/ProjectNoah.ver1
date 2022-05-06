@@ -12,28 +12,29 @@ public class M_Pack : MonoBehaviour, IInteraction
     private Button barkButton_M_Pack, sniffButton_M_Pack, 
         biteButton_M_Pack, pressButton_M_Pack, noCenterButton_M_Pack, smashButton_M_Pack;
 
-    ObjData packData_M;
+    ObjData packObjData_M;
+    public ObjectData packData_M;
 
     void Start()
     {
-        packData_M = GetComponent<ObjData>();
+        packObjData_M = GetComponent<ObjData>();
 
 
-        barkButton_M_Pack = packData_M.BarkButton;
+        barkButton_M_Pack = packObjData_M.BarkButton;
         barkButton_M_Pack.onClick.AddListener(OnBark);
 
-        sniffButton_M_Pack = packData_M.SniffButton;
+        sniffButton_M_Pack = packObjData_M.SniffButton;
         sniffButton_M_Pack.onClick.AddListener(OnSniff);
 
-        biteButton_M_Pack = packData_M.BiteButton;
+        biteButton_M_Pack = packObjData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_Pack = packData_M.PushOrPressButton;
+        pressButton_M_Pack = packObjData_M.PushOrPressButton;
         pressButton_M_Pack.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton_M_Pack = packData_M.CenterButton1;
+        noCenterButton_M_Pack = packObjData_M.CenterButton1;
 
-        smashButton_M_Pack = packData_M.SmashButton;
+        smashButton_M_Pack = packObjData_M.SmashButton;
         smashButton_M_Pack.onClick.AddListener(OnSmash);
     }
 
@@ -57,8 +58,6 @@ public class M_Pack : MonoBehaviour, IInteraction
     }
     public void OnBark()
     {
-        packData_M.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -67,26 +66,15 @@ public class M_Pack : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        packData_M.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
     }
 
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        packData_M.IsPushOrPress = false;
-    }
 
     public void OnSniff()
     {
-        packData_M.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -94,8 +82,6 @@ public class M_Pack : MonoBehaviour, IInteraction
 
     public void OnSmash()
     {
-        packData_M.IsSmash = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.PlayerSmash1();
@@ -116,8 +102,8 @@ public class M_Pack : MonoBehaviour, IInteraction
 
         Destroy(gameObject, 0f);
 
-        packData_M.GetComponent<Rigidbody>().isKinematic = true;
-        packData_M.transform.parent = null;
+        this.GetComponent<Rigidbody>().isKinematic = true;
+        this.transform.parent = null;
 
         //위치 고정: 이유는 얘 위치 따라서 카드키 위치 나오니까 카드키가 공중 부양하기 때문에
         gameObject.transform.position = new Vector3(transform.position.x, 539.951f, transform.position.z); 

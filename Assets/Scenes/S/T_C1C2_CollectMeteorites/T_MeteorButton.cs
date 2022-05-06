@@ -17,10 +17,12 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
         pressButton_T_MeteorButton, noCenterButton_T_MeteorButton;
 
     /*ObjData*/
-    ObjData meteorButtonData_T;
-    ObjData canMeteorCollectMachineData_T;
-    ObjData canNormalMeteor1Data_T;
-    ObjData canImportantMeteorData_T;
+    ObjData meteorButtonObjData_T;
+    public ObjectData meteorButtonData_T;
+
+    public ObjectData canMeteorCollectMachineData_T;
+    public ObjectData canNormalMeteor1Data_T;
+    public ObjectData canImportantMeteorData_T;
 
     /*Outline*/
     Outline canMeteorCollectMachineOutline_T;
@@ -43,29 +45,26 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
         ImportantMeteorCollider = T_canImportantMeteor.GetComponent<BoxCollider>();
 
         /*ObjData*/
-        meteorButtonData_T = GetComponent<ObjData>();
-        canMeteorCollectMachineData_T = T_canMeteorCollectMachine.GetComponent<ObjData>();
-        canNormalMeteor1Data_T = T_canNormalMeteor1.GetComponent<ObjData>();
-        canImportantMeteorData_T = T_canImportantMeteor.GetComponent<ObjData>();
+        meteorButtonObjData_T = GetComponent<ObjData>();
 
         /*Outline*/
         canMeteorCollectMachineOutline_T = T_canMeteorCollectMachine.GetComponent<Outline>();
         meteorButtonOutline_T = GetComponent<Outline>();
 
         /*버튼 연결*/
-        barkButton_T_MeteorButton = meteorButtonData_T.BarkButton;
+        barkButton_T_MeteorButton = meteorButtonObjData_T.BarkButton;
         barkButton_T_MeteorButton.onClick.AddListener(OnBark);
 
-        sniffButton_T_MeteorButton = meteorButtonData_T.SniffButton;
+        sniffButton_T_MeteorButton = meteorButtonObjData_T.SniffButton;
         sniffButton_T_MeteorButton.onClick.AddListener(OnSniff);
 
-        biteButton_T_MeteorButton = meteorButtonData_T.BiteButton;
+        biteButton_T_MeteorButton = meteorButtonObjData_T.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_T_MeteorButton = meteorButtonData_T.PushOrPressButton;
+        pressButton_T_MeteorButton = meteorButtonObjData_T.PushOrPressButton;
         pressButton_T_MeteorButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton_T_MeteorButton = meteorButtonData_T.CenterButton1;
+        noCenterButton_T_MeteorButton = meteorButtonObjData_T.CenterButton1;
 
 
         /*임무 시작*/
@@ -159,8 +158,6 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        meteorButtonData_T.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -169,16 +166,10 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        meteorButtonData_T.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-
-
-        //운석 수집 기계 문 여는 애니메이션
+               //운석 수집 기계 문 여는 애니메이션
         StartCoroutine(meteorBoxOpen());
 
         canMeteorCollectMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
@@ -190,17 +181,8 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
 
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        meteorButtonData_T.IsPushOrPress = false;
-    }
-
-
     public void OnSniff()
     {
-        meteorButtonData_T.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -212,7 +194,6 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
     {
         // 기본적으로 이 함수를 실행 할 때는 1초 지연한 후에 실행하겠다.
         yield return new WaitForSeconds(1f);
-
 
         meteorBoxAnim_T.SetBool("isMeteorBoxClose", false);
         meteorBoxAnim_T.SetBool("isMeteorBoxCloseEnd", false);

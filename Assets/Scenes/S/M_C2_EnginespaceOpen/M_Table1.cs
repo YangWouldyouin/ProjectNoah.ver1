@@ -6,10 +6,6 @@ using UnityEngine.UI;
 public class M_Table1 : MonoBehaviour, IInteraction
 {
     /*연관있는 오브젝트*/
-    public GameObject M_canPack;
-
-    public Transform Table1Pos;
-
     public Vector3 Table1RisePos;
 
     /*오브젝트의 상호작용 버튼들*/
@@ -18,11 +14,12 @@ public class M_Table1 : MonoBehaviour, IInteraction
         upDisableButton_M_Table1, observeButton_M_Table1;
 
     /*ObjData*/
-    ObjData table1Data_M;
-    ObjData canPackData_M;
+    ObjData table1ObjData_M;
+    public ObjectData table1Data_M;
+    public ObjectData canPackData_M;
 
     /*Outline*/
-    Outline canPackOutline_M;
+    public Outline canPackOutline_M;
 
     /*Collider*/
     BoxCollider Table1_Collider;
@@ -30,36 +27,32 @@ public class M_Table1 : MonoBehaviour, IInteraction
     void Start()
     {
         /*ObjData*/
-        table1Data_M = GetComponent<ObjData>();
-        canPackData_M = M_canPack.GetComponent<ObjData>();
-
-        /*Outline*/
-        canPackOutline_M = M_canPack.GetComponent<Outline>();
+        table1ObjData_M = GetComponent<ObjData>();
 
         /*Collider*/
         Table1_Collider = GetComponent<BoxCollider>();
 
         /*버튼 연결*/
-        barkButton_M_Table1 = table1Data_M.BarkButton;
+        barkButton_M_Table1 = table1ObjData_M.BarkButton;
         barkButton_M_Table1.onClick.AddListener(OnBark);
 
-        sniffButton_M_Table1 = table1Data_M.SniffButton;
+        sniffButton_M_Table1 = table1ObjData_M.SniffButton;
         sniffButton_M_Table1.onClick.AddListener(OnSniff);
 
-        biteButton_M_Table1 = table1Data_M.BiteButton;
+        biteButton_M_Table1 = table1ObjData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_Table1 = table1Data_M.PushOrPressButton;
+        pressButton_M_Table1 = table1ObjData_M.PushOrPressButton;
         pressButton_M_Table1.onClick.AddListener(OnPushOrPress);
 
-        upButton_M_Table1 = table1Data_M.CenterButton1;
+        upButton_M_Table1 = table1ObjData_M.CenterButton1;
         upButton_M_Table1.onClick.AddListener(OnUp);
 
-        observeButton_M_Table1 = table1Data_M.CenterButton2;
+        observeButton_M_Table1 = table1ObjData_M.CenterButton2;
         observeButton_M_Table1.onClick.AddListener(OnObserve);
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
-        upDisableButton_M_Table1 = table1Data_M.CenterDisableButton1;
+        upDisableButton_M_Table1 = table1ObjData_M.CenterDisableButton1;
     }
 
     void Update()
@@ -128,8 +121,6 @@ public class M_Table1 : MonoBehaviour, IInteraction
     }
     public void OnBark()
     {
-        table1Data_M.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -164,8 +155,8 @@ public class M_Table1 : MonoBehaviour, IInteraction
             table1Data_M.IsUpDown = true;
 
             /* 실제 노아가 이동할 오르기 위치 좌표에 x, z 값을 넣음 */
-            Table1RisePos.x = Table1Pos.position.x;
-            Table1RisePos.z = Table1Pos.position.z;
+            Table1RisePos.x = table1ObjData_M.UpPos.position.x;
+            Table1RisePos.z = table1ObjData_M.UpPos.position.z;
 
             /* 오르기 애니메이션 1/2 실행 */
             InteractionButtonController.interactionButtonController.PlayerRise1();
@@ -199,33 +190,24 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        table1Data_M.IsObserve = true;
 
         DisableButton();
 
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
 
-        CameraController.cameraController.currentView = table1Data_M.ObserveView;
+        CameraController.cameraController.currentView = table1ObjData_M.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
     }
 
     public void OnPushOrPress()
     {
-        table1Data_M.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        table1Data_M.IsPushOrPress = false;
-    }
 
     public void OnSmash()
     {
@@ -234,7 +216,6 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        table1Data_M.IsSniff = true;
 
         DisableButton();
 

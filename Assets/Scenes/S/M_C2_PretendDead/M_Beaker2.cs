@@ -22,16 +22,18 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
 
     /*ObjData*/
-    ObjData Beaker2Data_M;
-    ObjData RubberForBeaker2Data_M;
-    ObjData RealAnswerMeteorForBeakerData_M;
+    ObjData Beaker2ObjData_M;
+    public ObjectData Beaker2Data_M;
 
-    ObjData RealCylinderGlassAnswerData_M;
-    ObjData RealCylinderGlassWrongData_M;
-    ObjData RealCylinderGlassNoNeed1Data_M;
-    ObjData RealCylinderGlassNoNeed2Data_M;
+    public ObjectData RubberForBeaker2Data_M;
+    public ObjectData RealAnswerMeteorForBeakerData_M;
 
-    ObjData drugInBeaker2Data_M;
+    public ObjectData RealCylinderGlassAnswerData_M;
+    public ObjectData RealCylinderGlassWrongData_M;
+    public ObjectData RealCylinderGlassNoNeed1Data_M;
+    public ObjectData RealCylinderGlassNoNeed2Data_M;
+
+    public ObjectData drugInBeaker2Data_M;
 
     /*Outline*/
     Outline Beaker2Outline_M;
@@ -47,16 +49,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         ChangeBeaker2 = M_drugInBeaker2.GetComponent<MeshRenderer>();
 
         /*ObjData*/
-        Beaker2Data_M = GetComponent<ObjData>();
-        RubberForBeaker2Data_M = M_RubberForBeaker2.GetComponent<ObjData>();
-        RealAnswerMeteorForBeakerData_M = M_RealAnswerMeteorForBeaker.GetComponent<ObjData>();
-
-        RealCylinderGlassAnswerData_M = M_RealCylinderGlassAnswer.GetComponent<ObjData>();
-        RealCylinderGlassWrongData_M = M_RealcylinderGlassWrong.GetComponent<ObjData>();
-        RealCylinderGlassNoNeed1Data_M = M_RealCylinderGlassNoNeed1.GetComponent<ObjData>();
-        RealCylinderGlassNoNeed2Data_M = M_RealCylinderGlassNoNeed2.GetComponent<ObjData>();
-
-        drugInBeaker2Data_M = M_drugInBeaker2.GetComponent<ObjData>();
+        Beaker2ObjData_M = GetComponent<ObjData>();
 
         /*Outline*/
         Beaker2Outline_M = GetComponent<Outline>();
@@ -64,22 +57,22 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
 
         /*버튼 연결*/
-        barkButton_M_Beaker2 = Beaker2Data_M.BarkButton;
+        barkButton_M_Beaker2 = Beaker2ObjData_M.BarkButton;
         barkButton_M_Beaker2.onClick.AddListener(OnBark);
 
-        sniffButton_M_Beaker2 = Beaker2Data_M.SniffButton;
+        sniffButton_M_Beaker2 = Beaker2ObjData_M.SniffButton;
         sniffButton_M_Beaker2.onClick.AddListener(OnSniff);
 
-        biteButton_M_Beaker2 = Beaker2Data_M.BiteButton;
+        biteButton_M_Beaker2 = Beaker2ObjData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_Beaker2 = Beaker2Data_M.PushOrPressButton;
+        pressButton_M_Beaker2 = Beaker2ObjData_M.PushOrPressButton;
         pressButton_M_Beaker2.onClick.AddListener(OnPushOrPress);
 
-        eatButton_M_Beaker2 = Beaker2Data_M.CenterButton1;
+        eatButton_M_Beaker2 = Beaker2ObjData_M.CenterButton1;
         eatButton_M_Beaker2.onClick.AddListener(OnEat);
 
-        eatDisableButton_M_Beaker2 = Beaker2Data_M.CenterButton1;
+        eatDisableButton_M_Beaker2 = Beaker2ObjData_M.CenterButton1;
 
         if (Beaker2Data_M.IsEaten)
         {
@@ -133,8 +126,6 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        Beaker2Data_M.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -142,13 +133,9 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        Beaker2Data_M.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHead();
-
-        StartCoroutine(ChangePressFalse());
 
         /*고무판을 물고 정답 운석을 비커 2에 넣는다면*/
         if (/*RubberForBeaker1Data_M.IsBite &&*/ RealAnswerMeteorForBeakerData_M.IsBite)
@@ -220,16 +207,8 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        Beaker2Data_M.IsPushOrPress = false;
-    }
-
     public void OnSniff()
     {
-        Beaker2Data_M.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -237,8 +216,6 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
     public void OnEat()
     {
-        Beaker2Data_M.IsEaten = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerEat();

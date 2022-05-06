@@ -14,7 +14,7 @@ public class BiteDestroyController_IronPlateDoor : MonoBehaviour, IPointerUpHand
     /*연관있는 오브젝트*/
     public GameObject T_DoIronPlateDoor;
 
-    ObjData DoIronPlateDoorData_T;
+    public ObjectData DoIronPlateDoorData_T;
 
     Outline DoIronPlateDoorOutline_T;
 
@@ -44,7 +44,6 @@ public class BiteDestroyController_IronPlateDoor : MonoBehaviour, IPointerUpHand
 
     void Start()
     {
-        DoIronPlateDoorData_T = T_DoIronPlateDoor.GetComponent<ObjData>();
         DoIronPlateDoorOutline_T = T_DoIronPlateDoor.GetComponent<Outline>();
         ironPlateCollider_T = T_DoIronPlateDoor.GetComponent<BoxCollider>();
     }

@@ -24,7 +24,7 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
         sniffButton.onClick.AddListener(OnSniff);
 
         biteButton = mainComData.BiteButton;
-        //biteButton.onClick.AddListener(OnBite);
+        biteButton.onClick.AddListener(OnBite);
 
         pressButton = mainComData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);

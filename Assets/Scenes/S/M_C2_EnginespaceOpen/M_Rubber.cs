@@ -9,8 +9,8 @@ public class M_Rubber : MonoBehaviour, IInteraction
      private Button barkButton_M_Rubber, sniffButton_M_Rubber, biteButton_M_Rubber, pressButton_M_Rubber, noCenterButton_M_Rubber;
 
     /*ObjData*/
-    ObjData rubberData_M;
-
+    ObjData rubberObjData_M;
+    public ObjectData rubberData_M;
 
     /*Collider*/
     BoxCollider rubber_Collider;
@@ -18,22 +18,22 @@ public class M_Rubber : MonoBehaviour, IInteraction
     // Start is called before the first frame update
     void Start()
     {
-        rubberData_M = GetComponent<ObjData>();
+        rubberObjData_M = GetComponent<ObjData>();
         rubber_Collider = GetComponent<BoxCollider>();
 
-        barkButton_M_Rubber = rubberData_M.BarkButton;
+        barkButton_M_Rubber = rubberObjData_M.BarkButton;
         barkButton_M_Rubber.onClick.AddListener(OnBark);
 
-        sniffButton_M_Rubber = rubberData_M.SniffButton;
+        sniffButton_M_Rubber = rubberObjData_M.SniffButton;
         sniffButton_M_Rubber.onClick.AddListener(OnSniff);
 
-        biteButton_M_Rubber = rubberData_M.BiteButton;
+        biteButton_M_Rubber = rubberObjData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_Rubber = rubberData_M.PushOrPressButton;
+        pressButton_M_Rubber = rubberObjData_M.PushOrPressButton;
         pressButton_M_Rubber.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton_M_Rubber = rubberData_M.CenterButton1;
+        noCenterButton_M_Rubber = rubberObjData_M.CenterButton1;
     }
 
     void DisableButton()
@@ -61,8 +61,6 @@ public class M_Rubber : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        rubberData_M.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -72,24 +70,13 @@ public class M_Rubber : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        rubberData_M.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        rubberData_M.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        rubberData_M.IsSniff = true;
 
         DisableButton();
 

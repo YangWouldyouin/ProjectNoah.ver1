@@ -25,15 +25,14 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData Beaker1Data_M;
-    ObjData RubberForBeaker1Data_M;
-    ObjData AnswerMeteorForBeakerData_M;
+    public ObjectData RubberForBeaker1Data_M;
 
-    ObjData cylinderGlassAnswerData_M;
-    ObjData cylinderGlassWrongData_M;
-    ObjData cylinderGlassNoNeed1Data_M;
-    ObjData cylinderGlassNoNeed2Data_M;
+    public ObjectData cylinderGlassAnswerData_M;
+    public ObjectData cylinderGlassWrongData_M;
+    public ObjectData cylinderGlassNoNeed1Data_M;
+    public ObjectData cylinderGlassNoNeed2Data_M;
 
-    ObjData drugInBeaker1Data_M;
+    public ObjectData drugInBeaker1Data_M;
 
     /*Outline*/
     Outline Beaker1Outline_M;
@@ -49,17 +48,6 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         /*ObjData*/
         Beaker1Data_M = GetComponent<ObjData>();
-        RubberForBeaker1Data_M = M_RubberForBeaker1.GetComponent<ObjData>();
-        AnswerMeteorForBeakerData_M = M_AnswerMeteorForBeaker.GetComponent<ObjData>();
-
-        cylinderGlassAnswerData_M = M_cylinderGlassAnswer.GetComponent<ObjData>();
-        cylinderGlassWrongData_M = M_cylinderGlassWrong.GetComponent<ObjData>();
-        cylinderGlassNoNeed1Data_M = M_cylinderGlassNoNeed1.GetComponent<ObjData>();
-        cylinderGlassNoNeed2Data_M = M_cylinderGlassNoNeed2.GetComponent<ObjData>();
-
-        drugInBeaker1Data_M = M_drugInBeaker1.GetComponent<ObjData>();
-
-
         /*Outline*/
         Beaker1Outline_M = GetComponent<Outline>();
         AnswerMeteorForBeakerOutline_M = M_AnswerMeteorForBeaker.GetComponent<Outline>();
@@ -84,7 +72,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         eatDisableButton_M_Beaker1 = Beaker1Data_M.CenterDisableButton1;
 
 
-        if (Beaker1Data_M.IsEaten)
+        if (Beaker1Data.IsEaten)
         {
             Invoke(" FakeAI1", 3f);
         }
@@ -105,18 +93,18 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         {
             //옳은 약을 만들었다면 운석이 상호작용이 불가능해진다.
             //answerMeteor_MB.SetActive(false);
-            AnswerMeteorForBeakerData_M.IsNotInteractable = true; // 상호작용 가능하게
+            AnswerMeteorForBeaker1Data.IsNotInteractable = true; // 상호작용 가능하게
             AnswerMeteorForBeakerOutline_M.OutlineWidth = 0;
 
             //대신 비커 중앙의 마시기가 활성화 된다.
-            Beaker1Data_M.IsCenterButtonDisabled= false;
+            Beaker1Data.IsCenterButtonDisabled= false;
 
             //색이 변한다.
             ChangeBeaker1.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
 
             M_AnswerMeteorForBeaker.SetActive(false);
 
-            if (Beaker1Data_M.IsEaten)
+            if (Beaker1Data.IsEaten)
             {
                 Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
                 //쓰러지는 애니메이션 삽입 예정
@@ -136,8 +124,6 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        Beaker1Data_M.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -145,16 +131,12 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        Beaker1Data_M.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        StartCoroutine(ChangePressFalse());
-
         /*고무판을 물고 정답 운석을 비커 1에 넣는다면*/
-        if (/*RubberForBeaker1Data_M.IsBite &&*/ AnswerMeteorForBeakerData_M.IsBite)
+        if (/*RubberForBeaker1Data_M.IsBite &&*/ AnswerMeteorForBeaker1Data.IsBite)
         {
             M_AnswerMeteorForBeaker.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
             M_AnswerMeteorForBeaker.transform.parent = null;
@@ -222,16 +204,8 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         }
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        Beaker1Data_M.IsPushOrPress = false;
-    }
-
     public void OnSniff()
     {
-        Beaker1Data_M.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -239,8 +213,6 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
     public void OnEat()
     {
-        Beaker1Data_M.IsEaten = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerEat();

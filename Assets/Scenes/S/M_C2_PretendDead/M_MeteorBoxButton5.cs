@@ -18,10 +18,11 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
 
 
     /*ObjData*/
-    ObjData MeteorBoxButton5Data_M;
-    ObjData Box_Obj7Data_M;
-    ObjData Noah_Obj7Data_M;
-    ObjData IsMeteoritesStorage5Data_M;
+    ObjData MeteorBoxButton5ObjData_M;
+    public ObjectData MeteorBoxButton5Data_M;
+
+    public ObjectData Box_Obj7Data_M;
+    public ObjectData IsMeteoritesStorage5Data_M;
 
 
     /*Outline*/
@@ -50,25 +51,22 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
         MeteorBoxButton5Outline_M = GetComponent<Outline>();
 
         /*ObjData*/
-        MeteorBoxButton5Data_M = GetComponent<ObjData>();
-        Box_Obj7Data_M = M_Box_Obj7.GetComponent<ObjData>();
-        IsMeteoritesStorage5Data_M = M_IsMeteoritesStorage5.GetComponent<ObjData>();
-
+        MeteorBoxButton5ObjData_M = GetComponent<ObjData>();
 
         /*버튼 연결*/
-        barkButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.BarkButton;
+        barkButton_M_MeteorBoxButton5 = MeteorBoxButton5ObjData_M.BarkButton;
         barkButton_M_MeteorBoxButton5.onClick.AddListener(OnBark);
 
-        sniffButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.SniffButton;
+        sniffButton_M_MeteorBoxButton5 = MeteorBoxButton5ObjData_M.SniffButton;
         sniffButton_M_MeteorBoxButton5.onClick.AddListener(OnSniff);
 
-        biteButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.BiteButton;
+        biteButton_M_MeteorBoxButton5 = MeteorBoxButton5ObjData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.PushOrPressButton;
+        pressButton_M_MeteorBoxButton5 = MeteorBoxButton5ObjData_M.PushOrPressButton;
         pressButton_M_MeteorBoxButton5.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton_M_MeteorBoxButton5 = MeteorBoxButton5Data_M.CenterButton1;
+        noCenterButton_M_MeteorBoxButton5 = MeteorBoxButton5ObjData_M.CenterButton1;
 
     }
 
@@ -141,8 +139,6 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        MeteorBoxButton5Data_M.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -150,13 +146,9 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        MeteorBoxButton5Data_M.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
 
         Invoke("OpenMeteorBox5", 2f);
 
@@ -178,16 +170,8 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
         //IsMeteoritesStorage1_Collider.enabled = true;
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        MeteorBoxButton5Data_M.IsPushOrPress = false;
-    }
-
     public void OnSniff()
     {
-        MeteorBoxButton5Data_M.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();

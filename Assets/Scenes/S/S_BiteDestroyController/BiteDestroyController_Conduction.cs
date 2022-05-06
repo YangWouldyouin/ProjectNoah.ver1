@@ -10,13 +10,8 @@ BiteDestroyController + 오브젝트 이름으로 바꾼다. */
 
 public class BiteDestroyController_Conduction : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-
-    /*연관있는 오브젝트*/
-    public GameObject M_biteRubber;
-    public GameObject M_biteConduction;
-
-    ObjData biteRubberData_M;
-    ObjData biteConductionData_M;
+    public ObjectData biteRubberData_M;
+    public ObjectData biteConductionData_M;
 
     /* 상호작용 버튼 변수 */
     // 이름 짓기 규칙 : biteButton + 오브젝트 이름
@@ -38,12 +33,6 @@ public class BiteDestroyController_Conduction : MonoBehaviour, IPointerUpHandler
     private float requiredChangeTime = 0.5f;
     // 누르고 있는 시간 재기 위한 변수 
     private float pointerDownTimer = 0;
-
-    void Start()
-    {
-        biteRubberData_M = M_biteRubber.GetComponent<ObjData>();
-        biteConductionData_M = M_biteConduction.GetComponent<ObjData>();
-    }
 
     void Update()
     {

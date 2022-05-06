@@ -85,24 +85,27 @@ public class M_MiniCabinetDoor : MonoBehaviour,IInteraction
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        //캐비닛 문 여는 애니메이션
-        Invoke("CabinetOpen", 2f);
-    }
-
-    void CabinetOpen()
-    {
-        canMiniCabinetDoorAnim.SetBool("eCabinetOpen", true);
-        canMiniCabinetDoorAnim.SetBool("eCabinetEnd", true);
-
-        //bool 캐비닛 문이 열렸다를 트루로 체크 save를 넣어줘야 되나?
-        Debug.Log("캐비닛 몸에 상호작용 가능해요");
-        //캐비닛 바디에 상호작용 가능하게
         canMiniCabinetBodyData_M.IsNotInteractable = false;
         miniCabinetBodyOutline_M.OutlineWidth = 8;
 
         // 캐비닛 문 비활성화
         miniCabinetDoorData_M.IsNotInteractable = true;
         miniCabinetDoorOutline_M.OutlineWidth = 0;
+
+        //캐비닛 문 여는 애니메이션
+        Invoke("CabinetOpen", 2f);
+    }
+
+    void CabinetOpen()
+    {
+
+        canMiniCabinetDoorAnim.SetBool("eCabinetOpen", true);
+        canMiniCabinetDoorAnim.SetBool("eCabinetEnd", true);
+
+        //bool 캐비닛 문이 열렸다를 트루로 체크 save를 넣어줘야 되나?
+        Debug.Log("캐비닛 몸에 상호작용 가능해요");
+        //캐비닛 바디에 상호작용 가능하게
+
 
 
         /*        IsminiCabinetDoorOpen = true;

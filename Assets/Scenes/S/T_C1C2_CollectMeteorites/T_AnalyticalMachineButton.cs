@@ -19,10 +19,12 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
 
 
     /*ObjData*/
-    ObjData analyticalMachineButtonData_T;
-    ObjData areNormalMeteor1Data_T;
-    ObjData areimportantMeteorData_T;
-    ObjData areAnalyticalMachineData_T;
+    ObjData analyticalMachineButtonObjData_T;
+    public ObjectData analyticalMachineButtonData_T;
+
+    public ObjectData areNormalMeteor1Data_T;
+    public ObjectData areimportantMeteorData_T;
+    public ObjectData areAnalyticalMachineData_T;
 
 
     /*Outline*/
@@ -46,10 +48,7 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
         IsAnalyticalMachinePlate_Collider = T_IsAnalyticalMachinePlate.GetComponent<BoxCollider>();
 
         /*ObjData*/
-        analyticalMachineButtonData_T = GetComponent<ObjData>();
-        areAnalyticalMachineData_T = T_AreAnalyticalMachine.GetComponent<ObjData>();
-        areNormalMeteor1Data_T = T_AreNormalMeteor1.GetComponent<ObjData>();
-        areimportantMeteorData_T = T_AreImportantMeteor.GetComponent<ObjData>();
+        analyticalMachineButtonObjData_T = GetComponent<ObjData>();
 
         /*Outline*/
         analyticalMachineButtonOutline_T = GetComponent<Outline>();
@@ -58,19 +57,19 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
         areimportantMeteorOutline_T = T_AreImportantMeteor.GetComponent<Outline>();
 
 
-        barkButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.BarkButton;
+        barkButton_T_AnalyticalMachineButton = analyticalMachineButtonObjData_T.BarkButton;
         barkButton_T_AnalyticalMachineButton.onClick.AddListener(OnBark);
 
-        sniffButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.SniffButton;
+        sniffButton_T_AnalyticalMachineButton = analyticalMachineButtonObjData_T.SniffButton;
         sniffButton_T_AnalyticalMachineButton.onClick.AddListener(OnSniff);
 
-        biteButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.BiteButton;
+        biteButton_T_AnalyticalMachineButton = analyticalMachineButtonObjData_T.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.PushOrPressButton;
+        pressButton_T_AnalyticalMachineButton = analyticalMachineButtonObjData_T.PushOrPressButton;
         pressButton_T_AnalyticalMachineButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.CenterButton1;
+        noCenterButton_T_AnalyticalMachineButton = analyticalMachineButtonObjData_T.CenterButton1;
     }
 
     void Update()
@@ -118,8 +117,6 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        analyticalMachineButtonData_T.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -128,13 +125,9 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        analyticalMachineButtonData_T.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
 
         StartCoroutine(analyticalMachineOpen());
 
@@ -145,17 +138,8 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
 
     }
 
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        analyticalMachineButtonData_T.IsPushOrPress = false;
-    }
-
     public void OnSniff()
     {
-        analyticalMachineButtonData_T.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -178,7 +162,6 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
     IEnumerator analyticalMachineClose(float delay2, float CloseTimeCheck2)
     {
         yield return new WaitForSeconds(delay2);
-
 
         bool isAnalyticalTimeOver = false;
         float closeTime2 = 0f;

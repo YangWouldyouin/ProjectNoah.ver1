@@ -12,17 +12,16 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
     public GameObject M_Noah_Obj3;
     public GameObject M_IsMeteoritesStorage1;
 
-
-
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_MeteorBoxButton1, sniffButton_M_MeteorBoxButton1, biteButton_M_MeteorBoxButton1,
         pressButton_M_MeteorBoxButton1, noCenterButton_M_MeteorBoxButton1;
 
     /*ObjData*/
-    ObjData MeteorBoxButton1Data_M;
-    ObjData Box_Obj3Data_M;
-    ObjData Noah_Obj3Data_M;
-    ObjData IsMeteoritesStorage1Data_M;
+    ObjData meteorBoxButton1ObjData_M;
+    public ObjectData meteorBoxButton1Data_M;
+
+    public ObjectData Box_Obj3Data_M;
+    public ObjectData IsMeteoritesStorage1Data_M;
 
 
     /*Outline*/
@@ -52,24 +51,22 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
 
 
         /*ObjData*/
-        MeteorBoxButton1Data_M = GetComponent<ObjData>();
-        Box_Obj3Data_M = M_Box_Obj3.GetComponent<ObjData>();
-        IsMeteoritesStorage1Data_M = M_IsMeteoritesStorage1.GetComponent<ObjData>();
+        meteorBoxButton1ObjData_M = GetComponent<ObjData>();
 
         /*버튼 연결*/
-        barkButton_M_MeteorBoxButton1 = MeteorBoxButton1Data_M.BarkButton;
+        barkButton_M_MeteorBoxButton1 = meteorBoxButton1ObjData_M.BarkButton;
         barkButton_M_MeteorBoxButton1.onClick.AddListener(OnBark);
 
-        sniffButton_M_MeteorBoxButton1 = MeteorBoxButton1Data_M.SniffButton;
+        sniffButton_M_MeteorBoxButton1 = meteorBoxButton1ObjData_M.SniffButton;
         sniffButton_M_MeteorBoxButton1.onClick.AddListener(OnSniff);
 
-        biteButton_M_MeteorBoxButton1 = MeteorBoxButton1Data_M.BiteButton;
+        biteButton_M_MeteorBoxButton1 = meteorBoxButton1ObjData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_MeteorBoxButton1 = MeteorBoxButton1Data_M.PushOrPressButton;
+        pressButton_M_MeteorBoxButton1 = meteorBoxButton1ObjData_M.PushOrPressButton;
         pressButton_M_MeteorBoxButton1.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton_M_MeteorBoxButton1 = MeteorBoxButton1Data_M.CenterButton1;
+        noCenterButton_M_MeteorBoxButton1 = meteorBoxButton1ObjData_M.CenterButton1;
 
         /*퍼즐시작
          사전 운석 임무를 다 수행했다면 임무 시작*/
@@ -103,20 +100,20 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
         {
             Box3_Collider.enabled = true;
             MeteorBoxButton1_Collider.enabled = false;
-            MeteorBoxButton1Data_M.IsCollision = false;
+            meteorBoxButton1Data_M.IsCollision = false;
         }
 
         /*버튼에 부딪히면 버튼에 상호작용 가능*/
-        if(MeteorBoxButton1Data_M.IsCollision)
+        if(meteorBoxButton1Data_M.IsCollision)
         {
-            MeteorBoxButton1Data_M.IsNotInteractable = false; // 버튼 상호작용 가능하게
+            meteorBoxButton1Data_M.IsNotInteractable = false; // 버튼 상호작용 가능하게
             MeteorBoxButton1Outline_M.OutlineWidth = 8;
 
             IsMeteoritesStorage1Data_M.IsCenterButtonDisabled = false;  // 관찰하기 활성화
         }
         else
         {
-            MeteorBoxButton1Data_M.IsNotInteractable = true; // 버튼 상호작용 불가능하게
+            meteorBoxButton1Data_M.IsNotInteractable = true; // 버튼 상호작용 불가능하게
             MeteorBoxButton1Outline_M.OutlineWidth = 0;
 
             IsMeteoritesStorage1Data_M.IsCenterButtonDisabled = true; // 관찰하기 비 활성화
@@ -130,7 +127,7 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
 
             Noah3_Collider.enabled = false; // 노아 콜라이더도 꺼준다.
 
-            MeteorBoxButton1Data_M.IsNotInteractable = true; // 버튼 상호작용 불가능하게
+            meteorBoxButton1Data_M.IsNotInteractable = true; // 버튼 상호작용 불가능하게
             MeteorBoxButton1Outline_M.OutlineWidth = 0;
 
             MeteorBoxButton1_Collider.enabled = false;
@@ -152,8 +149,6 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        MeteorBoxButton1Data_M.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -161,13 +156,9 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        MeteorBoxButton1Data_M.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
 
         Invoke("OpenMeteorBox", 2f);
     }
@@ -188,16 +179,8 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
         //IsMeteoritesStorage1_Collider.enabled = true;
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        MeteorBoxButton1Data_M.IsPushOrPress = false;
-    }
-
     public void OnSniff()
     {
-        MeteorBoxButton1Data_M.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();

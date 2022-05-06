@@ -10,10 +10,6 @@ BiteDestroyController + 오브젝트 이름으로 바꾼다. */
 
 public class BiteDestroyController_Rubber : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    /*연관있는 오브젝트*/
-    public GameObject M_canCabinetBody;
-
-    ObjData canCabinetBodyData_M;
 
     /* 상호작용 버튼 변수 */
     // 이름 짓기 규칙 : biteButton + 오브젝트 이름
@@ -35,11 +31,6 @@ public class BiteDestroyController_Rubber : MonoBehaviour, IPointerUpHandler, IP
     private float requiredChangeTime = 0.5f;
     // 누르고 있는 시간 재기 위한 변수 
     private float pointerDownTimer = 0;
-
-    void start()
-    {
-        canCabinetBodyData_M = M_canCabinetBody.GetComponent<ObjData>();
-    }
 
     void Update()
     {

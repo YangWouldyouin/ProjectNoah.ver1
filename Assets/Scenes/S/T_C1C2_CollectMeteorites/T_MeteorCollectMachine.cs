@@ -23,11 +23,13 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
         pressButton_T_MeteorCollectMachine, observeButton_T_MeteorCollectMachine, observeDisableButton_T_MeteorCollectMachine;
 
     /*ObjData*/
-    ObjData meteorCollectMachineData_T;
-    ObjData doNormalMeteor1Data_T;
-    ObjData doImportantMeteorData_T;
-    ObjData doMeteorButtonData_T;
-    ObjData Box_ObjData_T;
+    ObjData meteorCollectMachineObjData_T;
+    public ObjectData meteorCollectMachineData_T;
+
+    public ObjectData doNormalMeteor1Data_T;
+    public ObjectData doImportantMeteorData_T;
+    public ObjectData doMeteorButtonData_T;
+    public ObjectData Box_ObjData_T;
 
     /*Outline*/
     Outline meteorCollectMachineOutline_T;
@@ -53,11 +55,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
         AnalyticalButton_Collider = T_AnalyticalButton.GetComponent<BoxCollider>();
 
         /*ObjData*/
-        meteorCollectMachineData_T = GetComponent<ObjData>();
-        doNormalMeteor1Data_T = T_DoNormalMeteor1.GetComponent<ObjData>();
-        doImportantMeteorData_T = T_DoImportantMeteor.GetComponent<ObjData>();
-        doMeteorButtonData_T = T_DoMeteorButton.GetComponent<ObjData>();
-        Box_ObjData_T = T_Box_Obj.GetComponent<ObjData>();
+        meteorCollectMachineObjData_T = GetComponent<ObjData>();
 
         /*Outline*/
         meteorCollectMachineOutline_T = GetComponent<Outline>();
@@ -65,22 +63,22 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
         doImportantMeteorOutline_T = T_DoImportantMeteor.GetComponent<Outline>();
         doMeteorButtonOutline_T = T_DoMeteorButton.GetComponent<Outline>();
 
-        barkButton_T_MeteorCollectMachine = meteorCollectMachineData_T.BarkButton;
+        barkButton_T_MeteorCollectMachine = meteorCollectMachineObjData_T.BarkButton;
         barkButton_T_MeteorCollectMachine.onClick.AddListener(OnBark);
 
-        sniffButton_T_MeteorCollectMachine = meteorCollectMachineData_T.SniffButton;
+        sniffButton_T_MeteorCollectMachine = meteorCollectMachineObjData_T.SniffButton;
         sniffButton_T_MeteorCollectMachine.onClick.AddListener(OnSniff);
 
-        biteButton_T_MeteorCollectMachine = meteorCollectMachineData_T.BiteButton;
+        biteButton_T_MeteorCollectMachine = meteorCollectMachineObjData_T.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_T_MeteorCollectMachine = meteorCollectMachineData_T.PushOrPressButton;
+        pressButton_T_MeteorCollectMachine = meteorCollectMachineObjData_T.PushOrPressButton;
         pressButton_T_MeteorCollectMachine.onClick.AddListener(OnPushOrPress);
 
-        observeButton_T_MeteorCollectMachine = meteorCollectMachineData_T.CenterButton1;
+        observeButton_T_MeteorCollectMachine = meteorCollectMachineObjData_T.CenterButton1;
         observeButton_T_MeteorCollectMachine.onClick.AddListener(OnObserve);
 
-        observeDisableButton_T_MeteorCollectMachine = meteorCollectMachineData_T.CenterButton2;
+        observeDisableButton_T_MeteorCollectMachine = meteorCollectMachineObjData_T.CenterButton2;
     }
 
     void Update()
@@ -132,8 +130,6 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        meteorCollectMachineData_T.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -141,8 +137,6 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        meteorCollectMachineData_T.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
@@ -150,31 +144,20 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        meteorCollectMachineData_T.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
     }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        meteorCollectMachineData_T.IsPushOrPress = false;
-    }
-
 
     public void OnObserve()
     {
-        meteorCollectMachineData_T.IsObserve = true;
 
         DisableButton();
 
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
 
-        CameraController.cameraController.currentView = meteorCollectMachineData_T.ObserveView;
+        CameraController.cameraController.currentView = meteorCollectMachineObjData_T.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
 

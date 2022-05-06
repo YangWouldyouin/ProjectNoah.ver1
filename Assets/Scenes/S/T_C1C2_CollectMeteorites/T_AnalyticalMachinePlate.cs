@@ -18,11 +18,11 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         pressButton_T_AnalyticalMachineButton, noCenterButton_T_AnalyticalMachineButton;
 
     /*ObjData*/
-    ObjData analyticalMachineButtonData_T;
-    ObjData RealNormalMeteor1Data_T;
-    ObjData RealimportantMeteorData_T;
-    ObjData areRubberData_T;
+    ObjData analyticalMachinePlateObjData_T;
 
+    public ObjectData RealNormalMeteor1Data_T;
+    public ObjectData RealimportantMeteorData_T;
+    public ObjectData areRubberData_T;
 
     /*Outline*/
     Outline RealNormalMeteor1Outline_T;
@@ -32,30 +32,26 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
     void Start()
     {
         /*ObjData*/
-        analyticalMachineButtonData_T = GetComponent<ObjData>();
-        RealNormalMeteor1Data_T = T_RealNormalMeteor1.GetComponent<ObjData>();
-        RealimportantMeteorData_T = T_RealImportantMeteor.GetComponent<ObjData>();
-        areRubberData_T = T_AreRubber.GetComponent<ObjData>();
-
+        analyticalMachinePlateObjData_T = GetComponent<ObjData>();
 
         /*Outline*/
         RealNormalMeteor1Outline_T = T_RealNormalMeteor1.GetComponent<Outline>();
         RealimportantMeteorOutline_T = T_RealImportantMeteor.GetComponent<Outline>();
 
 
-        barkButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.BarkButton;
+        barkButton_T_AnalyticalMachineButton = analyticalMachinePlateObjData_T.BarkButton;
         barkButton_T_AnalyticalMachineButton.onClick.AddListener(OnBark);
 
-        sniffButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.SniffButton;
+        sniffButton_T_AnalyticalMachineButton = analyticalMachinePlateObjData_T.SniffButton;
         sniffButton_T_AnalyticalMachineButton.onClick.AddListener(OnSniff);
 
-        biteButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.BiteButton;
+        biteButton_T_AnalyticalMachineButton = analyticalMachinePlateObjData_T.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.PushOrPressButton;
+        pressButton_T_AnalyticalMachineButton = analyticalMachinePlateObjData_T.PushOrPressButton;
         pressButton_T_AnalyticalMachineButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton_T_AnalyticalMachineButton = analyticalMachineButtonData_T.CenterButton1;
+        noCenterButton_T_AnalyticalMachineButton = analyticalMachinePlateObjData_T.CenterButton1;
     }
 
     void DisableButton()
@@ -68,8 +64,6 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
     }
     public void OnBark()
     {
-        analyticalMachineButtonData_T.IsBark = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
@@ -78,13 +72,10 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        analyticalMachineButtonData_T.IsPushOrPress = true;
 
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
-
-        StartCoroutine(ChangePressFalse());
 
         if(areRubberData_T.IsBite)
         {
@@ -137,16 +128,8 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        analyticalMachineButtonData_T.IsPushOrPress = false;
-    }
-
     public void OnSniff()
     {
-        analyticalMachineButtonData_T.IsSniff = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
