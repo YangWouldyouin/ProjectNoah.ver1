@@ -5,8 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    //임무 보고하기 취소 카운트, 2번 이상 취소하기 누르면 게임 오버
+    //임무 보고하기 취소 카운트, 3번 이상 취소하기 누르면 게임 오버
     public int IsReportCancleCount = 0;
+    //AI 상반 임무 카운트, 2 이상 될 시 태블릿 궤도 좌표 해금
+    public int IsAIVSMissionCount = 0;
 
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
     public bool S_IsAIAwake_M_C1; // 항상 AI 활성화  
