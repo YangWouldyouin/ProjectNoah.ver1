@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45136768, g: 0.50038236, b: 0.5697532, a: 1}
+  m_IndirectSpecularColor: {r: 0.45136714, g: 0.50038195, b: 0.56975204, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -9078,6 +9078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameData:
     IsReportCancleCount: 0
+    IsAIVSMissionCount: 0
     S_IsAIAwake_M_C1: 0
     S_IsCWDoorOpened_M_C1: 0
     S_IsHealthMachineFixed_T_C2: 0
@@ -9123,19 +9124,9 @@ MonoBehaviour:
     Is_MainSystem_WirelessOn: 0
     IsCanConnect_C_MS: 0
     IsReturnOfTheEarth: 0
-    IsPlanetInsertChip_In: 0
-    IsTabletUnlock: 0
-    IsStartCollectMeteorites: 0
-    IsStartPretendDead: 0
-    IsCompleteSmartFarmOpen: 0
-    IsCompleteFindEngineKey: 0
-    IsCompleteOpenEngineRoom: 0
-    IsInputNormalMeteor1_T_C2: 0
-    IsCompletePretendDead: 0
-    randomUPic: 0
-    IsEatBadSweetPotato: 0
-    IsInputImportantMeteor1_T_C2: 0
-    IsMakeForest: 0
+    IsFullChargeTablet: 0
+    IsNoBoxes: 0
+    IsTabletMoved: 0
     sweetPotatoEat: 0000000000000000000000000000
     Pot1InPotato: 0
     Pot2InPotato: 0
@@ -9149,6 +9140,23 @@ MonoBehaviour:
     Pot1InHealthyPotato: 0
     Pot2InHealthyPotato: 0
     Pot3InHealthyPotato: 0
+    FoodEat: 0000000000000000000000000000
+    IsTabletDestroyed: 0
+    IsStartCollectMeteorites: 0
+    IsStartPretendDead: 0
+    IsCompleteSmartFarmOpen: 0
+    IsCompleteFindEngineKey: 0
+    IsCompleteOpenEngineRoom: 0
+    IsInputNormalMeteor1_T_C2: 0
+    IsCompletePretendDead: 0
+    IsTabletUnlock: 0
+    IsPlanetInsertChip_In: 0
+    randomUPic: 0
+    IsEatBadSweetPotato: 0
+    IsInputImportantMeteor1_T_C2: 0
+    IsMakeForest: 0
+    IsSuddenDeath: 0
+    IsPhotoTime: 0
   IsTrashDoorFixed_L_L1: 0
   IsCanMeteorGet: 0
   IsSmellDone: 0
@@ -12790,6 +12798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ceb282db5848a04fa9d84a94079eaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConsoleCenterRData_C: {fileID: 0}
   CMS_GUI: {fileID: 1884016649}
 --- !u!114 &618358989
 MonoBehaviour:
@@ -18152,6 +18161,36 @@ Transform:
   m_Father: {fileID: 355075156}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &858287775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858287776}
+  m_Layer: 0
+  m_Name: Tutorial_Obj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &858287776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858287775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -33.831264, y: -1.9552107, z: -33.20664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &861473691
 GameObject:
   m_ObjectHideFlags: 0
@@ -23245,7 +23284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8641951db0538374fa3789d97d3e3d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raderLine_PRL: {fileID: 0}
 --- !u!1 &1138811685
 GameObject:
   m_ObjectHideFlags: 0
@@ -34555,6 +34593,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5343939100d0dca4dac5cd66f295ca78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetRaderData: {fileID: 0}
+  textCounter: {fileID: 0}
   leftButton_PR: {fileID: 2126669}
   rightButton_PR: {fileID: 1150956437}
   confirmButton_PR: {fileID: 656124581}
@@ -42179,6 +42219,18 @@ PrefabInstance:
     - target: {fileID: 7370088204145564268, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676027113671977872, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676027113671977872, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676027113671977872, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31.29
       objectReference: {fileID: 0}
     - target: {fileID: 7676027113671977873, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_IsActive
