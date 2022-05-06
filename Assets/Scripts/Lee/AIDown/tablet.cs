@@ -25,7 +25,6 @@ public class tablet : MonoBehaviour, IInteraction
 
     private float timer = 0f; // 태블릿 감지 타이머
     public float DestroyTime = 5.0f; // 태블릿을 AI가 감지하기까지 걸리는 시간
-    private float Charge; // 태블릿 - 충전패드 거리 계산
 
 
     void Start()
@@ -49,7 +48,7 @@ public class tablet : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(Tablet_C.IsObserve == false)
+        if (Tablet_C.IsObserve == false)
         {
             TabletUI_C.SetActive(false);
             TabletBackBlack_C.SetActive(true);
@@ -86,10 +85,17 @@ public class tablet : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = TabletData_C.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        Invoke("TabletOn", 2.5f);
-        /*
-         타블렛 화면 진입 > 블루투스 온 > 타블렛 블루투스 = true;
-        */
+        if (GameManager.gameManager._gameData.IsFullChargeTablet == true) // 태블릿 충전 O
+        {
+            Invoke("TabletOn", 3f);
+            /*
+             타블렛 화면 진입 > 블루투스 온 > 타블렛 블루투스 = true;
+            */
+        }
+        else // 태블릿 충전 X
+        {
+            // 화면 켜지지 않음
+        }
     }
 
     public void TabletOn()

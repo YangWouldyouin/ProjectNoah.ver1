@@ -9,35 +9,36 @@ public class C_consoleConerRight : MonoBehaviour, IInteraction
     private Button barkButton_C_consoleConerRight, sniffButton_C_consoleConerRight, biteButton_C_consoleConerRight, pushButton_C_consoleConerRight, observeButton_C_consoleConerRight;
 
     /* 해당 오브젝트의 ObjData 변수 */
-    ObjData ConsoleCenterRData_C;
+    ObjData ConsoleCenterRObjData_C;
+    public ObjectData ConsoleCenterRData_C;
 
     public GameObject CMS_GUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        ConsoleCenterRData_C = GetComponent<ObjData>();
+        ConsoleCenterRObjData_C = GetComponent<ObjData>();
 
-        barkButton_C_consoleConerRight = ConsoleCenterRData_C.BarkButton;
+        barkButton_C_consoleConerRight = ConsoleCenterRObjData_C.BarkButton;
         barkButton_C_consoleConerRight.onClick.AddListener(OnBark);
 
-        sniffButton_C_consoleConerRight = ConsoleCenterRData_C.SniffButton;
+        sniffButton_C_consoleConerRight = ConsoleCenterRObjData_C.SniffButton;
         sniffButton_C_consoleConerRight.onClick.AddListener(OnSniff);
 
-        biteButton_C_consoleConerRight = ConsoleCenterRData_C.BiteButton;
+        biteButton_C_consoleConerRight = ConsoleCenterRObjData_C.BiteButton;
         biteButton_C_consoleConerRight.onClick.AddListener(OnBite);
 
-        pushButton_C_consoleConerRight = ConsoleCenterRData_C.PushOrPressButton;
+        pushButton_C_consoleConerRight = ConsoleCenterRObjData_C.PushOrPressButton;
         pushButton_C_consoleConerRight.onClick.AddListener(OnPushOrPress);
 
-        observeButton_C_consoleConerRight = ConsoleCenterRData_C.CenterButton1;
+        observeButton_C_consoleConerRight = ConsoleCenterRObjData_C.CenterButton1;
         observeButton_C_consoleConerRight.onClick.AddListener(OnObserve);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ConsoleCenterRData_C.IsObserve == false)
+        if (ConsoleCenterRObjData_C.IsObserve == false)
         {
             CMS_GUI.SetActive(false);
         }
@@ -75,7 +76,7 @@ public class C_consoleConerRight : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        ConsoleCenterRData_C.IsObserve = true;
+        ConsoleCenterRObjData_C.IsObserve = true;
 
 
         CMS_GUI.SetActive(true);
@@ -86,7 +87,7 @@ public class C_consoleConerRight : MonoBehaviour, IInteraction
         /* 취소할 때 참고할 오브젝트 저장 */
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         /* 카메라 컨트롤러에 뷰 전달 */
-        CameraController.cameraController.currentView = ConsoleCenterRData_C.ObserveView; // 관찰 뷰 : 위쪽
+        CameraController.cameraController.currentView = ConsoleCenterRObjData_C.ObserveView; // 관찰 뷰 : 위쪽
         /* 관찰 애니메이션 & 카메라 전환 */
         InteractionButtonController.interactionButtonController.playerObserve();
 
@@ -96,7 +97,7 @@ public class C_consoleConerRight : MonoBehaviour, IInteraction
     public void OnPushOrPress()
     {
         /* 오브젝트의 누르기 변수 true로 바꿈 */
-        ConsoleCenterRData_C.IsPushOrPress = true;
+        ConsoleCenterRObjData_C.IsPushOrPress = true;
 
         /* 상호작용 버튼을 끔 */
         DiableButton();
@@ -112,7 +113,7 @@ public class C_consoleConerRight : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        ConsoleCenterRData_C.IsPushOrPress = false;
+        ConsoleCenterRObjData_C.IsPushOrPress = false;
     }
 
     public void OnSmash()
