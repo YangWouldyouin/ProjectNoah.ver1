@@ -11,15 +11,15 @@ pushButton, smashButton, NoCenterButton;
     ObjData FullEGPad_E;
 
     /* 상호작용 오브젝트 */
-    public GameObject Tablet_C;
-    ObjData TabletData_C;
+    public GameObject Tablet_E;
+    ObjData TabletData_E;
 
     private float Charge; // 태블릿 - 충전패드 거리 계산
 
     void Start()
     {
         FullEGPad_E = GetComponent<ObjData>();
-        TabletData_C = Tablet_C.GetComponent<ObjData>();
+        TabletData_E = Tablet_E.GetComponent<ObjData>();
 
 
         barkButton = FullEGPad_E.BarkButton;
@@ -77,12 +77,25 @@ pushButton, smashButton, NoCenterButton;
     {
         // throw new System.NotImplementedException();
 
-        Charge = Vector3.Distance(Tablet_C.transform.position, FullEGPad_E.transform.position);
+/*        Charge = Vector3.Distance(Tablet_E.transform.position, FullEGPad_E.transform.position);
 
-        if (Charge <= 1f) // 태블릿과 충전O패드 사이가 1f 이하 일 시
+        if (Charge <= 100f) // 태블릿과 충전O패드 사이가 100f 이하 일 시
         {
+            Debug.Log("충전완료");
             GameManager.gameManager._gameData.IsFullChargeTablet = true; // 태블랫 충전 됨
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }*/
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "Tablet_E")
+        {
+            Debug.Log("충전완료");
+            GameManager.gameManager._gameData.IsFullChargeTablet = true; // 태블랫 충전 됨
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            FullEGPad_E.gameObject.SetActive(false);
         }
     }
 

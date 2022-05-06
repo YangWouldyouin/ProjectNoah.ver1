@@ -20,7 +20,7 @@ public class tabletUIManager : MonoBehaviour
     }
     public void ChangeMain()
     {
-        if (GameManager.gameManager._gameData.IsTabletUnlock)
+        if (GameManager.gameManager._gameData.IsTabletUnlock == true)
         {
             MainUI.SetActive(true);
             LockUI.SetActive(false);

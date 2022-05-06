@@ -9,33 +9,42 @@ public class E_Boxes: MonoBehaviour, IInteraction
     private Button barkButton, sniffButton, biteButton,
 pushButton, smashButton, NoCenterButton_M_Box;
 
-    ObjData Boxes_E;
+    ObjData BoxesData_E;
+
+    public GameObject Tablet_E;
+    ObjData TabletData_E;
+
+    //public GameObject TabletOutli_E;
+    //ObjData TabletOutlineData_E;
 
     public Animator BoxDestroyAnimation; // 박스 무너지는 애니메이션
 
 
     void Start()
     {
-        Boxes_E = GetComponent<ObjData>();
+        BoxesData_E = GetComponent<ObjData>();
+        TabletData_E = Tablet_E.GetComponent<ObjData>();
+        // TabletOutlineData_E = Tablet_E.GetComponent<Outline>();
 
+        // Tablet_E.SetActive(false);
 
-        barkButton = Boxes_E.BarkButton;
+        barkButton = BoxesData_E.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = Boxes_E.SniffButton;
+        sniffButton = BoxesData_E.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = Boxes_E.BiteButton;
+        biteButton = BoxesData_E.BiteButton;
         biteButton.onClick.AddListener(OnBite); // "물기"가 안되는 오브젝트
 
         //smashButton_M_Box = boxData_M.SmashButton;
         //smashButton_M_Box.onClick.AddListener(OnSmash);
 
-        pushButton = Boxes_E.PushOrPressButton;
+        pushButton = BoxesData_E.PushOrPressButton;
         pushButton.onClick.AddListener(OnPushOrPress);
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
-        NoCenterButton_M_Box = Boxes_E.CenterButton1;
+        NoCenterButton_M_Box = BoxesData_E.CenterButton1;
     }
 
     void DiableButton()
@@ -54,7 +63,7 @@ pushButton, smashButton, NoCenterButton_M_Box;
 
     public void OnBark()
     {
-        Boxes_E.IsBark = true;
+        BoxesData_E.IsBark = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -64,14 +73,14 @@ pushButton, smashButton, NoCenterButton_M_Box;
     }
     public void OnSniff()
     {
-        Boxes_E.IsSniff = true;
+        BoxesData_E.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
 
     public void OnPushOrPress()
     {
-        Boxes_E.IsPushOrPress = true;
+        BoxesData_E.IsPushOrPress = true;
         DiableButton();
         // 머리로 누르는 애니메이션  
         InteractionButtonController.interactionButtonController.playerPressHead(); 
@@ -87,7 +96,7 @@ pushButton, smashButton, NoCenterButton_M_Box;
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        Boxes_E.IsPushOrPress = false;
+        BoxesData_E.IsPushOrPress = false;
     }
 
     void DestroyBoxAnim() // 박스 무너지는 애니메이션
@@ -96,9 +105,13 @@ pushButton, smashButton, NoCenterButton_M_Box;
     }
     void DestroyBox() // 박스 오브젝트 비활성화
     {
-        Boxes_E.gameObject.SetActive(false);
+        BoxesData_E.gameObject.SetActive(false);
     }
 
+/*    void FindTablet()
+    {
+
+    }*/
 
     public void OnEat()
     {

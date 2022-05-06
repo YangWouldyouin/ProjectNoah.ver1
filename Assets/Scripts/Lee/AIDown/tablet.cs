@@ -15,16 +15,16 @@ public class tablet : MonoBehaviour, IInteraction
     public GameObject TabletBackBlack_C; // 태블릿 비활성화 화면 (오브젝트 상태 화면)
     public GameObject TabletBackOn_C; // 태블릿 활성화 화면 (관찰하기 화면)
 
-    public GameObject FullEgPad_C; // 충전 된 충전패드
+/*    public GameObject FullEgPad_C; // 충전 된 충전패드
     public GameObject ZeroEgPad_C; // 충전 안 된 충전패드
 
-    /* 오브젝트 데이터 */
+    *//* 오브젝트 데이터 *//*
     ObjData FullEgPadData_C; // 충전 된 충전패드
-    ObjData ZeroEgPadData_C; // 충전 안 된 충전패드
+    ObjData ZeroEgPadData_C; // 충전 안 된 충전패드*/
 
 
-    private float timer = 0f; // 태블릿 감지 타이머
-    public float DestroyTime = 5.0f; // 태블릿을 AI가 감지하기까지 걸리는 시간
+/*    private float timer = 0f; // 태블릿 감지 타이머
+    public float DestroyTime = 5.0f; // 태블릿을 AI가 감지하기까지 걸리는 시간*/
 
 
     void Start()

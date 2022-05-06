@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,12 @@ public class ObjectData :ScriptableObject
     public bool IsInsert = false;
     public bool IsObserve = false;
     public bool IsCollision = false; // 책상 올라가려고 추가한 것이다. UpUP, M_C2_FindEnginespaceKey 코드 참고
+
+    internal T GetComponent<T>()
+    {
+        throw new NotImplementedException();
+    }
+
     public bool IsClicked = false;
 
     public bool IsCenterButtonChanged = false;

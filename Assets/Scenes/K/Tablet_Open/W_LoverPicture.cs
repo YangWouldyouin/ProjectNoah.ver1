@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class W_LoverPicture : MonoBehaviour, IInteraction
 {
     private Button barkButton_W_LoverPicture, sniffButton_W_LoverPicture, biteButton_W_LoverPicture,
-pushButton_W_LoverPicture, upButton_W_LoverPicture, upDisableButton_W_LoverPicture, smashButton_W_LoverPicture;
+pushButton_W_LoverPicture, smashButton_W_LoverPicture;
 
     ObjData LoverPicture_W;
 
@@ -40,9 +40,6 @@ pushButton_W_LoverPicture, upButton_W_LoverPicture, upDisableButton_W_LoverPictu
 
         pushButton_W_LoverPicture = LoverPicture_W.PushOrPressButton;
         pushButton_W_LoverPicture.onClick.AddListener(OnPushOrPress);
-
-        // 비활성화 버튼은 버튼을 가져오기만 한다. 
-        upDisableButton_W_LoverPicture = LoverPicture_W.CenterDisableButton1;
     }
     void DiableButton()
     {
@@ -55,7 +52,6 @@ pushButton_W_LoverPicture, upButton_W_LoverPicture, upDisableButton_W_LoverPictu
         // 파괴하기가 되는 오브젝트이면 파괴하기 버튼 추가
         smashButton_W_LoverPicture.transform.gameObject.SetActive(false);
         pushButton_W_LoverPicture.transform.gameObject.SetActive(false);
-        upDisableButton_W_LoverPicture.transform.gameObject.SetActive(false);
     }
 
 
@@ -79,12 +75,13 @@ pushButton_W_LoverPicture, upButton_W_LoverPicture, upDisableButton_W_LoverPictu
         {
             GameManager.gameManager._gameData.IsTabletUnlock = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            Debug.Log("태블릿 잠금해제");
         }
-        else
+/*        else
         {
             GameManager.gameManager._gameData.IsTabletUnlock = false;
             // SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        }
+        }*/
     }
 
     public void OnObserve()
