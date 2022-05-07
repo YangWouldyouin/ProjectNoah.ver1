@@ -1,0 +1,113 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Tu_DogFood : MonoBehaviour, IInteraction
+{
+    private Button barkButton, sniffButton, biteButton,
+pushButton, smashButton, eatButton;
+
+    ObjData DogFood_Tu;
+
+
+
+    void Start()
+    {
+        DogFood_Tu = GetComponent<ObjData>();
+
+        barkButton = DogFood_Tu.BarkButton;
+        barkButton.onClick.AddListener(OnBark);
+
+        sniffButton = DogFood_Tu.SniffButton;
+        sniffButton.onClick.AddListener(OnSniff);
+
+        biteButton = DogFood_Tu.BiteButton;
+
+        pushButton = DogFood_Tu.PushOrPressButton;
+        pushButton.onClick.AddListener(OnPushOrPress);
+
+        smashButton = DogFood_Tu.PushOrPressButton;
+        smashButton.onClick.AddListener(OnSmash);
+
+        eatButton = DogFood_Tu.CenterButton1;
+        eatButton.onClick.AddListener(OnEat);
+
+    }
+    void DiableButton()
+    {
+        // 비활성화 버튼까지 포함하여 위에서 만든 모든 버튼 변수를 끈다.
+
+        // ex. 누르기 버튼, 가운데 버튼이 오르기 버튼인데 처음에 비활성화
+        barkButton.transform.gameObject.SetActive(false);
+        sniffButton.transform.gameObject.SetActive(false);
+        biteButton.transform.gameObject.SetActive(false);
+        // 파괴하기가 되는 오브젝트이면 파괴하기 버튼 추가
+        smashButton.transform.gameObject.SetActive(false);
+        pushButton.transform.gameObject.SetActive(false);
+        eatButton.transform.gameObject.SetActive(false);
+    }
+
+
+    void Update()
+    {
+
+    }
+
+
+
+    public void OnBark()
+    {
+        DogFood_Tu.IsBark = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerBark();
+    }
+    public void OnBite()
+    {
+        // throw new System.NotImplementedException();
+    }
+    public void OnPushOrPress()
+    {
+        /* 밀기 & 누르기 중에 "누르기"일 때!!! */
+
+        DogFood_Tu.IsPushOrPress = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
+
+        StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
+    }
+    IEnumerator ChangePressFalse() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴
+    {
+        yield return new WaitForSeconds(2f);
+        DogFood_Tu.IsPushOrPress = false;
+    }
+
+    public void OnEat()
+    {
+        DogFood_Tu.IsEaten = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerEat();
+    }
+
+    public void OnSniff() // 냄새맡기
+    {
+        DogFood_Tu.IsSniff = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerSniff();
+    }
+
+
+    public void OnSmash() // 파괴하기
+    {
+    }
+    public void OnObserve()
+    {
+    }
+    public void OnInsert()
+    {
+    }
+
+    public void OnUp()
+    {
+    }
+}

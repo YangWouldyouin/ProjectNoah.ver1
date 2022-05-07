@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tablet_Sound : MonoBehaviour
 {
-    public float TabletSoundRange = 30f; // 태블릿 소리 나는 주기 = 30초
+    // public float TabletSoundRange = 30f; // 태블릿 소리 나는 주기 = 30초
     public float speed; // 노아가 돌아보는 속도
 
     public GameObject TabletSoundArea; // 소리 들을 수 있는 영역
@@ -12,17 +12,14 @@ public class Tablet_Sound : MonoBehaviour
 
     public GameObject Player_Noah; // 노아 플레이어
 
-    // AudioSource TabletSoundAudio; // 태블릿 기계 소리
-
     public GameObject Tablet; // 태블릿
     ObjData Tablet_Data;
 
-    public bool IsTabletSoundListen = false;
+    public bool IsTabletSoundListen = false; // 태블릿 소리를 들었는가?
 
     void Start()
     {
         Tablet_Data = Tablet.GetComponent<ObjData>();
-        // TabletSoundAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -39,12 +36,19 @@ public class Tablet_Sound : MonoBehaviour
     {
         if(GameManager.gameManager._gameData.IsNoBoxes == false)
         {
+            TabletSoundArea.SetActive(true);
+
             if (other.gameObject == Player_Noah)
             {
                 Debug.Log("태블릿 소리 영역 진입");
                 TabletSoundLoop();
                 // TabletSoundArea.SetActive(true);
             }
+        }
+        else
+        {
+            TabletSoundArea.SetActive(false);
+            Debug.Log("상자없다");
         }
     }
     public void OnTriggerStay(Collider other)

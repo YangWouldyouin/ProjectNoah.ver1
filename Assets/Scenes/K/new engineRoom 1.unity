@@ -5723,6 +5723,10 @@ PrefabInstance:
       propertyPath: interactionButtons
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1397759963577864830, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1397759963577864831, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
       propertyPath: m_Constraints
       value: 0
@@ -14708,6 +14712,134 @@ RectTransform:
   m_AnchoredPosition: {x: 2, y: -63}
   m_SizeDelta: {x: 122, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &632228923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632228929}
+  - component: {fileID: 632228928}
+  - component: {fileID: 632228927}
+  - component: {fileID: 632228926}
+  - component: {fileID: 632228925}
+  - component: {fileID: 632228924}
+  m_Layer: 0
+  m_Name: TabletHideZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &632228924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632228923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c92911f50889534b8d75e011fb025ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TabletHideZone_E: {fileID: 632228923}
+  Tablet_E: {fileID: 1292875830}
+  noahPlayer: {fileID: 2102715929}
+--- !u!54 &632228925
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632228923}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &632228926
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632228923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.097135, y: 3.224255, z: 1.1386069}
+  m_Center: {x: -0.04856698, y: 1.1121289, z: 0.06930335}
+--- !u!23 &632228927
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632228923}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &632228928
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632228923}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &632228929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632228923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6847, y: 0.3573, z: -11.6928}
+  m_LocalScale: {x: 5.7443066, y: 0.1546, z: 5.7237444}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &639795783 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1832655260, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
@@ -14977,7 +15109,6 @@ MonoBehaviour:
     IsWEDoorOpened_M_C2: 0
     IsCheckDrug: 0
     IsDetox: 0
-    IsFindDrugDone_T_C2: 0
     IsHide: 0
     IsAlert: 0
     IsAIDown: 0
@@ -15013,6 +15144,7 @@ MonoBehaviour:
     IsFullChargeTablet: 0
     IsNoBoxes: 0
     IsTabletMoved: 0
+    IsMeteorCollectOpenOrClose: 0
     sweetPotatoEat: 0000000000000000000000000000
     Pot1InPotato: 0
     Pot2InPotato: 0
@@ -15030,6 +15162,10 @@ MonoBehaviour:
     IsTabletDestroyed: 0
     IsStartCollectMeteorites: 0
     IsStartPretendDead: 0
+    IsStartFIndDrug: 0
+    IsFindStrangeObj: 0
+    IsStartToReady: 0
+    IsStartOrbitChange: 0
     IsCompleteSmartFarmOpen: 0
     IsCompleteFindEngineKey: 0
     IsCompleteOpenEngineRoom: 0
@@ -15037,6 +15173,9 @@ MonoBehaviour:
     IsCompletePretendDead: 0
     IsTabletUnlock: 0
     IsPlanetInsertChip_In: 0
+    IsAIDown_M_C1C3: 0
+    IsKnowUsingSObj: 0
+    IsFindDrugDone_T_C2: 0
     randomUPic: 0
     IsEatBadSweetPotato: 0
     IsInputImportantMeteor1_T_C2: 0
@@ -26290,6 +26429,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: boxsWithAnim
       objectReference: {fileID: 0}
+    - target: {fileID: 7174211184612289772, guid: 41ab5a84d06fdec4aa2e7412724d25bc, type: 3}
+      propertyPath: m_Size.y
+      value: 3.4116864
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174211184612289772, guid: 41ab5a84d06fdec4aa2e7412724d25bc, type: 3}
+      propertyPath: m_Center.y
+      value: 1.3965862
+      objectReference: {fileID: 0}
     - target: {fileID: 7174211184612289773, guid: 41ab5a84d06fdec4aa2e7412724d25bc, type: 3}
       propertyPath: barkButton
       value: 
@@ -29944,7 +30091,6 @@ GameObject:
   - component: {fileID: 1292875834}
   - component: {fileID: 1292875833}
   - component: {fileID: 1292875832}
-  - component: {fileID: 1292875837}
   m_Layer: 0
   m_Name: Tablet_E
   m_TagString: Untagged
@@ -29960,7 +30106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292875830}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.4, y: 0.56, z: 1.8}
+  m_LocalPosition: {x: 5.4, y: 0.56, z: -12.37}
   m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 0.10000001}
   m_Children:
   - {fileID: 1499455416}
@@ -30037,6 +30183,7 @@ MonoBehaviour:
   TabletUI_C: {fileID: 399537988}
   TabletBackBlack_C: {fileID: 172723901}
   TabletBackOn_C: {fileID: 1666780691}
+  LoverPic_C: {fileID: 1432848051}
 --- !u!114 &1292875834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30066,8 +30213,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.783957, y: 1, z: 8.7864}
-  m_Center: {x: -3.8555636, y: 0, z: -2.8804839}
+  m_Size: {x: 10.783957, y: 7.391045, z: 8.7864}
+  m_Center: {x: -3.8555636, y: 2.9395652, z: -2.880484}
 --- !u!54 &1292875836
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30084,19 +30231,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1292875837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292875830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c92911f50889534b8d75e011fb025ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tablet: {fileID: 1292875830}
 --- !u!1 &1304075339
 GameObject:
   m_ObjectHideFlags: 0
@@ -31292,6 +31426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 36829487, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 365641763, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: myHead
       value: 
@@ -31359,6 +31497,10 @@ PrefabInstance:
     - target: {fileID: 969244475, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008835983, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1316158695, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_Color.a
@@ -33744,11 +33886,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472425268}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.4779786, z: 0.9999997}
+  m_Center: {x: 0, y: -0.2792403, z: 0}
 --- !u!23 &1472425270
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33824,7 +33966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6771c770254a9084a9e3ac069562fba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TabletSoundRange: 5
   speed: 1
   TabletSoundArea: {fileID: 1472425268}
   Player_Noah: {fileID: 2102715929}

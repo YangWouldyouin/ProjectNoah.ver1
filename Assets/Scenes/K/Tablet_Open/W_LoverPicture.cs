@@ -71,13 +71,13 @@ pushButton_W_LoverPicture, smashButton_W_LoverPicture;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
 
-        if(TabletData_W.IsObserve)
+/*        if (TabletData_W.IsObserve)
         {
             GameManager.gameManager._gameData.IsTabletUnlock = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             Debug.Log("태블릿 잠금해제");
         }
-/*        else
+*//*        else
         {
             GameManager.gameManager._gameData.IsTabletUnlock = false;
             // SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -88,9 +88,9 @@ pushButton_W_LoverPicture, smashButton_W_LoverPicture;
     {
         LoverPicture_W.IsObserve = true;
         DiableButton();
-        //PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
-        //CameraController.cameraController.currentView = LoverPicture_W.ObserveView; // 관찰 뷰 : 위쪽
-        InteractionButtonController.interactionButtonController.playerObserve();
+        // PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+        // CameraController.cameraController.currentView = LoverPicture_W.ObserveView; // 관찰 뷰 : 위쪽
+        // InteractionButtonController.interactionButtonController.playerObserve();
 
         LoverPicture_ImageData_W.gameObject.SetActive(true); // UI로 사진이미지 크게 보여주기
     }

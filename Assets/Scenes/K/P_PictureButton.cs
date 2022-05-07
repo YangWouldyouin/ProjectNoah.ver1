@@ -129,6 +129,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
         Report_GUI_P.SetActive(false); // 창 끄기
         UniverseImage_P.SetActive(false);
+        /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ W-2대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     }
 
     public void Cancel() //캔슬 버튼 누르면
