@@ -7,7 +7,7 @@ public class GoogleSheetManager : MonoBehaviour
 {
     public static GoogleSheetManager googleSheetManager { get; private set; }
     const string dialogURL = "https://docs.google.com/spreadsheets/d/1kNqPr-xpTnZC0C7S844Pl_0zkn4ehTulPxtj8KtFX1M/export?format=tsv"; //export format = tsv : 탭이나 엔터로 구분
-    const string subtitleURL = "https://docs.google.com/spreadsheets/d/1kNqPr-xpTnZC0C7S844Pl_0zkn4ehTulPxtj8KtFX1M/export?format=tsvgid=1023122798"; //export format = tsv : 탭이나 엔터로 구분
+    const string subtitleURL = "https://docs.google.com/spreadsheets/d/1kNqPr-xpTnZC0C7S844Pl_0zkn4ehTulPxtj8KtFX1M/export?format=tsv&gid=1023122798"; //export format = tsv : 탭이나 엔터로 구분
 
     public Dictionary<int, string[]> AIDialogueDic = new Dictionary<int, string[]>(); // 나중에 키값 string 으로 바꾸기
     Dictionary<int, List<string>> AIDic = new Dictionary<int, List<string>>();
@@ -19,7 +19,7 @@ public class GoogleSheetManager : MonoBehaviour
     List<string> tempString = new List<string>();
 
     int subtitleKey = 1;
-    List<string> subString = new List<string>();
+    List<string> subtitleString = new List<string>();
 
     string dialognumber = "1";
     string subtitleNumber = "1";
@@ -69,20 +69,20 @@ public class GoogleSheetManager : MonoBehaviour
 
         string[] subData = googlesubTitleData.Split('\n'); // 스프레드시트를 행으로 나눠서 data 배열에 담음
 
-        for (int i = 2; i < subData.Length; i++)
+        for (int k = 2; k < subData.Length; k++)
         {
-            string[] row = subData[i].Split('\t'); // 스프레드 시트 행 하나를 열로 나눔
+            string[] subRow = subData[k].Split('\t'); // 스프레드 시트 행 하나를 열로 나눔
 
-            if (subtitleNumber != row[4])
+            if (subtitleNumber != subRow[4])
             {
-                string[] subtemp = subString.ToArray();
+                string[] subtemp = subtitleString.ToArray();
                 subtitleDic[subtitleKey] = subtemp;
                 subtitleKey++;
-                subString = new List<string>();
+                subtitleString = new List<string>();
             }
-            subString.Add(row[5]);
+            subtitleString.Add(subRow[5]);
 
-            subtitleNumber = row[4];
+            subtitleNumber = subRow[4];
         }
     }
 

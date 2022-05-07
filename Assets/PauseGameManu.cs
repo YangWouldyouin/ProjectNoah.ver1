@@ -8,7 +8,14 @@ public class PauseGameManu : MonoBehaviour
 {
     public GameObject pauseManu;
     public string projectList, mainScene;
+    public GameObject dialogManager_CC;
+    DialogManager dialogManager;
 
+    private void Start()
+    {
+        dialogManager = dialogManager_CC.GetComponent<DialogManager>();
+        
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -34,5 +41,7 @@ public class PauseGameManu : MonoBehaviour
     public void ResumeGame()
     {
         pauseManu.SetActive(false);
+        //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(1));
     }
 }

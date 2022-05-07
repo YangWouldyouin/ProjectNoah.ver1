@@ -103,34 +103,32 @@ public class DialogManager : MonoBehaviour
 
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-    public string GetSubtitleTalk(int id, int talkIndex)
+    public string GetSubtitleTalk(int subID, int subIndex)
     {
-        if (talkIndex == googleSheetManager.subtitleDic[id].Length)
+        if (subIndex == googleSheetManager.subtitleDic[subID].Length)
             return null;
         else
-            return googleSheetManager.subtitleDic[id][talkIndex];
+            return googleSheetManager.subtitleDic[subID][subIndex];
     }
 
-    public IEnumerator PrintSubtitle(int subtitleNum)
+    public IEnumerator PrintSubtitles(int subtitleNum)
     {
         if (!IsSubtitleStarted)
         {
             IsSubtitleStarted = true;
 
             yield return new WaitForSeconds(1f);
-            for (int i = 0; i < googleSheetManager.subtitleDic[subtitleNum].Length; i++)
+            for (int j = 0; j < googleSheetManager.subtitleDic[subtitleNum].Length; j++)
             {
-                string subdata = getTalk(subtitleNum, i);
+                string subdata = GetSubtitleTalk(subtitleNum, j);
 
                 //dialogText.text = talkdata;
-                StartCoroutine(_typing(subdata));
+                StartCoroutine(_typingSubtitle(subdata));
                 yield return new WaitForSeconds(sentenceSpeed);
             }
 
             // 3초 후 대화 패널 비활성화
             yield return new WaitForSeconds(3f);
-
-            Invoke("EndPanelAnim", 1f);
             //dialogPanel.SetActive(false);
             IsSubtitleStarted = false;
         }
@@ -140,27 +138,19 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    void EndPanelAnim()
-    {
-        dialogPanel.SetActive(false);
-    }
-    void StartPanelAnim()
-    {
-        AIPanelAnim.SetBool("IsAIPanelActive", true);
-    }
 
-    IEnumerator _typing(string data)
+    IEnumerator _typingSubtitle(string subdata)
     {
         //yield return new WaitForSeconds(2f);
-        for (int i = 0; i <= data.Length; i++)
+        for (int i = 0;  i <= subdata.Length; i++)
         {
-            dialogText.text = data.Substring(0, i);
+            subtitleText.text = subdata.Substring(0, i);
             yield return new WaitForSeconds(typingSpeed);
         }
     }
 
-    public void PrintDialog(int q)
+    public void PrintSubtitle(int w)
     {
-        StartCoroutine(PrintAIDialog(q));
+        StartCoroutine(PrintSubtitles(w));
     }
 }
