@@ -105,6 +105,8 @@ public class S_InsertCabinetBody1 : MonoBehaviour,IInteraction
         canFood1Outline_M.OutlineWidth = 8;
 
         canFood1_Collider.enabled = true;
+
+        //S-11 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
     }
 
     public void OnBark()

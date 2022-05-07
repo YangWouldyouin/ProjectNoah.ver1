@@ -170,7 +170,7 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerPressHand();
                //운석 수집 기계 문 여는 애니메이션
-        StartCoroutine(meteorBoxOpen());
+        //StartCoroutine(meteorBoxOpen());
 
         canMeteorCollectMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
         canMeteorCollectMachineOutline_T.OutlineWidth = 8;
@@ -178,6 +178,11 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
         meteorCollectanimOpen_T = true;
 
         collectMachineCollider.enabled = true;
+
+        meteorBoxAnim_T.SetBool("isMeteorBoxClose", false);
+        meteorBoxAnim_T.SetBool("isMeteorBoxCloseEnd", false);
+        meteorBoxAnim_T.SetBool("isMeteorBoxOpen", true);
+        meteorBoxAnim_T.SetBool("isMeteorBoxOpenEnd", true);
 
     }
 

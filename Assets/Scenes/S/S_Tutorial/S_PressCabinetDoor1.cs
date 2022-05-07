@@ -61,6 +61,8 @@ public class S_PressCabinetDoor1 : MonoBehaviour,IInteraction
     // Update is called once per frame
     void Update()
     {
+        // 蒋拭 朝球徹 家奄 遁荘戚 刃戟鞠醸澗走 溌昔
+        //S-5 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
     }
 
     public void OnBark()
@@ -98,6 +100,7 @@ public class S_PressCabinetDoor1 : MonoBehaviour,IInteraction
 
     void CabinetOpen1()
     {
+        //S-6 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
 
         canPressCabinetDoorAnim.SetBool("ePressCabinetOpen", true);
         canPressCabinetDoorAnim.SetBool("ePressCabinetEnd", true);
