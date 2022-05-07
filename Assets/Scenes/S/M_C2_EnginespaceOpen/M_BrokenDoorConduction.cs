@@ -16,8 +16,13 @@ public class M_BrokenDoorConduction : MonoBehaviour, IInteraction
 
     ObjData brokenDoorConductionData_M;
 
+    public GameObject dialog_CS;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog_CS.GetComponent<DialogManager>();
+
         brokenDoorConductionData_M = GetComponent<ObjData>();
 
 
@@ -38,6 +43,7 @@ public class M_BrokenDoorConduction : MonoBehaviour, IInteraction
         if(brokenDoorConductionData_M.IsBite)
         {
             //B-6 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(25));
         }
 
     }

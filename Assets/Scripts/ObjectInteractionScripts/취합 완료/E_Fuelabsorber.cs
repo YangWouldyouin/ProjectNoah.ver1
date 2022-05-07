@@ -12,9 +12,14 @@ public class E_Fuelabsorber : MonoBehaviour
     ObjData fuelabsorberfixPartData_FA;
     ObjData fuelabsorberData_FA;
 
+    public GameObject dialog_CS;
+    DialogManager dialogManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog_CS.GetComponent<DialogManager>();
+
         if (!GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1)
         {
             // 플로우차트 처음 시작 때 넣고 싶은 연출들을 넣는다.  

@@ -19,12 +19,17 @@ public class Checking_bluetooth : MonoBehaviour
     ObjData RChip01Data;
     ObjData WChip01Data;
 
+    public GameManager dialog;
+    DialogManager dialogManager;
+
     //public static bool IsCanConnect;
 
     //public GameObject tablet;
 
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         tabletData = tablet.GetComponent<ObjData>();
         RChip01Data = RChip01.GetComponent<ObjData>();
         WChip01Data = WChip01.GetComponent<ObjData>();
@@ -46,18 +51,22 @@ public class Checking_bluetooth : MonoBehaviour
                 GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
             }*/
 
-            if (RChip01Data.IsBite && GameManager.gameManager._gameData.IsHide)
+            if (RChip01Data.IsBite && !GameManager.gameManager._gameData.IsHide)
             {
                 Debug.Log("이상한 칩 감지");
                 GameManager.gameManager._gameData.IsAlert = true;
                 Invoke("NoRChip", 0f);
+
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(57));
             }
 
-            if (WChip01Data.IsBite && GameManager.gameManager._gameData.IsHide)
+            if (WChip01Data.IsBite && !GameManager.gameManager._gameData.IsHide)
             {
                 Debug.Log("이상한 칩 감지");
                 GameManager.gameManager._gameData.IsAlert = true;
                 Invoke("NoWChip", 0f);
+
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(57));
             }
         }
 

@@ -29,8 +29,13 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
     //BoxCollider ironPlateCollider_T;
 
+    public GameObject dialogManager_CS;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialogManager_CS.GetComponent<DialogManager>();
+
         managementMachineObjData_T = GetComponent<ObjData>();
 
         canIronPlateDoorOutline_T = T_canIronPlateDoor.GetComponent<Outline>();
@@ -61,6 +66,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
         if(managementMachineData_T.IsClicked)
         {
             //A-1 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(13));
         }
 
         if (managementMachineData_T.IsObserve && GameManager.gameManager._gameData.IsIronDisappear_T_C2)
@@ -96,6 +102,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             //A-2 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(14));
         }
     }
     void DisableButton()

@@ -25,8 +25,13 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
     public Outline IsHealthySweetPotato1Outline_T;
     public Outline IsUnGrownSweetPotato1Outline_T;
 
+    public GameObject dialogManager_CS;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialogManager_CS.GetComponent<DialogManager>();
+
         /*ObjData*/
         PotatoBoxObjData_T = GetComponent<ObjData>();
 
@@ -51,6 +56,7 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
         if(PotatoBoxData_T.IsClicked)
         {
             //A-3 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(15));
         }
 
     }
@@ -101,6 +107,7 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
 
 
         //A-4 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(16));
 
 
     }

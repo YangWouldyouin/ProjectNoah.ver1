@@ -36,7 +36,8 @@ public class W_Health_Machine : MonoBehaviour
     void Start()
     {
         //W_HM_1
-        
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
+
         Health_MachineData_W = GetComponent<ObjData>();
         healthMachineFixPartDataOutline = healthMachineFixPart_HM.GetComponent<Outline>();
 
@@ -179,6 +180,7 @@ public class W_Health_Machine : MonoBehaviour
         healthMachineData.IsCenterButtonDisabled = false;
 
         //W_HM_2 : 아래 줄이 언니가 추가해둔 스크립트. 수정해야 할 듯!
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(6));
         //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(7)); 
 
         GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 = true;
@@ -220,6 +222,7 @@ public class W_Health_Machine : MonoBehaviour
             //더미데이터 메인컴퓨터에 업로드
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //W_HM_3
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
         }
         else
         {
@@ -231,11 +234,13 @@ public class W_Health_Machine : MonoBehaviour
             //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             //    //W_HM_5
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(37));
             //}
             //else
             //{
             //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //    //W_HM_3
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
             //}
         }
     }
@@ -250,6 +255,8 @@ public class W_Health_Machine : MonoBehaviour
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         //W_HM_4
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+
         AIReprotMissionTime = false;
     }
 }

@@ -28,8 +28,13 @@ public class T_Pot2 : MonoBehaviour, IInteraction
     /*Collider*/
     BoxCollider Pot2_Collider;
 
+    public GameObject dialogManager_CS;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialogManager_CS.GetComponent<DialogManager>();
+
         Pot2Data_T = GetComponent<ObjData>();
 
         /*Collider*/
@@ -56,6 +61,8 @@ public class T_Pot2 : MonoBehaviour, IInteraction
         if (GameManager.gameManager._gameData.Pot2InPotato && IsFarmButton2Data_T.IsPushOrPress)
         {
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
+
             Invoke("AppearSweetPotato2", 300f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
         }
 
@@ -63,12 +70,14 @@ public class T_Pot2 : MonoBehaviour, IInteraction
         if (GameManager.gameManager._gameData.Pot2InBadPotato && IsFarmButton2Data_T.IsPushOrPress)
         {
             //A-6 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
         }
 
         /*성숙한 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
         if (GameManager.gameManager._gameData.Pot2InHealthyPotato && IsFarmButton2Data_T.IsPushOrPress)
         {
             //A-6대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
         }
     }
 
@@ -133,6 +142,7 @@ public class T_Pot2 : MonoBehaviour, IInteraction
     {
         T_InUnGrownSweetPotato2.SetActive(false);
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(17));
     }
 
     void AppearSweetPotato2()
@@ -142,6 +152,7 @@ public class T_Pot2 : MonoBehaviour, IInteraction
         T_IsGrownHealthy6.SetActive(true);
 
         //A-7 알림 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(19));
 
         /*고구마 먹는 거 방해 안되게 + 이미 한 번 심은 땅에는 다시 못 심게*/
         Pot2_Collider.enabled = false;
@@ -155,6 +166,8 @@ public class T_Pot2 : MonoBehaviour, IInteraction
     {
         T_InBadSweetPotato2.SetActive(false);
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(17));
+
         GameManager.gameManager._gameData.Pot2InBadPotato = true; // 상한 고구마 사라진거 저장
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
@@ -164,6 +177,8 @@ public class T_Pot2 : MonoBehaviour, IInteraction
     {
         T_InHealthySweetPotato2.SetActive(false);
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(17));
+
         GameManager.gameManager._gameData.Pot2InHealthyPotato = true; // 엔딩으로 향하는 거기때문에 저장
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }

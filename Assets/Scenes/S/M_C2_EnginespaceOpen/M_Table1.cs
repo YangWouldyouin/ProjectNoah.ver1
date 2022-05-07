@@ -24,8 +24,13 @@ public class M_Table1 : MonoBehaviour, IInteraction
     /*Collider*/
     BoxCollider Table1_Collider;
 
+    public GameObject dialogManager_CS;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialogManager_CS.GetComponent<DialogManager>();
+
         /*ObjData*/
         table1ObjData_M = GetComponent<ObjData>();
 
@@ -60,6 +65,7 @@ public class M_Table1 : MonoBehaviour, IInteraction
         if(table1Data_M.IsClicked)
         {
             //B-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(22));
         }
 
         /*노아의 높이가 책상 올라갈 높이가 되는지 확인*/
@@ -84,6 +90,7 @@ public class M_Table1 : MonoBehaviour, IInteraction
             table1Data_M.IsCenterButtonChanged = false;
 
             //B-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
 
             /*            canPackData_M.IsNotInteractable = true;
                         canPackOutline_M.OutlineWidth = 0;*/

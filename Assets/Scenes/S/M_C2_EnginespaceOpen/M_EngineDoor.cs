@@ -20,10 +20,14 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
     public Outline IsBrokenAreaOutline_M;
     public Outline canInsertCardPadOutline_M;
 
+    public GameObject dialogManager_CS;
+    DialogManager dialogManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialogManager_CS.GetComponent<DialogManager>();
+
         //M_BrokenDoorConduction CheckEngineDoor = GameObject.Find("brokenDoor_Conduction").GetComponent<M_BrokenDoorConduction>();
 
         /*ObjData*/
@@ -55,6 +59,7 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
         if(engineDoorData_M.IsClicked)
         {
             //B-1 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
         }
 
         if (GameManager.gameManager._gameData.IsEngineDoorFix_M_C2)
@@ -84,6 +89,7 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
     public void OnObserve()
     {
         //B-2 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(21));
 
         DisableButton();
 

@@ -14,8 +14,13 @@ public class strangeObj : MonoBehaviour, IInteraction
     public ParticleSystem smoke;
     public Outline playerLine;
 
+    public GameManager dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         objData = GetComponent<ObjData>();
 
         barkButton = objData.BarkButton;
@@ -130,7 +135,18 @@ public class strangeObj : MonoBehaviour, IInteraction
         gameObject.SetActive(false);
         Destroy(smoke, 3f);
 
-        Invoke("CantHide", 5f);
+        Invoke("CantHide", 180f);
+
+        if (GameManager.gameManager._gameData.IsUseStrangeObjCount == 0)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
+            GameManager.gameManager._gameData.IsUseStrangeObjCount += 1;
+        }
+
+        if (GameManager.gameManager._gameData.IsUseStrangeObjCount >=1)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(53));
+        }
     }
 
     void CantHide()
@@ -143,5 +159,7 @@ public class strangeObj : MonoBehaviour, IInteraction
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         Destroy(gameObject, 0.5f);
+
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(52));
     }
 }

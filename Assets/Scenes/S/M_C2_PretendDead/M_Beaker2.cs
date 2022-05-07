@@ -42,9 +42,14 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
     /*비커 색 바꾸는 코드*/
     MeshRenderer ChangeBeaker2;
 
+    public GameObject dialog_CS;
+    DialogManager dialogManager;
+
 
     void Start()
     {
+        dialogManager = dialog_CS.GetComponent<DialogManager>();
+
         //색 바꾸는 코드
         ChangeBeaker2 = M_drugInBeaker2.GetComponent<MeshRenderer>();
 
@@ -84,6 +89,8 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
     void FakeAI2()
     {
         //D-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(56));
+
         GameManager.gameManager._gameData.IsCompletePretendDead = true;
         GameManager.gameManager._gameData.IsStartOrbitChange = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

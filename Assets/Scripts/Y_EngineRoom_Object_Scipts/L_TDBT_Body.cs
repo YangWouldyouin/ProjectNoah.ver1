@@ -15,8 +15,12 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
     Outline TDBT_BodyOutline, TDBT_fixPartOutline;
 
+    public GameObject dialog_CS;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog_CS.GetComponent<DialogManager>();
 
         playerEquipment = BaseCanvas._baseCanvas.equipment;
 

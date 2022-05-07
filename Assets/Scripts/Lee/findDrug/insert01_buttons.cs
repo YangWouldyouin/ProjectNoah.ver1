@@ -20,8 +20,13 @@ public class insert01_buttons : MonoBehaviour, IInteraction
     public GameObject LED;
     Renderer LEDColor;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         Insert01Data = GetComponent<ObjData>();
         Insert01Line = GetComponent<Outline>();
 
@@ -153,6 +158,8 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         Debug.Log("보고했음");
         IsReported = true;
         ReportUI.SetActive(false);
+
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(48));
 
         GameManager.gameManager._gameData.IsFindDrugDone_T_C2 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

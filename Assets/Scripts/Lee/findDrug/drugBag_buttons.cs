@@ -16,9 +16,13 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
     private Button barkButton, sniffButton, biteButton, smashButton, pressButton, noCenterButton;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
 
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         //������Ʈ
         drugBagObjData = GetComponent<ObjData>();
 
@@ -140,6 +144,8 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
         //gameObject.SetActive(false);
         drug.SetActive(true);
+
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(47));
 
         drug.transform.position = gameObject.transform.position;
 

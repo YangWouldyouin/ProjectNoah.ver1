@@ -37,8 +37,13 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
     BoxCollider Noah3_Collider;
     BoxCollider IsMeteoritesStorage1_Collider;
 
+    public GameObject dialog_CS;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog_CS.GetComponent<DialogManager>();
+
         /*Collider*/
         MeteorBoxButton1_Collider = GetComponent<BoxCollider>();
         Box3_Collider = M_Box_Obj3.GetComponent<BoxCollider>();
@@ -76,6 +81,7 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             //D-1 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(55));
         }
     }
 

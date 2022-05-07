@@ -15,8 +15,13 @@ public class M_Pack : MonoBehaviour, IInteraction
     ObjData packObjData_M;
     public ObjectData packData_M;
 
+    public GameObject dialog_CS;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog_CS.GetComponent<DialogManager>();
+
         packObjData_M = GetComponent<ObjData>();
 
 
@@ -43,6 +48,7 @@ public class M_Pack : MonoBehaviour, IInteraction
         if(packData_M.IsClicked)
         {
             //B-5 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(24));
         }
 
     }

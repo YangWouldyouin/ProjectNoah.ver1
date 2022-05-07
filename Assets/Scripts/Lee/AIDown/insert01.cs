@@ -30,8 +30,13 @@ public class insert01 : MonoBehaviour, IInteraction
     Outline WChip02Line;
     */
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         insertData = GetComponent<ObjData>();
         insertLine = GetComponent<Outline>();
 
@@ -97,6 +102,8 @@ public class insert01 : MonoBehaviour, IInteraction
         {
             Debug.Log("AI¡Í±›");
 
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(59));
+
             GameManager.gameManager._gameData.IsAIDown = true;
             GameManager.gameManager._gameData.IsAIDown_M_C1C3 = true;
             GameManager.gameManager._gameData.IsStartOrbitChange = true;
@@ -110,6 +117,8 @@ public class insert01 : MonoBehaviour, IInteraction
         if (WChip01Data.IsBite)
         {
             Debug.Log("AIæ»¡Í±›");
+
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(60));
 
             Invoke("NoChip", 0.5f);
         }

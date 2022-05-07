@@ -9,6 +9,8 @@ public class GameData
     public int IsReportCancleCount = 0;
     //AI 상반 임무 카운트, 2 이상 될 시 태블릿 궤도 좌표 해금
     public int IsAIVSMissionCount = 0;
+    //수상한 물건(스텔스 모드) 몇 번 했는지. 횟수에 따라 AI 대사 달라짐.
+    public int IsUseStrangeObjCount = 0;
 
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
     public bool S_IsAIAwake_M_C1; // 항상 AI 활성화  

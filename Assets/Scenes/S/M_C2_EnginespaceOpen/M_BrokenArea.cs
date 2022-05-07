@@ -21,8 +21,13 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
     Outline canBrokenDoorConductionOutline_M;
     Outline BrokenAreaOutline_M;
 
+    public GameObject dialog_cs;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog_cs.GetComponent<DialogManager>();
+
         brokenAreaObjData_M = GetComponent<ObjData>();
 
         //biteRubberData_M = M_biteRubber.GetComponent<ObjData>();
@@ -48,6 +53,7 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
         if(GameManager.gameManager._gameData.IsEngineDoorFix_M_C2)
         {
             //B-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(26));
         }
     }
 

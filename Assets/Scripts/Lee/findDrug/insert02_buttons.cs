@@ -18,8 +18,13 @@ public class insert02_buttons : MonoBehaviour, IInteraction
     public GameObject D_LED;
     Renderer D_LEDColor;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         Insert02Data = GetComponent<ObjData>();
         Insert02Line = GetComponent<Outline>();
 
@@ -88,6 +93,8 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         if (specificDrugData.IsBite)
         {
             D_LEDColor.material.color = Color.blue; //�˻� ��� ���� ��ȯ
+
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(49));
 
             GameManager.gameManager._gameData.IsDetox = true;
             GameManager.gameManager._gameData.IsFindDrugDone_T_C2 = true;

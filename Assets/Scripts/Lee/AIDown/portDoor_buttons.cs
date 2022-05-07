@@ -14,8 +14,13 @@ public class portDoor_buttons : MonoBehaviour, IInteraction
     ObjData insert01Data;
     Outline insert01Line;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         portDoorData = GetComponent<ObjData>();
         portDoorLine = GetComponent<Outline>();
 
@@ -85,6 +90,8 @@ public class portDoor_buttons : MonoBehaviour, IInteraction
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
         StartCoroutine(ChangePressFalse());
+
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(58));
     }
 
     IEnumerator ChangePressFalse()
