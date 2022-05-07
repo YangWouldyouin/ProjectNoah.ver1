@@ -83,6 +83,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     {
         //D-2 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
         GameManager.gameManager._gameData.IsCompletePretendDead = true;
+        GameManager.gameManager._gameData.IsStartOrbitChange = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
     }

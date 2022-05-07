@@ -105,6 +105,8 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         canPipeOutline_M.OutlineWidth = 8;
 
         canPipe_Collider.enabled = true;
+
+        //S-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
     }
 
     public void OnBark()

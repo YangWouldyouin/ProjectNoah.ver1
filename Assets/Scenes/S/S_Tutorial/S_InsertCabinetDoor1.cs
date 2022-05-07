@@ -83,6 +83,9 @@ public class S_InsertCabinetDoor1 : MonoBehaviour,IInteraction
     // Update is called once per frame
     void Update()
     {
+        // 앞에 카드키 꽂기 퍼즐이 완료되었는지 확인
+        //S-8 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
         if (PipeForInsertData_S.IsBite)
         {
             insertCabinetDoor1Data_S.IsCenterButtonChanged = true;
@@ -120,6 +123,8 @@ public class S_InsertCabinetDoor1 : MonoBehaviour,IInteraction
 
     public void OnInsert()
     {
+        //S-9 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
         canInsertCabinetBody1Data_S.IsInsert = true;
         DisableButton();
         PlayerScripts.playerscripts.currentInsertObj = this.gameObject;
@@ -188,6 +193,8 @@ public class S_InsertCabinetDoor1 : MonoBehaviour,IInteraction
 
         canInsertCabinetDoor1Anim.SetBool("eInsertCabinetOpen", true);
         canInsertCabinetDoor1Anim.SetBool("eInsertCabinetEnd", true);
+
+        //S-10 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 
         //bool 캐비닛 문이 열렸다를 트루로 체크 save를 넣어줘야 되나?
         Debug.Log("캐비닛 몸에 상호작용 가능해요");

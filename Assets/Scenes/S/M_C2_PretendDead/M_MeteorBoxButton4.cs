@@ -21,8 +21,8 @@ public class M_MeteorBoxButton4 : MonoBehaviour, IInteraction
     ObjData MeteorBoxButton4ObjData_M;
     public ObjectData MeteorBoxButton4Data_M;
 
-    ObjData Box_Obj6Data_M;
-    ObjData IsMeteoritesStorage4Data_M;
+    public ObjectData Box_Obj6Data_M;
+    public ObjectData IsMeteoritesStorage4Data_M;
 
     /*Outline*/
     Outline IsMeteoritesStorage4Outline_M;
@@ -51,8 +51,6 @@ public class M_MeteorBoxButton4 : MonoBehaviour, IInteraction
 
         /*ObjData*/
         MeteorBoxButton4ObjData_M = GetComponent<ObjData>();
-        Box_Obj6Data_M = M_Box_Obj6.GetComponent<ObjData>();
-        IsMeteoritesStorage4Data_M = M_IsMeteoritesStorage4.GetComponent<ObjData>();
 
 
         /*버튼 연결*/
