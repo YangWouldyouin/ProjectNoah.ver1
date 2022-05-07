@@ -100,6 +100,8 @@ public class GameData
 
     public bool[] FoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //음식 먹은 거 확인
 
+    public bool IsMeteorCollectClose; //운석 수집기 문 닫혔는지 확인
+    public bool IsMeteorCollectOpen; // 운석 수집기 문 열렸는지 확인
 
     /*중요 구간 태블릿을 AI에게 들켰을 경우*/
     public bool IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨
