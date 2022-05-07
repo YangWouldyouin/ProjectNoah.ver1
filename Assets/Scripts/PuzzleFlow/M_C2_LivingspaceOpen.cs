@@ -39,6 +39,7 @@ public class M_C2_LivingspaceOpen : MonoBehaviour
         {
             Invoke("SwitchDoll",1.2f); // 완전한 인형으로 바뀜
             // Invoke("HalfDoll",1.3f);
+            GameManager.gameManager._gameData.IsWLDoorOpened_M_C2 = true; // 항상 업무공간에서 생활공간 이동 가능
         }
     }
 

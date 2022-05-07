@@ -112,6 +112,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     public void RandomUniversePic() // 랜덤 우주 사진 보여주기
     {
         UniverseImage_P = UniverseImageList[ran]; // 우주 이미지 랜덤으로 UniverseImage_P 에 삽입
+        // SaveSystem.Save(GameManager.gameManager._gameData, UniverseImageList[ran]);
         UniverseImage_P.SetActive(true); // 우주 사진 보여주기
     }
 

@@ -140,6 +140,7 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
             // LivingDoomDoor_WL.GetComponent<Animator>().Play("LivingDoorHalfOpen");
             Invoke("LivingDoorHalfOpen", 2f); // 문 열리는 애니메이션 실행
+            GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2 = true; // 항상 업무공간에서 생활공간 이동 가능
 
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Y-3대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
         }
