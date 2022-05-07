@@ -10362,6 +10362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameData:
     IsReportCancleCount: 0
+    IsAIVSMissionCount: 0
     S_IsAIAwake_M_C1: 0
     S_IsCWDoorOpened_M_C1: 0
     S_IsHealthMachineFixed_T_C2: 0
@@ -10374,7 +10375,6 @@ MonoBehaviour:
     IsWEDoorOpened_M_C2: 0
     IsCheckDrug: 0
     IsDetox: 0
-    IsFindDrugDone_T_C2: 0
     IsHide: 0
     IsAlert: 0
     IsAIDown: 0
@@ -10407,19 +10407,9 @@ MonoBehaviour:
     Is_MainSystem_WirelessOn: 0
     IsCanConnect_C_MS: 0
     IsReturnOfTheEarth: 0
-    IsPlanetInsertChip_In: 0
-    IsTabletUnlock: 0
-    IsStartCollectMeteorites: 0
-    IsStartPretendDead: 0
-    IsCompleteSmartFarmOpen: 0
-    IsCompleteFindEngineKey: 0
-    IsCompleteOpenEngineRoom: 0
-    IsInputNormalMeteor1_T_C2: 0
-    IsCompletePretendDead: 0
-    randomUPic: 0
-    IsEatBadSweetPotato: 0
-    IsInputImportantMeteor1_T_C2: 0
-    IsMakeForest: 0
+    IsFullChargeTablet: 0
+    IsNoBoxes: 0
+    IsTabletMoved: 0
     sweetPotatoEat: 0000000000000000000000000000
     Pot1InPotato: 0
     Pot2InPotato: 0
@@ -10433,6 +10423,30 @@ MonoBehaviour:
     Pot1InHealthyPotato: 0
     Pot2InHealthyPotato: 0
     Pot3InHealthyPotato: 0
+    FoodEat: 0000000000000000000000000000
+    IsTabletDestroyed: 0
+    IsStartCollectMeteorites: 0
+    IsStartPretendDead: 0
+    IsStartFIndDrug: 0
+    IsFindStrangeObj: 0
+    IsStartToReady: 0
+    IsStartOrbitChange: 0
+    IsCompleteSmartFarmOpen: 0
+    IsCompleteFindEngineKey: 0
+    IsCompleteOpenEngineRoom: 0
+    IsInputNormalMeteor1_T_C2: 0
+    IsCompletePretendDead: 0
+    IsTabletUnlock: 0
+    IsPlanetInsertChip_In: 0
+    IsAIDown_M_C1C3: 0
+    IsKnowUsingSObj: 0
+    IsFindDrugDone_T_C2: 0
+    randomUPic: 0
+    IsEatBadSweetPotato: 0
+    IsInputImportantMeteor1_T_C2: 0
+    IsMakeForest: 0
+    IsSuddenDeath: 0
+    IsPhotoTime: 0
   IsTrashDoorFixed_L_L1: 0
   IsCanMeteorGet: 0
   IsSmellDone: 0
@@ -14567,6 +14581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ceb282db5848a04fa9d84a94079eaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConsoleCenterRData_C: {fileID: 0}
   CMS_GUI: {fileID: 1884016649}
 --- !u!114 &618358989
 MonoBehaviour:
@@ -26392,7 +26407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8641951db0538374fa3789d97d3e3d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raderLine_PRL: {fileID: 776154750}
 --- !u!1 &1138414898
 GameObject:
   m_ObjectHideFlags: 0
@@ -39981,6 +39995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5343939100d0dca4dac5cd66f295ca78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetRaderData: {fileID: 0}
+  textCounter: {fileID: 0}
   leftButton_PR: {fileID: 2126669}
   rightButton_PR: {fileID: 1150956437}
   confirmButton_PR: {fileID: 656124581}
@@ -43882,6 +43898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText: {fileID: 365641750}
+  subtitleText: {fileID: 0}
   dialogPanel: {fileID: 46593815}
   typingSpeed: 0.05
   sentenceSpeed: 1.8
