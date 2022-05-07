@@ -134,6 +134,8 @@ public class GameData
 
     public bool IsSuddenDeath; //돌연사 체크
 
+
+
     //public bool IsComTabletUploadClear;
 
     //    //엔진실 카드키가 들어있는 카드팩이 파괴

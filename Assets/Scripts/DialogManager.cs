@@ -10,9 +10,10 @@ public class DialogManager : MonoBehaviour
     public static DialogManager dialogManager { get; private set; }
     GoogleSheetManager googleSheetManager;
 
+    public UIText subtitleText;
     public TMPro.TextMeshProUGUI dialogText;
-    public TMPro.TextMeshProUGUI subtitleText;
-
+    //public TMPro.TextMeshProUGUI subtitleText;
+    public TMPro.TextMeshProUGUI nameText;
     public GameObject dialogPanel;
 
     bool IsDialogStarted = false;
@@ -103,6 +104,14 @@ public class DialogManager : MonoBehaviour
 
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+    public string GetName(int subID, int subIndex)
+    {
+        if (subIndex == googleSheetManager.nameDic[subID].Length)
+            return null;
+        else
+            return googleSheetManager.nameDic[subID][subIndex];
+    }
+
     public string GetSubtitleTalk(int subID, int subIndex)
     {
         if (subIndex == googleSheetManager.subtitleDic[subID].Length)
@@ -110,6 +119,7 @@ public class DialogManager : MonoBehaviour
         else
             return googleSheetManager.subtitleDic[subID][subIndex];
     }
+
 
     public IEnumerator PrintSubtitles(int subtitleNum)
     {
@@ -121,7 +131,8 @@ public class DialogManager : MonoBehaviour
             for (int j = 0; j < googleSheetManager.subtitleDic[subtitleNum].Length; j++)
             {
                 string subdata = GetSubtitleTalk(subtitleNum, j);
-
+                string nameData = GetName(subtitleNum, j);
+                nameText.text = nameData;
                 //dialogText.text = talkdata;
                 StartCoroutine(_typingSubtitle(subdata));
                 yield return new WaitForSeconds(sentenceSpeed);

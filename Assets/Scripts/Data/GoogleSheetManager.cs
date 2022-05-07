@@ -15,11 +15,14 @@ public class GoogleSheetManager : MonoBehaviour
     public Dictionary<int, string[]> subtitleDic = new Dictionary<int, string[]>(); // 나중에 키값 string 으로 바꾸기
     Dictionary<int, List<string>> subDic = new Dictionary<int, List<string>>();
 
+    public Dictionary<int, string[]> nameDic = new Dictionary<int, string[]>(); // 나중에 키값 string 으로 바꾸기
+
     int dialogKey = 1;
     List<string> tempString = new List<string>();
 
     int subtitleKey = 1;
     List<string> subtitleString = new List<string>();
+    List<string> nameString = new List<string>();
 
     string dialognumber = "1";
     string subtitleNumber = "1";
@@ -73,16 +76,20 @@ public class GoogleSheetManager : MonoBehaviour
         {
             string[] subRow = subData[k].Split('\t'); // 스프레드 시트 행 하나를 열로 나눔
 
-            if (subtitleNumber != subRow[4])
+            if (subtitleNumber != subRow[3])
             {
+                string[] nameTemp = nameString.ToArray();
                 string[] subtemp = subtitleString.ToArray();
+                nameDic[subtitleKey] = nameTemp;
                 subtitleDic[subtitleKey] = subtemp;
                 subtitleKey++;
+                nameString = new List<string>();
                 subtitleString = new List<string>();
             }
+            nameString.Add(subRow[4]);
             subtitleString.Add(subRow[5]);
 
-            subtitleNumber = subRow[4];
+            subtitleNumber = subRow[3];
         }
     }
 
