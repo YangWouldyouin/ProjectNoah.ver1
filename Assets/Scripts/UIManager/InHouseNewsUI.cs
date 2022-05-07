@@ -35,6 +35,7 @@ public class InHouseNewsUI : MonoBehaviour
     {
         if ((inGameTime.days + 1) == 2)
         {
+            Debug.Log("2¿œ");
             InhouseNews_GUI.SetActive(true);
 
             Day2Title.SetActive(true);
