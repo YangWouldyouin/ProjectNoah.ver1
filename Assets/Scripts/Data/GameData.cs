@@ -26,10 +26,11 @@ public class GameData
 
     public bool IsWEDoorOpened_M_C2; // 항상 업무공간에서 엔진실 이동 가능
 
+    //마약탐지 퍼즐
     public bool IsCheckDrug; //마약인 것을 확인
     public bool IsDetox; //마약 해독
-    public bool IsFindDrugDone_T_C2; //마약 보고 혹은 해독하면 다시 안함
 
+    //수상한물건 & AI 다운 퍼즐
     public bool IsHide; //소화기(일회용) 사용 시 스텔스 효과
     public bool IsAlert; //스텔스 모드가 아닌데 칩 물고 메인시스템에 접근 시
     public bool IsAIDown; //교란칩 꽂을 시 AI 다운 됨
@@ -107,6 +108,10 @@ public class GameData
     /*퍼즐시작*/
     public bool IsStartCollectMeteorites; // 운석 수집 임무 시작
     public bool IsStartPretendDead; // 죽은척 하기 임무 시작
+    public bool IsStartFIndDrug; //마약찾기 임무 시작
+    public bool IsFindStrangeObj; //이상한물건(소화기) 냄새 맡았는지
+    public bool IsStartToReady; //고발을 위한 준비 시작 (상반된 임무 2개 이상 수행 시/별도 관리 스크립트 필요)
+    public bool IsStartOrbitChange; //'AI 다운' 혹은 '죽은 척 하기' 퍼즐 완료 시 자동 시작 (채현아 죽은척하기 퍼즐 완료 시점에 해당 변수 추가해주랑~)
 
     /*퍼즐완료*/
     public bool IsCompleteSmartFarmOpen; // 스마트팜 오픈 퍼즐 완료
@@ -116,6 +121,9 @@ public class GameData
     public bool IsCompletePretendDead; // 엔진실 카드키 찾기 퍼즐 완료
     public bool IsTabletUnlock; // 태블릿 잠금여부
     public bool IsPlanetInsertChip_In; // 올바른 교란칩 꽂아 가짜 행성 데이터 변환
+    public bool IsAIDown_M_C1C3; //AI다운 퍼즐 완료
+    public bool IsKnowUsingSObj; //소화기 사용 방법을 알아냈는지
+    public bool IsFindDrugDone_T_C2; //마약 보고 혹은 해독하면 다시 안함
 
     public int randomUPic;
 

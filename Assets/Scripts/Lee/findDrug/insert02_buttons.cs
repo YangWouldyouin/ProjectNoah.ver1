@@ -90,6 +90,7 @@ public class insert02_buttons : MonoBehaviour, IInteraction
             D_LEDColor.material.color = Color.blue; //�˻� ��� ���� ��ȯ
 
             GameManager.gameManager._gameData.IsDetox = true;
+            GameManager.gameManager._gameData.IsFindDrugDone_T_C2 = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             Invoke("NoSDrug", 0.5f);
@@ -134,7 +135,7 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         SDrug.GetComponent<Rigidbody>().isKinematic = false;
         SDrug.transform.parent = null;
 
-        SDrug.transform.position = new Vector3(-249.0776f, 538.575f, 669.806f);
+        SDrug.transform.position = new Vector3(-249.0776f, 0.1652f, 669.806f);
         SDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
 
         specificDrugData.IsNotInteractable = false;

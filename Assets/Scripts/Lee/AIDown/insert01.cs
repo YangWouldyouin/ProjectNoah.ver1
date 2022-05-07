@@ -98,6 +98,8 @@ public class insert01 : MonoBehaviour, IInteraction
             Debug.Log("AI¡Í±›");
 
             GameManager.gameManager._gameData.IsAIDown = true;
+            GameManager.gameManager._gameData.IsAIDown_M_C1C3 = true;
+            GameManager.gameManager._gameData.IsStartOrbitChange = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
 

@@ -78,6 +78,11 @@ public class strangeObj : MonoBehaviour, IInteraction
     {
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
+
+        GameManager.gameManager._gameData.IsFindStrangeObj = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+
     }
 
     public void OnUp()
@@ -99,6 +104,9 @@ public class strangeObj : MonoBehaviour, IInteraction
         Invoke("ObjSmoke", 2f);
 
         InteractionButtonController.interactionButtonController.PlayerSmash2();
+
+        GameManager.gameManager._gameData.IsKnowUsingSObj = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         //��ư� ������ �ʾ� ��Ȳ�ϴ� AI ���
     }

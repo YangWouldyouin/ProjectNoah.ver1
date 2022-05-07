@@ -95,6 +95,11 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
 
         drugBagData.IsNotInteractable = false;
         drugBagLine.OutlineWidth = 8;
+
+        GameManager.gameManager._gameData.IsStartFIndDrug = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+
     }
 
 

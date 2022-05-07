@@ -137,7 +137,7 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         drug.GetComponent<Rigidbody>().isKinematic = false;
         drug.transform.parent = null;
 
-        drug.transform.position = new Vector3(-249.0776f, 538.895f, 669.806f);
+        drug.transform.position = new Vector3(-249.0776f, 0.4852f, 669.806f);
         drug.transform.rotation = Quaternion.Euler(0, 0, 90);
         drug.transform.localScale = new Vector3(1f, 1f, 1f);
 
@@ -153,6 +153,9 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         Debug.Log("보고했음");
         IsReported = true;
         ReportUI.SetActive(false);
+
+        GameManager.gameManager._gameData.IsFindDrugDone_T_C2 = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void Cancel()
