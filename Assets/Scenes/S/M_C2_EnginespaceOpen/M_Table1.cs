@@ -106,6 +106,12 @@ public class M_Table1 : MonoBehaviour, IInteraction
         {
             Table1_Collider.enabled = true;
         }
+
+        if(canPackData_M.IsBite)
+        {
+            canPackData_M.IsNotInteractable = false;
+            canPackOutline_M.OutlineWidth = 8;
+        }
     }
 
 
