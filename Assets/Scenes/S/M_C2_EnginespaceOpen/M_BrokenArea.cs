@@ -86,7 +86,7 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
             M_canBrokenDoorConduction.transform.parent = null;
 
             // 해당 위치, 각도, 크기로 바꾸겠다.
-            M_canBrokenDoorConduction.transform.position = new Vector3(-260.954f, 539.4967f, 666.558f); //위치 고정
+            M_canBrokenDoorConduction.transform.position = new Vector3(-260.954f, 1.0869f, 666.558f); //위치 고정
             M_canBrokenDoorConduction.transform.rotation = Quaternion.Euler(0, -90, 90); //각도 고정
 
             // 망가진 문 부분이랑 끼운 전도체의 상호작용을 삭제한다.

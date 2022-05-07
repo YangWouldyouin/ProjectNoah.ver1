@@ -126,7 +126,7 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
             M_canEngineCardKey.transform.parent = null;
 
             // 해당 위치, 각도, 크기로 바꾸겠다.
-            M_canEngineCardKey.transform.position = new Vector3(-262.489f, 540.686f, 666.788f); //위치 고정
+            M_canEngineCardKey.transform.position = new Vector3(-262.489f, 2.2762f, 666.788f); //위치 고정
             M_canEngineCardKey.transform.rotation = Quaternion.Euler(0, 0, 90); //각도 고정
 
             // 카드패드와 카드의 상호작용을 삭제한다.

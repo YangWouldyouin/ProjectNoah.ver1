@@ -85,7 +85,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
                 T_RealNormalMeteor1.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
                 T_RealNormalMeteor1.transform.parent = null;
 
-                T_RealNormalMeteor1.transform.position = new Vector3(-254.667f, 540.622f, 690.674f);
+                T_RealNormalMeteor1.transform.position = new Vector3(-254.667f, 2.2122f, 690.674f);
 
                 GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -110,7 +110,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
                 T_RealImportantMeteor.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
                 T_RealImportantMeteor.transform.parent = null;
 
-                T_RealImportantMeteor.transform.position = new Vector3(-254.667f, 540.622f, 690.674f);
+                T_RealImportantMeteor.transform.position = new Vector3(-254.667f, 2.2122f, 690.674f);
 
                 Invoke("Report_Popup", 4f);
 

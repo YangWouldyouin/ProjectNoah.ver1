@@ -145,7 +145,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             M_RealAnswerMeteorForBeaker.transform.parent = null;
 
             //운석이 비커 안으로 이동한다.
-            M_RealAnswerMeteorForBeaker.transform.position = new Vector3(-248.367f, 539.986f, 683.427f); //위치 값
+            M_RealAnswerMeteorForBeaker.transform.position = new Vector3(-248.367f, 1.5762f, 683.427f); //위치 값
             M_RealAnswerMeteorForBeaker.transform.rotation = Quaternion.Euler(-90, 0, 0); //로테이션 값
 
             GameManager.gameManager._gameData.IsAnswerInBeaker2_M_C2 = true;

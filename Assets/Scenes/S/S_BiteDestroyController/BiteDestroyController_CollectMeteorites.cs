@@ -10,6 +10,25 @@ BiteDestroyController + 오브젝트 이름으로 바꾼다. */
 
 public class BiteDestroyController_CollectMeteorites : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    public GameObject canMeteorCollectMachine;
+
+    public ObjectData canMeteorCollectMachineData;
+    public ObjectData canNormalMeteor1Data;
+    public ObjectData canImportantMeteorData;
+
+    public GameObject canNormalMeteor1;
+    public GameObject canImportantMeteor;
+
+    /*Animator*/
+    public Animator meteorBoxAnim;
+
+    /*Collider*/
+    BoxCollider IsNormalMeteor1Collider;
+    BoxCollider IsImportantMeteorCollider;
+
+    /*Outline*/
+    Outline canMeteorCollectMachineOutline;
+
     /* 상호작용 버튼 변수 */
     // 이름 짓기 규칙 : biteButton + 오브젝트 이름
     public Button biteButtonCollectMeteorites, smashButtonCollectMeteorites, barkButtonCollectMeteorites, sniffButtonCollectMeteorites, pushOrPressButtonCollectMeteorites;
@@ -30,6 +49,16 @@ public class BiteDestroyController_CollectMeteorites : MonoBehaviour, IPointerUp
     private float requiredChangeTime = 0.5f;
     // 누르고 있는 시간 재기 위한 변수 
     private float pointerDownTimer = 0;
+
+
+    void Start()
+    {
+        /*Collider*/
+        IsNormalMeteor1Collider = canNormalMeteor1.GetComponent<BoxCollider>();
+        IsImportantMeteorCollider = canImportantMeteor.GetComponent<BoxCollider>();
+
+        canMeteorCollectMachineOutline = canMeteorCollectMachine.GetComponent<Outline>();
+    }
 
     void Update()
     {
@@ -96,11 +125,32 @@ public class BiteDestroyController_CollectMeteorites : MonoBehaviour, IPointerUp
 
         // 1.5초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
         Invoke("DelayBiteAnim", 1.1f);
+
+        // 2초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
+        Invoke("DoorClose", 1.1f);
+
+        GameManager.gameManager._gameData.IsMeteorCollectOpenOrClose = true;
     }
 
     void DelayBiteAnim()
     {
         InteractionButtonController.interactionButtonController.PlayerBite();
+    }
+
+    void DoorClose()
+    {
+        meteorBoxAnim.SetBool("isMeteorBoxOpen", false);
+        meteorBoxAnim.SetBool("isMeteorBoxOpenEnd", false);
+        meteorBoxAnim.SetBool("isMeteorBoxClose", true);
+        meteorBoxAnim.SetBool("isMeteorBoxCloseEnd", true);
+
+        canMeteorCollectMachineData.IsNotInteractable = true; // 상호작용 불가능하게
+        canMeteorCollectMachineOutline.OutlineWidth = 0;
+
+        IsNormalMeteor1Collider.enabled = false; //운석에 상호작용 불가능하게
+        IsImportantMeteorCollider.enabled = false;
+
+        //meteorCollectanimOpen_T = false; // 다시 반복할 수 있게
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

@@ -128,7 +128,7 @@ public class BiteDestroyController_IronPlateDoor : MonoBehaviour, IPointerUpHand
         T_DoIronPlateDoor.transform.parent = null;
 
         // 해당 위치, 각도, 크기로 바꾸겠다.
-        T_DoIronPlateDoor.transform.position = new Vector3(-258.15f, 538.619f, 670.1605f); //위치 고정
+        T_DoIronPlateDoor.transform.position = new Vector3(-258.15f, 0.2092f, 670.1605f); //위치 고정
         T_DoIronPlateDoor.transform.rotation = Quaternion.Euler(7.034f, 90, 90); //각도 고정
         T_DoIronPlateDoor.transform.localScale = new Vector3(-2.882732f, -115.34f, -93.69196f); // 크기 고정
 

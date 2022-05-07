@@ -106,7 +106,7 @@ public class M_Pack : MonoBehaviour, IInteraction
         this.transform.parent = null;
 
         //위치 고정: 이유는 얘 위치 따라서 카드키 위치 나오니까 카드키가 공중 부양하기 때문에
-        gameObject.transform.position = new Vector3(transform.position.x, 539.951f, transform.position.z); 
+        gameObject.transform.position = new Vector3(transform.position.x, 1.5412f, transform.position.z); 
 
         packData_M.IsBite = false;
 
