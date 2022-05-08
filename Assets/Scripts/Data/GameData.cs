@@ -166,7 +166,6 @@ public class GameData
     public int randomUPic;
 
     /*엔딩*/
-    public bool IsEatBadSweetPotato; // 상한 고구마 섭취 엔딩
     public bool IsInputImportantMeteor1_T_C2; // 특별 운석 보고 엔딩
     public bool IsMakeForest; // 생태계 구축 엔딩
 
