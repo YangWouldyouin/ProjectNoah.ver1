@@ -80,7 +80,7 @@ public class GameEndingController : MonoBehaviour
             //엔딩 씬 이동
         }
 
-        if (GameManager.gameManager._gameData.IsSaveOnlyOneEnd == true)
+        if (GameManager.gameManager._gameData.IsSaveAllEnd == true)
         {
             GameManager.gameManager._gameData.EndingNum = 6;
             //당신이 구한 전부 엔딩, 진엔딩, 고발O
