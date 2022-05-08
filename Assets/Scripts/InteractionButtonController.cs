@@ -334,7 +334,7 @@ public class InteractionButtonController : MonoBehaviour
                 //Invoke("ChangeFallTrue4", 2.5f);
                 //Invoke("ChangeFallFalse1", 4.5f);
             }
-            upDownData.IsUpDown = false;
+            upDownData.objectDATA.IsUpDown = false;
 
             noahUpDownObject = null;
             upDownData = null;
