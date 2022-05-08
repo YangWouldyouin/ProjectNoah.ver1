@@ -15,6 +15,10 @@ public class GameData
     public bool IsFirstEnterWorkingRoom; //업무공간 최초진입
     public bool IsFirstEnterEngineRoom; //엔진실 최초진입
 
+    // 문 다 열었는지
+    public bool IsAllDoorOpened; //선내 모든 공간 해금되었는지
+    public bool IsAllDoorOpenedMent; //AI가 해금 ㅊㅋㅊㅋ 멘트 했는지
+
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
     public bool S_IsAIAwake_M_C1; // 항상 AI 활성화  
     public bool S_IsCWDoorOpened_M_C1; // 항상 조종실에서 업무공간 이동 가능
@@ -157,6 +161,7 @@ public class GameData
     public bool IsAIDown_M_C1C3; //AI다운 퍼즐 완료
     public bool IsKnowUsingSObj; //소화기 사용 방법을 알아냈는지
     public bool IsFindDrugDone_T_C2; //마약 보고 혹은 해독하면 다시 안함
+    public bool IsTrashDoorBTFixed_L_L1; //생활공간 고치기 퍼즐 완료
 
     public int randomUPic;
 
