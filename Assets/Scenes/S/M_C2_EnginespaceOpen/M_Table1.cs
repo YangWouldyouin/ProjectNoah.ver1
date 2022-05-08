@@ -89,7 +89,7 @@ public class M_Table1 : MonoBehaviour, IInteraction
         {
             table1Data_M.IsCenterButtonChanged = false;
 
-            //B-3 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            //B-4 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
 
             /*            canPackData_M.IsNotInteractable = true;
