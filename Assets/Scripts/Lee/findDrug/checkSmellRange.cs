@@ -15,6 +15,9 @@ public class checkSmellRange : MonoBehaviour
     public GameObject drugBag;
     ObjData drugBagData;
 
+    public GameObject samplePanel;
+    public TMPro.TextMeshProUGUI sampleText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +38,15 @@ public class checkSmellRange : MonoBehaviour
             if (smellRange <= 1)
             {
                 smellArea.SetActive(true);
+                PrintUI();
             }
         }
+    }
+
+    void PrintUI()
+    {
+        samplePanel.SetActive(true);
+        sampleText.text = "[냄새] 이상한 냄새";
     }
 
     public void OnTriggerStay(Collider other)

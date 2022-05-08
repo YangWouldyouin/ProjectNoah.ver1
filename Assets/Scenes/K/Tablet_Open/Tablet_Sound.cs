@@ -21,8 +21,13 @@ public class Tablet_Sound : MonoBehaviour
     public GameObject samplePanel; // 상태창
     public TMPro.TextMeshProUGUI sampleText; // 상태창 텍스트
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         Tablet_Data = Tablet.GetComponent<ObjData>();
     }
 
@@ -62,6 +67,8 @@ public class Tablet_Sound : MonoBehaviour
             Invoke("FollowTablet", 2f);
             Debug.Log("태블릿 소리 감지");
             PrintSomething(); // 상태창에 "[소리] 이상한 기계음
+
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(38));
         }
     }
 
