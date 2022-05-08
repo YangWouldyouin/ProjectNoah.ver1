@@ -17,6 +17,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData iDConsoleData_S;
+    public ObjectData IDConsoleData_S;
     public ObjectData canIDCardData_S;
 /*    public ObjectData boxForConsoleData_S;*/
 
@@ -40,7 +41,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         /*아웃라인*/
         iDConsoleOutline_S = GetComponent<Outline>();
-        //canIDCardOutline_S = S_canIDCard.GetComponent<Outline>();
+        canIDCardOutline_S = S_canIDCard.GetComponent<Outline>();
 
         /*BoxCollider*//*
         IDConsole_Collider = GetComponent<BoxCollider>();
@@ -53,7 +54,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         sniffButton_S_IDConsole.onClick.AddListener(OnSniff);
 
         biteButton_S_IDConsole = iDConsoleData_S.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_S_IDConsole.onClick.AddListener(OnBite);
 
         pressButton_S_IDConsole = iDConsoleData_S.PushOrPressButton;
         pressButton_S_IDConsole.onClick.AddListener(OnPushOrPress);
@@ -83,9 +84,9 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         }*/
 
         /*노아의 높이가 책상 올라갈 높이가 되는지 확인*/
-        if (iDConsoleData_S.IsCollision)
+        if (IDConsoleData_S.IsCollision)
         {
-            iDConsoleData_S.IsCenterButtonChanged = true;
+            IDConsoleData_S.IsCenterButtonChanged = true;
             //S-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
 
@@ -93,7 +94,15 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         else 
         {
-            iDConsoleData_S.IsCenterButtonChanged = false;
+            IDConsoleData_S.IsCenterButtonChanged = false;
+        }
+
+
+        if (IDConsoleData_S.IsObserve)
+        {
+            IDConsoleData_S.IsNotInteractable = false;
+            iDConsoleOutline_S.OutlineWidth = 8;
+
         }
     }
 
@@ -122,7 +131,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        if (canIDCardData_S.IsBite && iDConsoleData_S.IsObserve)
+        if (canIDCardData_S.IsBite && IDConsoleData_S.IsObserve)
         {
             // 끼우기 성공
             // 부모 자식 관계를 해제한다.
@@ -171,6 +180,9 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         //S-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(19));
+
+        IDConsoleData_S.IsNotInteractable = false;
+        iDConsoleOutline_S.OutlineWidth = 8;
 
     }
 

@@ -14,6 +14,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         biteButton_S_PressCabinetBody1, pressButton_S_PressCabinetBody1, observeButton_S_PressCabinetBody1;
 
     ObjData pressCabinetBody1Data_M;
+    public ObjectData canpressCabinetBody1Data_M;
     public ObjectData canPressCabinetDoor1Data_S;
 
     public ObjectData canPipeData_S;
@@ -24,6 +25,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
     /*Collider*/
     BoxCollider canPipe_Collider;
+    BoxCollider cabinetCollider;
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -33,7 +35,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     {
         dialogManager = dialog.GetComponent<DialogManager>();
 
-        //cabinetCollider = GetComponent<BoxCollider>();
+        cabinetCollider = GetComponent<BoxCollider>();
         canPipe_Collider = S_canPipe.GetComponent<BoxCollider>();
 
         /*연관있는 오브젝트*/
@@ -73,23 +75,37 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     void Update()
     {
 
-/*        if (canPressCabinetDoor1Data_S.IsObserve == false)
-        {
-            *//*canRubberData_M.IsNotInteractable = true;
-            rubberOutline_M.OutlineWidth = 0;*//*
+        /*        if (canPressCabinetDoor1Data_S.IsObserve == false)
+                {
+                    *//*canRubberData_M.IsNotInteractable = true;
+                    rubberOutline_M.OutlineWidth = 0;*//*
 
 
-            canPipe_Collider.enabled = false;
-        }*/
+                    canPipe_Collider.enabled = false;
+                }*/
 
         /*파이프에 항상 상호작용 가능하게*/
+
+/*        if (canpressCabinetBody1Data_M.IsObserve)
+        {
+            cabinetCollider.enabled = false;
+            canPipe_Collider.enabled = true;
+        }
+
+        else if (!canpressCabinetBody1Data_M.IsObserve)
+        {
+            cabinetCollider.enabled = true;
+            canPipe_Collider.enabled = false;
+        }
+
+
         if (canPipeData_S.IsBite)
         {
             canPipeData_S.IsNotInteractable = false;
             canPipeOutline_M.OutlineWidth = 8;
 
             canPipe_Collider.enabled = true;
-        }
+        }*/
     }
 
     public void OnObserve()
@@ -110,6 +126,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         canPipeOutline_M.OutlineWidth = 8;
 
         canPipe_Collider.enabled = true;
+        cabinetCollider.enabled = false;
 
         //S-7 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
@@ -162,12 +179,12 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
     public void OnBite()
     {
-        //throw new System.NotImplementedException();
+
     }
 
     public void OnSmash()
     {
-        //throw new System.NotImplementedException();
+
     }
 
     public void Comment()
