@@ -70,12 +70,17 @@ public class W_Health_Machine : MonoBehaviour
             Debug.Log("상태 체크 정기 업무 시작");
             GameManager.gameManager._gameData.IsAIReportMissionTime = true;
             HealthDataReportbool = false;
+            
+            //W_HM_여따써줘
         }
         if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10 && HealthDataReportbool == false)
         {
             Debug.Log("상태 체크 정기 업무 종료");
             GameManager.gameManager._gameData.IsAIReportMissionTime = false;
             HealthDataReportbool = false;
+
+            GameManager.gameManager._gameData.IsReportCancleCount += 1;
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
         }
     }
 
