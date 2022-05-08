@@ -82,6 +82,10 @@ public class GameData
     public bool IsFakeCoordinateDatafile_Tablet; //태블릿거짓좌표다운로드 판단
     public bool IsDontFakeCoordinateDatafile_Tablet; //태블릿 거짓좌표다운로드루트 불가
 
+    public int IsFakefatigue = 91; //더미피로도
+    public int IsStrength = 87; //더미체력
+    public int IsThirst = 82; //더미목마름
+    public int IsHunger = 88; //더미배고픔
 
     // 메인컴퓨터 UI 관련
     public bool Is_MainComputer_WirelessOn; //메인컴퓨터 블루트스 on/off체크
