@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class C_AIResetButton : MonoBehaviour, IInteraction
 {
-    public GameObject consoleDoor_CC;
-    Outline AIButtonOutline, controlDoorOutline;
-    ObjData AIButtonData, controlDoorData;
+    public Outline controlDoorOutline;
+    Outline AIButtonOutline;
+    ObjData AIButtonData;
     //ObjData consoleDoor_CC;
     private Button barkButton, sniffButton, biteButton,
     pressButton, noCenterButton;
 
+    public ObjectData controlDoorData;
     public GameObject dialogManager_AI;
     DialogManager dialogManager;
 
@@ -20,9 +21,7 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     void Start()
     {
         AIButtonOutline = GetComponent<Outline>();
-        controlDoorOutline = consoleDoor_CC.GetComponent<Outline>();
         AIButtonData = GetComponent<ObjData>();
-        controlDoorData = consoleDoor_CC.GetComponent<ObjData>();
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton = AIButtonData.BarkButton;
         barkButton.onClick.AddListener(OnBark);

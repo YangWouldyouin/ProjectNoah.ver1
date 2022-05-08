@@ -8,14 +8,11 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
     private Button barkButton, biteButton,
      pressButton, sniffButton, insertButton, insertDisableButton;
-
-
-
-    public GameObject envirPipe_CWD; // 자식으로부터 가져오기
     public GameObject cockpitDoor_CWD;
 
-    ObjData envirPipeData_CWD;
-    ObjData cockpitDoorData_CWD;
+    public ObjectData envirPipeData_CWD;
+    public ObjectData cockpitDoorData_CWD;
+    ObjData cockpitDoorObjData_CWD;
     private Camera mainCamera;
     public Button insertAreaButton_CWD;
     public GameObject insertAreaButtonPos;
@@ -76,25 +73,24 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
         insertAreaButton_CWD.transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
         dialogManager = dialogManager_CWD.GetComponent<DialogManager>();
 
-        envirPipeData_CWD = envirPipe_CWD.GetComponent<ObjData>();
-        cockpitDoorData_CWD = GetComponent<ObjData>();
-        cockpitDoorOutine_CWD = cockpitDoor_CWD.GetComponent<Outline>();
+        cockpitDoorObjData_CWD = GetComponent<ObjData>();
+        cockpitDoorOutine_CWD = GetComponent<Outline>();
 
-        barkButton = cockpitDoorData_CWD.BarkButton;
+        barkButton = cockpitDoorObjData_CWD.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        biteButton = cockpitDoorData_CWD.BiteButton;
+        biteButton = cockpitDoorObjData_CWD.BiteButton;
 
-        pressButton = cockpitDoorData_CWD.PushOrPressButton;
+        pressButton = cockpitDoorObjData_CWD.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        sniffButton = cockpitDoorData_CWD.SniffButton;
+        sniffButton = cockpitDoorObjData_CWD.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        insertButton = cockpitDoorData_CWD.CenterButton1;
+        insertButton = cockpitDoorObjData_CWD.CenterButton1;
         insertButton.onClick.AddListener(OnInsert);
 
-        insertDisableButton = cockpitDoorData_CWD.CenterDisableButton1;
+        insertDisableButton = cockpitDoorObjData_CWD.CenterDisableButton1;
 
         if(GameManager.gameManager._gameData.IsAIAwake_M_C1)
         {
@@ -106,7 +102,6 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             cockpitDoorOutine_CWD.OutlineWidth = 0;
             cockpitDoorData_CWD.IsNotInteractable = true;
         }
-
     }
 
     void DisableButton()
@@ -116,9 +111,7 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
         pressButton.transform.gameObject.SetActive(false);
         sniffButton.transform.gameObject.SetActive(false);
         insertButton.transform.gameObject.SetActive(false);
-
         insertDisableButton.transform.gameObject.SetActive(false);
-
     }
 
 
@@ -170,8 +163,6 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        /* 오브젝트의 짖기 변수 true로 바꿈 */
-        cockpitDoorData_CWD.IsBark = true;
         /* 상호작용 버튼을 끔 */
         DisableButton();
         /* 애니메이션 보여줌 */
@@ -180,8 +171,6 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        /* 오브젝트의 냄새맡기 변수 true로 바꿈 */
-        cockpitDoorData_CWD.IsSniff = true;
         /* 상호작용 버튼을 끔 */
         DisableButton();
         /* 애니메이션 보여주고 냄새 텍스트 띄움 */

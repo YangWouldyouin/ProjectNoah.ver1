@@ -26,9 +26,14 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
 
+    BoxCollider PotatoBoxBody_Collider;
+
     void Start()
     {
         dialogManager = dialogManager_CS.GetComponent<DialogManager>();
+        
+        PotatoBoxBody_Collider = GetComponent<BoxCollider>();
+
 
         /*ObjData*/
         potatoBoxBodyData_T = GetComponent<ObjData>();
@@ -63,6 +68,10 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
 
     void Update()
     {
+        if(!potatoBoxBodyData_T.IsObserve)
+        {
+            PotatoBoxBody_Collider.enabled = true;
+        }
     }
 
     public void OnSmash()
@@ -121,6 +130,7 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
         IsUnGrownSweetPotato1Data_T.IsNotInteractable = false; // 상호작용 가능하게
         IsUnGrownSweetPotato1Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.
 
+        PotatoBoxBody_Collider.enabled = false;
 
         //A-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(16));

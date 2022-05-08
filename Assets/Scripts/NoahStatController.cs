@@ -64,6 +64,7 @@ public class NoahStatController : MonoBehaviour
                 conditionText.text = "[╩Себ] \"╩Г╦а\"";
             }
             statBarIndex--;
+            GameManager.gameManager._gameData.statNum-=10;
             yield return new WaitForSeconds(1f); 
         }
     }

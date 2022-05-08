@@ -7,28 +7,26 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     [Header("< 오브젝트 정보 >")]
 
     /* 이 오브젝트와 상호작용 하는 변수들 */
-    public GameObject box_CC;
-    public GameObject envirPipe_CC;
-    public GameObject consoleAIResetButton_CC;
     public GameObject consoleCenter_CC;
 
     /* 이 오브젝트와 상호작용 하는 변수들의 데이터 */
-    ObjData consoleCenterData_CC;
-    ObjData boxData_CC;
-    ObjData envirPipeData_CC;
-    ObjData consoleAIResetButtonData_CC;
+    ObjData consoleCenterObjData_CC;
+
+    public ObjectData consoleCenterData_CC;
+    public ObjectData boxData_CC;
+    public ObjectData envirPipeData_CC;
+    public ObjectData consoleAIResetButtonData_CC;
 
 
     /* 기타 필요한 변수들 */
-    Outline consoleAIResetButtonOutline_CC;
+    public Outline consoleAIResetButtonOutline_CC;
     Outline consoleCenterOutline_CC;
-    public GameObject consoleDescription_CC;
 
     public Animator noahAnim_CC;
 
     public Image fadeImage_CC;
     public GameObject fade_CC;
-    public Image aiIcon_CC;
+    public Button aiIcon_CC;
 
     public GameObject dialogManager_CC;
     DialogManager dialogManager;
@@ -41,33 +39,27 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     /*UI관련*/
     public GameObject MainSystem_GUI;
 
-    [SerializeField] ObjectData consoleData_C;
-
     // Start is called before the first frame update
     void Start()
     {
-        consoleCenterData_CC = GetComponent<ObjData>();
-        boxData_CC = box_CC.GetComponent<ObjData>();
-        envirPipeData_CC = envirPipe_CC.GetComponent<ObjData>();
-        consoleAIResetButtonData_CC = consoleAIResetButton_CC.GetComponent<ObjData>();
+        consoleCenterObjData_CC = GetComponent<ObjData>();
 
-        consoleAIResetButtonOutline_CC = consoleAIResetButton_CC.GetComponent<Outline>();
         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
 
         /* 각 상호작용 버튼에 함수를 넣는다 */
-        barkButton_C_Console = consoleCenterData_CC.BarkButton;
+        barkButton_C_Console = consoleCenterObjData_CC.BarkButton;
         barkButton_C_Console.onClick.AddListener(OnBark);
 
-        sniffButton_C_Console = consoleCenterData_CC.SniffButton;
+        sniffButton_C_Console = consoleCenterObjData_CC.SniffButton;
         sniffButton_C_Console.onClick.AddListener(OnSniff);
 
-        biteButton_C_Console = consoleCenterData_CC.BiteButton;
+        biteButton_C_Console = consoleCenterObjData_CC.BiteButton;
         biteButton_C_Console.onClick.AddListener(OnBite);
 
-        pressButton_C_Console = consoleCenterData_CC.PushOrPressButton;
+        pressButton_C_Console = consoleCenterObjData_CC.PushOrPressButton;
         pressButton_C_Console.onClick.AddListener(OnPushOrPress);
 
-        observeButton_C_Console = consoleCenterData_CC.CenterButton1;
+        observeButton_C_Console = consoleCenterObjData_CC.CenterButton1;
         observeButton_C_Console.onClick.AddListener(OnObserve);
 
         dialogManager = dialogManager_CC.GetComponent<DialogManager>();
@@ -111,14 +103,14 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     void Update()
     {
         /* 어쩔 수 없는 업데이트문... */
-        if(consoleData_C.IsObserve == false)
+        if(consoleCenterData_CC.IsObserve == false)
         {
             // AI 리셋 버튼 비활성화 (서브 오브젝트)
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
             consoleAIResetButtonData_CC.IsNotInteractable = true;
         }
 
-        if (consoleData_C.IsObserve == false)
+        if (consoleCenterData_CC.IsObserve == false)
         {
             MainSystem_GUI.SetActive(false);
         }
@@ -138,8 +130,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        /* 오브젝트의 관찰 변수 true로 바꿈 */
-        consoleData_C.IsObserve = true;
         /* 취소할 때 참고할 오브젝트 저장 */
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         /* 상호작용 버튼을 끔 */
@@ -164,7 +154,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         if (boxData_CC.IsUpDown) // 상자에 올라갔으면 
         {
             /* 카메라 컨트롤러에 뷰 전달 */
-            CameraController.cameraController.currentView = consoleCenterData_CC.ObservePlusView; // 관찰 뷰 : 위쪽
+            CameraController.cameraController.currentView = consoleCenterObjData_CC.ObservePlusView; // 관찰 뷰 : 위쪽
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
 
@@ -172,11 +162,10 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
             if (envirPipeData_CC.IsBite) // 파이프를 물었으면
             {
-                StartCoroutine(PrintConsoleDescriptionAndActivateAIButton());
+                StartCoroutine(ActivateAIButton());
             }
             else // 파이프를 물지 않았으면
-            {
-                StartCoroutine(PrintConsoleDescription());               
+            {           
                 consoleAIResetButtonOutline_CC.OutlineWidth = 0;
                 consoleAIResetButtonData_CC.IsNotInteractable = true;
             }
@@ -184,22 +173,16 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         else // 상자에 올라가지 않았으면
         {
             /* 카메라 컨트롤러에 뷰 전달 */
-            CameraController.cameraController.currentView = consoleCenterData_CC.ObserveView; // 관찰 뷰 : 아래쪽
+            CameraController.cameraController.currentView = consoleCenterObjData_CC.ObserveView; // 관찰 뷰 : 아래쪽
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
         }
     }
 
-    IEnumerator PrintConsoleDescription()
-    {
-        yield return new WaitForSeconds(2f);
-        consoleDescription_CC.SetActive(true);
-    }
 
-    IEnumerator PrintConsoleDescriptionAndActivateAIButton()
+    IEnumerator ActivateAIButton()
     {
         yield return new WaitForSeconds(2f);
-        consoleDescription_CC.SetActive(true);
 
         consoleAIResetButtonData_CC.IsNotInteractable = false;
         consoleAIResetButtonOutline_CC.OutlineWidth = 8;
@@ -217,41 +200,22 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
-    public void OnSmash()
-    {
-        //throw new System.NotImplementedException();
-    }
-
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     /* 밀기 & 누르기 중에 "누르기"일 때!!! */
     public void OnPushOrPress()
     {
-        /* 오브젝트의 누르기 변수 true로 바꿈 */
-        consoleData_C.IsPushOrPress = true;
-
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
         /* 애니메이션 보여줌 */
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
-
-        /* 2초 뒤에 Ispushorpress 를 false 로 바꿈 */
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        consoleData_C.IsPushOrPress = false;
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnBark()
     {
-        /* 오브젝트의 짖기 변수 true로 바꿈 */
-        consoleData_C.IsBark = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 애니메이션 보여줌 */
@@ -262,8 +226,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        /* 오브젝트의 냄새맡기 변수 true로 바꿈 */
-        consoleData_C.IsSniff = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 애니메이션 보여주고 냄새 텍스트 띄움 */
@@ -281,30 +243,19 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
     public void OnInsert()
     {
-        /* 현재 끼우기 오브젝트가 조종석이라는  것을 저장해둠 */
-        PlayerScripts.playerscripts.currentInsertObj = this.gameObject;
-        /* 오브젝트의 끼우기 변수 true로 바꿈 */
-        consoleData_C.IsInsert = true;
-        /* 상호작용 버튼을 끔 */
-        DiableButton();
-        /* "끼우기" 시 이동할 위치와 각도 넣기 */
-        InteractionButtonController.interactionButtonController.insertPosOffset = new Vector3(1, 0, 1);
-        InteractionButtonController.interactionButtonController.insertRotOffset = new Vector3(0, 0, 0);
-        /* 끼우기 애니메이션 & 이동 */
-        InteractionButtonController.interactionButtonController.PlayerInsert1();
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     public void OnEat()
     {
-        /* 오브젝트의 먹기 변수 true로 바꿈 */
-        consoleData_C.IsEaten = true;
-        /* 상호작용 버튼을 끔 */
-        DiableButton();
-        /* 먹기 애니메이션 & 오브젝트 사라지게 */
-        InteractionButtonController.interactionButtonController.playerEat();
+
     }
 
+
+    public void OnSmash()
+    {
+        //throw new System.NotImplementedException();
+    }
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 }

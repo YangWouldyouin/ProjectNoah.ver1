@@ -61,9 +61,7 @@ public class Tablet_Sound : MonoBehaviour
         {
             Invoke("FollowTablet", 2f);
             Debug.Log("태블릿 소리 감지");
-            PrintSomething(); // 상태창에 "[소리] 이상한 기계음"
-
-
+            PrintSomething(); // 상태창에 "[소리] 이상한 기계음
         }
     }
 
@@ -79,6 +77,7 @@ public class Tablet_Sound : MonoBehaviour
     {
         if (other.gameObject == Player_Noah)
         {
+            sampleText.text = "";
             samplePanel.SetActive(false); // 상태창을 활성화한다. 
             CancelInvoke("FollowTablet");
 
