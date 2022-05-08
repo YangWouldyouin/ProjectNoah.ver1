@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tu_FoodBox : MonoBehaviour, IInteraction
+public class Sniff_Tu_FoodBox : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton,
 pushButton, DisableButton, smashButton;
 
+    public ObjectData FoodBoxData_Sniff;
     ObjData FoodBoxData_Tu;
     public GameObject FoodBox_Tu;
     public Outline FoodBoxOutline_Tu;
@@ -22,15 +23,22 @@ pushButton, DisableButton, smashButton;
 
     BoxCollider FoodBox_Collider;
 
+    public GameObject biteBox;
+
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         FoodBox_Collider = GetComponent<BoxCollider>();
 
         FoodBoxData_Tu = GetComponent<ObjData>();
         DogFoodData_Tu = DogFood_Tu.GetComponent<ObjData>();
 
         barkButton = FoodBoxData_Tu.BarkButton;
-        barkButton.onClick.AddListener(OnBark);
+        //barkButton.onClick.AddListener(OnBark);
 
         sniffButton = FoodBoxData_Tu.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
@@ -40,10 +48,10 @@ pushButton, DisableButton, smashButton;
 
         // 파괴하기가 되는 오브젝트이면 파괴하기 버튼 변수를 추가한다.
         smashButton = FoodBoxData_Tu.SmashButton;
-        smashButton.onClick.AddListener(OnSmash);
+        //smashButton.onClick.AddListener(OnSmash);
 
         pushButton = FoodBoxData_Tu.PushOrPressButton;
-        pushButton.onClick.AddListener(OnPushOrPress);
+        //pushButton.onClick.AddListener(OnPushOrPress);
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
         DisableButton = FoodBoxData_Tu.CenterButton1;
@@ -69,7 +77,10 @@ pushButton, DisableButton, smashButton;
 
     void Update()
     {
-
+        if(FoodBoxData_Sniff.IsClicked)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(11));
+        }
     }
 
 
@@ -139,6 +150,12 @@ pushButton, DisableButton, smashButton;
         FoodBoxData_Tu.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
+
+        biteBox.transform.position = gameObject.transform.position;
+        biteBox.transform.localRotation = gameObject.transform.localRotation;
+        biteBox.SetActive(true);
+
+        Destroy(gameObject, 0f);
     }
 
 

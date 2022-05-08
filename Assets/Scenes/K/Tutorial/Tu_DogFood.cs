@@ -10,10 +10,15 @@ pushButton, smashButton, eatButton;
 
     ObjData DogFood_Tu;
 
+    public ObjectData dogFoodData;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
 
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         DogFood_Tu = GetComponent<ObjData>();
 
         barkButton = DogFood_Tu.BarkButton;
@@ -51,7 +56,10 @@ pushButton, smashButton, eatButton;
 
     void Update()
     {
-
+        if (dogFoodData.IsClicked)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(14));
+        }
     }
 
 
