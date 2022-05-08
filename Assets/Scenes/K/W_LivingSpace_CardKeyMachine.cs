@@ -29,10 +29,13 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
     /* 애니메이션 */
     public Animator HalfLivingDoorAni_M; // 생활공간 문 반만 열리기
 
-
+    public GameObject dialog;
+    DialogManager dialogManager;
 
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         /* 해당 오브젝트의 ObjData를 가져온다. */
         LivingSpace_CardKeyMachine_W = GetComponent<ObjData>();
         boxData_WL = box_WL.GetComponent<ObjData>();
@@ -144,6 +147,8 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
             if (GameManager.gameManager._gameData.IsWEDoorOpened_M_C2)
             {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(12));
+
                 GameManager.gameManager._gameData.IsAllDoorOpened = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }

@@ -22,8 +22,12 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
     public Animator engineDoorAnim_M;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
 
         /*연관있는 오브젝트*/
         insertCardPadObjData_M = GetComponent<ObjData>();
@@ -112,6 +116,8 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
         if (GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2)
         {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(12));
+
             GameManager.gameManager._gameData.IsAllDoorOpened = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
