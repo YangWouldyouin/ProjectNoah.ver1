@@ -35,13 +35,13 @@ public class W_Health_Machine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialogManager_HM.GetComponent<DialogManager>();
+
         //W_HM_1
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
 
         Health_MachineData_W = GetComponent<ObjData>();
         healthMachineFixPartDataOutline = healthMachineFixPart_HM.GetComponent<Outline>();
-
-        dialogManager = dialogManager_HM.GetComponent<DialogManager>();
 
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_W_Health_Machine = Health_MachineData_W.BarkButton;
