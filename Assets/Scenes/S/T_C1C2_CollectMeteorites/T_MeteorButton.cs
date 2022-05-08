@@ -91,30 +91,33 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
 
     void Update()
     {
-        //운석 수집기계를 연것이 사실이고,
-        if (GameManager.gameManager._gameData.IsMeteorCollectOpen == true)
-        {
-            if (!canNormalMeteor1Data_T.IsBite && !GameManager.gameManager._gameData.IsMeteorCollectClose
-                || !canImportantMeteorData_T.IsBite && !GameManager.gameManager._gameData.IsMeteorCollectClose) //일반 운석을 물지 않았다면
-            {
-                //StartCoroutine(meteorBoxClose(0f, 30f)); // 30초 후에 문을 닫는 애니메이션을 실행하겠다.
+        /*        //운석 수집기계를 연것이 사실이고,
+                if (GameManager.gameManager._gameData.IsMeteorCollectOpen == true && !GameManager.gameManager._gameData.IsMeteorCollectClose)
+                {
+                    if (!canNormalMeteor1Data_T.IsBite && !GameManager.gameManager._gameData.IsMeteorCollectClose
+                        || !canImportantMeteorData_T.IsBite && !GameManager.gameManager._gameData.IsMeteorCollectClose) //일반 운석을 물지 않았다면
+                    {
+                        //StartCoroutine(meteorBoxClose(0f, 30f)); // 30초 후에 문을 닫는 애니메이션을 실행하겠다.
 
-                Invoke("DoorClose1", 30f);
+                        Invoke("DoorClose1", 30f);
+                        GameManager.gameManager._gameData.IsMeteorCollectOpen = false;
 
 
-            }
-        }
+                    }
+                }*/
 
-/*        //운석을 물면 문이 닫히는 애니메이션 실행
-        if(GameManager.gameManager._gameData.IsBiteimportantMeteor_T_C2)
-        {
-            StartCoroutine(meteorBoxClose(0f, 30f));
-        }
+        /*        //운석을 물면 문이 닫히는 애니메이션 실행
+                if(GameManager.gameManager._gameData.IsBiteimportantMeteor_T_C2)
+                {
+                    StartCoroutine(meteorBoxClose(0f, 30f));
+                    GameManager.gameManager._gameData.IsMeteorCollectOpen = false;
+                }
 
-        if (GameManager.gameManager._gameData.IsBiteNormalMeteor1_T_C2)
-        {
-            StartCoroutine(meteorBoxClose(0f, 30f));
-        }*/
+                if (GameManager.gameManager._gameData.IsBiteNormalMeteor1_T_C2)
+                {
+                    StartCoroutine(meteorBoxClose(0f, 30f));
+                    GameManager.gameManager._gameData.IsMeteorCollectOpen = false;
+                }*/
 
         //높이가 된다면 가운데 버튼이 활성화
         if (meteorButtonData_T.IsCollision)
@@ -175,7 +178,18 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        if (!GameManager.gameManager._gameData.IsMeteorCollectOpen)
+        canMeteorCollectMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
+        canMeteorCollectMachineOutline_T.OutlineWidth = 8;
+
+        collectMachineCollider.enabled = true;
+
+        Debug.Log("아 문이 열릴겁니다.");
+        meteorBoxAnim_T.SetBool("isMeteorBoxClose", false);
+        meteorBoxAnim_T.SetBool("isMeteorBoxCloseEnd", false);
+        meteorBoxAnim_T.SetBool("isMeteorBoxOpen", true);
+        meteorBoxAnim_T.SetBool("isMeteorBoxOpenEnd", true);
+
+/*        if (!GameManager.gameManager._gameData.IsMeteorCollectOpen)
         {
             //운석 수집 기계 문 여는 애니메이션
             //StartCoroutine(meteorBoxOpen());
@@ -194,7 +208,7 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
             meteorBoxAnim_T.SetBool("isMeteorBoxOpenEnd", true);
 
             GameManager.gameManager._gameData.IsMeteorCollectClose = false;
-        }
+        }*/
 
     }
 
@@ -223,7 +237,7 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
         //count += 1;
     }
 
-    void DoorClose1()
+/*    void DoorClose1()
     {
         
         meteorBoxAnim_T.SetBool("isMeteorBoxOpen", false);
@@ -287,7 +301,7 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
         NormalMeteor1Collider.enabled = false; //운석에 상호작용 불가능하게
         ImportantMeteorCollider.enabled = false;
 
-    }
+    }*/
 
     public void OnBite()
     {

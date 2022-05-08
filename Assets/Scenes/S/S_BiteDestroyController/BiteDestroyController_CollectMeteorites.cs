@@ -124,15 +124,25 @@ public class BiteDestroyController_CollectMeteorites : MonoBehaviour, IPointerUp
         // 1.5초 정도 딜레이를 주어야 함 )
 
         // 1.5초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
-        Invoke("DelayBiteAnim", 1.1f);
+        //Invoke("DelayBiteAnim", 1.1f);
+        StartCoroutine(Hello());
 
         // 2초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
-        Invoke("DoorClose", 1.1f);
+        //Invoke("DoorClose", 1.1f);
 
-        GameManager.gameManager._gameData.IsMeteorCollectClose = true;
+
     }
 
-    void DelayBiteAnim()
+    IEnumerator Hello()
+    {
+
+        yield return new WaitForSeconds(1.1f);
+        Debug.Log("물고 싶어요");
+        InteractionButtonController.interactionButtonController.PlayerBite();
+
+    }
+
+        void DelayBiteAnim()
     {
         Debug.Log("물고 싶어요");
         InteractionButtonController.interactionButtonController.PlayerBite();
@@ -152,6 +162,7 @@ public class BiteDestroyController_CollectMeteorites : MonoBehaviour, IPointerUp
         IsImportantMeteorCollider.enabled = false;
 
         GameManager.gameManager._gameData.IsMeteorCollectOpen = false;
+        GameManager.gameManager._gameData.IsMeteorCollectClose = true;
 
         //meteorCollectanimOpen_T = false; // 다시 반복할 수 있게
     }
