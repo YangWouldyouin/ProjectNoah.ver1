@@ -100,6 +100,7 @@ public class GameData
    
     public bool IsNoBoxes; // 엔진실 박스 없어짐
     public bool IsTabletMoved; // 태블릿 AI 미감지 구역에서 벗어났을 때
+    public bool IsTabletDestory;
 
 
     // 고구마 관련
