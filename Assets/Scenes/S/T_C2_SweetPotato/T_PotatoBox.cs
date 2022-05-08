@@ -9,7 +9,7 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
     public GameObject SweetPotatoBoxDoor_T;
 
     /*오브젝트의 상호작용 버튼들*/
-    private Button barkButton_T_PotatoBox, sniffButton_T_PotatoBox, biteButton_T_PotatoBox,
+    private Button barkButton_T_PotatoBox, sniffButton_T_PotatoBox, biteButton_T_PotatoBox, smashButton_T_PotatoBox,
         pressButton_T_PotatoBox, observeButton_T_PotatoBox, observeDisableButton_T_PotatoBox;
 
     /*ObjData*/
@@ -45,6 +45,9 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
         biteButton_T_PotatoBox = PotatoBoxObjData_T.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
+        smashButton_T_PotatoBox = PotatoBoxObjData_T.SmashButton;
+        smashButton_T_PotatoBox.onClick.AddListener(OnSmash);
+
         pressButton_T_PotatoBox = PotatoBoxObjData_T.PushOrPressButton;
         pressButton_T_PotatoBox.onClick.AddListener(OnPushOrPress);
 
@@ -69,6 +72,7 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
         pressButton_T_PotatoBox.transform.gameObject.SetActive(false);
         observeButton_T_PotatoBox.transform.gameObject.SetActive(false);
         observeDisableButton_T_PotatoBox.transform.gameObject.SetActive(false);
+        smashButton_T_PotatoBox.transform.gameObject.SetActive(false);
 
     }
 
@@ -91,10 +95,11 @@ public class T_PotatoBox : MonoBehaviour, IInteraction
 
     void ByePotatoBox()
     {
+        Debug.Log("potato");
         // 부모 비활성화, 자식 활성화 등등 각 오브젝트에 맞춰서 필요한 것들 쓰기
         SweetPotatoBoxDoor_T.SetActive(false);
 
-        PotatoBoxObjData_T.IsCenterButtonChanged = true;
+        PotatoBoxData_T.IsCenterButtonChanged = true;
 
         IsBadSweetPotato1Data_T.IsNotInteractable = false; // 상호작용 가능하게
         IsBadSweetPotato1Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.

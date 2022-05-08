@@ -95,7 +95,7 @@ public class BiteDestroyController_Meteor : MonoBehaviour, IPointerUpHandler, IP
         // 1.5초 정도 딜레이를 주어야 함 )
 
         // 1.5초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
-        Invoke("DelayBiteAnim", 1.1f);
+        Invoke("DelayBiteAnim", 3f);
     }
 
     void DelayBiteAnim()
