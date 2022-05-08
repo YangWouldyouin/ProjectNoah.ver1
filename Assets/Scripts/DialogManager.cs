@@ -24,6 +24,7 @@ public class DialogManager : MonoBehaviour
     [Header("문장 시간 간격")]
     public float sentenceSpeed = 1.8f;
 
+    public float subtitleSpeed = 5f;
     public Animator AIPanelAnim;
 
     void awake()
@@ -136,7 +137,7 @@ public class DialogManager : MonoBehaviour
                 nameText.text = nameData;
                 //dialogText.text = talkdata;
                 StartCoroutine(_typingSubtitle(subdata));
-                yield return new WaitForSeconds(sentenceSpeed);
+                yield return new WaitForSeconds(subtitleSpeed);
             }
 
             // 3초 후 대화 패널 비활성화
