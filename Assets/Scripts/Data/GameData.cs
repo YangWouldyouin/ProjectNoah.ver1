@@ -13,6 +13,19 @@ public class GameData
 
     public int EndingNum;
 
+    /*강아지 상태 더미데이터*/
+    public int IsFakefatigue = 91; //더미피로도
+    public int IsFakeStrength = 87; //더미체력
+    public int IsFakeThirst = 82; //더미목마름
+    public int IsFakeHunger = 88; //더미배고픔
+
+    /*강아지 현재 상태 데이터*/
+    public int IsRealfatigue; //피로도
+    public int IsRealStrength; //체력
+    public int IsRealThirst; //목마름
+    public int IsRealHunger; //배고픔
+
+    public int IscurrentHealthData; //메인컴퓨터에서 계산하는 스탯 수치
 
 
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
@@ -95,11 +108,6 @@ public class GameData
     public bool IsFakeCoordinateData_Tablet; //태블릿거짓좌표해금 판단
     public bool IsFakeCoordinateDatafile_Tablet; //태블릿거짓좌표다운로드 판단
     public bool IsDontFakeCoordinateDatafile_Tablet; //태블릿 거짓좌표다운로드루트 불가
-
-    public int IsFakefatigue = 91; //더미피로도
-    public int IsStrength = 87; //더미체력
-    public int IsThirst = 82; //더미목마름
-    public int IsHunger = 88; //더미배고픔
 
     // 메인컴퓨터 UI 관련
     public bool Is_MainComputer_WirelessOn; //메인컴퓨터 블루트스 on/off체크

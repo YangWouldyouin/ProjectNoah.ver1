@@ -30,7 +30,6 @@ public class W_Health_Machine : MonoBehaviour
     public bool HealthDataReportbool;
 
     //노아 내려가는 애니메이션 필요
-    //노아 스탯 정보/더미데이터 정보 메인컴퓨터로 전송
 
     // Start is called before the first frame update
     void Start()
@@ -226,12 +225,17 @@ public class W_Health_Machine : MonoBehaviour
             {
                 Debug.Log("더미데이터 업로드!");
                 //더미데이터 메인컴퓨터에 업로드
+                GameManager.gameManager._gameData.IsRealfatigue = GameManager.gameManager._gameData.IsFakefatigue;
+                GameManager.gameManager._gameData.IsRealStrength = GameManager.gameManager._gameData.IsFakeStrength;
+                GameManager.gameManager._gameData.IsRealThirst = GameManager.gameManager._gameData.IsFakeThirst;
+                GameManager.gameManager._gameData.IsRealHunger = GameManager.gameManager._gameData.IsFakeHunger;
 
                 GameManager.gameManager._gameData.IsDummyDataReport = true;
             }
             else
             {
                 Debug.Log("노아 상태 업로드!");
+                GameManager.gameManager._gameData.IscurrentHealthData = GameManager.gameManager._gameData.statNum;
                 //현재 스탯 상태 메인 컴퓨터에 업로드
             }
         }
@@ -251,6 +255,11 @@ public class W_Health_Machine : MonoBehaviour
             GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
             GameManager.gameManager._gameData.IsDummyDataReport = true;
             //더미데이터 메인컴퓨터에 업로드
+            GameManager.gameManager._gameData.IsRealfatigue = GameManager.gameManager._gameData.IsFakefatigue;
+            GameManager.gameManager._gameData.IsRealStrength = GameManager.gameManager._gameData.IsFakeStrength;
+            GameManager.gameManager._gameData.IsRealThirst = GameManager.gameManager._gameData.IsFakeThirst;
+            GameManager.gameManager._gameData.IsRealHunger = GameManager.gameManager._gameData.IsFakeHunger;
+
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //W_HM_3
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
@@ -258,6 +267,7 @@ public class W_Health_Machine : MonoBehaviour
         else
         {
             //현재 스탯 상태 메인 컴퓨터에 업로드 
+            GameManager.gameManager._gameData.IscurrentHealthData = GameManager.gameManager._gameData.statNum;
 
             if (GameManager.gameManager._gameData.statNum < 30) 
             {

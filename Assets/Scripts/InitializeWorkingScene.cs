@@ -10,6 +10,10 @@ public class InitializeWorkingScene : MonoBehaviour
     DialogManager dialogManager;
 
 
+    [Header("<상태체크기계 고치기>")]
+    public GameObject HealthMachine;
+    public GameObject HealthMachineFixData;
+
     [Header("<스마트팜 오픈>")]
     public GameObject FixedLine2; //고쳐진 줄
     public GameObject LineHome2; // 라인 홈
@@ -118,6 +122,7 @@ public class InitializeWorkingScene : MonoBehaviour
     BoxCollider insert01Col;
     BoxCollider insert02Col;
 
+    BoxCollider HealthMachineFixData_Collider;
 
 
     // Start is called before the first frame update
@@ -127,6 +132,8 @@ public class InitializeWorkingScene : MonoBehaviour
 
         GameData intialGameData = SaveSystem.Load("save_001");
 
+        /*상태체크기계고치기*/
+        HealthMachineFixData_Collider = HealthMachineFixData.GetComponent<BoxCollider>();
 
         /*스마트팜 오픈*/
         LineHome2_Collider = LineHome2.GetComponent<BoxCollider>();
@@ -168,6 +175,15 @@ public class InitializeWorkingScene : MonoBehaviour
         if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
+        }
+
+        /*상태체크기계 고치기*/
+        if (intialGameData.IsHealthMachineFixed_T_C2)
+        {
+            HealthMachineFixData.transform.position = new Vector3(-258.092f, 0f, 680.078f);
+            HealthMachineFixData.transform.rotation = Quaternion.Euler(-90, 0, 0);
+
+            HealthMachineFixData_Collider.enabled = false;
         }
 
         /*스마트팜 오픈 퍼즐을 완료 하면*/
