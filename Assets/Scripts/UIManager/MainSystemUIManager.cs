@@ -18,8 +18,13 @@ public class MainSystemUIManager : MonoBehaviour
 
     public Text OnOffText;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     public void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         MainUI.SetActive(false);
         MapUI.SetActive(false);
         WirelessUI.SetActive(false);
@@ -77,6 +82,17 @@ public class MainSystemUIManager : MonoBehaviour
     {
         MainUI.SetActive(false);
         MapUI.SetActive(true);
+
+        if (!GameManager.gameManager._gameData.IsAllDoorOpened)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(8));
+        }
+
+        if (GameManager.gameManager._gameData.IsAllDoorOpened && !GameManager.gameManager._gameData.IsAllDoorOpenedMent)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(9));
+            GameManager.gameManager._gameData.IsAllDoorOpenedMent = true;
+        }
     }
     public void MapBackBT()
     {

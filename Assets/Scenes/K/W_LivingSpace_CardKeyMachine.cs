@@ -142,6 +142,12 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
             Invoke("LivingDoorHalfOpen", 2f); // 문 열리는 애니메이션 실행
             GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2 = true; // 항상 업무공간에서 생활공간 이동 가능
 
+            if (GameManager.gameManager._gameData.IsWEDoorOpened_M_C2)
+            {
+                GameManager.gameManager._gameData.IsAllDoorOpened = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Y-3대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
         }
         else

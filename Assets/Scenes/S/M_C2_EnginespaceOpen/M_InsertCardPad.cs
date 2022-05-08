@@ -109,6 +109,12 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         /*½º¸¶Æ®ÆÊ ¿ÀÇÂ ÆÛÁñ ¿Ï·á*/
         GameManager.gameManager._gameData.IsCompleteOpenEngineRoom = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        if (GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2)
+        {
+            GameManager.gameManager._gameData.IsAllDoorOpened = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
     }
 
     public void OnPushOrPress()
