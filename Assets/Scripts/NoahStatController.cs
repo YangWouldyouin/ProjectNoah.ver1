@@ -64,7 +64,7 @@ public class NoahStatController : MonoBehaviour
         {
             if(GameManager.gameManager._gameData.statNum<10)
             {
-                ResetStatBar();
+                IncreaseStatBar();
             }          
         }  
         
@@ -122,7 +122,7 @@ public class NoahStatController : MonoBehaviour
         }
     }
     
-    public void ResetStatBar()
+    public void IncreaseStatBar()
     {
 
         currentNum = GameManager.gameManager._gameData.statNum;
@@ -141,13 +141,32 @@ public class NoahStatController : MonoBehaviour
         }
     }
 
+    public void DecreaseStatBar()
+    {
+
+        currentNum = GameManager.gameManager._gameData.statNum;
+        currentNum -= 1;
+        GameManager.gameManager._gameData.statNum = currentNum;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        for (int i = 0; i < currentNum; i++)
+        {
+            statBar[i].enabled = true;
+        }
+
+        for (int j = currentNum; j < 10; j++)
+        {
+            statBar[j].enabled = false;
+        }
+    }
+
     void  DecreaseStatByTime()
     {
         if(currentNum>=1)
         {
             timer += Time.deltaTime;
             int seconds = Mathf.FloorToInt((timer % 3600) % 60); // 초 단위 체크
-            if (seconds >= 2)
+            if (seconds >= 10)
             {
                 currentNum = GameManager.gameManager._gameData.statNum;
                 currentNum -= 1;
