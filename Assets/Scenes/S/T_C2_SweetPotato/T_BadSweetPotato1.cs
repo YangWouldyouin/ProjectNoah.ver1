@@ -67,6 +67,7 @@ public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.sweetPotatoEat[0] = true;
         // 상한 고구마 섭취 엔딩
         GameManager.gameManager._gameData.IsSuddenDeath = true;
+        GameManager.gameManager._gameData.IsEatBadPotato = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 

@@ -192,6 +192,8 @@ public class GameData
 
     public bool IsSuddenDeath; //돌연사 체크: 스탯 0 엔딩, 상한 고구마 섭취 엔딩
 
+    public bool IsEatBadPotato;//상한 고구마 섭취 엔딩
+
 
 
     //public bool IsComTabletUploadClear;
