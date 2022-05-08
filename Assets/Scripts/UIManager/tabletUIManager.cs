@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class tabletUIManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class tabletUIManager : MonoBehaviour
     public GameObject WirelessUI;
     public GameObject LockUI;
 
+    public Text Locked;
+
     public void Start()
     {
         DiaryUI.SetActive(false);
@@ -17,6 +20,14 @@ public class tabletUIManager : MonoBehaviour
         WirelessUI.SetActive(false);
         MainUI.SetActive(false);
         LockUI.SetActive(true);
+    }
+
+    public void Update()
+    {
+        if (GameManager.gameManager._gameData.IsTabletUnlock)
+        {
+            Locked.text = "UnLocked!";
+        }
     }
     public void ChangeMain()
     {
