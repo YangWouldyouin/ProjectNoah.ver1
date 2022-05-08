@@ -16,7 +16,8 @@ public class tablet : MonoBehaviour, IInteraction
     public GameObject TabletBackOn_C; // 태블릿 활성화 화면 (관찰하기 화면)
 
     public GameObject LoverPic_C; // 애인 사진
-    ObjData LoverPicData_C;
+    public ObjectData LoverPicData_C;
+
 
 /*    public GameObject FullEgPad_C; // 충전 된 충전패드
     public GameObject ZeroEgPad_C; // 충전 안 된 충전패드
@@ -33,7 +34,7 @@ public class tablet : MonoBehaviour, IInteraction
     void Start()
     {
         TabletData_C = GetComponent<ObjData>();
-        LoverPicData_C = LoverPic_C.GetComponent<ObjData>();
+      
 
         barkButton = TabletData_C.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -105,10 +106,10 @@ public class tablet : MonoBehaviour, IInteraction
 
         if (LoverPicData_C.IsBite)
         {
-            /*GameManager.gameManager._gameData.IsTabletUnlock = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");*/
+            GameManager.gameManager._gameData.IsTabletUnlock = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-            Invoke("TabletLockOff", 1f);
+            //Invoke("TabletLockOff", 1f);
             Debug.Log("태블릿 잠금해제");
         }
         /*else

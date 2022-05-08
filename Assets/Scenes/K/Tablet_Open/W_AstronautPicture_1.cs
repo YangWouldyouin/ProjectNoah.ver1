@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class W_AstronautPicture_1: MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton,
-pushButton, NoCenterButton, smashButton;
+pushButton, NoCenterButton, smashButton, observeButton;
 
+    public ObjectData AstronautPictureData_1_W;
     ObjData AstronautPicture_1_W;
 
     public GameObject AstronautPicture_1_Image_W;
@@ -33,6 +34,9 @@ pushButton, NoCenterButton, smashButton;
         pushButton = AstronautPicture_1_W.PushOrPressButton;
         pushButton.onClick.AddListener(OnPushOrPress);
 
+        observeButton = AstronautPicture_1_W.CenterButton1;
+        observeButton.onClick.AddListener(OnObserve);
+
         NoCenterButton = AstronautPicture_1_W.CenterButton1; // 비활성화 버튼
     }
     void DiableButton()
@@ -43,12 +47,18 @@ pushButton, NoCenterButton, smashButton;
         // smashButton.transform.gameObject.SetActive(false);
         pushButton.transform.gameObject.SetActive(false);
         NoCenterButton.transform.gameObject.SetActive(false);
+        observeButton.transform.gameObject.SetActive(false);
     }
 
 
     void Update()
     {
+        if (AstronautPictureData_1_W == false)
+        {
+            AstronautPicture_1_Image_W.SetActive(false);
+        }
     }
+
     public void OnBark()
     {
         AstronautPicture_1_W.IsBark = true;
@@ -65,13 +75,12 @@ pushButton, NoCenterButton, smashButton;
 
     public void OnObserve()
     {
-        AstronautPicture_1_W.IsObserve = true;
         DiableButton();
         //PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         //CameraController.cameraController.currentView = LoverPicture_W.ObserveView; // 관찰 뷰 : 위쪽
-        InteractionButtonController.interactionButtonController.playerObserve();
+        // InteractionButtonController.interactionButtonController.playerObserve();
 
-        AstronautPicture_1_ImageData_W.gameObject.SetActive(true); // UI로 사진이미지 크게 보여주기
+        AstronautPicture_1_Image_W.SetActive(true); // UI로 사진이미지 크게 보여주기
     }
 
     public void OnPushOrPress()

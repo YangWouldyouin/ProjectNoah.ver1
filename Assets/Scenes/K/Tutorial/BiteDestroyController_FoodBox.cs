@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /* 클래스 이름 스크립트 이름이랑 똑같이
 BiteDestroyController + 오브젝트 이름으로 바꾼다. */
 
-public class BiteDestroyController_FoodBox : MonoBehaviour, IPointerUpHandler
+public class BiteDestroyController_FoodBox : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     /* 상호작용 버튼 변수 */
     // 이름 짓기 규칙 : biteButton + FoodBox
@@ -94,4 +94,12 @@ public class BiteDestroyController_FoodBox : MonoBehaviour, IPointerUpHandler
         isPointerDown = false;
         pointerDownTimer = 0;
     }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        isPointerDown = true;
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
+    }
+
+
 }
