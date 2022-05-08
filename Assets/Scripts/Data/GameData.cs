@@ -25,7 +25,7 @@ public class GameData
     public int IsRealThirst = 82; //목마름
     public int IsRealHunger = 88; //배고픔
 
-    public bool IscurrentHealthData; //메인컴퓨터에서 계산하는 스탯 수치
+    public int IscurrentHealthData; //메인컴퓨터에서 계산하는 스탯 수치
 
 
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
