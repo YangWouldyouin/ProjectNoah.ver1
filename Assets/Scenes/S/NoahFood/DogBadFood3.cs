@@ -64,6 +64,7 @@ public class DogBadFood2 : MonoBehaviour, IInteraction
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         //Ω∫≈» ∞®º“
+        NoahStatController.noahStatController.DecreaseStatBar();
     }
 
     public void OnPushOrPress()
