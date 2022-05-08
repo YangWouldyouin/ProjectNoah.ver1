@@ -60,7 +60,7 @@ public class DogGoodFood1: MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerEat();
 
-        GameManager.gameManager._gameData.FoodEat[0] = true;
+        GameManager.gameManager._gameData.GoodFoodEat[0] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         //½ºÅÈ »ó½Â
