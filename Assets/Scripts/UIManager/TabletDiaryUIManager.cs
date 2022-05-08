@@ -29,6 +29,11 @@ public class TabletDiaryUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.gameManager._gameData.IsAIAwake_M_C1 && GameManager.gameManager._gameData.IsAIAwake_M_C1 && GameManager.gameManager._gameData.IsAIAwake_M_C1 && GameManager.gameManager._gameData.IsAIAwake_M_C1 && GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        {
+            GameManager.gameManager._gameData.IsAIVSMissionFinish = true;
+        }
+
         PageNum.text = CurrentPageNum + "/10";
 
         if (GameManager.gameManager._gameData.IsAIAwake_M_C1 == false)

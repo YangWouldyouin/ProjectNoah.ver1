@@ -78,7 +78,7 @@ public class W_Health_Machine : MonoBehaviour
             GameManager.gameManager._gameData.IsAIReportMissionTime = true;
             HealthDataReportbool = false;
 
-            //W_HM_여따써줘
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(62));
         }
         if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10 && HealthDataReportbool == false)
         {
@@ -226,6 +226,8 @@ public class W_Health_Machine : MonoBehaviour
             {
                 Debug.Log("더미데이터 업로드!");
                 //더미데이터 메인컴퓨터에 업로드
+
+                GameManager.gameManager._gameData.IsDummyDataReport = true;
             }
             else
             {
@@ -247,7 +249,7 @@ public class W_Health_Machine : MonoBehaviour
         if (GameManager.gameManager._gameData.IsFakeHealthData_Tablet)
         {
             GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
-
+            GameManager.gameManager._gameData.IsDummyDataReport = true;
             //더미데이터 메인컴퓨터에 업로드
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //W_HM_3
@@ -257,20 +259,20 @@ public class W_Health_Machine : MonoBehaviour
         {
             //현재 스탯 상태 메인 컴퓨터에 업로드 
 
-            //if (노아 스탯 < 30) 
-            //{
-            //    GameManager.gameManager._gameData.IsReportCancleCount += 1;
-            //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            if (GameManager.gameManager._gameData.statNum < 30) 
+            {
+                GameManager.gameManager._gameData.IsReportCancleCount += 1;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-            //    //W_HM_5
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(37));
-            //}
-            //else
-            //{
-            //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //    //W_HM_3
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
-            //}
+                //W_HM_5
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(37));
+            }
+            else
+            {
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //W_HM_3
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
+            }
         }
     }
 

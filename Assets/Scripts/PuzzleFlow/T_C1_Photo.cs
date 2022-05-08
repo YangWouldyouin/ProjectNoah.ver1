@@ -21,6 +21,9 @@ public class T_C1_Photo : MonoBehaviour
 
     public int ran = Random.Range(0, 5);
 
+    public InGameTime inGameTime;
+    public DialogManager dialogManager_;
+    DialogManager dialogManager;
 
     // 관찰하기 시 추가 UI가 뜨는 경우, 2초간의 텀이 있다. 이것을 체크하기 위한 변수
     float timer_PR = 0;
@@ -33,6 +36,21 @@ public class T_C1_Photo : MonoBehaviour
 
     void Update()
     {
+        if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10)
+        {
+            Debug.Log("사진찍기 업무 시작");
+            GameManager.gameManager._gameData.IsPhotoTime = true;
+
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(46));
+        }
+        if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
+        {
+            Debug.Log("사진찍기 업무 종료");
+            GameManager.gameManager._gameData.IsPhotoTime = false;
+
+            GameManager.gameManager._gameData.IsReportCancleCount += 1;
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+        }
     }
 
     public void RandomUniversePic()
@@ -59,6 +77,7 @@ public class T_C1_Photo : MonoBehaviour
     {
         Debug.Log("보고하기");
         IsReported = true;
+        GameManager.gameManager._gameData.IsPhotoMissionFinish = true;
 
         Report_GUI_P.SetActive(false);
     }
@@ -68,8 +87,10 @@ public class T_C1_Photo : MonoBehaviour
         Debug.Log("취소하기");
 
         GameManager.gameManager._gameData.IsReportCancleCount -= 1; // 임무 보고 카운트 줄어들기
-        // SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         IsReported = true;
+
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
 
         Report_GUI_P.SetActive(false);
     }

@@ -17,6 +17,7 @@ public class GameEndingController : MonoBehaviour
         if(GameManager.gameManager._gameData.statNum <=0)
         {
             GameManager.gameManager._gameData.IsSuddenDeath = true;
+            GameManager.gameManager._gameData.IsManagerAbilityLack = true;
             // 스탯 게임 오버 ; ui 5초간 떴다가 사라지고 재시작
             // 스탯 50으로 변하게 하고
             // 스탯바 절반만 색 변하게 하기

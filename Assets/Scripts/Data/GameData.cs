@@ -29,7 +29,7 @@ public class GameData
     
     public bool IsHealthMachineFixed_T_C2; // 정기적으로 상태 측정 임무 수행 가능   
     public bool IsSmartFarmOpen_T_C2; // 항상 스마트팜 열려있고, 정기적으로 스마트팜 임무 수행 가능
-
+    
     public bool IsWEDoorOpened_M_C2; // 항상 업무공간에서 엔진실 이동 가능
 
     public bool IsWLDoorHalfOpened_M_C2; // 항상 업무공간에서 생활공간 이동 가능. 단, 문이 반만 열린채로
@@ -175,6 +175,11 @@ public class GameData
     public bool IsCompleteFindLivingKey; // 생활공간 카드키 찾기 완료
     public bool IsCompleteHalfOpenLivingRoom; // 생활공간 문 반만 오픈 완료
 
+    public bool IsDummyDataReport; //더미데이터보고 완료
+    public bool IsAIVSMissionFinish; //상반된 일지 해금
+    public bool IsPhotoMissionFinish; //사진찍기 보고 완료
+    public bool IsRevisioncomplaint; //고발하기
+
     public bool IsCompleteOpenLivingRoom; // 생활공간 문 완전 오픈 완료
     public bool IsTrashDoorBTFixed_L_L1; //생활공간 고치기
 
@@ -189,6 +194,7 @@ public class GameData
     public bool IsSaveOnlyOneEnd; // 당신이 구한 하나 엔딩: 노멀 엔딩, 고발 X
     public bool IsSaveAllEnd; // 당신이 구한 전부 엔딩: 진 엔딩, 고발 O
 
+    public bool IsManagerAbilityLack; //관리자자질부족
 
     public bool IsSuddenDeath; //돌연사 체크: 스탯 0 엔딩, 상한 고구마 섭취 엔딩
 
