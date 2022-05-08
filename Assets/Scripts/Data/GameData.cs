@@ -11,6 +11,8 @@ public class GameData
     //AI 상반 임무 카운트, 2 이상 될 시 태블릿 궤도 좌표 해금
     public int IsAIVSMissionCount = 0;
 
+    public int EndingNum;
+
 
 
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
