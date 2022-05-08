@@ -86,6 +86,9 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
         Card_KeyData_W_C3.IsNotInteractable = false;
 
         Card_Key_W_C3.SetActive(true); // 카드키 오브젝트 보이게
+
+        GameManager.gameManager._gameData.IsCompleteFindLivingKey = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnPushOrPress()

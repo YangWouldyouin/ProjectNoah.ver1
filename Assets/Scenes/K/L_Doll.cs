@@ -8,18 +8,21 @@ public class L_Doll : MonoBehaviour, IInteraction
 {
     /* 오브젝트의 상호작용 버튼들 */
     private Button barkButton_L_Doll, sniffButton_L_Doll, biteButton_L_Doll,
-pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll;
+pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, DisableButton;
 
     /* 해당 오브젝트의 ObjData 변수 */
     ObjData DollData_L;
 
-    public GameObject AllDoll_L;
-    public GameObject HalfDoll_L;
-    public GameObject DestroyDoll_L;
+    //public GameObject AllDoll_L;
+    //public GameObject HalfDoll_L;
+    //public GameObject DestroyDoll_L;
 
-    ObjData AllDollData_L;
-    ObjData HalfDollData_L;
-    ObjData DestroyDollData_L;
+    //ObjData AllDollData_L;
+    //ObjData HalfDollData_L;
+    //ObjData DestroyDollData_L;
+
+    /* 애니메이션 */
+    public Animator LivingDoorAni_L; // 생활공간 문 완전히 열리기
 
 
     void Start()
@@ -40,6 +43,11 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll;
 
         pushButton_L_Doll = DollData_L.PushOrPressButton;
         pushButton_L_Doll.onClick.AddListener(OnPushOrPress);
+
+        // 비활성화 버튼은 버튼을 가져오기만 한다. 
+        DisableButton = DollData_L.CenterButton1;
+
+        // GameManager.gameManager._gameData.IsCompleteOpenLivingRoom = false;
     }
 
     /* 상호작용 버튼을 끄는 함수 */
@@ -50,6 +58,7 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll;
         biteButton_L_Doll.transform.gameObject.SetActive(false);
         smashButton_L_Doll.transform.gameObject.SetActive(false);
         pushButton_L_Doll.transform.gameObject.SetActive(false);
+        DisableButton.transform.gameObject.SetActive(false);
     }
 
 
@@ -66,29 +75,37 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll;
         DiableButton(); // 상호작용 버튼을 끔
         InteractionButtonController.interactionButtonController.playerBark(); //애니메이션 보여줌
     }
-
-    public void OnSmash() // 파괴하기
+    public void OnBite()
     {
-        /* 오브젝트의 파괴하기 변수 true로 바꿈 */
-        DollData_L.IsSmash = true;
-        /* 상호작용 버튼을 끔 */
-        DiableButton();
 
-        /* 오브젝트 흔드는 애니메이션 시작*/
-        InteractionButtonController.interactionButtonController.PlayerSmash1();
+        // 생활공간 문이 반만 열리고 && 완전히 열리지 않았을 떄
+        if (GameManager.gameManager._gameData.IsCompleteOpenLivingRoom == false)
+        {
+            // SwitchDoll();
+            // Invoke("SwitchDoll", 1.2f); // 완전한 인형으로 바뀜
+            GameManager.gameManager._gameData.IsLivingRoomDollOut = true; // 생활공간 문에 끼어있던 인형 꺼냄
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            Debug.Log("인형 빼기");
 
-        /* 파괴하기 내용 쓰기 (2초 딜레이가 애니메이션이 자연스러움) */
-        Invoke(" SmashInteraction", 2f);
-
-        /* 오브젝트 흔드는 애니메이션 끝냄 */
-        InteractionButtonController.interactionButtonController.PlayerSmash2();
+            LivingDoorOpen();
+            // Invoke("LivingDoorOpen", 2f); // 문 완전히 열리는 애니메이션 실행
+            GameManager.gameManager._gameData.IsCompleteOpenLivingRoom = true; // 생활공간 문 완전 오픈 완료
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            Debug.Log("문 완전히 열리기");
+        }
+    }
+    //void SwitchDoll()
+    //{
+    //    HalfDoll_L.SetActive(false);
+    //    AllDoll_L.SetActive(true);
+    //}
+    void LivingDoorOpen() // 문 열리는 애니메이션
+    {
+        LivingDoorAni_L.SetBool("HalfOpen", true); // 생활공간 문 완전히 열리기
+        LivingDoorAni_L.SetBool("HalfEnd", true);
     }
 
-    void SmashInteraction() // 파괴하기를 했을 때 보여주거나 변경할 것들을 적는다 
-    {
-        AllDoll_L.SetActive(false);
-        DestroyDoll_L.SetActive(true);
-    }
+
 
     public void OnPushOrPress() // 밀기, 누르기
     {
@@ -100,6 +117,8 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll;
         /* 애니메이션 보여줌 */
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
         StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
+
+        // 자막 + 음성 나오기
     }
     /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
     IEnumerator ChangePressFalse()
@@ -107,6 +126,7 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll;
         yield return new WaitForSeconds(2f);
         DollData_L.IsPushOrPress = false;
     }
+
 
     public void OnSniff() // 냄새맡기
     {
@@ -118,6 +138,24 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll;
 
 
 
+
+    public void OnSmash() // 파괴하기
+    {
+/*        DollData_L.IsSmash = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.PlayerSmash1();
+
+        *//* 파괴하기 내용 쓰기 (2초 딜레이가 애니메이션이 자연스러움) *//*
+        Invoke(" SmashInteraction", 2f);
+
+        *//* 오브젝트 흔드는 애니메이션 끝냄 *//*
+        InteractionButtonController.interactionButtonController.PlayerSmash2();*/
+    }
+    /*    void SmashInteraction() // 파괴하기를 했을 때 보여주거나 변경할 것들을 적는다 
+    {
+        AllDoll_L.SetActive(false);
+        DestroyDoll_L.SetActive(true);
+    }*/
     public void OnObserve() // 관찰하기
     {
     }
@@ -129,10 +167,5 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll;
     }
     public void OnEat() // 먹기
     {
-    }
-
-    public void OnBite()
-    {
-        throw new System.NotImplementedException();
     }
 }

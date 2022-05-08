@@ -8,38 +8,48 @@ public class Tu_FoodBox : MonoBehaviour, IInteraction
     private Button barkButton, sniffButton, biteButton,
 pushButton, DisableButton, smashButton;
 
-    ObjData FoodBox_Tu;
+    ObjData FoodBoxData_Tu;
+    public GameObject FoodBox_Tu;
+    public Outline FoodBoxOutline_Tu;
+
 
     /* 상호작용 오브젝트 */
     public GameObject FoodBox_Box_Tu;
     public GameObject FoodBox_Door_Tu;
     public GameObject DogFood_Tu;
+    ObjData DogFoodData_Tu;
+    public Outline DogFoodOutline_Tu;
 
-    public ObjectData dogFoodData;
-
+    BoxCollider FoodBox_Collider;
 
     void Start()
     {
-        FoodBox_Tu = GetComponent<ObjData>();
+        FoodBox_Collider = GetComponent<BoxCollider>();
 
-        barkButton = FoodBox_Tu.BarkButton;
+        FoodBoxData_Tu = GetComponent<ObjData>();
+        DogFoodData_Tu = DogFood_Tu.GetComponent<ObjData>();
+
+        barkButton = FoodBoxData_Tu.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = FoodBox_Tu.SniffButton;
+        sniffButton = FoodBoxData_Tu.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = FoodBox_Tu.BiteButton;
+        biteButton = FoodBoxData_Tu.BiteButton;
         // "물기"가 안되는 오브젝트는 아래문장을 그대로 쓰고
 
         // 파괴하기가 되는 오브젝트이면 파괴하기 버튼 변수를 추가한다.
-        smashButton = FoodBox_Tu.SmashButton;
+        smashButton = FoodBoxData_Tu.SmashButton;
         smashButton.onClick.AddListener(OnSmash);
 
-        pushButton = FoodBox_Tu.PushOrPressButton;
+        pushButton = FoodBoxData_Tu.PushOrPressButton;
         pushButton.onClick.AddListener(OnPushOrPress);
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
-        DisableButton = FoodBox_Tu.CenterButton1;
+        DisableButton = FoodBoxData_Tu.CenterButton1;
+
+/*        FoodBox_Tu.SetActive(true);
+        DogFood_Tu.SetActive(false);*/
 
     }
     void DiableButton()
@@ -66,7 +76,7 @@ pushButton, DisableButton, smashButton;
 
     public void OnBark()
     {
-        FoodBox_Tu.IsBark = true;
+        FoodBoxData_Tu.IsBark = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -78,7 +88,7 @@ pushButton, DisableButton, smashButton;
     {
         /* 밀기 & 누르기 중에 "누르기"일 때!!! */
 
-        FoodBox_Tu.IsPushOrPress = true;
+        FoodBoxData_Tu.IsPushOrPress = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
 
@@ -87,7 +97,7 @@ pushButton, DisableButton, smashButton;
     IEnumerator ChangePressFalse() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴
     {
         yield return new WaitForSeconds(2f);
-        FoodBox_Tu.IsPushOrPress = false;
+        FoodBoxData_Tu.IsPushOrPress = false;
     }
 
 
@@ -98,6 +108,7 @@ pushButton, DisableButton, smashButton;
 
         /* 파괴하기 내용 쓰기 (2초 딜레이가 애니메이션이 자연스러움) */
         Invoke("SmashInteraction", 2f);
+        // SmashInteraction();
 
         /* 오브젝트 흔드는 애니메이션 끝냄 */
         InteractionButtonController.interactionButtonController.PlayerSmash2();
@@ -105,15 +116,27 @@ pushButton, DisableButton, smashButton;
 
     void SmashInteraction()
     {
-        Destroy(FoodBox_Tu);
-/*        FoodBox_Box_Tu.SetActive(false);
-        FoodBox_Door_Tu.SetActive(false);*/
+        // Destroy(FoodBoxData_Tu);
+        //FoodBox_Box_Tu.SetActive(false);
+        //FoodBox_Door_Tu.SetActive(false);
+        FoodBox_Tu.SetActive(false);
+        FoodBox_Collider.enabled = false;
+
+
+        //DogFood_Tu.SetActive(true);
+
+        /*        FoodBox_Tu.SetActive(false);
+                FoodBoxOutline_Tu.gameObject.SetActive(false);
+
+                DogFood_Tu.SetActive(true);
+                DogFoodOutline_Tu.gameObject.SetActive(true);*/
+
     }
 
 
     public void OnSniff() // 냄새맡기
     {
-        FoodBox_Tu.IsSniff = true;
+        FoodBoxData_Tu.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }

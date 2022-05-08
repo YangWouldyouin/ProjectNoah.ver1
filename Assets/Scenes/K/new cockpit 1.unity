@@ -407,10 +407,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001cdf55e08e5924087e1d5463c52613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FoodBox_Tu: {fileID: 7917442}
+  FoodBoxOutline_Tu: {fileID: 7917445}
   FoodBox_Box_Tu: {fileID: 1502398369}
   FoodBox_Door_Tu: {fileID: 771319947}
   DogFood_Tu: {fileID: 1760777292}
-  dogFoodData: {fileID: 11400000, guid: ddc01fb7bac795a4a9c3bfa80815a94b, type: 2}
+  DogFoodOutline_Tu: {fileID: 1760777295}
 --- !u!114 &7917445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8946,7 +8948,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 36829487, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 46151876, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_Name
@@ -8978,7 +8980,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: b9e9cc0701491bf4d817dc63d1bd0d98, type: 2}
     - target: {fileID: 1008835983, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1373624283, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: inGameTime
@@ -9399,6 +9401,10 @@ PrefabInstance:
     - target: {fileID: 8285443200855455090, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063447035461049876, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9129968982745612020, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10854,7 +10860,11 @@ MonoBehaviour:
   _gameData:
     IsReportCancleCount: 0
     IsAIVSMissionCount: 0
-    IsUseStrangeObjCount: 0
+    IsFirstEnterLivingRoom: 0
+    IsFirstEnterWorkingRoom: 0
+    IsFirstEnterEngineRoom: 0
+    IsAllDoorOpened: 0
+    IsAllDoorOpenedMent: 0
     S_IsAIAwake_M_C1: 0
     S_IsCWDoorOpened_M_C1: 0
     S_IsHealthMachineFixed_T_C2: 0
@@ -10875,6 +10885,7 @@ MonoBehaviour:
     IsFuelabsorberFixed_E_E1: 0
     HealthMachineCancelCount: 5
     IsEngineDoorFix_M_C2: 0
+    IsFirstUseStrangeObj: 0
     IsIronDisappear_T_C2: 0
     IsOutTroubleLine2_T_C2: 0
     IsSmartFarmFix_T_C2: 0
@@ -10918,7 +10929,8 @@ MonoBehaviour:
     Pot1InHealthyPotato: 0
     Pot2InHealthyPotato: 0
     Pot3InHealthyPotato: 0
-    FoodEat: 0000000000000000000000000000
+    GoodFoodEat: 0000000000000000000000000000
+    BadFoodEat: 0000000000000000000000000000
     IsMeteorCollectClose: 0
     IsMeteorCollectOpen: 0
     IsTabletDestroyed: 0
@@ -10938,12 +10950,13 @@ MonoBehaviour:
     IsAIDown_M_C1C3: 0
     IsKnowUsingSObj: 0
     IsFindDrugDone_T_C2: 0
+    IsTrashDoorBTFixed_L_L1: 0
     randomUPic: 0
-    IsEatBadSweetPotato: 0
     IsInputImportantMeteor1_T_C2: 0
     IsMakeForest: 0
     IsSuddenDeath: 0
     IsPhotoTime: 0
+    IsAIReportMissionTime: 0
   IsTrashDoorFixed_L_L1: 0
   IsCanMeteorGet: 0
   IsSmellDone: 0
@@ -17609,6 +17622,7 @@ MonoBehaviour:
   - {fileID: 1233435017}
   Report_GUI_P: {fileID: 1807349922}
   ran: 5
+  dialog: {fileID: 1915457782}
 --- !u!114 &702281966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22203,6 +22217,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_Name
       value: DogFood
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
@@ -38898,6 +38916,7 @@ MonoBehaviour:
   systemAlert: {fileID: 1248936437}
   MS_onoffBT: {fileID: 744261337}
   OnOffText: {fileID: 1145765826}
+  dialog: {fileID: 0}
 --- !u!4 &1610662376
 Transform:
   m_ObjectHideFlags: 0
@@ -41957,8 +41976,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.1860492, y: 4.2319226, z: 2.3637757}
+  m_Center: {x: 0.023107745, y: 1.6159606, z: -0.05024193}
 --- !u!1 &1762687631
 GameObject:
   m_ObjectHideFlags: 0
