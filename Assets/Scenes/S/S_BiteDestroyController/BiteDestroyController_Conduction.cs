@@ -10,7 +10,8 @@ BiteDestroyController + 오브젝트 이름으로 바꾼다. */
 
 public class BiteDestroyController_Conduction : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    public ObjectData biteRubberData_M;
+
+    //public ObjectData biteRubberData_M;
     public ObjectData biteConductionData_M;
 
     /* 상호작용 버튼 변수 */
@@ -96,41 +97,31 @@ public class BiteDestroyController_Conduction : MonoBehaviour, IPointerUpHandler
         // 물기 버튼이 눌러짐
         isPointerDown = true;
 
-        if (biteRubberData_M.IsBite /*&& biteConductionData_M.IsBite*/)
-        {
-            Debug.Log("안전합니다.");
-            InteractionButtonController.interactionButtonController.PlayerBite();
-        }
+        // 1.5초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
+        Invoke("DelayBiteAnim", 1.5f);
 
-        else /*if (biteConductionData_M.IsBite)*/
-        {
-            Debug.Log("감전엔딩");
-            InteractionButtonController.interactionButtonController.PlayerBite();
-        }
+        /*        if (boxData.IsUpDown) // 특정 조건을 만족하면
+                {
+                    // 물고나서 나올 상호작용들을 적는다.
+                    CameraController.cameraController.CancelObserve();
 
+                    // 1.5초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
+                    Invoke("DelayBiteAnim", 1.5f);
+                }
+                else // 평소에는 
+                {
+                    // 물기 애니메이션 + IsBite 변수 참으로 바꿈
+                    InteractionButtonController.interactionButtonController.PlayerBite();
+                }*/
 
-/*        if (boxData.IsUpDown) // 특정 조건을 만족하면
-        {
-            // 물고나서 나올 상호작용들을 적는다.
-            CameraController.cameraController.CancelObserve();
-
-            // 1.5초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
-            Invoke("DelayBiteAnim", 1.5f);
-        }
-        else // 평소에는 
-        {
-            // 물기 애니메이션 + IsBite 변수 참으로 바꿈
-            InteractionButtonController.interactionButtonController.PlayerBite();
-        }*/
-    
-
-/*    void DelayBiteAnim()
+    }
+    void DelayBiteAnim()
     {
-        InteractionButtonController.interactionButtonController.PlayerBite();
-    }*/
+         InteractionButtonController.interactionButtonController.PlayerBite();
 
-    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-}
+    }
+
+        // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     /* 물기 버튼 클릭 후 떼면 */
     public void OnPointerUp(PointerEventData eventData)
     {

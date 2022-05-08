@@ -50,11 +50,6 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
         canBrokenDoorConductionOutline_M = GetComponent<Outline>();
         BrokenAreaOutline_M = GetComponent<Outline>();
 
-        if(GameManager.gameManager._gameData.IsEngineDoorFix_M_C2)
-        {
-            //B-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(26));
-        }
     }
 
     void DisableButton()
@@ -103,6 +98,8 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
             BrokenAreaOutline_M.OutlineWidth = 0;
 
             GameManager.gameManager._gameData.IsEngineDoorFix_M_C2 = true;
+            //B-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(26));
 
         }
 
