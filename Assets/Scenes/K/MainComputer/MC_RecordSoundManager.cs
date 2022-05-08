@@ -34,8 +34,14 @@ public class MC_RecordSoundManager : MonoBehaviour
     [SerializeField]
     int currentIndex = 0;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         Audio_Rec = GetComponent<AudioSource>();
 
         RecordTitle[0] = "¿Ωº∫ ≥Ï¿Ω 1";
@@ -148,6 +154,21 @@ public class MC_RecordSoundManager : MonoBehaviour
             Audio_Rec.clip = RecordAudio[currentIndex];
             Audio_Rec.Play();
             IsButton1Clicked = true;
+
+            if (k == 0)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(3));
+            }
+
+            if (k == 1)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(5));
+            }
+
+            if (k == 2)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(7));
+            }
         }
     }
 
@@ -173,6 +194,21 @@ public class MC_RecordSoundManager : MonoBehaviour
             Audio_Rec.clip = RecordAudio[currentIndex + 1];
             Audio_Rec.Play();
             IsButton2Clicked = true;
+        }
+
+        if (k == 0)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(4));
+        }
+
+        if (k == 1)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(6));
+        }
+
+        if (k == 2)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(8));
         }
     }
 
