@@ -29,7 +29,8 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
     /* 애니메이션 */
     public Animator HalfLivingDoorAni_M; // 생활공간 문 반만 열리기
 
-
+    public GameObject dialogManager_CS;
+    DialogManager dialogManager;
 
     void Start()
     {

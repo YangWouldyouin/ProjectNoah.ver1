@@ -104,7 +104,7 @@ public class GameData
    
     public bool IsNoBoxes; // 엔진실 박스 없어짐
     public bool IsTabletMoved; // 태블릿 AI 미감지 구역에서 벗어났을 때
-
+    public bool IsTabletDestory; // 태블릿 파괴
 
     // 고구마 관련
     public bool[] sweetPotatoEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false }; //고구마 먹은 거 확인
