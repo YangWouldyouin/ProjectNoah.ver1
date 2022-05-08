@@ -180,7 +180,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
 
 
 
-        if(doImportantMeteorData_T.IsBite)
+/*        if(doImportantMeteorData_T.IsBite)
         {
             //CameraController.cameraController.CancelObserve();
 
@@ -194,7 +194,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
 
             GameManager.gameManager._gameData.IsBiteNormalMeteor1_T_C2 = true;
 
-        }
+        }*/
 
     }
 

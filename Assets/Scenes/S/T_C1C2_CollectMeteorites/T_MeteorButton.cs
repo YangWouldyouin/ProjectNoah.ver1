@@ -59,7 +59,6 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
         sniffButton_T_MeteorButton.onClick.AddListener(OnSniff);
 
         biteButton_T_MeteorButton = meteorButtonObjData_T.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
         pressButton_T_MeteorButton = meteorButtonObjData_T.PushOrPressButton;
         pressButton_T_MeteorButton.onClick.AddListener(OnPushOrPress);
@@ -77,48 +76,10 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
             //C-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         }
 
-        if(meteorButtonData_T.IsPushOrPress)
-        {
-            //C-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        }
-
-        if(canNormalMeteor1Data_T.IsBite /*&& 고무를 물고*/
-            || canImportantMeteorData_T.IsBite/*&& 고무를 물고*/)
-        {
-            //C-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        }
     }
 
     void Update()
     {
-        /*        //운석 수집기계를 연것이 사실이고,
-                if (GameManager.gameManager._gameData.IsMeteorCollectOpen == true && !GameManager.gameManager._gameData.IsMeteorCollectClose)
-                {
-                    if (!canNormalMeteor1Data_T.IsBite && !GameManager.gameManager._gameData.IsMeteorCollectClose
-                        || !canImportantMeteorData_T.IsBite && !GameManager.gameManager._gameData.IsMeteorCollectClose) //일반 운석을 물지 않았다면
-                    {
-                        //StartCoroutine(meteorBoxClose(0f, 30f)); // 30초 후에 문을 닫는 애니메이션을 실행하겠다.
-
-                        Invoke("DoorClose1", 30f);
-                        GameManager.gameManager._gameData.IsMeteorCollectOpen = false;
-
-
-                    }
-                }*/
-
-        /*        //운석을 물면 문이 닫히는 애니메이션 실행
-                if(GameManager.gameManager._gameData.IsBiteimportantMeteor_T_C2)
-                {
-                    StartCoroutine(meteorBoxClose(0f, 30f));
-                    GameManager.gameManager._gameData.IsMeteorCollectOpen = false;
-                }
-
-                if (GameManager.gameManager._gameData.IsBiteNormalMeteor1_T_C2)
-                {
-                    StartCoroutine(meteorBoxClose(0f, 30f));
-                    GameManager.gameManager._gameData.IsMeteorCollectOpen = false;
-                }*/
-
         //높이가 된다면 가운데 버튼이 활성화
         if (meteorButtonData_T.IsCollision)
         {
@@ -136,22 +97,6 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
 
             canMeteorCollectMachineData_T.IsCenterButtonChanged = true;
         }
-
-        //한번이라도 일반 운석을 물었다면
-        if(canNormalMeteor1Data_T.IsBite)
-        {
-            NormalMeteor1Collider.enabled = true;
-        }
-
-        if(canImportantMeteorData_T.IsBite)
-        {
-            ImportantMeteorCollider.enabled = true;
-        }
-
-/*        if(!meteorButtonData_T.IsPushOrPress)
-        {
-            collectMachineCollider.enabled = false;
-        }*/
     }
 
     void DisableButton()
@@ -177,6 +122,8 @@ public class T_MeteorButton : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
+
+        //C-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 
         canMeteorCollectMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
         canMeteorCollectMachineOutline_T.OutlineWidth = 8;

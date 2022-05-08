@@ -136,13 +136,15 @@ public class BiteDestroyController_CollectMeteorites : MonoBehaviour, IPointerUp
     IEnumerator Hello()
     {
 
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(2f);
         Debug.Log("물고 싶어요");
         InteractionButtonController.interactionButtonController.PlayerBite();
 
+        //C-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
     }
 
-        void DelayBiteAnim()
+    void DelayBiteAnim()
     {
         Debug.Log("물고 싶어요");
         InteractionButtonController.interactionButtonController.PlayerBite();
