@@ -137,13 +137,13 @@ public class strangeObj : MonoBehaviour, IInteraction
 
         Invoke("CantHide", 180f);
 
-        if (GameManager.gameManager._gameData.IsUseStrangeObjCount == 0)
+        if (!GameManager.gameManager._gameData.IsFirstUseStrangeObj)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
-            GameManager.gameManager._gameData.IsUseStrangeObjCount += 1;
+            GameManager.gameManager._gameData.IsFirstUseStrangeObj = true;
         }
 
-        if (GameManager.gameManager._gameData.IsUseStrangeObjCount >=1)
+        if (GameManager.gameManager._gameData.IsFirstUseStrangeObj)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(53));
         }

@@ -9,9 +9,11 @@ public class GameData
     public int IsReportCancleCount = 0;
     //AI 상반 임무 카운트, 2 이상 될 시 태블릿 궤도 좌표 해금
     public int IsAIVSMissionCount = 0;
-    //수상한 물건(스텔스 모드) 몇 번 했는지. 횟수에 따라 AI 대사 달라짐.
-    public int IsUseStrangeObjCount = 0;
 
+    //각 공간 처음 진입하는지
+    public bool IsFirstEnterLivingRoom; //생활공간 최초진입
+    public bool IsFirstEnterWorkingRoom; //업무공간 최초진입
+    public bool IsFirstEnterEngineRoom; //엔진실 최초진입
 
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
     public bool S_IsAIAwake_M_C1; // 항상 AI 활성화  
@@ -48,6 +50,8 @@ public class GameData
     public int HealthMachineCancelCount = 5;
 
     public bool IsEngineDoorFix_M_C2; // 엔진실 문 고쳤는지
+
+    public bool IsFirstUseStrangeObj;
 
 
     // 스마트팜 퍼즐
@@ -183,6 +187,7 @@ public class GameData
     //    public bool IsSmartFarmMissionDone = false; 
 
     public bool IsPhotoTime; //사진찍기 임무 진행 체크, 사내 뉴스에서 찍은 사진 확인 후 다시 false
+    public bool IsAIReportMissionTime; //생체데이터 보고 정기임무 체크
 }
 
 

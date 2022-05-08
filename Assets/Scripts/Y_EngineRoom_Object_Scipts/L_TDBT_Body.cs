@@ -21,7 +21,14 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
     void Start()
     {
         dialogManager = dialog_CS.GetComponent<DialogManager>();
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(33));
+
+        if (!GameManager.gameManager._gameData.IsFirstEnterLivingRoom)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(33));
+
+            GameManager.gameManager._gameData.IsFirstEnterLivingRoom = true;
+        }
 
         playerEquipment = BaseCanvas._baseCanvas.equipment;
 

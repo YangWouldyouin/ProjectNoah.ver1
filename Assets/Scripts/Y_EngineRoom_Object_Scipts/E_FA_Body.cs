@@ -21,7 +21,14 @@ public class E_FA_Body : MonoBehaviour, IInteraction
     void Start()
     {
         dialogManager = dialog.GetComponent<DialogManager>();
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(34));
+
+        if (!GameManager.gameManager._gameData.IsFirstEnterEngineRoom)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(34));
+
+            GameManager.gameManager._gameData.IsFirstEnterEngineRoom = true;
+        }
 
         playerEquipment = BaseCanvas._baseCanvas.equipment;
 
