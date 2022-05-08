@@ -13,6 +13,19 @@ public class GameData
 
     public int EndingNum;
 
+    /*강아지 상태 더미데이터*/
+    public int IsFakefatigue = 91; //더미피로도
+    public int IsFakeStrength = 87; //더미체력
+    public int IsFakeThirst = 82; //더미목마름
+    public int IsFakeHunger = 88; //더미배고픔
+
+    /*강아지 현재 상태 데이터*/
+    public int IsRealfatigue = 91; //피로도
+    public int IsRealStrength = 87; //체력
+    public int IsRealThirst = 82; //목마름
+    public int IsRealHunger = 88; //배고픔
+
+    public bool IscurrentHealthData; //메인컴퓨터에서 계산하는 스탯 수치
 
 
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
