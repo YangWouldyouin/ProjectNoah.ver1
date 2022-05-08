@@ -25,6 +25,7 @@ public class EndingUIManager : MonoBehaviour
 
     public void ChangeMainScreen()
     {
+        EndingScreen[ListEndingNum].SetActive(false);
         SceneManager.LoadScene("Main");
     }
 }
