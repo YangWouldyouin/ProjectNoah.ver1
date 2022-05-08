@@ -10,9 +10,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
     public GameObject T_InHealthySweetPotato2;
     public GameObject T_InBadSweetPotato2;
     public GameObject T_InSuperDrug2;
-    public GameObject T_IsGrownHealthy4;
-    public GameObject T_IsGrownHealthy5;
-    public GameObject T_IsGrownHealthy6;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_Pot2, sniffButton_T_Pot2, biteButton_T_Pot2, pressButton_T_Pot2, noCenterButton_T_Pot2;
@@ -25,8 +22,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
     public ObjectData IsFarmButton2Data_T;
     public ObjectData InUnGrownSweetPotato2Data_T;
 
-    /*Collider*/
-    BoxCollider Pot2_Collider;
 
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
@@ -36,9 +31,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
         dialogManager = dialogManager_CS.GetComponent<DialogManager>();
 
         Pot2Data_T = GetComponent<ObjData>();
-
-        /*Collider*/
-        Pot2_Collider = GetComponent<BoxCollider>();
 
         barkButton_T_Pot2 = Pot2Data_T.BarkButton;
         barkButton_T_Pot2.onClick.AddListener(OnBark);
@@ -57,28 +49,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
 
     void Update()
     {
-        /*덜자란 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
-        if (GameManager.gameManager._gameData.Pot2InPotato && IsFarmButton2Data_T.IsPushOrPress)
-        {
-            //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
-
-            Invoke("AppearSweetPotato2", 60f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
-        }
-
-        /*상한 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
-        if (GameManager.gameManager._gameData.Pot2InBadPotato && IsFarmButton2Data_T.IsPushOrPress)
-        {
-            //A-6 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
-        }
-
-        /*성숙한 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
-        if (GameManager.gameManager._gameData.Pot2InHealthyPotato && IsFarmButton2Data_T.IsPushOrPress)
-        {
-            //A-6대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
-        }
     }
 
     void DisableButton()
@@ -143,23 +113,6 @@ public class T_Pot2 : MonoBehaviour, IInteraction
         T_InUnGrownSweetPotato2.SetActive(false);
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(17));
-    }
-
-    void AppearSweetPotato2()
-    {
-        T_IsGrownHealthy4.SetActive(true);
-        T_IsGrownHealthy5.SetActive(true);
-        T_IsGrownHealthy6.SetActive(true);
-
-        //A-7 알림 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(19));
-
-        /*고구마 먹는 거 방해 안되게 + 이미 한 번 심은 땅에는 다시 못 심게*/
-        Pot2_Collider.enabled = false;
-
-        /*고구마가 나타난 상태를 저장한다.*/
-        GameManager.gameManager._gameData.IsCanSeePotato2 = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     void BadPotatoBye2()

@@ -10,9 +10,6 @@ public class T_Pot1 : MonoBehaviour, IInteraction
     public GameObject T_InHealthySweetPotato1;
     public GameObject T_InBadSweetPotato1;
     public GameObject T_InSuperDrug1;
-    public GameObject T_IsGrownHealthy1;
-    public GameObject T_IsGrownHealthy2;
-    public GameObject T_IsGrownHealthy3;
 
 
     /*오브젝트의 상호작용 버튼들*/
@@ -61,27 +58,6 @@ public class T_Pot1 : MonoBehaviour, IInteraction
 
     void Update()
     {
-        /*덜자란 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
-        if(GameManager.gameManager._gameData.Pot1InPotato && IsFarmButton1Data_T.IsPushOrPress)
-        {
-            //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
-            Invoke("AppearSweetPotato1", 60f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
-        }
-
-        /*상한 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
-        if (GameManager.gameManager._gameData.Pot1InBadPotato && IsFarmButton1Data_T.IsPushOrPress)
-        {
-            //A-6 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
-        }
-
-        /*성숙한 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
-        if (GameManager.gameManager._gameData.Pot1InHealthyPotato && IsFarmButton1Data_T.IsPushOrPress)
-        {
-            //A-6대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
-        }
     }
 
     void DisableButton()
@@ -150,22 +126,6 @@ public class T_Pot1 : MonoBehaviour, IInteraction
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(17));
     }
 
-    void AppearSweetPotato1()
-    {
-        T_IsGrownHealthy1.SetActive(true);
-        T_IsGrownHealthy2.SetActive(true);
-        T_IsGrownHealthy3.SetActive(true);
-
-        //A-7 알림 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(19));
-
-        /*고구마 먹는 거 방해 안되게 + 이미 한 번 심은 땅에는 다시 못 심게*/
-        Pot1_Collider.enabled = false;
-
-        /*고구마가 나타난 상태를 저장한다.*/
-        GameManager.gameManager._gameData.IsCanSeePotato1 = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-    }
 
     void BadPotatoBye1()
     {

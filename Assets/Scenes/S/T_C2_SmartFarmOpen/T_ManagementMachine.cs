@@ -93,17 +93,17 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             canLineHome2Outline_T.OutlineWidth = 0; // ¾Æ¿ô¶óÀÎµµ ²¨ÁÝ´Ï´Ù.
         }
 
-        if (managementMachineData_T.IsBark && GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
+/*        if (managementMachineData_T.IsBark && GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
         {
             Invoke("SmartFarmOpen", 2f);
 
-            /*½º¸¶Æ®ÆÊ ¿ÀÇÂ ÆÛÁñ ¿Ï·á*/
+            *//*½º¸¶Æ®ÆÊ ¿ÀÇÂ ÆÛÁñ ¿Ï·á*//*
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             //A-2 ´ë»ç Ãâ·Â ¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(14));
-        }
+        }*/
     }
     void DisableButton()
     {
@@ -120,6 +120,18 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerBark();
+
+        if(GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
+        {
+            Invoke("SmartFarmOpen", 2f);
+
+            /*½º¸¶Æ®ÆÊ ¿ÀÇÂ ÆÛÁñ ¿Ï·á*/
+            GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            //A-2 ´ë»ç Ãâ·Â ¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù¡Ù
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(14));
+        }
     }
 
     public void OnSniff()
