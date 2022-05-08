@@ -37,6 +37,7 @@ public class InHouseNewsUI : MonoBehaviour
         {
             Debug.Log("2¿œ");
             InhouseNews_GUI.SetActive(true);
+            ExitBT.SetActive(false);
 
             Day2Title.SetActive(true);
             Day3Title.SetActive(false);
@@ -59,6 +60,7 @@ public class InHouseNewsUI : MonoBehaviour
         else if ((inGameTime.days + 1) == 4 && inGameTime.hours == 0)
         {
             InhouseNews_GUI.SetActive(true);
+            ExitBT.SetActive(false);
 
             Day2Title.SetActive(false);
             Day3Title.SetActive(true);
@@ -81,6 +83,7 @@ public class InHouseNewsUI : MonoBehaviour
         else if ((inGameTime.days + 1) == 6 && inGameTime.hours == 0)
         {
             InhouseNews_GUI.SetActive(true);
+            ExitBT.SetActive(false);
 
             Day2Title.SetActive(false);
             Day3Title.SetActive(false);
@@ -109,6 +112,7 @@ public class InHouseNewsUI : MonoBehaviour
                 NewsImage = UniverseImageList[UniListnum];
 
                 InhouseNews_GUI.SetActive(true);
+                ExitBT.SetActive(false);
 
                 Day2Title.SetActive(false);
                 Day3Title.SetActive(false);
