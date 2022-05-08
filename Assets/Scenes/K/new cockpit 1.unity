@@ -388,7 +388,6 @@ GameObject:
   - component: {fileID: 7917446}
   - component: {fileID: 7917445}
   - component: {fileID: 7917444}
-  - component: {fileID: 7917443}
   m_Layer: 0
   m_Name: FoodBox
   m_TagString: Untagged
@@ -396,27 +395,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7917443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7917442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e28d20607ab284b94d86358504ca07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  biteButton: {fileID: 53517425}
-  smashButton: {fileID: 811586476}
-  barkButton: {fileID: 1107784126}
-  sniffButton: {fileID: 1847956158}
-  pushOrPressButton: {fileID: 1566486903}
-  centerButton1: {fileID: 464708466}
-  centerDisableButton1: {fileID: 0}
-  centerButton2: {fileID: 0}
-  centerDisableButton2: {fileID: 0}
 --- !u!114 &7917444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +410,7 @@ MonoBehaviour:
   FoodBox_Box_Tu: {fileID: 1502398369}
   FoodBox_Door_Tu: {fileID: 771319947}
   DogFood_Tu: {fileID: 1760777292}
+  dogFoodData: {fileID: 11400000, guid: ddc01fb7bac795a4a9c3bfa80815a94b, type: 2}
 --- !u!114 &7917445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,14 +516,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7917442}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -30.4806, y: 0.63, z: -31.54}
+  m_LocalPosition: {x: -30.4806, y: 0.565, z: -31.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1760777293}
   - {fileID: 1502398372}
   - {fileID: 771319950}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &10123436
 GameObject:
@@ -1590,6 +1568,7 @@ GameObject:
   - component: {fileID: 53517427}
   - component: {fileID: 53517426}
   - component: {fileID: 53517425}
+  - component: {fileID: 53517428}
   m_Layer: 5
   m_Name: Bite Button
   m_TagString: BiteButton1
@@ -1710,6 +1689,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53517423}
   m_CullTransparentMesh: 1
+--- !u!114 &53517428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53517423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e28d20607ab284b94d86358504ca07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  biteButton: {fileID: 53517425}
+  smashButton: {fileID: 811586476}
+  barkButton: {fileID: 1107784126}
+  sniffButton: {fileID: 1847956158}
+  pushOrPressButton: {fileID: 1566486903}
+  centerButton1: {fileID: 464708466}
+  centerDisableButton1: {fileID: 0}
+  centerButton2: {fileID: 0}
+  centerDisableButton2: {fileID: 0}
 --- !u!1 &56099919
 GameObject:
   m_ObjectHideFlags: 0
@@ -6277,7 +6277,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5e05df63766c9fc4c847ebd45dca179c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5e05df63766c9fc4c847ebd45dca179c, type: 3}
       propertyPath: m_LocalScale.x
@@ -10865,6 +10865,8 @@ MonoBehaviour:
     IsHealthMachineFixed_T_C2: 0
     IsSmartFarmOpen_T_C2: 0
     IsWEDoorOpened_M_C2: 0
+    IsWLDoorHalfOpened_M_C2: 0
+    IsWLDoorOpened_M_C2: 0
     IsCheckDrug: 0
     IsDetox: 0
     IsHide: 0
@@ -10902,6 +10904,7 @@ MonoBehaviour:
     IsFullChargeTablet: 0
     IsNoBoxes: 0
     IsTabletMoved: 0
+    IsTabletDestory: 0
     sweetPotatoEat: 0000000000000000000000000000
     Pot1InPotato: 0
     Pot2InPotato: 0
@@ -22139,15 +22142,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7917449}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.20000006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalScale.y
@@ -22155,23 +22158,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.20000006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.53
+      value: -30.1886
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.52534103
+      value: 0.10465896
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.65
+      value: -30.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -22179,7 +22182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
       propertyPath: m_LocalRotation.z
@@ -24310,7 +24313,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc969589c60ed174fbca819f0bc11acb, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc969589c60ed174fbca819f0bc11acb, type: 3}
       propertyPath: m_LocalScale.x
@@ -41847,11 +41850,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
   m_PrefabInstance: {fileID: 854319944}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1760777293 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 72d453455c4439e41bf91c659205e8fd, type: 3}
-  m_PrefabInstance: {fileID: 854319944}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1760777294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41904,7 +41902,7 @@ MonoBehaviour:
   sniffButton: {fileID: 1557036764}
   biteButton: {fileID: 1762714029}
   smashButton: {fileID: 812546443}
-  pushOrPressButton: {fileID: 809806996}
+  pushOrPressButton: {fileID: 1340765754}
   centerButton1: {fileID: 1593067064}
   centerDisableButton1: {fileID: 0}
   centerButton2: {fileID: 0}

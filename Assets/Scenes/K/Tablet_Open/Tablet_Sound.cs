@@ -17,6 +17,10 @@ public class Tablet_Sound : MonoBehaviour
 
     public bool IsTabletSoundListen = false; // 태블릿 소리를 들었는가?
 
+    /* 상태창 관련 오브젝트 */
+    public GameObject samplePanel; // 상태창
+    public TMPro.TextMeshProUGUI sampleText; // 상태창 텍스트
+
     void Start()
     {
         Tablet_Data = Tablet.GetComponent<ObjData>();
@@ -57,13 +61,25 @@ public class Tablet_Sound : MonoBehaviour
         {
             Invoke("FollowTablet", 2f);
             Debug.Log("태블릿 소리 감지");
-            // 상태창에 "[소리] 이상한 기계음" 쓰기
+            PrintSomething(); // 상태창에 "[소리] 이상한 기계음"
+
+
         }
     }
+
+    void PrintSomething()
+    {
+        samplePanel.SetActive(true); // 상태창을 활성화한다. 
+        sampleText.text = "[소리] 이상한 기계음";
+    }
+
+
+
     public void OnTriggerExit(Collider other)
     {
         if (other.gameObject == Player_Noah)
         {
+            samplePanel.SetActive(false); // 상태창을 활성화한다. 
             CancelInvoke("FollowTablet");
 
             // TabletSoundArea.SetActive(false);

@@ -20,6 +20,7 @@ public class SLManager : MonoBehaviour
             character.S_IsAIAwake_M_C1 = false;
             character.ActiveMissionList[0] = false;
             character.ActiveMissionList[3] = false;
+            character.IsTabletUnlock = false;
             SaveSystem.Save(character, "save_001");
         }
 

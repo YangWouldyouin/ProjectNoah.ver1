@@ -15,6 +15,8 @@ pushButton, DisableButton, smashButton;
     public GameObject FoodBox_Door_Tu;
     public GameObject DogFood_Tu;
 
+    public ObjectData dogFoodData;
+
 
     void Start()
     {
@@ -91,12 +93,11 @@ pushButton, DisableButton, smashButton;
 
     public void OnSmash() // 파괴하기
     {
-        FoodBox_Tu.IsSmash = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.PlayerSmash1();
 
         /* 파괴하기 내용 쓰기 (2초 딜레이가 애니메이션이 자연스러움) */
-        Invoke(" SmashInteraction", 2f);
+        Invoke("SmashInteraction", 2f);
 
         /* 오브젝트 흔드는 애니메이션 끝냄 */
         InteractionButtonController.interactionButtonController.PlayerSmash2();
@@ -104,9 +105,9 @@ pushButton, DisableButton, smashButton;
 
     void SmashInteraction()
     {
-        FoodBox_Box_Tu.SetActive(false);
-        FoodBox_Door_Tu.SetActive(false);
-        DogFood_Tu.SetActive(true);
+        Destroy(FoodBox_Tu);
+/*        FoodBox_Box_Tu.SetActive(false);
+        FoodBox_Door_Tu.SetActive(false);*/
     }
 
 

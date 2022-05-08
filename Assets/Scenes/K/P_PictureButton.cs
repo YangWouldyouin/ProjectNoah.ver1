@@ -27,10 +27,15 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
     public int ran; // ·£´ý »çÁø
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     /* ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ W-1´ë»ç »ðÀÔ ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ */
 
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         PictureButton_P = GetComponent<ObjData>();
 
         TakePic_Sound_P = GetComponent<AudioSource>();
@@ -131,6 +136,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         Report_GUI_P.SetActive(false); // Ã¢ ²ô±â
         UniverseImage_P.SetActive(false);
         /* ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ W-2´ë»ç »ðÀÔ ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ */
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(61));
     }
 
     public void Cancel() //Äµ½½ ¹öÆ° ´©¸£¸é

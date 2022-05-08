@@ -143,11 +143,20 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
             GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2 = true; // 항상 업무공간에서 생활공간 이동 가능
 
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Y-3대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(29));
         }
         else
         {
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 카드키 안 물었을 때 -> Y-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+            if (CardKeyData_WL.IsBite == false)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(27));
+            }
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 상자에 올라가지 않았을 때 -> Y-2대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+            if(boxData_WL.IsUpDown == false)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(28));
+            }
         }
     }
     IEnumerator ChangePressFalse() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴
