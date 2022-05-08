@@ -10,9 +10,20 @@ public class MC_DogProfileUIManager : MonoBehaviour
     public GameObject RightButton_D;
     public GameObject LeftButton_D;
 
-    // 강아지 현재 상태
-    public Text Health_D; // 건강 상태
+    // 강아지 현재 상태 (스탯 계산)
+    public Text Sleep_text_D; // 피로도
+    public Text HP_text_D; // 체력
+    public Text Water_text_D; // 목마름
+    public Text Food_text_D; // 허기
 
+    public int Sleep_int_D; // 피로도
+    public int HP_int_D; // 체력
+    public int Water_int_D; // 목마름
+    public int Food_int_D; // 허기
+
+
+    public int noahStat; // 노아 현재 스탯
+    public int ranStat; // 랜덤 스탯 값
 
     /* 기본 설정 */
     public int i = 0;
@@ -74,9 +85,17 @@ public class MC_DogProfileUIManager : MonoBehaviour
         }
     }
 
-    //public void DogCurrentStatus() // 강아지 현재 상태 불러오기
-    //{
-    //    // Health_D.text = 
-    //    // 위의 텍스트 값에 현재 스탯(스탯 코드에 있는 수치들 연동하면 될 듯)값 넣기
-    //}
+    public void DogCurrentStatus() // 강아지 현재 상태 불러오기
+    {
+        ranStat = Random.Range(-5, 5); // 랜덤 값
+        noahStat = GameManager.gameManager._gameData.statNum; // 노아 현재 스탯 값 불러오기
+
+        Sleep_int_D = ranStat + noahStat;
+        string Sleep = Sleep_int_D.ToString();
+
+        //Sleep_text_D = "피로도" + Sleep;
+
+        // Sleep_D.text = GameManager.gameManager._gameData.statNum + ranStat
+        // 위의 텍스트 값에 현재 스탯(스탯 코드에 있는 수치들 연동하면 될 듯)값 넣기
+    }
 }
