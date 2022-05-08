@@ -119,7 +119,8 @@ public class GameData
     public bool Pot2InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
     public bool Pot3InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
 
-    public bool[] FoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //음식 먹은 거 확인
+    public bool[] GoodFoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //스탯 올리는 음식 먹은 거 확인
+    public bool[] BadFoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //스탯 올리는 음식 먹은 거 확인
 
 
     // 운석수집기 문
