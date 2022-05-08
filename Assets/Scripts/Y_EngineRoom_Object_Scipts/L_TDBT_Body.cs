@@ -21,6 +21,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
     void Start()
     {
         dialogManager = dialog_CS.GetComponent<DialogManager>();
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(33));
 
         playerEquipment = BaseCanvas._baseCanvas.equipment;
 
@@ -31,7 +32,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
         TDBT_BodyData_L = GetComponent<ObjData>();
 
-        /* ObjData ·ÎºÎÅÍ »óÈ£ÀÛ¿ë ¹öÆ°À» °¡Á®¿Â´Ù. */
+        /* ObjData ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½. */
         barkButton_L_TDBT_Body = TDBT_BodyData_L.BarkButton;
         barkButton_L_TDBT_Body.onClick.AddListener(OnBark);
 
@@ -49,9 +50,9 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
     void DiableButton()
     {
-        // ºñÈ°¼ºÈ­ ¹öÆ°±îÁö Æ÷ÇÔÇÏ¿© À§¿¡¼­ ¸¸µç ¸ðµç ¹öÆ° º¯¼ö¸¦ ²ö´Ù.
+        // ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 
-        // ex. ´©¸£±â ¹öÆ°, °¡¿îµ¥ ¹öÆ°ÀÌ ¿À¸£±â ¹öÆ°ÀÎµ¥ Ã³À½¿¡ ºñÈ°¼ºÈ­
+        // ex. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°, ï¿½ï¿½ï¿½îµ¥ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½Îµï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
         barkButton_L_TDBT_Body.transform.gameObject.SetActive(false);
         sniffButton_L_TDBT_Body.transform.gameObject.SetActive(false);
         biteButton_L_TDBT_Body.transform.gameObject.SetActive(false);
@@ -70,7 +71,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        if (TDBT_fixPartData.IsBite) // ºÎÇ°À» ¹°¾úÀ¸¸é
+        if (TDBT_fixPartData.IsBite) // ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             Invoke("TrashDoorButtonDone", 1.5f);
         }
@@ -129,9 +130,9 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        /* »óÈ£ÀÛ¿ë ¹öÆ°À» ²û */
+        /* ï¿½ï¿½È£ï¿½Û¿ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ */
         DiableButton();
-        /*  ¹°±â¸¸ ÇÏ´Â ¾Ö´Ï¸ÞÀÌ¼Ç & ¹° ¼ö ¾ø´Â ¿ÀºêÁ§Æ®ÀÓÀ» ¾Ë¸² */
+        /*  ï¿½ï¿½ï¿½â¸¸ ï¿½Ï´ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ & ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ */
         InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
