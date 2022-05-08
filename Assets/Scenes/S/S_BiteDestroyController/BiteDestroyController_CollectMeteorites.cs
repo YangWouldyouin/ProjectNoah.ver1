@@ -117,6 +117,7 @@ public class BiteDestroyController_CollectMeteorites : MonoBehaviour, IPointerUp
     {
         // 물기 버튼이 눌러짐
         isPointerDown = true;
+        canNormalMeteor1Data.IsBite = true;
 
         // 물고나서 나올 상호작용들을 적는다.
          CameraController.cameraController.CancelObserve();
