@@ -29,6 +29,7 @@ public class GameData
     public bool IsSmartFarmOpen_T_C2; // 항상 스마트팜 열려있고, 정기적으로 스마트팜 임무 수행 가능
 
     public bool IsWEDoorOpened_M_C2; // 항상 업무공간에서 엔진실 이동 가능
+
     public bool IsWLDoorHalfOpened_M_C2; // 항상 업무공간에서 생활공간 이동 가능. 단, 문이 반만 열린채로
     public bool IsWLDoorOpened_M_C2; // 항상 업무공간에서 생활공간 이동 가능
 
@@ -100,8 +101,7 @@ public class GameData
 
 
     // 태블릿 해금 퍼즐
-    public bool IsFullChargeTablet; // 태블릿 충전여부
-   
+    public bool IsFullChargeTablet; // 태블릿 충전여부  
     public bool IsNoBoxes; // 엔진실 박스 없어짐
     public bool IsTabletMoved; // 태블릿 AI 미감지 구역에서 벗어났을 때
     public bool IsTabletDestory; // 태블릿 파괴
@@ -131,8 +131,12 @@ public class GameData
     public bool IsMeteorCollectOpen; // 운석 수집기 문 열렸는지 확인
 
 
+    // 생활공간 인형 해금
+    public bool IsLivingRoomDollOut; // 생활공간 문에 끼어있던 인형 꺼냄
+
+
     /*중요 구간 태블릿을 AI에게 들켰을 경우*/
-    public bool IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨
+    // public bool IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨
 
 
 
@@ -155,6 +159,11 @@ public class GameData
     public bool IsAIDown_M_C1C3; //AI다운 퍼즐 완료
     public bool IsKnowUsingSObj; //소화기 사용 방법을 알아냈는지
     public bool IsFindDrugDone_T_C2; //마약 보고 혹은 해독하면 다시 안함
+    public bool IsCompleteFindLivingKey; // 생활공간 카드키 찾기 완료
+    public bool IsCompleteHalfOpenLivingRoom; // 생활공간 문 반만 오픈 완료
+
+    public bool IsCompleteOpenLivingRoom; // 생활공간 문 완전 오픈 완료
+
 
     public int randomUPic;
 
