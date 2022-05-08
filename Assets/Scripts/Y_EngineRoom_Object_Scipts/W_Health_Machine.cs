@@ -23,25 +23,25 @@ public class W_Health_Machine : MonoBehaviour
     public GameObject Report_GUI;
     public GameObject DontMove;
 
-    public bool AIReprotMissionTime = false;
-
     public CancelInteractions cancelInteractions;
 
+    public InGameTime inGameTime;
+
+    public bool HealthDataReportbool;
+
     //노아 내려가는 애니메이션 필요
-    //정기 보고 체크
     //노아 스탯 정보/더미데이터 정보 메인컴퓨터로 전송
-    //다이어로그 연결
 
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialogManager_HM.GetComponent<DialogManager>();
+
         //W_HM_1
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
 
         Health_MachineData_W = GetComponent<ObjData>();
         healthMachineFixPartDataOutline = healthMachineFixPart_HM.GetComponent<Outline>();
-
-        dialogManager = dialogManager_HM.GetComponent<DialogManager>();
 
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_W_Health_Machine = Health_MachineData_W.BarkButton;
@@ -61,8 +61,27 @@ public class W_Health_Machine : MonoBehaviour
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
         upDisableButton_W_Health_Machine = Health_MachineData_W.CenterDisableButton1;
+    }
 
-        AIReprotMissionTime = true; //나중에 수정할 것
+    void Update()
+    {
+        if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
+        {
+            Debug.Log("상태 체크 정기 업무 시작");
+            GameManager.gameManager._gameData.IsAIReportMissionTime = true;
+            HealthDataReportbool = false;
+
+            //W_HM_여따써줘
+        }
+        if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10 && HealthDataReportbool == false)
+        {
+            Debug.Log("상태 체크 정기 업무 종료");
+            GameManager.gameManager._gameData.IsAIReportMissionTime = false;
+            HealthDataReportbool = false;
+
+            GameManager.gameManager._gameData.IsReportCancleCount += 1;
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+        }
     }
 
     void DiableButton()
@@ -179,9 +198,8 @@ public class W_Health_Machine : MonoBehaviour
 
         healthMachineData.IsCenterButtonDisabled = false;
 
-        //W_HM_2 : 아래 줄이 언니가 추가해둔 스크립트. 수정해야 할 듯!
+        //W_HM_2
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(6));
-        //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(7)); 
 
         GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -189,7 +207,7 @@ public class W_Health_Machine : MonoBehaviour
 
     public void ReportJudgment()
     {
-        if (AIReprotMissionTime == true)
+        if (GameManager.gameManager._gameData.IsAIReportMissionTime == true)
         {
             Debug.Log("보고하기 임무 중");
             Report_GUI.SetActive(true);
@@ -215,10 +233,14 @@ public class W_Health_Machine : MonoBehaviour
         Debug.Log("보고하기");
         Report_GUI.SetActive(false);
         cancelInteractions.enabled = true;
-        AIReprotMissionTime = false;
+
+        GameManager.gameManager._gameData.IsAIReportMissionTime = false;
+        HealthDataReportbool = true;
 
         if (GameManager.gameManager._gameData.IsFakeHealthData_Tablet)
         {
+            GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
+
             //더미데이터 메인컴퓨터에 업로드
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //W_HM_3
@@ -251,12 +273,12 @@ public class W_Health_Machine : MonoBehaviour
         Report_GUI.SetActive(false);
         cancelInteractions.enabled = true;
 
+        GameManager.gameManager._gameData.IsAIReportMissionTime = false;
+
         GameManager.gameManager._gameData.IsReportCancleCount += 1;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         //W_HM_4
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
-
-        AIReprotMissionTime = false;
     }
 }

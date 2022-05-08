@@ -200,6 +200,7 @@ public class GameData
     //    public bool IsSmartFarmMissionDone = false; 
 
     public bool IsPhotoTime; //사진찍기 임무 진행 체크, 사내 뉴스에서 찍은 사진 확인 후 다시 false
+    public bool IsAIReportMissionTime; //상태체크기계 임무 진행 체크 
 }
 
 
