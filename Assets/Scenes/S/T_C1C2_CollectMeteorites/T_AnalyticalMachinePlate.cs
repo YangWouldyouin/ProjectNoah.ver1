@@ -11,7 +11,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
     /*연관있는 오브젝트*/
     public GameObject T_RealNormalMeteor1;
     public GameObject T_RealImportantMeteor;
-    public GameObject T_AreRubber;
+    //public GameObject T_AreRubber;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_AnalyticalMachineButton, sniffButton_T_AnalyticalMachineButton, biteButton_T_AnalyticalMachineButton,
@@ -22,15 +22,20 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
     public ObjectData RealNormalMeteor1Data_T;
     public ObjectData RealimportantMeteorData_T;
-    public ObjectData areRubberData_T;
+    //public ObjectData areRubberData_T;
 
     /*Outline*/
     Outline RealNormalMeteor1Outline_T;
     Outline RealimportantMeteorOutline_T;
 
+    public GameObject dialog_CS;
+    DialogManager dialogManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog_CS.GetComponent<DialogManager>();
+
         /*ObjData*/
         analyticalMachinePlateObjData_T = GetComponent<ObjData>();
 
@@ -77,55 +82,59 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        if(areRubberData_T.IsBite)
+        if(RealNormalMeteor1Data_T.IsBite)
         {
-            //고무판을 물고 일반 운석을 물면
-            if (areRubberData_T.IsBite && RealNormalMeteor1Data_T.IsBite)
-            {
-                T_RealNormalMeteor1.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
-                T_RealNormalMeteor1.transform.parent = null;
+            T_RealNormalMeteor1.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            T_RealNormalMeteor1.transform.parent = null;
 
-                T_RealNormalMeteor1.transform.position = new Vector3(-254.667f, 2.2122f, 690.674f);
+            T_RealNormalMeteor1.transform.position = new Vector3(-254.667f, 2.2122f, 690.674f);
 
-                GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 = true;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-                Invoke("Report_Popup", 4f);
+            /*죽은 척하기 임무시작 가능하다*/
+            Invoke("StartPretendDead", 100);
 
-                //상호작용을 꺼준다.
+            Invoke("Report_Popup", 4f);
 
-                RealNormalMeteor1Data_T.IsNotInteractable = true; // 상호작용 불가능하게
-                RealNormalMeteor1Outline_T.OutlineWidth = 0;
-            }
+            //상호작용을 꺼준다.
 
-            //고무판을 물고 특별한 운석을 물면
-            if(areRubberData_T.IsBite && RealimportantMeteorData_T)
-            {
-                /*중요 운석을 넣었는지 확인*/
-                GameManager.gameManager._gameData.IsInputImportantMeteorEnd = true;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-                //C-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-
-                T_RealImportantMeteor.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
-                T_RealImportantMeteor.transform.parent = null;
-
-                T_RealImportantMeteor.transform.position = new Vector3(-254.667f, 2.2122f, 690.674f);
-
-                Invoke("Report_Popup", 4f);
-
-                //상호작용을 꺼준다.
-
-                RealimportantMeteorData_T.IsNotInteractable = true; // 상호작용 불가능하게
-                RealimportantMeteorOutline_T.OutlineWidth = 0;
-            }
+            RealNormalMeteor1Data_T.IsNotInteractable = true; // 상호작용 불가능하게
+            RealNormalMeteor1Outline_T.OutlineWidth = 0;
         }
 
-        else if(RealNormalMeteor1Data_T.IsBite || RealimportantMeteorData_T.IsBite)
+
+        if(RealimportantMeteorData_T.IsBite)
         {
-            Debug.Log("감염엔딩");
+            /*중요 운석을 넣었는지 확인*/
+            GameManager.gameManager._gameData.IsInputImportantMeteorEnd = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            //C-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
+            T_RealImportantMeteor.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            T_RealImportantMeteor.transform.parent = null;
+
+            T_RealImportantMeteor.transform.position = new Vector3(-254.667f, 2.2122f, 690.674f);
+
+            Invoke("Report_Popup", 4f);
+
+            //상호작용을 꺼준다.
+
+            RealimportantMeteorData_T.IsNotInteractable = true; // 상호작용 불가능하게
+            RealimportantMeteorOutline_T.OutlineWidth = 0;
         }
+
         
+    }
+
+    void StartPretendDead()
+    {
+        GameManager.gameManager._gameData.IsStartPretendDead = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        //D-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(55));
     }
 
     public void OnSniff()

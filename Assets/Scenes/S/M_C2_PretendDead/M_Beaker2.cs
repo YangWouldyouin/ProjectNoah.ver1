@@ -79,10 +79,6 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
         eatDisableButton_M_Beaker2 = Beaker2ObjData_M.CenterButton1;
 
-        if (Beaker2Data_M.IsEaten)
-        {
-            Invoke(" FakeAI2", 3f);
-        }
 
     }
 
@@ -113,12 +109,6 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             ChangeBeaker2.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
 
             M_RealAnswerMeteorForBeaker.SetActive(false);
-
-            if (Beaker2Data_M.IsEaten)
-            {
-                Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
-                //쓰러지는 애니메이션 삽입 예정
-            }
         }
     }
 
@@ -227,6 +217,11 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerEat();
+
+        Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
+        //쓰러지는 애니메이션 삽입 예정
+
+        Invoke(" FakeAI2", 3f);
     }
 
     public void OnBite()
