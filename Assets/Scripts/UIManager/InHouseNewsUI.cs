@@ -56,7 +56,7 @@ public class InHouseNewsUI : MonoBehaviour
             Invoke("ExitBTNotice", 3f);
             Invoke("NewUIFalse", 230f);
         }
-        else if ((inGameTime.days + 1) == 4)
+        else if ((inGameTime.days + 1) == 4 && inGameTime.hours == 0)
         {
             InhouseNews_GUI.SetActive(true);
 
@@ -78,7 +78,7 @@ public class InHouseNewsUI : MonoBehaviour
             Invoke("ExitBTNotice", 3f);
             Invoke("NewUIFalse", 230f);
         }
-        else if ((inGameTime.days + 1) == 6)
+        else if ((inGameTime.days + 1) == 6 && inGameTime.hours == 0)
         {
             InhouseNews_GUI.SetActive(true);
 
@@ -100,7 +100,7 @@ public class InHouseNewsUI : MonoBehaviour
             Invoke("ExitBTNotice", 3f);
             Invoke("NewUIFalse", 230f);
         }
-        else if ((inGameTime.days + 1) % 2 == 1)
+        else if ((inGameTime.days + 1) % 2 == 1 && inGameTime.hours == 0)
         {
             if (GameManager.gameManager._gameData.IsPhotoTime == true)
             {
