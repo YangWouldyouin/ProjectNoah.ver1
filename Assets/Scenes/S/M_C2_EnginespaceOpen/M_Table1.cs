@@ -89,9 +89,6 @@ public class M_Table1 : MonoBehaviour, IInteraction
         {
             table1Data_M.IsCenterButtonChanged = false;
 
-            //B-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
-
             /*            canPackData_M.IsNotInteractable = true;
                         canPackOutline_M.OutlineWidth = 0;*/
         }
@@ -156,6 +153,9 @@ public class M_Table1 : MonoBehaviour, IInteraction
         //Invoke("changeObserve", 3f);
 
         table1Data_M.IsObserve = false; //걍 오르기만 햇는데 관찰하기가 알아서 체크 되길래 넣어준거
+
+        //B-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
 
 
         if (!table1Data_M.IsUpDown)
