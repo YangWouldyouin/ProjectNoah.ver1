@@ -176,7 +176,7 @@ public class GameData
     public bool IsCompleteHalfOpenLivingRoom; // 생활공간 문 반만 오픈 완료
 
     public bool IsCompleteOpenLivingRoom; // 생활공간 문 완전 오픈 완료
-
+    public bool IsTrashDoorBTFixed_L_L1; //생활공간 고치기
 
     public int randomUPic;
 
