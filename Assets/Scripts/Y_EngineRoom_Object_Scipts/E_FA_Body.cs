@@ -14,9 +14,22 @@ public class E_FA_Body : MonoBehaviour, IInteraction
 
     public ObjectData FA_fuelabsorberfixPartData;
 
+    public GameObject dialog_CS;
+    DialogManager dialogManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog_CS.GetComponent<DialogManager>();
+
+        if (!GameManager.gameManager._gameData.IsFirstEnterEngine)
+        {
+            GameManager.gameManager._gameData.IsFirstEnterEngine = true;
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
+
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+
         playerEquipment = BaseCanvas._baseCanvas.equipment;
 
         FA_BodyData_E = GetComponent<ObjData>();

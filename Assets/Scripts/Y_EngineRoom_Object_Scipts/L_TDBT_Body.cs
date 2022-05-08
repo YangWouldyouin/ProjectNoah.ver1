@@ -22,6 +22,14 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
     {
         dialogManager = dialog_CS.GetComponent<DialogManager>();
 
+        if (!GameManager.gameManager._gameData.IsFirstEnterLiving)
+        {
+            GameManager.gameManager._gameData.IsFirstEnterLiving = true;
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
+
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+
         playerEquipment = BaseCanvas._baseCanvas.equipment;
 
         TDBT_BodyData_L = GetComponent<ObjData>();

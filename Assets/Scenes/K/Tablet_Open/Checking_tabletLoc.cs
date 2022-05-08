@@ -15,8 +15,13 @@ public class Checking_tabletLoc : MonoBehaviour
     public GameObject noahPlayer;
     ObjData noahPlayerData_E;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         // TabletHideZone_Data_E = TabletHideZone_E.GetComponent<ObjData>();
         TabletData_E = Tablet_E.GetComponent<ObjData>();
         noahPlayerData_E = noahPlayer.GetComponent<ObjData>();
@@ -45,12 +50,33 @@ public class Checking_tabletLoc : MonoBehaviour
             {
                 Debug.Log("타블렛 파괴");
                 // AI: 이상 전파가 감지되었습니다. 해당 기기를 폐기합니다
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(39));
+
                 Tablet_E.SetActive(false);
                 //Destroy(Tablet_E); // 타블렛 파괴
                 GameManager.gameManager._gameData.IsTabletDestory = true; // 반복문에서 빠져나옴
             }
         }
     }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "noahPlayer")
+        {
+            if (!GameManager.gameManager._gameData.IsFirstExitTablet)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(40));
+                GameManager.gameManager._gameData.IsFirstExitTablet = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+            
+            if (GameManager.gameManager._gameData.IsFirstExitTablet)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(41));
+            }
+        }
+    }
+
     //public void OnTriggerEnter(Collider other)
     //{
     //    if (other.gameObject.name == "noahPlayer" && tabletData.IsBite)

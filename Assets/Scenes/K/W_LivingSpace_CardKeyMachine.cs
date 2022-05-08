@@ -147,6 +147,13 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
             /* ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ Y-3´ë»ç »ðÀÔ ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ */
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(29));
+
+            if (GameManager.gameManager._gameData.IsWEDoorOpened_M_C2)
+            {
+                GameManager.gameManager._gameData.IsAllDoorOpened = true;
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(12));
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
         }
         else
         {

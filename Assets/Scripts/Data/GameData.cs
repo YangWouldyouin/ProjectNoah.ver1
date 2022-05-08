@@ -10,8 +10,7 @@ public class GameData
     public int IsReportCancleCount = 0;
     //AI 상반 임무 카운트, 2 이상 될 시 태블릿 궤도 좌표 해금
     public int IsAIVSMissionCount = 0;
-    //수상한 물건(스텔스 모드) 몇 번 했는지. 횟수에 따라 AI 대사 달라짐.
-    public int IsUseStrangeObjCount = 0;
+
 
 
     /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
@@ -34,6 +33,14 @@ public class GameData
     public bool IsWLDoorHalfOpened_M_C2; // 항상 업무공간에서 생활공간 이동 가능. 단, 문이 반만 열린채로
     public bool IsWLDoorOpened_M_C2; // 항상 업무공간에서 생활공간 이동 가능
 
+    public bool IsAllDoorOpened; //모든 공간이 해금 완료되었는지
+
+    //최초진입 체크
+    public bool IsFirstEnterWorking; //업무공간 최초 진입 확인
+    public bool IsFirstEnterEngine; //엔진실 최초 진입 확인
+    public bool IsFirstEnterLiving; //생활공간 최초 진입 확인
+    public bool IsFirstExitTablet; //사각지대 처음으로 빠져나올 때
+
 
     //마약탐지 퍼즐
     public bool IsCheckDrug; //마약인 것을 확인
@@ -41,6 +48,7 @@ public class GameData
 
 
     //수상한물건 & AI 다운 퍼즐
+    public bool IsFirstUsingStrangeObj; //수상한 물건 사용해본 적 있는지
     public bool IsHide; //소화기(일회용) 사용 시 스텔스 효과
     public bool IsAlert; //스텔스 모드가 아닌데 칩 물고 메인시스템에 접근 시
     public bool IsAIDown; //교란칩 꽂을 시 AI 다운 됨

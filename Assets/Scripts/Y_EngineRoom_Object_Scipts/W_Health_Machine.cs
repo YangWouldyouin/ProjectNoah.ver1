@@ -37,8 +37,15 @@ public class W_Health_Machine : MonoBehaviour
     {
         dialogManager = dialogManager_HM.GetComponent<DialogManager>();
 
-        //W_HM_1
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
+        if (!GameManager.gameManager._gameData.IsFirstEnterWorking)
+        {
+            //W_HM_1
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
+            GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+
 
         Health_MachineData_W = GetComponent<ObjData>();
         healthMachineFixPartDataOutline = healthMachineFixPart_HM.GetComponent<Outline>();

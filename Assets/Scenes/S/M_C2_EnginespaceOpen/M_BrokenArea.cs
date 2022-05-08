@@ -101,6 +101,13 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
             //B-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(26));
 
+            if (GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2 || GameManager.gameManager._gameData.IsWLDoorOpened_M_C2)
+            {
+                GameManager.gameManager._gameData.IsAllDoorOpened = true;
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(12));
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+
         }
 
 
