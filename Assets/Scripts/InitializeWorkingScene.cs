@@ -37,6 +37,15 @@ public class InitializeWorkingScene : MonoBehaviour
     public GameObject InsertCardPad; // 카드 패드
 
 
+
+    [Header("<생활공간 문 반만 열기 완료>")]
+    public GameObject CardKey_WL; // 생활공간 카드키
+    public GameObject LivingSpace_CardKeyMachine_W // 생활공간 카드키 기계
+    public Animator HalfLivingDoorAni_M; // 생활공간 문 반만 열리기
+    BoxCollider CardKey_WL_Collider;
+    BoxCollider LivingSpace_CardKeyMachine_W_Collider;
+
+
     [Header("<운석 수집 완료>")]
     public Animator meteorBoxAnim; //  수집기 문열리는 애니메이션
     public Animator analyticalMachineAnim; // 분석기 문열리는 애니메이션
@@ -144,6 +153,10 @@ public class InitializeWorkingScene : MonoBehaviour
         EngineDoor_Collider = EngineDoor.GetComponent<BoxCollider>();
         InsertCardPad_Collider = InsertCardPad.GetComponent<BoxCollider>();
 
+        /* 생활공간 오픈 */
+        CardKey_WL_Collider = CardKey_WL.GetComponent<BoxCollider>();
+        LivingSpace_CardKeyMachine_W_Collider = CardKey_WL.GetComponent<BoxCollider>();
+
         /*죽은척하기*/
         Beaker1_Collider = Beaker1.GetComponent<BoxCollider>();
         Beaker2_Collider = Beaker2.GetComponent<BoxCollider>();
@@ -222,9 +235,19 @@ public class InitializeWorkingScene : MonoBehaviour
             InsertCardPad_Collider.enabled = false;
         }
 
+        /* 생활공간 문 반 열기 퍼즐 완료 시 */
+        if (intialGameData.IsWLDoorHalfOpened_M_C2)
+        {
+            HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
+            HalfLivingDoorAni_M.SetBool("HalfEnd", true);
+
+            CardKey_WL_Collider.enabled = false;
+            LivingSpace_CardKeyMachine_W_Collider.enabled = false;
+        }
+
 
         /*운석 수집 퍼즐을 완료하면*/
-        if(intialGameData.IsInputNormalMeteor1_T_C2)
+        if (intialGameData.IsInputNormalMeteor1_T_C2)
         {
             meteorBoxAnim.SetBool("isMeteorBoxClose", false);
             meteorBoxAnim.SetBool("isMeteorBoxCloseEnd", false);
