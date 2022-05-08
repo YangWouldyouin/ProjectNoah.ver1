@@ -14,7 +14,7 @@ public class strangeObj : MonoBehaviour, IInteraction
     public ParticleSystem smoke;
     public Outline playerLine;
 
-    public GameManager dialog;
+    public DialogManager dialog;
     DialogManager dialogManager;
 
     void Start()
