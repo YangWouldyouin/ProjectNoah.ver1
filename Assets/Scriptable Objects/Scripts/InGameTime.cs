@@ -11,15 +11,7 @@ public class InGameTime : ScriptableObject
     public float timer;
 
     public float missionTimer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float maxTimer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool IsTimerStarted;
 }

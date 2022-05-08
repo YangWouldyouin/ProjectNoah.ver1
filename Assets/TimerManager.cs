@@ -6,37 +6,68 @@ using UnityEngine.SceneManagement;
 
 public class TimerManager : MonoBehaviour
 {
-    [SerializeField] Image timerBar;
 
-    public float maxTime = 5f;
-    public float timeLeft = 5f;
+    public static TimerManager timerManager { get; private set; }
+
+    private void Awake()
+    {
+        timerManager = this;
+    }
 
     public InGameTime inGameTime;
 
-    // Start is called before the first frame update
+    Image timerBar;
+    Image timerText;
+    Image timerBackground;
+
+    [HideInInspector]
+    public float maxTime = 5f;
+    [HideInInspector]
+    public float timeLeft = 5f;
+
     void Start()
     {
-        
-    }
+        timerBar = transform.GetChild(0).GetComponent<Image>();
+        timerText = transform.GetChild(1).GetComponent<Image>();
+        timerBackground = transform.GetChild(2).GetComponent<Image>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (inGameTime.missionTimer > 0)
+        if (inGameTime.IsTimerStarted)
         {
-            inGameTime.missionTimer -= Time.deltaTime;
-            timerBar.fillAmount = inGameTime.missionTimer / maxTime;
-        }
+            timerBar.gameObject.SetActive(true);
+            timerText.gameObject.SetActive(true);
+            timerBackground.gameObject.SetActive(true);
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-
-
+            StartCoroutine(StartTimer());
         }
     }
 
-    public void getscene()
+    public void TimerStart(float minutes)
     {
-        SceneManager.LoadScene("new livingroom");
+        timerBar.gameObject.SetActive(true);
+        timerText.gameObject.SetActive(true);
+        timerBackground.gameObject.SetActive(true);
+
+        inGameTime.IsTimerStarted = true;
+        inGameTime.missionTimer = minutes;
+        inGameTime.maxTimer = minutes;
+
+        StartCoroutine(StartTimer());
+    }
+
+    IEnumerator StartTimer()
+    {
+        timerBar.fillAmount = inGameTime.missionTimer / inGameTime.maxTimer;
+        while (inGameTime.missionTimer >= 0)
+        {
+            yield return new WaitForSeconds(0.01f);
+            inGameTime.missionTimer -= 0.01f;
+            timerBar.fillAmount = inGameTime.missionTimer / inGameTime.maxTimer;
+        }
+
+        timerBar.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
+        timerBackground.gameObject.SetActive(false);
+
+        inGameTime.IsTimerStarted = false;
     }
 }
