@@ -40,7 +40,7 @@ public class InitializeWorkingScene : MonoBehaviour
 
     [Header("<생활공간 문 반만 열기 완료>")]
     public GameObject CardKey_WL; // 생활공간 카드키
-    public GameObject LivingSpace_CardKeyMachine_W // 생활공간 카드키 기계
+    public GameObject LivingSpace_CardKeyMachine_W; // 생활공간 카드키 기계
     public Animator HalfLivingDoorAni_M; // 생활공간 문 반만 열리기
     BoxCollider CardKey_WL_Collider;
     BoxCollider LivingSpace_CardKeyMachine_W_Collider;
