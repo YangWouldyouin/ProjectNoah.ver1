@@ -29,12 +29,36 @@ public class InitializeWorkingScene : MonoBehaviour
     public GameObject EngineDoor; // 엔진실 문
     public GameObject InsertCardPad; // 카드 패드
 
+
     [Header("<운석 수집 완료>")]
     public Animator meteorBoxAnim; //  수집기 문열리는 애니메이션
     public Animator analyticalMachineAnim; // 분석기 문열리는 애니메이션
     public GameObject ImportantMeteor; // 중요 운석
     public GameObject NormalMeteor1; // 평범한 운석1
 
+
+    [Header("<죽은 척 하기 완료하면>")]
+    public GameObject Beaker1;
+    public GameObject Beaker2;
+    public GameObject CylinderAnswer;
+    public GameObject CylinderWrong;
+    public GameObject CylinderNoNeed1;
+    public GameObject CylinderNoNeed2;
+    public GameObject MeteorBoxButton1;
+    public GameObject MeteorBoxButton2;
+    public GameObject MeteorBoxButton3;
+    public GameObject MeteorBoxButton4;
+    public GameObject MeteorBoxButton5;
+    public GameObject MeteoritesStorage1;
+    public GameObject MeteoritesStorage2;
+    public GameObject MeteoritesStorage3;
+    public GameObject MeteoritesStorage4;
+    public GameObject MeteoritesStorage5;
+    public GameObject WrongMeteor1;
+    public GameObject WrongMeteor2;
+    public GameObject WrongMeteor3;
+    public GameObject WrongMeteor4;
+    public GameObject AnswerMeteor;
 
 
     /*Object Data*/
@@ -57,6 +81,23 @@ public class InitializeWorkingScene : MonoBehaviour
     BoxCollider EngineDoor_Collider;
     BoxCollider InsertCardPad_Collider;
 
+    BoxCollider Beaker1_Collider;
+    BoxCollider Beaker2_Collider;
+    BoxCollider CylinderAnswer_Collider;
+    BoxCollider CylinderWrong_Collider;
+    BoxCollider CylinderNoNeed1_Collider;
+    BoxCollider CylinderNoNeed2_Collider;
+    BoxCollider MeteorBoxButton1_Collider;
+    BoxCollider MeteorBoxButton2_Collider;
+    BoxCollider MeteorBoxButton3_Collider;
+    BoxCollider MeteorBoxButton4_Collider;
+    BoxCollider MeteorBoxButton5_Collider;
+    BoxCollider MeteoritesStorage1_Collider;
+    BoxCollider MeteoritesStorage2_Collider;
+    BoxCollider MeteoritesStorage3_Collider;
+    BoxCollider MeteoritesStorage4_Collider;
+    BoxCollider MeteoritesStorage5_Collider;
+
 
 
     // Start is called before the first frame update
@@ -74,7 +115,23 @@ public class InitializeWorkingScene : MonoBehaviour
         EngineDoor_Collider = EngineDoor.GetComponent<BoxCollider>();
         InsertCardPad_Collider = InsertCardPad.GetComponent<BoxCollider>();
 
-
+        /*죽은척하기*/
+        Beaker1_Collider = Beaker1.GetComponent<BoxCollider>();
+        Beaker2_Collider = Beaker2.GetComponent<BoxCollider>();
+        CylinderAnswer_Collider = CylinderAnswer.GetComponent<BoxCollider>();
+        CylinderWrong_Collider = CylinderWrong.GetComponent<BoxCollider>();
+        CylinderNoNeed1_Collider = CylinderNoNeed1.GetComponent<BoxCollider>();
+        CylinderNoNeed2_Collider = CylinderNoNeed2.GetComponent<BoxCollider>();
+        MeteorBoxButton1_Collider = MeteorBoxButton1.GetComponent<BoxCollider>();
+        MeteorBoxButton2_Collider = MeteorBoxButton2.GetComponent<BoxCollider>();
+        MeteorBoxButton3_Collider = MeteorBoxButton3.GetComponent<BoxCollider>();
+        MeteorBoxButton4_Collider = MeteorBoxButton4.GetComponent<BoxCollider>();
+        MeteorBoxButton5_Collider = MeteorBoxButton5.GetComponent<BoxCollider>();
+        MeteoritesStorage1_Collider = MeteoritesStorage1.GetComponent<BoxCollider>();
+        MeteoritesStorage2_Collider = MeteoritesStorage2.GetComponent<BoxCollider>();
+        MeteoritesStorage3_Collider = MeteoritesStorage3.GetComponent<BoxCollider>();
+        MeteoritesStorage4_Collider = MeteoritesStorage4.GetComponent<BoxCollider>();
+        MeteoritesStorage5_Collider = MeteoritesStorage5.GetComponent<BoxCollider>();
 
 
         /*스마트팜 오픈 퍼즐을 완료 하면*/
@@ -142,6 +199,33 @@ public class InitializeWorkingScene : MonoBehaviour
             AnalyticalMachineData_Save.IsNotInteractable = false;
             AnalyticalMachineOutline_Save.OutlineWidth = 8;
 
+        }
+
+
+        /*엔진실 열기 퍼즐을 완료하면*/
+        if(intialGameData.IsCompletePretendDead)
+        {
+            WrongMeteor1.SetActive(false);
+            WrongMeteor2.SetActive(false);
+            WrongMeteor3.SetActive(false);
+            WrongMeteor4.SetActive(false);
+            AnswerMeteor.SetActive(false);
+
+            Beaker1_Collider.enabled = false;
+            Beaker2_Collider.enabled = false;
+            CylinderAnswer_Collider.enabled = false;
+            CylinderNoNeed1_Collider.enabled = false;
+            CylinderNoNeed2_Collider.enabled = false;
+            MeteorBoxButton1_Collider.enabled = false;
+            MeteorBoxButton2_Collider.enabled = false;
+            MeteorBoxButton3_Collider.enabled = false;
+            MeteorBoxButton4_Collider.enabled = false;
+            MeteorBoxButton5_Collider.enabled = false;
+            MeteoritesStorage1_Collider.enabled = false;
+            MeteoritesStorage2_Collider.enabled = false;
+            MeteoritesStorage3_Collider.enabled = false;
+            MeteoritesStorage4_Collider.enabled = false;
+            MeteoritesStorage5_Collider.enabled = false;
         }
     }
 
