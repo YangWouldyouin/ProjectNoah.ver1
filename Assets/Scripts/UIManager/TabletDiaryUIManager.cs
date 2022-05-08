@@ -31,27 +31,28 @@ public class TabletDiaryUIManager : MonoBehaviour
     {
         PageNum.text = CurrentPageNum + "/10";
 
-        if (GameManager.gameManager._gameData.IsAIAwake_M_C1 == false)
+
+        if (GameManager.gameManager._gameData.IsCompleteOpenEngineRoom == false)
         {
             Secret1.text = "다운로드 진행 중...";
         }
         else
         {
-            Secret1.text = "우주선이 향할 행선지는 조종실의 궤도 추적 시스템이 설정해둔 행성으로만 설정이 가능하다." + "\n" + "이를 임의로 바꾸기 위해서는 조종실 시스템에 오류를 발생시키고 강제로 행선지 값을 수정하는 수밖에 없다." + "\n" 
-                + "조종실 시스템은 조종기 하단에 위치하는 포트를 열어 접근할 수 있었다." + "\n"+ "이 모든 일에 내가 엔지니어인 것은 큰 도움이 됐다." + "\n" + "대놓고 수상한 짓을 해도 수리를 핑계로 들면 다들 의심을 거두니까.";
+            Secret1.text = "선내 굴러다니는 칩을 개조해 재밌는 물건을 만들었다." + "\n" + "일명 교란칩." + "\n" + "이름 그대로 교란을 일으키는 물건으로, 기기의 포트에 꽂기만 한다면 대부분의 시스템에 오류를 발생시킬 수 있다." + "\n"
+                + "아무리 기기에 문외한인 사람이더라도 이런 물건을 본다면 의심하겠지." + "\n" + "들키면 변명조차 할 수 없기에 다른 정상적인 칩들과 함께 모아 숨겨 두었다.";
         }
 
-        if (GameManager.gameManager._gameData.IsAIAwake_M_C1 == false)
+        if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == false)
         {
             Secret2.text = "다운로드 진행 중...";
         }
         else
         {
-            Secret2.text = "선내 굴러다니는 칩을 개조해 재밌는 물건을 만들었다." + "\n" + "일명 교란칩." + "\n" + "이름 그대로 교란을 일으키는 물건으로, 기기의 포트에 꽂기만 한다면 대부분의 시스템에 오류를 발생시킬 수 있다." + "\n" 
-                + "아무리 기기에 문외한인 사람이더라도 이런 물건을 본다면 의심하겠지." + "\n" + "들키면 변명조차 할 수 없기에 다른 정상적인 칩들과 함께 모아 숨겨 두었다.";
+            Secret2.text = "우주선이 향할 행선지는 조종실의 궤도 추적 시스템이 설정해둔 행성으로만 설정이 가능하다." + "\n" + "이를 임의로 바꾸기 위해서는 조종실 시스템에 오류를 발생시키고 강제로 행선지 값을 수정하는 수밖에 없다." + "\n" 
+                + "조종실 시스템은 조종기 하단에 위치하는 포트를 열어 접근할 수 있었다." + "\n"+ "이 모든 일에 내가 엔지니어인 것은 큰 도움이 됐다." + "\n" + "대놓고 수상한 짓을 해도 수리를 핑계로 들면 다들 의심을 거두니까.";
         }
 
-        if (GameManager.gameManager._gameData.IsAIAwake_M_C1 == false)
+        if (GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 == false)
         {
             Secret3.text = "다운로드 진행 중...";
         }
@@ -62,7 +63,7 @@ public class TabletDiaryUIManager : MonoBehaviour
                 + "무언가 열심히 설명해주었는데 솔직히 이 분야는 내 전문이 아니어서 기억이 잘 안 난다." + "\n" + "대충 오렌지 향기가 나는 약물을 함께 섞으면 중화된다 한 것 같다." + "\n" + "수잔은 고마워하며 당장 마이크의 뒷덜미를 잡고 긴 설교를 시작했다." + "\n" + "나도 수잔에게 걸리지 않도록 조심해야 겠다.";
         }
 
-        if (GameManager.gameManager._gameData.IsAIAwake_M_C1 == false)
+        if (GameManager.gameManager._gameData.IsTrashDoorBTFixed_W_W1 == false)
         {
             Secret4.text = "다운로드 진행 중...";
         }
@@ -73,7 +74,7 @@ public class TabletDiaryUIManager : MonoBehaviour
                 + "\n" + "귀환까지는 시간이 남아있고, 아직까진 회사도 나를 대놓고 의심하진 않으니 이 기회를 놓치기 전에 빨리 방법을 찾아야겠다." + "\n" + "+" + "\n" + "저녁을 먹고서 다른 동료들은 모두 개인 시간을 가지느라 바쁜 틈을 타 샐비어에게 고민을 토로하였다." + "\n" + "그러자 타블렛을 이용해보라는 의견을 주었다. 나쁘지 않은 생각인 것 같다." +"\n" + "누구 여친이길래 이렇게 똑똑하고 사랑스러운 것인지.";
         }
 
-        if (GameManager.gameManager._gameData.IsAIAwake_M_C1 == false)
+        if (GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 == false)
         {
             Secret5.text = "다운로드 진행 중...";
         }
