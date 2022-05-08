@@ -24,9 +24,14 @@ public class TabletWirelessUIManager : MonoBehaviour
     public Text TW_Alert_TitleText;
     public Text TW_Alert_BodyText;
 
+    public GameObject dialogManager_HM;
+    DialogManager dialogManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialogManager_HM.GetComponent<DialogManager>();
+
         TW_MainUI.SetActive(true);
         TW_UploadSelectUI.SetActive(false);
         TW_UploadUI.SetActive(false);
@@ -144,8 +149,12 @@ public class TabletWirelessUIManager : MonoBehaviour
                         GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
                         GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
 
-                        //AI가 개빡도는 스크립트 출력
+                        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(39));
                         GameManager.gameManager._gameData.IsDontFakeCoordinateDatafile_Tablet = true;
+
+                        Color FCDTcolor = FakeCoordinateDataText.color;
+                        FCDTcolor.a = 0.3f;
+                        FakeCoordinateDataText.color = FCDTcolor;
                     }
                 }
             }
@@ -153,7 +162,7 @@ public class TabletWirelessUIManager : MonoBehaviour
             {
                 if (GameManager.gameManager._gameData.IsCanConnect_C_MS == true)
                 {
-                    if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == false)
+                    if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == false && GameManager.gameManager._gameData.IsDontFakeCoordinateDatafile_Tablet == false)
                     {
                         TW_UploadSelectUI.SetActive(false);
                         TW_UploadUI.SetActive(true);
@@ -168,6 +177,10 @@ public class TabletWirelessUIManager : MonoBehaviour
                         GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet = true;
 
                         GameManager.gameManager._gameData.IsReturnOfTheEarth = true;
+
+                        Color FCDTcolor = FakeCoordinateDataText.color;
+                        FCDTcolor.a = 0.3f;
+                        FakeCoordinateDataText.color = FCDTcolor;
                     }
 
                 }
