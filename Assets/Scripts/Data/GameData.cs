@@ -14,10 +14,10 @@ public class GameData
     public int EndingNum;
 
     /*강아지 상태 더미데이터*/
-    public int IsFakefatigue = 91; //더미피로도
-    public int IsFakeStrength = 87; //더미체력
-    public int IsFakeThirst = 82; //더미목마름
-    public int IsFakeHunger = 88; //더미배고픔
+    public int IsFakefatigue = 9; //더미피로도
+    public int IsFakeStrength = 8; //더미체력
+    public int IsFakeThirst = 8; //더미목마름
+    public int IsFakeHunger = 8; //더미배고픔
 
     /*강아지 현재 상태 데이터*/
     public int IsRealfatigue; //피로도
