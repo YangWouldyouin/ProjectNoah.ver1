@@ -20,10 +20,10 @@ public class GameData
     public int IsFakeHunger = 88; //더미배고픔
 
     /*강아지 현재 상태 데이터*/
-    public int IsRealfatigue = 91; //피로도
-    public int IsRealStrength = 87; //체력
-    public int IsRealThirst = 82; //목마름
-    public int IsRealHunger = 88; //배고픔
+    public int IsRealfatigue; //피로도
+    public int IsRealStrength; //체력
+    public int IsRealThirst; //목마름
+    public int IsRealHunger; //배고픔
 
     public int IscurrentHealthData; //메인컴퓨터에서 계산하는 스탯 수치
 
