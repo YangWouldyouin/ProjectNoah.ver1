@@ -60,6 +60,15 @@ public class InitializeWorkingScene : MonoBehaviour
     public GameObject WrongMeteor4;
     public GameObject AnswerMeteor;
 
+    [Header("<¸¶¾àÅ½Áö>")]
+    public GameObject smellRangeArea;
+    public GameObject canSmellArea;
+    public GameObject drugBag;
+    public GameObject drug;
+    public GameObject SDrug;
+    public GameObject insert01;
+    public GameObject insert02;
+
 
     /*Object Data*/
     public ObjectData MeteorButtonData_Save;
@@ -98,6 +107,14 @@ public class InitializeWorkingScene : MonoBehaviour
     BoxCollider MeteoritesStorage4_Collider;
     BoxCollider MeteoritesStorage5_Collider;
 
+    MeshCollider smellRangeAreaCol;
+    MeshCollider canSmellAreaCol;
+    BoxCollider drugBagCol;
+    BoxCollider drugCol;
+    BoxCollider SDrugCol;
+    BoxCollider insert01Col;
+    BoxCollider insert02Col;
+
 
 
     // Start is called before the first frame update
@@ -132,6 +149,15 @@ public class InitializeWorkingScene : MonoBehaviour
         MeteoritesStorage3_Collider = MeteoritesStorage3.GetComponent<BoxCollider>();
         MeteoritesStorage4_Collider = MeteoritesStorage4.GetComponent<BoxCollider>();
         MeteoritesStorage5_Collider = MeteoritesStorage5.GetComponent<BoxCollider>();
+
+        //¸¶¾à Å½Áö
+        smellRangeAreaCol = smellRangeArea.GetComponent<MeshCollider>();
+        canSmellAreaCol = canSmellArea.GetComponent<MeshCollider>();
+        drugBagCol = drugBag.GetComponent<BoxCollider>();
+        drugCol = drug.GetComponent<BoxCollider>();
+        SDrugCol = SDrug.GetComponent<BoxCollider>();
+        insert01Col = insert01.GetComponent<BoxCollider>();
+        insert02Col = insert02.GetComponent<BoxCollider>();
 
 
         /*½º¸¶Æ®ÆÊ ¿ÀÇÂ ÆÛÁñÀ» ¿Ï·á ÇÏ¸é*/
@@ -226,6 +252,30 @@ public class InitializeWorkingScene : MonoBehaviour
             MeteoritesStorage3_Collider.enabled = false;
             MeteoritesStorage4_Collider.enabled = false;
             MeteoritesStorage5_Collider.enabled = false;
+        }
+
+        //¸¶¾à Å½Áö ¿Ï·áÇÏ¸é
+        if(intialGameData.IsCheckDrug)
+        {
+            smellRangeArea.SetActive(false);
+            canSmellArea.SetActive(false);
+            drugBag.SetActive(false);
+
+            insert01Col.enabled = false;
+            drugCol.enabled = false;
+
+            drug.transform.position = new Vector3(-249.0776f, 0.4852f, 669.806f);
+            drug.transform.rotation = Quaternion.Euler(0, 0, 90);
+            drug.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        if(intialGameData.IsFindDrugDone_T_C2)
+        {
+            insert02Col.enabled = false;
+            SDrugCol.enabled = false;
+
+            SDrug.transform.position = new Vector3(-249.0776f, 0.1652f, 669.806f);
+            SDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
     }
 
