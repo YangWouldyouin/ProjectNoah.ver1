@@ -6519,7 +6519,7 @@ BoxCollider:
   m_GameObject: {fileID: 202398493}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.06481949, y: 0.019999998, z: 0.018666662}
   m_Center: {x: -0.02240971, y: -0.010130555, z: -0.00066666893}
@@ -12651,6 +12651,9 @@ MonoBehaviour:
     IsFindStrangeObj: 0
     IsStartToReady: 0
     IsStartOrbitChange: 0
+    IsBasicTuto: 0
+    IsMiddleTuto: 0
+    IsEndTuto: 0
     IsCompleteSmartFarmOpen: 0
     IsCompleteFindEngineKey: 0
     IsCompleteOpenEngineRoom: 0
@@ -25429,6 +25432,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc990f4eda1da5b469dbce762b0e70ba, type: 3}
+--- !u!1 &818362816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8890935284831192949, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+  m_PrefabInstance: {fileID: 342996351253066976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &821712622
 GameObject:
   m_ObjectHideFlags: 0
@@ -35798,7 +35806,7 @@ BoxCollider:
   m_GameObject: {fileID: 1191933980}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.011403863, y: 0.007957131, z: 0.002526801}
   m_Center: {x: 0.0001282394, y: 0.00027041853, z: 0.0012634016}
@@ -49900,6 +49908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0e1e3090980894bbd32bd5958168a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsIDConsole: {fileID: 1992389350}
+  IsIDCard: {fileID: 1191933980}
   dogFoodData: {fileID: 11400000, guid: ddc01fb7bac795a4a9c3bfa80815a94b, type: 2}
   dialog: {fileID: 1915457782}
 --- !u!114 &1760777295
@@ -51190,7 +51200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb19091e516dab84e8aadccc801afa18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  S_canPipe: {fileID: 0}
+  S_canPipe: {fileID: 818362816}
   canpressCabinetBody1Data_M: {fileID: 11400000, guid: c7c6f19a6da283f44b6967ca42a5dc38, type: 2}
   canPressCabinetDoor1Data_S: {fileID: 11400000, guid: dba8d49cc89b17947a4f666f452d8cd1, type: 2}
   canPipeData_S: {fileID: 11400000, guid: 237b984ed555205478ac716c91bcee34, type: 2}
@@ -57470,6 +57480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   S_canIDCard: {fileID: 1191933980}
+  canPressCabinetDoor: {fileID: 202398493}
   IDConsoleData_S: {fileID: 11400000, guid: 19c7f5ed7146f3247998f926e069c285, type: 2}
   canIDCardData_S: {fileID: 11400000, guid: ffdb227697f4a9844a9cd70eb6fbebaf, type: 2}
   dialog: {fileID: 1915457782}
@@ -57482,7 +57493,7 @@ BoxCollider:
   m_GameObject: {fileID: 1992389350}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.24766418, z: 2.0782273}
   m_Center: {x: 0.5, y: 1.29, z: 0.039114445}
@@ -61120,6 +61131,14 @@ PrefabInstance:
       propertyPath: noahAnimator
       value: 
       objectReference: {fileID: 1397759963577864827}
+    - target: {fileID: 6041383549476272681, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776906046410990931, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7370088203045449477, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -61380,6 +61399,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8620904916489220057, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620904916579061651, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620904917657985058, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620904918194199440, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620904918235789514, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890935284659989940, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8890935284831192946, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.404
@@ -61420,6 +61463,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -93.125
       objectReference: {fileID: 0}
+    - target: {fileID: 8890935284831192947, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: barkButton
+      value: 
+      objectReference: {fileID: 1050942415}
+    - target: {fileID: 8890935284831192947, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: biteButton
+      value: 
+      objectReference: {fileID: 877372087}
+    - target: {fileID: 8890935284831192947, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: smashButton
+      value: 
+      objectReference: {fileID: 1272740796}
+    - target: {fileID: 8890935284831192947, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: sniffButton
+      value: 
+      objectReference: {fileID: 1527509612}
+    - target: {fileID: 8890935284831192947, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: centerButton1
+      value: 
+      objectReference: {fileID: 237647642}
+    - target: {fileID: 8890935284831192947, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: interactButton
+      value: 
+      objectReference: {fileID: 1842820058}
+    - target: {fileID: 8890935284831192947, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: pushOrPressButton
+      value: 
+      objectReference: {fileID: 783304599}
     - target: {fileID: 8890935284831192958, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_Size.x
       value: 2.6602352
@@ -61444,12 +61515,87 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.59465885
       objectReference: {fileID: 0}
+    - target: {fileID: 8890935285091446358, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890935285369194760, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8890935285454041210, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8890935285509420868, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890935285621865328, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890935285837906986, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890935285840894125, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: barkButton
+      value: 
+      objectReference: {fileID: 913216502}
+    - target: {fileID: 8890935285840894125, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: biteButton
+      value: 
+      objectReference: {fileID: 156234813}
+    - target: {fileID: 8890935285840894125, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: objectData
+      value: 
+      objectReference: {fileID: 11400000, guid: 86f86a61a9a3b434cabd3af223c21ff2, type: 2}
+    - target: {fileID: 8890935285840894125, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: sniffButton
+      value: 
+      objectReference: {fileID: 150073726}
+    - target: {fileID: 8890935285840894125, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: centerButton1
+      value: 
+      objectReference: {fileID: 2023892522}
+    - target: {fileID: 8890935285840894125, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: interactButton
+      value: 
+      objectReference: {fileID: 103349968}
+    - target: {fileID: 8890935285840894125, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: pushOrPressButton
+      value: 
+      objectReference: {fileID: 43177149}
+    - target: {fileID: 8890935285949628184, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8890935285840894124, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+--- !u!1 &342996351253066977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8890935285840894126, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+  m_PrefabInstance: {fileID: 342996351253066976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &342996351253066978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342996351253066977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867c35f4c19ac9045b5558309bfca6c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxForTutoData: {fileID: 11400000, guid: 86f86a61a9a3b434cabd3af223c21ff2, type: 2}
+  pushPos: {x: 0, y: 0, z: 0}
+  pushRot: {x: 0, y: 0, z: 0}
+  boxRisePos: {x: 0, y: 1.8, z: 0}
+  dialog: {fileID: 0}
 --- !u!1 &1397759963577864825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6674814239798694414, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}

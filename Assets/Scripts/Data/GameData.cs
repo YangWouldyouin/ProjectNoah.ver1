@@ -173,6 +173,8 @@ public class GameData
 
     /*퍼즐완료*/
     public bool IsBasicTuto; //튜토리얼 앞 파트 퍼즐 완료
+    public bool IsMiddleTuto; //튜토리얼 앞 파트 퍼즐 완료
+    public bool IsEndTuto; //튜토리얼 앞 파트 퍼즐 완료
     public bool IsCompleteSmartFarmOpen; // 스마트팜 오픈 퍼즐 완료
     public bool IsCompleteFindEngineKey; // 엔진실 카드키 찾기 퍼즐 완료
     public bool IsCompleteOpenEngineRoom; // 엔진실 열기 퍼즐 완료

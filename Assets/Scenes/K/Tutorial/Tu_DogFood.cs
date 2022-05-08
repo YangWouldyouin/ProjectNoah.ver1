@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class Tu_DogFood : MonoBehaviour, IInteraction
 {
+    /*다음 퍼즐 오브젝트*/
+    public GameObject IsIDConsole;
+    public GameObject IsIDCard;
+
+    BoxCollider IsIDConsole_Collider;
+    BoxCollider IsIDCard_Collider;
+
     private Button barkButton, sniffButton, biteButton,
 pushButton, smashButton, eatButton;
 
@@ -17,6 +24,10 @@ pushButton, smashButton, eatButton;
 
     void Start()
     {
+        /*다음 퍼즐 오브젝트*/
+        IsIDConsole_Collider = IsIDConsole.GetComponent<BoxCollider>();
+        IsIDCard_Collider = IsIDCard.GetComponent<BoxCollider>();
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         DogFood_Tu = GetComponent<ObjData>();
@@ -98,6 +109,15 @@ pushButton, smashButton, eatButton;
 
         GameManager.gameManager._gameData.IsBasicTuto = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        //다음 퍼즐 이어하기
+        IsIDConsole_Collider.enabled = true;
+        IsIDCard_Collider.enabled = true;
+
+        //S-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
+        //S-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
     }
 
     public void OnSniff() // 냄새맡기

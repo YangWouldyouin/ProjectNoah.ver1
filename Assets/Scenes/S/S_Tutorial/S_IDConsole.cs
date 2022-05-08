@@ -8,7 +8,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 {
     /*연관있는 오브젝트*/
     public GameObject S_canIDCard;
-/*    public GameObject S_BoxForConsole;*/
+    /*    public GameObject S_BoxForConsole;*/
+    public GameObject canPressCabinetDoor; 
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_S_IDConsole, sniffButton_S_IDConsole, biteButton_S_IDConsole,
@@ -28,6 +29,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     /*BoxCollider*/
     BoxCollider IDConsole_Collider;
     BoxCollider BoxForConsole_Collider;
+    BoxCollider canPressCabinetDoor_Collider;
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -47,6 +49,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         IDConsole_Collider = GetComponent<BoxCollider>();
         BoxForConsole_Collider = S_BoxForConsole.GetComponent<BoxCollider>();*/
 
+        canPressCabinetDoor_Collider = canPressCabinetDoor.GetComponent<BoxCollider>();
+
         barkButton_S_IDConsole = iDConsoleData_S.BarkButton;
         barkButton_S_IDConsole.onClick.AddListener(OnBark);
 
@@ -63,10 +67,6 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         observeButton_S_IDConsole.onClick.AddListener(OnObserve);
 
         observeDisableButton_S_IDConsole = iDConsoleData_S.CenterButton1;
-
-        //주영이의 튜토리얼 퍼즐을 완료했다면 이 퍼즐을 실행한다.
-        //S-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
     }
 
     void Update()
@@ -87,8 +87,6 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         if (IDConsoleData_S.IsCollision)
         {
             IDConsoleData_S.IsCenterButtonChanged = true;
-            //S-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
 
         }
 
@@ -150,7 +148,16 @@ public class S_IDConsole : MonoBehaviour, IInteraction
             iDConsoleOutline_S.OutlineWidth = 0;
 
             Invoke("CompleteCard",2f);
-                    
+
+            GameManager.gameManager._gameData.IsMiddleTuto = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            //콜라이더 켜주는거
+            canPressCabinetDoor_Collider.enabled = true;
+
+            //S-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(21));
+
         }
     }
 
