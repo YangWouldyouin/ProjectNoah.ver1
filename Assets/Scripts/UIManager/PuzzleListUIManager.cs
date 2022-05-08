@@ -8,96 +8,230 @@ public class PuzzleListUIManager : MonoBehaviour
     public Sprite Finish_puzzle;
 
     [Header("<퍼즐 이미지>")]
-    public Image Ending1;
-    public Image Ending2;
-    public Image Ending3;
-    public Image Ending4;
-    public Image Ending5;
-    public Image Ending6;
-    public Image Ending7;
-    public Image Ending8;
-    public Image Ending9;
+    public Image Puzzle1;
+    public Image Puzzle2;
+    public Image Puzzle3;
+    public Image Puzzle4;
+    public Image Puzzle5;
+    public Image Puzzle6;
+    public Image Puzzle7;
+    public Image Puzzle8;
+    public Image Puzzle9;
+    public Image Puzzle10;
+
+    public Image Puzzle11;
+    public Image Puzzle12;
+    public Image Puzzle13;
+    public Image Puzzle14;
+    public Image Puzzle15;
+    public Image Puzzle16;
+    public Image Puzzle17;
+    public Image Puzzle18;
+    public Image Puzzle19;
+    public Image Puzzle20;
+
+    public Image Puzzle21;
+    public Image Puzzle22;
+    public Image Puzzle23;
+    public Image Puzzle24;
+    public Image Puzzle25;
+    public Image Puzzle26;
 
     [Header("<퍼즐 텍스트>")]
-    public Text Ending1T;
-    public Text Ending2T;
-    public Text Ending3T;
-    public Text Ending4T;
-    public Text Ending5T;
-    public Text Ending6T;
-    public Text Ending7T;
-    public Text Ending8T;
-    public Text Ending9T;
+    public Text Puzzle1t;
+    public Text Puzzle2t;
+    public Text Puzzle3t;
+    public Text Puzzle4t;
+    public Text Puzzle5t;
+    public Text Puzzle6t;
+    public Text Puzzle7t;
+    public Text Puzzle8t;
+    public Text Puzzle9t;
+    public Text Puzzle10t;
+
+    public Text Puzzle11t;
+    public Text Puzzle12t;
+    public Text Puzzle13t;
+    public Text Puzzle14t;
+    public Text Puzzle15t;
+    public Text Puzzle16t;
+    public Text Puzzle17t;
+    public Text Puzzle18t;
+    public Text Puzzle19t;
+    public Text Puzzle20t;
+
+    public Text Puzzle21t;
+    public Text Puzzle22t;
+    public Text Puzzle23t;
+    public Text Puzzle24t;
+    public Text Puzzle25t;
+    public Text Puzzle26t;
 
     // Start is called before the first frame update
     void Start()
     {
-        Ending1 = Ending1.GetComponent<Image>();
-        Ending2 = Ending1.GetComponent<Image>();
-        Ending3 = Ending1.GetComponent<Image>();
-        Ending4 = Ending1.GetComponent<Image>();
-        Ending5 = Ending1.GetComponent<Image>();
-        Ending6 = Ending1.GetComponent<Image>();
-        Ending7 = Ending1.GetComponent<Image>();
-        Ending8 = Ending1.GetComponent<Image>();
-        Ending9 = Ending1.GetComponent<Image>();
+        Puzzle1 = Puzzle1.GetComponent<Image>();
+        Puzzle2 = Puzzle2.GetComponent<Image>();
+        Puzzle3 = Puzzle3.GetComponent<Image>();
+        Puzzle4 = Puzzle4.GetComponent<Image>();
+        Puzzle5 = Puzzle5.GetComponent<Image>();
+        Puzzle6 = Puzzle6.GetComponent<Image>();
+        Puzzle7 = Puzzle7.GetComponent<Image>();
+        Puzzle8 = Puzzle8.GetComponent<Image>();
+        Puzzle9 = Puzzle9.GetComponent<Image>();
+        Puzzle10 = Puzzle10.GetComponent<Image>();
+
+        Puzzle11 = Puzzle11.GetComponent<Image>();
+        Puzzle12 = Puzzle12.GetComponent<Image>();
+        Puzzle13 = Puzzle13.GetComponent<Image>();
+        Puzzle14 = Puzzle14.GetComponent<Image>();
+        Puzzle15 = Puzzle15.GetComponent<Image>();
+        Puzzle16 = Puzzle16.GetComponent<Image>();
+        Puzzle17 = Puzzle17.GetComponent<Image>();
+        Puzzle18 = Puzzle18.GetComponent<Image>();
+        Puzzle19 = Puzzle19.GetComponent<Image>();
+        Puzzle20 = Puzzle20.GetComponent<Image>();
+
+        Puzzle21 = Puzzle21.GetComponent<Image>();
+        Puzzle22 = Puzzle22.GetComponent<Image>();
+        Puzzle23 = Puzzle23.GetComponent<Image>();
+        Puzzle24 = Puzzle24.GetComponent<Image>();
+        Puzzle25 = Puzzle25.GetComponent<Image>();
+        Puzzle26 = Puzzle26.GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.gameManager._gameData.IsDisqualifiedEnd)
+        //if (GameManager.gameManager._gameData.IsDisqualifiedEnd)
+        //{
+        //    Puzzle1.sprite = Finish_puzzle;
+        //    Puzzle1t.text = "항해 준비 완료";
+        //}
+        if (GameManager.gameManager._gameData.IsCWDoorOpened_M_C1)
         {
-            Ending1.sprite = Finish_Ending;
-            Ending1T.text = "인재부족";
+            Puzzle2.sprite = Finish_puzzle;
+            Puzzle2t.text = "업무공간 해금";
         }
-
-        if (GameManager.gameManager._gameData.IsEatBadPotato)
+        //if (GameManager.gameManager._gameData.IsDisqualifiedEnd)
+        //{
+        //    Puzzle3.sprite = Finish_puzzle;
+        //    Puzzle3t.text = "행성 목적지 정하기";
+        //}
+        if (GameManager.gameManager._gameData.IsPhotoMissionFinish)
         {
-            Ending2.sprite = Finish_Ending;
-            Ending2T.text = "상한 고구마 섭취";
+            Puzzle4.sprite = Finish_puzzle;
+            Puzzle4t.text = "선전용 우주선 사진 찍기";
         }
-
-        if (GameManager.gameManager._gameData.IsMakeForestEnd)
+        if (GameManager.gameManager._gameData.IsCompleteFindLivingKey)
         {
-            Ending3.sprite = Finish_Ending;
-            Ending3T.text = "새로운 생태계 구축";
+            Puzzle5.sprite = Finish_puzzle;
+            Puzzle5t.text = "생활공간 카드키 획득";
         }
-
-        if (GameManager.gameManager._gameData.IsManagerAbilityLack)
+        if (GameManager.gameManager._gameData.IsCompleteFindEngineKey)
         {
-            Ending4.sprite = Finish_Ending;
-            Ending4T.text = "관리자 자질 부족";
+            Puzzle6.sprite = Finish_puzzle;
+            Puzzle6t.text = "엔진실 카드키 획득";
         }
-
-        if (GameManager.gameManager._gameData.IsInputImportantMeteorEnd)
+        if (GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2)
         {
-            Ending5.sprite = Finish_Ending;
-            Ending5T.text = "새로운 자원";
+            Puzzle7.sprite = Finish_puzzle;
+            Puzzle7t.text = "엔진실 카드키 획득";
         }
-
-        if (GameManager.gameManager._gameData.IsDiscardNoahEnd)
+        if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2)
         {
-            Ending6.sprite = Finish_Ending;
-            Ending6T.text = "실험체 폐기";
+            Puzzle8.sprite = Finish_puzzle;
+            Puzzle8t.text = "업무공간 고치기";
         }
-
-        if (GameManager.gameManager._gameData.IsSaveOnlyOneEnd)
+        if (GameManager.gameManager._gameData.IsDummyDataReport)
         {
-            Ending7.sprite = Finish_Ending;
-            Ending7T.text = "당신이 구한 하나";
+            Puzzle9.sprite = Finish_puzzle;
+            Puzzle9t.text = "더미데이터 보고";
         }
-
-        if (GameManager.gameManager._gameData.IsSaveAllEnd)
+        if (GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2)
         {
-            Ending8.sprite = Finish_Ending;
-            Ending8T.text = "당신이 구한 하나이자 전부";
+            Puzzle10.sprite = Finish_puzzle;
+            Puzzle10t.text = "운석 수집 성공";
         }
-
-        if (GameManager.gameManager._gameData.IsDefyMissionEnd)
+        if (GameManager.gameManager._gameData.IsCompletePretendDead)
         {
-            Ending9.sprite = Finish_Ending;
-            Ending9T.text = "명령 불복종";
+            Puzzle11.sprite = Finish_puzzle;
+            Puzzle11t.text = "죽은 척 하기";
+        }
+        if (GameManager.gameManager._gameData.IsKnowUsingSObj)
+        {
+            Puzzle12.sprite = Finish_puzzle;
+            Puzzle12t.text = "이상한 물건 발견";
+        }
+        if (GameManager.gameManager._gameData.IsFindDrugDone_T_C2)
+        {
+            Puzzle13.sprite = Finish_puzzle;
+            Puzzle13t.text = "마약 탐지 성공";
+        }
+        if (GameManager.gameManager._gameData.IsCompleteOpenEngineRoom)
+        {
+            Puzzle14.sprite = Finish_puzzle;
+            Puzzle14t.text = "앤진실 해금";
+        }
+        if (GameManager.gameManager._gameData.IsCompleteOpenLivingRoom)
+        {
+            Puzzle15.sprite = Finish_puzzle;
+            Puzzle15t.text = "생활공간 해금";
+        }
+        if (GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1)
+        {
+            Puzzle16.sprite = Finish_puzzle;
+            Puzzle16t.text = "엔진실 고치기";
+        }
+        if (GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1)
+        {
+            Puzzle17.sprite = Finish_puzzle;
+            Puzzle17t.text = "생활공간 고치기";
+        }
+        if (GameManager.gameManager._gameData.IsTabletUnlock)
+        {
+            Puzzle18.sprite = Finish_puzzle;
+            Puzzle18t.text = "태블릿 해금";
+        }
+        if (GameManager.gameManager._gameData.IsAIVSMissionFinish)
+        {
+            Puzzle19.sprite = Finish_puzzle;
+            Puzzle19t.text = "상반된 일지 해금";
+        }
+        if (GameManager.gameManager._gameData.IsFakeHealthData_Tablet)
+        {
+            Puzzle20.sprite = Finish_puzzle;
+            Puzzle20t.text = "더미데이터 다운";
+        }
+        if (GameManager.gameManager._gameData.IsTabletDestory)
+        {
+            Puzzle21.sprite = Finish_puzzle;
+            Puzzle21t.text = "태블릿 발각";
+        }
+        //if (GameManager.gameManager._gameData.IsTabletDestory)
+        //{
+        //    Puzzle22.sprite = Finish_puzzle;
+        //    Puzzle22t.text = "거짓 목적지 정하기";
+        //}
+        if (GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet)
+        {
+            Puzzle23.sprite = Finish_puzzle;
+            Puzzle23t.text = "거짓 궤도 좌표 해금";
+        }
+        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        {
+            Puzzle24.sprite = Finish_puzzle;
+            Puzzle24t.text = "거짓 궤도 좌표 다운로드";
+        }
+        if (GameManager.gameManager._gameData.IsAIDown_M_C1C3)
+        {
+            Puzzle25.sprite = Finish_puzzle;
+            Puzzle25t.text = "AI 다운시키기";
+        }
+        if (GameManager.gameManager._gameData.IsRevisioncomplaint)
+        {
+            Puzzle26.sprite = Finish_puzzle;
+            Puzzle26t.text = "고발하기";
         }
     }
 }
