@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class strangeObj : MonoBehaviour, IInteraction
 {
-    
+
     private Button barkButton, sniffButton, biteButton, pressButton, smashButton, noCenterButton;
 
     public ObjectData strangeData;
@@ -142,23 +142,24 @@ public class strangeObj : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
             GameManager.gameManager._gameData.IsFirstUsingStrangeObj = true;
 
-        if (GameManager.gameManager._gameData.IsFirstUsingStrangeObj)
-        {
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(53));
+            if (GameManager.gameManager._gameData.IsFirstUsingStrangeObj)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(53));
+            }
         }
-    }
 
-    void CantHide()
-    {
-        Debug.Log("이제 못 숨음");
+        void CantHide()
+        {
+            Debug.Log("이제 못 숨음");
 
-        playerLine.OutlineWidth = 0f;
+            playerLine.OutlineWidth = 0f;
 
-        GameManager.gameManager._gameData.IsHide = false;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._gameData.IsHide = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 0.5f);
 
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(52));
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(52));
+        }
     }
 }
