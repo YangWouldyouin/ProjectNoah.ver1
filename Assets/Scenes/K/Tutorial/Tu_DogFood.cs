@@ -95,6 +95,9 @@ pushButton, smashButton, eatButton;
         DogFood_Tu.IsEaten = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerEat();
+
+        GameManager.gameManager._gameData.IsBasicTuto = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnSniff() // ³¿»õ¸Ã±â
