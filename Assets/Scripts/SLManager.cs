@@ -12,7 +12,7 @@ public class SLManager : MonoBehaviour
         if (Input.GetKeyDown("s"))
         {
             GameData character = new GameData();
-
+            character.statNum = 10;
             character.IsAIAwake_M_C1 = false;
             character.IsCWDoorOpened_M_C1 = false;
             character.IsHealthMachineFixed_T_C2 = false;
