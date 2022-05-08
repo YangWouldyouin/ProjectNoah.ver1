@@ -134,7 +134,9 @@ public class GameData
     public bool Pot2InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
     public bool Pot3InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
 
-    public bool[] FoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //음식 먹은 거 확인
+    public bool[] BadFoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //음식 먹은 거 확인
+    public bool[] GoodFoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //음식 먹은 거 확인
+
 
 
     // 운석수집기 문
@@ -162,9 +164,9 @@ public class GameData
     /*퍼즐완료*/
     public bool IsCompleteSmartFarmOpen; // 스마트팜 오픈 퍼즐 완료
     public bool IsCompleteFindEngineKey; // 엔진실 카드키 찾기 퍼즐 완료
-    public bool IsCompleteOpenEngineRoom; // 엔진실 카드키 찾기 퍼즐 완료
+    public bool IsCompleteOpenEngineRoom; // 엔진실 열기 퍼즐 완료
     public bool IsInputNormalMeteor1_T_C2; // 일반 운석1을 수집기에 넣기 완료 (나중에 보고한 거 기준으로 바꿔야겠다)
-    public bool IsCompletePretendDead; // 엔진실 카드키 찾기 퍼즐 완료
+    public bool IsCompletePretendDead; // 죽은척 퍼즐 완료
     public bool IsTabletUnlock; // 태블릿 잠금여부 (해금완료)
     public bool IsPlanetInsertChip_In; // 올바른 교란칩 꽂아 가짜 행성 데이터 변환
     public bool IsAIDown_M_C1C3; //AI다운 퍼즐 완료
