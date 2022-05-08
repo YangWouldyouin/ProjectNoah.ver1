@@ -70,7 +70,7 @@ public class DialogManager : MonoBehaviour
             AIPanelAnim.SetBool("IsAIPanelActive", false);
             Invoke("EndPanelAnim", 1f);
             //dialogPanel.SetActive(false);
-            IsDialogStarted = false;
+            
         }
         else
         { // 중첩되서 대사 겹치는 것 방지
@@ -81,6 +81,7 @@ public class DialogManager : MonoBehaviour
     void EndPanelAnim()
     {
         dialogPanel.SetActive(false);
+        IsDialogStarted = false;
     }
     void StartPanelAnim()
     {
