@@ -28,8 +28,13 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     BoxCollider IDConsole_Collider;
     BoxCollider BoxForConsole_Collider;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         /*ObjData*/
         iDConsoleData_S = GetComponent<ObjData>();
 
@@ -60,6 +65,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         //爽慎戚税 透塘軒杖 遁荘聖 刃戟梅陥檎 戚 遁荘聖 叔楳廃陥.
         //S-1 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
+        //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
     }
 
     void Update()
@@ -81,6 +87,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         {
             iDConsoleData_S.IsCenterButtonChanged = true;
             //S-2 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
+
         }
 
         else 
@@ -141,6 +149,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     {
         CameraController.cameraController.CancelObserve();
         //S-4 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(20));
     }
 
     public void OnSniff()
@@ -161,6 +170,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerObserve();
 
         //S-3 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(19));
 
     }
 

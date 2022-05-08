@@ -22,9 +22,14 @@ public class S_PressCabinetDoor1 : MonoBehaviour,IInteraction
     /*애니메이션*/
     public Animator canPressCabinetDoorAnim;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         /*연관있는 오브젝트*/
         pressCabinetDoor1Data_S = GetComponent<ObjData>();
 
@@ -63,6 +68,7 @@ public class S_PressCabinetDoor1 : MonoBehaviour,IInteraction
     {
         // 앞에 카드키 꽂기 퍼즐이 완료되었는지 확인
         //S-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(21));
     }
 
     public void OnBark()
@@ -101,6 +107,7 @@ public class S_PressCabinetDoor1 : MonoBehaviour,IInteraction
     void CabinetOpen1()
     {
         //S-6 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(22));
 
         canPressCabinetDoorAnim.SetBool("ePressCabinetOpen", true);
         canPressCabinetDoorAnim.SetBool("ePressCabinetEnd", true);

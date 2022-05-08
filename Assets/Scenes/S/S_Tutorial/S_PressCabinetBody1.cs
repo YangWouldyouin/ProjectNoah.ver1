@@ -25,9 +25,14 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     /*Collider*/
     BoxCollider canPipe_Collider;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         //cabinetCollider = GetComponent<BoxCollider>();
         canPipe_Collider = S_canPipe.GetComponent<BoxCollider>();
 
@@ -107,6 +112,9 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         canPipe_Collider.enabled = true;
 
         //S-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
+
+        Invoke("Comment", 30f);
     }
 
     public void OnBark()
@@ -161,4 +169,11 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     {
         //throw new System.NotImplementedException();
     }
+
+    public void Comment()
+    {
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(63));
+    }
+
 }
