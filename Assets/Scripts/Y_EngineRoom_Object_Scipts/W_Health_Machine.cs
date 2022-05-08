@@ -149,14 +149,17 @@ public class W_Health_Machine : MonoBehaviour
 
             DontMove.SetActive(true);
             cancelInteractions.enabled = false;
-            StartCoroutine(Delay3seconds());
+            StartCoroutine(Delay5seconds());
         }
     }
 
-    IEnumerator Delay3seconds()
+    IEnumerator Delay5seconds()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         Debug.Log("검사완료"); // 내려오는 애니메이션
+
+        InteractionButtonController.interactionButtonController.PlayerFall1();
+
         DontMove.SetActive(false);
         cancelInteractions.enabled = true;
         ReportJudgment();
