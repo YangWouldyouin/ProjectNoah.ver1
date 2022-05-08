@@ -100,9 +100,14 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
         }
 
         if(GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 
-            || GameManager.gameManager._gameData.IsInputImportantMeteor1_T_C2)
+            || GameManager.gameManager._gameData.IsInputImportantMeteorEnd)
         {
-            StartCoroutine(analyticalMachineClose(2f, 0f));
+            //StartCoroutine(analyticalMachineClose(2f, 0f));
+
+            areAnalyticalMachineData_T.IsNotInteractable = true; // 상호작용 불가능하게
+            areAnalyticalMachineOutline_T.OutlineWidth = 0;
+
+            IsAnalyticalMachinePlate_Collider.enabled = false;
         }
     }
 
@@ -129,7 +134,12 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(analyticalMachineOpen());
+        //StartCoroutine(analyticalMachineOpen());
+
+        analyticalMachineAnim_T.SetBool("isAnalyticalMachineOpen", true);
+        analyticalMachineAnim_T.SetBool("isAnalyticalMachineOpenEnd", true);
+        analyticalMachineAnim_T.SetBool("isAnalyticalMachineClose", false);
+        analyticalMachineAnim_T.SetBool("isAnalyticalMachineCloseEnd", false);
 
         areAnalyticalMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
         areAnalyticalMachineOutline_T.OutlineWidth = 8;

@@ -169,11 +169,16 @@ public class GameData
     public int randomUPic;
 
     /*엔딩*/
-    public bool IsEatBadSweetPotato; // 상한 고구마 섭취 엔딩
-    public bool IsInputImportantMeteor1_T_C2; // 특별 운석 보고 엔딩
-    public bool IsMakeForest; // 생태계 구축 엔딩
+    public bool IsInputImportantMeteorEnd; // 특별 운석 보고 엔딩
+    public bool IsMakeForestEnd; // 생태계 구축 엔딩
+    public bool IsDefyMissionEnd; // 명령 불복종 엔딩: 보고하기 일정 횟수 거부
+    public bool IsDisqualifiedEnd; // 인재부족 엔딩: 튜토리얼 실패
+    public bool IsDiscardNoahEnd; // 실험체 폐기 엔딩: AI 재부팅 시간 안에 궤도 변경 실패
+    public bool IsSaveOnlyOneEnd; // 당신이 구한 하나 엔딩: 노멀 엔딩, 고발 X
+    public bool IsSaveAllEnd; // 당신이 구한 전부 엔딩: 진 엔딩, 고발 O
 
-    public bool IsSuddenDeath; //돌연사 체크
+
+    public bool IsSuddenDeath; //돌연사 체크: 스탯 0 엔딩, 상한 고구마 섭취 엔딩
 
 
 

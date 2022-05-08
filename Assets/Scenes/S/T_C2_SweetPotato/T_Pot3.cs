@@ -196,7 +196,7 @@ public class T_Pot3 : MonoBehaviour, IInteraction
     {
         T_InSuperDrug3.SetActive(false);
         Debug.Log("생태계 구축 엔딩");
-        GameManager.gameManager._gameData.IsMakeForest = true; // 엔딩으로 향하는 거기때문에 저장
+        GameManager.gameManager._gameData.IsMakeForestEnd = true; // 엔딩으로 향하는 거기때문에 저장
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 

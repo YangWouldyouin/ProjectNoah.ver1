@@ -102,7 +102,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             if(areRubberData_T.IsBite && RealimportantMeteorData_T)
             {
                 /*중요 운석을 넣었는지 확인*/
-                GameManager.gameManager._gameData.IsInputImportantMeteor1_T_C2 = true;
+                GameManager.gameManager._gameData.IsInputImportantMeteorEnd = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                 //C-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
@@ -157,7 +157,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         IsReported = true;
         Report_GUI.SetActive(false);
 
-        if (GameManager.gameManager._gameData.IsInputImportantMeteor1_T_C2 == true)
+        if (GameManager.gameManager._gameData.IsInputImportantMeteorEnd == true)
         {
             //GameManager.gameManager.IsyesImportantMeteor == true
             Debug.Log("지구귀환엔딩");

@@ -163,7 +163,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
 
 
         //콜라이더 감지 끄기
-        //collectMachineCollider.enabled = false;
+        IScollectMachine_Collider.enabled = false;
         //Box_Collider.enabled = false;
         MeteorButton_Collider.enabled = false;
 
@@ -182,7 +182,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
 
         if(doImportantMeteorData_T.IsBite)
         {
-            CameraController.cameraController.CancelObserve();
+            //CameraController.cameraController.CancelObserve();
 
             GameManager.gameManager._gameData.IsBiteimportantMeteor_T_C2 = true;
 
@@ -190,7 +190,7 @@ public class T_MeteorCollectMachine : MonoBehaviour, IInteraction
 
         if (doNormalMeteor1Data_T.IsBite)
         {
-            CameraController.cameraController.CancelObserve();
+            //CameraController.cameraController.CancelObserve();
 
             GameManager.gameManager._gameData.IsBiteNormalMeteor1_T_C2 = true;
 
