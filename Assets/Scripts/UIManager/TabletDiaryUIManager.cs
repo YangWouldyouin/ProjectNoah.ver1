@@ -63,7 +63,7 @@ public class TabletDiaryUIManager : MonoBehaviour
                 + "무언가 열심히 설명해주었는데 솔직히 이 분야는 내 전문이 아니어서 기억이 잘 안 난다." + "\n" + "대충 오렌지 향기가 나는 약물을 함께 섞으면 중화된다 한 것 같다." + "\n" + "수잔은 고마워하며 당장 마이크의 뒷덜미를 잡고 긴 설교를 시작했다." + "\n" + "나도 수잔에게 걸리지 않도록 조심해야 겠다.";
         }
 
-        if (GameManager.gameManager._gameData.IsTrashDoorBTFixed_W_W1 == false)
+        if (GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 == false)
         {
             Secret4.text = "다운로드 진행 중...";
         }

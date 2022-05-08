@@ -104,7 +104,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         TDBT_fixPartData.IsBite = false;
         playerEquipment.biteObjectName = "";
 
-        GameManager.gameManager._gameData.IsTrashDoorBTFixed_W_W1 = true;
+        GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
