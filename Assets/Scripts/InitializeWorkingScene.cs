@@ -6,6 +6,9 @@ public class InitializeWorkingScene : MonoBehaviour
 {
     public GameObject ChangeScene;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
 
     [Header("<½º¸¶Æ®ÆÊ ¿ÀÇÂ>")]
     public GameObject FixedLine2; //°íÃÄÁø ÁÙ
@@ -120,6 +123,8 @@ public class InitializeWorkingScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         GameData intialGameData = SaveSystem.Load("save_001");
 
 
@@ -159,6 +164,11 @@ public class InitializeWorkingScene : MonoBehaviour
         insert01Col = insert01.GetComponent<BoxCollider>();
         insert02Col = insert02.GetComponent<BoxCollider>();
 
+
+        if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
+        }
 
         /*½º¸¶Æ®ÆÊ ¿ÀÇÂ ÆÛÁñÀ» ¿Ï·á ÇÏ¸é*/
         if (intialGameData.IsCompleteSmartFarmOpen)

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InitializeEngineScene : MonoBehaviour
 {
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     /* 관련 오브젝트 */
 
     // 연료 퍼즐
@@ -32,7 +35,14 @@ public class InitializeEngineScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         GameData intialGameData = SaveSystem.Load("save_001");
+
+        if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
+        }
 
         /* 연료 퍼즐 */
         if (intialGameData.IsFuelabsorberFixed_E_E1)

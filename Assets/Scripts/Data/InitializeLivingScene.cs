@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InitializeLivingScene : MonoBehaviour
 {
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     public GameObject TDBT_fixPart;
     public GameObject TDBT_fixBody;
 
@@ -12,10 +15,17 @@ public class InitializeLivingScene : MonoBehaviour
 
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         TDBT_BodyOutline = TDBT_fixBody.GetComponent<Outline>();
         TDBT_fixPartOutline = TDBT_fixPart.GetComponent<Outline>();
 
         GameData intialGameData = SaveSystem.Load("save_001");
+
+        if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
+        }
 
         // 엔진실 냄새 기계를 고치면
         if (intialGameData.IsFuelabsorberFixed_E_E1)

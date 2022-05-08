@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InitializeControlScene : MonoBehaviour
 {
+    public GameObject dialog;
+    DialogManager dialogManager;
+    
     public Animator controlWorkDoorAnim;
     public GameObject ChangeScene;
 
@@ -22,7 +25,14 @@ public class InitializeControlScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         GameData intialGameData = SaveSystem.Load("save_001");
+
+        if(GameManager.gameManager._gameData.IsAIVSMissionCount >=2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
+        }
 
         if(intialGameData.IsCWDoorOpened_M_C1)
         {

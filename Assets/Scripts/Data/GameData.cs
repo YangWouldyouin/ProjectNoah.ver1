@@ -37,11 +37,13 @@ public class GameData
 
     public bool IsAllDoorOpened; //모든 공간이 해금 완료되었는지
 
-    //최초진입 체크
+    //대사용 최초 체크
     public bool IsFirstEnterWorking; //업무공간 최초 진입 확인
     public bool IsFirstEnterEngine; //엔진실 최초 진입 확인
     public bool IsFirstEnterLiving; //생활공간 최초 진입 확인
     public bool IsFirstExitTablet; //사각지대 처음으로 빠져나올 때
+
+    public bool IsFirstNoticeEnd; //진엔딩체크 조건 체크
 
 
     //마약탐지 퍼즐
