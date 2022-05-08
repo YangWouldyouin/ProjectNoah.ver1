@@ -33,7 +33,7 @@ public class InHouseNewsUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((inGameTime.days + 1) == 2)
+        if ((inGameTime.days + 1) == 2 && inGameTime.hours == 0)
         {
             Debug.Log("2¿œ");
             InhouseNews_GUI.SetActive(true);
