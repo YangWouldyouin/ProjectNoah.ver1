@@ -66,7 +66,7 @@ public class T_Pot1 : MonoBehaviour, IInteraction
         {
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
-            Invoke("AppearSweetPotato1", 10f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+            Invoke("AppearSweetPotato1", 60f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
         }
 
         /*상한 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
