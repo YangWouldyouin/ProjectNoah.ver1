@@ -21,6 +21,8 @@ public class SLManager : MonoBehaviour
             character.ActiveMissionList[0] = false;
             character.ActiveMissionList[3] = false;
             character.IsTabletUnlock = false;
+            character.IsBasicTuto = false;
+            character.IsMiddleTuto = false;
             SaveSystem.Save(character, "save_001");
         }
 
