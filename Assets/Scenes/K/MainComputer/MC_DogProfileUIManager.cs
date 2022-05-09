@@ -57,8 +57,6 @@ public class MC_DogProfileUIManager : MonoBehaviour
         {
             RightButton_D.SetActive(true);
         }
-
-        DogCurrentStatus();
     }
 
 
@@ -73,6 +71,7 @@ public class MC_DogProfileUIManager : MonoBehaviour
             DogProfilePage[i + 1].SetActive(true);
             i++;
         }
+        DogCurrentStatus();
     }
 
     public void OnClickLeftButton() // 왼쪽 버튼을 누를 시
@@ -92,22 +91,22 @@ public class MC_DogProfileUIManager : MonoBehaviour
         int noahStat = GameManager.gameManager._gameData.statNum; // 노아 현재 스탯 값 불러오기
 
         /* 피로도 */
-        ranStat = Random.Range(-5, 5); // 랜덤 값
+        ranStat = Random.Range(0, 9); // 랜덤 값
         GameManager.gameManager._gameData.IsRealfatigue = ranStat + noahStat * 10;
         Sleep_text_D.text = "피로도: " + GameManager.gameManager._gameData.IsRealfatigue.ToString();
 
         /* 체력 */
-        // ranStat = Random.Range(-5, 5); // 랜덤 값
+        ranStat = Random.Range(0, 9); // 랜덤 값
         GameManager.gameManager._gameData.IsRealStrength = ranStat + noahStat * 10;
         HP_text_D.text = "체력: " + GameManager.gameManager._gameData.IsRealStrength.ToString();
 
         /* 목마름 */
-        // ranStat = Random.Range(-5, 5); // 랜덤 값
+        ranStat = Random.Range(0, 9); // 랜덤 값
         GameManager.gameManager._gameData.IsRealThirst = ranStat + noahStat * 10;
         Water_text_D.text = "체력: " + GameManager.gameManager._gameData.IsRealThirst.ToString();
 
         /* 허기 */
-        // ranStat = Random.Range(-5, 5); // 랜덤 값
+        ranStat = Random.Range(0, 9); // 랜덤 값
         GameManager.gameManager._gameData.IsRealHunger = ranStat + noahStat * 10;
         Food_text_D.text = "체력: " + GameManager.gameManager._gameData.IsRealHunger.ToString();
 

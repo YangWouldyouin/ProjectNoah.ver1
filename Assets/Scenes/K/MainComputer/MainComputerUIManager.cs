@@ -10,7 +10,7 @@ public class MainComputerUIManager : MonoBehaviour
 
     /* 메인화면 목록*/
     public GameObject JournalMenu_UI; // 연구 일지 목록
-    public GameObject MeteorList_UI; // 목표 성분 리스트
+    // public GameObject MeteorList_UI; // 목표 성분 리스트
     public GameObject DogProfile_UI; // 강아지 현재 상태
     public GameObject Wireless_UI; // 블루투스
 
@@ -30,7 +30,7 @@ public class MainComputerUIManager : MonoBehaviour
         HighBar_UI.SetActive(true); // 상단바 상시 고정
 
         JournalMenu_UI.SetActive(false);
-        MeteorList_UI.SetActive(false);
+        // MeteorList_UI.SetActive(false);
         DogProfile_UI.SetActive(false);
         Wireless_UI.SetActive(false);
 
@@ -58,7 +58,7 @@ public class MainComputerUIManager : MonoBehaviour
     }
 
 
-    public void ChangeMeteorList() // 메인 -> 목표 성분 리스트
+/*    public void ChangeMeteorList() // 메인 -> 목표 성분 리스트
     {
         MainMenu_UI.SetActive(false);
         MeteorList_UI.SetActive(true);
@@ -67,7 +67,7 @@ public class MainComputerUIManager : MonoBehaviour
     {
         MainMenu_UI.SetActive(true);
         MeteorList_UI.SetActive(false);
-    }
+    }*/
 
 
     public void ChangeDogProfile() // 메인 -> 강아지 현재 상태
