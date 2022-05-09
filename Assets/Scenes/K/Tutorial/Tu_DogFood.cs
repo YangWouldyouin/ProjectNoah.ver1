@@ -119,7 +119,7 @@ pushButton, smashButton, eatButton;
         //StartCoroutine(StartTimer1());
 
         GameManager.gameManager._gameData.IsBasicTuto = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
 /*    IEnumerator StartTimer1() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴
