@@ -15,7 +15,7 @@ public class TimerManager : MonoBehaviour
     }
 
     public InGameTime inGameTime;
-
+    
     Image timerBar;
     Image timerText;
     Image timerBackground;
@@ -69,5 +69,5 @@ public class TimerManager : MonoBehaviour
         timerBackground.gameObject.SetActive(false);
 
         inGameTime.IsTimerStarted = false;
-    }
+    }  
 }
