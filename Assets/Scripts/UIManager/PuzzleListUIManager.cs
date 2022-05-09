@@ -225,13 +225,13 @@ public class PuzzleListUIManager : MonoBehaviour
         }
         if (GameManager.gameManager._gameData.IsAIDown_M_C1C3)
         {
-            Puzzle25.sprite = Finish_puzzle;
-            Puzzle25t.text = "AI 다운시키기";
+            Puzzle26.sprite = Finish_puzzle;
+            Puzzle26t.text = "AI 다운시키기";
         }
         if (GameManager.gameManager._gameData.IsRevisioncomplaint)
         {
-            Puzzle26.sprite = Finish_puzzle;
-            Puzzle26t.text = "고발하기";
+            Puzzle25.sprite = Finish_puzzle;
+            Puzzle25t.text = "고발하기";
         }
     }
 }
