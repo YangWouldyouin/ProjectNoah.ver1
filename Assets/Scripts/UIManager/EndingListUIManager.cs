@@ -33,14 +33,14 @@ public class EndingListUIManager : MonoBehaviour
     void Start()
     {
         Ending1 = Ending1.GetComponent<Image>();
-        Ending2 = Ending1.GetComponent<Image>();
-        Ending3 = Ending1.GetComponent<Image>();
-        Ending4 = Ending1.GetComponent<Image>();
-        Ending5 = Ending1.GetComponent<Image>();
-        Ending6 = Ending1.GetComponent<Image>();
-        Ending7 = Ending1.GetComponent<Image>();
-        Ending8 = Ending1.GetComponent<Image>();
-        Ending9 = Ending1.GetComponent<Image>();
+        Ending2 = Ending2.GetComponent<Image>();
+        Ending3 = Ending3.GetComponent<Image>();
+        Ending4 = Ending4.GetComponent<Image>();
+        Ending5 = Ending5.GetComponent<Image>();
+        Ending6 = Ending6.GetComponent<Image>();
+        Ending7 = Ending7.GetComponent<Image>();
+        Ending8 = Ending8.GetComponent<Image>();
+        Ending9 = Ending9.GetComponent<Image>();
     }
 
     // Update is called once per frame
