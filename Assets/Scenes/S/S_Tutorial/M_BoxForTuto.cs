@@ -15,7 +15,7 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
 
     public Vector3 boxRisePos;
 
-    public GameObject dialog;
+    public DialogManager dialog;
     DialogManager dialogManager;
 
     /*타이머*/
@@ -23,6 +23,8 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
 
     void Start()
     {
+       
+        
         boxForTutoData_M = GetComponent<ObjData>();
 
         /* 각 상호작용 버튼에 함수를 넣는다 */
@@ -40,6 +42,7 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
 
         upButton_M_BoxForTuto = boxForTutoData_M.CenterButton1;
         upButton_M_BoxForTuto.onClick.AddListener(OnUp);
+        dialogManager = dialog.GetComponent<DialogManager>();
     }
 
     void Update()
@@ -51,6 +54,12 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
                 GameManager.gameManager._gameData.IsDisqualifiedEnd = true;
                 Debug.Log("튜토리얼 실패 엔딩");
             }
+        }
+
+        if(GameManager.gameManager._gameData.IsMiddleTuto)
+        {
+            inGameTime.maxTimer = 0;
+            GameManager.gameManager._gameData.IsMiddleTuto = false;
         }
     }
     void DiableButton()
@@ -113,10 +122,10 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
             InteractionButtonController.interactionButtonController.PlayerRise2();
 
             //S-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
-            TimerManager.timerManager.TimerStart(60);
-        }
 
+        }
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
+        TimerManager.timerManager.TimerStart(60);
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
