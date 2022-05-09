@@ -19,6 +19,8 @@ public class BiteDestroyController_FoodBox : MonoBehaviour, IPointerUpHandler, I
     public Button centerButton2;
     public Button centerDisableButton2;
 
+    public bool isBited;
+
     // 여기서부터 아래까지 복붙
 
     /* 물기 버튼을 계속 누르고 있으면 파괴하기 버튼으로 바꾸기 위한 변수 */
@@ -43,6 +45,8 @@ public class BiteDestroyController_FoodBox : MonoBehaviour, IPointerUpHandler, I
         // 물기 버튼을 누르면 
         if (isPointerDown)
         {
+            isBited = true;
+
             // 누르고 있는 시간을 잰다 
             pointerDownTimer += Time.deltaTime;
             if (pointerDownTimer >= requiredChangeTime)

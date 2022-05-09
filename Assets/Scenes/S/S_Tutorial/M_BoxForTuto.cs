@@ -21,6 +21,8 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
     /*展戚袴*/
     public InGameTime inGameTime;
 
+    public ObjectData IDCardData;
+
     void Start()
     {
        
@@ -122,11 +124,16 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
             InteractionButtonController.interactionButtonController.risePosition = boxRisePos;
             InteractionButtonController.interactionButtonController.PlayerRise2();
 
+            if(!IDCardData.IsBite)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
+                TimerManager.timerManager.TimerStart(60);
+            }
+
             //S-2 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
 
         }
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
-        TimerManager.timerManager.TimerStart(60);
+       
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

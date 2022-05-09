@@ -71,6 +71,14 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     void Update()
     {
+
+        if(IDConsoleData_S.IsClicked)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
+
+            IDConsoleData_S.IsClicked = false;
+
+        }
 /*
         if(boxForConsoleData_S.IsUpDown)
         {

@@ -22,6 +22,8 @@ pushButton, smashButton, eatButton;
     public DialogManager dialog;
     DialogManager dialogManager;
 
+    public GameObject box;
+
 
     void Start()
     {
@@ -70,6 +72,8 @@ pushButton, smashButton, eatButton;
     {
         if (dogFoodData.IsClicked)
         {
+            Debug.Log("먹어바");
+
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(14));
 
             dogFoodData.IsClicked = false; 
@@ -106,21 +110,26 @@ pushButton, smashButton, eatButton;
 
     public void OnEat()
     {
-        DogFood_Tu.IsEaten = true;
-        DiableButton();
-        InteractionButtonController.interactionButtonController.playerEat();
-
         //다음 퍼즐 이어하기
         IsIDConsole_Collider.enabled = true;
         IsIDCard_Collider.enabled = true;
 
         Debug.Log("다음 퍼즐을 이어할게요");
         //S-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
+        //S-1 대사 대신 타이머가 켜지는 대사 출력함
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
         //Invoke(" StartTimer", 5f);
         //StartCoroutine(StartTimer1());
 
         GameManager.gameManager._gameData.IsBasicTuto = true;
+
+        box.GetComponent<BoxCollider>().enabled = true;
+
+        DogFood_Tu.IsEaten = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerEat();
+
+
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 

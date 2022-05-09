@@ -26,10 +26,12 @@ pushButton, DisableButton, smashButton;
     public GameObject dialog;
     DialogManager dialogManager;
 
-    public bool isBited;
+    //public bool
 
     void Start()
     {
+        //isBited = false;
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         FoodBox_Collider = GetComponent<BoxCollider>();
@@ -44,8 +46,12 @@ pushButton, DisableButton, smashButton;
         //sniffButton.onClick.AddListener(OnSniff);
 
         biteButton = FoodBoxData_Tu.BiteButton;
-        biteButton.onClick.AddListener(OnBite);
+        //biteButton.onClick.AddListener(OnBite);
         // "물기"가 안되는 오브젝트는 아래문장을 그대로 쓰고
+        //BiteDestroyController_FoodBox biteCon = biteButton.GetComponent<BiteDestroyController_FoodBox>();
+
+        //isBited = biteButton.GetComponent<BiteDestroyController_FoodBox>();
+
 
         // 파괴하기가 되는 오브젝트이면 파괴하기 버튼 변수를 추가한다.
         smashButton = FoodBoxData_Tu.SmashButton;
@@ -78,15 +84,19 @@ pushButton, DisableButton, smashButton;
 
     void Update()
     {
-        if (FoodBoxData_Bite.IsClicked && !isBited)
+        if (FoodBoxData_Bite.IsClicked && !biteButton.GetComponent<BiteDestroyController_FoodBox>().isBited)
         {
+            Debug.Log("물어바");
+
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(12));
 
             FoodBoxData_Bite.IsClicked = false;
         }
 
-        if (FoodBoxData_Bite.IsClicked && isBited)
+        if (FoodBoxData_Bite.IsClicked && biteButton.GetComponent<BiteDestroyController_FoodBox>().isBited)
         {
+            Debug.Log("파괴하기 권유");
+            
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(13));
 
             FoodBoxData_Bite.IsClicked = false;
@@ -101,10 +111,14 @@ pushButton, DisableButton, smashButton;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
+
     public void OnBite()
     {
         // throw new System.NotImplementedException();
+        Debug.Log("물기 인식");
+        //isBited = true;
     }
+
     public void OnPushOrPress()
     {
         /* 밀기 & 누르기 중에 "누르기"일 때!!! */
@@ -115,6 +129,7 @@ pushButton, DisableButton, smashButton;
 
         StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
     }
+
     IEnumerator ChangePressFalse() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴
     {
         yield return new WaitForSeconds(2f);
@@ -133,6 +148,8 @@ pushButton, DisableButton, smashButton;
 
         /* 오브젝트 흔드는 애니메이션 끝냄 */
         InteractionButtonController.interactionButtonController.PlayerSmash2();
+
+        DogFood_Tu.GetComponent<BoxCollider>().enabled = true;
     }
 
     void SmashInteraction()

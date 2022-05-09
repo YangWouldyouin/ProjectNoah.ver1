@@ -32,6 +32,9 @@ pushButton, DisableButton, smashButton;
     {
         dialogManager = dialog.GetComponent<DialogManager>();
 
+        //시작 대사
+        Invoke("StartComment", 4f);
+
         FoodBox_Collider = GetComponent<BoxCollider>();
 
         FoodBoxData_Tu = GetComponent<ObjData>();
@@ -174,5 +177,17 @@ pushButton, DisableButton, smashButton;
     }
     public void OnUp()
     {
+    }
+
+    public void StartComment()
+    {
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(9));
+
+        Invoke("StartPuzzle", 2f);
+    }
+
+    public void StartPuzzle()
+    {
+        gameObject.GetComponent<BoxCollider>().enabled = true;
     }
 }

@@ -131,7 +131,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         //S-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
 
-        Invoke("Comment", 30f);
+        Invoke("Comment", 2f);
     }
 
     public void OnBark()
@@ -189,6 +189,8 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
     public void Comment()
     {
+        Debug.Log("原戚滴櫛 AI 銅徹展朝 獣拙");
+
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(63));
     }

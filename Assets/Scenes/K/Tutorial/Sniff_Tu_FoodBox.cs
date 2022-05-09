@@ -79,6 +79,8 @@ pushButton, DisableButton, smashButton;
     {
         if(FoodBoxData_Sniff.IsClicked)
         {
+            Debug.Log("¸Ã¾Æ¹Ù");
+
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(11));
 
             FoodBoxData_Sniff.IsClicked = false;
