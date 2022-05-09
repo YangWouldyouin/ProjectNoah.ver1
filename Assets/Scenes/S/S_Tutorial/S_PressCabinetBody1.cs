@@ -132,6 +132,10 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
 
         Invoke("Comment", 2f);
+
+        /*튜토리얼 완료*/
+        GameManager.gameManager._gameData.IsEndTuto = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnBark()

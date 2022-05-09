@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class S_IDConsole : MonoBehaviour, IInteraction
 {
+    /*클릭대사 다시 안나오게*/
+    public bool StopIDConsoleSpeak = false;
+
     /*연관있는 오브젝트*/
     public GameObject S_canIDCard;
     /*    public GameObject S_BoxForConsole;*/
@@ -71,13 +74,12 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     void Update()
     {
-
-        if(IDConsoleData_S.IsClicked)
+        /*ID 콘솔 퍼즐 완료후에는 StopIDConsoleSpeak 이 트루가 되어서 더 이상 대사 안나옴*/
+        if (IDConsoleData_S.IsClicked && StopIDConsoleSpeak == false)
         {
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
 
             IDConsoleData_S.IsClicked = false;
-
         }
 /*
         if(boxForConsoleData_S.IsUpDown)
@@ -157,8 +159,12 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
             Invoke("CompleteCard",2f);
 
+            /**/
+            StopIDConsoleSpeak = true;
+
+            /*튜토리얼 중간 완료*/
             GameManager.gameManager._gameData.IsMiddleTuto = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             //콜라이더 켜주는거
             canPressCabinetDoor_Collider.enabled = true;

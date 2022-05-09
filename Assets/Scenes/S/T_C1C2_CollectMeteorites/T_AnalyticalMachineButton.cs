@@ -107,7 +107,7 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
             areAnalyticalMachineData_T.IsNotInteractable = true; // 상호작용 불가능하게
             areAnalyticalMachineOutline_T.OutlineWidth = 0;
 
-            IsAnalyticalMachinePlate_Collider.enabled = false;
+            //IsAnalyticalMachinePlate_Collider.enabled = false;
         }
     }
 

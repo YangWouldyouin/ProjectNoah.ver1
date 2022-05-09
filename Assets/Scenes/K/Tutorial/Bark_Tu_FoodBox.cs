@@ -35,6 +35,11 @@ pushButton, DisableButton, smashButton;
         //시작 대사
         Invoke("StartComment", 4f);
 
+        //시작할 때 박스 콜라이더를 꺼준다.
+       // gameObject.GetComponent<BoxCollider>().enabled = false;
+
+
+
         FoodBox_Collider = GetComponent<BoxCollider>();
 
         FoodBoxData_Tu = GetComponent<ObjData>();
@@ -183,7 +188,7 @@ pushButton, DisableButton, smashButton;
     {
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(9));
 
-        Invoke("StartPuzzle", 2f);
+        Invoke("StartPuzzle", 132f);
     }
 
     public void StartPuzzle()

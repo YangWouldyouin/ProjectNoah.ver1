@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class M_BoxForTuto : MonoBehaviour, IInteraction
 {
+    public GameObject S_TimerBarFilled;
+    public GameObject S_TimerBackground;
+    public GameObject S_TimerText;
+
     Button barkButton_M_BoxForTuto, sniffButton_M_BoxForTuto, biteButton_M_BoxForTuto, 
         pushButton_M_BoxForTuto, upButton_M_BoxForTuto;
     ObjData boxForTutoData_M;
@@ -22,6 +26,8 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
     public InGameTime inGameTime;
 
     public ObjectData IDCardData;
+
+    public bool FailTuto = false;
 
     void Start()
     {
@@ -49,20 +55,34 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (!GameManager.gameManager._gameData.IsMiddleTuto)
+        /*튜토리얼 실패*/
+
+        if (inGameTime.missionTimer == 0 && FailTuto == false)
         {
-            if (inGameTime.missionTimer == 0)
-            {
-                GameManager.gameManager._gameData.IsDisqualifiedEnd = true;
-                Debug.Log("튜토리얼 실패 엔딩");
-            }
+            GameManager.gameManager._gameData.IsDisqualifiedEnd = true;
+            Debug.Log("튜토리얼 실패 엔딩");
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            FailTuto = true;
         }
 
+/*        if (!GameManager.gameManager._gameData.IsRealMiddleTuto && FailTuto == false)
+        {
+          
+        }*/
+
+        /*타임 어택 성공시*/
         if(GameManager.gameManager._gameData.IsMiddleTuto)
         {
             inGameTime.maxTimer = 0;
+
+            S_TimerBarFilled.SetActive(false);
+            S_TimerBackground.SetActive(false);
+            S_TimerText.SetActive(false);
+
+            Debug.Log("진짜 튜토리얼 완료");
             GameManager.gameManager._gameData.IsMiddleTuto = false;
-            GameManager.gameManager._gameData.IsRealMiddleTuto = true;
+            GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
         }
     }
     void DiableButton()
