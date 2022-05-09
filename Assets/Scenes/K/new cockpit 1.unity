@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4513672, g: 0.50038254, b: 0.56975245, a: 1}
+  m_IndirectSpecularColor: {r: 0.45136768, g: 0.50038236, b: 0.5697532, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -9039,6 +9039,7 @@ MonoBehaviour:
     IsFuelabsorberFixed_E_E1: 0
     HealthMachineCancelCount: 5
     IsEngineDoorFix_M_C2: 0
+    IsIsReallySmellDone_T_C2: 0
     IsIronDisappear_T_C2: 0
     IsOutTroubleLine2_T_C2: 0
     IsSmartFarmFix_T_C2: 0
@@ -9095,6 +9096,7 @@ MonoBehaviour:
     IsStartOrbitChange: 0
     IsBasicTuto: 0
     IsMiddleTuto: 0
+    IsRealMiddleTuto: 0
     IsEndTuto: 0
     IsCompleteSmartFarmOpen: 0
     IsCompleteFindEngineKey: 0
@@ -13124,6 +13126,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8890935285454041213, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
   m_PrefabInstance: {fileID: 342996351253066976}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &590209597 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8890935285454041210, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+  m_PrefabInstance: {fileID: 342996351253066976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &592299943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14191,7 +14198,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1143476900}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &645837138
 GameObject:
@@ -21911,8 +21918,8 @@ Transform:
   - {fileID: 2108154257}
   - {fileID: 189188923}
   - {fileID: 681013624}
-  m_Father: {fileID: 1143476900}
-  m_RootOrder: 0
+  m_Father: {fileID: 590209597}
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1055033586
 MonoBehaviour:
@@ -24255,7 +24262,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1055033585}
   - {fileID: 1336157134}
   - {fileID: 639717755}
   - {fileID: 1191933981}
@@ -25617,7 +25623,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bb75967887b79c44399b310b9c905902, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bb75967887b79c44399b310b9c905902, type: 3}
       propertyPath: m_LocalScale.x
@@ -27154,7 +27160,7 @@ PrefabInstance:
     - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: portableObjects
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 590209596}
     - target: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
       propertyPath: CancelObjectText
       value: 
@@ -28420,7 +28426,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1143476900}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 20.603, y: 0, z: 0}
 --- !u!1001 &1339525114
 PrefabInstance:
@@ -30000,6 +30006,17 @@ Transform:
   m_Father: {fileID: 579428200}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1428698891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 811893983, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1430530849
 GameObject:
   m_ObjectHideFlags: 0
@@ -32250,8 +32267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a61f0424f038348a060888849e41a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlDoorData: {fileID: 0}
   controlDoorOutline: {fileID: 0}
+  controlDoorData: {fileID: 0}
   dialogManager_AI: {fileID: 1915457782}
 --- !u!114 &1515308556
 MonoBehaviour:
@@ -32828,7 +32845,7 @@ RectTransform:
   - {fileID: 1055349268}
   - {fileID: 380428719}
   m_Father: {fileID: 1143476900}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -36314,7 +36331,7 @@ Transform:
   - {fileID: 1816639640}
   - {fileID: 202398497}
   m_Father: {fileID: 1143476900}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1728723303
 PrefabInstance:
@@ -36658,7 +36675,7 @@ MonoBehaviour:
   IsIDConsole: {fileID: 1992389350}
   IsIDCard: {fileID: 1191933980}
   dogFoodData: {fileID: 11400000, guid: ddc01fb7bac795a4a9c3bfa80815a94b, type: 2}
-  dialog: {fileID: 1915457782}
+  dialog: {fileID: 1915457785}
 --- !u!114 &1760777295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40146,7 +40163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subtitleText: {fileID: 1209987463}
   dialogText: {fileID: 365641750}
-  nameText: {fileID: 1263402763}
+  nameText: {fileID: 1428698891}
   dialogPanel: {fileID: 46593815}
   typingSpeed: 0.05
   sentenceSpeed: 1.8
@@ -41208,7 +41225,7 @@ Transform:
   m_LocalScale: {x: 2.6578126, y: 1.5299078, z: 1.4352556}
   m_Children: []
   m_Father: {fileID: 1143476900}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1992389355
 MonoBehaviour:

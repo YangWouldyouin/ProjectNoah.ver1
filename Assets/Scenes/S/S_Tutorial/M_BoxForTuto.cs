@@ -60,6 +60,7 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
         {
             inGameTime.maxTimer = 0;
             GameManager.gameManager._gameData.IsMiddleTuto = false;
+            GameManager.gameManager._gameData.IsRealMiddleTuto = true;
         }
     }
     void DiableButton()

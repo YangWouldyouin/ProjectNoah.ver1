@@ -19,7 +19,7 @@ pushButton, smashButton, eatButton;
 
     public ObjectData dogFoodData;
 
-    public GameObject dialog;
+    public DialogManager dialog;
     DialogManager dialogManager;
 
 

@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class T_ReMeteorButton : MonoBehaviour, IInteraction
 {
+    public bool MeteorMissionEnd = false;
+
+    /*시간 알림*/
+    public InGameTime inGameTime;
+
     /*연관있는 오브젝트*/
     public GameObject T_canMeteorCollectMachine_T;
     public GameObject T_canNormalMeteor1_T;
@@ -98,6 +103,16 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
             T_meteorButtonOutline_T.OutlineWidth = 0;
 
             T_canMeteorCollectMachineData_T.IsCenterButtonChanged = true;
+        }
+
+        if ((inGameTime.days + 1) % 2 != 8 && (inGameTime.hours) == 30 && MeteorMissionEnd == false)
+        {
+            Debug.Log("운석 수집 정기 업무 시작");
+            GameManager.gameManager._gameData.IsStartCollectMeteorites = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //C-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            //지예야 대사에 만약 오랜학습을 통해 먼저 임무를 선행했다면 다음 임무를 준비하라고 쓰는 게 좋을거 같은디
+            MeteorMissionEnd = true;
         }
     }
 
