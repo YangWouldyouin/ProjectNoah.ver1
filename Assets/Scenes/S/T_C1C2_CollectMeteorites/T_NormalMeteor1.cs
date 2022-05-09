@@ -41,6 +41,14 @@ public class T_NormalMeteor1 : MonoBehaviour, IInteraction
         noCenterButton_T_NormalMeteor1.transform.gameObject.SetActive(false);
     }
 
+    void Update()
+    {
+        if (normalMeteor1Data_T.IsClicked)
+        {
+            //C - 3 企紫  』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』
+        }
+    }
+
     public void OnBark()
     {
         //normalMeteor1Data_T.IsBark = true;
@@ -75,6 +83,8 @@ public class T_NormalMeteor1 : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerSniff();
+
+        GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2 = true;
     }
 
 

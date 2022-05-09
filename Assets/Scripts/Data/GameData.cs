@@ -76,6 +76,8 @@ public class GameData
 
     public bool IsEngineDoorFix_M_C2; // 엔진실 문 고쳤는지
 
+    //운석 수집 퍼즐
+    public bool IsIsReallySmellDone_T_C2; // 운석 냄새를 맡았는지
 
     // 스마트팜 퍼즐
     public bool IsIronDisappear_T_C2; // 스마트팜 망가진 문 열었는지
@@ -173,7 +175,8 @@ public class GameData
 
     /*퍼즐완료*/
     public bool IsBasicTuto; //튜토리얼 앞 파트 퍼즐 완료
-    public bool IsMiddleTuto; //튜토리얼 앞 파트 퍼즐 완료
+    public bool IsMiddleTuto; //튜토리얼 앞 파트 퍼즐 완료 확인
+    public bool IsRealMiddleTuto; //튜토리얼 앞 파트 진짜 완료
     public bool IsEndTuto; //튜토리얼 앞 파트 퍼즐 완료
     public bool IsCompleteSmartFarmOpen; // 스마트팜 오픈 퍼즐 완료
     public bool IsCompleteFindEngineKey; // 엔진실 카드키 찾기 퍼즐 완료

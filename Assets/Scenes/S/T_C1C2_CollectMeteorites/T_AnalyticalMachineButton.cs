@@ -138,8 +138,8 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
 
         analyticalMachineAnim_T.SetBool("isAnalyticalMachineOpen", true);
         analyticalMachineAnim_T.SetBool("isAnalyticalMachineOpenEnd", true);
-        analyticalMachineAnim_T.SetBool("isAnalyticalMachineClose", false);
-        analyticalMachineAnim_T.SetBool("isAnalyticalMachineCloseEnd", false);
+        //analyticalMachineAnim_T.SetBool("isAnalyticalMachineClose", false);
+        //analyticalMachineAnim_T.SetBool("isAnalyticalMachineCloseEnd", false);
 
         areAnalyticalMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
         areAnalyticalMachineOutline_T.OutlineWidth = 8;

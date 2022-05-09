@@ -71,8 +71,8 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
             Noah_Obj2_Collider.enabled = true;
             isAnalyticalMachineButton_Collider.enabled = true;
 
-            isAnalyticalMachinePlateData_T.IsNotInteractable = true; // 접시 상호작용 불 가능하게
-            isAnalyticalMachinePlateOutline_T.OutlineWidth = 0;
+/*            isAnalyticalMachinePlateData_T.IsNotInteractable = true; // 접시 상호작용 불 가능하게
+            isAnalyticalMachinePlateOutline_T.OutlineWidth = 0;*/
         }
     }
 
