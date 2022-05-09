@@ -18,6 +18,9 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
     public GameObject dialog;
     DialogManager dialogManager;
 
+    /*타이머*/
+    public InGameTime inGameTime;
+
     void Start()
     {
         boxForTutoData_M = GetComponent<ObjData>();
@@ -39,6 +42,17 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
         upButton_M_BoxForTuto.onClick.AddListener(OnUp);
     }
 
+    void Update()
+    {
+        if (!GameManager.gameManager._gameData.IsMiddleTuto)
+        {
+            if (inGameTime.missionTimer == 0)
+            {
+                GameManager.gameManager._gameData.IsDisqualifiedEnd = true;
+                Debug.Log("튜토리얼 실패 엔딩");
+            }
+        }
+    }
     void DiableButton()
     {
         barkButton_M_BoxForTuto.transform.gameObject.SetActive(false);
@@ -100,6 +114,7 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
 
             //S-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
+            TimerManager.timerManager.TimerStart(60);
         }
 
     }

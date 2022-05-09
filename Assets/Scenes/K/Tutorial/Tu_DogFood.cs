@@ -22,8 +22,6 @@ pushButton, smashButton, eatButton;
     public GameObject dialog;
     DialogManager dialogManager;
 
-    /*타이머*/
-    public InGameTime inGameTime;
 
     void Start()
     {
@@ -74,15 +72,6 @@ pushButton, smashButton, eatButton;
         {
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(14));
         }
-
-        if(! GameManager.gameManager._gameData.IsMiddleTuto )
-        {
-            if (inGameTime.missionTimer == 0)
-            {
-                GameManager.gameManager._gameData.IsDisqualifiedEnd = true;
-                Debug.Log("튜토리얼 실패 엔딩");
-            }
-        }
     }
 
 
@@ -126,14 +115,14 @@ pushButton, smashButton, eatButton;
         Debug.Log("다음 퍼즐을 이어할게요");
         //S-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
-        Invoke(" StartTimer", 5f);
+        //Invoke(" StartTimer", 5f);
         //StartCoroutine(StartTimer1());
 
         GameManager.gameManager._gameData.IsBasicTuto = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
-    IEnumerator StartTimer1() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴
+/*    IEnumerator StartTimer1() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴
     {
         yield return new WaitForSeconds(5f);
         TimerManager.timerManager.TimerStart(60);
@@ -142,7 +131,7 @@ pushButton, smashButton, eatButton;
     void StartTimer()
     {
         TimerManager.timerManager.TimerStart(60);
-    }
+    }*/
 
     public void OnSniff() // 냄새맡기
     {
