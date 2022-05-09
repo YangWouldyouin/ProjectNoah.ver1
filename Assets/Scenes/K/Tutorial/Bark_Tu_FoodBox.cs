@@ -81,6 +81,8 @@ pushButton, DisableButton, smashButton;
         {
             Debug.Log("Â¢±âÁØºñ");
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(10));
+
+            FoodBoxData.IsClicked = false;
         }
     }
 

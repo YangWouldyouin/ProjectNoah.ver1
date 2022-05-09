@@ -71,6 +71,8 @@ pushButton, smashButton, eatButton;
         if (dogFoodData.IsClicked)
         {
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(14));
+
+            dogFoodData.IsClicked = false; 
         }
     }
 

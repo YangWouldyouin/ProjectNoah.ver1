@@ -81,11 +81,15 @@ pushButton, DisableButton, smashButton;
         if (FoodBoxData_Bite.IsClicked && !isBited)
         {
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(12));
+
+            FoodBoxData_Bite.IsClicked = false;
         }
 
         if (FoodBoxData_Bite.IsClicked && isBited)
         {
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(13));
+
+            FoodBoxData_Bite.IsClicked = false;
         }
     }
 
