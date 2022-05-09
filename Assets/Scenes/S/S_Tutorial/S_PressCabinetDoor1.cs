@@ -66,9 +66,6 @@ public class S_PressCabinetDoor1 : MonoBehaviour,IInteraction
     // Update is called once per frame
     void Update()
     {
-        // 앞에 카드키 꽂기 퍼즐이 완료되었는지 확인
-        //S-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(21));
     }
 
     public void OnBark()
