@@ -89,5 +89,15 @@ public class GameEndingController : MonoBehaviour
             //¿£µù ¾À ÀÌµ¿
         }
 
+        if(GameManager.gameManager._gameData.IsReturnOfTheEarth == false && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        {
+            GameManager.gameManager._gameData.IsSaveOnlyOneEnd = true;
+        }
+
+        if (GameManager.gameManager._gameData.IsReturnOfTheEarth)
+        {
+            GameManager.gameManager._gameData.IsSaveAllEnd = true;
+        }
+
     }
 }
