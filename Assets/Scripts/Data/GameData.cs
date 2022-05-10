@@ -81,6 +81,7 @@ public class GameData
 
     //운석 수집 퍼즐
     public bool IsIsReallySmellDone_T_C2; // 운석 냄새를 맡았는지
+    public bool IsReportImportantMeteor_T_C2; // 중요 운석을 분석기에 넣었다
 
     // 스마트팜 퍼즐
     public bool IsIronDisappear_T_C2; // 스마트팜 망가진 문 열었는지
