@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameEndingController : MonoBehaviour
 {
+    public InGameTime inGameTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +30,14 @@ public class GameEndingController : MonoBehaviour
             //특별 운석 보고 엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
             GameManager.gameManager._gameData.statNum = 10;
+
+            inGameTime.days = 0;
+            inGameTime.hours = 0;
+            inGameTime.timer = 0;
+
             SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
+
         }
 
         if (GameManager.gameManager._gameData.IsMakeForestEnd == true)
@@ -38,6 +46,11 @@ public class GameEndingController : MonoBehaviour
             //생태계구축엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
             GameManager.gameManager._gameData.statNum = 10;
+
+            inGameTime.days = 0;
+            inGameTime.hours = 0;
+            inGameTime.timer = 0;
+
             SceneManager.LoadScene("EndingScene");
         }
 
@@ -50,6 +63,11 @@ public class GameEndingController : MonoBehaviour
             //명령 불복종 엔딩
             // 스탯, 취소 리포트 개수 리셋
             GameManager.gameManager._gameData.statNum = 10;
+
+            inGameTime.days = 0;
+            inGameTime.hours = 0;
+            inGameTime.timer = 0;
+
             SceneManager.LoadScene("EndingScene");
             // 리포트 게임 엔딩씬으로 이동
             // 게임 오버
@@ -61,6 +79,11 @@ public class GameEndingController : MonoBehaviour
             //인재부족 엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
             GameManager.gameManager._gameData.statNum = 10;
+
+            inGameTime.days = 0;
+            inGameTime.hours = 0;
+            inGameTime.timer = 0;
+
             SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
         }
@@ -71,6 +94,11 @@ public class GameEndingController : MonoBehaviour
             //실험체 폐기 엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
             GameManager.gameManager._gameData.statNum = 10;
+
+            inGameTime.days = 0;
+            inGameTime.hours = 0;
+            inGameTime.timer = 0;
+
             SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
         }
@@ -81,6 +109,11 @@ public class GameEndingController : MonoBehaviour
             //당신이 구한 하나 엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
             GameManager.gameManager._gameData.statNum = 10;
+
+            inGameTime.days = 0;
+            inGameTime.hours = 0;
+            inGameTime.timer = 0;
+
             SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
         }
@@ -91,6 +124,11 @@ public class GameEndingController : MonoBehaviour
             //당신이 구한 전부 엔딩, 진엔딩, 고발O
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
             GameManager.gameManager._gameData.statNum = 10;
+
+            inGameTime.days = 0;
+            inGameTime.hours = 0;
+            inGameTime.timer = 0;
+
             SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
         }
