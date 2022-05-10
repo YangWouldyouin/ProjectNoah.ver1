@@ -24,6 +24,8 @@ pushButton, smashButton, eatButton;
 
     public GameObject box;
 
+    public GameObject stat;
+
 
     void Start()
     {
@@ -134,7 +136,7 @@ pushButton, smashButton, eatButton;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //½ºÅÈ »ó½Â
         //NoahStatController.noahStatController.IncreaseStatBar();
-
+        Invoke("StatUp", 3f);
 
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
@@ -170,5 +172,10 @@ pushButton, smashButton, eatButton;
 
     public void OnUp()
     {
+    }
+
+    public void StatUp()
+    {
+        stat.SetActive(true);
     }
 }

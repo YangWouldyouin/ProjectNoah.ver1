@@ -30,7 +30,7 @@ public class Tutorial_Fadeinout : MonoBehaviour
 
     public void nextText4()
     {
-        introtext.text = "‘레비젼’이 키워낸 최고의 천재견 노아no.113는" + "\n" + "블랙홀을 탐사하는 프로젝트 블랙의 113번째 탐사견이다.";
+        introtext.text = "‘레비젼’이 키워낸 최고의 천재견 노아no.113는" + "\n" + "블랙홀을 탐사하는 프로젝트 노아의 113번째 탐사견이다.";
         Invoke("introEnd", 4f);
     }
     public void introEnd()
