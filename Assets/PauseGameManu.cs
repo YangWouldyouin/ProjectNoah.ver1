@@ -9,15 +9,15 @@ public class PauseGameManu : MonoBehaviour
     public GameObject pauseManu;
     public Canvas savePagePanel;
 
-    public GameObject dialogManager_CC;
-    DialogManager dialogManager;
+    //public GameObject dialogManager_CC;
+    //DialogManager dialogManager;
 
 
-    private void Start()
-    {
-        dialogManager = dialogManager_CC.GetComponent<DialogManager>();
+    //private void Start()
+    //{
+    //    dialogManager = dialogManager_CC.GetComponent<DialogManager>();
         
-    }
+    //}
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -52,6 +52,6 @@ public class PauseGameManu : MonoBehaviour
         TimerManager.timerManager.TimerStart(3f);
         
         //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(2));
+        //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(2));
     }
 }
