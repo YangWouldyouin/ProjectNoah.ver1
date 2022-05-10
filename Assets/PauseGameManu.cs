@@ -49,7 +49,7 @@ public class PauseGameManu : MonoBehaviour
     {
         pauseManu.SetActive(false);
         Time.timeScale = 1;
-        TimerManager.timerManager.TimerStart(3f);
+        //TimerManager.timerManager.TimerStart(3f);
         
         //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
         //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(2));
