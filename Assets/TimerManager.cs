@@ -15,24 +15,28 @@ public class TimerManager : MonoBehaviour
     }
 
     public InGameTime inGameTime;
-    
+
+    Image timerDim;
     Image timerBar;
     Image timerText;
     Image timerBackground;
 
     [HideInInspector]
-    public float maxTime = 5f;
+    public float maxTime;
     [HideInInspector]
-    public float timeLeft = 5f;
+    public float timeLeft;
 
     void Start()
     {
-        timerBar = transform.GetChild(0).GetComponent<Image>();
-        timerText = transform.GetChild(1).GetComponent<Image>();
+        timerDim = transform.GetChild(0).GetComponent<Image>();
+        timerBar = transform.GetChild(1).GetComponent<Image>();
         timerBackground = transform.GetChild(2).GetComponent<Image>();
+        timerText = transform.GetChild(3).GetComponent<Image>();
+
 
         if (inGameTime.IsTimerStarted)
         {
+            timerDim.gameObject.SetActive(true);
             timerBar.gameObject.SetActive(true);
             timerText.gameObject.SetActive(true);
             timerBackground.gameObject.SetActive(true);
@@ -43,6 +47,7 @@ public class TimerManager : MonoBehaviour
 
     public void TimerStart(float minutes)
     {
+        timerDim.gameObject.SetActive(true);
         timerBar.gameObject.SetActive(true);
         timerText.gameObject.SetActive(true);
         timerBackground.gameObject.SetActive(true);
@@ -57,24 +62,19 @@ public class TimerManager : MonoBehaviour
     IEnumerator StartTimer()
     {
         timerBar.fillAmount = inGameTime.missionTimer / inGameTime.maxTimer;
-        while (inGameTime.missionTimer >= 0)
+
+        while (inGameTime.missionTimer >= 0 && inGameTime.IsTimerStarted)
         {
             yield return new WaitForSeconds(0.01f);
             inGameTime.missionTimer -= 0.01f;
             timerBar.fillAmount = inGameTime.missionTimer / inGameTime.maxTimer;
         }
 
-        if(inGameTime.missionTimer == 0)
-        {
-            inGameTime.missionTimer = 0;
-            inGameTime.maxTimer = 0;
+        timerDim.gameObject.SetActive(false);
+        timerBar.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
+        timerBackground.gameObject.SetActive(false);
 
-            timerBar.gameObject.SetActive(false);
-            timerText.gameObject.SetActive(false);
-            timerBackground.gameObject.SetActive(false);
-
-            inGameTime.IsTimerStarted = false;
-        }
-
-    }  
+        inGameTime.IsTimerStarted = false;
+    }
 }
