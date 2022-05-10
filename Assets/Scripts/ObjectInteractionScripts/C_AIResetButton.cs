@@ -7,12 +7,14 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
 {
     public Outline controlDoorOutline;
     Outline AIButtonOutline;
-    ObjData AIButtonData;
-    //ObjData consoleDoor_CC;
+    ObjData AIButtonObjData;
+
     private Button barkButton, sniffButton, biteButton,
     pressButton, noCenterButton;
 
     public ObjectData controlDoorData;
+    public ObjectData AIButtonData;
+
     public GameObject dialogManager_AI;
     DialogManager dialogManager;
 
@@ -21,21 +23,21 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     void Start()
     {
         AIButtonOutline = GetComponent<Outline>();
-        AIButtonData = GetComponent<ObjData>();
+        AIButtonObjData = GetComponent<ObjData>();
         /* 각 상호작용 버튼에 함수를 넣는다 */
-        barkButton = AIButtonData.BarkButton;
+        barkButton = AIButtonObjData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = AIButtonData.SniffButton;
+        sniffButton = AIButtonObjData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = AIButtonData.BiteButton;
+        biteButton = AIButtonObjData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
-        pressButton = AIButtonData.PushOrPressButton;
+        pressButton = AIButtonObjData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton = AIButtonData.CenterButton1;
+        noCenterButton = AIButtonObjData.CenterButton1;
 
         dialogManager = dialogManager_AI.GetComponent<DialogManager>();
     }
@@ -52,7 +54,9 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        throw new System.NotImplementedException();
+        /* 상호작용 버튼을 끔 */
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnBite()
@@ -65,14 +69,8 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        /* 오브젝트의 누르기 변수 true로 바꿈 */
-        AIButtonData.IsPushOrPress = true;
-
         /* 상호작용 버튼을 끔 */
         DiableButton();
-
-        /* 2초 뒤에 Ispushorpress 를 false 로 바꿈 */
-        StartCoroutine(ChangePressFalse());
 
         // 탑뷰로 돌아감
         CameraController.cameraController.CancelObserve();
@@ -82,7 +80,6 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         /* 애니메이션 보여줌 */
 
         Invoke("DelayAnim", 1.5f);
-
 
         /* "AI 깨우기 완료" 게임 중간 저장 */
         GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
@@ -118,16 +115,8 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        AIButtonData.IsPushOrPress = false;
-    }
-
     public void OnSniff()
     {
-        /* 오브젝트의 냄새맡기 변수 true로 바꿈 */
-        AIButtonData.IsSniff = true;
         /* 상호작용 버튼을 끔 */
         DiableButton();
         /* 애니메이션 보여주고 냄새 텍스트 띄움 */

@@ -52,6 +52,6 @@ public class PauseGameManu : MonoBehaviour
         TimerManager.timerManager.TimerStart(3f);
         
         //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(1));
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(2));
     }
 }
