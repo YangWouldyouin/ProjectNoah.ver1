@@ -10,11 +10,12 @@ public class DialogManager : MonoBehaviour
     public static DialogManager dialogManager { get; private set; }
     GoogleSheetManager googleSheetManager;
 
-    public UIText subtitleText;
+    public TMPro.TextMeshProUGUI subtitleText;
     public TMPro.TextMeshProUGUI dialogText;
-    //public TMPro.TextMeshProUGUI subtitleText;
     public TMPro.TextMeshProUGUI nameText;
+
     public GameObject dialogPanel;
+    public GameObject AIPanel;
 
     bool IsDialogStarted = false;
     bool IsSubtitleStarted = false;
@@ -50,7 +51,7 @@ public class DialogManager : MonoBehaviour
         {
             IsDialogStarted = true;
 
-            dialogPanel.SetActive(true);
+            AIPanel.SetActive(true);
             AIPanelAnim.SetBool("IsAIPanelActive", true);
             AIPanelAnim.SetBool("IsAIOpen", true);
             yield return new WaitForSeconds(1f);
@@ -81,7 +82,7 @@ public class DialogManager : MonoBehaviour
 
     void EndPanelAnim()
     {
-        dialogPanel.SetActive(false);
+        AIPanel.SetActive(false);
         IsDialogStarted = false;
     }
     void StartPanelAnim()
@@ -127,7 +128,9 @@ public class DialogManager : MonoBehaviour
     {
         if (!IsSubtitleStarted)
         {
+
             IsSubtitleStarted = true;
+            dialogPanel.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(1f);
             for (int j = 0; j < googleSheetManager.subtitleDic[subtitleNum].Length; j++)
@@ -143,6 +146,7 @@ public class DialogManager : MonoBehaviour
             // 3초 후 대화 패널 비활성화
             yield return new WaitForSeconds(3f);
             //dialogPanel.SetActive(false);
+            dialogPanel.gameObject.SetActive(false);
             IsSubtitleStarted = false;
         }
         else

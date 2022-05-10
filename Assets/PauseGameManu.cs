@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 public class PauseGameManu : MonoBehaviour
 {
     public GameObject pauseManu;
-    public string projectList, mainScene;
+    public Canvas savePagePanel;
+
     public GameObject dialogManager_CC;
     DialogManager dialogManager;
+
 
     private void Start()
     {
@@ -20,27 +22,33 @@ public class PauseGameManu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            Time.timeScale = 0;
             pauseManu.SetActive(true);
         }
     }
     public void GoToMain()
     {
-        SceneManager.LoadScene(mainScene);
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Main");
     }
 
     public void GoToProjectList()
     {
-        SceneManager.LoadScene(projectList);
+        savePagePanel.gameObject.SetActive(true);
     }
 
     public void ExitGame()
     {
+        Time.timeScale = 1;
         Application.Quit();
     }
 
     public void ResumeGame()
     {
         pauseManu.SetActive(false);
+        Time.timeScale = 1;
+        TimerManager.timerManager.TimerStart(3f);
+        
         //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(1));
     }
