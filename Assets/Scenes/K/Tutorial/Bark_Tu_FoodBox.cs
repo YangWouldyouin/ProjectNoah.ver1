@@ -33,7 +33,7 @@ pushButton, DisableButton, smashButton;
         dialogManager = dialog.GetComponent<DialogManager>();
 
         //시작 대사
-        Invoke("StartComment", 4f);
+        Invoke("StartComment", 17f);
 
         //시작할 때 박스 콜라이더를 꺼준다.
        // gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -106,7 +106,7 @@ pushButton, DisableButton, smashButton;
         SniffBox.transform.localRotation = gameObject.transform.localRotation;
         SniffBox.SetActive(true);
 
-        Destroy(gameObject, 0f);
+        Destroy(gameObject, 7.2f);
 
     }
     public void OnBite()
@@ -188,7 +188,7 @@ pushButton, DisableButton, smashButton;
     {
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(9));
 
-        Invoke("StartPuzzle", 2f);
+        Invoke("StartPuzzle", 90f);
     }
 
     public void StartPuzzle()

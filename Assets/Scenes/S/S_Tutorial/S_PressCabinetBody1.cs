@@ -132,7 +132,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         Debug.Log("채현파트 완료, 마무리 대화 시작");
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
 
-        Invoke("Comment", 2f);
+        Invoke("Comment", 40f);
 
         /*튜토리얼 완료*/
         GameManager.gameManager._gameData.IsEndTuto = true;
@@ -196,8 +196,14 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     {
         Debug.Log("마이크랑 AI 티키타카 시작");
 
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
+        Invoke("Mike", 0.1f);
+        //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(63));
+    }
+
+    public void Mike()
+    {
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
     }
 
 }

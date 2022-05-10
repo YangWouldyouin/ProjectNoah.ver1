@@ -159,7 +159,7 @@ pushButton, DisableButton, smashButton;
         biteBox.transform.localRotation = gameObject.transform.localRotation;
         biteBox.SetActive(true);
 
-        Destroy(gameObject, 0f);
+        Destroy(gameObject, 7.2f);
     }
 
 
