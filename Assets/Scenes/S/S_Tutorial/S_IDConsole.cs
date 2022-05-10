@@ -93,7 +93,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         }*/
 
-        /*노아의 높이가 책상 올라갈 높이가 되는지 확인*/
+        /*노아의 높이가 책상 올라갈 높이가 되는지 확인*//*
         if (IDConsoleData_S.IsCollision)
         {
             IDConsoleData_S.IsCenterButtonChanged = true;
@@ -103,7 +103,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         else 
         {
             IDConsoleData_S.IsCenterButtonChanged = false;
-        }
+        }*/
 
 
         if (IDConsoleData_S.IsObserve)
