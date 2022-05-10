@@ -10,9 +10,15 @@ public class CantBoxClick : MonoBehaviour
 
     Outline CantClickBoxnOutline;
 
+    /*Collider*/
+    BoxCollider Box_Collider;
+
     // Start is called before the first frame update
     void Start()
     {
+        /*Collider*/
+        Box_Collider = GetComponent<BoxCollider>();
+
         CantClickBoxData = CantClickBox.GetComponent<ObjData>();
 
         CantClickBoxnOutline = CantClickBox.GetComponent<Outline>();
@@ -25,12 +31,14 @@ public class CantBoxClick : MonoBehaviour
         {
             CantClickBoxData.IsNotInteractable = true; // 상호작용 가능하게
             CantClickBoxnOutline.OutlineWidth = 0;
+            Box_Collider.isTrigger = false;
         }
 
         else
         {
             CantClickBoxData.IsNotInteractable = false; // 상호작용 가능하게
             CantClickBoxnOutline.OutlineWidth = 8;
+            Box_Collider.isTrigger = true;
         }
     
     }
