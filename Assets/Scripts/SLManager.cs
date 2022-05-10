@@ -6,8 +6,280 @@ using UnityEngine;
 
 public class SLManager : MonoBehaviour
 {
+
+    /*업무공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+    public GameObject ChangeScene;
+
+    public GameObject dialog;
+    DialogManager dialogManager;
+
+
+    [Header("<상태체크기계 고치기>")]
+    public GameObject HealthMachine;
+    public GameObject HealthMachineFixData;
+
+    [Header("<스마트팜 오픈>")]
+    public GameObject FixedLine2; //고쳐진 줄
+    public GameObject LineHome2; // 라인 홈
+    public GameObject IronPlateDoor; // 스마트팜 합판 
+    public GameObject TroubleLine; // 망가진 선
+    public Animator smartFarmDoorAnim;
+
+
+
+    [Header("<엔진실 카드키 찾기>")]
+    public GameObject CardPack; //카드팩
+    public GameObject EngineCardKey; // 엔진실 카드 키
+
+
+
+    [Header("<엔진실 문 열기 완료>")]
+    public Animator engineDoorAnim; // 문열리는 애니메이션
+    public GameObject BrokenArea; // 망가진 구역
+    public GameObject Conduction; // 전도체
+    public GameObject EngineDoor; // 엔진실 문
+    public GameObject InsertCardPad; // 카드 패드
+
+
+
+    [Header("<생활공간 문 반만 열기 완료>")]
+    public GameObject CardKey_WL; // 생활공간 카드키
+    public GameObject LivingSpace_CardKeyMachine_W; // 생활공간 카드키 기계
+    public Animator HalfLivingDoorAni_M; // 생활공간 문 반만 열리기
+    BoxCollider CardKey_WL_Collider;
+    BoxCollider LivingSpace_CardKeyMachine_W_Collider;
+
+
+    [Header("<운석 수집 완료>")]
+    public Animator meteorBoxAnim; //  수집기 문열리는 애니메이션
+    public Animator analyticalMachineAnim; // 분석기 문열리는 애니메이션
+    public GameObject ImportantMeteor; // 중요 운석
+    public GameObject NormalMeteor1; // 평범한 운석1
+
+
+    [Header("<죽은 척 하기 완료하면>")]
+    public GameObject Beaker1;
+    public GameObject Beaker2;
+    public GameObject CylinderAnswer;
+    public GameObject CylinderWrong;
+    public GameObject CylinderNoNeed1;
+    public GameObject CylinderNoNeed2;
+    public GameObject MeteorBoxButton1;
+    public GameObject MeteorBoxButton2;
+    public GameObject MeteorBoxButton3;
+    public GameObject MeteorBoxButton4;
+    public GameObject MeteorBoxButton5;
+    public GameObject MeteoritesStorage1;
+    public GameObject MeteoritesStorage2;
+    public GameObject MeteoritesStorage3;
+    public GameObject MeteoritesStorage4;
+    public GameObject MeteoritesStorage5;
+    public GameObject WrongMeteor1;
+    public GameObject WrongMeteor2;
+    public GameObject WrongMeteor3;
+    public GameObject WrongMeteor4;
+    public GameObject AnswerMeteor;
+
+    [Header("<마약탐지>")]
+    public GameObject smellRangeArea;
+    public GameObject canSmellArea;
+    public GameObject drugBag;
+    public GameObject drug;
+    public GameObject SDrug;
+    public GameObject insert01;
+    public GameObject insert02;
+
+
+    [Header("<추가적인것>")]
+    /*Object Data*/
+    public ObjectData MeteorButtonData_Save;
+    public ObjectData MeteorCollectMachineData_Save;
+    public ObjectData AnalyticalMachineData_Save;
+    public ObjectData AnalyticalMachineButtonData_Save;
+
+    /*Outline*/
+    public Outline MeteorButtonOutline_Save;
+    public Outline MeteorCollectMachineOutline_Save;
+    public Outline AnalyticalMachineOutline_Save;
+    public Outline AnalyticalMachineButtonOutline_Save;
+
+    /*BoxCollider*/
+    BoxCollider LineHome2_Collider;
+    BoxCollider IronPlateDoor_Collider;
+
+    BoxCollider BrokenArea_Collider;
+    BoxCollider EngineDoor_Collider;
+    BoxCollider InsertCardPad_Collider;
+
+    BoxCollider Beaker1_Collider;
+    BoxCollider Beaker2_Collider;
+    BoxCollider CylinderAnswer_Collider;
+    BoxCollider CylinderWrong_Collider;
+    BoxCollider CylinderNoNeed1_Collider;
+    BoxCollider CylinderNoNeed2_Collider;
+    BoxCollider MeteorBoxButton1_Collider;
+    BoxCollider MeteorBoxButton2_Collider;
+    BoxCollider MeteorBoxButton3_Collider;
+    BoxCollider MeteorBoxButton4_Collider;
+    BoxCollider MeteorBoxButton5_Collider;
+    BoxCollider MeteoritesStorage1_Collider;
+    BoxCollider MeteoritesStorage2_Collider;
+    BoxCollider MeteoritesStorage3_Collider;
+    BoxCollider MeteoritesStorage4_Collider;
+    BoxCollider MeteoritesStorage5_Collider;
+
+    MeshCollider smellRangeAreaCol;
+    MeshCollider canSmellAreaCol;
+    BoxCollider drugBagCol;
+    BoxCollider drugCol;
+    BoxCollider SDrugCol;
+    BoxCollider insert01Col;
+    BoxCollider insert02Col;
+
+    BoxCollider HealthMachineFixData_Collider;
+
+
+    /*엔진실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+    // 연료 퍼즐
+    public GameObject FA_fuelabsorberfixPart;
+    public GameObject FA_fuelabsorberBody;
+    public GameObject FA_fuelabsorber;
+
+    // 태블릿 해금 퍼즐
+    public GameObject Tablet_E;
+    public GameObject Boxes_E;
+    public GameObject Full_Eg_Pad_E;
+    public GameObject Zero_Eg_Pad_E;
+
+    public GameObject LoverPic_E;
+    public GameObject E_AstronPic_Susan_E;
+    public GameObject E_AstronPic_Mike_E;
+    public GameObject E_AstronPic_Salvia_E;
+    public GameObject E_AstronPic_Trelawny_E;
+
+
+
+    /*생활공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+
+
+    public GameObject TDBT_fixPart;
+    public GameObject TDBT_fixBody;
+
+    public ObjectData TDBT_fixPartData, TDBT_fixBodyData;
+    Outline TDBT_BodyOutline, TDBT_fixPartOutline;
+
+
+
+
+
+
+    /*조종실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+    public Animator controlWorkDoorAnim;
+
+    [Header("<AI다운>")]
+    public GameObject chipInsert;
+    public GameObject RChip;
+    public GameObject WChip;
+
+    //콜라이더
+    BoxCollider chipInsertCol;
+    BoxCollider RChipCol;
+    BoxCollider WChipCol;
+
+
+
+
+
+
+
+
+
+
+    /*스타트 문 시작&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
+        GameData intialGameData = SaveSystem.Load("save_001");
+
+
+        /*업무공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+
+        /*상태체크기계고치기*/
+        HealthMachineFixData_Collider = HealthMachineFixData.GetComponent<BoxCollider>();
+
+        /*스마트팜 오픈*/
+        LineHome2_Collider = LineHome2.GetComponent<BoxCollider>();
+        IronPlateDoor_Collider = IronPlateDoor.GetComponent<BoxCollider>();
+
+        /*엔진실 오픈*/
+        BrokenArea_Collider = BrokenArea.GetComponent<BoxCollider>();
+        EngineDoor_Collider = EngineDoor.GetComponent<BoxCollider>();
+        InsertCardPad_Collider = InsertCardPad.GetComponent<BoxCollider>();
+
+        /* 생활공간 오픈 */
+        CardKey_WL_Collider = CardKey_WL.GetComponent<BoxCollider>();
+        LivingSpace_CardKeyMachine_W_Collider = CardKey_WL.GetComponent<BoxCollider>();
+
+        /*죽은척하기*/
+        Beaker1_Collider = Beaker1.GetComponent<BoxCollider>();
+        Beaker2_Collider = Beaker2.GetComponent<BoxCollider>();
+        CylinderAnswer_Collider = CylinderAnswer.GetComponent<BoxCollider>();
+        CylinderWrong_Collider = CylinderWrong.GetComponent<BoxCollider>();
+        CylinderNoNeed1_Collider = CylinderNoNeed1.GetComponent<BoxCollider>();
+        CylinderNoNeed2_Collider = CylinderNoNeed2.GetComponent<BoxCollider>();
+        MeteorBoxButton1_Collider = MeteorBoxButton1.GetComponent<BoxCollider>();
+        MeteorBoxButton2_Collider = MeteorBoxButton2.GetComponent<BoxCollider>();
+        MeteorBoxButton3_Collider = MeteorBoxButton3.GetComponent<BoxCollider>();
+        MeteorBoxButton4_Collider = MeteorBoxButton4.GetComponent<BoxCollider>();
+        MeteorBoxButton5_Collider = MeteorBoxButton5.GetComponent<BoxCollider>();
+        MeteoritesStorage1_Collider = MeteoritesStorage1.GetComponent<BoxCollider>();
+        MeteoritesStorage2_Collider = MeteoritesStorage2.GetComponent<BoxCollider>();
+        MeteoritesStorage3_Collider = MeteoritesStorage3.GetComponent<BoxCollider>();
+        MeteoritesStorage4_Collider = MeteoritesStorage4.GetComponent<BoxCollider>();
+        MeteoritesStorage5_Collider = MeteoritesStorage5.GetComponent<BoxCollider>();
+
+        //마약 탐지
+        smellRangeAreaCol = smellRangeArea.GetComponent<MeshCollider>();
+        canSmellAreaCol = canSmellArea.GetComponent<MeshCollider>();
+        drugBagCol = drugBag.GetComponent<BoxCollider>();
+        drugCol = drug.GetComponent<BoxCollider>();
+        SDrugCol = SDrug.GetComponent<BoxCollider>();
+        insert01Col = insert01.GetComponent<BoxCollider>();
+        insert02Col = insert02.GetComponent<BoxCollider>();
+
+
+
+        /*생활공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+        TDBT_BodyOutline = TDBT_fixBody.GetComponent<Outline>();
+        TDBT_fixPartOutline = TDBT_fixPart.GetComponent<Outline>();
+
+
+        /*엔진실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+        //없음
+
+
+
+
+        /*조종실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+        //없음
+    }
+
     void Update()
     {
+
+
+
         /* 게임 리셋 */
         if (Input.GetKeyDown("s"))
         {
@@ -23,7 +295,7 @@ public class SLManager : MonoBehaviour
             character.IsTabletUnlock = false;
             //character.IsBasicTuto = false;
             character.IsMiddleTuto = false;
-            //character.statNum = 10;
+            character.statNum = 10;
 
 
 
@@ -282,8 +554,8 @@ public class SLManager : MonoBehaviour
 
             //character.randomUPic = false;
 
-            /*엔딩*/
-            character.IsInputImportantMeteorEnd = false; // 특별 운석 보고 엔딩
+            /*엔딩:주석처리 이유는 엔딩 페이지 체크를 위해서/
+/*            character.IsInputImportantMeteorEnd = false; // 특별 운석 보고 엔딩
             character.IsMakeForestEnd = false; // 생태계 구축 엔딩
             character.IsDefyMissionEnd = false; // 명령 불복종 엔딩: 보고하기 일정 횟수 거부
             character.IsDisqualifiedEnd = false; // 인재부족 엔딩: 튜토리얼 실패
@@ -292,24 +564,180 @@ public class SLManager : MonoBehaviour
             character.IsSaveAllEnd = false; // 당신이 구한 전부 엔딩: 진 엔딩, 고발 O
 
             character.IsManagerAbilityLack = false; //관리자자질부족
+            character.IsEatBadPotato = false;//상한 고구마 섭취 엔딩*/
 
             character.IsSuddenDeath = false; //돌연사 체크: 스탯 0 엔딩, 상한 고구마 섭취 엔딩
-
-            character.IsEatBadPotato = false;//상한 고구마 섭취 엔딩
-
-
-
-
-
-
-
-
-
-
-
-
-
             SaveSystem.Save(character, "save_001");
+
+
+
+
+            /*업무공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+
+            /*상태체크기계 고치기: 이미 이건 바꾼 값임*/
+            HealthMachineFixData.transform.position = new Vector3(-265.59f, -0.002026364f, 691.05f);
+            HealthMachineFixData.transform.rotation = Quaternion.Euler(-90, 0, 0);
+            HealthMachineFixData_Collider.enabled = true;
+
+            /*스마트팜 오픈 퍼즐을 완료 하면*/
+            LineHome2_Collider.enabled = false;
+            IronPlateDoor_Collider.enabled = false;
+            TroubleLine.SetActive(false);
+            FixedLine2.SetActive(false);
+            smartFarmDoorAnim.SetBool("FarmDoorMoving", true);
+            smartFarmDoorAnim.SetBool("FarmDoorStop", true);
+
+            /*엔진실 카드 키 찾기 퍼즐을 완료하면*/
+            CardPack.SetActive(false);
+            EngineCardKey.SetActive(true);
+
+            /*엔진실 열기 퍼즐을 완료하면*/
+            engineDoorAnim.SetBool("canEngineDoorOpen", true);
+            engineDoorAnim.SetBool("canEngineDoorEnd", true);
+            ChangeScene.SetActive(true);
+
+            EngineCardKey.SetActive(false);
+            Conduction.SetActive(false);
+
+            BrokenArea_Collider.enabled = false;
+            EngineDoor_Collider.enabled = false;
+            InsertCardPad_Collider.enabled = false;
+
+            /* 생활공간 문 반 열기 퍼즐 완료 시 */
+            HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
+            HalfLivingDoorAni_M.SetBool("HalfEnd", true);
+
+            CardKey_WL_Collider.enabled = false;
+            LivingSpace_CardKeyMachine_W_Collider.enabled = false;
+
+            /*운석 수집 퍼즐을 완료하면*/
+            meteorBoxAnim.SetBool("isMeteorBoxClose", false);
+            meteorBoxAnim.SetBool("isMeteorBoxCloseEnd", false);
+            meteorBoxAnim.SetBool("isMeteorBoxOpen", true);
+            meteorBoxAnim.SetBool("isMeteorBoxOpenEnd", true);
+
+
+            analyticalMachineAnim.SetBool("isAnalyticalMachineOpen", true);
+            analyticalMachineAnim.SetBool("isAnalyticalMachineOpenEnd", true);
+            analyticalMachineAnim.SetBool("isAnalyticalMachineClose", false);
+            analyticalMachineAnim.SetBool("isAnalyticalMachineCloseEnd", false);
+
+            NormalMeteor1.SetActive(false);
+
+            MeteorButtonData_Save.IsNotInteractable = true;
+            MeteorButtonOutline_Save.OutlineWidth = 0;
+
+            MeteorCollectMachineData_Save.IsNotInteractable = false;
+            MeteorCollectMachineOutline_Save.OutlineWidth = 8;
+
+            AnalyticalMachineButtonData_Save.IsNotInteractable = true;
+            AnalyticalMachineButtonOutline_Save.OutlineWidth = 0;
+
+            AnalyticalMachineData_Save.IsNotInteractable = false;
+            AnalyticalMachineOutline_Save.OutlineWidth = 8;
+
+
+            /*엔진실 열기 퍼즐을 완료하면*/
+            WrongMeteor1.SetActive(false);
+            WrongMeteor2.SetActive(false);
+            WrongMeteor3.SetActive(false);
+            WrongMeteor4.SetActive(false);
+            AnswerMeteor.SetActive(false);
+
+            Beaker1_Collider.enabled = false;
+            Beaker2_Collider.enabled = false;
+            CylinderAnswer_Collider.enabled = false;
+            CylinderNoNeed1_Collider.enabled = false;
+            CylinderNoNeed2_Collider.enabled = false;
+            MeteorBoxButton1_Collider.enabled = false;
+            MeteorBoxButton2_Collider.enabled = false;
+            MeteorBoxButton3_Collider.enabled = false;
+            MeteorBoxButton4_Collider.enabled = false;
+            MeteorBoxButton5_Collider.enabled = false;
+            MeteoritesStorage1_Collider.enabled = false;
+            MeteoritesStorage2_Collider.enabled = false;
+            MeteoritesStorage3_Collider.enabled = false;
+            MeteoritesStorage4_Collider.enabled = false;
+            MeteoritesStorage5_Collider.enabled = false;
+
+            //마약 탐지 완료하면
+            smellRangeArea.SetActive(false);
+            canSmellArea.SetActive(false);
+            drugBag.SetActive(false);
+
+            insert01Col.enabled = false;
+            drugCol.enabled = false;
+
+            drug.transform.position = new Vector3(-249.0776f, 0.4852f, 669.806f);
+            drug.transform.rotation = Quaternion.Euler(0, 0, 90);
+            drug.transform.localScale = new Vector3(1f, 1f, 1f);
+
+
+            insert02Col.enabled = false;
+            SDrugCol.enabled = false;
+
+            SDrug.transform.position = new Vector3(-249.0776f, 0.1652f, 669.806f);
+            SDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
+
+
+
+            /*생활공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+            TDBT_fixPart.GetComponent<Rigidbody>().isKinematic = false;
+            TDBT_fixPart.transform.parent = null;
+
+            TDBT_fixPart.transform.position = new Vector3(-27.253f, 1.844f, 35.729f);
+            TDBT_fixPart.transform.rotation = Quaternion.Euler(0, -90, 0);
+            TDBT_fixPart.transform.localScale = new Vector3(50f, 50.00002f, 50.00002f);
+
+            TDBT_fixPartData.IsNotInteractable = true;
+            TDBT_fixBodyData.IsNotInteractable = true;
+
+            TDBT_BodyOutline.OutlineWidth = 0;
+            TDBT_fixPartOutline.OutlineWidth = 0;
+
+
+
+
+            /*엔진실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+
+            /* 연료 퍼즐 */
+            FA_fuelabsorberfixPart.SetActive(false);
+            FA_fuelabsorberBody.SetActive(false);
+            FA_fuelabsorber.SetActive(true);
+
+
+            /* 태블릿 해금 퍼즐 */
+            Boxes_E.SetActive(false); //상자더미
+
+            Full_Eg_Pad_E.SetActive(false); // 태블릿 충전
+            Zero_Eg_Pad_E.SetActive(false);
+
+
+            LoverPic_E.SetActive(false); // <최종> 태블릿 잠금화면 해제
+            E_AstronPic_Susan_E.SetActive(false);
+            E_AstronPic_Mike_E.SetActive(false);
+            E_AstronPic_Salvia_E.SetActive(false);
+            E_AstronPic_Trelawny_E.SetActive(false);
+
+
+
+            /*조종실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+            controlWorkDoorAnim.SetBool("IsDoorOpenStart", true);
+            controlWorkDoorAnim.SetBool("IsDoorOpened", true);
+            ChangeScene.SetActive(true);
+
+            chipInsertCol.enabled = false;
+            RChip.SetActive(true);
+            RChipCol.enabled = false;
+
+            RChip.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
+            RChip.transform.position = new Vector3(-7.448f, 34.62f, -1.439f);
+            RChip.transform.rotation = Quaternion.Euler(90, 0, 0);
+
         }
 
         /* 저장 정보 불러옴 *//*
