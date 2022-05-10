@@ -139,21 +139,25 @@ pushButton, smashButton, eatButton;
         //스탯 상승
         //NoahStatController.noahStatController.IncreaseStatBar();
         Invoke("StatUp", 3f);
-        Invoke("Next{uzzle", 2f);
+
+
+        //Invoke("NextPuzzle", 2f);
 
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
-/*    IEnumerator StartTimer1() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴
-    {
-        yield return new WaitForSeconds(5f);
-        TimerManager.timerManager.TimerStart(60);
-    }
+    /*    IEnumerator StartTimer1() // 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴
+        {
+            yield return new WaitForSeconds(5f);
+            TimerManager.timerManager.TimerStart(60);
+        }
 
-    void StartTimer()
-    {
-        TimerManager.timerManager.TimerStart(60);
-    }*/
+        void StartTimer()
+        {
+            TimerManager.timerManager.TimerStart(60);
+        }*/
+
+
 
     public void OnSniff() // 냄새맡기
     {

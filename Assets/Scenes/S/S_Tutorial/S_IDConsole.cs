@@ -80,16 +80,16 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     void Update()
     {
-        /*if (GameManager.gameManager._gameData.IsBasicTuto && !firstCheck)
+        if (GameManager.gameManager._gameData.IsBasicTuto && !firstCheck)
         {
-            
+            StartCoroutine(NextPuzzle());
             firstCheck = true;
-        }*/
+        }
 
         /*ID 콘솔 퍼즐 완료후에는 StopIDConsoleSpeak 이 트루가 되어서 더 이상 대사 안나옴*/
         if (IDConsoleData_S.IsClicked && StopIDConsoleSpeak == false && !boxData.IsUpDown)
         {
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(2));
 
             IDConsoleData_S.IsClicked = false;
         }
@@ -126,7 +126,12 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         }
     }
 
+    IEnumerator NextPuzzle()
+    {
+        yield return new WaitForSeconds(16f);
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
 
+    }
 
     void DisableButton()
     {
