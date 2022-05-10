@@ -27,9 +27,19 @@ public class TabletWirelessUIManager : MonoBehaviour
     public GameObject dialogManager_HM;
     DialogManager dialogManager;
 
+    /* 소리 */
+    AudioSource Download_Complete_Sound; // 업로드 완료
+    public AudioClip Download_Complete; 
+
+    AudioSource Connect_Complete_Sound;// 블루투스 연결 완료
+    public AudioClip Connect_Complete; 
+
     // Start is called before the first frame update
     void Start()
     {
+        Download_Complete_Sound = GetComponent<AudioSource>();
+        Connect_Complete_Sound = GetComponent<AudioSource>();
+
         dialogManager = dialogManager_HM.GetComponent<DialogManager>();
 
         TW_MainUI.SetActive(true);
@@ -47,6 +57,7 @@ public class TabletWirelessUIManager : MonoBehaviour
             Color onoffcolor = TW_onoffBT.color;
             onoffcolor.a = 1f;
             TW_onoffBT.color = onoffcolor;
+            Connect_Complete_Sound.Play();
         }
         else
         {
@@ -108,6 +119,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                 Invoke("TW_Alert", 3f);
                 TW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
                 TW_Alert_BodyText.GetComponent<Text>().text = "[메인컴퓨터]에 [체력 보고서]를 성공적으로 업로드했습니다.";
+                Download_Complete_Sound.Play();
 
                 GameManager.gameManager._gameData.IsFakeHealthData_Tablet = true;
                 GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
@@ -145,6 +157,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                         Invoke("TW_Alert", 3f);
                         TW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
                         TW_Alert_BodyText.GetComponent<Text>().text = "[메인컴퓨터]에 [귀환 좌표 데이터]를 성공적으로 업로드했습니다.";
+                        Download_Complete_Sound.Play();
 
                         GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
                         GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
@@ -170,6 +183,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                         Invoke("TW_Alert", 3f);
                         TW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
                         TW_Alert_BodyText.GetComponent<Text>().text = "[메인시스템]에 [귀환 좌표 데이터]를 성공적으로 업로드했습니다.";
+                        Download_Complete_Sound.Play();
 
                         GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
                         GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = false;

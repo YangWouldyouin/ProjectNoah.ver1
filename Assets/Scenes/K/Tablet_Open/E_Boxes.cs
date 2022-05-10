@@ -19,9 +19,14 @@ pushButton, smashButton, NoCenterButton_M_Box;
 
     public Animator BoxDestroyAnimation; // 박스 무너지는 애니메이션
 
+    /* 소리 */
+    AudioSource Box_Collapse_Sound;
+    public AudioClip Box_Collapse; // 오디오 소스
 
     void Start()
     {
+        Box_Collapse_Sound = GetComponent<AudioSource>();
+
         BoxesData_E = GetComponent<ObjData>();
         TabletData_E = Tablet_E.GetComponent<ObjData>();
         // TabletOutlineData_E = Tablet_E.GetComponent<Outline>();
@@ -89,6 +94,7 @@ pushButton, smashButton, NoCenterButton_M_Box;
         StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
 
         Invoke("DestroyBoxAnim", 1f); // 1초 뒤 박스 무너지는 애니메이션 실행
+        Box_Collapse_Sound.Play();
         Invoke("DestroyBox", 2f); // 2초 뒤 박스 오브젝트 비활성화
         GameManager.gameManager._gameData.IsNoBoxes = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

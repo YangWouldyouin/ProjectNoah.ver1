@@ -14,8 +14,14 @@ public class M_Box : MonoBehaviour, IInteraction
 
     public Vector3 boxRisePos;
 
+    /* 소리 */
+    AudioSource Box_Hit_Sound; // 박스
+    public AudioClip Box_Hit;
+
     void Start()
     {
+        Box_Hit_Sound = GetComponent<AudioSource>();
+
         boxData_M = GetComponent<ObjData>();
 
         /* 각 상호작용 버튼에 함수를 넣는다 */
@@ -71,6 +77,8 @@ public class M_Box : MonoBehaviour, IInteraction
 
         /* 애니메이션 실행 */
         InteractionButtonController.interactionButtonController.playerPush();
+
+        Box_Hit_Sound.Play();
     }
 
     //InteractionButtonController.interactionButtonController.pushPos = new Vector3(-0.011f, -0.384f, -0.229f);
@@ -93,6 +101,8 @@ public class M_Box : MonoBehaviour, IInteraction
             InteractionButtonController.interactionButtonController.PlayerRise1();
             InteractionButtonController.interactionButtonController.risePosition = boxRisePos;
             InteractionButtonController.interactionButtonController.PlayerRise2();
+
+            Box_Hit_Sound.Play();
         }
 
     }

@@ -42,8 +42,13 @@ public class InteractionButtonController : MonoBehaviour
 
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
 
+    /* 소리 */
     AudioSource BasicUI_Click_audio;
     public AudioClip BasicUI_Click; // UI클릭 오디오 소스
+    AudioSource Noah_Bark_Sound;
+    public AudioClip Noah_Bark; // 노아_짖기
+    AudioSource Noah_Eat_Sound;
+    public AudioClip Noah_Eat; // 노아_먹기
 
     void Awake()
     {
@@ -53,6 +58,8 @@ public class InteractionButtonController : MonoBehaviour
     private void Start()
     {
         BasicUI_Click_audio = GetComponent<AudioSource>();
+        Noah_Bark_Sound = GetComponent<AudioSource>();
+        Noah_Eat_Sound = GetComponent<AudioSource>();
 
         noahPlayer = BaseCanvas._baseCanvas.noahPlayer;
         noahFBX = BaseCanvas._baseCanvas.noahFBX;
@@ -82,6 +89,7 @@ public class InteractionButtonController : MonoBehaviour
         objData.objectDATA.IsBark = true;
 
         StartCoroutine(BarkAnim());
+        Noah_Bark_Sound.Play();
     }
 
     IEnumerator BarkAnim()
@@ -536,6 +544,7 @@ public class InteractionButtonController : MonoBehaviour
         objData.objectDATA.IsEaten = true;
 
         StartCoroutine(EatAnim());
+        Noah_Eat_Sound.Play();
     }
 
     IEnumerator EatAnim()
