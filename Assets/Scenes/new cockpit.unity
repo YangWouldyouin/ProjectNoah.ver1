@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4513672, g: 0.50038254, b: 0.56975245, a: 1}
+  m_IndirectSpecularColor: {r: 0.45136768, g: 0.50038236, b: 0.5697532, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -719,6 +719,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18272670}
   m_CullTransparentMesh: 1
+--- !u!1 &22206300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 22206302}
+  - component: {fileID: 22206301}
+  m_Layer: 0
+  m_Name: GameEndingController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &22206301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22206300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d2e8d0f9913724d993f8884125b13c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inGameTime: {fileID: 11400000, guid: b9e9cc0701491bf4d817dc63d1bd0d98, type: 2}
+--- !u!4 &22206302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22206300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 742.3657, y: 267.7144, z: -88.318726}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &22470566
 GameObject:
   m_ObjectHideFlags: 0
@@ -16717,6 +16761,7 @@ MonoBehaviour:
   Report_GUI_P: {fileID: 1807349922}
   ran: 5
   dialog: {fileID: 0}
+  inGameTime: {fileID: 0}
 --- !u!114 &702281966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22312,7 +22357,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlDoorOutline: {fileID: 0}
   controlDoorData: {fileID: 0}
-  AIButtonData: {fileID: 0}
   dialogManager_AI: {fileID: 1915457782}
 --- !u!54 &933824467
 Rigidbody:
