@@ -590,103 +590,126 @@ public class SLManager : MonoBehaviour
 
             /*스마트팜 오픈 퍼즐을 완료 하면*/
 
-            //false -> true 로 ㅁ
-            LineHome2_Collider.enabled = false;
-            IronPlateDoor_Collider.enabled = false;
-            TroubleLine.SetActive(false);
-            FixedLine2.SetActive(false);
-            smartFarmDoorAnim.SetBool("FarmDoorMoving", true);
-            smartFarmDoorAnim.SetBool("FarmDoorStop", true);
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            LineHome2_Collider.enabled = true;
+            IronPlateDoor_Collider.enabled = true;
+            TroubleLine.SetActive(true);
+            FixedLine2.SetActive(true);
+
+            //true -> false 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            smartFarmDoorAnim.SetBool("FarmDoorMoving", false);
+            smartFarmDoorAnim.SetBool("FarmDoorStop", false);
 
             /*엔진실 카드 키 찾기 퍼즐을 완료하면*/
+
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             CardPack.SetActive(false);
-            EngineCardKey.SetActive(true);
+
+            //  true -> false 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            EngineCardKey.SetActive(false);
 
             /*엔진실 열기 퍼즐을 완료하면*/
-            engineDoorAnim.SetBool("canEngineDoorOpen", true);
-            engineDoorAnim.SetBool("canEngineDoorEnd", true);
-            ChangeScene.SetActive(true);
+            //  true -> false 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            engineDoorAnim.SetBool("canEngineDoorOpen", false);
+            engineDoorAnim.SetBool("canEngineDoorEnd", false);
+            ChangeScene.SetActive(false);
 
-            EngineCardKey.SetActive(false);
-            Conduction.SetActive(false);
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            EngineCardKey.SetActive(true);
+            Conduction.SetActive(true);
 
-            BrokenArea_Collider.enabled = false;
-            EngineDoor_Collider.enabled = false;
-            InsertCardPad_Collider.enabled = false;
+            BrokenArea_Collider.enabled = true;
+            EngineDoor_Collider.enabled = true;
+            InsertCardPad_Collider.enabled = true;
 
+
+            //  true -> false 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             /* 생활공간 문 반 열기 퍼즐 완료 시 */
-            HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
-            HalfLivingDoorAni_M.SetBool("HalfEnd", true);
+            HalfLivingDoorAni_M.SetBool("HalfOpen", false); // 생활공간 문 반만 열리기
+            HalfLivingDoorAni_M.SetBool("HalfEnd", false);
 
-            CardKey_WL_Collider.enabled = false;
-            LivingSpace_CardKeyMachine_W_Collider.enabled = false;
+
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            CardKey_WL_Collider.enabled = true;
+            LivingSpace_CardKeyMachine_W_Collider.enabled = true;
 
             /*운석 수집 퍼즐을 완료하면*/
-            meteorBoxAnim.SetBool("isMeteorBoxClose", false);
-            meteorBoxAnim.SetBool("isMeteorBoxCloseEnd", false);
-            meteorBoxAnim.SetBool("isMeteorBoxOpen", true);
-            meteorBoxAnim.SetBool("isMeteorBoxOpenEnd", true);
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            meteorBoxAnim.SetBool("isMeteorBoxClose", true);
+            meteorBoxAnim.SetBool("isMeteorBoxCloseEnd", true);
+            //  true -> false 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            meteorBoxAnim.SetBool("isMeteorBoxOpen", false);
+            meteorBoxAnim.SetBool("isMeteorBoxOpenEnd", false);
+
+            //  true -> false 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            analyticalMachineAnim.SetBool("isAnalyticalMachineOpen", false);
+            analyticalMachineAnim.SetBool("isAnalyticalMachineOpenEnd", false);
+
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            analyticalMachineAnim.SetBool("isAnalyticalMachineClose", true);
+            analyticalMachineAnim.SetBool("isAnalyticalMachineCloseEnd", true);
+
+            NormalMeteor1.SetActive(true);
 
 
-            analyticalMachineAnim.SetBool("isAnalyticalMachineOpen", true);
-            analyticalMachineAnim.SetBool("isAnalyticalMachineOpenEnd", true);
-            analyticalMachineAnim.SetBool("isAnalyticalMachineClose", false);
-            analyticalMachineAnim.SetBool("isAnalyticalMachineCloseEnd", false);
+            //수동으로 바꿔야 하는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            MeteorButtonData_Save.IsNotInteractable = false;
+            MeteorButtonOutline_Save.OutlineWidth = 8;
 
-            NormalMeteor1.SetActive(false);
+            MeteorCollectMachineData_Save.IsNotInteractable = true;
+            MeteorCollectMachineOutline_Save.OutlineWidth = 0;
 
-            MeteorButtonData_Save.IsNotInteractable = true;
-            MeteorButtonOutline_Save.OutlineWidth = 0;
+            AnalyticalMachineButtonData_Save.IsNotInteractable = false;
+            AnalyticalMachineButtonOutline_Save.OutlineWidth = 8;
 
-            MeteorCollectMachineData_Save.IsNotInteractable = false;
-            MeteorCollectMachineOutline_Save.OutlineWidth = 8;
-
-            AnalyticalMachineButtonData_Save.IsNotInteractable = true;
-            AnalyticalMachineButtonOutline_Save.OutlineWidth = 0;
-
-            AnalyticalMachineData_Save.IsNotInteractable = false;
-            AnalyticalMachineOutline_Save.OutlineWidth = 8;
+            AnalyticalMachineData_Save.IsNotInteractable = true;
+            AnalyticalMachineOutline_Save.OutlineWidth = 0;
 
 
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             /*엔진실 열기 퍼즐을 완료하면*/
-            WrongMeteor1.SetActive(false);
-            WrongMeteor2.SetActive(false);
-            WrongMeteor3.SetActive(false);
-            WrongMeteor4.SetActive(false);
-            AnswerMeteor.SetActive(false);
+            WrongMeteor1.SetActive(true);
+            WrongMeteor2.SetActive(true);
+            WrongMeteor3.SetActive(true);
+            WrongMeteor4.SetActive(true);
+            AnswerMeteor.SetActive(true);
 
-            Beaker1_Collider.enabled = false;
-            Beaker2_Collider.enabled = false;
-            CylinderAnswer_Collider.enabled = false;
-            CylinderNoNeed1_Collider.enabled = false;
-            CylinderNoNeed2_Collider.enabled = false;
-            MeteorBoxButton1_Collider.enabled = false;
-            MeteorBoxButton2_Collider.enabled = false;
-            MeteorBoxButton3_Collider.enabled = false;
-            MeteorBoxButton4_Collider.enabled = false;
-            MeteorBoxButton5_Collider.enabled = false;
-            MeteoritesStorage1_Collider.enabled = false;
-            MeteoritesStorage2_Collider.enabled = false;
-            MeteoritesStorage3_Collider.enabled = false;
-            MeteoritesStorage4_Collider.enabled = false;
-            MeteoritesStorage5_Collider.enabled = false;
+            Beaker1_Collider.enabled = true;
+            Beaker2_Collider.enabled = true;
+            CylinderAnswer_Collider.enabled = true;
+            CylinderWrong_Collider.enabled = true;
+            CylinderNoNeed1_Collider.enabled = true;
+            CylinderNoNeed2_Collider.enabled = true;
+            MeteorBoxButton1_Collider.enabled = true;
+            MeteorBoxButton2_Collider.enabled = true;
+            MeteorBoxButton3_Collider.enabled = true;
+            MeteorBoxButton4_Collider.enabled = true;
+            MeteorBoxButton5_Collider.enabled = true;
+            MeteoritesStorage1_Collider.enabled = true;
+            MeteoritesStorage2_Collider.enabled = true;
+            MeteoritesStorage3_Collider.enabled = true;
+            MeteoritesStorage4_Collider.enabled = true;
+            MeteoritesStorage5_Collider.enabled = true;
 
             //마약 탐지 완료하면
-            smellRangeArea.SetActive(false);
-            canSmellArea.SetActive(false);
-            drugBag.SetActive(false);
+            smellRangeArea.SetActive(true);
+            canSmellArea.SetActive(true);
+            drugBag.SetActive(true);
 
-            insert01Col.enabled = false;
-            drugCol.enabled = false;
+            insert01Col.enabled = true;
+            drugCol.enabled = true;
 
+            //수동으로 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             drug.transform.position = new Vector3(-249.0776f, 0.4852f, 669.806f);
             drug.transform.rotation = Quaternion.Euler(0, 0, 90);
             drug.transform.localScale = new Vector3(1f, 1f, 1f);
 
 
-            insert02Col.enabled = false;
-            SDrugCol.enabled = false;
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            insert02Col.enabled = true;
+            SDrugCol.enabled = true;
 
+            //수동으로 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             SDrug.transform.position = new Vector3(-249.0776f, 0.1652f, 669.806f);
             SDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
 
@@ -694,18 +717,20 @@ public class SLManager : MonoBehaviour
 
             /*생활공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
-            TDBT_fixPart.GetComponent<Rigidbody>().isKinematic = false;
-            TDBT_fixPart.transform.parent = null;
+
+            //수동으로 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            TDBT_fixPart.GetComponent<Rigidbody>().isKinematic = true;
+            TDBT_fixPart.transform.parent = null; //머가 초기화된 값인거지
 
             TDBT_fixPart.transform.position = new Vector3(-27.253f, 1.844f, 35.729f);
             TDBT_fixPart.transform.rotation = Quaternion.Euler(0, -90, 0);
             TDBT_fixPart.transform.localScale = new Vector3(50f, 50.00002f, 50.00002f);
 
-            TDBT_fixPartData.IsNotInteractable = true;
-            TDBT_fixBodyData.IsNotInteractable = true;
+            TDBT_fixPartData.IsNotInteractable = false;
+            TDBT_fixBodyData.IsNotInteractable = false;
 
-            TDBT_BodyOutline.OutlineWidth = 0;
-            TDBT_fixPartOutline.OutlineWidth = 0;
+            TDBT_BodyOutline.OutlineWidth = 8;
+            TDBT_fixPartOutline.OutlineWidth = 8;
 
 
 
@@ -713,37 +738,43 @@ public class SLManager : MonoBehaviour
             /*엔진실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
 
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             /* 연료 퍼즐 */
-            FA_fuelabsorberfixPart.SetActive(false);
-            FA_fuelabsorberBody.SetActive(false);
-            FA_fuelabsorber.SetActive(true);
+            FA_fuelabsorberfixPart.SetActive(true);
+            FA_fuelabsorberBody.SetActive(true);
 
+            //  true -> false 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            FA_fuelabsorber.SetActive(false);
 
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             /* 태블릿 해금 퍼즐 */
-            Boxes_E.SetActive(false); //상자더미
+            Boxes_E.SetActive(true); //상자더미
 
-            Full_Eg_Pad_E.SetActive(false); // 태블릿 충전
-            Zero_Eg_Pad_E.SetActive(false);
+            Full_Eg_Pad_E.SetActive(true); // 태블릿 충전
+            Zero_Eg_Pad_E.SetActive(true);
 
 
-            LoverPic_E.SetActive(false); // <최종> 태블릿 잠금화면 해제
-            E_AstronPic_Susan_E.SetActive(false);
-            E_AstronPic_Mike_E.SetActive(false);
-            E_AstronPic_Salvia_E.SetActive(false);
-            E_AstronPic_Trelawny_E.SetActive(false);
+            LoverPic_E.SetActive(true); // <최종> 태블릿 잠금화면 해제
+            E_AstronPic_Susan_E.SetActive(true);
+            E_AstronPic_Mike_E.SetActive(true);
+            E_AstronPic_Salvia_E.SetActive(true);
+            E_AstronPic_Trelawny_E.SetActive(true);
 
 
 
             /*조종실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
-            controlWorkDoorAnim.SetBool("IsDoorOpenStart", true);
-            controlWorkDoorAnim.SetBool("IsDoorOpened", true);
-            ChangeScene.SetActive(true);
+            //  true -> false 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            controlWorkDoorAnim.SetBool("IsDoorOpenStart", false);
+            controlWorkDoorAnim.SetBool("IsDoorOpened", false);
+            ChangeScene.SetActive(false);
 
-            chipInsertCol.enabled = false;
-            RChip.SetActive(true);
-            RChipCol.enabled = false;
+            //false -> true 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            chipInsertCol.enabled = true;
+            RChip.SetActive(false);
+            RChipCol.enabled = true;
 
+            //수동으로 로 바꾸는 애들 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             RChip.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
             RChip.transform.position = new Vector3(-7.448f, 34.62f, -1.439f);
             RChip.transform.rotation = Quaternion.Euler(90, 0, 0);
