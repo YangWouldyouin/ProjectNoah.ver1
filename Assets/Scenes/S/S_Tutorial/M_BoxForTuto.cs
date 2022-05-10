@@ -150,8 +150,8 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
             if(!IDCardData.IsBite)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
-                TimerManager.timerManager.TimerStart(60);
-                Invoke("TutoFailCheck", 60f);
+                TimerManager.timerManager.TimerStart(120);
+                Invoke("TutoFailCheck", 120f);
             }
 
             //S-2 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
