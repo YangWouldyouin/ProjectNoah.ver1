@@ -8,11 +8,14 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
     private Button barkButton, biteButton,
      pressButton, sniffButton, insertButton, insertDisableButton;
+
     public GameObject cockpitDoor_CWD;
 
     public ObjectData envirPipeData_CWD;
     public ObjectData cockpitDoorData_CWD;
+
     ObjData cockpitDoorObjData_CWD;
+
     private Camera mainCamera;
     public Button insertAreaButton_CWD;
     public GameObject insertAreaButtonPos;
@@ -32,6 +35,7 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
     CancelInteractions cancelInteractions;
     public GameObject cancelController;
+
     private void Awake()
     {
         cancelInteractions = cancelController.GetComponent<CancelInteractions>();
@@ -127,10 +131,6 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
     }
-
-
-
-
 
     public void OnInsert()
     {
