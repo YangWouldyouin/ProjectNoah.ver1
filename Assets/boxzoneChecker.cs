@@ -30,52 +30,6 @@ public class boxzoneChecker : MonoBehaviour
             IDConsoleForBox.IsCenterButtonChanged = false;
         }
 
-        /*if (IDConsoleForBox.IsClicked && GoodBoxPosition)
-        {
-            IMReady = true;          
-
-
-            if (IDConsoleForBox.IsObserve || !GoodBoxPosition)
-            {
-                IMReady = false;
-                //IDConsoleForBox.IsClicked = false;
-            }
-            
-        }
-
-        if (IMReady)
-        {
-            IDConsoleForBox.IsCenterButtonChanged = true;
-        }
-
-        else
-        {
-            IDConsoleForBox.IsCenterButtonChanged = false;
-        }
-
-        /*if (GoodBoxPosition = true && boxData.IsUpDown && EnterCheck)
-        {
-            //GoodBoxPosition = false;
-            //IMReady = true;
-
-            //Debug.Log("관찰하기 준비 완료");
-            IDConsoleForBox.IsCenterButtonChanged = true;
-
-            EnterCheck = false;
-        }
-
-        /*관찰하기 항상 가능*/
-        /*if (IMReady == true)
-        {
-            Debug.Log("관찰하기 준비 완료");
-            IDConsoleForBox.IsCenterButtonChanged = true;
-        }
-
-        else
-        {
-            //Debug.Log("가운데버튼 상호작용 불가능해요");
-            IDConsoleForBox.IsCenterButtonChanged = false;
-        }*/
     }
 
     private void OnTriggerStay(Collider other)

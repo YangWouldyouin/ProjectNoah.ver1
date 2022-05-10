@@ -34,6 +34,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     BoxCollider BoxForConsole_Collider;
     BoxCollider canPressCabinetDoor_Collider;
 
+    private bool firstCheck;
+
     public GameObject dialog;
     DialogManager dialogManager;
 
@@ -74,6 +76,12 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     void Update()
     {
+        if (GameManager.gameManager._gameData.IsBasicTuto && !firstCheck)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
+            firstCheck = true;
+        }
+
         /*ID 콘솔 퍼즐 완료후에는 StopIDConsoleSpeak 이 트루가 되어서 더 이상 대사 안나옴*/
         if (IDConsoleData_S.IsClicked && StopIDConsoleSpeak == false)
         {

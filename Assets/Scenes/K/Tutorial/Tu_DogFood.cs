@@ -117,11 +117,11 @@ pushButton, smashButton, eatButton;
         Debug.Log("다음 퍼즐을 이어할게요");
         //S-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         //S-1 대사 대신 타이머가 켜지는 대사 출력함
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
+        //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
         //Invoke(" StartTimer", 5f);
         //StartCoroutine(StartTimer1());
 
-        //GameManager.gameManager._gameData.IsBasicTuto = true;
+        GameManager.gameManager._gameData.IsBasicTuto = true;
 
         box.GetComponent<BoxCollider>().enabled = true;
 
