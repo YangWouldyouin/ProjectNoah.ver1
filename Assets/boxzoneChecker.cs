@@ -82,10 +82,16 @@ public class boxzoneChecker : MonoBehaviour
     {
         if (other.gameObject == box)
         {
-            Debug.Log("박스 준비 완");
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(17));
+            
+            
+            if (!EnterCheck)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(17));
+                Debug.Log("박스 준비 완");
 
-            //EnterCheck = true;
+                EnterCheck = true;
+            }
+
 
             GoodBoxPosition = true;
 

@@ -19,10 +19,10 @@ public class Tu_CommentManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (/*채현이 튜토리얼 퍼즐 완료 체크 &&  !GameManager.gameManager._gameData.afterFirstTalk)
+        if (GameManager.gameManager._gameData.IsEndTuto &&  !GameManager.gameManager._gameData.afterFirstTalk)
         {
             Invoke("NewsTalk", 2f);
-        }*/
+        }
 
         if (GameManager.gameManager._gameData.afterFirstTalk && !GameManager.gameManager._gameData.afterNewsTalk)
         {
@@ -33,6 +33,7 @@ public class Tu_CommentManager : MonoBehaviour
     void NewsTalk()
     {
         //뉴스창 팝업 지현아 도와죠~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        newsUI.SetActive(true);
 
         Debug.Log("뉴스대화 시작");
 

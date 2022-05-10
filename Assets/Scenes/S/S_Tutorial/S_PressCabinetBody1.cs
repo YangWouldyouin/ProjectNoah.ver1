@@ -129,6 +129,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         cabinetCollider.enabled = false;
 
         //S-7 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        Debug.Log("채현파트 완료, 마무리 대화 시작");
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
 
         Invoke("Comment", 2f);
