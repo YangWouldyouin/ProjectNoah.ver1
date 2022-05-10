@@ -130,6 +130,12 @@ pushButton, smashButton, eatButton;
         InteractionButtonController.interactionButtonController.playerEat();
 
 
+        GameManager.gameManager._gameData.GoodFoodEat[4] = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //½ºÅÈ »ó½Â
+        NoahStatController.noahStatController.IncreaseStatBar();
+
+
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 

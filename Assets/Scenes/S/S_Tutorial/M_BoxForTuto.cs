@@ -29,6 +29,9 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
 
     public bool FailTuto = false;
 
+    public bool IsTutoFail = false;
+
+
     void Start()
     {
        
@@ -57,7 +60,7 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
     {
         /*튜토리얼 실패*/
 
-        if (inGameTime.missionTimer == 0 && FailTuto == false)
+        if (IsTutoFail == true && FailTuto == false && !GameManager.gameManager._gameData.IsRealMiddleTuto)
         {
             GameManager.gameManager._gameData.IsDisqualifiedEnd = true;
             Debug.Log("튜토리얼 실패 엔딩");
@@ -74,7 +77,7 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
         /*타임 어택 성공시*/
         if(GameManager.gameManager._gameData.IsMiddleTuto)
         {
-            inGameTime.maxTimer = 0;
+            inGameTime.IsTimerStarted = false;
 
             S_TimerBarFilled.SetActive(false);
             S_TimerBackground.SetActive(false);
@@ -148,6 +151,7 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
             {
                 dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
                 TimerManager.timerManager.TimerStart(60);
+                Invoke("TutoFailCheck", 60f);
             }
 
             //S-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
@@ -157,6 +161,11 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+    void TutoFailCheck()
+    {
+        IsTutoFail = true;
+    }
 
     public void OnEat()
     {
@@ -175,11 +184,11 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public void OnSmash()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }

@@ -33,7 +33,7 @@ pushButton, DisableButton, smashButton;
         dialogManager = dialog.GetComponent<DialogManager>();
 
         //시작 대사
-        Invoke("StartComment", 17f);
+        Invoke("StartComment", 21f);
 
         //시작할 때 박스 콜라이더를 꺼준다.
        // gameObject.GetComponent<BoxCollider>().enabled = false;
