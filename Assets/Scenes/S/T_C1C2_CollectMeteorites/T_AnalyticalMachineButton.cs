@@ -87,7 +87,7 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
         if(analyticalMachineButtonData_T.IsCollision && IsSmellDone_T)
         {
             analyticalMachineButtonData_T.IsNotInteractable = false; // 상호작용 가능하게
-            analyticalMachineButtonOutline_T.OutlineWidth = 16;
+            analyticalMachineButtonOutline_T.OutlineWidth = 8;
 
             areAnalyticalMachineData_T.IsCenterButtonDisabled = false;
         }
