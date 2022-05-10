@@ -23,7 +23,7 @@ public class SLManager : MonoBehaviour
             character.IsTabletUnlock = false;
             //character.IsBasicTuto = false;
             character.IsMiddleTuto = false;
-            character.statNum = 10;
+            //character.statNum = 10;
 
 
 

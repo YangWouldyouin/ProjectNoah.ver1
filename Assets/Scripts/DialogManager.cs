@@ -21,11 +21,11 @@ public class DialogManager : MonoBehaviour
     bool IsSubtitleStarted = false;
 
     [Header("타이핑 시간 간격")]
-    public float typingSpeed = 0.05f;
+    public float typingSpeed = 0.02f;
     [Header("문장 시간 간격")]
     public float sentenceSpeed = 1.8f;
 
-    public float subtitleSpeed = 5f;
+    public float subtitleSpeed = 3.6f;
     public Animator AIPanelAnim;
 
     void awake()
@@ -65,12 +65,12 @@ public class DialogManager : MonoBehaviour
             }
 
             // 3초 후 대화 패널 비활성화
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
 
             AIPanelAnim.SetBool("IsAIClose", true);
             AIPanelAnim.SetBool("IsAIOpen", false);
             AIPanelAnim.SetBool("IsAIPanelActive", false);
-            Invoke("EndPanelAnim", 1f);
+            Invoke("EndPanelAnim", 0.2f);
             //dialogPanel.SetActive(false);
             
         }
@@ -144,7 +144,7 @@ public class DialogManager : MonoBehaviour
             }
 
             // 3초 후 대화 패널 비활성화
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(0.1f);
             //dialogPanel.SetActive(false);
             dialogPanel.gameObject.SetActive(false);
             IsSubtitleStarted = false;

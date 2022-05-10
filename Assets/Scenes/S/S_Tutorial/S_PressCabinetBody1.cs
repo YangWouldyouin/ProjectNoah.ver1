@@ -132,7 +132,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         Debug.Log("채현파트 완료, 마무리 대화 시작");
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
 
-        Invoke("Comment", 38f);
+        Invoke("Comment", 40f);
 
         /*튜토리얼 완료*/
         GameManager.gameManager._gameData.IsEndTuto = true;

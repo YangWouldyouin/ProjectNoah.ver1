@@ -11,6 +11,7 @@ public class Tu_CommentManager : MonoBehaviour
     public GameObject newsUI;
 
     public ObjectData cardData;
+    public InGameTime timerData;
 
     public bool check01;
     public bool check02;
@@ -26,16 +27,18 @@ public class Tu_CommentManager : MonoBehaviour
     {
         dialogManager = dialog.GetComponent<DialogManager>();
 
+        GameManager.gameManager._gameData.IsBasicTuto = false;
         GameManager.gameManager._gameData.IsEndTuto = false;
         GameManager.gameManager._gameData.afterFirstTalk = false;
         GameManager.gameManager._gameData.afterNewsTalk = false;
 
         cardData.IsBite = false;
         cardData.IsNotInteractable = false;
+        timerData.IsTimerStarted = false;
 
         StartCoroutine(Dalay1());
 
-        //Invoke("Dalay", 16f);
+        Invoke("Dalay", 16f);
 
 
         //GameManager.gameManager._gameData.afterFirstTalk = true;
@@ -53,7 +56,7 @@ public class Tu_CommentManager : MonoBehaviour
 
         if (GameManager.gameManager._gameData.afterFirstTalk && !GameManager.gameManager._gameData.afterNewsTalk && !check02)
         {
-            Invoke("TuTalkEnd", 39f);
+            Invoke("TuTalkEnd", 43f);
             //Invoke("TuTalkEnd", 5f);
             check02 = true;
         }
