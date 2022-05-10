@@ -25,7 +25,7 @@ pushButton, smashButton, NoCenterButton_M_Box;
 
     void Start()
     {
-        Box_Collapse_Sound = GetComponent<AudioSource>();
+        Box_Collapse_Sound = GetComponent<AudioSource>(); 
 
         BoxesData_E = GetComponent<ObjData>();
         TabletData_E = Tablet_E.GetComponent<ObjData>();
