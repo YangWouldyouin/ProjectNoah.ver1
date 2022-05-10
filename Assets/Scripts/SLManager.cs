@@ -7,6 +7,8 @@ using UnityEngine;
 public class SLManager : MonoBehaviour
 {
 
+
+    [Header("<업무공간>")]
     /*업무공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
     public GameObject ChangeScene;
@@ -142,6 +144,8 @@ public class SLManager : MonoBehaviour
 
     /*엔진실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
+
+    [Header("<엔진실>")]
     // 연료 퍼즐
     public GameObject FA_fuelabsorberfixPart;
     public GameObject FA_fuelabsorberBody;
@@ -161,9 +165,10 @@ public class SLManager : MonoBehaviour
 
 
 
+
     /*생활공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
-
+    [Header("<생활공간>")]
 
     public GameObject TDBT_fixPart;
     public GameObject TDBT_fixBody;
@@ -177,6 +182,9 @@ public class SLManager : MonoBehaviour
 
 
     /*조종실&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+
+    [Header("<조종실>")]
 
     public Animator controlWorkDoorAnim;
 
