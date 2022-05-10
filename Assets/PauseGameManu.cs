@@ -39,7 +39,9 @@ public class PauseGameManu : MonoBehaviour
 
     public void ExitGame()
     {
-        Time.timeScale = 1;
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
         Application.Quit();
     }
 
