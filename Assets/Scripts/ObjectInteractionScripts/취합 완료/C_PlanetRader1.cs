@@ -17,6 +17,7 @@ pressButton, observeButton;
     /* Outline 변수 */
     Outline planetRaderOutline_PR;
 
+
     // 관찰하기 시 추가 UI가 뜨는 경우, 2초간의 텀이 있다. 이것을 체크하기 위한 변수
 
     void Start()
@@ -48,7 +49,7 @@ pressButton, observeButton;
 
     void Update()
     {
-        if (planetRaderData_PR.IsObserve == false)
+        if (planetRaderData.IsObserve == false)
         {
             CS_GUI.SetActive(false);
         }
@@ -65,11 +66,13 @@ pressButton, observeButton;
 
    public void OnObserve()
     {
+        Debug.Log("관찰");
+
+        /* 상호작용 버튼을 끔 */
+        DisableButton();
 
         /* 취소할 때 참고할 오브젝트 저장 */
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
-        /* 상호작용 버튼을 끔 */
-        DisableButton();
         /* 카메라 컨트롤러에 뷰 전달 */
         CameraController.cameraController.currentView = planetRaderData_PR.ObserveView; // 관찰 뷰 : 위쪽
         /* 관찰 애니메이션 & 카메라 전환 */
@@ -77,11 +80,12 @@ pressButton, observeButton;
 
         /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ X-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
 
-        Invoke("secondsf", 2.5f);
+        Invoke("secondsf", 3f);
     }
 
     public void secondsf() 
     {
+        Debug.Log("유아이팝업");
         CS_GUI.SetActive(true);
     }
 
