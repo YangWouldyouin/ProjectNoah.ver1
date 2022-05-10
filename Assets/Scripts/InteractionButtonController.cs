@@ -42,6 +42,9 @@ public class InteractionButtonController : MonoBehaviour
 
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
 
+    AudioSource BasicUI_Click_audio;
+    public AudioClip BasicUI_Click; // UI클릭 오디오 소스
+
     void Awake()
     {
         interactionButtonController = this;
@@ -49,6 +52,8 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Start()
     {
+        BasicUI_Click_audio = GetComponent<AudioSource>();
+
         noahPlayer = BaseCanvas._baseCanvas.noahPlayer;
         noahFBX = BaseCanvas._baseCanvas.noahFBX;
         equipment = BaseCanvas._baseCanvas.equipment;
@@ -70,6 +75,8 @@ public class InteractionButtonController : MonoBehaviour
     public void playerBark() // 이 함수가 실행되었다는 것은 현재 플레이어가 어떤 오브젝트에 "맡기" 버튼을 클릭했다는 뜻이다.
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
+
         noahBarkObject = PlayerScripts.playerscripts.currentObject;
         objData = noahBarkObject.GetComponent<ObjData>();
         objData.objectDATA.IsBark = true;
@@ -112,6 +119,7 @@ public class InteractionButtonController : MonoBehaviour
     public void PlayerBite()
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         if (noahPushObject==null)
         {
@@ -204,6 +212,7 @@ public class InteractionButtonController : MonoBehaviour
     public void PlayerSmash1()
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         noahSmashObject = PlayerScripts.playerscripts.currentObject;
         objData = noahSmashObject.GetComponent<ObjData>();
@@ -234,6 +243,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerSniff()
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         noahSniffObject = PlayerScripts.playerscripts.currentObject;
         objData = noahSniffObject.GetComponent<ObjData>();
@@ -257,6 +267,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerObserve()
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         StartCoroutine(ObserveAnimAndChangeView());
     }
@@ -279,6 +290,7 @@ public class InteractionButtonController : MonoBehaviour
     public void PlayerRise1()
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         noahUpDownObject = PlayerScripts.playerscripts.currentObject;
         upDownData = noahUpDownObject.GetComponent<ObjData>();
@@ -393,6 +405,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerPush() 
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         if (noahBiteObject==null)
         {
@@ -469,6 +482,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerPressHand()
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         noahPressObject = PlayerScripts.playerscripts.currentObject;
         pressData = noahPressObject.GetComponent<ObjData>();
@@ -491,6 +505,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerPressHead()
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         noahPressObject = PlayerScripts.playerscripts.currentObject;
         pressData = noahPressObject.GetComponent<ObjData>();
@@ -513,6 +528,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerEat()
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         noahEatObject = PlayerScripts.playerscripts.currentObject;
 
@@ -548,6 +564,7 @@ public class InteractionButtonController : MonoBehaviour
     public void PlayerInsert1()
     {
         // 버튼 누르는 소리 넣어주세요
+        BasicUI_Click_audio.Play();
 
         noahPlayer.transform.position = PlayerScripts.playerscripts.currentInsertObj.transform.position + insertPosOffset;
         noahPlayer.transform.eulerAngles = PlayerScripts.playerscripts.currentInsertObj.transform.eulerAngles + insertRotOffset;
