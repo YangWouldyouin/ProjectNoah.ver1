@@ -589,6 +589,8 @@ public class SLManager : MonoBehaviour
             HealthMachineFixData_Collider.enabled = true;
 
             /*½º¸¶Æ®ÆÊ ¿ÀÇÂ ÆÛÁñÀ» ¿Ï·á ÇÏ¸é*/
+
+            //false -> true ·Î ¤±
             LineHome2_Collider.enabled = false;
             IronPlateDoor_Collider.enabled = false;
             TroubleLine.SetActive(false);
