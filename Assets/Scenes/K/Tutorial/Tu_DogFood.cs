@@ -121,7 +121,7 @@ pushButton, smashButton, eatButton;
         //Invoke(" StartTimer", 5f);
         //StartCoroutine(StartTimer1());
 
-        GameManager.gameManager._gameData.IsBasicTuto = true;
+        //GameManager.gameManager._gameData.IsBasicTuto = true;
 
         box.GetComponent<BoxCollider>().enabled = true;
 

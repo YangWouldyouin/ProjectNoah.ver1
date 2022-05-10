@@ -64,10 +64,17 @@ public class TimerManager : MonoBehaviour
             timerBar.fillAmount = inGameTime.missionTimer / inGameTime.maxTimer;
         }
 
-        timerBar.gameObject.SetActive(false);
-        timerText.gameObject.SetActive(false);
-        timerBackground.gameObject.SetActive(false);
+        if(inGameTime.missionTimer == 0)
+        {
+            inGameTime.missionTimer = 0;
+            inGameTime.maxTimer = 0;
 
-        inGameTime.IsTimerStarted = false;
+            timerBar.gameObject.SetActive(false);
+            timerText.gameObject.SetActive(false);
+            timerBackground.gameObject.SetActive(false);
+
+            inGameTime.IsTimerStarted = false;
+        }
+
     }  
 }

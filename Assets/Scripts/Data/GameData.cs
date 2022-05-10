@@ -177,7 +177,7 @@ public class GameData
     public bool IsStartOrbitChange; //'AI 다운' 혹은 '죽은 척 하기' 퍼즐 완료 시 자동 시작 (채현아 죽은척하기 퍼즐 완료 시점에 해당 변수 추가해주랑~)
 
     /*퍼즐완료*/
-    public bool IsBasicTuto; //튜토리얼 앞 파트 퍼즐 완료
+    //public bool IsBasicTuto; //튜토리얼 앞 파트 퍼즐 완료
     public bool IsMiddleTuto; //튜토리얼 앞 파트 퍼즐 완료 확인
     public bool IsRealMiddleTuto; //튜토리얼 앞 파트 진짜 완료
     public bool IsEndTuto; //튜토리얼 퍼즐 완료
