@@ -17,7 +17,7 @@ public class RevisionComplaintUIManager : MonoBehaviour
     {
         if(GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC && GameManager.gameManager._gameData.IsReturnOfTheEarth)
         {
-            Invoke("seconds3time", 3f);
+            Invoke("seconds3time", 8f);
         }
     }
 
