@@ -188,7 +188,7 @@ pushButton, DisableButton, smashButton;
     {
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(9));
 
-        Invoke("StartPuzzle", 132f);
+        Invoke("StartPuzzle", 2f);
     }
 
     public void StartPuzzle()
