@@ -33,7 +33,9 @@ public class Tu_CommentManager : MonoBehaviour
         cardData.IsBite = false;
         cardData.IsNotInteractable = false;
 
-        Invoke("Dalay", 12f);
+        StartCoroutine(Dalay1());
+
+        //Invoke("Dalay", 16f);
 
 
         //GameManager.gameManager._gameData.afterFirstTalk = true;
@@ -109,10 +111,19 @@ public class Tu_CommentManager : MonoBehaviour
         GameManager.gameManager._gameData.IsTutorialClear = true;
     }
 
-    void Delay()
+/*    void Delay()
     {
         StartAnim.SetActive(true);
         Destroy(StartAnim, 4f);
         Destroy(LoadingAnim, 3f);
+    }*/
+
+    IEnumerator Dalay1()
+    {
+        yield return new WaitForSeconds(16f);
+        StartAnim.SetActive(true);
+        Destroy(StartAnim, 4f);
+        Destroy(LoadingAnim, 3f);
+
     }
 }
