@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
     ObjectData currentObjectData;
     Outline currentObjectOutline;
 
+    GameObject objectNameTag;
+
     private void Awake()
     {
         cameraController = this;
@@ -32,6 +34,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        objectNameTag = BaseCanvas._baseCanvas.objectNameTag;
         noah = BaseCanvas._baseCanvas.noahFBX;
         playerAnimation = BaseCanvas._baseCanvas.noahPlayer.GetComponent<Animator>();
 
@@ -55,7 +58,7 @@ public class CameraController : MonoBehaviour
         currentObjectData = currentObserveObjectData.objectDATA;
         currentObjectData.IsObserve = true;
         currentObjectData.IsNotInteractable = true;
-
+        objectNameTag.SetActive(false);
         if (cameraFollow!=null)
         {
             cameraFollow.enabled = false;
@@ -78,6 +81,7 @@ public class CameraController : MonoBehaviour
 
     public void CancelObserve()
     {
+        objectNameTag.SetActive(true);
         noah.transform.gameObject.SetActive(true);
 
         if (cameraFollow != null)

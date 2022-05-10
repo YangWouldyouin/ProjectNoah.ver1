@@ -141,7 +141,19 @@ public class PlayerScripts : MonoBehaviour
                         if (!objectData.IsNotInteractable)
                         {
                             Invoke("NameTagAppear", 1f);
-                            interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
+                            if(screenPos.y>500)
+                            {
+                                interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y-200, transform.position.z);
+                            }
+                            else if(screenPos.y < 200)
+                            {
+                                interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y + 200, transform.position.z);
+                            }
+                            else
+                            {
+                                interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y, transform.position.z);
+                            }
+                            
 
                             if (interactionDestinationData != null)
                             {
