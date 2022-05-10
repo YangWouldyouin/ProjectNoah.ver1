@@ -11,9 +11,14 @@ public class T_ImportantMeteor : MonoBehaviour, IInteraction
 
     ObjData importantMeteorData_T;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         importantMeteorData_T = GetComponent<ObjData>();
 
 
@@ -46,6 +51,7 @@ public class T_ImportantMeteor : MonoBehaviour, IInteraction
         if(importantMeteorData_T.IsClicked)
         {
             //C - 3 企紫  』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(44));
         }
     }
 

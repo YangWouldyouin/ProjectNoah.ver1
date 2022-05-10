@@ -37,9 +37,14 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
     /*Collider*/
     BoxCollider T_collectMachineCollider;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        dialogManager = dialog.GetComponent<DialogManager>();
+
         /*Collider*/
         T_collectMachineCollider = T_canMeteorCollectMachine_T.GetComponent<BoxCollider>();
 
@@ -112,6 +117,8 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //C-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             //지예야 대사에 만약 오랜학습을 통해 먼저 임무를 선행했다면 다음 임무를 준비하라고 쓰는 게 좋을거 같은디
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(42));
+
             MeteorMissionEnd = true;
         }
     }
@@ -130,6 +137,7 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerPressHand();
 
         //C-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(43));
 
         T_canMeteorCollectMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
         T_canMeteorCollectMachineOutline_T.OutlineWidth = 8;
