@@ -35,16 +35,16 @@ public class SaveDataWhenSceneChange : MonoBehaviour
         int sceneNum = SceneManager.GetActiveScene().buildIndex;
         switch (sceneNum)
         {
-            case 0:
+            case 2:
                 currentPortableObjectData = DataList[0];
                 break;
-            case 1:
+            case 3:
                 currentPortableObjectData = DataList[1];
                 break;
-            case 2:
+            case 4:
                 currentPortableObjectData = DataList[2];
                 break;
-            case 3:
+            case 5:
                 currentPortableObjectData = DataList[3];
                 break;
         }
