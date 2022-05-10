@@ -86,6 +86,7 @@ public class InitializeWorkingScene : MonoBehaviour
     public GameObject insert02;
 
 
+    [Header("<추가적인것>")]
     /*Object Data*/
     public ObjectData MeteorButtonData_Save;
     public ObjectData MeteorCollectMachineData_Save;
