@@ -103,11 +103,11 @@ public class PuzzleListUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (GameManager.gameManager._gameData.IsDisqualifiedEnd)
-        //{
-        //    Puzzle1.sprite = Finish_puzzle;
-        //    Puzzle1t.text = "항해 준비 완료";
-        //}
+        if (GameManager.gameManager._gameData.IsTutorialClear)
+        {
+            Puzzle1.sprite = Finish_puzzle;
+            Puzzle1t.text = "항해 준비 완료";
+        }
         if (GameManager.gameManager._gameData.IsCWDoorOpened_M_C1)
         {
             Puzzle2.sprite = Finish_puzzle;
