@@ -30,6 +30,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     public GameObject dialog;
     DialogManager dialogManager;
 
+    public InGameTime inGameTime;
+
     /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ W-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
 
     void Start()
@@ -74,7 +76,21 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
     void Update()
     {
-        
+        if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10)
+        {
+            Debug.Log("사진찍기 업무 시작");
+            GameManager.gameManager._gameData.IsPhotoTime = true;
+
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(46));
+        }
+        if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
+        {
+            Debug.Log("사진찍기 업무 종료");
+            GameManager.gameManager._gameData.IsPhotoTime = false;
+
+            GameManager.gameManager._gameData.IsReportCancleCount += 1;
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+        }
     }
 
 
@@ -98,19 +114,22 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
     public void OnPushOrPress()
     {
-        ran = Random.Range(0, 5); // 랜덤 사진
-        GameManager.gameManager._gameData.randomUPic = ran;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        Debug.Log("랜덤 사진 저장");
+        if (GameManager.gameManager._gameData.IsPhotoTime == true)
+        {
+            ran = Random.Range(0, 5); // 랜덤 사진
+            GameManager.gameManager._gameData.randomUPic = ran;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            Debug.Log("랜덤 사진 저장");
 
-        /* 밀기 & 누르기 중에 "누르기"일 때!!! */
-        DiableButton();
-        InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
+            /* 밀기 & 누르기 중에 "누르기"일 때!!! */
+            DiableButton();
+            InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
 
-        Invoke("RandomUniversePic", 1f); // 랜덤 우주 사진 설정 + 이미지 보여주기
+            Invoke("RandomUniversePic", 1f); // 랜덤 우주 사진 설정 + 이미지 보여주기
 
-        TakePic_Sound_P.Play(); // 효과음 재생
-        Invoke("Report_Popup", 4f); // 보고하기 팝업
+            TakePic_Sound_P.Play(); // 효과음 재생
+            Invoke("Report_Popup", 4f); // 보고하기 팝업
+        }
     }
 
     /* UI 스크립트 */
