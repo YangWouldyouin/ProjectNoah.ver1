@@ -25,6 +25,8 @@ pushButton, smashButton, eatButton;
     public GameObject box;
 
     public GameObject stat;
+    public GameObject smellUI;
+    public GameObject conditionUI;
 
 
     void Start()
@@ -157,6 +159,9 @@ pushButton, smashButton, eatButton;
         DogFood_Tu.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
+
+        smellUI.SetActive(true);
+        Invoke("NoSmellUI", 3f);
     }
 
 
@@ -177,5 +182,14 @@ pushButton, smashButton, eatButton;
     public void StatUp()
     {
         stat.SetActive(true);
+        conditionUI.SetActive(true);
+
+        Invoke("NoSmellUI", 3f);
+    }
+
+    public void NoSmellUI()
+    {
+        smellUI.SetActive(false);
+        conditionUI.SetActive(false);
     }
 }

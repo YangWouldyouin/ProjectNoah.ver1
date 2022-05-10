@@ -23,6 +23,9 @@ public class Tu_CommentManager : MonoBehaviour
 
     public GameObject LoadingAnim;
 
+    public GameObject condition;
+    public GameObject smell;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,8 @@ public class Tu_CommentManager : MonoBehaviour
         timerData.IsTimerStarted = false;
 
         StartCoroutine(Dalay1());
+
+        Invoke("ShowCon", 23f);
 
         //Invoke("TutoBye", 5f);
 
@@ -102,7 +107,7 @@ public class Tu_CommentManager : MonoBehaviour
     void StartPassing()
     {
         PassAnim.SetActive(true);
-        Destroy(PassAnim, 2f);
+        Destroy(PassAnim, 4f);
     }
 
     void MikeNews()
@@ -136,5 +141,10 @@ public class Tu_CommentManager : MonoBehaviour
     void TutoBye()
     {
         SceneManager.LoadScene("new cockpit");
+    }
+
+    void ShowCon()
+    {
+        condition.SetActive(false);
     }
 }

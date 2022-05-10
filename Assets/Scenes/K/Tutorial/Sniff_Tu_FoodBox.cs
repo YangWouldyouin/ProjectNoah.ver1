@@ -28,6 +28,9 @@ pushButton, DisableButton, smashButton;
     public GameObject dialog;
     DialogManager dialogManager;
 
+    public GameObject condition;
+    public GameObject smell;
+
     void Start()
     {
         dialogManager = dialog.GetComponent<DialogManager>();
@@ -160,6 +163,10 @@ pushButton, DisableButton, smashButton;
         biteBox.SetActive(true);
 
         Destroy(gameObject, 7.2f);
+
+        smell.SetActive(true);
+
+        Invoke("ChangeM", 3f);
     }
 
 
@@ -174,5 +181,10 @@ pushButton, DisableButton, smashButton;
     }
     public void OnUp()
     {
+    }
+
+    public void ChangeM()
+    {
+        smell.SetActive(false);
     }
 }

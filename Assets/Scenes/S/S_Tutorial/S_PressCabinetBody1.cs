@@ -30,6 +30,8 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     public GameObject dialog;
     DialogManager dialogManager;
 
+    public GameObject AIUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -195,6 +197,8 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     public void Comment()
     {
         Debug.Log("마이크랑 AI 티키타카 시작");
+
+        AIUI.SetActive(true);
 
         Invoke("Mike", 0.1f);
         //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
