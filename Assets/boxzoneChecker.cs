@@ -25,15 +25,27 @@ public class boxzoneChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IDConsoleForBox.IsClicked && GoodBoxPosition)
+        if (!boxData.IsUpDown)
         {
-            IDConsoleForBox.IsCenterButtonChanged = true;
+            IDConsoleForBox.IsCenterButtonChanged = false;
+        }
 
-            if (IDConsoleForBox.IsObserve)
+        /*if (IDConsoleForBox.IsClicked && GoodBoxPosition)
+        {
+            IMReady = true;          
+
+
+            if (IDConsoleForBox.IsObserve || !GoodBoxPosition)
             {
-                IDConsoleForBox.IsClicked = false;
+                IMReady = false;
+                //IDConsoleForBox.IsClicked = false;
             }
             
+        }
+
+        if (IMReady)
+        {
+            IDConsoleForBox.IsCenterButtonChanged = true;
         }
 
         else
@@ -66,7 +78,7 @@ public class boxzoneChecker : MonoBehaviour
         }*/
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject == box)
         {
@@ -76,6 +88,13 @@ public class boxzoneChecker : MonoBehaviour
             //EnterCheck = true;
 
             GoodBoxPosition = true;
+
+
+            if (boxData.IsUpDown)
+            {
+                IDConsoleForBox.IsCenterButtonChanged = true;
+            }
+
         }
     }
 
@@ -84,6 +103,8 @@ public class boxzoneChecker : MonoBehaviour
         if (other.gameObject == box)
         {
             GoodBoxPosition = false;
+
+            IDConsoleForBox.IsCenterButtonChanged = false;
         }
     }
 }
