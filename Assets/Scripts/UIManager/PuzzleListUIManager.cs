@@ -220,18 +220,18 @@ public class PuzzleListUIManager : MonoBehaviour
         }
         if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
         {
-            Puzzle24.sprite = Finish_puzzle;
-            Puzzle24t.text = "거짓 궤도 좌표 다운로드";
+            Puzzle25.sprite = Finish_puzzle;
+            Puzzle25t.text = "거짓 궤도 좌표 다운로드";
         }
         if (GameManager.gameManager._gameData.IsAIDown_M_C1C3)
         {
-            Puzzle26.sprite = Finish_puzzle;
-            Puzzle26t.text = "AI 다운시키기";
+            Puzzle24.sprite = Finish_puzzle;
+            Puzzle24t.text = "AI 다운시키기";
         }
         if (GameManager.gameManager._gameData.IsRevisioncomplaint)
         {
-            Puzzle25.sprite = Finish_puzzle;
-            Puzzle25t.text = "고발하기";
+            Puzzle26.sprite = Finish_puzzle;
+            Puzzle26t.text = "고발하기";
         }
     }
 }
