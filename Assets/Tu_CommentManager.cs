@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Tu_CommentManager : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class Tu_CommentManager : MonoBehaviour
 
         StartCoroutine(Dalay1());
 
-        Invoke("Dalay", 16f);
+        //Invoke("TutoBye", 5f);
 
 
         //GameManager.gameManager._gameData.afterFirstTalk = true;
@@ -91,6 +92,8 @@ public class Tu_CommentManager : MonoBehaviour
         EndAnim.SetActive(true);
         GameManager.gameManager._gameData.IsDisqualifiedEnd = true;
 
+        Invoke("TutoBye", 3f);
+
         //튜토리얼 찐으로 끝남 체크
         //화면 연출
         //튜토 씬 끄고 게임 본격적으로 시작
@@ -128,5 +131,10 @@ public class Tu_CommentManager : MonoBehaviour
         Destroy(StartAnim, 4f);
         Destroy(LoadingAnim, 3f);
 
+    }
+
+    void TutoBye()
+    {
+        SceneManager.LoadScene("new cockpit");
     }
 }
