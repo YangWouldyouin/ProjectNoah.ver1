@@ -187,4 +187,9 @@ pushButton, DisableButton, smashButton;
     {
         smell.SetActive(false);
     }
+
+    void NextPuzzle()
+    {
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
+    }
 }

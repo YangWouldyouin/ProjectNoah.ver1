@@ -14,6 +14,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     /*    public GameObject S_BoxForConsole;*/
     public GameObject canPressCabinetDoor; 
 
+
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_S_IDConsole, sniffButton_S_IDConsole, biteButton_S_IDConsole,
         pressButton_S_IDConsole, observeButton_S_IDConsole, observeDisableButton_S_IDConsole;
@@ -23,7 +24,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     ObjData iDConsoleData_S;
     public ObjectData IDConsoleData_S;
     public ObjectData canIDCardData_S;
-/*    public ObjectData boxForConsoleData_S;*/
+    /*    public ObjectData boxForConsoleData_S;*/
+    public ObjectData boxData;
 
    /*아웃라인*/
    Outline iDConsoleOutline_S;
@@ -34,13 +36,15 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     BoxCollider BoxForConsole_Collider;
     BoxCollider canPressCabinetDoor_Collider;
 
-    private bool firstCheck;
+    public bool firstCheck;
 
     public GameObject dialog;
     DialogManager dialogManager;
 
     void Start()
     {
+        firstCheck = false;
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         /*ObjData*/
@@ -76,14 +80,14 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (GameManager.gameManager._gameData.IsBasicTuto && !firstCheck)
+        /*if (GameManager.gameManager._gameData.IsBasicTuto && !firstCheck)
         {
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
+            
             firstCheck = true;
-        }
+        }*/
 
         /*ID 콘솔 퍼즐 완료후에는 StopIDConsoleSpeak 이 트루가 되어서 더 이상 대사 안나옴*/
-        if (IDConsoleData_S.IsClicked && StopIDConsoleSpeak == false)
+        if (IDConsoleData_S.IsClicked && StopIDConsoleSpeak == false && !boxData.IsUpDown)
         {
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
 
@@ -121,6 +125,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         }
     }
+
+
 
     void DisableButton()
     {
@@ -165,7 +171,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
             iDConsoleData_S.IsNotInteractable = true;
             iDConsoleOutline_S.OutlineWidth = 0;
 
-            Invoke("CompleteCard",2f);
+            Invoke("CompleteCard",0f);
 
             /**/
             StopIDConsoleSpeak = true;

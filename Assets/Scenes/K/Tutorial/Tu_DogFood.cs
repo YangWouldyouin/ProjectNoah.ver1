@@ -139,6 +139,7 @@ pushButton, smashButton, eatButton;
         //╫╨ех ╩С╫б
         //NoahStatController.noahStatController.IncreaseStatBar();
         Invoke("StatUp", 3f);
+        Invoke("Next{uzzle", 2f);
 
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
