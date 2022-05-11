@@ -401,10 +401,10 @@ public class Tu_CommentManager : MonoBehaviour
         character.IsStartOrbitChange = false; //'AI 다운' 혹은 '죽은 척 하기' 퍼즐 완료 시 자동 시작 (채현아 죽은척하기 퍼즐 완료 시점에 해당 변수 추가해주랑~)
 
         /*퍼즐완료*/
-        character.IsBasicTuto = false; //튜토리얼 앞 파트 퍼즐 완료
-        character.IsMiddleTuto = false; //튜토리얼 앞 파트 퍼즐 완료 확인
-        character.IsRealMiddleTuto = false; //튜토리얼 앞 파트 진짜 완료
-        character.IsEndTuto = false; //튜토리얼 퍼즐 완료
+        //character.IsBasicTuto = false; //튜토리얼 앞 파트 퍼즐 완료
+        //character.IsMiddleTuto = false; //튜토리얼 앞 파트 퍼즐 완료 확인
+        //character.IsRealMiddleTuto = false; //튜토리얼 앞 파트 진짜 완료
+        //character.IsEndTuto = false; //튜토리얼 퍼즐 완료
         character.IsCompleteSmartFarmOpen = false; // 스마트팜 오픈 퍼즐 완료
         character.IsCompleteFindEngineKey = false; // 엔진실 카드키 찾기 퍼즐 완료
         character.IsCompleteOpenEngineRoom = false; // 엔진실 열기 퍼즐 완료

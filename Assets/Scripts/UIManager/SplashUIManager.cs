@@ -10,7 +10,7 @@ public class SplashUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        setResolution();
     }
 
     // Update is called once per frame
@@ -20,5 +20,13 @@ public class SplashUIManager : MonoBehaviour
         {
             SceneManager.LoadScene("Main");
         }
+    }
+
+    public void setResolution()
+    {
+        int setWidth = 1440;
+        int setHeight = 900;
+
+        Screen.SetResolution(setWidth, setHeight, false);
     }
 }
