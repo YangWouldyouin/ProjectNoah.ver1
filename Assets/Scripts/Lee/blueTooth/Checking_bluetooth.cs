@@ -19,7 +19,7 @@ public class Checking_bluetooth : MonoBehaviour
     ObjData RChip01Data;
     ObjData WChip01Data;
 
-    public GameManager dialog;
+    public GameObject dialog;
     DialogManager dialogManager;
 
     //public static bool IsCanConnect;
