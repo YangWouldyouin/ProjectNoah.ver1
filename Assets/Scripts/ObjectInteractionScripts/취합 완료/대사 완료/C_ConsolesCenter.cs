@@ -8,7 +8,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
     /* 이 오브젝트와 상호작용 하는 변수들 */
     public GameObject consoleCenter_CC;
-
+    MeshCollider consoleCollider;
+    
     /* 이 오브젝트와 상호작용 하는 변수들의 데이터 */
     ObjData consoleCenterObjData_CC;
 
@@ -37,12 +38,13 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public Vector3 consoleRisePos;
 
     /*UI관련*/
-    public GameObject MainSystem_GUI;
+    public Canvas MainSystem_GUI;
     public GameObject TrackChangeNotification_GUI;
 
     // Start is called before the first frame update
     void Start()
     {
+        consoleCollider = GetComponent<MeshCollider>();
         consoleCenterObjData_CC = GetComponent<ObjData>();
 
         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
@@ -109,11 +111,12 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             // AI 리셋 버튼 비활성화 (서브 오브젝트)
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
             consoleAIResetButtonData_CC.IsNotInteractable = true;
+            consoleCollider.isTrigger = true;
         }
 
         if (consoleCenterData_CC.IsObserve == false)
         {
-            MainSystem_GUI.SetActive(false);
+            MainSystem_GUI.gameObject.SetActive(false);
         }
 
         if(GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == true)
@@ -144,24 +147,25 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     {
         /* 취소할 때 참고할 오브젝트 저장 */
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+        consoleCollider.isTrigger = false;
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
-        // AI 깨우기 미션 완료 전이면 
-        if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
-        {
-            /* 임무 리스트에 "AI 깨우기" 미션 추가 */
-            GameManager.gameManager._gameData.ActiveMissionList[0] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        }
-        else 
-        {
-            /* 임무 리스트에 "AI 깨우기" 미션 삭제 */
-            GameManager.gameManager._gameData.ActiveMissionList[0] = false; 
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");         
-        }
-        /* 임무 리스트 한번 활성화 */
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //// AI 깨우기 미션 완료 전이면 
+        //if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        //{
+        //    /* 임무 리스트에 "AI 깨우기" 미션 추가 */
+        //    GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+        //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //}
+        //else 
+        //{
+        //    /* 임무 리스트에 "AI 깨우기" 미션 삭제 */
+        //    GameManager.gameManager._gameData.ActiveMissionList[0] = false; 
+        //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");         
+        //}
+        ///* 임무 리스트 한번 활성화 */
+        //MissionGenerator.missionGenerator.ActivateMissionList();
 
         if (boxData_CC.IsUpDown) // 상자에 올라갔으면 
         {
@@ -170,11 +174,12 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
 
-            MainSystem_GUI.SetActive(true);
+            MainSystem_GUI.gameObject.SetActive(true);
 
             if (envirPipeData_CC.IsBite) // 파이프를 물었으면
             {
-                StartCoroutine(ActivateAIButton());
+                consoleAIResetButtonData_CC.IsNotInteractable = false;
+                consoleAIResetButtonOutline_CC.OutlineWidth = 8;
             }
             else // 파이프를 물지 않았으면
             {           
@@ -191,14 +196,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         }
     }
 
-
-    IEnumerator ActivateAIButton()
-    {
-        yield return new WaitForSeconds(2f);
-
-        consoleAIResetButtonData_CC.IsNotInteractable = false;
-        consoleAIResetButtonOutline_CC.OutlineWidth = 8;
-    }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
