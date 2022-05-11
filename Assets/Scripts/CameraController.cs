@@ -83,7 +83,7 @@ public class CameraController : MonoBehaviour
     {
         objectNameTag.SetActive(true);
         noah.transform.gameObject.SetActive(true);
-
+        objectNameTag.SetActive(false);
         if (cameraFollow != null)
         {
             cameraFollow.enabled = true;
