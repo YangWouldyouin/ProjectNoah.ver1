@@ -560,9 +560,9 @@ public class SLManager2 : MonoBehaviour
             character.IsCompleteOpenLivingRoom = false; // 생활공간 문 완전 오픈 완료
             character.IsTrashDoorBTFixed_L_L1 = false; //생활공간 고치기
 
-            //character.randomUPic = false;
+        //character.randomUPic = false;
 
-            /*엔딩:주석처리 이유는 엔딩 페이지 체크를 위해서/
+        //엔딩: 주석처리 이유는 엔딩 페이지 체크를 위해서/
 /*            character.IsInputImportantMeteorEnd = false; // 특별 운석 보고 엔딩
             character.IsMakeForestEnd = false; // 생태계 구축 엔딩
             character.IsDefyMissionEnd = false; // 명령 불복종 엔딩: 보고하기 일정 횟수 거부
@@ -572,10 +572,10 @@ public class SLManager2 : MonoBehaviour
             character.IsSaveAllEnd = false; // 당신이 구한 전부 엔딩: 진 엔딩, 고발 O
 
             character.IsManagerAbilityLack = false; //관리자자질부족
-            character.IsEatBadPotato = false;//상한 고구마 섭취 엔딩*/
+            character.IsEatBadPotato = false;//상한 고구마 섭취 엔딩
 
             character.IsSuddenDeath = false; //돌연사 체크: 스탯 0 엔딩, 상한 고구마 섭취 엔딩
-            SaveSystem.Save(character, "save_001");
+            SaveSystem.Save(character, "save_001");*/
 
 
 
