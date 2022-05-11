@@ -165,8 +165,8 @@ public class insert01 : MonoBehaviour, IInteraction
             RChip01Data.transform.parent = null;
 
             RChip01Data.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
-            RChip01Data.transform.position = new Vector3(-7.448f, 34.62f, -1.439f);
-            RChip01Data.transform.rotation = Quaternion.Euler(90, 0, 0);
+            RChip01Data.transform.position = new Vector3(-37.901f, 0.853f, -30.362f);
+            RChip01Data.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
             RChip01Data.IsNotInteractable = false;
             RChip01Line.OutlineWidth = 0;
@@ -183,8 +183,8 @@ public class insert01 : MonoBehaviour, IInteraction
             WChip01Data.transform.parent = null;
 
             WChip01Data.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
-            WChip01Data.transform.position = new Vector3(-7.448f, 34.62f, -1.439f);
-            WChip01Data.transform.rotation = Quaternion.Euler(90, 0, 0);
+            WChip01Data.transform.position = new Vector3(-37.901f, 0.853f, -30.362f);
+            WChip01Data.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
             WChip01Data.IsNotInteractable = false;
             WChip01Line.OutlineWidth = 0;
