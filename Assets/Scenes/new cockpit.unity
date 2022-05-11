@@ -5280,6 +5280,17 @@ RectTransform:
   m_AnchoredPosition: {x: 347.5, y: -75.50003}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &88950786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7408047318831050352, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &89636583
 GameObject:
   m_ObjectHideFlags: 0
@@ -10241,6 +10252,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170172470}
   m_CullTransparentMesh: 1
+--- !u!1 &170492066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1316158693, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &173367265
 GameObject:
   m_ObjectHideFlags: 0
@@ -46113,7 +46129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  objectData: {fileID: 11400000, guid: d2d8f7ee3dd870e4da30b65fa468ea31, type: 2}
+  objectData: {fileID: 11400000, guid: 6e06d48715cf46849938421ce6ffa022, type: 2}
   interactionDestination: {fileID: 0}
   buttonOffset: {x: 0, y: 0, z: 0}
   interactButton: {fileID: 1352852786}
@@ -46162,6 +46178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portDoor: {fileID: 1957913048}
+  portDoorDataOb: {fileID: 11400000, guid: 9c6aeb9e808003f469ec71c8c6401a68, type: 2}
+  portBodyDataOb: {fileID: 11400000, guid: 6e06d48715cf46849938421ce6ffa022, type: 2}
 --- !u!65 &783107644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71904,6 +71922,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
+--- !u!114 &1270538688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 811893983, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1272740794
 GameObject:
   m_ObjectHideFlags: 0
@@ -73019,7 +73048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 10019bd0bdb23f14b84758f765ac8054, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10019bd0bdb23f14b84758f765ac8054, type: 3}
@@ -104942,14 +104971,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b478d50f7dce742b36e1339ddc57cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subtitleText: {fileID: 0}
+  subtitleText: {fileID: 88950786}
   dialogText: {fileID: 365641750}
-  nameText: {fileID: 0}
+  nameText: {fileID: 1270538688}
   dialogPanel: {fileID: 46593815}
-  AIPanel: {fileID: 0}
-  typingSpeed: 0.05
+  AIPanel: {fileID: 170492066}
+  typingSpeed: 0.02
   sentenceSpeed: 1.8
-  subtitleSpeed: 5
+  subtitleSpeed: 3.6
   AIPanelAnim: {fileID: 1123687520}
 --- !u!1 &1915479748
 GameObject:
@@ -106753,7 +106782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   smellText: 
-  objectData: {fileID: 11400000, guid: eaac126f50d531346b64860a70386c87, type: 2}
+  objectData: {fileID: 11400000, guid: 9c6aeb9e808003f469ec71c8c6401a68, type: 2}
   interactionDestination: {fileID: 0}
   buttonOffset: {x: 0, y: 0, z: 0}
   interactButton: {fileID: 63258785}
@@ -121245,15 +121274,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9000527366903199075, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.901
+      value: -28.78
       objectReference: {fileID: 0}
     - target: {fileID: 9000527366903199075, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.853
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 9000527366903199075, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.362
+      value: -34.14
       objectReference: {fileID: 0}
     - target: {fileID: 9000527367749008024, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_LocalPosition.x

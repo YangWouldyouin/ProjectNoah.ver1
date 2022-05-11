@@ -24,6 +24,8 @@ public class Tablet_Sound : MonoBehaviour
     public GameObject dialog;
     DialogManager dialogManager;
 
+    public bool firstCheck;
+
     void Start()
     {
         dialogManager = dialog.GetComponent<DialogManager>();
@@ -52,6 +54,7 @@ public class Tablet_Sound : MonoBehaviour
                 Debug.Log("태블릿 소리 영역 진입");
                 TabletSoundLoop();
                 // TabletSoundArea.SetActive(true);
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(38));
             }
         }
         else
@@ -68,9 +71,10 @@ public class Tablet_Sound : MonoBehaviour
             Debug.Log("태블릿 소리 감지");
             PrintSomething(); // 상태창에 "[소리] 이상한 기계음
 
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(38));
+            
         }
     }
+
 
     void PrintSomething()
     {
@@ -96,6 +100,7 @@ public class Tablet_Sound : MonoBehaviour
     public void FollowTablet() // 노아가 태블릿 쪽을 바라봄
     {
         // TabletSoundArea_Data.IsNotInteractable = true;
+        Debug.Log("태블릿 바라봐");
 
         Vector3 dir = Tablet.transform.position - Player_Noah.transform.position;
         Player_Noah.transform.rotation = Quaternion.Lerp(Player_Noah.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * speed);

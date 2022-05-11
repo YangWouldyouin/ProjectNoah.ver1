@@ -14,6 +14,9 @@ public class portBody_buttons : MonoBehaviour, IInteraction
     ObjData portDoorData;
     Outline portDoorLine;
 
+    public ObjectData portDoorDataOb;
+    public ObjectData portBodyDataOb;
+
     /*
     public GameObject insert02;
     ObjData insert02Data;
@@ -50,12 +53,12 @@ public class portBody_buttons : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(portBodyData.IsObserve == false)
+        if(portBodyDataOb.IsObserve == false)
         {
             gameObject.GetComponent<BoxCollider>().enabled = true;
             portDoor.GetComponent<BoxCollider>().enabled = false;
 
-            portDoorData.IsNotInteractable = true;
+            portDoorDataOb.IsNotInteractable = true;
             portDoorLine.OutlineWidth = 0f;
 
             //insert02Data.IsNotInteractable = true;
@@ -74,7 +77,7 @@ public class portBody_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        portBodyData.IsBark = true;
+        portBodyDataOb.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -91,7 +94,7 @@ public class portBody_buttons : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        portBodyData.IsObserve = true;
+        portBodyDataOb.IsObserve = true;
         DisableButton();
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -104,7 +107,7 @@ public class portBody_buttons : MonoBehaviour, IInteraction
         //portBodyLine.OutlineWidth = 0f;
 
         portDoor.GetComponent<BoxCollider>().enabled = true;
-        portDoorData.IsNotInteractable = false;
+        portDoorDataOb.IsNotInteractable = false;
         portDoorLine.OutlineWidth = 8f;
 
         //gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -115,7 +118,7 @@ public class portBody_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        portBodyData.IsPushOrPress = true;
+        portBodyDataOb.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
 
@@ -130,7 +133,7 @@ public class portBody_buttons : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        portBodyData.IsSniff = true;
+        portBodyDataOb.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
