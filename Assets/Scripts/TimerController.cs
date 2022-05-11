@@ -42,12 +42,12 @@ public class TimerController : MonoBehaviour
         {
             timeToDisplay = 0;
         }
-        //inGameTime.days = Mathf.FloorToInt(timeToDisplay / 720);
+        inGameTime.days = Mathf.FloorToInt(timeToDisplay / 720);
 
-        //inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 720) / 30);
-        inGameTime.days = Mathf.FloorToInt((timeToDisplay % 3600)/60);
+        inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 720) / 30);
+        //inGameTime.days = Mathf.FloorToInt((timeToDisplay % 3600)/60);
 
-        inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 3600) % 60);
+        //inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 3600) % 60);
 
         //float hours = Mathf.FloorToInt(timeToDisplay / 3600);
 

@@ -166,7 +166,7 @@ public class NoahStatController : MonoBehaviour
         {
             timer += Time.deltaTime;
             int seconds = Mathf.FloorToInt((timer % 3600) % 60); // 초 단위 체크
-            if (seconds >= 10)
+            if (seconds >= 300)
             {
                 currentNum = GameManager.gameManager._gameData.statNum;
                 currentNum -= 1;
