@@ -11,7 +11,7 @@ public class MainButtonController : MonoBehaviour
     IEnumerator GoToScene()
     {
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("new cockpit");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void OnOpenButtonClicked()
