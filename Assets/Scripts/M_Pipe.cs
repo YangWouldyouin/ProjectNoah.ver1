@@ -87,12 +87,12 @@ public class M_Pipe : MonoBehaviour, IInteraction
         /* 애니메이션 보여줌 */
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
 
-        /* 임무 리스트에 "AI 깨우기" 미션 추가 */
-        GameManager.gameManager._gameData.ActiveMissionList[1] = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        ///* 임무 리스트에 "AI 깨우기" 미션 추가 */
+        //GameManager.gameManager._gameData.ActiveMissionList[1] = true;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        MissionGenerator.missionGenerator.IsOn = false;
-        MissionGenerator.missionGenerator.ShowMissionList();
+        //MissionGenerator.missionGenerator.IsOn = false;
+        //MissionGenerator.missionGenerator.ShowMissionList();
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
