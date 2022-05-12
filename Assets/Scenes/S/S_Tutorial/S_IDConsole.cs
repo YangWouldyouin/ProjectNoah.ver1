@@ -9,6 +9,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     /*클릭대사 다시 안나오게*/
     public bool StopIDConsoleSpeak = false;
 
+    public PlayerEquipment playerEquipment;
+
     /*연관있는 오브젝트*/
     public GameObject S_canIDCard;
     /*    public GameObject S_BoxForConsole;*/
@@ -175,7 +177,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
             iDConsoleData_S.IsNotInteractable = true;
             iDConsoleOutline_S.OutlineWidth = 0;
-
+            playerEquipment.biteObjectName = "";
             Invoke("CompleteCard",0f);
 
             /**/

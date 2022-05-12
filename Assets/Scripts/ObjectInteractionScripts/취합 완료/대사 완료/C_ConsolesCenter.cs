@@ -111,11 +111,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             // AI 리셋 버튼 비활성화 (서브 오브젝트)
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
             consoleAIResetButtonData_CC.IsNotInteractable = true;
-            consoleCollider.isTrigger = true;
-        }
-
-        if (consoleCenterData_CC.IsObserve == false)
-        {
+            consoleCollider.enabled = true;
             MainSystem_GUI.gameObject.SetActive(false);
         }
 
@@ -147,7 +143,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     {
         /* 취소할 때 참고할 오브젝트 저장 */
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
-        consoleCollider.isTrigger = false;
+
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
@@ -174,18 +170,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
 
-            MainSystem_GUI.gameObject.SetActive(true);
-
-            if (envirPipeData_CC.IsBite) // 파이프를 물었으면
-            {
-                consoleAIResetButtonData_CC.IsNotInteractable = false;
-                consoleAIResetButtonOutline_CC.OutlineWidth = 8;
-            }
-            else // 파이프를 물지 않았으면
-            {           
-                consoleAIResetButtonOutline_CC.OutlineWidth = 0;
-                consoleAIResetButtonData_CC.IsNotInteractable = true;
-            }
+            StartCoroutine(Delay3Seconds());
         }
         else // 상자에 올라가지 않았으면
         {
@@ -196,6 +181,22 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         }
     }
 
+    IEnumerator Delay3Seconds()
+    {
+        yield return new WaitForSeconds(3f);
+        MainSystem_GUI.gameObject.SetActive(true);
+        consoleCollider.enabled = false;
+        if (envirPipeData_CC.IsBite) // 파이프를 물었으면
+        {
+            consoleAIResetButtonData_CC.IsNotInteractable = false;
+            consoleAIResetButtonOutline_CC.OutlineWidth = 8;
+        }
+        else // 파이프를 물지 않았으면
+        {
+            consoleAIResetButtonOutline_CC.OutlineWidth = 0;
+            consoleAIResetButtonData_CC.IsNotInteractable = true;
+        }
+    }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 

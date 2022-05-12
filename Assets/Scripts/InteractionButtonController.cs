@@ -575,8 +575,8 @@ public class InteractionButtonController : MonoBehaviour
         // 버튼 누르는 소리 넣어주세요
         BasicUI_Click_audio.Play();
 
-        noahPlayer.transform.position = PlayerScripts.playerscripts.currentInsertObj.transform.position + insertPosOffset;
-        noahPlayer.transform.eulerAngles = PlayerScripts.playerscripts.currentInsertObj.transform.eulerAngles + insertRotOffset;
+        //noahPlayer.transform.position = PlayerScripts.playerscripts.currentInsertObj.transform.position + insertPosOffset;
+        //noahPlayer.transform.eulerAngles = PlayerScripts.playerscripts.currentInsertObj.transform.eulerAngles + insertRotOffset;
         StartCoroutine(InsertAnim());
     }
 
