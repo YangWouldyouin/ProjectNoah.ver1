@@ -19,6 +19,7 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
     public ObjectData IsUnGrownSweetPotato1Data_T;
 
     /*Outline*/
+    public Outline IspotatoBoxBodyOutline_T;
     public Outline IsBadSweetPotato1Outline_T;
     public Outline IsHealthySweetPotato1Outline_T;
     public Outline IsUnGrownSweetPotato1Outline_T;
@@ -53,6 +54,9 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
 
         observeButton_T_PotatoBoxBody = potatoBoxBodyData_T.CenterButton1;
         observeButton_T_PotatoBoxBody.onClick.AddListener(OnObserve);
+
+        IsPotatoBoxBodyData_T.IsNotInteractable = true; // 상호작용 가능하게
+        IspotatoBoxBodyOutline_T.OutlineWidth = 0; // 아웃라인도 켜줍니다.
 
     }
 

@@ -133,8 +133,8 @@ public class BiteDestroyController_PotatoBoxDoor : MonoBehaviour, IPointerUpHand
         T_PotatoBoxDoor.transform.parent = null;
 
         // 해당 위치, 각도, 크기로 바꾸겠다.
-        T_PotatoBoxDoor.transform.position = new Vector3(-9.115631f, -0.259f, 0.3125f); //위치 고정
-        T_PotatoBoxDoor.transform.rotation = Quaternion.Euler(178.773f, -89.98401f, 180f); //각도 고정
+        T_PotatoBoxDoor.transform.position = new Vector3(-267.07f, 0.0562f, 671.847f); //위치 고정
+        T_PotatoBoxDoor.transform.rotation = Quaternion.Euler(182.235f, -89.98401f, 180f); //각도 고정
         T_PotatoBoxDoor.transform.localScale = new Vector3(57.88517f, 4.21771f, 56.0183f); // 크기 고정
 
         // 합판 더 이상 상호작용 불가
