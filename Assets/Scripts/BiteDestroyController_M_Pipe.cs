@@ -92,7 +92,8 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
             CameraController.cameraController.CancelObserve();
             Invoke("DelayAnim", 1.5f);
         }
-        else
+
+        if(GameManager.gameManager._gameData.IsAIAwake_M_C1)
         {
             C_WorkRoomDoorData.IsCenterButtonDisabled = false;
             InteractionButtonController.interactionButtonController.PlayerBite();
