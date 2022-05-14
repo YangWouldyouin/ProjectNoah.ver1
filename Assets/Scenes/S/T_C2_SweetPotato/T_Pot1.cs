@@ -124,6 +124,7 @@ public class T_Pot1 : MonoBehaviour, IInteraction
         T_InUnGrownSweetPotato1.SetActive(false);
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(17));
+
     }
 
 
@@ -154,6 +155,8 @@ public class T_Pot1 : MonoBehaviour, IInteraction
         Debug.Log("생태계 구축 엔딩");
         GameManager.gameManager._gameData.IsMakeForestEnd = true; // 엔딩으로 향하는 거기때문에 저장
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 영양제 투약 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
 
     public void OnBite()

@@ -106,9 +106,11 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         engineDoorAnim_M.SetBool("canEngineDoorOpen", true);
         engineDoorAnim_M.SetBool("canEngineDoorEnd", true);
 
-        /*스마트팜 오픈 퍼즐 완료*/
+        /*엔진실 오픈 퍼즐 완료*/
         GameManager.gameManager._gameData.IsCompleteOpenEngineRoom = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 엔진실/창고 해금 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
 
     public void OnPushOrPress()

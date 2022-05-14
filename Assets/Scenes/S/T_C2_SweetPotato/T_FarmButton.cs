@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class T_FarmButton : MonoBehaviour, IInteraction
 {
+    public bool EatPotato = false;
+
     /*연관있는 오브젝트*/
     public GameObject Pot1;
     public GameObject Pot2;
@@ -24,7 +26,8 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData FarmButtonData_T;
-
+    public ObjectData HeathlyPotatoEatData_T;
+    public ObjectData BadPotatoEatData_T;
 
     /*Collider*/
     BoxCollider Pot1_Collider;
@@ -68,6 +71,15 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         noCenterButton_T_FarmButton.transform.gameObject.SetActive(false);
     }
 
+    void Update()
+    {
+        if(HeathlyPotatoEatData_T.IsEaten && EatPotato == false 
+            || BadPotatoEatData_T.IsEaten && EatPotato == false)
+        {
+            // 영양분 섭취 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            EatPotato = true;
+        }
+    }
 
     public void OnBark()
     {
@@ -176,6 +188,8 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*고구마가 나타난 상태를 저장한다.*/
         GameManager.gameManager._gameData.IsCanSeePotato1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 식물 배양 연구 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
 
     void AppearSweetPotato2()
@@ -193,6 +207,8 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*고구마가 나타난 상태를 저장한다.*/
         GameManager.gameManager._gameData.IsCanSeePotato2 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 식물 배양 연구 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
 
     void AppearSweetPotato3()
@@ -210,6 +226,8 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*고구마가 나타난 상태를 저장한다.*/
         GameManager.gameManager._gameData.IsCanSeePotato3 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 식물 배양 연구 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
 
     public void OnBite()

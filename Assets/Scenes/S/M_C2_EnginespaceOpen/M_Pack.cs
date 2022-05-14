@@ -112,7 +112,7 @@ public class M_Pack : MonoBehaviour, IInteraction
         this.transform.parent = null;
 
         //위치 고정: 이유는 얘 위치 따라서 카드키 위치 나오니까 카드키가 공중 부양하기 때문에
-        gameObject.transform.position = new Vector3(transform.position.x, 1.5412f, transform.position.z); 
+        gameObject.transform.position = new Vector3(transform.position.x, 1.5412f, transform.position.z);
 
         packData_M.IsBite = false;
 
@@ -123,24 +123,26 @@ public class M_Pack : MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
+        // 엔진실 카드키 찾기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+
     }
 
 
-/*    IEnumerator canLookCardKey2()
-    {
-        yield return new WaitForSeconds(3f);
+    /*    IEnumerator canLookCardKey2()
+        {
+            yield return new WaitForSeconds(3f);
 
-        M_canCardKey.SetActive(true);
-        M_canCardKey.transform.position = gameObject.transform.position;
-    }*/
+            M_canCardKey.SetActive(true);
+            M_canCardKey.transform.position = gameObject.transform.position;
+        }*/
 
-/*    void canLookCardKey()
-    {
-        M_canCardKey.SetActive(true);
-        M_canCardKey.transform.position = gameObject.transform.position;
-        GameManager.gameManager._gameData.IsDestroyPack_M_C2 = true;   
+    /*    void canLookCardKey()
+        {
+            M_canCardKey.SetActive(true);
+            M_canCardKey.transform.position = gameObject.transform.position;
+            GameManager.gameManager._gameData.IsDestroyPack_M_C2 = true;   
 
-    }*/
+        }*/
 
     public void OnUp()
     {

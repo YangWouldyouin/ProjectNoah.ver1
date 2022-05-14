@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
 {
+    public bool DontClickPotato = false;
+
     /*연관있는 오브젝트*/
     //public GameObject SweetPotatoBoxDoor_T;
 
@@ -41,10 +43,16 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
 
         noCenterButton_T_PotatoBox = PotatoBoxDoorData_T.CenterButton1;
 
-        if (IsPotatoBoxDoorData_T.IsClicked)
+        if (IsPotatoBoxDoorData_T.IsClicked && DontClickPotato == false)
         {
             //A-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(15));
+
+            DontClickPotato = true;
+
+            // 영양분 섭취 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            // 식물 배양 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+            // 영양제 투약 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
         }
 
     }

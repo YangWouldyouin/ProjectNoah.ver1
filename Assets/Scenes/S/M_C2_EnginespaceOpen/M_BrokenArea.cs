@@ -101,6 +101,8 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
             //B-7 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(26));
 
+            // 엔진실 문 고치기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+
             if (GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2 || GameManager.gameManager._gameData.IsWLDoorOpened_M_C2)
             {
                 GameManager.gameManager._gameData.IsAllDoorOpened = true;

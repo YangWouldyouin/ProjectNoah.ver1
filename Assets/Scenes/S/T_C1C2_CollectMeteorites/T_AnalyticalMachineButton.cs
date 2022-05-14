@@ -99,7 +99,7 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
             areAnalyticalMachineData_T.IsCenterButtonDisabled = true;
         }
 
-        if(GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 
+/*        if(GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 
             || GameManager.gameManager._gameData.IsInputImportantMeteorEnd)
         {
             //StartCoroutine(analyticalMachineClose(2f, 0f));
@@ -108,7 +108,7 @@ public class T_AnalyticalMachineButton : MonoBehaviour, IInteraction
             areAnalyticalMachineOutline_T.OutlineWidth = 0;
 
             //IsAnalyticalMachinePlate_Collider.enabled = false;
-        }
+        }*/
     }
 
     void DisableButton()

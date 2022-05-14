@@ -92,6 +92,8 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
+            // 운석 조각 수집 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+
             /*죽은 척하기 임무시작 가능하다*/
             Invoke("StartPretendDead", 100);
 
@@ -136,6 +138,8 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
         //D-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(55));
+
+        // 죽은척하기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
 
     public void OnSniff()

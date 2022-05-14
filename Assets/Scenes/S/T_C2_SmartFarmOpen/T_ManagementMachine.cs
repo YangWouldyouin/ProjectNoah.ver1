@@ -65,7 +65,8 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
     {
         if(managementMachineData_T.IsClicked)
         {
-            //A-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            // A-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            // 스마트 팜 해금 퍼즐 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(13));
         }
 
@@ -131,6 +132,8 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
             //A-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(14));
+
+            // 스마트 팜 해금 퍼즐 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
         }
     }
 

@@ -69,17 +69,6 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
 
         noCenterButton_T_MeteorButton_T = T_meteorButtonObjData_T.CenterButton1;
 
-
-        /*임무 시작*/
-        //시간이 되면 
-        GameManager.gameManager._gameData.IsStartCollectMeteorites = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-        if (GameManager.gameManager._gameData.IsStartCollectMeteorites)
-        {
-            //C-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        }
-
     }
 
     void DisableButton()
@@ -120,6 +109,8 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(42));
 
             MeteorMissionEnd = true;
+
+            // 운석 조각 수집 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
         }
     }
 
