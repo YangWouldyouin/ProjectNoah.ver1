@@ -23,6 +23,7 @@ public class TabletWirelessUIManager : MonoBehaviour
 
     public Text TW_Alert_TitleText;
     public Text TW_Alert_BodyText;
+    public Text TW_Alert_UploadText;
 
     public GameObject dialogManager_HM;
     DialogManager dialogManager;
@@ -117,6 +118,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                 TW_UploadUI.SetActive(true);
 
                 Invoke("TW_Alert", 3f);
+                TW_Alert_UploadText.GetComponent<Text>().text = "FileUploading " + 100 + " % ";
                 TW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
                 TW_Alert_BodyText.GetComponent<Text>().text = "[메인컴퓨터]에 [체력 보고서]를 성공적으로 업로드했습니다.";
                 Download_Complete_Sound.Play();
@@ -155,6 +157,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                         TW_UploadUI.SetActive(true);
 
                         Invoke("TW_Alert", 3f);
+                        TW_Alert_UploadText.GetComponent<Text>().text = "FileUploading " + 100 + " % ";
                         TW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
                         TW_Alert_BodyText.GetComponent<Text>().text = "[메인컴퓨터]에 [귀환 좌표 데이터]를 성공적으로 업로드했습니다.";
                         Download_Complete_Sound.Play();
@@ -181,6 +184,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                         TW_UploadUI.SetActive(true);
 
                         Invoke("TW_Alert", 3f);
+                        TW_Alert_UploadText.GetComponent<Text>().text = "FileUploading " + 100 + " % ";
                         TW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
                         TW_Alert_BodyText.GetComponent<Text>().text = "[메인시스템]에 [귀환 좌표 데이터]를 성공적으로 업로드했습니다.";
                         Download_Complete_Sound.Play();

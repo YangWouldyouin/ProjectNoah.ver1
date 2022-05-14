@@ -64,6 +64,9 @@ public class MC_BluetoothUIManager : MonoBehaviour
     public GameObject MCW_UploadUI;
     public GameObject MCW_alertUI;
 
+
+    public GameObject TitleBar;
+
     public Image MCW_onoffBT; //Wireless on/off 버튼
 
     public Text OnOffText;
@@ -71,6 +74,7 @@ public class MC_BluetoothUIManager : MonoBehaviour
 
     public Text MCW_Alert_TitleText;
     public Text MCW_Alert_BodyText;
+    public Text MCW_Alert_UploadText;
 
     // Start is called before the first frame update
     void Start()
@@ -80,8 +84,8 @@ public class MC_BluetoothUIManager : MonoBehaviour
         MCW_UploadUI.SetActive(false);
         MCW_alertUI.SetActive(false);
 
-        GameManager.gameManager._gameData.IsFinalBusinessReport_MC = true;
-        GameManager.gameManager._gameData.Is_Tablet_WirelessOn = true;
+        //GameManager.gameManager._gameData.IsFinalBusinessReport_MC = true;
+        //GameManager.gameManager._gameData.Is_Tablet_WirelessOn = true;
     }
 
     void Update()
@@ -99,6 +103,11 @@ public class MC_BluetoothUIManager : MonoBehaviour
             Color onoffcolor = MCW_onoffBT.color;
             onoffcolor.a = 0.3f;
             MCW_onoffBT.color = onoffcolor;
+        }
+
+        if (GameManager.gameManager._gameData.IsAIVSMissionCount == 3)
+        {
+            GameManager.gameManager._gameData.IsFinalBusinessReport_MC = true;
         }
 
         if (GameManager.gameManager._gameData.IsFinalBusinessReport_MC)
@@ -150,9 +159,11 @@ public class MC_BluetoothUIManager : MonoBehaviour
                 if (GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC == false)
                 {
                     MCW_UploadSelectUI.SetActive(false);
+                    TitleBar.SetActive(false);
                     MCW_UploadUI.SetActive(true);
 
                     Invoke("MCW_Alert", 3f);
+                    MCW_Alert_UploadText.GetComponent<Text>().text = "FileUploading " + 100 + " % ";
                     MCW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
                     MCW_Alert_BodyText.GetComponent<Text>().text = "[태블릿]에 [업무 보고 파일 최종본]을 성공적으로 업로드했습니다.";
 
@@ -196,5 +207,6 @@ public class MC_BluetoothUIManager : MonoBehaviour
         MCW_UploadUI.SetActive(false);
         MCW_UploadSelectUI.SetActive(false);
         MCW_MainUI.SetActive(true);
+        TitleBar.SetActive(true);
     }
 }
