@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class CantBoxClick : MonoBehaviour
 {
-    public GameObject CantClickBox;
+    //public GameObject CantClickBox;
 
     ObjData CantClickBoxData;
+    public ObjectData IsCantClickBoxData;
 
     Outline CantClickBoxnOutline;
+    public Outline IsCantClickBoxnOutline;
 
     /*Collider*/
     BoxCollider Box_Collider;
@@ -19,26 +21,26 @@ public class CantBoxClick : MonoBehaviour
         /*Collider*/
         Box_Collider = GetComponent<BoxCollider>();
 
-        CantClickBoxData = CantClickBox.GetComponent<ObjData>();
+        CantClickBoxData = GetComponent<ObjData>();
 
-        CantClickBoxnOutline = CantClickBox.GetComponent<Outline>();
+        CantClickBoxnOutline = GetComponent<Outline>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(CantClickBoxData.IsUpDown)
+        if(IsCantClickBoxData.IsUpDown)
         {
-            CantClickBoxData.IsNotInteractable = true; // 상호작용 가능하게
-            CantClickBoxnOutline.OutlineWidth = 0;
-            Box_Collider.isTrigger = false;
+            IsCantClickBoxData.IsNotInteractable = true; // 상호작용 가능하게
+            IsCantClickBoxnOutline.OutlineWidth = 0;
+            Box_Collider.enabled = false;
         }
 
         else
         {
-            CantClickBoxData.IsNotInteractable = false; // 상호작용 가능하게
-            CantClickBoxnOutline.OutlineWidth = 8;
-            Box_Collider.isTrigger = true;
+            IsCantClickBoxData.IsNotInteractable = false; // 상호작용 가능하게
+            IsCantClickBoxnOutline.OutlineWidth = 8;
+            Box_Collider.enabled = true;
         }
     
     }

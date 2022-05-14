@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class M_BoxForTuto : MonoBehaviour, IInteraction
 {
+    public bool noMoreTimer = false;
+
     public GameObject S_TimerBarFilled;
     public GameObject S_TimerBackground;
     public GameObject S_TimerText;
@@ -147,11 +149,13 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
             InteractionButtonController.interactionButtonController.risePosition = boxRisePos;
             InteractionButtonController.interactionButtonController.PlayerRise2();
 
-            if(!IDCardData.IsBite)
+            if(!IDCardData.IsBite && noMoreTimer == false)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
                 TimerManager.timerManager.TimerStart(120);
                 Invoke("TutoFailCheck", 120f);
+
+                noMoreTimer = true;
             }
 
             //S-2 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』

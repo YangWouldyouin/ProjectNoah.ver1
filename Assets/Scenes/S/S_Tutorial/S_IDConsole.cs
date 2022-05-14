@@ -7,14 +7,15 @@ using UnityEngine.UI;
 public class S_IDConsole : MonoBehaviour, IInteraction
 {
     /*클릭대사 다시 안나오게*/
-    public bool StopIDConsoleSpeak = false;
+    //public bool StopIDConsoleSpeak = false;
 
-    public PlayerEquipment playerEquipment;
+    //public PlayerEquipment playerEquipment;
 
     /*연관있는 오브젝트*/
     public GameObject S_canIDCard;
+    public GameObject IsIDInsertPad;
     /*    public GameObject S_BoxForConsole;*/
-    public GameObject canPressCabinetDoor; 
+    //public GameObject canPressCabinetDoor; 
 
 
     /*오브젝트의 상호작용 버튼들*/
@@ -36,7 +37,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     /*BoxCollider*/
     BoxCollider IDConsole_Collider;
     BoxCollider BoxForConsole_Collider;
-    BoxCollider canPressCabinetDoor_Collider;
+    //BoxCollider canPressCabinetDoor_Collider;
+    BoxCollider IsIDInsertPad_Collider;
 
     public bool firstCheck;
 
@@ -59,8 +61,10 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         /*BoxCollider*//*
         IDConsole_Collider = GetComponent<BoxCollider>();
         BoxForConsole_Collider = S_BoxForConsole.GetComponent<BoxCollider>();*/
+        IsIDInsertPad_Collider = IsIDInsertPad.GetComponent<BoxCollider>();
 
-        canPressCabinetDoor_Collider = canPressCabinetDoor.GetComponent<BoxCollider>();
+
+        //canPressCabinetDoor_Collider = canPressCabinetDoor.GetComponent<BoxCollider>();
 
         barkButton_S_IDConsole = iDConsoleData_S.BarkButton;
         barkButton_S_IDConsole.onClick.AddListener(OnBark);
@@ -89,7 +93,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         }
 
         /*ID 콘솔 퍼즐 완료후에는 StopIDConsoleSpeak 이 트루가 되어서 더 이상 대사 안나옴*/
-        if (IDConsoleData_S.IsClicked && StopIDConsoleSpeak == false && !boxData.IsUpDown)
+        if (IDConsoleData_S.IsClicked && GameManager.gameManager._gameData.StopIDConsoleSpeak == false && !boxData.IsUpDown)
         {
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(16));
 
@@ -120,12 +124,12 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         }*/
 
 
-        if (IDConsoleData_S.IsObserve)
+/*        if (IDConsoleData_S.IsObserve)
         {
             IDConsoleData_S.IsNotInteractable = false;
             iDConsoleOutline_S.OutlineWidth = 8;
 
-        }
+        }*/
     }
 
     IEnumerator NextPuzzle()
@@ -159,48 +163,6 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHead();
-
-        if (canIDCardData_S.IsBite && IDConsoleData_S.IsObserve)
-        {
-            // 끼우기 성공
-            // 부모 자식 관계를 해제한다.
-            S_canIDCard.GetComponent<Rigidbody>().isKinematic = false;
-            S_canIDCard.transform.parent = null;
-
-            // 해당 위치, 각도, 크기로 바꾸겠다.
-            S_canIDCard.transform.position = new Vector3(-30.153f, 1.054f, -25.293f); //위치 고정
-            S_canIDCard.transform.rotation = Quaternion.Euler(-53.609f, 0, 90); //각도 고정
-
-            // 카드패드와 카드의 상호작용을 삭제한다.
-            canIDCardData_S.IsNotInteractable = true;
-            canIDCardOutline_S.OutlineWidth = 0;
-
-            iDConsoleData_S.IsNotInteractable = true;
-            iDConsoleOutline_S.OutlineWidth = 0;
-            playerEquipment.biteObjectName = "";
-            Invoke("CompleteCard",0f);
-
-            /**/
-            StopIDConsoleSpeak = true;
-
-            /*튜토리얼 중간 완료*/
-            GameManager.gameManager._gameData.IsMiddleTuto = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-            //콜라이더 켜주는거
-            canPressCabinetDoor_Collider.enabled = true;
-
-            //S-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(21));
-
-        }
-    }
-
-    void CompleteCard()
-    {
-        CameraController.cameraController.CancelObserve();
-        //S-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(20));
     }
 
     public void OnSniff()
@@ -223,8 +185,10 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         //S-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(19));
 
-        IDConsoleData_S.IsNotInteractable = false;
-        iDConsoleOutline_S.OutlineWidth = 8;
+        /*        IDConsoleData_S.IsNotInteractable = false;
+                iDConsoleOutline_S.OutlineWidth = 8;*/
+
+        IsIDInsertPad_Collider.enabled = true;
 
     }
 
