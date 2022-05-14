@@ -124,7 +124,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
 
         Debug.Log("파이프에 상호작용 가능해요");
-        canPipeData_S.IsNotInteractable = false;
+         canPipeData_S.IsNotInteractable = true;
         canPipeOutline_M.OutlineWidth = 8;
 
         canPipe_Collider.enabled = true;
