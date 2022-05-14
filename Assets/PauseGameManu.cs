@@ -9,6 +9,14 @@ public class PauseGameManu : MonoBehaviour
     public GameObject pauseManu;
     public Canvas savePagePanel;
 
+    public CancelInteractions cancellnteractions;
+
+    CancelInteractions cancellnteract;
+    private void Start()
+    {
+        cancellnteract = cancellnteractions.GetComponent<CancelInteractions>();
+    }
+
     //public GameObject dialogManager_CC;
     //DialogManager dialogManager;
 
@@ -16,7 +24,7 @@ public class PauseGameManu : MonoBehaviour
     //private void Start()
     //{
     //    dialogManager = dialogManager_CC.GetComponent<DialogManager>();
-        
+
     //}
     private void Update()
     {
@@ -28,7 +36,9 @@ public class PauseGameManu : MonoBehaviour
     }
     public void GoToMain()
     {
+
         Time.timeScale = 1;
+        cancellnteract.CancelInteract();
         SceneManager.LoadScene("Main");
     }
 
@@ -39,6 +49,7 @@ public class PauseGameManu : MonoBehaviour
 
     public void ExitGame()
     {
+        cancellnteract.CancelInteract();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif

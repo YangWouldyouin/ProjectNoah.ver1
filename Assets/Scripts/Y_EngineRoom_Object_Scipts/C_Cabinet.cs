@@ -10,6 +10,7 @@ public class C_Cabinet : MonoBehaviour, IInteraction
 
     /* 해당 오브젝트의 ObjData 변수 */
     public ObjectData cabinetData;
+
     ObjData CabinetData_C;
 
     BoxCollider cabinetBoxC;

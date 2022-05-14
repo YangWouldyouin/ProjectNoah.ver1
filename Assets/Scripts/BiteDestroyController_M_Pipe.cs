@@ -7,7 +7,7 @@ using UnityEngine.UI;
 // PointerEnterHandler, IPointerExitHandler, IPointerDownHandler, 
 public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    public ObjectData pipeData, C_WorkRoomDoorData;
+    public ObjectData pipeData, C_WorkRoomDoorData, C_CabinetData;
 
     public Button biteButton, smashButton, barkButton, sniffButton, pushOrPressButton;
     [Header("추가 상호작용 버튼")]
@@ -86,7 +86,21 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
     public void OnPointerDown(PointerEventData eventData)
     {
         isPointerDown = true;
-        C_WorkRoomDoorData.IsCenterButtonDisabled = false;
+
+        if (C_CabinetData.IsObserve)
+        {
+            CameraController.cameraController.CancelObserve();
+            Invoke("DelayAnim", 1.5f);
+        }
+        else
+        {
+            C_WorkRoomDoorData.IsCenterButtonDisabled = false;
+            InteractionButtonController.interactionButtonController.PlayerBite();
+        }
+    }
+
+    void DelayAnim()
+    {
         InteractionButtonController.interactionButtonController.PlayerBite();
     }
 

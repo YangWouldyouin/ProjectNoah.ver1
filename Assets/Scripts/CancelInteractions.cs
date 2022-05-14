@@ -33,55 +33,60 @@ public class CancelInteractions : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            observeObject = PlayerScripts.playerscripts.currentObserveObj;
+            CancelInteract();
+        }
+    }
 
-            upDownObject = PlayerScripts.playerscripts.currentUpObj;
+    public void CancelInteract()
+    {
+        observeObject = PlayerScripts.playerscripts.currentObserveObj;
 
-            /* 상호작용 취소 순서 : 관찰 -> 오르기 -> 물기 */
-            for (int i = 3; i > 0; i--)
+        upDownObject = PlayerScripts.playerscripts.currentUpObj;
+
+        /* 상호작용 취소 순서 : 관찰 -> 오르기 -> 물기 */
+        for (int i = 3; i > 0; i--)
+        {
+            /* 관찰하기 취소 */
+            if (i == 3 && observeObject != null)
             {
-                /* 관찰하기 취소 */
-                if (i == 3 && observeObject != null)
+                ObjData cancelObserveData = observeObject.GetComponent<ObjData>();
+                if (cancelObserveData.objectDATA.IsObserve)
                 {
-                    ObjData cancelObserveData = observeObject.GetComponent<ObjData>();
-                    if (cancelObserveData.objectDATA.IsObserve)
-                    {
-                        CameraController.cameraController.CancelObserve();
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }/* 오르기 취소 */
-                else if (i == 2 && upDownObject != null)
-                {
-                    ObjData cancelUpDownData = upDownObject.GetComponent<ObjData>();
-                    if (cancelUpDownData.objectDATA.IsUpDown)
-                    {
-                        InteractionButtonController.interactionButtonController.PlayerFall1();
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }/* 물기 취소   else if (i == 1 && biteObject != null)*/
-                else if (i == 1 && playerObject.biteObjectName!="")
-                {
-                    InteractionButtonController.interactionButtonController.CancelBite();
+                    CameraController.cameraController.CancelObserve();
                     break;
                 }
-            }
-
-            /* 밀기 취소 */
-            if(playerObject.pushObjectName != "")
+                else
+                {
+                    continue;
+                }
+            }/* 오르기 취소 */
+            else if (i == 2 && upDownObject != null)
             {
-                InteractionButtonController.interactionButtonController.CancelPush();
+                ObjData cancelUpDownData = upDownObject.GetComponent<ObjData>();
+                if (cancelUpDownData.objectDATA.IsUpDown)
+                {
+                    InteractionButtonController.interactionButtonController.PlayerFall1();
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }/* 물기 취소   else if (i == 1 && biteObject != null)*/
+            else if (i == 1 && playerObject.biteObjectName != "")
+            {
+                InteractionButtonController.interactionButtonController.CancelBite();
+                break;
             }
-
-            CancelObjectText.text = "Noah N.113";
         }
+
+        /* 밀기 취소 */
+        if (playerObject.pushObjectName != "")
+        {
+            InteractionButtonController.interactionButtonController.CancelPush();
+        }
+
+        CancelObjectText.text = "Noah N.113";
     }
     void Delaylittle()
     {
