@@ -43,11 +43,11 @@ public class InteractionButtonController : MonoBehaviour
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
 
     /* 소리 */
-    AudioSource BasicUI_Click_audio;
-    public AudioClip BasicUI_Click; // UI클릭 오디오 소스
-    AudioSource Noah_Bark_Sound;
+    AudioSource interactionAudio; // 오디오 소스는 하나만 있어도 됨
+
+    /* 소리 클립 */
+    public AudioClip BasicUI_Click; // UI 클릭
     public AudioClip Noah_Bark; // 노아_짖기
-    AudioSource Noah_Eat_Sound;
     public AudioClip Noah_Eat; // 노아_먹기
 
     void Awake()
@@ -57,9 +57,7 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Start()
     {
-        BasicUI_Click_audio = GetComponent<AudioSource>();
-        Noah_Bark_Sound = GetComponent<AudioSource>();
-        Noah_Eat_Sound = GetComponent<AudioSource>();
+        interactionAudio = GetComponent<AudioSource>();
 
         noahPlayer = BaseCanvas._baseCanvas.noahPlayer;
         noahFBX = BaseCanvas._baseCanvas.noahFBX;
@@ -81,24 +79,28 @@ public class InteractionButtonController : MonoBehaviour
     /* 짖기 */
     public void playerBark() // 이 함수가 실행되었다는 것은 현재 플레이어가 어떤 오브젝트에 "맡기" 버튼을 클릭했다는 뜻이다.
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         noahBarkObject = PlayerScripts.playerscripts.currentObject;
         objData = noahBarkObject.GetComponent<ObjData>();
         objData.objectDATA.IsBark = true;
 
         StartCoroutine(BarkAnim());
-        Noah_Bark_Sound.Play();
     }
 
     IEnumerator BarkAnim()
     {
         yield return new WaitForSeconds(0.5f);
-        noahAnim.SetBool(IsBarking, true); // 동작 전환은 애니메이터의 bool 변수값을 바꿔서 전환시킬 수 있다. 
+        noahAnim.SetBool(IsBarking, true); 
+
+        /* 짖는 소리 */
+        interactionAudio.clip = Noah_Bark; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
+
         yield return new WaitForSeconds(1.5f);
         noahAnim.SetBool(IsBarking, false);
-        // Asset 폴더 - Animation - playerAnmationController 를 클릭하면 현재 애니메이션 동작들이 어떻게 연결되어있고 동작 사이의 bool 변수들이 있다. 
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -126,8 +128,9 @@ public class InteractionButtonController : MonoBehaviour
     /* 물기 - 가능한 오브젝트 일때 */
     public void PlayerBite()
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         if (noahPushObject==null)
         {
@@ -219,8 +222,9 @@ public class InteractionButtonController : MonoBehaviour
 
     public void PlayerSmash1()
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         noahSmashObject = PlayerScripts.playerscripts.currentObject;
         objData = noahSmashObject.GetComponent<ObjData>();
@@ -250,8 +254,9 @@ public class InteractionButtonController : MonoBehaviour
     /* 냄새 맡기 */
     public void playerSniff()
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         noahSniffObject = PlayerScripts.playerscripts.currentObject;
         objData = noahSniffObject.GetComponent<ObjData>();
@@ -274,8 +279,9 @@ public class InteractionButtonController : MonoBehaviour
     /* 관찰하기 */
     public void playerObserve()
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         StartCoroutine(ObserveAnimAndChangeView());
     }
@@ -297,8 +303,9 @@ public class InteractionButtonController : MonoBehaviour
     /* 오르기 */  
     public void PlayerRise1()
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         noahUpDownObject = PlayerScripts.playerscripts.currentObject;
         upDownData = noahUpDownObject.GetComponent<ObjData>();
@@ -412,8 +419,9 @@ public class InteractionButtonController : MonoBehaviour
     /* 누르기 - 상자 등을 밀기 */
     public void playerPush() 
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.);
 
         if (noahBiteObject==null)
         {
@@ -489,8 +497,9 @@ public class InteractionButtonController : MonoBehaviour
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     public void playerPressHand()
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         noahPressObject = PlayerScripts.playerscripts.currentObject;
         pressData = noahPressObject.GetComponent<ObjData>();
@@ -512,8 +521,9 @@ public class InteractionButtonController : MonoBehaviour
 
     public void playerPressHead()
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         noahPressObject = PlayerScripts.playerscripts.currentObject;
         pressData = noahPressObject.GetComponent<ObjData>();
@@ -535,8 +545,9 @@ public class InteractionButtonController : MonoBehaviour
     /* 먹기 */
     public void playerEat()
     {
-        // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         noahEatObject = PlayerScripts.playerscripts.currentObject;
 
@@ -544,7 +555,6 @@ public class InteractionButtonController : MonoBehaviour
         objData.objectDATA.IsEaten = true;
 
         StartCoroutine(EatAnim());
-        Noah_Eat_Sound.Play();
     }
 
     IEnumerator EatAnim()
@@ -554,6 +564,11 @@ public class InteractionButtonController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         noahAnim.SetBool("IsEating2", true);
         yield return new WaitForSeconds(1f);
+
+        /* 먹는 소리 */
+        interactionAudio.clip = Noah_Eat; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
+
         noahAnim.SetBool("IsEating3", true);
         yield return new WaitForSeconds(0.1f);
         Destroy(noahEatObject);
@@ -573,7 +588,9 @@ public class InteractionButtonController : MonoBehaviour
     public void PlayerInsert1()
     {
         // 버튼 누르는 소리 넣어주세요
-        BasicUI_Click_audio.Play();
+        /* 버튼 누르는 소리 */
+        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+        interactionAudio.Play(); // 2. 재생한다.
 
         //noahPlayer.transform.position = PlayerScripts.playerscripts.currentInsertObj.transform.position + insertPosOffset;
         //noahPlayer.transform.eulerAngles = PlayerScripts.playerscripts.currentInsertObj.transform.eulerAngles + insertRotOffset;
