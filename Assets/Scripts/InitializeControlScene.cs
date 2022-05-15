@@ -10,6 +10,10 @@ public class InitializeControlScene : MonoBehaviour
     public Animator controlWorkDoorAnim;
     public GameObject ChangeScene;
 
+    [Header("<파이프 찾기>")]
+    public GameObject pipe_C;
+
+
     [Header("<AI다운>")]
     public GameObject chipInsert;
     public GameObject RChip;
@@ -32,6 +36,12 @@ public class InitializeControlScene : MonoBehaviour
         if(GameManager.gameManager._gameData.IsAIVSMissionCount >=2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
+        }
+
+        if(GameManager.gameManager._gameData.IsPipeFound_M_C1)
+        {
+            pipe_C.transform.position = new Vector3(-27.07f, 0.05f, -30f);
+            pipe_C.transform.eulerAngles = new Vector3(0, -90, 180);
         }
 
         if(intialGameData.IsCWDoorOpened_M_C1)

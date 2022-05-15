@@ -18,6 +18,7 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     public GameObject dialogManager_AI;
     DialogManager dialogManager;
 
+    public Button aiIcon_AI;
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +106,7 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     void DelayAnim()
     {
         InteractionButtonController.interactionButtonController.playerPressHead();
+       
         // AI 대사 넣기
         StartCoroutine(DelayAIDialog());
     }
@@ -112,6 +114,10 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     IEnumerator DelayAIDialog()
     {
         yield return new WaitForSeconds(1.5f);
+        Color AIColor = aiIcon_AI.GetComponent<Image>().color;
+        AIColor.a = 1.0f;
+        aiIcon_AI.GetComponent<Image>().color = AIColor;
+        aiIcon_AI.interactable = true;
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
     }
 

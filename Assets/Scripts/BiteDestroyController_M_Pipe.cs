@@ -89,15 +89,20 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
 
         if (C_CabinetData.IsObserve)
         {
+            GameManager.gameManager._gameData.IsPipeFound_M_C1 = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             CameraController.cameraController.CancelObserve();
-            Invoke("DelayAnim", 1.5f);
+            Invoke("DelayAnim", 2f);
         }
-
-        if(GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        else
         {
-            C_WorkRoomDoorData.IsCenterButtonDisabled = false;
+            if (GameManager.gameManager._gameData.IsAIAwake_M_C1)
+            {
+                C_WorkRoomDoorData.IsCenterButtonDisabled = false;
+            }
             InteractionButtonController.interactionButtonController.PlayerBite();
         }
+
     }
 
     void DelayAnim()

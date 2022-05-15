@@ -37,8 +37,11 @@ public class C_Cabinet : MonoBehaviour, IInteraction
         observeButton_C_Cabinet = CabinetData_C.CenterButton1;
         observeButton_C_Cabinet.onClick.AddListener(OnObserve);
 
-        pipe.SetActive(false);
-
+        if(!GameManager.gameManager._gameData.IsPipeFound_M_C1)
+        {
+            pipe.SetActive(false);
+        }
+        
         cabinetBoxC = GetComponent<BoxCollider>();
     }
 
@@ -83,9 +86,8 @@ public class C_Cabinet : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        pipe.SetActive(true);
         cabinetBoxC.enabled = false;
-
+        pipe.SetActive(true);
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
