@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45136768, g: 0.50038236, b: 0.5697532, a: 1}
+  m_IndirectSpecularColor: {r: 0.4513672, g: 0.50038254, b: 0.56975245, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -3509,11 +3509,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 414908, guid: cc990f4eda1da5b469dbce762b0e70ba, type: 3}
   m_PrefabInstance: {fileID: 965645564}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &140403445 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 453355063478719131, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-  m_PrefabInstance: {fileID: 365641744}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &141263448 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5869656593471509590, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
@@ -4836,6 +4831,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f8f71c40ce54be47aee10126a1b05b7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c1a2a3faba2164aa16a939911c10d3, type: 3}
+--- !u!1 &184596018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1791698494, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &187953687
 GameObject:
   m_ObjectHideFlags: 0
@@ -8505,6 +8505,14 @@ PrefabInstance:
     - target: {fileID: 1706291457, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791698496, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1915457785}
+    - target: {fileID: 1791698496, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSkipButtonClicked
       objectReference: {fileID: 0}
     - target: {fileID: 1832655260, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_fontAsset
@@ -47706,15 +47714,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b478d50f7dce742b36e1339ddc57cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subtitleText: {fileID: 646849211}
-  dialogText: {fileID: 365641750}
-  nameText: {fileID: 1657193399}
-  dialogPanel: {fileID: 140403445}
-  AIPanel: {fileID: 220267153}
-  typingSpeed: 0.02
-  sentenceSpeed: 1.8
-  subtitleSpeed: 3.6
   AIPanelAnim: {fileID: 1123687520}
+  dialogText: {fileID: 365641750}
+  subtitleText: {fileID: 646849211}
+  nameText: {fileID: 1657193399}
+  AIPanel: {fileID: 220267153}
+  subtitlePanel: {fileID: 184596018}
+  typingSpeed: 0.02
+  aiSentenceDelay: 1.8
+  subtitleSentenceDelay: 1.5
 --- !u!1 &1915479748
 GameObject:
   m_ObjectHideFlags: 0
