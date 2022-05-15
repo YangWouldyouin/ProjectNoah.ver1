@@ -38,7 +38,7 @@ public class PauseGameManu : MonoBehaviour
     {
 
         Time.timeScale = 1;
-        cancellnteract.CancelInteract();
+        cancellnteract.ResetPlayerEquipement();
         SceneManager.LoadScene("Main");
     }
 
@@ -49,7 +49,7 @@ public class PauseGameManu : MonoBehaviour
 
     public void ExitGame()
     {
-        cancellnteract.CancelInteract();
+        cancellnteract.ResetPlayerEquipement();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif

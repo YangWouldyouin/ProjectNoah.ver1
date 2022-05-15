@@ -19,6 +19,7 @@ public class CancelInteractions : MonoBehaviour
 
     PlayerEquipment playerObject;
     ObjectData cancelObjectData;
+    ObjData biteData, pushData;
 
     private void Start()
     {
@@ -100,6 +101,51 @@ public class CancelInteractions : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
     }
+
+    public void ResetPlayerEquipement()
+    {
+        observeObject = PlayerScripts.playerscripts.currentObserveObj;
+
+        upDownObject = PlayerScripts.playerscripts.currentUpObj;
+        if (observeObject != null)
+        {
+            ObjData cancelObserveData = observeObject.GetComponent<ObjData>();
+            if (cancelObserveData.objectDATA.IsObserve)
+            {
+                cancelObserveData.objectDATA.IsObserve = false;
+            }
+        }
+        if (upDownObject != null)
+        {
+            ObjData cancelUpDownData = upDownObject.GetComponent<ObjData>();
+            if (cancelUpDownData.objectDATA.IsUpDown)
+            {
+                cancelUpDownData.objectDATA.IsUpDown = false;
+            }
+        }
+        if (playerObject.biteObjectName != "")
+        {
+            biteObject = GameObject.Find(playerObject.biteObjectName).gameObject;
+            if (biteObject != null)
+            {
+                biteData = biteObject.GetComponent<ObjData>();
+                biteData.objectDATA.IsBite = false;
+                playerObject.biteObjectName = "";
+            }
+        }
+        if (playerObject.pushObjectName != "")
+        {
+            pushObject = GameObject.Find(playerObject.pushObjectName).gameObject;
+            if (pushObject != null)
+            {
+                pushData = pushObject.GetComponent<ObjData>();
+                pushData.objectDATA.IsBite = false;
+                playerObject.pushObjectName = "";
+            }
+        }
+        CancelObjectText.text = "Noah N.113";
+    }
+
 }
 
 //biteObject.transform.position = new Vector3(noahPosition.gameObject.transform.position.x, 33.799f, noahPosition.gameObject.transform.position.z);

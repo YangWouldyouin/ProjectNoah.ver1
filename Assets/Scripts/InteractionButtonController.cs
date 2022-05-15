@@ -475,7 +475,7 @@ public class InteractionButtonController : MonoBehaviour
     public void CancelPush()
     {
         noahPushObject = GameObject.Find(equipment.pushObjectName).gameObject;
-
+        equipment.pushObjectName = "";
         pushData = noahPushObject.GetComponent<ObjData>();
         pushData.objectDATA.IsPushOrPress = false;
 
@@ -487,7 +487,7 @@ public class InteractionButtonController : MonoBehaviour
         noahPushObject.transform.position = new Vector3(noahPushObject.transform.position.x, equipment.cancelPushPos.y, noahPushObject.transform.position.z);
         noahPushObject.transform.eulerAngles = equipment.cancelPushRot;
 
-        equipment.pushObjectName = "";
+    
         noahPushObject.transform.parent = portableObjects.transform;
 
         noahPushObject = null;
