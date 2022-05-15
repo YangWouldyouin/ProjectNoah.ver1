@@ -37,6 +37,7 @@ public class GameData
 
     [Header("<1회성 임무>")]
     public bool IsAIAwake_M_C1; // 항상 AI 활성화  
+    public bool IsPipeFound_M_C1; // 조종실에서 파이프 찾았으면 이제 보이는 곳에 두기
     public bool IsCWDoorOpened_M_C1; // 항상 조종실에서 업무공간 이동 가능
     
     public bool IsHealthMachineFixed_T_C2; // 정기적으로 상태 측정 임무 수행 가능   
