@@ -81,7 +81,15 @@ pushButton, NoCenterButton, smashButton, observeButton;
         // InteractionButtonController.interactionButtonController.playerObserve();
 
         AstronautPicture_1_Image_W.SetActive(true); // UI로 사진이미지 크게 보여주기
+        StartCoroutine(TurnOffPicture());
     }
+
+    IEnumerator TurnOffPicture()
+    {
+        yield return new WaitForSeconds(5f);
+        AstronautPicture_1_Image_W.SetActive(false); // UI로 사진이미지 크게 보여주기
+    }
+
 
     public void OnPushOrPress()
     {

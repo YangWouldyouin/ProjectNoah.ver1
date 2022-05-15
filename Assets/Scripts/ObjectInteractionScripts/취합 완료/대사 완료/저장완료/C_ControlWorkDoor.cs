@@ -21,8 +21,6 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
     public GameObject insertAreaButtonPos;
 
     public Image stopMoving_CWD;
-    private bool IsInsertAreaClicked_CWD = false;
-    private float insertTimer_CWD = 0f;
 
     public Animator noahAnim_CWD;
     public Animator cockpitDoorAnim_CWD;
@@ -36,16 +34,15 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
     CancelInteractions cancelInteractions;
     public GameObject cancelController;
 
-    private void Awake()
-    {
-        cancelInteractions = cancelController.GetComponent<CancelInteractions>();
-        insertAreaButton_CWD.onClick.AddListener(InsertAreaButton);
-    }
+    public GameObject controlDoorDetect;
+    InsertDetect insertDetect;
 
-    void InsertAreaButton()
+    public void InsertAreaButton()
     {
-        if (InsertDetect.insertDetect.Isdetected)// 끼우기 영역 안에 들어왔을 때 영역을 클릭하면
+        Debug.Log("클릭함1");
+        if (insertDetect.Isdetected)// 끼우기 영역 안에 들어왔을 때 영역을 클릭하면
         {
+            Debug.Log("클릭함2");
             insertAreaButton_CWD.transform.gameObject.SetActive(false); // 끼우기 영역 비활성화
 
             noahAnim_CWD.SetBool("IsInserting", false); // 노아 끼우기 애니메이션 중단
@@ -67,10 +64,31 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
         }
     }
 
+    void Update()
+    {
+        if (cockpitDoorData_CWD.IsClicked && GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        {
+            // 대사 출력 
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
 
+            // 조종실 탈출 미션 추가
+            GameManager.gameManager._gameData.S_IsCWDoorOpened_M_C1 = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+
+        if(envirPipeData_CWD.IsBite)
+        {
+            cockpitDoorData_CWD.IsCenterButtonDisabled = false;
+        }
+        else
+        {
+            cockpitDoorData_CWD.IsCenterButtonDisabled = true;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+        insertDetect = controlDoorDetect.GetComponent<InsertDetect>();
         mainCamera = Camera.main; // Scene 에서 MainCamera 라고 Tag 가 첫번째로 활성화된 카메라를 나타냄
         Vector3 screenPos = mainCamera.WorldToScreenPoint(new Vector3(insertAreaButtonPos.transform.localPosition.x , insertAreaButtonPos.transform.localPosition.y,
             insertAreaButtonPos.transform.localPosition.z));
@@ -96,7 +114,9 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
         insertDisableButton = cockpitDoorObjData_CWD.CenterDisableButton1;
 
-        if(GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        cancelInteractions = cancelController.GetComponent<CancelInteractions>();
+
+        if (GameManager.gameManager._gameData.IsAIAwake_M_C1)
         {
             cockpitDoorOutine_CWD.OutlineWidth = 8;
             cockpitDoorData_CWD.IsNotInteractable = false;
@@ -116,20 +136,6 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
         sniffButton.transform.gameObject.SetActive(false);
         insertButton.transform.gameObject.SetActive(false);
         insertDisableButton.transform.gameObject.SetActive(false);
-    }
-
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            // 대사 출력 
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
-
-            // 조종실 탈출 미션 추가
-            GameManager.gameManager._gameData.S_IsCWDoorOpened_M_C1 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        }
     }
 
     public void OnInsert()

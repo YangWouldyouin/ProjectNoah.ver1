@@ -191,7 +191,7 @@ public class InteractionButtonController : MonoBehaviour
         {
             biteData = noahBiteObject.GetComponent<ObjData>();
             biteData.objectDATA.IsBite = false;
-
+            equipment.biteObjectName = "";
             noahAnim.SetBool("IsPutDowning", true);
             Invoke("CancelBitingAnimation", 1f);
             Invoke("PutDownObject", 0.3f);
@@ -210,7 +210,7 @@ public class InteractionButtonController : MonoBehaviour
         noahBiteObject.transform.localScale = equipment.cancelBiteScale;
         noahBiteObject.transform.position = new Vector3(noahBiteObject.transform.position.x, equipment.cancelBitePos.y, noahBiteObject.transform.position.z);
         noahBiteObject.transform.eulerAngles = equipment.cancelBiteRot;
-        equipment.biteObjectName = "";
+        
         noahBiteObject.transform.parent = portableObjects.transform;
 
         noahBiteObject = null;

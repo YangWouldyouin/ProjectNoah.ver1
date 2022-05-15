@@ -103,6 +103,13 @@ pushButton_W_LoverPicture, smashButton_W_LoverPicture, ObserveButton_W_LoverPict
         // InteractionButtonController.interactionButtonController.playerObserve();
 
         LoverPicture_Image_W.SetActive(true); // UI로 사진이미지 크게 보여주기
+        StartCoroutine(TurnOffPicture());
+    }
+
+    IEnumerator TurnOffPicture()
+    {
+        yield return new WaitForSeconds(5f);
+        LoverPicture_Image_W.SetActive(false); // UI로 사진이미지 크게 보여주기
     }
 
     public void OnPushOrPress()

@@ -73,6 +73,15 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             noahAnim_CC.SetBool("IsSleeping", true);
             StartCoroutine(NoahWakeUp()); // 잠들어 있던 노아가 깨어난다
             StartCoroutine(FadeCoroutine()); //화면이 밝아진다
+            aiIcon_CC.interactable = false;
+        }
+        else
+        {
+            fade_CC.SetActive(false);
+            Color normalColor = aiIcon_CC.GetComponent<Image>().color;
+            normalColor.a = 1.0f;
+            aiIcon_CC.GetComponent<Image>().color = normalColor;
+            aiIcon_CC.interactable = true;
         }
     }
 
@@ -89,7 +98,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     IEnumerator FadeCoroutine()
     {
         Color color = aiIcon_CC.GetComponent<Image>().color;
-        color.a = 0f;
+        color.a = 0.5f;
         aiIcon_CC.GetComponent<Image>().color = color;
 
         Color fadeColor = fadeImage_CC.GetComponent<Image>().color;

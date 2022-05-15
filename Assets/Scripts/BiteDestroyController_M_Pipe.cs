@@ -7,7 +7,7 @@ using UnityEngine.UI;
 // PointerEnterHandler, IPointerExitHandler, IPointerDownHandler, 
 public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    public ObjectData pipeData, C_WorkRoomDoorData, C_CabinetData;
+    public ObjectData pipeData,  C_CabinetData;
 
     public Button biteButton, smashButton, barkButton, sniffButton, pushOrPressButton;
     [Header("추가 상호작용 버튼")]
@@ -22,11 +22,6 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
 
     public void Update()
     {
-        if (pipeData.IsBite == false)
-        {
-            C_WorkRoomDoorData.IsCenterButtonDisabled = true;
-        }
-
         ChangeButton(smashButton, biteButton);
     }
 
@@ -96,10 +91,6 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
         }
         else
         {
-            if (GameManager.gameManager._gameData.IsAIAwake_M_C1)
-            {
-                C_WorkRoomDoorData.IsCenterButtonDisabled = false;
-            }
             InteractionButtonController.interactionButtonController.PlayerBite();
         }
 
