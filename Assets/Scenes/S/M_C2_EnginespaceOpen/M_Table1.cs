@@ -7,6 +7,13 @@ public class M_Table1 : MonoBehaviour, IInteraction
 {
     /*연관있는 오브젝트*/
     public Vector3 Table1RisePos;
+    public GameObject PackOnTable1;
+    public GameObject Beaker1OnTable1;
+    public GameObject Beaker2OnTable1;
+    public GameObject cylinder1OnTable1;
+    public GameObject cylinder2OnTable1;
+    public GameObject cylinder3OnTable1;
+    public GameObject cylinder4OnTable1;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_Table1, sniffButton_M_Table1,
@@ -23,6 +30,13 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
     /*Collider*/
     BoxCollider Table1_Collider;
+    BoxCollider PackOnTable1_Collider;
+    BoxCollider Beaker1OnTable1_Collider;
+    BoxCollider Beaker2OnTable1_Collider;
+    BoxCollider cylinder1OnTable1_Collider;
+    BoxCollider cylinder2OnTable1_Collider;
+    BoxCollider cylinder3OnTable1_Collider;
+    BoxCollider cylinder4OnTable1_Collider;
 
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
@@ -36,6 +50,13 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
         /*Collider*/
         Table1_Collider = GetComponent<BoxCollider>();
+        PackOnTable1_Collider = PackOnTable1.GetComponent<BoxCollider>();
+        Beaker1OnTable1_Collider = Beaker1OnTable1.GetComponent<BoxCollider>();
+        Beaker2OnTable1_Collider = Beaker2OnTable1.GetComponent<BoxCollider>();
+        cylinder1OnTable1_Collider = cylinder1OnTable1.GetComponent<BoxCollider>();
+        cylinder2OnTable1_Collider = cylinder2OnTable1.GetComponent<BoxCollider>();
+        cylinder3OnTable1_Collider = cylinder3OnTable1.GetComponent<BoxCollider>();
+        cylinder4OnTable1_Collider = cylinder4OnTable1.GetComponent<BoxCollider>();
 
         /*버튼 연결*/
         barkButton_M_Table1 = table1ObjData_M.BarkButton;
@@ -58,6 +79,21 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
         upDisableButton_M_Table1 = table1ObjData_M.CenterDisableButton1;
+
+
+        /*선언시작*/
+
+        table1Data_M.IsUpDown = false;
+        table1Data_M.IsObserve = false;
+        table1Data_M.IsCollision = false;
+
+        PackOnTable1_Collider.enabled = false;
+        Beaker1OnTable1_Collider.enabled = false;
+        Beaker2OnTable1_Collider.enabled = false;
+        cylinder1OnTable1_Collider.enabled = false;
+        cylinder2OnTable1_Collider.enabled = false;
+        cylinder3OnTable1_Collider.enabled = false;
+        cylinder4OnTable1_Collider.enabled = false;
     }
 
     void Update()
@@ -156,6 +192,15 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
         //B-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
+
+        /*책상 위에 올라가면 책상 위 오브젝트랑 상호작용 가능하도록*/
+        PackOnTable1_Collider.enabled = true;
+        Beaker1OnTable1_Collider.enabled = true;
+        Beaker2OnTable1_Collider.enabled = true;
+        cylinder1OnTable1_Collider.enabled = true;
+        cylinder2OnTable1_Collider.enabled = true;
+        cylinder3OnTable1_Collider.enabled = true;
+        cylinder4OnTable1_Collider.enabled = true;
 
 
         if (!table1Data_M.IsUpDown)

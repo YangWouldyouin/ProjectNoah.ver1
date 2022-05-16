@@ -20,6 +20,8 @@ public class M_Box : MonoBehaviour, IInteraction
 
     void Start()
     {
+        boxData.IsUpDown = false;
+
         Box_Hit_Sound = GetComponent<AudioSource>();
 
         boxData_M = GetComponent<ObjData>();

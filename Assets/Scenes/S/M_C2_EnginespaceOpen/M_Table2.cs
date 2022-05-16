@@ -7,6 +7,10 @@ public class M_Table2 : MonoBehaviour, IInteraction
 {
     /*연관있는 오브젝트*/
     public Vector3 Table2RisePos;
+    public GameObject SuperDrugOnTable2;
+    public GameObject NoahFoodOnTable2;
+    public GameObject Line2OnTable2;
+    public GameObject ConductionOnTable2;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_Table2, sniffButton_M_Table2,
@@ -28,6 +32,10 @@ public class M_Table2 : MonoBehaviour, IInteraction
 
     /*Collider*/
     BoxCollider Table2_Collider;
+    BoxCollider SuperDrugOnTable2_Collider;
+    BoxCollider NoahFoodOnTable2_Collider;
+    BoxCollider Line2OnTable2_Collider;
+    BoxCollider ConductionOnTable2_Collider;
 
     void Start()
     {
@@ -36,6 +44,10 @@ public class M_Table2 : MonoBehaviour, IInteraction
 
         /*Collider*/
         Table2_Collider = GetComponent<BoxCollider>();
+        SuperDrugOnTable2_Collider = SuperDrugOnTable2.GetComponent<BoxCollider>();
+        NoahFoodOnTable2_Collider = NoahFoodOnTable2.GetComponent<BoxCollider>();
+        Line2OnTable2_Collider = Line2OnTable2.GetComponent<BoxCollider>();
+        ConductionOnTable2_Collider = ConductionOnTable2.GetComponent<BoxCollider>();
 
         /*버튼 연결*/
         barkButton_M_Table2 = table2ObjData_M.BarkButton;
@@ -58,6 +70,17 @@ public class M_Table2 : MonoBehaviour, IInteraction
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
         upDisableButton_M_Table2 = table2ObjData_M.CenterDisableButton1;
+
+        /*선언시작*/
+
+        table2Data_M.IsUpDown = false;
+        table2Data_M.IsObserve = false;
+        table2Data_M.IsCollision = false;
+
+        SuperDrugOnTable2_Collider.enabled = false;
+        NoahFoodOnTable2_Collider.enabled = false;
+        Line2OnTable2_Collider.enabled = false;
+        ConductionOnTable2_Collider.enabled = false;
     }
 
     void Update()
@@ -174,6 +197,11 @@ public class M_Table2 : MonoBehaviour, IInteraction
 
         table2Data_M.IsObserve = false; //걍 오르기만 햇는데 관찰하기가 알아서 체크 되길래 넣어준거
 
+
+        SuperDrugOnTable2_Collider.enabled = true;
+        NoahFoodOnTable2_Collider.enabled = true;
+        Line2OnTable2_Collider.enabled = true;
+        ConductionOnTable2_Collider.enabled = true;
 
         if (!table2Data_M.IsUpDown)
         {

@@ -99,7 +99,7 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
             T_canMeteorCollectMachineData_T.IsCenterButtonChanged = true;
         }
 
-        if ((inGameTime.days + 1) % 2 != 8 && (inGameTime.hours) == 30 && MeteorMissionEnd == false)
+        if ((inGameTime.days + 1) % 2 != 6 && (inGameTime.hours) == 13 && MeteorMissionEnd == false && inGameTime.timer == 9420)
         {
             Debug.Log("운석 수집 정기 업무 시작");
             GameManager.gameManager._gameData.IsStartCollectMeteorites = true;

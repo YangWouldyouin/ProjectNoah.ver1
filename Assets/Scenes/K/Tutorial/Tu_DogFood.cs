@@ -78,6 +78,7 @@ pushButton, smashButton, eatButton;
 
     void Update()
     {
+
         if (dogFoodData.IsClicked)
         {
             Debug.Log("¸Ô¾î¹Ù");
