@@ -205,7 +205,7 @@ public class SLManager2 : MonoBehaviour
 
 
 
-
+    GameData character = new GameData();
 
     /*스타트 문 시작&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
@@ -289,11 +289,13 @@ public class SLManager2 : MonoBehaviour
 
 
         /* 게임 리셋 */
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKeyDown("l"))
         {
-            GameData character = new GameData();
+            Debug.Log("리셋 성공");
+
             character.statNum = 10;
             character.IsAIAwake_M_C1 = false;
+            SaveSystem.Save(character, "save_001");
             character.IsCWDoorOpened_M_C1 = false;
             character.IsHealthMachineFixed_T_C2 = false;
             character.IsSmartFarmOpen_T_C2 = false;
@@ -338,6 +340,31 @@ public class SLManager2 : MonoBehaviour
             character.ActiveMissionList[2] = false;
             character.ActiveMissionList[3] = false;
             character.ActiveMissionList[4] = false;
+            character.ActiveMissionList[5] = false;
+            character.ActiveMissionList[6] = false;
+            character.ActiveMissionList[7] = false;
+            character.ActiveMissionList[8] = false;
+            character.ActiveMissionList[9] = false;
+            character.ActiveMissionList[10] = false;
+            character.ActiveMissionList[11] = false;
+            character.ActiveMissionList[12] = false;
+            character.ActiveMissionList[13] = false;
+            character.ActiveMissionList[14] = false;
+            character.ActiveMissionList[15] = false;
+            character.ActiveMissionList[16] = false;
+            character.ActiveMissionList[17] = false;
+            character.ActiveMissionList[18] = false;
+            character.ActiveMissionList[19] = false;
+            character.ActiveMissionList[20] = false;
+            character.ActiveMissionList[21] = false;
+            character.ActiveMissionList[22] = false;
+            character.ActiveMissionList[23] = false;
+            character.ActiveMissionList[24] = false;
+            character.ActiveMissionList[25] = false;
+            character.ActiveMissionList[26] = false;
+            character.ActiveMissionList[27] = false;
+            character.ActiveMissionList[28] = false;
+            character.ActiveMissionList[29] = false;
 
             character.EndMissionList[0] = false;
             character.EndMissionList[1] = false;
