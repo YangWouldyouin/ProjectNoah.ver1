@@ -40,14 +40,13 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     //BoxCollider canPressCabinetDoor_Collider;
     BoxCollider IsIDInsertPad_Collider;
 
-    public bool firstCheck;
+    public bool firstCheck = false;
 
     public GameObject dialog;
     DialogManager dialogManager;
 
     void Start()
     {
-        firstCheck = false;
 
         dialogManager = dialog.GetComponent<DialogManager>();
 
@@ -73,7 +72,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         sniffButton_S_IDConsole.onClick.AddListener(OnSniff);
 
         biteButton_S_IDConsole = iDConsoleData_S.BiteButton;
-        biteButton_S_IDConsole.onClick.AddListener(OnBite);
+        //biteButton_S_IDConsole.onClick.AddListener(OnBite);
 
         pressButton_S_IDConsole = iDConsoleData_S.PushOrPressButton;
         pressButton_S_IDConsole.onClick.AddListener(OnPushOrPress);
@@ -82,6 +81,17 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         observeButton_S_IDConsole.onClick.AddListener(OnObserve);
 
         observeDisableButton_S_IDConsole = iDConsoleData_S.CenterButton1;
+
+        firstCheck = false;
+
+        IDConsoleData_S.IsCenterButtonChanged = false;
+        IDConsoleData_S.IsObserve = false;
+        IDConsoleData_S.IsSniff = false;
+        IDConsoleData_S.IsBark = false;
+        IDConsoleData_S.IsNotInteractable = false;
+
+
+
     }
 
     void Update()

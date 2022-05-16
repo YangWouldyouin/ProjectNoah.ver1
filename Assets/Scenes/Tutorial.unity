@@ -10059,6 +10059,39 @@ MonoBehaviour:
     IsEatBadPotato: 0
     IsWirelessUI_firstEnter: 0
     IsWirelessMCTabletCheck: 0
+    IsDisqualifiedEnd0: 0
+    IsEatBadPotato0: 0
+    IsMakeForestEnd0: 0
+    IsManagerAbilityLack0: 0
+    IsInputImportantMeteorEnd0: 0
+    IsDiscardNoahEnd0: 0
+    IsSaveOnlyOneEnd0: 0
+    IsSaveAllEnd0: 0
+    IsDefyMissionEnd0: 0
+    IsTutorialClear0: 0
+    IsCWDoorOpened_M_C10: 0
+    IsPhotoMissionFinish0: 0
+    IsCompleteFindLivingKey0: 0
+    IsCompleteFindEngineKey0: 0
+    IsSmartFarmOpen_T_C20: 0
+    IsHealthMachineFixed_T_C20: 0
+    IsDummyDataReport0: 0
+    IsInputNormalMeteor1_T_C20: 0
+    IsCompletePretendDead0: 0
+    IsKnowUsingSObj0: 0
+    IsFindDrugDone_T_C20: 0
+    IsCompleteOpenEngineRoom0: 0
+    IsCompleteOpenLivingRoom0: 0
+    IsFuelabsorberFixed_E_E10: 0
+    IsTrashDoorBTFixed_L_L10: 0
+    IsTabletUnlock0: 0
+    IsAIVSMissionFinish0: 0
+    IsFakeHealthData_Tablet0: 0
+    IsTabletDestory0: 0
+    IsFakeCoordinateData_Tablet0: 0
+    IsFakeCoordinateDatafile_Tablet0: 0
+    IsAIDown_M_C1C30: 0
+    IsRevisioncomplaint0: 0
     IsPhotoTime: 0
     IsAIReportMissionTime: 0
   IsTrashDoorFixed_L_L1: 0
@@ -12316,8 +12349,8 @@ MonoBehaviour:
   DogFoodOutline_Tu: {fileID: 1760777295}
   biteBox: {fileID: 1490865588}
   dialog: {fileID: 1915457782}
-  condition: {fileID: 0}
-  smell: {fileID: 0}
+  condition: {fileID: 626288985}
+  smell: {fileID: 1105422882}
 --- !u!114 &501631604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22065,8 +22098,8 @@ MonoBehaviour:
   PassAnim: {fileID: 1422535989}
   EndAnim: {fileID: 1065012332}
   LoadingAnim: {fileID: 1218741906}
-  condition: {fileID: 0}
-  smell: {fileID: 0}
+  condition: {fileID: 626288985}
+  smell: {fileID: 1105422882}
 --- !u!4 &888012278
 Transform:
   m_ObjectHideFlags: 0
@@ -22558,6 +22591,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908627046}
   m_CullTransparentMesh: 1
+--- !u!114 &909222197 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 46151878, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &910650977
 GameObject:
   m_ObjectHideFlags: 0
@@ -34608,7 +34652,7 @@ MonoBehaviour:
   IMReady: 0
   EnterCheck: 0
   box: {fileID: 1055033584}
-  boxData: {fileID: 11400000, guid: 86f86a61a9a3b434cabd3af223c21ff2, type: 2}
+  boxData1: {fileID: 11400000, guid: 86f86a61a9a3b434cabd3af223c21ff2, type: 2}
   IDConsoleForBox: {fileID: 11400000, guid: 19c7f5ed7146f3247998f926e069c285, type: 2}
   dialog: {fileID: 1915457782}
 --- !u!54 &1420322862
@@ -43847,7 +43891,7 @@ MonoBehaviour:
   canPressCabinetDoor1Data_S: {fileID: 11400000, guid: dba8d49cc89b17947a4f666f452d8cd1, type: 2}
   canPipeData_S: {fileID: 11400000, guid: 3e14efb5b142521419f975ea2e54a56a, type: 2}
   dialog: {fileID: 1915457782}
-  aiButton: {fileID: 0}
+  aiButton: {fileID: 909222197}
 --- !u!54 &1816639645
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47491,7 +47535,6 @@ GameObject:
   - component: {fileID: 1956577732}
   - component: {fileID: 1956577731}
   - component: {fileID: 1956577730}
-  - component: {fileID: 1956577729}
   m_Layer: 5
   m_Name: Bite Button
   m_TagString: BiteButton1
@@ -47518,27 +47561,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3.4000244, y: 68.099976}
   m_SizeDelta: {x: 136, y: 113}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1956577729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956577727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967c6f4f21d2417419f381741421ba52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  biteButton: {fileID: 1956577730}
-  smashButton: {fileID: 1213483759}
-  barkButton: {fileID: 1247248959}
-  sniffButton: {fileID: 686163438}
-  pushOrPressButton: {fileID: 1655655909}
-  centerButton1: {fileID: 1383469103}
-  centerDisableButton1: {fileID: 2115068109}
-  centerButton2: {fileID: 0}
-  centerDisableButton2: {fileID: 0}
 --- !u!114 &1956577730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49652,7 +49674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 196028, guid: 9b848dcfe54c69c48944bd35edf4cd30, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 196028, guid: 9b848dcfe54c69c48944bd35edf4cd30, type: 3}
       propertyPath: m_StaticEditorFlags

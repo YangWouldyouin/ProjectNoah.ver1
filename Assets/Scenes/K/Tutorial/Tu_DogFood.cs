@@ -56,6 +56,10 @@ pushButton, smashButton, eatButton;
         eatButton = DogFood_Tu.CenterButton1;
         eatButton.onClick.AddListener(OnEat);
 
+        box.GetComponent<BoxCollider>().enabled = false;
+        dogFoodData.IsEaten = false;
+
+
     }
     void DiableButton()
     {

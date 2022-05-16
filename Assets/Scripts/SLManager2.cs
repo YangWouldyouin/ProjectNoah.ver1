@@ -566,6 +566,7 @@ public class SLManager2 : MonoBehaviour
             character.IsMiddleTuto = false; //튜토리얼 앞 파트 퍼즐 완료 확인
             character.IsRealMiddleTuto = false; //튜토리얼 앞 파트 진짜 완료
             character.IsEndTuto = false; //튜토리얼 퍼즐 완료
+            character.IsTutorialClear = false; //튜토리얼 퍼즐 찐 완료
             character.IsCompleteSmartFarmOpen = false; // 스마트팜 오픈 퍼즐 완료
             character.IsCompleteFindEngineKey = false; // 엔진실 카드키 찾기 퍼즐 완료
             character.IsCompleteOpenEngineRoom = false; // 엔진실 열기 퍼즐 완료

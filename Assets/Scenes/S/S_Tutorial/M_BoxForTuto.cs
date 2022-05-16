@@ -36,9 +36,9 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
 
     void Start()
     {
-       
-        
-        boxForTutoData_M = GetComponent<ObjData>();
+        boxForTutoData.IsUpDown = false;
+
+         boxForTutoData_M = GetComponent<ObjData>();
 
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton_M_BoxForTuto = boxForTutoData_M.BarkButton;

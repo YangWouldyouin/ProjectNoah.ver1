@@ -10,7 +10,7 @@ public class boxzoneChecker : MonoBehaviour
 
     public GameObject box;
 
-    public ObjectData boxData;
+    public ObjectData boxData1;
     public ObjectData IDConsoleForBox;
 
     public GameObject dialog;
@@ -25,20 +25,28 @@ public class boxzoneChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!boxData.IsUpDown)
+        if (boxData1.IsUpDown && GoodBoxPosition)
         {
-            IDConsoleForBox.IsCenterButtonChanged = false;
+            //Debug.Log("박스도 준비됐고 올라도 갔습니다~");
+            IDConsoleForBox.IsCenterButtonChanged = true;
+            //IDConsoleForBox.IsCenterButtonDisabled = true;
         }
 
+      else  if (!boxData1.IsUpDown)
+        {
+            IDConsoleForBox.IsCenterButtonChanged = false;
+            //IDConsoleForBox.IsCenterButtonDisabled = false;
+        }
     }
 
+    //박스가 존에 부딪히고
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.name == "Box_Tuto")
         {
-            Debug.Log("충돌함");
+            //Debug.Log("충돌함");
 
-
+            //불이 거짓이라면 대사를 출력하고, 대사 중복 재생 방지
             if (!EnterCheck)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintSubtitles(17));
@@ -50,12 +58,6 @@ public class boxzoneChecker : MonoBehaviour
 
             GoodBoxPosition = true;
 
-
-            if (boxData.IsUpDown)
-            {
-                IDConsoleForBox.IsCenterButtonChanged = true;
-            }
-
         }
     }
 
@@ -65,6 +67,7 @@ public class boxzoneChecker : MonoBehaviour
         {
             GoodBoxPosition = false;
 
+            Debug.Log("부딪히기 해제");
             IDConsoleForBox.IsCenterButtonChanged = false;
         }
     }
