@@ -160,14 +160,14 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         //if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
         //{
         //    /* 임무 리스트에 "AI 깨우기" 미션 추가 */
-        //    GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+        //    GameManager.gameManager._gameData.ActiveMissionList[3] = true;
         //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //}
-        //else 
+        //else
         //{
         //    /* 임무 리스트에 "AI 깨우기" 미션 삭제 */
-        //    GameManager.gameManager._gameData.ActiveMissionList[0] = false; 
-        //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");         
+        //    GameManager.gameManager._gameData.ActiveMissionList[3] = false;
+        //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //}
         ///* 임무 리스트 한번 활성화 */
         //MissionGenerator.missionGenerator.ActivateMissionList();
