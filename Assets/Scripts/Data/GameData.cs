@@ -226,6 +226,9 @@ public class GameData
 
     public bool IsEatBadPotato;//상한 고구마 섭취 엔딩
 
+    [Header("<임무시작/끝 시즘>")]
+    public bool IsWirelessUI_firstEnter; //블투 페이지 진입 시점 체크
+    public bool IsWirelessMCTabletCheck; //메인컴/태블릿 블투 연결 완료 시점 체크
 
 
     //public bool IsComTabletUploadClear;
@@ -245,7 +248,7 @@ public class GameData
     //    // 스마트팜 업무
     //    public bool IsSmartFarmMissionDone = false; 
 
-    
+
     [Header("<기타>")]
     public bool IsPhotoTime; //사진찍기 임무 진행 체크, 사내 뉴스에서 찍은 사진 확인 후 다시 false
     public bool IsAIReportMissionTime; //상태체크기계 임무 진행 체크 

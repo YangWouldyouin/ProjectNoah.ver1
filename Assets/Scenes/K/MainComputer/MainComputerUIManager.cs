@@ -86,6 +86,12 @@ public class MainComputerUIManager : MonoBehaviour
     {
         MainMenu_UI.SetActive(false);
         Wireless_UI.SetActive(true);
+
+        if (GameManager.gameManager._gameData.IsWirelessUI_firstEnter == false)
+        {
+            GameManager.gameManager._gameData.IsWirelessUI_firstEnter = true;
+            //메인 컴퓨터와 태블릿 신호 연결 시작 시점
+        }
     }
     public void BackMain_Bluetooth() // 블루투스 -> 메인
     {

@@ -92,6 +92,12 @@ public class TabletWirelessUIManager : MonoBehaviour
         if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn == false)
         {
             GameManager.gameManager._gameData.Is_Tablet_WirelessOn = true;
+
+            if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn && GameManager.gameManager._gameData.IsWirelessMCTabletCheck == false)
+            {
+                GameManager.gameManager._gameData.IsWirelessMCTabletCheck = true;
+                //메인 컴퓨터와 태블릿 신호 연결 끝 시점
+            }
         }
         else
         {
@@ -130,6 +136,8 @@ public class TabletWirelessUIManager : MonoBehaviour
                 Color HRTcolor = HealthReportText.color;
                 HRTcolor.a = 0.3f;
                 HealthReportText.color = HRTcolor;
+
+                //더미데이터 보고(다운로드) 완료 시점
             }
         }
         else

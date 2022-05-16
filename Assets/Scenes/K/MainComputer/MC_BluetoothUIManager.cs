@@ -134,6 +134,12 @@ public class MC_BluetoothUIManager : MonoBehaviour
         if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn == false)
         {
             GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
+
+            if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn && GameManager.gameManager._gameData.IsWirelessMCTabletCheck == false)
+            {
+                GameManager.gameManager._gameData.IsWirelessMCTabletCheck = true;
+                //메인 컴퓨터와 태블릿 신호 연결 끝 시점
+            }
         }
         else
         {

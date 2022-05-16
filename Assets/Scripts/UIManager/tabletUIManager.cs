@@ -13,6 +13,8 @@ public class tabletUIManager : MonoBehaviour
 
     public Text Locked;
 
+    public bool CrackUI_firstEnter = false;
+
     public void Start()
     {
         DiaryUI.SetActive(false);
@@ -47,11 +49,23 @@ public class tabletUIManager : MonoBehaviour
     {
         MainUI.SetActive(false);
         CrackUI.SetActive(true);
+
+        if (CrackUI_firstEnter == false)
+        {
+            CrackUI_firstEnter = true;
+            //더미데이터 보고(다운로드) 시작 시점
+        }
     }
     public void ChangeWireless()
     {
         MainUI.SetActive(false);
         WirelessUI.SetActive(true);
+
+        if (GameManager.gameManager._gameData.IsWirelessUI_firstEnter == false)
+        {
+            GameManager.gameManager._gameData.IsWirelessUI_firstEnter = true;
+            //메인 컴퓨터와 태블릿 신호 연결 시작 시점
+        }
     }
 
     public void BackMain_Diary()
