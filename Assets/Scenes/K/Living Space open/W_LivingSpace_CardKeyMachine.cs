@@ -145,6 +145,7 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
             GameManager.gameManager._gameData.IsCompleteHalfOpenLivingRoom = true; // 생활공간 문 반만 오픈 완료
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
+            /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 끝 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Y-3대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(29));
 

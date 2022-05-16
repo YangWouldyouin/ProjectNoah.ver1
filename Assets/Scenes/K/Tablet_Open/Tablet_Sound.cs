@@ -43,6 +43,8 @@ public class Tablet_Sound : MonoBehaviour
         Debug.Log("이상한 소리");
     }
 
+    /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 시작 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+    /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 끝 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     public void OnTriggerEnter(Collider other)
     {
         if(GameManager.gameManager._gameData.IsNoBoxes == false)

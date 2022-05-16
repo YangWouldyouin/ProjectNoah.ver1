@@ -72,6 +72,8 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
+
+    /* ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ ∆€¡Ò Ω√¿€ ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ */
     public void OnObserve()
     {
         Cabinet3_W.IsObserve = true;

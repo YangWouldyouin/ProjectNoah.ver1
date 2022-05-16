@@ -17,6 +17,8 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
     public GameObject dialog;
     DialogManager dialogManager;
 
+    AudioSource dollrecordAudio;
+    public AudioClip Doll_E_Audio;
 
     void Start()
     {
@@ -76,6 +78,7 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
     }
 
 
+    /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 시작 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     public void OnPushOrPress() // 밀기, 누르기
     {
         /* 밀기 & 누르기 중에 "누르기"일 때!!! */
@@ -90,6 +93,8 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(2));
 
         // 자막 + 음성 나오기
+        dollrecordAudio.clip = Doll_E_Audio;
+        dollrecordAudio.Play();
     }
     /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
     IEnumerator ChangePressFalse()
@@ -97,7 +102,7 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
         yield return new WaitForSeconds(2f);
         DollData_L.IsPushOrPress = false;
     }
-
+    /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 끝 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
 
     public void OnSniff() // 냄새맡기
     {

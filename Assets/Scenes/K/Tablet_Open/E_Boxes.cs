@@ -85,6 +85,7 @@ pushButton, smashButton, NoCenterButton_M_Box;
         InteractionButtonController.interactionButtonController.playerSniff();
     }
 
+    /* ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ ∆€¡Ò ≥° ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ */
     public void OnPushOrPress()
     {
         BoxesData_E.IsPushOrPress = true;

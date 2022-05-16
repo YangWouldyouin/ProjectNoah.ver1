@@ -31,6 +31,8 @@ public class tabletUIManager : MonoBehaviour
             Locked.text = "UnLocked!";
         }
     }
+
+    /* ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ ∆€¡Ò ≥° ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ */
     public void ChangeMain()
     {
         if (GameManager.gameManager._gameData.IsTabletUnlock == true)

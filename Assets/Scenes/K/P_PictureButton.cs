@@ -77,6 +77,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         noCenterButton_P_PictureButton.transform.gameObject.SetActive(false);
     }
 
+
+    /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 시작 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     void Update()
     {
         if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10)
@@ -161,6 +163,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
 
 
+    /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 밑에 두개 퍼즐 끝 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     public void Report() // 보고하기 버튼 누르면
     {
         Debug.Log("보고하기");
