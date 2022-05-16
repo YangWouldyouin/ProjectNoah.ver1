@@ -30,11 +30,15 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     public GameObject dialog;
     DialogManager dialogManager;
 
-    public GameObject AIUI;
-
+    public Button aiButton;
     // Start is called before the first frame update
     void Start()
     {
+        Color aiColor = aiButton.GetComponent<Image>().color;
+        aiColor.a = 0.5f;
+        aiButton.GetComponent<Image>().color = aiColor;
+        aiButton.interactable = false;
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         cabinetCollider = GetComponent<BoxCollider>();
@@ -198,10 +202,12 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     {
         Debug.Log("마이크랑 AI 티키타카 시작");
 
-        AIUI.SetActive(true);
-
         Invoke("Mike", 0.1f);
         //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
+        Color aiTurnColor = aiButton.GetComponent<Image>().color;
+        aiTurnColor.a = 1.0f;
+        aiButton.GetComponent<Image>().color = aiTurnColor;
+        aiButton.interactable = true;
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(63));
     }
 

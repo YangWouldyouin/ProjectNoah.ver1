@@ -37,10 +37,4 @@ public class Tutorial_Fadeinout : MonoBehaviour
     {
         Intro_GUI.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

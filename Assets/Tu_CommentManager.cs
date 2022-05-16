@@ -85,6 +85,7 @@ public class Tu_CommentManager : MonoBehaviour
         Debug.Log("마지막 대화 시작");
 
         GameManager.gameManager._gameData.afterNewsTalk = true;
+
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(64));
         Invoke("MikeLast", 0.1f);
 
@@ -117,10 +118,11 @@ public class Tu_CommentManager : MonoBehaviour
 
     void MikeLast()
     {
+        //GameManager.gameManager._gameData.IsTutorialClear = true;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(26));
-
-        GameManager.gameManager._gameData.IsTutorialClear = true;
     }
+
 
 /*    void Delay()
     {

@@ -7,6 +7,12 @@ using UnityEngine.UI;
 public class MainButtonController : MonoBehaviour
 {
     public Canvas savePagePanel;
+    GameData gameData;
+
+    private void Start()
+    {
+        gameData = SaveSystem.Load("save_001");
+    }
 
     IEnumerator GoToTutorial()
     {
@@ -24,7 +30,8 @@ public class MainButtonController : MonoBehaviour
 
     public void OnOpenButtonClicked()
     {
-        if(GameManager.gameManager._gameData.IsTutorialClear)
+
+        if(gameData.IsTutorialClear)
         {
             StartCoroutine(GoToNewCockpit());
         }
