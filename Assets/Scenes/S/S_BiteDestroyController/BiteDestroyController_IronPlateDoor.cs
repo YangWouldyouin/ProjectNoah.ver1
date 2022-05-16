@@ -111,7 +111,7 @@ public class BiteDestroyController_IronPlateDoor : MonoBehaviour, IPointerUpHand
         // 1.5초 정도 딜레이를 주어야 함 )
 
         // 1.5초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
-        Invoke("DelayBiteAnim", 1f);
+        //Invoke("DelayBiteAnim", 1f);
 
         Invoke("IronPlateOpen", 1.7f);
     }

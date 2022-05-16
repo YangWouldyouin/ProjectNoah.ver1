@@ -181,9 +181,12 @@ public class GameData
     public bool IsBasicTuto; //튜토리얼 앞 파트 퍼즐 완료
     public bool IsMiddleTuto; //튜토리얼 앞 파트 퍼즐 완료 확인
     public bool StopIDConsoleSpeak; // ID 콘솔 말하는 거 반복 안하게 해주려고
+
     public bool IsRealMiddleTuto; //채현 튜토리얼 앞 파트 진짜 완료
     public bool IsEndTuto; //채현 튜토리얼 퍼즐 완료
+    [Header("< 튜토리얼 완료 여부>")]
     public bool IsTutorialClear; //찐찐찐 튜토리얼 완료
+
     public bool IsCompleteSmartFarmOpen; // 스마트팜 오픈 퍼즐 완료
     public bool IsCompleteFindEngineKey; // 엔진실 카드키 찾기 퍼즐 완료
     public bool IsCompleteOpenEngineRoom; // 엔진실 열기 퍼즐 완료

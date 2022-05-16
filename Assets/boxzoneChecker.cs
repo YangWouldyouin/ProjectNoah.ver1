@@ -34,10 +34,11 @@ public class boxzoneChecker : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == box)
+        if (other.gameObject.name == "Box_Tuto")
         {
-            
-            
+            Debug.Log("Ãæµ¹ÇÔ");
+
+
             if (!EnterCheck)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintSubtitles(17));
@@ -60,7 +61,7 @@ public class boxzoneChecker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == box)
+        if (other.gameObject.name == "Box_Tuto")
         {
             GoodBoxPosition = false;
 

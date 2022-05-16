@@ -33,7 +33,8 @@ pushButton, DisableButton, smashButton;
         dialogManager = dialog.GetComponent<DialogManager>();
 
         //시작 대사
-        Invoke("StartComment", 21f);
+        //Invoke("StartComment", 21f);
+        StartCoroutine(StartComment());
 
         //시작할 때 박스 콜라이더를 꺼준다.
        // gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -184,12 +185,21 @@ pushButton, DisableButton, smashButton;
     {
     }
 
-    public void StartComment()
+    IEnumerator StartComment()
     {
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(9));
 
-        Invoke("StartPuzzle", 90f);
+        yield return new WaitForSeconds(21f);
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(9));
+        yield return new WaitForSeconds(50f);
+        StartPuzzle();
+        //Invoke("StartPuzzle", 90f);
     }
+    //public void StartComment()
+    //{
+    //    dialogManager.StartCoroutine(dialogManager.PrintSubtitles(9));
+
+    //    Invoke("StartPuzzle", 90f);
+    //}
 
     public void StartPuzzle()
     {

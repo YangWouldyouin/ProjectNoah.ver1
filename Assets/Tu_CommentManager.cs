@@ -42,7 +42,7 @@ public class Tu_CommentManager : MonoBehaviour
 
         StartCoroutine(Dalay1());
 
-        Invoke("ShowCon", 23f);
+        Invoke("ShowCon", 30f);
 
         //Invoke("TutoBye", 5f);
 

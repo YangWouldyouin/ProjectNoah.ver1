@@ -17,6 +17,7 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
     public ObjectData canFixedLine2Data_T;
     Outline canFixedLine2Outline_T;
 
+    public PlayerEquipment playerEquipment_SmartFarm;
 
     void Start()
     {
@@ -73,15 +74,19 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
         if(canFixedLine2Data_T.IsBite)
         {
             //부모에서 해제
-            //canFixedLine2Data_T.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
-            //canFixedLine2Data_T.transform.parent = null;
+            canFixedLine2Data_T.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            T_canFixedLine2.transform.parent = null;
 
             //멀쩡한 선을 기계에 자동 장착
-            //canFixedLine2Data_T.transform.position = new Vector3(-258.06f, 539.122f, 670.358f); //위치 값
-            //canFixedLine2Data_T.transform.rotation = Quaternion.Euler(0, -90, 90); // 각도 값 
+            T_canFixedLine2.transform.position = new Vector3(-258.06f, 539.122f, 670.358f); //위치 값
+            T_canFixedLine2.transform.rotation = Quaternion.Euler(0, -90, 90); // 각도 값 
+            // new player equipment - bite 초기화
+            playerEquipment_SmartFarm.biteObjectName = "";
 
             canFixedLine2Data_T.IsNotInteractable = true; // 상호작용 불가능하게
             canFixedLine2Outline_T.OutlineWidth = 0; // 아웃라인도 꺼줍니다.
+
+            canFixedLine2Data_T.IsBite = false; // bite 해제
 
             smartFarmLineHome2Data_T.IsNotInteractable = true; // 상호작용 불가능하게
             smartFarmLineHomeOutline_T.OutlineWidth = 0; // 아웃라인도 꺼줍니다.

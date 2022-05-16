@@ -8,15 +8,30 @@ public class MainButtonController : MonoBehaviour
 {
     public Canvas savePagePanel;
 
-    IEnumerator GoToScene()
+    IEnumerator GoToTutorial()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return null;
         SceneManager.LoadScene("Tutorial");
     }
 
+    IEnumerator GoToNewCockpit()
+    {
+        yield return null;
+        SceneManager.LoadScene("new cockpit");
+    }
+
+
+
     public void OnOpenButtonClicked()
     {
-        StartCoroutine(GoToScene());
+        if(GameManager.gameManager._gameData.IsTutorialClear)
+        {
+            StartCoroutine(GoToNewCockpit());
+        }
+        else
+        {
+            StartCoroutine(GoToTutorial());
+        }
     }
 
     public void OnProjectButtonClicked()
