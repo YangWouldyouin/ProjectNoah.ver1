@@ -131,8 +131,6 @@ pushButton, smashButton, eatButton;
 
         DogFood_Tu.IsEaten = true;
         DiableButton();
-        GameManager.gameManager._gameData.IsTutorialClear = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         InteractionButtonController.interactionButtonController.playerEat();
 
 
