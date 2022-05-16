@@ -26789,7 +26789,7 @@ MonoBehaviour:
     S_IsAIAwake_M_C1: 0
     S_IsCWDoorOpened_M_C1: 0
     S_IsHealthMachineFixed_T_C2: 0
-    ActiveMissionList: 0000000000
+    ActiveMissionList: 000000000000000000000000000000000000000000000000000000000000
     EndMissionList: 0000000000
     IsAIAwake_M_C1: 0
     IsPipeFound_M_C1: 0
@@ -32710,6 +32710,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfd547bf0ebba5548b0d74d89224534d, type: 3}
+--- !u!114 &792860563 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 822685086322740496, guid: cfd547bf0ebba5548b0d74d89224534d, type: 3}
+  m_PrefabInstance: {fileID: 792860562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f747c1ebe51984e9ae020b1118cea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &795068828
 GameObject:
   m_ObjectHideFlags: 0
@@ -65224,6 +65235,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 46151878, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 792860563}
+    - target: {fileID: 46151878, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowMissionList
+      objectReference: {fileID: 0}
     - target: {fileID: 74861547, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
       value: 0
