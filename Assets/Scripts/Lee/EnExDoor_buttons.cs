@@ -40,7 +40,8 @@ public class EnExDoor_buttons : MonoBehaviour, IInteraction
         pressButton.onClick.AddListener(OnPushOrPress);
 
         noCenterButton = portDoorObjData.CenterButton1;
-
+        portDoorData.IsNotInteractable = true;
+        portDoorLine.OutlineWidth = 0f;
     }
 
     // Update is called once per frame
@@ -78,7 +79,7 @@ public class EnExDoor_buttons : MonoBehaviour, IInteraction
         portDoorData.IsNotInteractable = true;
         portDoorLine.OutlineWidth = 0f;
 
-        portDoorObjData.IsNotInteractable = false;
+        ExDataa.IsNotInteractable = false;
         ExLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;

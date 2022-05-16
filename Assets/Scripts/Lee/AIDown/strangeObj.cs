@@ -97,8 +97,6 @@ public class strangeObj : MonoBehaviour, IInteraction
 
         GameManager.gameManager._gameData.IsFindStrangeObj = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-
     }
 
     public void OnUp()
@@ -132,7 +130,7 @@ public class strangeObj : MonoBehaviour, IInteraction
     void ObjSmoke()
     {
         // 3분간 플레이어 아웃라인 활성화
-        outlineControl.StartOutlineTime(180f);
+        outlineControl.StartOutlineTime(30f);
 
         // 수상한 물건을 플레이어로부터 분리함
         this.GetComponent<Rigidbody>().isKinematic = true;

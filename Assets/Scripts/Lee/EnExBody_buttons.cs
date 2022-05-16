@@ -99,6 +99,16 @@ public class EnExBody_buttons : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = portBodyObjData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
+        // 업데이트 문에서 계속 돌고 있어서 3초 딜레이 후에 true로 바꿔야함...
+        StartCoroutine(Delay3Seconds());
+
+        //insert02Data.IsNotInteractable = false;
+        //insert02Line.OutlineWidth = 8f;
+    }
+
+    IEnumerator Delay3Seconds()
+    {
+        yield return new WaitForSeconds(3f);
         portBodyData.IsNotInteractable = true;
         portBodyLine.OutlineWidth = 0f;
 
@@ -106,9 +116,6 @@ public class EnExBody_buttons : MonoBehaviour, IInteraction
         portDoorLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
-
-        //insert02Data.IsNotInteractable = false;
-        //insert02Line.OutlineWidth = 8f;
     }
 
     public void OnPushOrPress()
