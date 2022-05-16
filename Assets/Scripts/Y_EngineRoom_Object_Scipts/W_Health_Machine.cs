@@ -43,6 +43,8 @@ public class W_Health_Machine : MonoBehaviour
             //W_HM_1
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
             GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+            
+            //냄새로 업무공간 고치기 시작
 
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
@@ -84,6 +86,7 @@ public class W_Health_Machine : MonoBehaviour
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(62));
                 MissionScriptCheck = false;
+                //중간데이터보고 임무 시작
             }
 
         }
@@ -99,6 +102,7 @@ public class W_Health_Machine : MonoBehaviour
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
                 MissionScriptCheck2 = false;
+                //중간데이터보고 임무 끝
             }
 
         }
@@ -226,6 +230,8 @@ public class W_Health_Machine : MonoBehaviour
 
         GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        //냄새로 업무공간 고치기 끝
     }
 
     public void ReportJudgment()
@@ -280,6 +286,8 @@ public class W_Health_Machine : MonoBehaviour
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //W_HM_3
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
+
+            //중간데이터보고 임무 끝
         }
         else
         {
@@ -293,12 +301,16 @@ public class W_Health_Machine : MonoBehaviour
 
                 //W_HM_5
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(37));
+
+                //중간데이터보고 임무 끝
             }
             else
             {
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //W_HM_3
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
+
+                //중간데이터보고 임무 끝
             }
         }
     }
@@ -316,5 +328,7 @@ public class W_Health_Machine : MonoBehaviour
 
         //W_HM_4
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+
+        //중간데이터보고 임무 끝
     }
 }

@@ -28,6 +28,8 @@ public class E_FA_Body : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
 
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            //냄새로 엔진실 고치기 시작
         }
 
         playerEquipment = BaseCanvas._baseCanvas.equipment;
@@ -95,6 +97,8 @@ public class E_FA_Body : MonoBehaviour, IInteraction
 
         FA_fuelabsorberfixPart.SetActive(false);
         gameObject.SetActive(false);
+
+        //냄새로 엔진실 고치기 끝
     }
 
     public void OnSniff()

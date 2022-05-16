@@ -28,6 +28,8 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
 
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            //냄새로 생활공간 고치기 시작
         }
 
         playerEquipment = BaseCanvas._baseCanvas.equipment;
@@ -106,6 +108,8 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
         GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        //냄새로 생활공간 고치기 끝
     }
 
     public void OnSniff()
