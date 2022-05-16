@@ -20,6 +20,8 @@ public class ExDoor_buttons : MonoBehaviour, IInteraction
     {
         portDoorData = GetComponent<ObjData>();
         portDoorLine = GetComponent<Outline>();
+        portDoorLine.OutlineWidth = 0;
+        hydrantDoorData.IsNotInteractable = true;
 
         ExLine = extinguisher.GetComponent<Outline>();
 

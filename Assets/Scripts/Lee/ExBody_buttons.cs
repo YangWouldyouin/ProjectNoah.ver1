@@ -55,7 +55,7 @@ public class ExBody_buttons : MonoBehaviour, IInteraction
         {
             gameObject.GetComponent<BoxCollider>().enabled = true;
 
-            hydrantBodyData.IsNotInteractable = true;
+            hydrantDoorData.IsNotInteractable = true;
             portDoorLine.OutlineWidth = 0f;
 
             //insert02Data.IsNotInteractable = true;
@@ -96,6 +96,15 @@ public class ExBody_buttons : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = portBodyData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
+        StartCoroutine(DelayForSeconds());
+
+        //insert02Data.IsNotInteractable = false;
+        //insert02Line.OutlineWidth = 8f;
+    }
+
+    IEnumerator DelayForSeconds()
+    {
+        yield return new WaitForSeconds(3f);
         hydrantBodyData.IsNotInteractable = true;
         portBodyLine.OutlineWidth = 0f;
 
@@ -103,9 +112,6 @@ public class ExBody_buttons : MonoBehaviour, IInteraction
         portDoorLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
-
-        //insert02Data.IsNotInteractable = false;
-        //insert02Line.OutlineWidth = 8f;
     }
 
     public void OnPushOrPress()

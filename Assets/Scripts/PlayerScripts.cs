@@ -60,14 +60,6 @@ public class PlayerScripts : MonoBehaviour
         if(Input.GetMouseButtonDown(0)&&!Extensions.IsMouseOverUI()&&(!agent.isStopped))
         {
             Onclick();
-            //if (Input.mousePosition.y >= 570)
-            //{
-            //    rectTransform.anchoredPosition = Input.mousePosition + new Vector3(0, -150, 0);
-            //}
-            //else
-            //{
-            //    rectTransform.anchoredPosition = Input.mousePosition;             
-            //}
         }
 
         // 회전하는 중이고(참) && 플레이어의 현재 각도와 초기 각도가 다르면??  // Q. 여기 if 문이 뭔일하는지 솔직히 모르겠음

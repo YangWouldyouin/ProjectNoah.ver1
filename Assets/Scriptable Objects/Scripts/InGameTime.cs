@@ -14,4 +14,7 @@ public class InGameTime : ScriptableObject
     public float maxTimer;
 
     public bool IsTimerStarted;
+
+    public bool IsNoahOutlineTurnOn;
+    public float outlineTimer;
 }
