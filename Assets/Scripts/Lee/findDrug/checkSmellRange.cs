@@ -39,8 +39,14 @@ public class checkSmellRange : MonoBehaviour
             {
                 smellArea.SetActive(true);
                 PrintUI();
+
+                GameManager.gameManager._gameData.ActiveMissionList[24] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.ActivateMissionList();
             }
         }
+
+        
     }
 
     void PrintUI()
