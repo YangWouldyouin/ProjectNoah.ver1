@@ -29,7 +29,6 @@ public class W_Health_Machine : MonoBehaviour
 
     public bool HealthDataReportbool;
     public bool MissionScriptCheck =false;
-    public bool MissionScriptCheck2 = false;
 
     //노아 내려가는 애니메이션 필요
 
@@ -80,12 +79,11 @@ public class W_Health_Machine : MonoBehaviour
             Debug.Log("상태 체크 정기 업무 시작");
             GameManager.gameManager._gameData.IsAIReportMissionTime = true;
             HealthDataReportbool = false;
-            MissionScriptCheck = true;
 
-            if (MissionScriptCheck == true)
+            if (MissionScriptCheck == false)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(62));
-                MissionScriptCheck = false;
+                MissionScriptCheck = true;
                 //중간데이터보고 임무 시작
             }
 
@@ -96,12 +94,12 @@ public class W_Health_Machine : MonoBehaviour
             GameManager.gameManager._gameData.IsAIReportMissionTime = false;
             HealthDataReportbool = false;
 
-            GameManager.gameManager._gameData.IsReportCancleCount += 1;
-            MissionScriptCheck2 = true;
-            if (MissionScriptCheck2 == true)
+            if (MissionScriptCheck == true)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
-                MissionScriptCheck2 = false;
+                GameManager.gameManager._gameData.IsReportCancleCount += 1;
+
+                MissionScriptCheck = false;
                 //중간데이터보고 임무 끝
             }
 

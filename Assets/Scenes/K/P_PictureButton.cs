@@ -32,6 +32,9 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
     public InGameTime inGameTime;
 
+
+    public bool MissionScriptCheck = false;
+
     /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ W-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
 
     void Start()
@@ -81,15 +84,26 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
             Debug.Log("사진찍기 업무 시작");
             GameManager.gameManager._gameData.IsPhotoTime = true;
 
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(46));
+            if (MissionScriptCheck == false)
+            {
+
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(46));
+                MissionScriptCheck = true;
+                //선전용 사진 촬영 보고 시작
+            }
         }
         if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
         {
             Debug.Log("사진찍기 업무 종료");
             GameManager.gameManager._gameData.IsPhotoTime = false;
 
-            GameManager.gameManager._gameData.IsReportCancleCount += 1;
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+            if (MissionScriptCheck == true)
+            {
+                GameManager.gameManager._gameData.IsReportCancleCount += 1;
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+                MissionScriptCheck = false;
+                //선전용 사진 촬영 보고 끝
+            }
         }
     }
 
@@ -156,6 +170,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         UniverseImage_P.SetActive(false);
         /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ W-2대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(61));
+        //선전용 사진 촬영 보고 끝
     }
 
     public void Cancel() //캔슬 버튼 누르면
@@ -169,6 +184,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
         Report_GUI_P.SetActive(false); // 창 끄기
         UniverseImage_P.SetActive(false);
+
+        //선전용 사진 촬영 보고 끝
     }
 
 
