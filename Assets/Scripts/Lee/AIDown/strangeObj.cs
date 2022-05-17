@@ -96,6 +96,8 @@ public class strangeObj : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerSniff();
 
         GameManager.gameManager._gameData.IsFindStrangeObj = true;
+        GameManager.gameManager._gameData.ActiveMissionList[27] = true;
+        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
@@ -123,6 +125,8 @@ public class strangeObj : MonoBehaviour, IInteraction
         Destroy(smoke, 5f);
 
         GameManager.gameManager._gameData.IsKnowUsingSObj = true;
+        GameManager.gameManager._gameData.ActiveMissionList[27] = false;
+        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //��ư� ������ �ʾ� ��Ȳ�ϴ� AI ���
     }
