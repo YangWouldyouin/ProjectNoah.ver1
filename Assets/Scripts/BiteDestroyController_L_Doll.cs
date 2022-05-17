@@ -21,8 +21,17 @@ public class BiteDestroyController_L_Doll : MonoBehaviour, IPointerUpHandler, IP
     [Header("애니메이션")]
     public Animator LivingDoorAni_L; // 생활공간 문 완전히 열리기
 
-    /* 상호작용 버튼 끄는 함수 */
-    void DiableButton()
+    [Header("오디오")]
+    AudioSource LivingDoor_open_sound;
+    public AudioClip LivingDoor_open;
+
+    void Start()
+    {
+        LivingDoor_open_sound = GetComponent<AudioSource>();
+    }
+
+        /* 상호작용 버튼 끄는 함수 */
+        void DiableButton()
     {
         smashButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
@@ -80,6 +89,10 @@ public class BiteDestroyController_L_Doll : MonoBehaviour, IPointerUpHandler, IP
 
         // LivingDoorOpen();
         Invoke("LivingDoorOpen", 2f); // 문 완전히 열리는 애니메이션 실행
+
+        LivingDoor_open_sound.clip = LivingDoor_open;
+        LivingDoor_open_sound.Play();
+
         GameManager.gameManager._gameData.IsCompleteOpenLivingRoom = true; // 생활공간 문 완전 오픈 완료
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         Debug.Log("문 완전히 열리기");

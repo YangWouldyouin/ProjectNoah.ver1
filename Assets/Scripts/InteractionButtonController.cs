@@ -42,13 +42,12 @@ public class InteractionButtonController : MonoBehaviour
 
     private static readonly int IsBarking = Animator.StringToHash("IsBarking"); // 문자열 비교보다 int 비교가 더 빠름
 
-    /* 소리 */
-    AudioSource interactionAudio; // 오디오 소스는 하나만 있어도 됨
 
-    /* 소리 클립 */
+    AudioSource interactionAudio; // 오디오 소스는 하나만 있어도 됨
     public AudioClip BasicUI_Click; // UI 클릭
     public AudioClip Noah_Bark; // 노아_짖기
     public AudioClip Noah_Eat; // 노아_먹기
+    public AudioClip DropBox; // 상자 내려놓기
 
     void Awake()
     {
@@ -480,6 +479,9 @@ public class InteractionButtonController : MonoBehaviour
         pushData.objectDATA.IsPushOrPress = false;
 
         noahAnim.SetBool("IsPushing", false);
+
+        interactionAudio.clip = DropBox;
+        interactionAudio.Play();
 
         noahPushObject.transform.SetParent(null, true);
 
