@@ -22,6 +22,10 @@ public class E_StrangeObj : MonoBehaviour
     public DialogManager dialog_E;
     DialogManager dialogManager;
 
+    AudioSource StrangeObj_smoke_Sound;
+    public AudioClip StrangeObj_smoke;
+
+
     [Header("<플레이어의 아웃라인을 관리함>")]
     public NoahOutlineController outlineController_E;
     NoahOutlineController outlineControl;
@@ -34,6 +38,8 @@ public class E_StrangeObj : MonoBehaviour
 
     void Start()
     {
+        StrangeObj_smoke_Sound = GetComponent<AudioSource>();
+
         outlineControl = outlineController_E.GetComponent<NoahOutlineController>();
         dialogManager = dialog_E.GetComponent<DialogManager>();
 
@@ -128,6 +134,9 @@ public class E_StrangeObj : MonoBehaviour
         StartCoroutine(DelayFor2Seconds());
 
         Destroy(smoke_E, 5f);
+
+        StrangeObj_smoke_Sound.clip = StrangeObj_smoke;
+        StrangeObj_smoke_Sound.Play();
 
         GameManager.gameManager._gameData.IsKnowUsingSObj = true;
         GameManager.gameManager._gameData.ActiveMissionList[27] = false;
