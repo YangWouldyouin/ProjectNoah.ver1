@@ -67,6 +67,12 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
             // 엔진실 문 고치기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             // 엔진실/창고 해금 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
 
+            GameManager.gameManager._gameData.ActiveMissionList[3] = true;
+            GameManager.gameManager._gameData.ActiveMissionList[30] = true;
+            GameManager.gameManager._gameData.ActiveMissionList[4] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
+
             dontrootmore = true;
         }
 

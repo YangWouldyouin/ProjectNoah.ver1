@@ -26,6 +26,8 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         {
             GameManager.gameManager._gameData.IsFirstEnterLiving = true;
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
+            GameManager.gameManager._gameData.ActiveMissionList[15] = true;
+            MissionGenerator.missionGenerator.ActivateMissionList();
 
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
@@ -107,6 +109,8 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         playerEquipment.biteObjectName = "";
 
         GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 = true;
+        GameManager.gameManager._gameData.ActiveMissionList[15] = false;
+        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         //냄새로 생활공간 고치기 끝

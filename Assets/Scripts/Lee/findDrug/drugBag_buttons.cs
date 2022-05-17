@@ -152,5 +152,10 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         Destroy(drugSmellArea, 0f);
         Destroy(smellCheckArea, 0f);
         Destroy(gameObject, 0.5f);
+
+        GameManager.gameManager._gameData.ActiveMissionList[24] = false;
+        GameManager.gameManager._gameData.ActiveMissionList[25] = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 }

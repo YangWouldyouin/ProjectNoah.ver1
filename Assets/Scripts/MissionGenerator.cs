@@ -70,6 +70,8 @@ public class MissionGenerator : MonoBehaviour
         missionDic.Add(28, "메인 컴퓨터와 태블릿 연결");
         missionDic.Add(29, "더미 데이터 보고");
 
+        missionDic.Add(30, "엔진실 문 고치기");
+
         //if (GameManager.gameManager._gameData.S_IsAIAwake_M_C1)
         //{
         //    missionList.Add(missionDic[0]);

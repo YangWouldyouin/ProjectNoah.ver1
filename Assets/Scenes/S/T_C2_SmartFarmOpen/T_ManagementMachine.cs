@@ -68,6 +68,9 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             // A-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             // 스마트 팜 해금 퍼즐 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(13));
+            GameManager.gameManager._gameData.ActiveMissionList[17] = true;
+            MissionGenerator.missionGenerator.ActivateMissionList();
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 
         if (managementMachineData_T.IsObserve && GameManager.gameManager._gameData.IsIronDisappear_T_C2)
@@ -128,6 +131,8 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
             /*스마트팜 오픈 퍼즐 완료*/
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
+            GameManager.gameManager._gameData.ActiveMissionList[17] = false;
+            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             //A-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆

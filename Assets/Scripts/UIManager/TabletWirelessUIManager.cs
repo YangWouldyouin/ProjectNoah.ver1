@@ -97,6 +97,10 @@ public class TabletWirelessUIManager : MonoBehaviour
             {
                 GameManager.gameManager._gameData.IsWirelessMCTabletCheck = true;
                 //메인 컴퓨터와 태블릿 신호 연결 끝 시점
+
+                GameManager.gameManager._gameData.ActiveMissionList[28] = false;
+                MissionGenerator.missionGenerator.ActivateMissionList();
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
         }
         else
@@ -138,6 +142,10 @@ public class TabletWirelessUIManager : MonoBehaviour
                 HealthReportText.color = HRTcolor;
 
                 //더미데이터 보고(다운로드) 완료 시점
+
+                GameManager.gameManager._gameData.ActiveMissionList[29] = false;
+                MissionGenerator.missionGenerator.ActivateMissionList();
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
         }
         else

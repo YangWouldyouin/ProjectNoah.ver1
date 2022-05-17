@@ -51,6 +51,21 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
         }
     }*/
 
+    void Update()
+    {
+        if (disturbingChipData.IsClicked)
+        {
+            if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2)
+            {
+                GameManager.gameManager._gameData.ActiveMissionList[9] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.ActivateMissionList();
+            }
+
+            disturbingChipData.IsClicked = false;
+        }
+    }
+
     void DisableButton()
     {
         barkButton.transform.gameObject.SetActive(false);

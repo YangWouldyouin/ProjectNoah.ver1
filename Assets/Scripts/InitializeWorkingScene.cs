@@ -189,6 +189,9 @@ public class InitializeWorkingScene : MonoBehaviour
         if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
+            GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
 
         /*상태체크기계 고치기*/

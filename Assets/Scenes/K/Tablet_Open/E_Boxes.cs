@@ -98,6 +98,9 @@ pushButton, smashButton, NoCenterButton_M_Box;
         Box_Collapse_Sound.Play();
         Invoke("DestroyBox", 2f); // 2초 뒤 박스 오브젝트 비활성화
         GameManager.gameManager._gameData.IsNoBoxes = true;
+        GameManager.gameManager._gameData.ActiveMissionList[6] = false;
+        GameManager.gameManager._gameData.ActiveMissionList[7] = true;
+        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 

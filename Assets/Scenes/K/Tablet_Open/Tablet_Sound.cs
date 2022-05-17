@@ -57,6 +57,10 @@ public class Tablet_Sound : MonoBehaviour
                 TabletSoundLoop();
                 // TabletSoundArea.SetActive(true);
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(38));
+
+                GameManager.gameManager._gameData.ActiveMissionList[6] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.ActivateMissionList();
             }
         }
         else

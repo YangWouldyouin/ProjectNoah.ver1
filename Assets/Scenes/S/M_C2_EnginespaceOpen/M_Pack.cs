@@ -121,6 +121,8 @@ public class M_Pack : MonoBehaviour, IInteraction
 
         /*카드키 찾기 퍼즐 완료*/
         GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
+        GameManager.gameManager._gameData.ActiveMissionList[3] = false;
+        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         // 엔진실 카드키 찾기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧

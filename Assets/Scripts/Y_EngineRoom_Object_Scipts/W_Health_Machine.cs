@@ -42,9 +42,10 @@ public class W_Health_Machine : MonoBehaviour
             //W_HM_1
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
             GameManager.gameManager._gameData.IsFirstEnterWorking = true;
-            
-            //냄새로 업무공간 고치기 시작
 
+            //냄새로 업무공간 고치기 시작
+            GameManager.gameManager._gameData.ActiveMissionList[13] = true;
+            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 
@@ -85,9 +86,14 @@ public class W_Health_Machine : MonoBehaviour
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(62));
                 MissionScriptCheck = true;
                 //중간데이터보고 임무 시작
+
+                GameManager.gameManager._gameData.ActiveMissionList[14] = true;
+                MissionGenerator.missionGenerator.ActivateMissionList();
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
 
         }
+
         if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10 && HealthDataReportbool == false)
         {
             Debug.Log("상태 체크 정기 업무 종료");
@@ -101,6 +107,10 @@ public class W_Health_Machine : MonoBehaviour
 
                 MissionScriptCheck = false;
                 //중간데이터보고 임무 끝
+
+                GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+                MissionGenerator.missionGenerator.ActivateMissionList();
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
 
         }
@@ -227,6 +237,8 @@ public class W_Health_Machine : MonoBehaviour
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(6));
 
         GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 = true;
+        GameManager.gameManager._gameData.ActiveMissionList[13] = false;
+        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         //냄새로 업무공간 고치기 끝
@@ -286,6 +298,10 @@ public class W_Health_Machine : MonoBehaviour
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
 
             //중간데이터보고 임무 끝
+
+            GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+            MissionGenerator.missionGenerator.ActivateMissionList();
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else
         {
@@ -301,6 +317,9 @@ public class W_Health_Machine : MonoBehaviour
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(37));
 
                 //중간데이터보고 임무 끝
+                GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+                MissionGenerator.missionGenerator.ActivateMissionList();
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
             else
             {
@@ -309,6 +328,9 @@ public class W_Health_Machine : MonoBehaviour
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
 
                 //중간데이터보고 임무 끝
+                GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+                MissionGenerator.missionGenerator.ActivateMissionList();
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
         }
     }
@@ -328,5 +350,8 @@ public class W_Health_Machine : MonoBehaviour
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
 
         //중간데이터보고 임무 끝
+        GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+        MissionGenerator.missionGenerator.ActivateMissionList();
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 }

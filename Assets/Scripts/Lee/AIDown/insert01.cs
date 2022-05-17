@@ -107,6 +107,9 @@ public class insert01 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsAIDown = true;
             GameManager.gameManager._gameData.IsAIDown_M_C1C3 = true;
             GameManager.gameManager._gameData.IsStartOrbitChange = true;
+            GameManager.gameManager._gameData.ActiveMissionList[9] = false;
+            GameManager.gameManager._gameData.ActiveMissionList[12] = true;
+            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
 
@@ -173,6 +176,7 @@ public class insert01 : MonoBehaviour, IInteraction
 
             insertData.IsNotInteractable = false;
             insertLine.OutlineWidth = 0;
+
         }
 
         if (WChip01Data.IsBite)

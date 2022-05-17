@@ -103,6 +103,10 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
             RealNormalMeteor1Data_T.IsNotInteractable = true; // 상호작용 불가능하게
             RealNormalMeteor1Outline_T.OutlineWidth = 0;
+
+            GameManager.gameManager._gameData.ActiveMissionList[22] = false;
+            MissionGenerator.missionGenerator.ActivateMissionList();
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 
 
@@ -140,6 +144,9 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(55));
 
         // 죽은척하기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+        GameManager.gameManager._gameData.ActiveMissionList[11] = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
     public void OnSniff()

@@ -49,6 +49,10 @@ public class MainSystemUIManager : MonoBehaviour
         {
             systemAlert.SetActive(true);
             Invoke("systemAlertduration", 3f);
+
+            GameManager.gameManager._gameData.ActiveMissionList[12] = false;
+            MissionGenerator.missionGenerator.ActivateMissionList();
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
     }
 

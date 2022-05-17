@@ -151,6 +151,11 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
         drugData.IsNotInteractable = true;
         drugLine.OutlineWidth = 0f;
+
+        GameManager.gameManager._gameData.ActiveMissionList[25] = false;
+        GameManager.gameManager._gameData.ActiveMissionList[26] = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
     public void Report()
@@ -162,6 +167,7 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(48));
 
         GameManager.gameManager._gameData.IsFindDrugDone_T_C2 = true;
+        GameManager.gameManager._gameData.ActiveMissionList[26] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 

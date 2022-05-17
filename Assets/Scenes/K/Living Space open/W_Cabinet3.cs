@@ -90,7 +90,11 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
         Card_Key_W_C3.SetActive(true); // 카드키 오브젝트 보이게
 
         GameManager.gameManager._gameData.IsCompleteFindLivingKey = true;
+        GameManager.gameManager._gameData.ActiveMissionList[2] = false;
+        GameManager.gameManager._gameData.ActiveMissionList[4] = false;
+        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
     }
 
     public void OnPushOrPress()

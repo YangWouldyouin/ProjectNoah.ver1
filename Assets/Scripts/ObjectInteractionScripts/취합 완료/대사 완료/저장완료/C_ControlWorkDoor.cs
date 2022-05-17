@@ -58,6 +58,8 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(4));
 
             GameManager.gameManager._gameData.IsCWDoorOpened_M_C1 = true;
+            GameManager.gameManager._gameData.ActiveMissionList[1] = false;
+            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             cockpitDoorData_CWD.IsInsert = false;
