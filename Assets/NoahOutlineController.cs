@@ -32,7 +32,11 @@ public class NoahOutlineController : MonoBehaviour
 
     IEnumerator StartOutlineTimer(float seconds)
     {
-        yield return new WaitForSeconds(seconds);
+        while (outlineTime.outlineTimer >= 0 && outlineTime.IsNoahOutlineTurnOn)
+        {
+            yield return new WaitForSeconds(1f);
+            outlineTime.outlineTimer -= 1f;
+        }
         Debug.Log("이제 못 숨음");
         noahOutline.OutlineWidth = 0.0f;
         outlineTime.IsNoahOutlineTurnOn = false;
