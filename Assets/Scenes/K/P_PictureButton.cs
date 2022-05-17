@@ -19,6 +19,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     ObjData UniverseImageData_P;
 
     AudioSource TakePic_Sound_P;
+    public AudioClip TakePic_sound;
 
     public GameObject[] UniverseImageList; // 우주 사진 리스트
 
@@ -44,7 +45,6 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         PictureButton_P = GetComponent<ObjData>();
 
         TakePic_Sound_P = GetComponent<AudioSource>();
-        TakePic_Sound_P.Stop();
 
         barkButton_P_PictureButton = PictureButton_P.BarkButton;
         barkButton_P_PictureButton.onClick.AddListener(OnBark);
@@ -151,6 +151,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
             Invoke("RandomUniversePic", 1f); // 랜덤 우주 사진 설정 + 이미지 보여주기
 
+            TakePic_Sound_P.clip = TakePic_sound;
             TakePic_Sound_P.Play(); // 효과음 재생
             Invoke("Report_Popup", 4f); // 보고하기 팝업
         }

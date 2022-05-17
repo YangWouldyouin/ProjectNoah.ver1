@@ -37,6 +37,9 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
     public GameObject controlDoorDetect;
     InsertDetect insertDetect;
 
+    AudioSource Door_open_sound; 
+    public AudioClip Door_open; 
+
     public void InsertAreaButton()
     {
         Debug.Log("클릭함1");
@@ -49,6 +52,9 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
             cockpitDoorAnim_CWD.SetBool("IsDoorOpenStart", true); // 문 열리는 애니메이션
             cockpitDoorAnim_CWD.SetBool("IsDoorOpened", true);
+
+            Door_open_sound.clip = Door_open;
+            Door_open_sound.Play();
 
             changeScene_CWD.SetActive(true); // 업무공간 이동
 
@@ -90,6 +96,8 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
     // Start is called before the first frame update
     void Start()
     {
+        Door_open_sound = GetComponent<AudioSource>();
+
         insertDetect = controlDoorDetect.GetComponent<InsertDetect>();
         mainCamera = Camera.main; // Scene 에서 MainCamera 라고 Tag 가 첫번째로 활성화된 카메라를 나타냄
         Vector3 screenPos = mainCamera.WorldToScreenPoint(new Vector3(insertAreaButtonPos.transform.localPosition.x , insertAreaButtonPos.transform.localPosition.y,
