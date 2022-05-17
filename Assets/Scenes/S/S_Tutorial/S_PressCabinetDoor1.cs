@@ -25,9 +25,14 @@ public class S_PressCabinetDoor1 : MonoBehaviour,IInteraction
     public GameObject dialog;
     DialogManager dialogManager;
 
+    AudioSource PressCabinetDoor_Open_Sound;
+    public AudioClip PressCabinetDoor_Open;
+
     // Start is called before the first frame update
     void Start()
     {
+        PressCabinetDoor_Open_Sound = GetComponent<AudioSource>();
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         /*연관있는 오브젝트*/
@@ -99,6 +104,10 @@ public class S_PressCabinetDoor1 : MonoBehaviour,IInteraction
 
         //캐비닛 문 여는 애니메이션
         Invoke("CabinetOpen1", 2f);
+
+        PressCabinetDoor_Open_Sound.clip = PressCabinetDoor_Open;
+        PressCabinetDoor_Open_Sound.Play();
+
     }
 
     void CabinetOpen1()

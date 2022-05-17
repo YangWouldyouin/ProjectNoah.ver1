@@ -23,6 +23,9 @@ public class NoahStatController : MonoBehaviour
 
     public GameObject statPanel;
 
+    AudioSource Noah_Sick_Audio;
+    public AudioClip Noah_Sick;
+
     private void Awake()
     {
         noahStatController = this;
@@ -31,6 +34,8 @@ public class NoahStatController : MonoBehaviour
 
     void Start()
     {
+        Noah_Sick_Audio = GetComponent<AudioSource>();
+
         currentNum = GameManager.gameManager._gameData.statNum;
 
         for (int i = 0; i < currentNum; i++)
@@ -105,6 +110,9 @@ public class NoahStatController : MonoBehaviour
 
         if(currentNum ==0)
         {
+
+            Noah_Sick_Audio.clip = Noah_Sick;
+            Noah_Sick_Audio.Play();
 
             yellowTimeLeft = 0;
             blueTimeLeft = 0;
