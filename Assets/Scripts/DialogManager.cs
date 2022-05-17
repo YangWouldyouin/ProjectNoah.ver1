@@ -41,6 +41,9 @@ public class DialogManager : MonoBehaviour
 
     IEnumerator printAIDialogs;
 
+    AudioSource dialogSource;
+    public AudioClip aiClip;
+    public AudioClip aiClip2;
 
     void awake()
     {
@@ -50,6 +53,7 @@ public class DialogManager : MonoBehaviour
     {
         googleSheetManager = GetComponent<GoogleSheetManager>();
         subtitlePanelImage = subtitlePanel.GetComponent<Image>();
+        dialogSource = GetComponent<AudioSource>();
     }
 
     public string getTalk(int id, int talkIndex)
@@ -76,19 +80,32 @@ public class DialogManager : MonoBehaviour
         yield return null;
     }
 
+    /* AI 는 여기 */
+    // 플레이해보면서 넣고 싶은자리에 적당히넣으면됨
     IEnumerator AIDialogPrinting(int AIIndex)
     {
+        dialogSource.clip = aiClip2; // 소리 끼움
+        dialogSource.Play(); // 플레이
+        // 여기에 넣으면 완전 시작
         aiDialogNumber = AIIndex;
         AIPanel.SetActive(true);
+
         AIPanelAnim.SetBool("IsAIClose", false);
+
         AIPanelAnim.SetBool("IsAIPanelActive", true);
+
         AIPanelAnim.SetBool("IsAIOpen", true);
+
+
+
         yield return new WaitForSeconds(1f);
 
         for (int i = 0; i < googleSheetManager.AIDialogueDic[aiDialogNumber].Length; i++)
         {
+            // 1문장 시작할때
+            dialogSource.clip = aiClip; // 소리 바꿔끼움
+            dialogSource.Play(); // 플레이
             string talkdata = getTalk(aiDialogNumber, i);
-            //dialogText.text = talkdata;
             StartCoroutine(_typing(talkdata));
             yield return new WaitForSeconds(talkdata.Length * typingSpeed + aiSentenceDelay);
         }
@@ -98,6 +115,7 @@ public class DialogManager : MonoBehaviour
         AIPanelAnim.SetBool("IsAIClose", true);
         AIPanelAnim.SetBool("IsAIOpen", false);
         AIPanelAnim.SetBool("IsAIPanelActive", false);
+        // 여기에 넣으면 끝날때 
         Invoke("EndPanelAnim", 1.2f);
     }
 
@@ -110,13 +128,18 @@ public class DialogManager : MonoBehaviour
         AIPanelAnim.SetBool("IsAIPanelActive", true);
     }
 
+    /* 1글자씩 타이핑은 여기 */
+    // 오디오보다 타이핑속도가 더빨라서 재생이 잘안됨
     IEnumerator _typing(string data)
     {
         //yield return new WaitForSeconds(2f);
         for (int i = 0; i <= data.Length; i++)
         {
+            dialogSource.Play(); // 플레이 
             dialogText.text = data.Substring(0, i);
+
             yield return new WaitForSeconds(typingSpeed);
+
         }      
     }
 
@@ -138,6 +161,8 @@ public class DialogManager : MonoBehaviour
             return googleSheetManager.subtitleDic[subID][subIndex];
     }
 
+
+    /* 대화 스킵은 여기 */
     public void OnSkipButtonClicked()
     {
         // 현재 타이핑 코루틴 끝내기, 현재 문장 전부 출력
@@ -169,15 +194,18 @@ public class DialogManager : MonoBehaviour
     }
 
 
-
+    /* 대화는 여기 */
+    // 플레이해보면서 넣고 싶은자리에 적당히넣으면됨
     IEnumerator SubtitlePrinting(int index)
     {
         subtitleNumber = index;
+        // 대화창 나타나기 시작
         StartCoroutine(FadeInCoroutine());
         yield return new WaitForSeconds(0.5f);
 
         for (int subtitleCentenceNum = 0; subtitleCentenceNum < googleSheetManager.subtitleDic[subtitleNumber].Length; subtitleCentenceNum++)
         {
+            // 1문장씩
             nameData = GetName(subtitleNumber, subtitleCentenceNum);
             nameText.text = nameData;
 
@@ -189,17 +217,19 @@ public class DialogManager : MonoBehaviour
 
         }
         // 대화 패널 비활성화
+        // 끝날때
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(FadeOutCoroutine());
     }
 
-
+    /* 1글자씩 타이핑은  여기 */
     IEnumerator _typingSubtitle(string subdata)
     {
         //yield return new WaitForSeconds(2f);
         for (int i = 0; i <= subdata.Length; i++)
         {
             subtitleText.text = subdata.Substring(0, i);
+
             yield return new WaitForSeconds(typingSpeed);
         }
     }
