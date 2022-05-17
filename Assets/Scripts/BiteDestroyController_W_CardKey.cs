@@ -91,6 +91,7 @@ public class BiteDestroyController_W_CardKey : MonoBehaviour, IPointerUpHandler,
         InteractionButtonController.interactionButtonController.PlayerBite();
 
         Debug.Log("bite5");
+        /* ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ ∆€¡Ò ≥° ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ */
     }
 
     void Update()
