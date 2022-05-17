@@ -65,8 +65,8 @@ public class TimerManager : MonoBehaviour
 
         while (inGameTime.missionTimer >= 0 && inGameTime.IsTimerStarted)
         {
-            yield return new WaitForSeconds(0.01f);
-            inGameTime.missionTimer -= 0.01f;
+            yield return new WaitForSeconds(1f);
+            inGameTime.missionTimer -= 1f;
             timerBar.fillAmount = inGameTime.missionTimer / inGameTime.maxTimer;
         }
 

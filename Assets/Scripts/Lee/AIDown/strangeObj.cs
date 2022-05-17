@@ -142,8 +142,8 @@ public class strangeObj : MonoBehaviour, IInteraction
     {
         // 3분간 플레이어 아웃라인 활성화
         outlineControl.StartOutlineTime(30f);
-        TimerManager.timerManager.TimerStart(30);
-        Invoke("TimeCheck", 30);
+        TimerManager.timerManager.TimerStart(30f);
+        //Invoke("TimeCheck", 30);
 
         // 수상한 물건을 플레이어로부터 분리함
         this.GetComponent<Rigidbody>().isKinematic = true;
