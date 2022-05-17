@@ -115,13 +115,13 @@ public class strangeObj : MonoBehaviour, IInteraction
         DisableButton();
         InteractionButtonController.interactionButtonController.PlayerSmash1();
 
-        Invoke("ObjSmoke", 2f);
+        Invoke("ObjSmoke", 3f);
 
         InteractionButtonController.interactionButtonController.PlayerSmash2();
 
         StartCoroutine(DelayFor2Seconds());
 
-        Destroy(smoke, 5f);
+        Destroy(smoke, 6f);
 
         GameManager.gameManager._gameData.IsKnowUsingSObj = true;
         GameManager.gameManager._gameData.ActiveMissionList[27] = false;
@@ -134,10 +134,6 @@ public class strangeObj : MonoBehaviour, IInteraction
 
     void ObjSmoke()
     {
-        // 3분간 플레이어 아웃라인 활성화
-        outlineControl.StartOutlineTime(180f);
-        TimerManager.timerManager.TimerStart(180f);
-
         // 수상한 물건을 플레이어로부터 분리함
         this.GetComponent<Rigidbody>().isKinematic = true;
         this.transform.parent = null;
@@ -157,13 +153,17 @@ public class strangeObj : MonoBehaviour, IInteraction
 
         GameManager.gameManager._gameData.IsHide = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 3분간 플레이어 아웃라인 활성화
+        outlineControl.StartOutlineTime(180f);
+        TimerManager.timerManager.TimerStart(180f);
     }
 
     IEnumerator DelayFor2Seconds()
     {
         // 수상한 물건 파괴하기 시 애니메이션이 나오고 나서 첫 대사를 나오게 하기 위해 1.5초 딜레이함
         // (이상하게 2초로 하면 대사 안나와서 걍 1.5초로 해야함)
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         if (!GameManager.gameManager._gameData.IsFirstUsingStrangeObj)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
