@@ -141,9 +141,9 @@ public class E_StrangeObj : MonoBehaviour
     void ObjSmoke()
     {
         // 3분간 플레이어 아웃라인 활성화
-        outlineControl.StartOutlineTime(30f);
-        TimerManager.timerManager.TimerStart(30);
-        Invoke("TimeCheck", 30);
+        outlineControl.StartOutlineTime(180f);
+        TimerManager.timerManager.TimerStart(180);
+        //Invoke("TimeCheck", 30);
 
         // 수상한 물건을 플레이어로부터 분리함
         this.GetComponent<Rigidbody>().isKinematic = true;

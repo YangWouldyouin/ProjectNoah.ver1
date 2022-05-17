@@ -141,8 +141,8 @@ public class strangeObj : MonoBehaviour, IInteraction
     void ObjSmoke()
     {
         // 3분간 플레이어 아웃라인 활성화
-        outlineControl.StartOutlineTime(30f);
-        TimerManager.timerManager.TimerStart(30f);
+        outlineControl.StartOutlineTime(180f);
+        TimerManager.timerManager.TimerStart(180f);
         //Invoke("TimeCheck", 30);
 
         // 수상한 물건을 플레이어로부터 분리함
