@@ -135,8 +135,8 @@ public class DialogManager : MonoBehaviour
         //yield return new WaitForSeconds(2f);
         for (int i = 0; i <= data.Length; i++)
         {
-            dialogSource.Play(); // 플레이 
-            dialogText.text = data.Substring(0, i);
+/*            dialogSource.Play(); // 플레이 
+            dialogText.text = data.Substring(0, i);*/
 
             yield return new WaitForSeconds(typingSpeed);
 

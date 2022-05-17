@@ -19,6 +19,7 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
 
     private Outline Card_Key3Outline_M; // 캐비닛
 
+
     void Start()
     {
         /* 사용 오브젝트 데이터 불러오기 */
@@ -99,7 +100,20 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
 
     public void OnPushOrPress()
     {
-        throw new System.NotImplementedException();
+        Cabinet3_W.IsPushOrPress = true;
+        DiableButton();
+        // 머리로 누르는 애니메이션  
+        InteractionButtonController.interactionButtonController.playerPressHead(); 
+
+
+        /* 2초 뒤에 IsPushOrPress 를 false 로 바꿈 */
+        StartCoroutine(ChangePressFalse());
+    }
+    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
+    IEnumerator ChangePressFalse()
+    {
+        yield return new WaitForSeconds(2f);
+        Cabinet3_W.IsPushOrPress = false;
     }
 
     public void OnSniff()

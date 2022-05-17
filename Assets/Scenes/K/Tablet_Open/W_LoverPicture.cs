@@ -126,6 +126,12 @@ pushButton_W_LoverPicture, smashButton_W_LoverPicture, ObserveButton_W_LoverPict
         yield return new WaitForSeconds(2f);
         LoverPicture_W.IsPushOrPress = false;
     }
+    public void OnSniff()
+    {
+        LoverPicture_W.IsSniff = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerSniff();
+    }
 
 
     public void OnEat()
@@ -136,9 +142,6 @@ pushButton_W_LoverPicture, smashButton_W_LoverPicture, ObserveButton_W_LoverPict
     {
     }
     public void OnSmash()
-    {
-    }
-    public void OnSniff()
     {
     }
     public void OnUp()

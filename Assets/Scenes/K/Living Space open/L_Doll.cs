@@ -34,6 +34,7 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
     void Start()
     {
         dialogManager = dialog.GetComponent<DialogManager>();
+        dollrecordAudio = GetComponent<AudioSource>();
 
         /* 해당 오브젝트의 ObjData를 가져온다. */
         DollData_L = GetComponent<ObjData>();

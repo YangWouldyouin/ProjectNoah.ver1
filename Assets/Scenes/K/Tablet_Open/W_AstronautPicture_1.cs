@@ -106,6 +106,13 @@ pushButton, NoCenterButton, smashButton, observeButton;
         AstronautPicture_1_W.IsPushOrPress = false;
     }
 
+    public void OnSniff()
+    {
+        AstronautPicture_1_W.IsSniff = true;
+        DiableButton();
+        InteractionButtonController.interactionButtonController.playerSniff();
+    }
+
 
     public void OnEat()
     {
@@ -115,9 +122,6 @@ pushButton, NoCenterButton, smashButton, observeButton;
     {
     }
     public void OnSmash()
-    {
-    }
-    public void OnSniff()
     {
     }
     public void OnUp()

@@ -23,6 +23,7 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
     void Start()
     {
         dialogManager = dialog.GetComponent<DialogManager>();
+        dollrecordAudio = GetComponent<AudioSource>();
 
         /* 해당 오브젝트의 ObjData를 가져온다. */
         DollData_L = GetComponent<ObjData>();
@@ -95,6 +96,7 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
         // 자막 + 음성 나오기
         dollrecordAudio.clip = Doll_E_Audio;
         dollrecordAudio.Play();
+        /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 인형 대사 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     }
     /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
     IEnumerator ChangePressFalse()
