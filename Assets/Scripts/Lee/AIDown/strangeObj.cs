@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class strangeObj : MonoBehaviour, IInteraction
 {
+    /*타이머*/
+    public InGameTime inGameTime;
+    public GameObject S_TimerBarFilled;
+    public GameObject S_TimerBackground;
+    public GameObject S_TimerText;
 
     private Button barkButton, sniffButton, biteButton, pressButton, smashButton, noCenterButton;
 
@@ -129,12 +134,16 @@ public class strangeObj : MonoBehaviour, IInteraction
         MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //��ư� ������ �ʾ� ��Ȳ�ϴ� AI ���
+
+        CameraController.cameraController.CancelObserve();
     }
 
     void ObjSmoke()
     {
         // 3분간 플레이어 아웃라인 활성화
         outlineControl.StartOutlineTime(30f);
+        TimerManager.timerManager.TimerStart(30);
+        Invoke("TimeCheck", 30);
 
         // 수상한 물건을 플레이어로부터 분리함
         this.GetComponent<Rigidbody>().isKinematic = true;
@@ -155,6 +164,15 @@ public class strangeObj : MonoBehaviour, IInteraction
 
         GameManager.gameManager._gameData.IsHide = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+    }
+
+    void TimeCheck()
+    {
+        inGameTime.IsTimerStarted = false;
+
+        S_TimerBarFilled.SetActive(false);
+        S_TimerBackground.SetActive(false);
+        S_TimerText.SetActive(false);
     }
 
     IEnumerator DelayFor2Seconds()
