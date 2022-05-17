@@ -92,6 +92,9 @@ public class BiteDestroyController_W_CardKey : MonoBehaviour, IPointerUpHandler,
 
         Debug.Log("bite5");
         /* ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ ∆€¡Ò ≥° ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ */
+        GameManager.gameManager._gameData.ActiveMissionList[2] = false;
+        MissionGenerator.missionGenerator.ActivateMissionList();
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     void Update()
