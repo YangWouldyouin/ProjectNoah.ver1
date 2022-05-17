@@ -32,8 +32,15 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
 
+    /* 오디오 */
+    AudioSource LivingSpace_CardKeyMachine;
+    public AudioClip LivingDoor_Halfopen;
+    public AudioClip CardKey_Sound;
+
     void Start()
     {
+        LivingSpace_CardKeyMachine = GetComponent<AudioSource>();
+
         /* 해당 오브젝트의 ObjData를 가져온다. */
         LivingSpace_CardKeyMachine_W = GetComponent<ObjData>();
         boxData_WL = box_WL.GetComponent<ObjData>();
@@ -131,6 +138,9 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
             CardKeyData_WL.transform.position = new Vector3(-264.007f, 541.042f, 691.461f); //위치
             CardKeyData_WL.transform.rotation = Quaternion.Euler(0, 0, 0); //각도
 
+            LivingSpace_CardKeyMachine.clip = CardKey_Sound;
+            LivingSpace_CardKeyMachine.Play();
+
             // 카드키, 카드기계 상호작용 삭제
             CardKeyData_WL.IsNotInteractable = true;
             LivingCardKeyOutline_M.OutlineWidth = 0;
@@ -138,9 +148,12 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
             LivingSpace_CardKeyMachine_W.IsNotInteractable = true;
             CardMachineOutline_M.OutlineWidth = 0;
 
-
             // LivingDoomDoor_WL.GetComponent<Animator>().Play("LivingDoorHalfOpen");
             Invoke("LivingDoorHalfOpen", 2f); // 문 열리는 애니메이션 실행
+
+            LivingSpace_CardKeyMachine.clip = LivingDoor_Halfopen;
+            LivingSpace_CardKeyMachine.Play();
+
             GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2 = true; // 항상 업무공간에서 생활공간 이동 가능
             GameManager.gameManager._gameData.IsCompleteHalfOpenLivingRoom = true; // 생활공간 문 반만 오픈 완료
 

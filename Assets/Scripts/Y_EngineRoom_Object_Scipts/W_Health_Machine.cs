@@ -30,11 +30,16 @@ public class W_Health_Machine : MonoBehaviour
     public bool HealthDataReportbool;
     public bool MissionScriptCheck =false;
 
+    AudioSource Health_Machine_Sound;
+    public AudioClip Health_Machine_cheak;
+
     //노아 내려가는 애니메이션 필요
 
     // Start is called before the first frame update
     void Start()
     {
+        Health_Machine_Sound = GetComponent<AudioSource>();
+
         dialogManager = dialogManager_HM.GetComponent<DialogManager>();
 
         if (!GameManager.gameManager._gameData.IsFirstEnterWorking)
@@ -175,6 +180,10 @@ public class W_Health_Machine : MonoBehaviour
 
             DontMove.SetActive(true);
             cancelInteractions.enabled = false;
+
+            Health_Machine_Sound.clip = Health_Machine_cheak;
+            Health_Machine_Sound.Play();
+
             StartCoroutine(Delay5seconds());
         }
     }

@@ -20,9 +20,15 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
 
     public Button aiIcon_AI;
 
+    AudioSource AIresetbutton_click_sound; 
+    public AudioClip AIresetbutton_Click; 
+
+
     // Start is called before the first frame update
     void Start()
     {
+        AIresetbutton_click_sound = GetComponent<AudioSource>();
+
         AIButtonOutline = GetComponent<Outline>();
         AIButtonObjData = GetComponent<ObjData>();
         /* 각 상호작용 버튼에 함수를 넣는다 */
@@ -79,6 +85,9 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         AIButtonOutline.OutlineWidth = 0;
         AIButtonData.IsNotInteractable = true;
         /* 애니메이션 보여줌 */
+
+        AIresetbutton_click_sound.clip = AIresetbutton_Click;
+        AIresetbutton_click_sound.Play();
 
         Invoke("DelayAnim", 1.5f);
 

@@ -13,8 +13,13 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
     ObjData mainComData;
     public ObjectData mainComputerData, chair01Data, chair02Data;
 
+    AudioSource On_Computer_Power_Sound;
+    public AudioClip On_Computer;
+
     void Start()
     {
+        On_Computer_Power_Sound = GetComponent<AudioSource>();
+
         mainComData = GetComponent<ObjData>();
 
         barkButton = mainComData.BarkButton;
@@ -85,6 +90,9 @@ public class mainCom_workRoom : MonoBehaviour, IInteraction
 
             //UI ����
             Invoke("ShowUI", 3f);
+            On_Computer_Power_Sound.clip = On_Computer;
+            On_Computer_Power_Sound.Play();
+
         }
 
         else

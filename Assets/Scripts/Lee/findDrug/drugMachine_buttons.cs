@@ -18,8 +18,13 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
     ObjData machineData;
     Outline machineLine;
 
+    AudioSource drugMachine_Sound;
+    public AudioClip drugMachine_On;
+
     void Start()
     {
+        drugMachine_Sound = GetComponent<AudioSource>();
+
         machineData = GetComponent<ObjData>();
         machineLine = GetComponent<Outline>();
 
@@ -118,6 +123,9 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
 
         insertCheck1Data.IsNotInteractable = false;
         insert02Line.OutlineWidth = 16f;
+
+        drugMachine_Sound.clip = drugMachine_On;
+        drugMachine_Sound.Play();
 
         //machineData.IsNotInteractable = true;
         //machineLine.OutlineWidth = 0f;

@@ -19,8 +19,13 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
     public GameObject dialog;
     DialogManager dialogManager;
 
+    AudioSource drugBag_Rip_Sound;
+    public AudioClip drugBag_Rip;
+
     void Start()
     {
+        drugBag_Rip_Sound = GetComponent<AudioSource>();
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         //������Ʈ
@@ -122,6 +127,9 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.PlayerSmash1();
         
         Invoke("NoBag", 2f);
+
+        drugBag_Rip_Sound.clip = drugBag_Rip;
+        drugBag_Rip_Sound.Play();
 
         InteractionButtonController.interactionButtonController.PlayerSmash2();
     }

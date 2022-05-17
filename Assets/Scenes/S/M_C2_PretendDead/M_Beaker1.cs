@@ -44,8 +44,13 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     public GameObject dialog_CS;
     DialogManager dialogManager;
 
+    AudioSource Beaker_Hit_Sound;
+    public AudioClip Beaker_Audio;
+
     void Start()
     {
+        Beaker_Hit_Sound = GetComponent<AudioSource>();
+
         dialogManager = dialog_CS.GetComponent<DialogManager>();
 
         //색 바꾸는 코드
@@ -138,9 +143,15 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerPressHead();
 
+        Beaker_Hit_Sound.clip = Beaker_Audio;
+        Beaker_Hit_Sound.Play();
+
         /*고무판을 물고 정답 운석을 비커 1에 넣는다면*/
         if (/*RubberForBeaker1Data_M.IsBite &&*/ AnswerMeteorForBeaker1Data.IsBite)
         {
+            Beaker_Hit_Sound.clip = Beaker_Audio;
+            Beaker_Hit_Sound.Play();
+
             M_AnswerMeteorForBeaker.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
             M_AnswerMeteorForBeaker.transform.parent = null;
 

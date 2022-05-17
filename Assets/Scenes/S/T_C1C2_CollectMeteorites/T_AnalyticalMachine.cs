@@ -31,9 +31,14 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
     BoxCollider isAnalyticalMachineButton_Collider; //버튼
     BoxCollider Noah_Obj2_Collider; //노아
 
+    AudioSource AnalyticalMachine_Sound;
+    public AudioClip AnalyticalMachine_On;
+
     // Start is called before the first frame update
     void Start()
     {
+        AnalyticalMachine_Sound = GetComponent<AudioSource>();
+
         /*Collider*/
         analyticalMachine_Collider = GetComponent<BoxCollider>();
         Noah_Obj2_Collider = Noah_Obj2.GetComponent<BoxCollider>();
@@ -115,6 +120,9 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = analyticalMachineObjData_T.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
+
+        AnalyticalMachine_Sound.clip = AnalyticalMachine_On;
+        AnalyticalMachine_Sound.Play();
 
         analyticalMachine_Collider.enabled = false;
         Noah_Obj2_Collider.enabled = false;

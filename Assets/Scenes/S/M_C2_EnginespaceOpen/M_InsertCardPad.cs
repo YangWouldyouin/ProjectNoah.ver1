@@ -22,8 +22,15 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
     public Animator engineDoorAnim_M;
 
+    /* 오디오 */
+    AudioSource InsertCardPad_sound;
+    public AudioClip EngineDoor_open;
+    public AudioClip CardKey_Sound;
+
     void Start()
     {
+
+        InsertCardPad_sound = GetComponent<AudioSource>();
 
         /*연관있는 오브젝트*/
         insertCardPadObjData_M = GetComponent<ObjData>();
@@ -134,6 +141,9 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
             M_canEngineCardKey.transform.position = new Vector3(-262.489f, 2.2762f, 666.788f); //위치 고정
             M_canEngineCardKey.transform.rotation = Quaternion.Euler(0, 0, 90); //각도 고정
 
+            InsertCardPad_sound.clip = CardKey_Sound;
+            InsertCardPad_sound.Play();
+
             // 카드패드와 카드의 상호작용을 삭제한다.
             canEngineCardKeyData_M.IsNotInteractable = true;
             canEngineCardKeyOutline_M.OutlineWidth = 0;
@@ -143,6 +153,9 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
             //문열리는 애니메이션 실행
             Invoke("CardBye", 1f);
+
+            InsertCardPad_sound.clip = EngineDoor_open;
+            InsertCardPad_sound.Play();
 
             //문열리는 애니메이션 실행
             Invoke("DoorOpen", 2f);
