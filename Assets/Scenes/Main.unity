@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,7 +214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &185043490
 AudioSource:
   m_ObjectHideFlags: 0
@@ -527,10 +527,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 15d11087efe2cfe438db18a96008b6de, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -561,6 +561,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c99ab17645edeb40a3e608667537bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &300545568 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d15957adcc9763d4d93bf2f4d1da887b, type: 3}
+  m_PrefabInstance: {fileID: 1415057102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &322176168
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,10 +848,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b96576e500f0d9946aad141f49e382e9, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -966,6 +971,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 300545565}
+        m_TargetAssemblyTypeName: NoahRot, Assembly-CSharp
+        m_MethodName: StopRotate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &453347089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,10 +1004,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 32e130a442987af4aa9a640da1f71d7a, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1136,7 +1153,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 60
+  m_Spacing: -60
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1246,6 +1263,7 @@ GameObject:
   - component: {fileID: 1367498070}
   - component: {fileID: 1367498071}
   - component: {fileID: 1367498072}
+  - component: {fileID: 1367498073}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -1317,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savePagePanel: {fileID: 2023874368}
+  noah: {fileID: 300545568}
 --- !u!114 &1367498071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,6 +1544,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1665c0ff5b53204e9305ddd28792497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1367498073
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367498067}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d512268514b466c4b936ef34206fea72, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1381851875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,10 +2023,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 2ab138f80c9d8ef44b373a6100b14456, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2040,10 +2155,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: c6c3b2b038f35b84ca4fa2b373e170f1, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2443,5 +2558,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 716103933882823308, guid: df9d0e0331473c4449f44525b137ea2d, type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 1546988787}
+    - target: {fileID: 716103933882823308, guid: df9d0e0331473c4449f44525b137ea2d, type: 3}
+      propertyPath: load
+      value: 
+      objectReference: {fileID: 441820593}
+    - target: {fileID: 716103933882823308, guid: df9d0e0331473c4449f44525b137ea2d, type: 3}
+      propertyPath: open
+      value: 
+      objectReference: {fileID: 453347089}
+    - target: {fileID: 716103933882823308, guid: df9d0e0331473c4449f44525b137ea2d, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 1626811387}
+    - target: {fileID: 716103933882823308, guid: df9d0e0331473c4449f44525b137ea2d, type: 3}
+      propertyPath: projectList
+      value: 
+      objectReference: {fileID: 229330979}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df9d0e0331473c4449f44525b137ea2d, type: 3}
