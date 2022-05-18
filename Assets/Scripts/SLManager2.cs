@@ -305,10 +305,9 @@ public class SLManager2 : MonoBehaviour
             character.IsTabletUnlock = false;
             //character.IsBasicTuto = false;
             character.IsMiddleTuto = false;
+            
+            
             character.statNum = 10;
-
-
-
             //임무 보고하기 취소 카운트, 3번 이상 취소하기 누르면 게임 오버
             character.IsReportCancleCount = 0;
             //AI 상반 임무 카운트, 2 이상 될 시 태블릿 궤도 좌표 해금
@@ -375,6 +374,7 @@ public class SLManager2 : MonoBehaviour
 
             /* 1회성 임무 */
             character.IsAIAwake_M_C1 = false; // 항상 AI 활성화  
+            character.IsPipeFound_M_C1 = false; // 조종실에서 파이프 찾았으면 이제 보이는 곳에 두기
             character.IsCWDoorOpened_M_C1 = false; // 항상 조종실에서 업무공간 이동 가능
 
             character.IsHealthMachineFixed_T_C2 = false; // 정기적으로 상태 측정 임무 수행 가능   
@@ -503,7 +503,7 @@ public class SLManager2 : MonoBehaviour
             character.Pot2InHealthyPotato = false; // 배양기1에 건강한 고구마 심은거 확인
             character.Pot3InHealthyPotato = false; // 배양기1에 건강한 고구마 심은거 확인
 
-            //음식 먹은 거 확인
+            //나쁜음식 먹은 거 확인
             character.BadFoodEat[0] = false;
             character.BadFoodEat[1] = false;
             character.BadFoodEat[2] = false;
@@ -564,9 +564,12 @@ public class SLManager2 : MonoBehaviour
             /*퍼즐완료*/
             character.IsBasicTuto = false; //튜토리얼 앞 파트 퍼즐 완료
             character.IsMiddleTuto = false; //튜토리얼 앞 파트 퍼즐 완료 확인
+            character.StopIDConsoleSpeak = false; // ID 콘솔 말하는 거 반복 안하게 해주려고
+
             character.IsRealMiddleTuto = false; //튜토리얼 앞 파트 진짜 완료
             character.IsEndTuto = false; //튜토리얼 퍼즐 완료
             character.IsTutorialClear = false; //튜토리얼 퍼즐 찐 완료
+
             character.IsCompleteSmartFarmOpen = false; // 스마트팜 오픈 퍼즐 완료
             character.IsCompleteFindEngineKey = false; // 엔진실 카드키 찾기 퍼즐 완료
             character.IsCompleteOpenEngineRoom = false; // 엔진실 열기 퍼즐 완료
@@ -588,10 +591,10 @@ public class SLManager2 : MonoBehaviour
             character.IsCompleteOpenLivingRoom = false; // 생활공간 문 완전 오픈 완료
             character.IsTrashDoorBTFixed_L_L1 = false; //생활공간 고치기
 
-        //character.randomUPic = false;
+           character.randomUPic = 4;
 
-        //엔딩: 주석처리 이유는 엔딩 페이지 체크를 위해서/
-/*            character.IsInputImportantMeteorEnd = false; // 특별 운석 보고 엔딩
+            //엔딩: 주석처리 이유는 엔딩 페이지 체크를 위해서/
+            character.IsInputImportantMeteorEnd = false; // 특별 운석 보고 엔딩
             character.IsMakeForestEnd = false; // 생태계 구축 엔딩
             character.IsDefyMissionEnd = false; // 명령 불복종 엔딩: 보고하기 일정 횟수 거부
             character.IsDisqualifiedEnd = false; // 인재부족 엔딩: 튜토리얼 실패
@@ -603,10 +606,10 @@ public class SLManager2 : MonoBehaviour
             character.IsEatBadPotato = false;//상한 고구마 섭취 엔딩
 
             character.IsSuddenDeath = false; //돌연사 체크: 스탯 0 엔딩, 상한 고구마 섭취 엔딩
-            SaveSystem.Save(character, "save_001");*/
+            SaveSystem.Save(character, "save_001");
 
-
-
+            character.IsWirelessUI_firstEnter = false; //블투 페이지 진입 시점 체크
+            character.IsWirelessMCTabletCheck = false; //메인컴/태블릿 블투 연결 완료 시점 체크
 
             /*업무공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
