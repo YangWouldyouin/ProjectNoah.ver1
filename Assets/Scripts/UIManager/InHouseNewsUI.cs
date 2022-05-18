@@ -33,7 +33,7 @@ public class InHouseNewsUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((inGameTime.days + 1) == 2 && inGameTime.hours == 0)
+        if (inGameTime.timer == 720)
         {
             Debug.Log("2¿œ");
             InhouseNews_GUI.SetActive(true);
@@ -57,7 +57,7 @@ public class InHouseNewsUI : MonoBehaviour
             Invoke("ExitBTNotice", 3f);
             Invoke("NewUIFalse", 230f);
         }
-        else if ((inGameTime.days + 1) == 4 && inGameTime.hours == 0)
+        else if (inGameTime.timer == 2160)
         {
             InhouseNews_GUI.SetActive(true);
             ExitBT.SetActive(false);
@@ -80,7 +80,7 @@ public class InHouseNewsUI : MonoBehaviour
             Invoke("ExitBTNotice", 3f);
             Invoke("NewUIFalse", 230f);
         }
-        else if ((inGameTime.days + 1) == 6 && inGameTime.hours == 0)
+        else if (inGameTime.timer == 3600)
         {
             InhouseNews_GUI.SetActive(true);
             ExitBT.SetActive(false);
@@ -103,7 +103,127 @@ public class InHouseNewsUI : MonoBehaviour
             Invoke("ExitBTNotice", 3f);
             Invoke("NewUIFalse", 230f);
         }
-        else if ((inGameTime.days + 1) % 2 == 1 && inGameTime.hours == 0)
+        else if (inGameTime.timer == 1440)
+        {
+            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            {
+                UniListnum = GameManager.gameManager._gameData.randomUPic;
+
+                NewsImage = UniverseImageList[UniListnum];
+
+                InhouseNews_GUI.SetActive(true);
+                ExitBT.SetActive(false);
+
+                Day2Title.SetActive(false);
+                Day3Title.SetActive(false);
+                Day4Title.SetActive(false);
+                NewsTitleText.SetActive(true);
+
+                Day2Image.SetActive(false);
+                Day3Image.SetActive(false);
+                Day4Image.SetActive(false);
+                NewsImage.SetActive(true);
+
+                Day2Body.SetActive(false);
+                Day3Body.SetActive(false);
+                Day4Body.SetActive(false);
+                NewsBodyText.SetActive(true);
+
+                Invoke("ExitBTNotice", 3f);
+                Invoke("NewUIFalse", 230f);
+            }
+        }
+        else if (inGameTime.timer == 2880)
+        {
+            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            {
+                UniListnum = GameManager.gameManager._gameData.randomUPic;
+
+                NewsImage = UniverseImageList[UniListnum];
+
+                InhouseNews_GUI.SetActive(true);
+                ExitBT.SetActive(false);
+
+                Day2Title.SetActive(false);
+                Day3Title.SetActive(false);
+                Day4Title.SetActive(false);
+                NewsTitleText.SetActive(true);
+
+                Day2Image.SetActive(false);
+                Day3Image.SetActive(false);
+                Day4Image.SetActive(false);
+                NewsImage.SetActive(true);
+
+                Day2Body.SetActive(false);
+                Day3Body.SetActive(false);
+                Day4Body.SetActive(false);
+                NewsBodyText.SetActive(true);
+
+                Invoke("ExitBTNotice", 3f);
+                Invoke("NewUIFalse", 230f);
+            }
+        }
+        else if (inGameTime.timer == 4320)
+        {
+            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            {
+                UniListnum = GameManager.gameManager._gameData.randomUPic;
+
+                NewsImage = UniverseImageList[UniListnum];
+
+                InhouseNews_GUI.SetActive(true);
+                ExitBT.SetActive(false);
+
+                Day2Title.SetActive(false);
+                Day3Title.SetActive(false);
+                Day4Title.SetActive(false);
+                NewsTitleText.SetActive(true);
+
+                Day2Image.SetActive(false);
+                Day3Image.SetActive(false);
+                Day4Image.SetActive(false);
+                NewsImage.SetActive(true);
+
+                Day2Body.SetActive(false);
+                Day3Body.SetActive(false);
+                Day4Body.SetActive(false);
+                NewsBodyText.SetActive(true);
+
+                Invoke("ExitBTNotice", 3f);
+                Invoke("NewUIFalse", 230f);
+            }
+        }
+        else if (inGameTime.timer == 5760)
+        {
+            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            {
+                UniListnum = GameManager.gameManager._gameData.randomUPic;
+
+                NewsImage = UniverseImageList[UniListnum];
+
+                InhouseNews_GUI.SetActive(true);
+                ExitBT.SetActive(false);
+
+                Day2Title.SetActive(false);
+                Day3Title.SetActive(false);
+                Day4Title.SetActive(false);
+                NewsTitleText.SetActive(true);
+
+                Day2Image.SetActive(false);
+                Day3Image.SetActive(false);
+                Day4Image.SetActive(false);
+                NewsImage.SetActive(true);
+
+                Day2Body.SetActive(false);
+                Day3Body.SetActive(false);
+                Day4Body.SetActive(false);
+                NewsBodyText.SetActive(true);
+
+                Invoke("ExitBTNotice", 3f);
+                Invoke("NewUIFalse", 230f);
+            }
+        }
+        else if (inGameTime.timer == 7200)
         {
             if (GameManager.gameManager._gameData.IsPhotoTime == true)
             {
