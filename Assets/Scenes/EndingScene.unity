@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -195,7 +195,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: "approved for release 2XXX/XX/XX: (revision-proj.noah84b00130_ko)\r\ntop
     secret_\r\ndo not disclose_\r\n\r\nmemorandum for the record\r\nthe director            
-    chaired the meeing\r"
+    chaired the meeting\r"
 --- !u!222 &3474410
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -424,7 +424,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: "approved for release 2XXX/XX/XX: (revision-proj.noah84b00130_ko)\r\ntop
     secret_\r\ndo not disclose_\r\n\r\nmemorandum for the record\r\nthe director            
-    chaired the meeing\r"
+    chaired the meeting\r"
 --- !u!222 &31016454
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1566,6 +1566,7 @@ RectTransform:
   - {fileID: 459576274}
   - {fileID: 646239042}
   - {fileID: 1534310307}
+  - {fileID: 533755927}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2050,7 +2051,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: "approved for release 2XXX/XX/XX: (revision-proj.noah84b00130_ko)\r\ntop
     secret_\r\ndo not disclose_\r\n\r\nmemorandum for the record\r\nthe director            
-    chaired the meeing\r"
+    chaired the meeting\r"
 --- !u!222 &445294629
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2611,6 +2612,98 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531558389}
+  m_CullTransparentMesh: 1
+--- !u!1 &533755926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 533755927}
+  - component: {fileID: 533755930}
+  - component: {fileID: 533755929}
+  - component: {fileID: 533755928}
+  m_Layer: 5
+  m_Name: Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &533755927
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533755926}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 251024907}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!111 &533755928
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533755926}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 7fe3bab665535be4dac6895d9f8b2afe, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 7fe3bab665535be4dac6895d9f8b2afe, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &533755929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533755926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &533755930
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533755926}
   m_CullTransparentMesh: 1
 --- !u!1 &554149393
 GameObject:
@@ -6483,7 +6576,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: "approved for release 2XXX/XX/XX: (revision-proj.noah84b00130_ko)\r\ntop
     secret_\r\ndo not disclose_\r\n\r\nmemorandum for the record\r\nthe director            
-    chaired the meeing\r"
+    chaired the meeting\r"
 --- !u!222 &1283796458
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6866,7 +6959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5581144339895293020, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5667099007574896633, guid: 85bf3c56bf4e7be46bc42783f84a1722, type: 3}
       propertyPath: _gameData.statNum
@@ -9199,7 +9292,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: "approved for release 2XXX/XX/XX: (revision-proj.noah84b00130_ko)\r\ntop
     secret_\r\ndo not disclose_\r\n\r\nmemorandum for the record\r\nthe director            
-    chaired the meeing\r"
+    chaired the meeting\r"
 --- !u!222 &1911172652
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9355,7 +9448,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: "approved for release 2XXX/XX/XX: (revision-proj.noah84b00130_ko)\r\ntop
     secret_\r\ndo not disclose_\r\n\r\nmemorandum for the record\r\nthe director            
-    chaired the meeing\r"
+    chaired the meeting\r"
 --- !u!222 &1924875233
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10904,7 +10997,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: "approved for release 2XXX/XX/XX: (revision-proj.noah84b00130_ko)\r\ntop
     secret_\r\ndo not disclose_\r\n\r\nmemorandum for the record\r\nthe director            
-    chaired the meeing\r"
+    chaired the meeting\r"
 --- !u!222 &2118211764
 CanvasRenderer:
   m_ObjectHideFlags: 0
