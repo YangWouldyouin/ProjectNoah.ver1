@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class TimerManager : MonoBehaviour
 {
-
     public static TimerManager timerManager { get; private set; }
 
     private void Awake()
@@ -21,18 +20,12 @@ public class TimerManager : MonoBehaviour
     Image timerText;
     Image timerBackground;
 
-    [HideInInspector]
-    public float maxTime;
-    [HideInInspector]
-    public float timeLeft;
-
     void Start()
     {
         timerDim = transform.GetChild(0).GetComponent<Image>();
         timerBar = transform.GetChild(1).GetComponent<Image>();
         timerBackground = transform.GetChild(2).GetComponent<Image>();
         timerText = transform.GetChild(3).GetComponent<Image>();
-
 
         if (inGameTime.IsTimerStarted)
         {

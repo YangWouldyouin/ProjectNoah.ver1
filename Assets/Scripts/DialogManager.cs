@@ -84,8 +84,8 @@ public class DialogManager : MonoBehaviour
     // 플레이해보면서 넣고 싶은자리에 적당히넣으면됨
     IEnumerator AIDialogPrinting(int AIIndex)
     {
-        dialogSource.clip = aiClip2; // 소리 끼움
-        dialogSource.Play(); // 플레이
+        //dialogSource.clip = aiClip2; // 소리 끼움
+        //dialogSource.Play(); // 플레이
         // 여기에 넣으면 완전 시작
         aiDialogNumber = AIIndex;
         AIPanel.SetActive(true);
@@ -103,8 +103,8 @@ public class DialogManager : MonoBehaviour
         for (int i = 0; i < googleSheetManager.AIDialogueDic[aiDialogNumber].Length; i++)
         {
             // 1문장 시작할때
-            dialogSource.clip = aiClip; // 소리 바꿔끼움
-            dialogSource.Play(); // 플레이
+            //dialogSource.clip = aiClip; // 소리 바꿔끼움
+            //dialogSource.Play(); // 플레이
             string talkdata = getTalk(aiDialogNumber, i);
             StartCoroutine(_typing(talkdata));
             yield return new WaitForSeconds(talkdata.Length * typingSpeed + aiSentenceDelay);
@@ -135,8 +135,8 @@ public class DialogManager : MonoBehaviour
         //yield return new WaitForSeconds(2f);
         for (int i = 0; i <= data.Length; i++)
         {
-/*            dialogSource.Play(); // 플레이 
-            dialogText.text = data.Substring(0, i);*/
+          //dialogSource.Play(); // 플레이 
+            dialogText.text = data.Substring(0, i);
 
             yield return new WaitForSeconds(typingSpeed);
 
