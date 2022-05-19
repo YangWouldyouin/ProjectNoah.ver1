@@ -87,6 +87,21 @@ pushButton, smashButton, eatButton;
 
             dogFoodData.IsClicked = false; 
         }
+
+        if(dogFoodData.IsEaten)
+        {
+            box.GetComponent<BoxCollider>().enabled = true;
+        }
+
+        else
+        {
+            box.GetComponent<BoxCollider>().enabled = false;
+        }
+
+        if (GameManager.gameManager._gameData.IsRealMiddleTuto == true)
+        {
+            box.GetComponent<BoxCollider>().enabled = false;
+        }
     }
 
 
