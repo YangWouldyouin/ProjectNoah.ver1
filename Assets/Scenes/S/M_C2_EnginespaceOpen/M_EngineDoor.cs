@@ -54,6 +54,9 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
         /*아웃라인*/
         engineDoorOutline_M = GetComponent<Outline>();
 
+        /*선언시작*/
+        engineDoorData_M.IsObserve = false;
+
     }
 
     void Update()

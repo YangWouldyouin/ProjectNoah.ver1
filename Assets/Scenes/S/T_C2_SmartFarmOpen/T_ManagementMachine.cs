@@ -59,6 +59,10 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
         observeButton_T_canIronPlateDoor = managementMachineObjData_T.CenterButton1;
         observeButton_T_canIronPlateDoor.onClick.AddListener(OnObserve);
+
+        /*선언시작*/
+        managementMachineData_T.IsObserve = false;
+
     }
 
     void Update()

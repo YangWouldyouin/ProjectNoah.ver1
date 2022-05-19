@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class M_Beaker1 : MonoBehaviour, IInteraction
 {
     /*연관있는 오브젝트*/
-    public GameObject M_RubberForBeaker1;
+    public GameObject M_HiBeaker2;
+    //public GameObject M_RubberForBeaker1;
     public GameObject M_AnswerMeteorForBeaker;
 
     public GameObject M_cylinderGlassAnswer;
@@ -20,11 +21,10 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     private Button barkButton_M_Beaker1, sniffButton_M_Beaker1, biteButton_M_Beaker1,
         pressButton_M_Beaker1, eatButton_M_Beaker1, eatDisableButton_M_Beaker1;
 
-    public ObjectData Beaker1Data;
-    public ObjectData AnswerMeteorForBeaker1Data;
-
     /*ObjData*/
     ObjData Beaker1Data_M;
+    public ObjectData Beaker1ObjData_M;
+    public ObjectData AnswerMeteorForBeaker1Data;
     public ObjectData RubberForBeaker1Data_M;
 
     public ObjectData cylinderGlassAnswerData_M;
@@ -47,6 +47,18 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     AudioSource Beaker_Hit_Sound;
     public AudioClip Beaker_Audio;
 
+
+    /*Collider*/
+
+    BoxCollider Beaker1_Collider;
+    BoxCollider Beaker2_Collider;
+
+    BoxCollider cylinderGlassAnswer_Collider;
+    BoxCollider cylinderGlassWrong_Collider;
+    BoxCollider cylinderGlassNoNeed1_Collider;
+    BoxCollider cylinderGlassNoNeed2_Collider;
+
+
     void Start()
     {
         Beaker_Hit_Sound = GetComponent<AudioSource>();
@@ -61,6 +73,15 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         /*Outline*/
         Beaker1Outline_M = GetComponent<Outline>();
         AnswerMeteorForBeakerOutline_M = M_AnswerMeteorForBeaker.GetComponent<Outline>();
+
+        /*Collider*/
+        Beaker1_Collider = GetComponent<BoxCollider>();
+        Beaker2_Collider = M_HiBeaker2.GetComponent<BoxCollider>();
+
+        cylinderGlassAnswer_Collider = M_cylinderGlassAnswer.GetComponent<BoxCollider>();
+        cylinderGlassWrong_Collider = M_cylinderGlassWrong.GetComponent<BoxCollider>();
+        cylinderGlassNoNeed1_Collider = cylinderGlassNoNeed1Data_M.GetComponent<BoxCollider>();
+        cylinderGlassNoNeed2_Collider = cylinderGlassNoNeed2Data_M.GetComponent<BoxCollider>();
 
 
         /*버튼 연결*/
@@ -98,6 +119,14 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         // 죽은척하기 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
 
+        Beaker1_Collider.enabled = false;
+        Beaker2_Collider.enabled = false;
+
+        cylinderGlassAnswer_Collider.enabled = false;
+        cylinderGlassWrong_Collider.enabled = false;
+        cylinderGlassNoNeed1_Collider.enabled = false;
+        cylinderGlassNoNeed2_Collider.enabled = false;
+
     }
 
     void Update()
@@ -110,12 +139,13 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             AnswerMeteorForBeakerOutline_M.OutlineWidth = 0;
 
             //대신 비커 중앙의 마시기가 활성화 된다.
-            Beaker1Data.IsCenterButtonDisabled= false;
+            Beaker1ObjData_M.IsCenterButtonDisabled = false;
 
             //색이 변한다.
             ChangeBeaker1.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
 
             M_AnswerMeteorForBeaker.SetActive(false);
+
 
         }
     }

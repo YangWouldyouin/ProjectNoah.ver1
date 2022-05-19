@@ -60,6 +60,9 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         canEngineCardKeyOutline_M = M_canEngineCardKey.GetComponent<Outline>();
         insertCardPadOutline_M = GetComponent<Outline>();
 
+        /*선언시작*/
+        insertCardPadData_M.IsObserve = false;
+
     }
 
     void DisableButton()

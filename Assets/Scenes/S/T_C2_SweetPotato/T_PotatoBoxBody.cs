@@ -58,6 +58,11 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
         IsPotatoBoxBodyData_T.IsNotInteractable = true; // 상호작용 가능하게
         IspotatoBoxBodyOutline_T.OutlineWidth = 0; // 아웃라인도 켜줍니다.
 
+
+
+        /*선언 시작*/
+        IsPotatoBoxBodyData_T.IsObserve = false;
+
     }
 
     void DisableButton()

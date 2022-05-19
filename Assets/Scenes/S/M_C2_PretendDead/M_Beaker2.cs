@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class M_Beaker2 : MonoBehaviour, IInteraction
 {
     /*연관있는 오브젝트*/
+    public GameObject M_HiBeaker1;
     public GameObject M_RubberForBeaker2;
     public GameObject M_RealAnswerMeteorForBeaker;
 
@@ -22,8 +23,8 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
 
     /*ObjData*/
-    ObjData Beaker2ObjData_M;
-    public ObjectData Beaker2Data_M;
+    ObjData Beaker2Data_M;
+    public ObjectData Beaker2ObjData_M;
 
     public ObjectData RubberForBeaker2Data_M;
     public ObjectData RealAnswerMeteorForBeakerData_M;
@@ -48,6 +49,17 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
     AudioSource Beaker_Hit_Sound;
     public AudioClip Beaker_Audio;
 
+
+    /*Collider*/
+
+    BoxCollider RealBeaker1_Collider;
+    BoxCollider RealBeaker2_Collider;
+
+    BoxCollider RealcylinderGlassAnswer_Collider;
+    BoxCollider RealcylinderGlassWrong_Collider;
+    BoxCollider RealcylinderGlassNoNeed1_Collider;
+    BoxCollider RealcylinderGlassNoNeed2_Collider;
+
     void Start()
     {
         Beaker_Hit_Sound = GetComponent<AudioSource>();
@@ -58,30 +70,39 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         ChangeBeaker2 = M_drugInBeaker2.GetComponent<MeshRenderer>();
 
         /*ObjData*/
-        Beaker2ObjData_M = GetComponent<ObjData>();
+        Beaker2Data_M = GetComponent<ObjData>();
 
         /*Outline*/
         Beaker2Outline_M = GetComponent<Outline>();
         RealAnswerMeteorForBeakerOutline_M = M_RealAnswerMeteorForBeaker.GetComponent<Outline>();
 
+        /*Collider*/
+        RealBeaker1_Collider = M_HiBeaker1.GetComponent<BoxCollider>();
+        RealBeaker2_Collider = GetComponent<BoxCollider>();
+
+        RealcylinderGlassAnswer_Collider = M_RealCylinderGlassAnswer.GetComponent<BoxCollider>();
+        RealcylinderGlassWrong_Collider = M_RealcylinderGlassWrong.GetComponent<BoxCollider>();
+        RealcylinderGlassNoNeed1_Collider = M_RealCylinderGlassNoNeed1.GetComponent<BoxCollider>();
+        RealcylinderGlassNoNeed2_Collider = M_RealCylinderGlassNoNeed2.GetComponent<BoxCollider>();
+
 
         /*버튼 연결*/
-        barkButton_M_Beaker2 = Beaker2ObjData_M.BarkButton;
+        barkButton_M_Beaker2 = Beaker2Data_M.BarkButton;
         barkButton_M_Beaker2.onClick.AddListener(OnBark);
 
-        sniffButton_M_Beaker2 = Beaker2ObjData_M.SniffButton;
+        sniffButton_M_Beaker2 = Beaker2Data_M.SniffButton;
         sniffButton_M_Beaker2.onClick.AddListener(OnSniff);
 
-        biteButton_M_Beaker2 = Beaker2ObjData_M.BiteButton;
+        biteButton_M_Beaker2 = Beaker2Data_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_Beaker2 = Beaker2ObjData_M.PushOrPressButton;
+        pressButton_M_Beaker2 = Beaker2Data_M.PushOrPressButton;
         pressButton_M_Beaker2.onClick.AddListener(OnPushOrPress);
 
-        eatButton_M_Beaker2 = Beaker2ObjData_M.CenterButton1;
+        eatButton_M_Beaker2 = Beaker2Data_M.CenterButton1;
         eatButton_M_Beaker2.onClick.AddListener(OnEat);
 
-        eatDisableButton_M_Beaker2 = Beaker2ObjData_M.CenterButton1;
+        eatDisableButton_M_Beaker2 = Beaker2Data_M.CenterButton1;
 
 
     }
@@ -100,6 +121,14 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
         // 죽은척하기 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
 
+        RealBeaker1_Collider.enabled = false;
+        RealBeaker2_Collider.enabled = false;
+
+        RealcylinderGlassAnswer_Collider.enabled = false;
+        RealcylinderGlassWrong_Collider.enabled = false;
+        RealcylinderGlassNoNeed1_Collider.enabled = false;
+        RealcylinderGlassNoNeed2_Collider.enabled = false;
+
     }
 
     void Update()
@@ -112,7 +141,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             RealAnswerMeteorForBeakerOutline_M.OutlineWidth = 0;
 
             //대신 비커 중앙의 마시기가 활성화 된다.
-            Beaker2Data_M.IsCenterButtonDisabled = false;
+            Beaker2ObjData_M.IsCenterButtonDisabled = false;
 
             //색이 변한다.
             ChangeBeaker2.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
