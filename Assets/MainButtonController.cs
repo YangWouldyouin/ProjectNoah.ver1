@@ -10,7 +10,6 @@ public class MainButtonController : MonoBehaviour
     GameData gameData;
     Image open, load, projectList, settings, exit;
     AudioSource audios;
-    [SerializeField] Transform noah;
 
     float i = 12;
 
