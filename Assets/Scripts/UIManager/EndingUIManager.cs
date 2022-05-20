@@ -7,20 +7,24 @@ public class EndingUIManager : MonoBehaviour
 {
     public GameObject[] EndingScreen;
 
-    public int ListEndingNum = 0;
+    public int ListEndingNum;
 
     AudioSource EndingAudio; 
     public AudioClip RealEnding_clip;
     public AudioClip MiniEnding_clip;
+
+    AudioSource EndingKeyboard_Audio;
+    public AudioClip keyboard_clip;
 
     GameData character = new GameData();
 
     // Start is called before the first frame update
     void Start()
     {
-        EndingAudio = GetComponent<AudioSource>();
-        RealEnding_clip = GetComponent<AudioClip>();
-        MiniEnding_clip = GetComponent<AudioClip>();
+        EndingAudio = transform.GetChild(0).GetComponentInChildren<AudioSource>();
+        EndingKeyboard_Audio = transform.GetChild(1).GetComponentInChildren<AudioSource>();
+
+        PlayBGM();
     }
 
     // Update is called once per frame
@@ -43,12 +47,22 @@ public class EndingUIManager : MonoBehaviour
         if (ListEndingNum == 6)
         {
             EndingAudio.clip = RealEnding_clip;
+            Debug.Log("BGM");
             EndingAudio.Play();
+
+            EndingKeyboard_Audio.clip = keyboard_clip;
+            Debug.Log("키보드");
+            EndingKeyboard_Audio.Play();
         }
         else
         {
             EndingAudio.clip = MiniEnding_clip;
+            Debug.Log("BGM");
             EndingAudio.Play();
+
+            EndingKeyboard_Audio.clip = keyboard_clip;
+            Debug.Log("키보드");
+            EndingKeyboard_Audio.Play();
         }
     }
 
