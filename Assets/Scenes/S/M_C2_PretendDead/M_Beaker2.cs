@@ -104,6 +104,8 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
         eatDisableButton_M_Beaker2 = Beaker2Data_M.CenterButton1;
 
+        Beaker2ObjData_M.IsCenterButtonDisabled = true;
+
 
     }
 

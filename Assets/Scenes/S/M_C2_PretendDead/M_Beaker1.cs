@@ -80,8 +80,8 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         cylinderGlassAnswer_Collider = M_cylinderGlassAnswer.GetComponent<BoxCollider>();
         cylinderGlassWrong_Collider = M_cylinderGlassWrong.GetComponent<BoxCollider>();
-        cylinderGlassNoNeed1_Collider = cylinderGlassNoNeed1Data_M.GetComponent<BoxCollider>();
-        cylinderGlassNoNeed2_Collider = cylinderGlassNoNeed2Data_M.GetComponent<BoxCollider>();
+        cylinderGlassNoNeed1_Collider = M_cylinderGlassNoNeed1.GetComponent<BoxCollider>();
+        cylinderGlassNoNeed2_Collider = M_cylinderGlassNoNeed2.GetComponent<BoxCollider>();
 
 
         /*버튼 연결*/
@@ -102,6 +102,8 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         eatDisableButton_M_Beaker1 = Beaker1Data_M.CenterDisableButton1;
 
+
+        Beaker1ObjData_M.IsCenterButtonDisabled = true;
     }
 
     void FakeAI1()
