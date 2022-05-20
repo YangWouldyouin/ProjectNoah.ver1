@@ -39,6 +39,8 @@ public class DialogManager : MonoBehaviour
     IEnumerator typingSubtitle;
     IEnumerator printSubtitles;
 
+    IEnumerator printOne;
+
     IEnumerator printAIDialogs;
 
     AudioSource dialogSource;
@@ -46,6 +48,10 @@ public class DialogManager : MonoBehaviour
     public int a;
 
     public AudioClip[] aiAudio;
+
+    /* 스킵 관련 변수 */
+    int i;
+    public bool IsSkip;
 
 /*    public AudioClip aiClip;
     public AudioClip aiClip2;*/
@@ -170,12 +176,14 @@ public class DialogManager : MonoBehaviour
     public void OnSkipButtonClicked()
     {
         // 현재 타이핑 코루틴 끝내기, 현재 문장 전부 출력
+        IsSkip = true;
+        StopCoroutine(typingSubtitle);
 
-        if(typingSubtitle!=null)
-        {
-            StopCoroutine(typingSubtitle);
-            subtitleText.text = subData;
-        }
+        //if(typingSubtitle!=null)
+        //{
+        //    StopCoroutine(typingSubtitle);
+        //    subtitleText.text = subData;
+        //}
     }
 
 
@@ -209,15 +217,44 @@ public class DialogManager : MonoBehaviour
 
         for (int subtitleCentenceNum = 0; subtitleCentenceNum < googleSheetManager.subtitleDic[subtitleNumber].Length; subtitleCentenceNum++)
         {
-            // 1문장씩
-            nameData = GetName(subtitleNumber, subtitleCentenceNum);
-            nameText.text = nameData;
+            i = 0;
+            IsSkip = false;
+            printOne = PrintOneAI(subtitleCentenceNum);
+            StartCoroutine(printOne);
+            for (i = 0; i < 70; i++)
+            {
+                if (IsSkip)
+                {
+                    yield return null;
+                    break;
+                }
+                else
+                {
+                    yield return new WaitForSeconds(0.001f);
+                }
+            }
+               
 
-            subData = GetSubtitleTalk(subtitleNumber, subtitleCentenceNum);
-            typingSubtitle = _typingSubtitle(subData);
-            StartCoroutine(typingSubtitle);
+ 
 
-            yield return new WaitForSeconds(subData.Length * typingSpeed + subtitleSentenceDelay); // 문장 전부 치는데 걸리는 시간 + 읽는 시간
+
+
+
+
+            //while (!IsSkip)
+            //{
+            //    // 1문장씩
+            //    nameData = GetName(subtitleNumber, subtitleCentenceNum);
+            //    nameText.text = nameData;
+
+            //    subData = GetSubtitleTalk(subtitleNumber, subtitleCentenceNum);
+            //    typingSubtitle = _typingSubtitle(subData);
+            //    StartCoroutine(typingSubtitle);
+
+            //    yield return new WaitForSeconds(subData.Length * typingSpeed + subtitleSentenceDelay); // 문장 전부 치는데 걸리는 시간 + 읽는 시간
+            //    IsSkip = true;
+            //}
+            //IsSkip = false;
 
         }
         // 대화 패널 비활성화
@@ -225,6 +262,19 @@ public class DialogManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(FadeOutCoroutine());
     }
+
+    IEnumerator PrintOneAI(int num)
+    {
+
+        nameData = GetName(subtitleNumber, num);
+        nameText.text = nameData;
+        subData = GetSubtitleTalk(subtitleNumber, num);
+        typingSubtitle = _typingSubtitle(subData);
+        StartCoroutine(typingSubtitle);
+        //subtitleText.text = subData;
+        yield return null;
+    }
+ 
 
     /* 1글자씩 타이핑은  여기 */
     IEnumerator _typingSubtitle(string subdata)
