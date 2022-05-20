@@ -24,7 +24,30 @@ public class EndingUIManager : MonoBehaviour
         EndingAudio = transform.GetChild(0).GetComponentInChildren<AudioSource>();
         EndingKeyboard_Audio = transform.GetChild(1).GetComponentInChildren<AudioSource>();
 
-        PlayBGM();
+        ListEndingNum = GameManager.gameManager._gameData.EndingNum;
+
+        if (ListEndingNum == 6)
+        {
+            EndingKeyboard_Audio.clip = keyboard_clip;
+            Debug.Log("키보드");
+            EndingKeyboard_Audio.Play();
+
+            EndingAudio.clip = RealEnding_clip;
+            Debug.Log("BGM");
+            EndingAudio.PlayDelayed(2f);
+        }
+        else
+        {
+            EndingAudio.clip = MiniEnding_clip;
+            Debug.Log("BGM");
+            EndingAudio.Play();
+
+            EndingKeyboard_Audio.clip = keyboard_clip;
+            Debug.Log("키보드");
+            EndingKeyboard_Audio.Play();
+        }
+
+        //PlayBGM();
     }
 
     // Update is called once per frame
@@ -42,7 +65,7 @@ public class EndingUIManager : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    public void PlayBGM()
+/*    public void PlayBGM()
     {
         if (ListEndingNum == 6)
         {
@@ -64,7 +87,7 @@ public class EndingUIManager : MonoBehaviour
             Debug.Log("키보드");
             EndingKeyboard_Audio.Play();
         }
-    }
+    }*/
 
     void SLmanagerLoad()
     {
