@@ -98,7 +98,7 @@ public class DialogManager : MonoBehaviour
         // ai 오디오 나오는 자리
         a = Random.Range(0, 3);
         dialogSource.clip = aiAudio[a];
-        dialogSource.Play();
+        
 
         aiDialogNumber = AIIndex;
         AIPanel.SetActive(true);
@@ -109,15 +109,16 @@ public class DialogManager : MonoBehaviour
 
         AIPanelAnim.SetBool("IsAIOpen", true);
 
-
-
         yield return new WaitForSeconds(1f);
 
         for (int i = 0; i < googleSheetManager.AIDialogueDic[aiDialogNumber].Length; i++)
         {
             string talkdata = getTalk(aiDialogNumber, i);
+            dialogSource.Play();
             StartCoroutine(_typing(talkdata));
+
             yield return new WaitForSeconds(talkdata.Length * typingSpeed + aiSentenceDelay);
+
         }
         // 3초 후 대화 패널 비활성화
         yield return new WaitForSeconds(0.02f);
@@ -150,7 +151,8 @@ public class DialogManager : MonoBehaviour
 
             yield return new WaitForSeconds(typingSpeed);
 
-        }      
+        }
+        dialogSource.Stop();
     }
 
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -177,7 +179,11 @@ public class DialogManager : MonoBehaviour
     {
         // 현재 타이핑 코루틴 끝내기, 현재 문장 전부 출력
         IsSkip = true;
-        StopCoroutine(typingSubtitle);
+        if(typingSubtitle!=null)
+        {
+            StopCoroutine(typingSubtitle);
+        }
+
 
         //if(typingSubtitle!=null)
         //{
