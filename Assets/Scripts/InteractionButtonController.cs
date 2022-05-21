@@ -127,35 +127,39 @@ public class InteractionButtonController : MonoBehaviour
     /* 물기 - 가능한 오브젝트 일때 */
     public void PlayerBite()
     {
-        /* 버튼 누르는 소리 */
-        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
-        interactionAudio.Play(); // 2. 재생한다.
-
-        if (noahPushObject==null)
+        if(equipment.biteObjectName=="" && equipment.pushObjectName=="")
         {
-            if (PlayerScripts.playerscripts.currentObject != null)
+            /* 버튼 누르는 소리 */
+            interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+            interactionAudio.Play(); // 2. 재생한다.
+
+            if (noahPushObject == null)
             {
-                noahBiteObject = PlayerScripts.playerscripts.currentObject;
-                /* 취소할 때 참고하기 위해 저장 */
-                equipment.biteObjectName = noahBiteObject.name;
+                if (PlayerScripts.playerscripts.currentObject != null)
+                {
+                    noahBiteObject = PlayerScripts.playerscripts.currentObject;
+                    /* 취소할 때 참고하기 위해 저장 */
+                    equipment.biteObjectName = noahBiteObject.name;
 
-                equipment.cancelBitePos = noahBiteObject.transform.position;
-                equipment.cancelBiteRot = noahBiteObject.transform.eulerAngles;
-                equipment.cancelBiteScale = noahBiteObject.transform.localScale;
+                    equipment.cancelBitePos = noahBiteObject.transform.position;
+                    equipment.cancelBiteRot = noahBiteObject.transform.eulerAngles;
+                    equipment.cancelBiteScale = noahBiteObject.transform.localScale;
 
-                biteData = noahBiteObject.GetComponent<ObjData>();
-                biteData.objectDATA.IsBite = true;
+                    biteData = noahBiteObject.GetComponent<ObjData>();
+                    biteData.objectDATA.IsBite = true;
 
 
 
-                /* 현재 물고 있는 오브젝트 이름 띄움 */
-                objectText.text = "Noah N.113 - " + biteData.ObjectName;
+                    /* 현재 물고 있는 오브젝트 이름 띄움 */
+                    objectText.text = "Noah N.113 - " + biteData.ObjectName;
 
-                Invoke("ChangeBiteTrue", 0.5f);
-                Invoke("PlayerPickUp", 0.7f);
-                Invoke("ChangeBiteFalse", 1);
+                    Invoke("ChangeBiteTrue", 0.5f);
+                    Invoke("PlayerPickUp", 0.7f);
+                    Invoke("ChangeBiteFalse", 1);
+                }
             }
         }
+
     }
 
     void ChangeBiteTrue()
@@ -418,32 +422,35 @@ public class InteractionButtonController : MonoBehaviour
     /* 누르기 - 상자 등을 밀기 */
     public void playerPush() 
     {
-        /* 버튼 누르는 소리 */
-        interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
-        interactionAudio.Play(); // 2. 재생한다.);
-
-        if (noahBiteObject==null)
+        if (equipment.biteObjectName == "" && equipment.pushObjectName == "")
         {
-            noahPushObject = PlayerScripts.playerscripts.currentObject;
-            if (noahPushObject != null)
+            /* 버튼 누르는 소리 */
+            interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+            interactionAudio.Play(); // 2. 재생한다.);
+
+            if (noahBiteObject == null)
             {
-                // 스크립터블오브젝트 변수에 저장
-                equipment.pushObjectName = noahPushObject.name;
+                noahPushObject = PlayerScripts.playerscripts.currentObject;
+                if (noahPushObject != null)
+                {
+                    // 스크립터블오브젝트 변수에 저장
+                    equipment.pushObjectName = noahPushObject.name;
 
-                equipment.cancelPushPos = noahPushObject.transform.position;
-                equipment.cancelPushRot = noahPushObject.transform.eulerAngles;
-                equipment.cancelPushScale = noahPushObject.transform.localScale;
+                    equipment.cancelPushPos = noahPushObject.transform.position;
+                    equipment.cancelPushRot = noahPushObject.transform.eulerAngles;
+                    equipment.cancelPushScale = noahPushObject.transform.localScale;
 
-                Invoke("ChangePushTrue1", 0.5f);
-                Invoke("ChangePushTrue2", 1f);
+                    Invoke("ChangePushTrue1", 0.5f);
+                    Invoke("ChangePushTrue2", 1f);
 
 
 
-                pushData = noahPushObject.GetComponent<ObjData>();
-                objectText.text = "Noah N.113 - " + pushData.ObjectName;
-                pushData.objectDATA.IsPushOrPress = true;
+                    pushData = noahPushObject.GetComponent<ObjData>();
+                    objectText.text = "Noah N.113 - " + pushData.ObjectName;
+                    pushData.objectDATA.IsPushOrPress = true;
 
-                Invoke("AddPushObject", 1f);
+                    Invoke("AddPushObject", 1f);
+                }
             }
         }
     }
