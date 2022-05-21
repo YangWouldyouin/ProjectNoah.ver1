@@ -10,6 +10,7 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
         pressButton_T_SmartFarmLineHome2, noCenterButton_T_SmartFarmLineHome2;
 
     ObjData smartFarmLineHome2Data_T;
+    public ObjectData RealsmartFarmLineHome2Data_T;
     Outline smartFarmLineHomeOutline_T;
 
     /*연관있는 오브젝트*/
@@ -74,11 +75,11 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
         if(canFixedLine2Data_T.IsBite)
         {
             //부모에서 해제
-            canFixedLine2Data_T.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            T_canFixedLine2.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
             T_canFixedLine2.transform.parent = null;
 
             //멀쩡한 선을 기계에 자동 장착
-            T_canFixedLine2.transform.position = new Vector3(-258.06f, 539.122f, 670.358f); //위치 값
+            T_canFixedLine2.transform.position = new Vector3(-258.06f, 0.674f, 670.384f); //위치 값
             T_canFixedLine2.transform.rotation = Quaternion.Euler(0, -90, 90); // 각도 값 
             // new player equipment - bite 초기화
             playerEquipment_SmartFarm.biteObjectName = "";

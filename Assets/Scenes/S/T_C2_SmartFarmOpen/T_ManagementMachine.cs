@@ -23,9 +23,11 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
     public ObjectData canTroubleLine2Data_T;
     public ObjectData canDoLineHome2Data_T;
 
+   
+
     Outline canIronPlateDoorOutline_T;
     Outline canTroubleLine2Outline_T;
-    Outline canLineHome2Outline_T;
+    public Outline canLineHome2Outline_T;
 
     //BoxCollider ironPlateCollider_T;
 
@@ -40,7 +42,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
         canIronPlateDoorOutline_T = T_canIronPlateDoor.GetComponent<Outline>();
         canTroubleLine2Outline_T = T_canTroubleLine2.GetComponent<Outline>();
-        canLineHome2Outline_T = T_canLineHome2.GetComponent<Outline>();
+        //canLineHome2Outline_T = T_canLineHome2.GetComponent<Outline>();
 
         // ironPlateCollider_T = T_canIronPlateDoor.GetComponent<BoxCollider>();
 
@@ -62,6 +64,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
         /*선언시작*/
         managementMachineData_T.IsObserve = false;
+        managementMachineData_T.IsNotInteractable = false;
 
     }
 
