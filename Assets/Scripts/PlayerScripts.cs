@@ -26,7 +26,7 @@ public class PlayerScripts : MonoBehaviour
     private ObjData objData;
     private string objectNameData, smellData;
     private Transform interactionDestinationData, observeData, observePlusData;
-    private  Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteBtn, smashBtn, pushOrPressBtn, centerBtn;
+    private Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteBtn, smashBtn, pushOrPressBtn, centerBtn;
     private Vector3 interactionButtonOffset;
     private ObjectData objectData;
 
@@ -73,6 +73,7 @@ public class PlayerScripts : MonoBehaviour
     // 순서 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
     void Onclick()
     {
+        TurnOffButton();
         RaycastHit hit; //  충돌이 일어나면 코드 실행, 
         Ray camToScreen = mainCamera.ScreenPointToRay(Input.mousePosition);
         // 왼쪽 마우스 클릭을 감지하면      // Q, 이거랑 아래 hit.collider!=nulll 한번에 쓰면 안됨?? 
@@ -149,6 +150,7 @@ public class PlayerScripts : MonoBehaviour
 
                             if (interactionDestinationData != null)
                             {
+
                                 MovePlayer(objData.InteractionDestination.position);
                             }
                             else
@@ -156,6 +158,7 @@ public class PlayerScripts : MonoBehaviour
                                 MovePlayer(objData.transform.position);
                             }
                             StartCoroutine(WaitforPlayerArriving());
+
                         }
                     }                      
                 }
@@ -230,29 +233,27 @@ public class PlayerScripts : MonoBehaviour
         // turning = false;
     }
 
-    void MovePlayer(Vector3 targetPosition)
+    void TurnOffButton()
     {
-        turning = false; // 움직일때마다 turning 을 거짓으로 만듬
-        agent.SetDestination(targetPosition);
 
-        if (barkBtn!=null)
+        if (barkBtn != null)
         {
             barkBtn.transform.gameObject.SetActive(false);
         }
-        if(sniffBtn!=null)
+        if (sniffBtn != null)
         {
             sniffBtn.transform.gameObject.SetActive(false);
         }
-        if(biteBtn!=null)
-        {            
+        if (biteBtn != null)
+        {
             biteBtn.transform.gameObject.SetActive(false);
             //biteBtn.GetComponent<Image>().sprite = BiteButtonimage;
-        }       
-        if(smashBtn!=null)
+        }
+        if (smashBtn != null)
         {
             smashBtn.transform.gameObject.SetActive(false);
         }
-        if(pushOrPressBtn!=null)
+        if (pushOrPressBtn != null)
         {
             pushOrPressBtn.transform.gameObject.SetActive(false);
         }
@@ -261,6 +262,12 @@ public class PlayerScripts : MonoBehaviour
             centerBtn.transform.gameObject.SetActive(false);
         }
         objectNameTag.SetActive(false);
+    }
+    void MovePlayer(Vector3 targetPosition)
+    {
+        turning = false; // 움직일때마다 turning 을 거짓으로 만듬
+        agent.SetDestination(targetPosition);
+        TurnOffButton();
     }
 
     /* 플레이어가 NPC 를 바라보도록 각도를 바꿔주는 메서드 */
