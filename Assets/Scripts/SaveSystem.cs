@@ -5,7 +5,10 @@ using System.IO;
 
 public static class SaveSystem
 {
-	private static string SavePath => Application.persistentDataPath + "/saves/";
+	//private static string SavePath => Application.persistentDataPath + "/saves/";
+	private static string SavePath => Application.streamingAssetsPath + "/saves/";
+
+
 
 	public static void Save(GameData saveData, string saveFileName)
 	{

@@ -5,33 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class SaveDataWhenSceneChange : MonoBehaviour
 {
-
-
+    // 플레이어가 현재 이동시키고 있는 중인 오브젝트 이름과 다시 내려놓을 때의 위치, 각도를 가지고 있는 스크립터블 오브젝트 
     [SerializeField] PlayerEquipment playerEquipment;
 
     [SerializeField] List<PortableObjectData> DataList = new List<PortableObjectData>();
 
     private PortableObjectData currentPortableObjectData;
 
-    [SerializeField] List<string> portableObjectNameList = new List<string>();
+    [SerializeField] List<string> portableObjectNameList = new List<string>(); // 이름으로 비교해서 현재 물건의 게임오브젝트리스트에서의 인덱스를 알아내기 위한 리스트
+    [SerializeField] List<GameObject> portableObjectList = new List<GameObject>();
+
     private GameObject biteObject, pushObject;
 
-    ObjData portableObjectData;
-
-    ObjectData portableData;
-    [SerializeField] List<GameObject> portableObjectList = new List<GameObject>();
-    /* �� Ŭ���� �̵��� �� */
+    /* 이동하는 씬 이름 */
     public string transferMapName;
 
-
+    /* 물건을 물거나 밀고 가는 애니메이션 관련 */
+    ObjData portableObjectData;
     [SerializeField] TMPro.TextMeshProUGUI objectText;
     [SerializeField] GameObject myHead;
     [SerializeField] Animator noahAnimator;
 
-
     void Awake()
     {
-        /* ���� ���� �����ͼ� �� ���� ���ͺ�������Ʈ����Ʈ�� ������ */
+        /* 현재 씬에 해당하는 물건 리스트를 가져옴 */
         int sceneNum = SceneManager.GetActiveScene().buildIndex;
         switch (sceneNum)
         {
@@ -49,15 +46,16 @@ public class SaveDataWhenSceneChange : MonoBehaviour
                 break;
         }
 
-        /* ���� ���ͺ� ������Ʈ �ʱ�ȭ */
-        for(int i =0;  i< currentPortableObjectData.IsObjectActiveList.Count; i++)
+        /* 현재 씬 내의 물고 다닐 수 있는 물건들 활성화 & 비활성화 */
+        for (int i =0;  i< currentPortableObjectData.IsObjectActiveList.Count; i++)
         {
+            // 이 오브젝트가 현재 씬에 있는 물건이면
             if(currentPortableObjectData.IsObjectActiveList[i]==true)
             {
                 portableObjectList[i].SetActive(true);
             }
             else
-            {
+            { // 이 오브젝트가 현재 씬에 없는 물건이면
                 portableObjectList[i].SetActive(false);
             }
         }
@@ -65,30 +63,31 @@ public class SaveDataWhenSceneChange : MonoBehaviour
 
 
 
-        /* �÷��̾� �ʱ�ȭ */
-        if (playerEquipment.pushObjectName != "") // �а� �ִ� ������Ʈ�� �ִٸ� 
+        /* 플레이어 초기화 */
+        if (playerEquipment.pushObjectName != "")  // 플레이어가 이전 씬으로부터 가져온 물건이 있으면 
         {
-            // �� ������Ʈ�� ���̶�Ű���� ã�Ƽ� Ȱ��ȭ
+            // 이 물건을 물건의 이름으로 현재 씬에서 찾아서 활성화 시킨다. 
             pushObject = GameObject.Find("Portable Objects").transform.Find(playerEquipment.pushObjectName).gameObject;
             pushObject.SetActive(true);
 
-            // ������Ʈ �̸����� ����Ʈ�� �ε����� ������
+            // 현재씬의 물건 리스트에서 이 물건에 해당하는 bool 변수 원소를 찾아서 true 로 바꾼다. 
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.pushObjectName));
-            // ���� ���ͺ�������Ʈ����Ʈ�� �ش� ������Ʈ�� ���� ������ ����
             currentPortableObjectData.IsObjectActiveList[idx] = true;
 
-            // ��ҿ��� �־���!!!!!
+            // 플레이어가 현재 물건을 내려놓을 때 참고하기 위해 이 물건의 위치, 각도, 크기를 저장한다. 
             playerEquipment.cancelPushPos = pushObject.transform.position;
             playerEquipment.cancelPushRot = pushObject.transform.eulerAngles;
             playerEquipment.cancelPushScale = pushObject.transform.localScale;
 
-            // ��� �Ӹ��� ���� + �̴� �ִϸ��̼� 
+            // 물건에 맞는 플레이어 애니메이션
             noahAnimator.SetBool("IsPushing", true);
             noahAnimator.SetBool("IsPushing2", true);
 
+            // 갖고 이동 중인 오브젝트 이름을 화면에 표시
             portableObjectData = pushObject.GetComponent<ObjData>();
             objectText.text = "Noah N.113 - " + portableObjectData.ObjectName;
 
+            // 물건에 맞는 플레이어 애니메이션
             pushObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
             pushObject.GetComponent<Rigidbody>().useGravity = false;
 
@@ -135,22 +134,22 @@ public class SaveDataWhenSceneChange : MonoBehaviour
         }
     }
 
+    /* 플레이어가 다른씬으로 이동하려고 할 때 */
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(0.5f);
 
-        if (playerEquipment.pushObjectName != "") // �а� �ִ� ������Ʈ�� ������
+        if (playerEquipment.pushObjectName != "") // 만일 플레이어가 물건을 가지고 다른씬으로 이동하려고 하면
         {
-            pushObject = GameObject.Find(playerEquipment.pushObjectName).gameObject;
-            // ������Ʈ �̸����� �迭�� �ε����� ������
+            //pushObject = GameObject.Find(playerEquipment.pushObjectName).gameObject;
+            // 현재 씬의 물건 이름 리스트에서 이름을 비교해서 현재 물건의 인덱스를 찾음
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.pushObjectName));
-            // ���� ���ͺ�������Ʈ����Ʈ�� �ش� ������Ʈ�� ���� �������� ����
-
+            // 현재 씬의 물건 오브젝트 리스트에서 위에서 찾은 인덱스에 해당하는 오브젝트가 비활성태 상태라고 저장함
             currentPortableObjectData.IsObjectActiveList[idx] =  false;
         }
         else if(playerEquipment.biteObjectName != "") // ���� �ִ� ������Ʈ�� ������
         {
-            biteObject = GameObject.Find(playerEquipment.biteObjectName).gameObject;
+            //biteObject = GameObject.Find(playerEquipment.biteObjectName).gameObject;
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.biteObjectName));
             // ���� ���ͺ�������Ʈ����Ʈ�� �ش� ������Ʈ�� ���� �������� ����
             currentPortableObjectData.IsObjectActiveList[idx] = false;
