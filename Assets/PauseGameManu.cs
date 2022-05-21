@@ -6,15 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class PauseGameManu : MonoBehaviour
 {
-    public GameObject pauseManu;
     public Canvas savePagePanel;
-
     public CancelInteractions cancellnteractions;
-
     CancelInteractions cancellnteract;
+
+    GameObject pauseManu;
+    Image exitElert, mainElert;
+    Button exitYesButton, exitNoButton, mainYesButton, mainNoButton;
+
     private void Start()
     {
         cancellnteract = cancellnteractions.GetComponent<CancelInteractions>();
+ 
+        pauseManu = GameObject.Find("Stop Game Canvas").transform.GetChild(0).gameObject;
+        exitElert = GameObject.Find("Stop Game Canvas").transform.GetChild(1).GetComponentInChildren<Image>();
+        mainElert = GameObject.Find("Stop Game Canvas").transform.GetChild(2).GetComponentInChildren<Image>();
+
+        mainYesButton = mainElert.transform.GetChild(2).GetComponentInChildren<Button>();
+        mainNoButton = mainElert.transform.GetChild(3).GetComponentInChildren<Button>();
+        mainYesButton.onClick.AddListener(OnMainYesButtonClicked);
+        mainNoButton.onClick.AddListener(OnMainNoButtonClicked);
+
+        exitYesButton = exitElert.transform.GetChild(2).GetComponentInChildren<Button>();
+        exitNoButton = exitElert.transform.GetChild(3).GetComponentInChildren<Button>();
+        exitYesButton.onClick.AddListener(OnExitYesButtonClicked);
+        exitNoButton.onClick.AddListener(OnExitNoButtonClicked);
     }
 
     //public GameObject dialogManager_CC;
@@ -36,10 +52,18 @@ public class PauseGameManu : MonoBehaviour
     }
     public void GoToMain()
     {
+        mainElert.gameObject.SetActive(true);
+    }
 
+    void OnMainYesButtonClicked()
+    {
         Time.timeScale = 1;
         cancellnteract.ResetPlayerEquipement();
         SceneManager.LoadScene("Main");
+    }
+    void OnMainNoButtonClicked()
+    {
+        mainElert.gameObject.SetActive(false);
     }
 
     public void GoToProjectList()
@@ -49,11 +73,20 @@ public class PauseGameManu : MonoBehaviour
 
     public void ExitGame()
     {
+        exitElert.gameObject.SetActive(true);
+    }
+
+    void OnExitYesButtonClicked()
+    {
         cancellnteract.ResetPlayerEquipement();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
+    }
+    void OnExitNoButtonClicked()
+    {
+        exitElert.gameObject.SetActive(false);
     }
 
     public void ResumeGame()
