@@ -551,7 +551,9 @@ public class SLManager2 : MonoBehaviour
             /*중요 구간 태블릿을 AI에게 들켰을 경우*/
             // character.IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨
 
-
+            /*책상 오르기*/
+            character.IsUpTable1 = false;
+            character.IsUpTable2 = false;
 
             /*퍼즐시작*/
             character.IsStartCollectMeteorites = false; // 운석 수집 임무 시작

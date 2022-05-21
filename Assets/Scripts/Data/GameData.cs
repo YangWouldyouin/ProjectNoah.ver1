@@ -163,6 +163,10 @@ public class GameData
     [Header("<생활공간 인형 해금>")]
     public bool IsLivingRoomDollOut; // 생활공간 문에 끼어있던 인형 꺼냄
 
+    [Header("<책상 오르기>")]
+    public bool IsUpTable1; //테이블 1에 잘 올라갔는지 확인
+    public bool IsUpTable2; //테이블 2에 잘 올라갔는지 확인
+
 
     /*중요 구간 태블릿을 AI에게 들켰을 경우*/
     // public bool IsTabletDestroyed; // 태블릿 AI에게 들켜 파괴됨

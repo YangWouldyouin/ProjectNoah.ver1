@@ -203,6 +203,10 @@ public class M_Table2 : MonoBehaviour, IInteraction
         Line2OnTable2_Collider.enabled = true;
         ConductionOnTable2_Collider.enabled = true;
 
+        /*테이블에 잘 올라갔으면 저장해서 게임 껐다켜도 테이블 위 물건들 항상 상호작용 가능하게*/
+        GameManager.gameManager._gameData.IsUpTable2 = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         if (!table2Data_M.IsUpDown)
         {
             //table1Data_M.IsCenterButtonChanged = false;
