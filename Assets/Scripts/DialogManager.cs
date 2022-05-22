@@ -28,7 +28,7 @@ public class DialogManager : MonoBehaviour
     public float typingSpeed = 0.02f;
     [Header("문장 시간 간격")]
     public float aiSentenceDelay = 1.8f;
-    public float subtitleSentenceDelay = 1.5f;
+    public int subtitleSentenceDelay;
 
     int aiDialogNumber;
     int subtitleNumber;
@@ -234,7 +234,7 @@ public class DialogManager : MonoBehaviour
             IsSkip = false;
             printOne = PrintOneAI(subtitleCentenceNum);
             StartCoroutine(printOne);
-            for (i = 0; i < 70; i++)
+            for (i = 0; i <= subData.Length + subtitleSentenceDelay; i++)
             {
                 if (IsSkip)
                 {
@@ -243,7 +243,7 @@ public class DialogManager : MonoBehaviour
                 }
                 else
                 {
-                    yield return new WaitForSeconds(0.001f);
+                    yield return new WaitForSeconds(typingSpeed);
                 }
             }
             //while (!IsSkip)
