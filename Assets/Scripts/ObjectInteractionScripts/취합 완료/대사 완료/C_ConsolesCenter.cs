@@ -26,7 +26,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public Animator noahAnim_CC;
 
     public Image fadeImage_CC;
-    public GameObject fade_CC;
     public Button aiIcon_CC;
 
     public GameObject dialogManager_CC;
@@ -77,7 +76,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         }
         else
         {
-            fade_CC.SetActive(false);
+            fadeImage_CC.gameObject.SetActive(false);
             Color normalColor = aiIcon_CC.GetComponent<Image>().color;
             normalColor.a = 1.0f;
             aiIcon_CC.GetComponent<Image>().color = normalColor;
@@ -109,7 +108,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             fadeImage_CC.GetComponent<Image>().color = fadeColor;
             yield return new WaitForSeconds(0.00001f);
         }
-        fade_CC.SetActive(false);
+        fadeImage_CC.gameObject.SetActive(false);
     }
 
     void Update()
