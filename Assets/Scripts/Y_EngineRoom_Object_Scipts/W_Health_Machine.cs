@@ -33,11 +33,14 @@ public class W_Health_Machine : MonoBehaviour
     AudioSource Health_Machine_Sound;
     public AudioClip Health_Machine_cheak;
 
+    PlayerEquipment playerEquipment;
+
     //노아 내려가는 애니메이션 필요
 
     // Start is called before the first frame update
     void Start()
     {
+        playerEquipment = BaseCanvas._baseCanvas.equipment;
         Health_Machine_Sound = GetComponent<AudioSource>();
 
         dialogManager = dialogManager_HM.GetComponent<DialogManager>();
@@ -242,6 +245,7 @@ public class W_Health_Machine : MonoBehaviour
         healthMachineFixPartDataOutline.OutlineWidth = 0;
 
         healthMachineData.IsCenterButtonDisabled = false;
+        playerEquipment.biteObjectName = "";
 
         //W_HM_2
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(6));
