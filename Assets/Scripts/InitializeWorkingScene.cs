@@ -86,12 +86,29 @@ public class InitializeWorkingScene : MonoBehaviour
     public GameObject insert02;
 
 
+    [Header("<책상1오르기>")]
+    public GameObject PackOnTable1;
+    public GameObject Beaker1OnTable1;
+    public GameObject Beaker2OnTable1;
+    public GameObject cylinder1OnTable1;
+    public GameObject cylinder2OnTable1;
+    public GameObject cylinder3OnTable1;
+    public GameObject cylinder4OnTable1;
+
+    [Header("<책상2오르기>")]
+    public GameObject SuperDrugOnTable2;
+    public GameObject NoahFoodOnTable2;
+    public GameObject Line2OnTable2;
+    public GameObject ConductionOnTable2;
+
+
     [Header("<추가적인것>")]
     /*Object Data*/
     public ObjectData MeteorButtonData_Save;
     public ObjectData MeteorCollectMachineData_Save;
     public ObjectData AnalyticalMachineData_Save;
     public ObjectData AnalyticalMachineButtonData_Save;
+
 
     /*Outline*/
     public Outline MeteorButtonOutline_Save;
@@ -133,6 +150,21 @@ public class InitializeWorkingScene : MonoBehaviour
     BoxCollider insert02Col;
 
     BoxCollider HealthMachineFixData_Collider;
+
+
+    //책상오르기 콜라이더
+    BoxCollider PackOnTable1_Collider;
+    BoxCollider Beaker1OnTable1_Collider;
+    BoxCollider Beaker2OnTable1_Collider;
+    BoxCollider cylinder1OnTable1_Collider;
+    BoxCollider cylinder2OnTable1_Collider;
+    BoxCollider cylinder3OnTable1_Collider;
+    BoxCollider cylinder4OnTable1_Collider;
+
+    BoxCollider SuperDrugOnTable2_Collider;
+    BoxCollider NoahFoodOnTable2_Collider;
+    BoxCollider Line2OnTable2_Collider;
+    BoxCollider ConductionOnTable2_Collider;
 
 
     // Start is called before the first frame update
@@ -185,6 +217,21 @@ public class InitializeWorkingScene : MonoBehaviour
         insert01Col = insert01.GetComponent<BoxCollider>();
         insert02Col = insert02.GetComponent<BoxCollider>();
 
+        //책상 1 오르기
+        PackOnTable1_Collider = PackOnTable1.GetComponent<BoxCollider>();
+        Beaker1OnTable1_Collider = Beaker1OnTable1.GetComponent<BoxCollider>();
+        Beaker2OnTable1_Collider = Beaker2OnTable1.GetComponent<BoxCollider>();
+        cylinder1OnTable1_Collider = cylinder1OnTable1.GetComponent<BoxCollider>();
+        cylinder2OnTable1_Collider = cylinder2OnTable1.GetComponent<BoxCollider>();
+        cylinder3OnTable1_Collider = cylinder3OnTable1.GetComponent<BoxCollider>();
+        cylinder4OnTable1_Collider = cylinder4OnTable1.GetComponent<BoxCollider>();
+
+
+        //책상 2 오르기
+        SuperDrugOnTable2_Collider = SuperDrugOnTable2.GetComponent<BoxCollider>();
+        NoahFoodOnTable2_Collider = NoahFoodOnTable2.GetComponent<BoxCollider>();
+        Line2OnTable2_Collider = Line2OnTable2.GetComponent<BoxCollider>();
+        ConductionOnTable2_Collider = ConductionOnTable2.GetComponent<BoxCollider>();
 
         if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
@@ -329,6 +376,30 @@ public class InitializeWorkingScene : MonoBehaviour
 
             SDrug.transform.position = new Vector3(-249.0776f, 0.1652f, 669.806f);
             SDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+
+
+        //책상1 오르기를 완료하면
+        if (intialGameData.IsUpTable1)
+        {
+            /*책상 위에 올라가면 책상 위 오브젝트랑 상호작용 가능하도록*/
+            PackOnTable1_Collider.enabled = true;
+            Beaker1OnTable1_Collider.enabled = true;
+            Beaker2OnTable1_Collider.enabled = true;
+            cylinder1OnTable1_Collider.enabled = true;
+            cylinder2OnTable1_Collider.enabled = true;
+            cylinder3OnTable1_Collider.enabled = true;
+            cylinder4OnTable1_Collider.enabled = true;
+        }
+
+        //책상2 오르기를 완료하면
+        if (intialGameData.IsUpTable1)
+        {
+            /*책상 위에 올라가면 책상 위 오브젝트랑 상호작용 가능하도록*/
+            SuperDrugOnTable2_Collider.enabled = true;
+            NoahFoodOnTable2_Collider.enabled = true;
+            Line2OnTable2_Collider.enabled = true;
+            ConductionOnTable2_Collider.enabled = true;
         }
     }
 
