@@ -13,8 +13,8 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = target.position+offset;
-
+        //transform.position = target.position+offset;
+        transform.position = new Vector3(target.position.x + offset.x, transform.position.y, target.position.z + offset.z);
     }
 
 }
