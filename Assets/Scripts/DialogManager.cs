@@ -178,12 +178,19 @@ public class DialogManager : MonoBehaviour
     public void OnSkipButtonClicked()
     {
         // 현재 타이핑 코루틴 끝내기, 현재 문장 전부 출력
-        IsSkip = true;
-        if(typingSubtitle!=null)
+
+
+
+        if (typingSubtitle!=null)
         {
             StopCoroutine(typingSubtitle);
+            typingSubtitle = null;
+            subtitleText.text = subData;
         }
-
+        else
+        {
+            IsSkip = true;
+        }
 
         //if(typingSubtitle!=null)
         //{
@@ -239,14 +246,6 @@ public class DialogManager : MonoBehaviour
                     yield return new WaitForSeconds(0.001f);
                 }
             }
-               
-
- 
-
-
-
-
-
             //while (!IsSkip)
             //{
             //    // 1문장씩
