@@ -183,10 +183,10 @@ public class GameEndingController : MonoBehaviour
 
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
-        if (GameManager.gameManager._gameData.IsEatBadPotato0 == false && GameManager.gameManager._gameData.IsEatBadPotato)
+        if (GameManager.gameManager._savePageData.IsEatBadPotato0 == false && GameManager.gameManager._gameData.IsEatBadPotato)
         {
-            GameManager.gameManager._gameData.IsEatBadPotato0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsEatBadPotato0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
         if (GameManager.gameManager._gameData.IsMakeForestEnd0 == false && GameManager.gameManager._gameData.IsMakeForestEnd)
         {

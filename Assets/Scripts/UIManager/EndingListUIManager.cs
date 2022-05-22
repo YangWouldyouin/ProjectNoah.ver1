@@ -46,7 +46,7 @@ public class EndingListUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.gameManager._gameData.IsDisqualifiedEnd0)
+        if (GameManager.gameManager._savePageData.IsDisqualifiedEnd0)
         {
             Ending1.sprite = Finish_Ending;
             Ending1T.text = "인재부족";
