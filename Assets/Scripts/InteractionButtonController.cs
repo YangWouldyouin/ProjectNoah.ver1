@@ -252,6 +252,22 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsDestroying", false);
     }
 
+
+    public void PlayerCanNotSmash()
+    {
+        objData = noahSmashObject.GetComponent<ObjData>();
+        objData.objectDATA.IsSmash = false;
+        StartCoroutine(CanNotSmashText());
+    }
+
+    IEnumerator CanNotSmashText()
+    {
+        statPanel.SetActive(true);
+        statText.text = " 너무 딱딱해서 파괴할 수 없습니다. ";
+        yield return new WaitForSeconds(3f);
+        statPanel.SetActive(false);
+    }
+
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 냄새 맡기 */
