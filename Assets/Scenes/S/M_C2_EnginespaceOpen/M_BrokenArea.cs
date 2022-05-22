@@ -50,6 +50,9 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
         canBrokenDoorConductionOutline_M = GetComponent<Outline>();
         BrokenAreaOutline_M = GetComponent<Outline>();
 
+        /*선언시작*/
+        brokenAreaData_M.IsNotInteractable = true;
+
     }
 
     void DisableButton()

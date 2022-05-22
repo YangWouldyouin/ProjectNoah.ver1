@@ -28,7 +28,7 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
     public ObjectData T_canImportantMeteorData_T;
 
     /*Outline*/
-    Outline T_canMeteorCollectMachineOutline_T;
+    public Outline T_canMeteorCollectMachineOutline_T;
     Outline T_meteorButtonOutline_T;
 
     /*Animator*/
@@ -52,7 +52,7 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
         T_meteorButtonObjData_T = GetComponent<ObjData>();
 
         /*Outline*/
-        T_canMeteorCollectMachineOutline_T = T_canMeteorCollectMachine_T.GetComponent<Outline>();
+        //T_canMeteorCollectMachineOutline_T = T_canMeteorCollectMachine_T.GetComponent<Outline>();
         T_meteorButtonOutline_T = GetComponent<Outline>();
 
         /*버튼 연결*/

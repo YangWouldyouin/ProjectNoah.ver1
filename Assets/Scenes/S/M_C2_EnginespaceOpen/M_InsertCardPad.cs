@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class M_InsertCardPad : MonoBehaviour, IInteraction
 {
     /*연관있는 오브젝트*/
+    public GameObject GoToEngine;
     public GameObject M_canEngineCardKey;
 
     /*오브젝트의 상호작용 버튼들*/
@@ -117,6 +118,7 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         engineDoorAnim_M.SetBool("canEngineDoorEnd", true);
 
         /*엔진실 오픈 퍼즐 완료*/
+        GoToEngine.SetActive(true);
         GameManager.gameManager._gameData.IsCompleteOpenEngineRoom = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
@@ -154,7 +156,7 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
             insertCardPadData_M.IsNotInteractable = true;
             insertCardPadOutline_M.OutlineWidth = 0;
 
-            //문열리는 애니메이션 실행
+            //카드꽂는 애니메이션 실행
             Invoke("CardBye", 1f);
 
             InsertCardPad_sound.clip = EngineDoor_open;

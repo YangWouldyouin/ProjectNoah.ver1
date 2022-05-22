@@ -116,7 +116,10 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        if(engineDoorData_M.IsObserve)
+        IsBrokenAreaData_M.IsNotInteractable = false;
+        IsBrokenAreaOutline_M.OutlineWidth = 8;
+
+/*        if (engineDoorData_M.IsObserve)
         {
             //Debug.Log("문이랑 상호작용 가능!");
             IsBrokenAreaData_M.IsNotInteractable = false;
@@ -128,7 +131,7 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
             IsBrokenAreaData_M.IsNotInteractable = true;
             IsBrokenAreaOutline_M.OutlineWidth = 0;
             
-        }
+        }*/
     }
 
     void DoorFix()
