@@ -106,7 +106,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         {
             fadeColor.a -= 0.01f;
             fadeImage_CC.GetComponent<Image>().color = fadeColor;
-            yield return new WaitForSeconds(0.00001f);
+            yield return new WaitForSeconds(0.0001f);
         }
         fadeImage_CC.gameObject.SetActive(false);
     }
