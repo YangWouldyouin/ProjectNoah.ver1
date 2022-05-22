@@ -7,6 +7,8 @@ public class GameEndingController : MonoBehaviour
 {
     public InGameTime inGameTime;
 
+    public GameObject fadeout;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,9 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            SceneManager.LoadScene("EndingScene");
+            fadeout.SetActive(true);
+            Invoke("changeEndingScene", 1f);
+            //SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
 
         }
@@ -55,7 +59,9 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            SceneManager.LoadScene("EndingScene");
+            fadeout.SetActive(true);
+            Invoke("changeEndingScene", 1f);
+            //SceneManager.LoadScene("EndingScene");
         }
 
         if (GameManager.gameManager._gameData.IsReportCancleCount >= 3)
@@ -73,7 +79,9 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            SceneManager.LoadScene("EndingScene");
+            fadeout.SetActive(true);
+            Invoke("changeEndingScene", 1f);
+            //SceneManager.LoadScene("EndingScene");
             // 리포트 게임 엔딩씬으로 이동
             // 게임 오버
         }
@@ -90,7 +98,9 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            SceneManager.LoadScene("EndingScene");
+            fadeout.SetActive(true);
+            Invoke("changeEndingScene", 1f);
+            //SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
         }
 
@@ -106,7 +116,9 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            SceneManager.LoadScene("EndingScene");
+            fadeout.SetActive(true);
+            Invoke("changeEndingScene", 1f);
+            //SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
         }
 
@@ -122,7 +134,9 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            SceneManager.LoadScene("EndingScene");
+            fadeout.SetActive(true);
+            Invoke("changeEndingScene", 1f);
+            //SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
         }
 
@@ -138,7 +152,9 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            SceneManager.LoadScene("EndingScene");
+            fadeout.SetActive(true);
+            Invoke("changeEndingScene", 1f);
+            //SceneManager.LoadScene("EndingScene");
             //엔딩 씬 이동
         }
 
@@ -151,6 +167,11 @@ public class GameEndingController : MonoBehaviour
         {
             GameManager.gameManager._gameData.IsSaveAllEnd = true;
         }
+    }
+
+    public void changeEndingScene()
+    {
+        SceneManager.LoadScene("EndingScene");
     }
 
     public void SavePageManager()
