@@ -16,13 +16,14 @@ public class T_Pot3 : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData Pot3Data_T;
+    public ObjectData realPot3Data_T;
     public ObjectData InHealthySweetPotato3Data_T;
     public ObjectData InBadSweetPotato3Data_T;
     public ObjectData InSuperDrug3Data_T;
     public ObjectData IsFarmButton3Data_T;
     public ObjectData InUnGrownSweetPotato3Data_T;
 
-
+    public Outline realPot3Outline_T;
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
 
@@ -46,6 +47,11 @@ public class T_Pot3 : MonoBehaviour, IInteraction
         pressButton_T_Pot3.onClick.AddListener(OnPushOrPress);
 
         noCenterButton_T_Pot3 = Pot3Data_T.CenterButton1;
+
+
+        /*선언 시작*/
+        realPot3Data_T.IsNotInteractable = true;
+        realPot3Outline_T.OutlineWidth = 0;
     }
 
     void Update()

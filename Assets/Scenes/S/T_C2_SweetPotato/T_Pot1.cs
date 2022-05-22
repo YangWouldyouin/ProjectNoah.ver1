@@ -17,6 +17,7 @@ public class T_Pot1 : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData Pot1Data_T;
+    public ObjectData realPot1Data_T;
     public ObjectData InHealthySweetPotato1Data_T;
     public ObjectData InBadSweetPotato1Data_T;
     public ObjectData InSuperDrug1Data_T;
@@ -24,6 +25,7 @@ public class T_Pot1 : MonoBehaviour, IInteraction
     public ObjectData InUnGrownSweetPotato1Data_T;
 
     /*아웃라인*/
+    public Outline realPot1Outline_T;
 
     /*Collider*/
     BoxCollider Pot1_Collider;
@@ -54,6 +56,10 @@ public class T_Pot1 : MonoBehaviour, IInteraction
         pressButton_T_Pot1.onClick.AddListener(OnPushOrPress);
 
         noCenterButton_T_Pot1 = Pot1Data_T.CenterButton1;
+
+        /*선언 시작*/
+        realPot1Data_T.IsNotInteractable = true;
+        realPot1Outline_T.OutlineWidth = 0;
     }
 
     void Update()

@@ -23,6 +23,9 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
 
     void Start()
     {
+        /*선언시작*/
+        IsPotatoBoxDoorData_T.IsBite = false;
+
         dialogManager = dialogManager_CS.GetComponent<DialogManager>();
 
         /*ObjData*/

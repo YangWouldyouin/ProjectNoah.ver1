@@ -23,11 +23,19 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
     public ObjectData canTroubleLine2Data_T;
     public ObjectData canDoLineHome2Data_T;
 
-   
+    public ObjectData OpenPot1Data_T;
+    public ObjectData OpenPot2Data_T;
+    public ObjectData OpenPot3Data_T;
+
+
 
     Outline canIronPlateDoorOutline_T;
     Outline canTroubleLine2Outline_T;
     public Outline canLineHome2Outline_T;
+
+    public Outline OpenPot1Outline_T;
+    public Outline OpenPot2Outline_T;
+    public Outline OpenPot3Outline_T;
 
     //BoxCollider ironPlateCollider_T;
 
@@ -115,6 +123,19 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             //A-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(14));
         }*/
+
+        if(GameManager.gameManager._gameData.IsCompleteSmartFarmOpen)
+        {
+            //화분들 전부 상호작용 가능하게 해주기 
+            OpenPot1Data_T.IsNotInteractable = false; // 상호작용 가능하게
+            OpenPot1Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.
+
+            OpenPot2Data_T.IsNotInteractable = false; // 상호작용 가능하게
+            OpenPot2Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.
+
+            OpenPot3Data_T.IsNotInteractable = false; // 상호작용 가능하게
+            OpenPot3Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.
+        }
     }
     void DisableButton()
     {
@@ -160,6 +181,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
     {
         smartFarmDoorAnim_T.SetBool("FarmDoorMoving", true);
         smartFarmDoorAnim_T.SetBool("FarmDoorStop", true);
+
     }
 
     public void OnPushOrPress()

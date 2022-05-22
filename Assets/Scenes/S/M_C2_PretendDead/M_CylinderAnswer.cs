@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class M_CylinderAnswer : MonoBehaviour, IInteraction
 {
     /*오브젝트의 상호작용 버튼들*/
-    private Button barkButton_M_CylinderAnswer, sniffButton_M_CylinderAnswer, biteButton_M_CylinderAnswer,
+    private Button barkButton_M_CylinderAnswer, sniffButton_M_CylinderAnswer, biteButton_M_CylinderAnswer, smashButton_M_CylinderAnswer,
         pressButton_M_CylinderAnswer, noCenterButton_M_CylinderAnswer;
 
     /*ObjData*/
@@ -26,6 +26,9 @@ public class M_CylinderAnswer : MonoBehaviour, IInteraction
         biteButton_M_CylinderAnswer = CylinderAnswerData_M.BiteButton;
         //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
 
+        smashButton_M_CylinderAnswer = CylinderAnswerData_M.SmashButton;
+        smashButton_M_CylinderAnswer.onClick.AddListener(OnSmash);
+
         pressButton_M_CylinderAnswer = CylinderAnswerData_M.PushOrPressButton;
         pressButton_M_CylinderAnswer.onClick.AddListener(OnPushOrPress);
 
@@ -39,6 +42,7 @@ public class M_CylinderAnswer : MonoBehaviour, IInteraction
         sniffButton_M_CylinderAnswer.transform.gameObject.SetActive(false);
         biteButton_M_CylinderAnswer.transform.gameObject.SetActive(false);
         pressButton_M_CylinderAnswer.transform.gameObject.SetActive(false);
+        smashButton_M_CylinderAnswer.transform.gameObject.SetActive(false);
         noCenterButton_M_CylinderAnswer.transform.gameObject.SetActive(false);
     }
 
@@ -100,7 +104,10 @@ public class M_CylinderAnswer : MonoBehaviour, IInteraction
 
     public void OnSmash()
     {
-        
+        DisableButton();
+        InteractionButtonController.interactionButtonController.PlayerSmash1();
+        InteractionButtonController.interactionButtonController.PlayerSmash2();
+        InteractionButtonController.interactionButtonController.PlayerCanNotSmash();
     }
 
     public void OnUp()
