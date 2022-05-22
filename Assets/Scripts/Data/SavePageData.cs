@@ -27,6 +27,7 @@ public class SavePageData
     public bool IsDummyDataReport0;
     public bool IsInputNormalMeteor1_T_C20;
     public bool IsCompletePretendDead0;
+
     public bool IsKnowUsingSObj0;
     public bool IsFindDrugDone_T_C20;
     public bool IsCompleteOpenEngineRoom0;

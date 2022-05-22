@@ -207,6 +207,8 @@ public class SLManager2 : MonoBehaviour
 
     GameData character = new GameData();
 
+    SavePageData savePageData = new SavePageData();
+
     /*스타트 문 시작&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
     // Start is called before the first frame update
@@ -285,8 +287,48 @@ public class SLManager2 : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown("R"))
+        {
+            savePageData.IsDisqualifiedEnd0 = false;
+            savePageData.IsEatBadPotato0 = false;
+            savePageData.IsMakeForestEnd0 = false;
+            savePageData.IsManagerAbilityLack0 = false;
+            savePageData.IsInputImportantMeteorEnd0 = false;
+            savePageData.IsDiscardNoahEnd0 = false;
+            savePageData.IsSaveOnlyOneEnd0 = false;
+            savePageData.IsSaveAllEnd0 = false;
+            savePageData.IsDefyMissionEnd0 = false;
 
 
+            savePageData.IsTutorialClear0 = false;
+            savePageData.IsCWDoorOpened_M_C10 = false;
+            savePageData.IsPhotoMissionFinish0 = false;
+            savePageData.IsCompleteFindLivingKey0 = false;
+            savePageData.IsCompleteFindEngineKey0 = false;
+            savePageData.IsSmartFarmOpen_T_C20 = false;
+            savePageData.IsHealthMachineFixed_T_C20 = false;
+            savePageData.IsDummyDataReport0 = false;
+            savePageData.IsInputNormalMeteor1_T_C20 = false;
+            savePageData.IsCompletePretendDead0 = false;
+
+            savePageData.IsKnowUsingSObj0 = false;
+            savePageData.IsFindDrugDone_T_C20 = false;
+            savePageData.IsCompleteOpenEngineRoom0 = false;
+            savePageData.IsCompleteOpenLivingRoom0 = false;
+            savePageData.IsFuelabsorberFixed_E_E10 = false;
+            savePageData.IsTrashDoorBTFixed_L_L10 = false;
+            savePageData.IsTabletUnlock0 = false;
+            savePageData.IsAIVSMissionFinish0 = false;
+            savePageData.IsFakeHealthData_Tablet0 = false;
+            savePageData.IsTabletDestory0 = false;
+
+            savePageData.IsFakeCoordinateData_Tablet0 = false;
+            savePageData.IsFakeCoordinateDatafile_Tablet0 = false;
+            savePageData.IsAIDown_M_C1C30 = false;
+            savePageData.IsRevisioncomplaint0 = false;
+
+            SaveSystem.SaveCollectPage(savePageData, "ProjectNoah_SavePageData");
+        }
 
         /* 게임 리셋 */
         if (Input.GetKeyDown("l"))
