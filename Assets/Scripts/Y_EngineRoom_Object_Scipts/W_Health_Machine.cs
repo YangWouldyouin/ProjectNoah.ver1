@@ -80,7 +80,7 @@ public class W_Health_Machine : MonoBehaviour
 
     void Update()
     {
-        if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
+        if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10 && (inGameTime.days +1) >= 3)
         {
             Debug.Log("상태 체크 정기 업무 시작");
             GameManager.gameManager._gameData.IsAIReportMissionTime = true;
@@ -233,6 +233,7 @@ public class W_Health_Machine : MonoBehaviour
     {
         healthMachineFixPart_HM.GetComponent<Rigidbody>().isKinematic = false;
         healthMachineFixPart_HM.transform.parent = null;
+        healthMachineFixPartData.IsBite = false;
 
         healthMachineFixPart_HM.transform.position = new Vector3(-258.092f, 0f, 680.078f);
         healthMachineFixPart_HM.transform.rotation = Quaternion.Euler(-90, 0, 0);

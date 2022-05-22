@@ -13,6 +13,7 @@ public class InitializeWorkingScene : MonoBehaviour
     [Header("<상태체크기계 고치기>")]
     public GameObject HealthMachine;
     public GameObject HealthMachineFixData;
+    public ObjectData healthMachineFixPartData;
 
     [Header("<스마트팜 오픈>")]
     public GameObject FixedLine2; //고쳐진 줄
@@ -244,6 +245,10 @@ public class InitializeWorkingScene : MonoBehaviour
         /*상태체크기계 고치기*/
         if (intialGameData.IsHealthMachineFixed_T_C2)
         {
+            HealthMachineFixData.GetComponent<Rigidbody>().isKinematic = false;
+            HealthMachineFixData.transform.parent = null;
+            healthMachineFixPartData.IsBite = false;
+
             HealthMachineFixData.transform.position = new Vector3(-258.092f, 0f, 680.078f);
             HealthMachineFixData.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
