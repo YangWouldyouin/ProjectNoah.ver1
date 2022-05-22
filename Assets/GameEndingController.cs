@@ -176,9 +176,11 @@ public class GameEndingController : MonoBehaviour
 
     public void SavePageManager()
     {
-        if(GameManager.gameManager._gameData.IsDisqualifiedEnd0 == false && GameManager.gameManager._gameData.IsDisqualifiedEnd)
+        if(GameManager.gameManager._savePageData.IsDisqualifiedEnd0 == false && GameManager.gameManager._gameData.IsDisqualifiedEnd)
         {
-            GameManager.gameManager._gameData.IsDisqualifiedEnd0 = true;
+            GameManager.gameManager._savePageData.IsDisqualifiedEnd0 = true;
+
+
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         if (GameManager.gameManager._gameData.IsEatBadPotato0 == false && GameManager.gameManager._gameData.IsEatBadPotato)

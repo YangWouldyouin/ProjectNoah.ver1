@@ -103,12 +103,12 @@ public class PuzzleListUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.gameManager._gameData.IsTutorialClear0)
+        if (GameManager.gameManager._savePageData.IsTutorialClear0)
         {
             Puzzle1.sprite = Finish_puzzle;
             Puzzle1t.text = "항해 준비 완료";
         }
-        if (GameManager.gameManager._gameData.IsCWDoorOpened_M_C10)
+        if (GameManager.gameManager._savePageData.IsCWDoorOpened_M_C10)
         {
             Puzzle2.sprite = Finish_puzzle;
             Puzzle2t.text = "업무공간 해금";
@@ -118,92 +118,92 @@ public class PuzzleListUIManager : MonoBehaviour
         //    Puzzle3.sprite = Finish_puzzle;
         //    Puzzle3t.text = "행성 목적지 정하기";
         //}
-        if (GameManager.gameManager._gameData.IsPhotoMissionFinish0)
+        if (GameManager.gameManager._savePageData.IsPhotoMissionFinish0)
         {
             Puzzle4.sprite = Finish_puzzle;
             Puzzle4t.text = "선전용 우주선 사진 찍기";
         }
-        if (GameManager.gameManager._gameData.IsCompleteFindLivingKey0)
+        if (GameManager.gameManager._savePageData.IsCompleteFindLivingKey0)
         {
             Puzzle5.sprite = Finish_puzzle;
             Puzzle5t.text = "생활공간 카드키 획득";
         }
-        if (GameManager.gameManager._gameData.IsCompleteFindEngineKey0)
+        if (GameManager.gameManager._savePageData.IsCompleteFindEngineKey0)
         {
             Puzzle6.sprite = Finish_puzzle;
             Puzzle6t.text = "엔진실 카드키 획득";
         }
-        if (GameManager.gameManager._gameData.IsSmartFarmOpen_T_C20)
+        if (GameManager.gameManager._savePageData.IsSmartFarmOpen_T_C20)
         {
             Puzzle7.sprite = Finish_puzzle;
             Puzzle7t.text = "엔진실 카드키 획득";
         }
-        if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C20)
+        if (GameManager.gameManager._savePageData.IsHealthMachineFixed_T_C20)
         {
             Puzzle8.sprite = Finish_puzzle;
             Puzzle8t.text = "업무공간 고치기";
         }
-        if (GameManager.gameManager._gameData.IsDummyDataReport0)
+        if (GameManager.gameManager._savePageData.IsDummyDataReport0)
         {
             Puzzle9.sprite = Finish_puzzle;
             Puzzle9t.text = "더미데이터 보고";
         }
-        if (GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C20)
+        if (GameManager.gameManager._savePageData.IsInputNormalMeteor1_T_C20)
         {
             Puzzle10.sprite = Finish_puzzle;
             Puzzle10t.text = "운석 수집 성공";
         }
-        if (GameManager.gameManager._gameData.IsCompletePretendDead0)
+        if (GameManager.gameManager._savePageData.IsCompletePretendDead0)
         {
             Puzzle11.sprite = Finish_puzzle;
             Puzzle11t.text = "죽은 척 하기";
         }
-        if (GameManager.gameManager._gameData.IsKnowUsingSObj0)
+        if (GameManager.gameManager._savePageData.IsKnowUsingSObj0)
         {
             Puzzle12.sprite = Finish_puzzle;
             Puzzle12t.text = "이상한 물건 발견";
         }
-        if (GameManager.gameManager._gameData.IsFindDrugDone_T_C20)
+        if (GameManager.gameManager._savePageData.IsFindDrugDone_T_C20)
         {
             Puzzle13.sprite = Finish_puzzle;
             Puzzle13t.text = "마약 탐지 성공";
         }
-        if (GameManager.gameManager._gameData.IsCompleteOpenEngineRoom0)
+        if (GameManager.gameManager._savePageData.IsCompleteOpenEngineRoom0)
         {
             Puzzle14.sprite = Finish_puzzle;
             Puzzle14t.text = "앤진실 해금";
         }
-        if (GameManager.gameManager._gameData.IsCompleteOpenLivingRoom0)
+        if (GameManager.gameManager._savePageData.IsCompleteOpenLivingRoom0)
         {
             Puzzle15.sprite = Finish_puzzle;
             Puzzle15t.text = "생활공간 해금";
         }
-        if (GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E10)
+        if (GameManager.gameManager._savePageData.IsFuelabsorberFixed_E_E10)
         {
             Puzzle16.sprite = Finish_puzzle;
             Puzzle16t.text = "엔진실 고치기";
         }
-        if (GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L10)
+        if (GameManager.gameManager._savePageData.IsTrashDoorBTFixed_L_L10)
         {
             Puzzle17.sprite = Finish_puzzle;
             Puzzle17t.text = "생활공간 고치기";
         }
-        if (GameManager.gameManager._gameData.IsTabletUnlock0)
+        if (GameManager.gameManager._savePageData.IsTabletUnlock0)
         {
             Puzzle18.sprite = Finish_puzzle;
             Puzzle18t.text = "태블릿 해금";
         }
-        if (GameManager.gameManager._gameData.IsAIVSMissionFinish0)
+        if (GameManager.gameManager._savePageData.IsAIVSMissionFinish0)
         {
             Puzzle19.sprite = Finish_puzzle;
             Puzzle19t.text = "상반된 일지 해금";
         }
-        if (GameManager.gameManager._gameData.IsFakeHealthData_Tablet0)
+        if (GameManager.gameManager._savePageData.IsFakeHealthData_Tablet0)
         {
             Puzzle20.sprite = Finish_puzzle;
             Puzzle20t.text = "더미데이터 다운";
         }
-        if (GameManager.gameManager._gameData.IsTabletDestory0)
+        if (GameManager.gameManager._savePageData.IsTabletDestory0)
         {
             Puzzle21.sprite = Finish_puzzle;
             Puzzle21t.text = "태블릿 발각";
@@ -213,22 +213,22 @@ public class PuzzleListUIManager : MonoBehaviour
         //    Puzzle22.sprite = Finish_puzzle;
         //    Puzzle22t.text = "거짓 목적지 정하기";
         //}
-        if (GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet0)
+        if (GameManager.gameManager._savePageData.IsFakeCoordinateData_Tablet0)
         {
             Puzzle23.sprite = Finish_puzzle;
             Puzzle23t.text = "거짓 궤도 좌표 해금";
         }
-        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet0)
+        if (GameManager.gameManager._savePageData.IsFakeCoordinateDatafile_Tablet0)
         {
             Puzzle25.sprite = Finish_puzzle;
             Puzzle25t.text = "거짓 궤도 좌표 다운로드";
         }
-        if (GameManager.gameManager._gameData.IsAIDown_M_C1C30)
+        if (GameManager.gameManager._savePageData.IsAIDown_M_C1C30)
         {
             Puzzle24.sprite = Finish_puzzle;
             Puzzle24t.text = "AI 다운시키기";
         }
-        if (GameManager.gameManager._gameData.IsRevisioncomplaint0)
+        if (GameManager.gameManager._savePageData.IsRevisioncomplaint0)
         {
             Puzzle26.sprite = Finish_puzzle;
             Puzzle26t.text = "고발하기";

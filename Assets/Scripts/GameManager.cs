@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager { get; private set; }
 
     public GameData _gameData;
+    public SavePageData _savePageData;
 
     /* 1회성 임무 ( 한번 끝내면 다시 안함 ) */
     public bool IsTrashDoorFixed_L_L1 = false; //생활공간 고치기 임무
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         gameManager = this;
         _gameData = SaveSystem.Load("save_001");
+        _savePageData = SaveSystem.LoadCollectPage("ProjectNoah_SavePageData");
 
         if (_gameData == null)
         {
@@ -52,6 +54,14 @@ public class GameManager : MonoBehaviour
             SaveSystem.Save(gameData, "save_001");
 
             _gameData = gameData;
+        }
+
+        if(_savePageData==null)
+        {
+            SavePageData savePageData = new SavePageData();
+            SaveSystem.SaveCollectPage(savePageData, "ProjectNoah_SavePageData");
+
+            _savePageData = savePageData;
         }
     }
 }
