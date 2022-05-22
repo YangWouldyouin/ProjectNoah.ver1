@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InitializeWorkingScene : MonoBehaviour
 {
-    public GameObject ChangeScene;
+    public GameObject GoToEngineRoom;
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -281,7 +281,7 @@ public class InitializeWorkingScene : MonoBehaviour
         {
             engineDoorAnim.SetBool("canEngineDoorOpen", true);
             engineDoorAnim.SetBool("canEngineDoorEnd", true);
-            ChangeScene.SetActive(true);
+            GoToEngineRoom.SetActive(true);
 
             EngineCardKey.SetActive(false);
             Conduction.SetActive(false);
