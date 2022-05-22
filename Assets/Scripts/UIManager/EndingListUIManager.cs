@@ -52,49 +52,49 @@ public class EndingListUIManager : MonoBehaviour
             Ending1T.text = "인재부족";
         }
 
-        if (GameManager.gameManager._gameData.IsEatBadPotato0)
+        if (GameManager.gameManager._savePageData.IsEatBadPotato0)
         {
             Ending2.sprite = Finish_Ending;
             Ending2T.text = "상한 고구마 섭취";
         }
 
-        if (GameManager.gameManager._gameData.IsMakeForestEnd0)
+        if (GameManager.gameManager._savePageData.IsMakeForestEnd0)
         {
             Ending3.sprite = Finish_Ending;
             Ending3T.text = "새로운 생태계 구축";
         }
 
-        if (GameManager.gameManager._gameData.IsManagerAbilityLack0)
+        if (GameManager.gameManager._savePageData.IsManagerAbilityLack0)
         {
             Ending4.sprite = Finish_Ending;
             Ending4T.text = "관리자 자질 부족";
         }
 
-        if (GameManager.gameManager._gameData.IsInputImportantMeteorEnd0)
+        if (GameManager.gameManager._savePageData.IsInputImportantMeteorEnd0)
         {
             Ending5.sprite = Finish_Ending;
             Ending5T.text = "새로운 자원";
         }
 
-        if (GameManager.gameManager._gameData.IsDiscardNoahEnd0)
+        if (GameManager.gameManager._savePageData.IsDiscardNoahEnd0)
         {
             Ending6.sprite = Finish_Ending;
             Ending6T.text = "실험체 폐기";
         }
 
-        if (GameManager.gameManager._gameData.IsSaveOnlyOneEnd0)
+        if (GameManager.gameManager._savePageData.IsSaveOnlyOneEnd0)
         {
             Ending7.sprite = Finish_Ending;
             Ending7T.text = "당신이 구한 하나";
         }
 
-        if (GameManager.gameManager._gameData.IsSaveAllEnd0)
+        if (GameManager.gameManager._savePageData.IsSaveAllEnd0)
         {
             Ending8.sprite = Finish_Ending;
             Ending8T.text = "당신이 구한 하나이자 전부";
         }
 
-        if (GameManager.gameManager._gameData.IsDefyMissionEnd0)
+        if (GameManager.gameManager._savePageData.IsDefyMissionEnd0)
         {
             Ending9.sprite = Finish_Ending;
             Ending9T.text = "명령 불복종";

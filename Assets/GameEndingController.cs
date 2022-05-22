@@ -179,171 +179,169 @@ public class GameEndingController : MonoBehaviour
         if(GameManager.gameManager._savePageData.IsDisqualifiedEnd0 == false && GameManager.gameManager._gameData.IsDisqualifiedEnd)
         {
             GameManager.gameManager._savePageData.IsDisqualifiedEnd0 = true;
-
-
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
         if (GameManager.gameManager._savePageData.IsEatBadPotato0 == false && GameManager.gameManager._gameData.IsEatBadPotato)
         {
             GameManager.gameManager._savePageData.IsEatBadPotato0 = true;
             SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsMakeForestEnd0 == false && GameManager.gameManager._gameData.IsMakeForestEnd)
+        if (GameManager.gameManager._savePageData.IsMakeForestEnd0 == false && GameManager.gameManager._gameData.IsMakeForestEnd)
         {
-            GameManager.gameManager._gameData.IsMakeForestEnd0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsMakeForestEnd0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsManagerAbilityLack0 == false && GameManager.gameManager._gameData.IsManagerAbilityLack)
+        if (GameManager.gameManager._savePageData.IsManagerAbilityLack0 == false && GameManager.gameManager._gameData.IsManagerAbilityLack)
         {
-            GameManager.gameManager._gameData.IsManagerAbilityLack0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsManagerAbilityLack0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsInputImportantMeteorEnd0 == false && GameManager.gameManager._gameData.IsInputImportantMeteorEnd)
+        if (GameManager.gameManager._savePageData.IsInputImportantMeteorEnd0 == false && GameManager.gameManager._gameData.IsInputImportantMeteorEnd)
         {
-            GameManager.gameManager._gameData.IsInputImportantMeteorEnd0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsInputImportantMeteorEnd0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsDiscardNoahEnd0 == false && GameManager.gameManager._gameData.IsDiscardNoahEnd)
+        if (GameManager.gameManager._savePageData.IsDiscardNoahEnd0 == false && GameManager.gameManager._gameData.IsDiscardNoahEnd)
         {
-            GameManager.gameManager._gameData.IsDiscardNoahEnd0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsDiscardNoahEnd0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsSaveOnlyOneEnd0 == false && GameManager.gameManager._gameData.IsSaveOnlyOneEnd)
+        if (GameManager.gameManager._savePageData.IsSaveOnlyOneEnd0 == false && GameManager.gameManager._gameData.IsSaveOnlyOneEnd)
         {
-            GameManager.gameManager._gameData.IsSaveOnlyOneEnd0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsSaveOnlyOneEnd0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsSaveAllEnd0 == false && GameManager.gameManager._gameData.IsSaveAllEnd)
+        if (GameManager.gameManager._savePageData.IsSaveAllEnd0 == false && GameManager.gameManager._gameData.IsSaveAllEnd)
         {
-            GameManager.gameManager._gameData.IsSaveAllEnd0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsSaveAllEnd0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsDefyMissionEnd0 == false && GameManager.gameManager._gameData.IsDefyMissionEnd)
+        if (GameManager.gameManager._savePageData.IsDefyMissionEnd0 == false && GameManager.gameManager._gameData.IsDefyMissionEnd)
         {
-            GameManager.gameManager._gameData.IsDefyMissionEnd0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsDefyMissionEnd0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
 
 
-        if (GameManager.gameManager._gameData.IsTutorialClear0 == false && GameManager.gameManager._gameData.IsTutorialClear)
+        if (GameManager.gameManager._savePageData.IsTutorialClear0 == false && GameManager.gameManager._gameData.IsTutorialClear)
         {
-            GameManager.gameManager._gameData.IsTutorialClear0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsTutorialClear0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsCWDoorOpened_M_C10 == false && GameManager.gameManager._gameData.IsCWDoorOpened_M_C1)
+        if (GameManager.gameManager._savePageData.IsCWDoorOpened_M_C10 == false && GameManager.gameManager._gameData.IsCWDoorOpened_M_C1)
         {
-            GameManager.gameManager._gameData.IsCWDoorOpened_M_C10 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsCWDoorOpened_M_C10 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsPhotoMissionFinish0 == false && GameManager.gameManager._gameData.IsPhotoMissionFinish)
+        if (GameManager.gameManager._savePageData.IsPhotoMissionFinish0 == false && GameManager.gameManager._gameData.IsPhotoMissionFinish)
         {
-            GameManager.gameManager._gameData.IsPhotoMissionFinish0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsPhotoMissionFinish0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsCompleteFindLivingKey0 == false && GameManager.gameManager._gameData.IsCompleteFindLivingKey)
+        if (GameManager.gameManager._savePageData.IsCompleteFindLivingKey0 == false && GameManager.gameManager._gameData.IsCompleteFindLivingKey)
         {
-            GameManager.gameManager._gameData.IsCompleteFindLivingKey0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsCompleteFindLivingKey0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsCompleteFindEngineKey0 == false && GameManager.gameManager._gameData.IsCompleteFindEngineKey)
+        if (GameManager.gameManager._savePageData.IsCompleteFindEngineKey0 == false && GameManager.gameManager._gameData.IsCompleteFindEngineKey)
         {
-            GameManager.gameManager._gameData.IsCompleteFindEngineKey0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsCompleteFindEngineKey0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsSmartFarmOpen_T_C20 == false && GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2)
+        if (GameManager.gameManager._savePageData.IsSmartFarmOpen_T_C20 == false && GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2)
         {
-            GameManager.gameManager._gameData.IsSmartFarmOpen_T_C20 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsSmartFarmOpen_T_C20 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C20 == false && GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2)
+        if (GameManager.gameManager._savePageData.IsHealthMachineFixed_T_C20 == false && GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2)
         {
-            GameManager.gameManager._gameData.IsHealthMachineFixed_T_C20 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsHealthMachineFixed_T_C20 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsDummyDataReport0 == false && GameManager.gameManager._gameData.IsDummyDataReport)
+        if (GameManager.gameManager._savePageData.IsDummyDataReport0 == false && GameManager.gameManager._gameData.IsDummyDataReport)
         {
-            GameManager.gameManager._gameData.IsDummyDataReport0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsDummyDataReport0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C20 == false && GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2)
+        if (GameManager.gameManager._savePageData.IsInputNormalMeteor1_T_C20 == false && GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2)
         {
-            GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C20 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsInputNormalMeteor1_T_C20 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsCompletePretendDead0 == false && GameManager.gameManager._gameData.IsCompletePretendDead)
+        if (GameManager.gameManager._savePageData.IsCompletePretendDead0 == false && GameManager.gameManager._gameData.IsCompletePretendDead)
         {
-            GameManager.gameManager._gameData.IsCompletePretendDead0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsCompletePretendDead0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsKnowUsingSObj0 == false && GameManager.gameManager._gameData.IsKnowUsingSObj)
+        if (GameManager.gameManager._savePageData.IsKnowUsingSObj0 == false && GameManager.gameManager._gameData.IsKnowUsingSObj)
         {
-            GameManager.gameManager._gameData.IsKnowUsingSObj0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsKnowUsingSObj0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsFindDrugDone_T_C20 == false && GameManager.gameManager._gameData.IsFindDrugDone_T_C2)
+        if (GameManager.gameManager._savePageData.IsFindDrugDone_T_C20 == false && GameManager.gameManager._gameData.IsFindDrugDone_T_C2)
         {
-            GameManager.gameManager._gameData.IsFindDrugDone_T_C20 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsFindDrugDone_T_C20 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsCompleteOpenEngineRoom0 == false && GameManager.gameManager._gameData.IsCompleteOpenEngineRoom)
+        if (GameManager.gameManager._savePageData.IsCompleteOpenEngineRoom0 == false && GameManager.gameManager._gameData.IsCompleteOpenEngineRoom)
         {
-            GameManager.gameManager._gameData.IsCompleteOpenEngineRoom0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsCompleteOpenEngineRoom0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsCompleteOpenLivingRoom0 == false && GameManager.gameManager._gameData.IsCompleteOpenLivingRoom)
+        if (GameManager.gameManager._savePageData.IsCompleteOpenLivingRoom0 == false && GameManager.gameManager._gameData.IsCompleteOpenLivingRoom)
         {
-            GameManager.gameManager._gameData.IsCompleteOpenLivingRoom0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsCompleteOpenLivingRoom0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E10 == false && GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1)
+        if (GameManager.gameManager._savePageData.IsFuelabsorberFixed_E_E10 == false && GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1)
         {
-            GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E10 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsFuelabsorberFixed_E_E10 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L10 == false && GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1)
+        if (GameManager.gameManager._savePageData.IsTrashDoorBTFixed_L_L10 == false && GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1)
         {
-            GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L10 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsTrashDoorBTFixed_L_L10 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsTabletUnlock0 == false && GameManager.gameManager._gameData.IsTabletUnlock)
+        if (GameManager.gameManager._savePageData.IsTabletUnlock0 == false && GameManager.gameManager._gameData.IsTabletUnlock)
         {
-            GameManager.gameManager._gameData.IsTabletUnlock0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsTabletUnlock0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsAIVSMissionFinish0 == false && GameManager.gameManager._gameData.IsAIVSMissionFinish)
+        if (GameManager.gameManager._savePageData.IsAIVSMissionFinish0 == false && GameManager.gameManager._gameData.IsAIVSMissionFinish)
         {
-            GameManager.gameManager._gameData.IsAIVSMissionFinish0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsAIVSMissionFinish0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsFakeHealthData_Tablet0 == false && GameManager.gameManager._gameData.IsFakeHealthData_Tablet)
+        if (GameManager.gameManager._savePageData.IsFakeHealthData_Tablet0 == false && GameManager.gameManager._gameData.IsFakeHealthData_Tablet)
         {
-            GameManager.gameManager._gameData.IsFakeHealthData_Tablet0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsFakeHealthData_Tablet0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsTabletDestory0 == false && GameManager.gameManager._gameData.IsTabletDestory)
+        if (GameManager.gameManager._savePageData.IsTabletDestory0 == false && GameManager.gameManager._gameData.IsTabletDestory)
         {
-            GameManager.gameManager._gameData.IsTabletDestory0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsTabletDestory0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet0 == false && GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet)
+        if (GameManager.gameManager._savePageData.IsFakeCoordinateData_Tablet0 == false && GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet)
         {
-            GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsFakeCoordinateData_Tablet0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet0 == false && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        if (GameManager.gameManager._savePageData.IsFakeCoordinateDatafile_Tablet0 == false && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
         {
-            GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsFakeCoordinateDatafile_Tablet0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsAIDown_M_C1C30 == false && GameManager.gameManager._gameData.IsAIDown_M_C1C3)
+        if (GameManager.gameManager._savePageData.IsAIDown_M_C1C30 == false && GameManager.gameManager._gameData.IsAIDown_M_C1C3)
         {
-            GameManager.gameManager._gameData.IsAIDown_M_C1C30 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsAIDown_M_C1C30 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
-        if (GameManager.gameManager._gameData.IsRevisioncomplaint0 == false && GameManager.gameManager._gameData.IsRevisioncomplaint)
+        if (GameManager.gameManager._savePageData.IsRevisioncomplaint0 == false && GameManager.gameManager._gameData.IsRevisioncomplaint)
         {
-            GameManager.gameManager._gameData.IsRevisioncomplaint0 = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameManager.gameManager._savePageData.IsRevisioncomplaint0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
 
     }
