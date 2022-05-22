@@ -364,6 +364,7 @@ public class SLManager2 : MonoBehaviour
             character.ActiveMissionList[27] = false;
             character.ActiveMissionList[28] = false;
             character.ActiveMissionList[29] = false;
+            character.ActiveMissionList[30] = false;
 
             character.EndMissionList[0] = false;
             character.EndMissionList[1] = false;

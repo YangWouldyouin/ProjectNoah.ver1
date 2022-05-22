@@ -31,8 +31,8 @@ public class GameData
     public bool S_IsAIAwake_M_C1; // 항상 AI 활성화  
     public bool S_IsCWDoorOpened_M_C1; // 항상 조종실에서 업무공간 이동 가능
     public bool S_IsHealthMachineFixed_T_C2; // 정기적으로 상태 측정 임무 수행 가능 
-    public bool[] ActiveMissionList = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
-    public bool[] EndMissionList = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+    public bool[] ActiveMissionList = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+    public bool[] EndMissionList = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
 
 
     [Header("<1회성 임무>")]
