@@ -20,8 +20,13 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
 
     public PlayerEquipment playerEquipment_SmartFarm;
 
+    public GameObject dialogManager_CS;
+    DialogManager dialogManager;
+
     void Start()
     {
+        dialogManager = dialogManager_CS.GetComponent<DialogManager>();
+
         smartFarmLineHome2Data_T = GetComponent<ObjData>();
 
         smartFarmLineHomeOutline_T = GetComponent<Outline>();
@@ -93,6 +98,7 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
             smartFarmLineHomeOutline_T.OutlineWidth = 0; // æ∆øÙ∂Û¿Œµµ ≤®¡›¥œ¥Ÿ.
 
             Invoke("CameraBye", 1f);
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(65));
         }
     }
 

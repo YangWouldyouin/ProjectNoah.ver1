@@ -10,7 +10,7 @@ BiteDestroyController + 오브젝트 이름으로 바꾼다. */
 
 public class BiteDestroyController_PotatoBoxDoor : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-
+    public PlayerEquipment potatoEquipment;
     /*연관있는 오브젝트*/
     public GameObject T_PotatoBoxDoor;
     public GameObject T_PotatoBoxBody;
@@ -148,6 +148,7 @@ public class BiteDestroyController_PotatoBoxDoor : MonoBehaviour, IPointerUpHand
 
         //콜라이더도 끈다.
         PotatoBoxDoorCollider_T.enabled = false;
+        potatoEquipment.biteObjectName = "";
         //GameManager.gameManager._gameData.IsIronDisappear_T_C2 = true;
     }
 
