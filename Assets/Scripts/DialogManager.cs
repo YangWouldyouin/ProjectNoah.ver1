@@ -22,7 +22,7 @@ public class DialogManager : MonoBehaviour
     private Image subtitlePanelImage;
 
     bool IsDialogStarted = false;
-    bool IsSubtitleStarted = false;
+    public bool IsSubtitleStarted = false;
 
     [Header("타이핑 시간 간격")]
     public float typingSpeed = 0.02f;
@@ -224,6 +224,7 @@ public class DialogManager : MonoBehaviour
     IEnumerator SubtitlePrinting(int index)
     {
         subtitleNumber = index;
+        IsSubtitleStarted = true;
         // 대화창 나타나기 시작
         StartCoroutine(FadeInCoroutine());
         yield return new WaitForSeconds(0.5f);
@@ -316,6 +317,7 @@ public class DialogManager : MonoBehaviour
             subtitlePanelImage.GetComponent<Image>().color = fadeOutColor;
             yield return new WaitForSeconds(0.00001f);
         }
+        IsSubtitleStarted = false;
         subtitlePanelImage.enabled = false;
     }
 }
