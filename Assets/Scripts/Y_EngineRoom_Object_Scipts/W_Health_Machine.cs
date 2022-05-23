@@ -21,6 +21,7 @@ public class W_Health_Machine : MonoBehaviour
     public Vector3 healthMachineRisePos;
 
     public GameObject Report_GUI;
+    Animator reportAnim;
     public GameObject DontMove;
 
     public CancelInteractions cancelInteractions;
@@ -40,6 +41,7 @@ public class W_Health_Machine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        reportAnim = Report_GUI.GetComponent<Animator>();
         playerEquipment = BaseCanvas._baseCanvas.equipment;
         Health_Machine_Sound = GetComponent<AudioSource>();
 
@@ -264,6 +266,7 @@ public class W_Health_Machine : MonoBehaviour
         {
             Debug.Log("보고하기 임무 중");
             Report_GUI.SetActive(true);
+            reportAnim.SetBool("ReportOpen", true);
             cancelInteractions.enabled = false;
         }
         else
@@ -291,6 +294,7 @@ public class W_Health_Machine : MonoBehaviour
     public void Report()
     {
         Debug.Log("보고하기");
+        reportAnim.SetBool("Reportclose", true);
         Report_GUI.SetActive(false);
         cancelInteractions.enabled = true;
 
@@ -352,7 +356,20 @@ public class W_Health_Machine : MonoBehaviour
     public void Cancle()
     {
         Debug.Log("취소하기");
+
+        reportAnim.SetBool("ReportClose", true);
+        reportAnim.SetBool("ReportOpen", false);
+        StartCoroutine(CancelReport());
+
+    }
+
+    IEnumerator CancelReport()
+    {
+
+        yield return new WaitForSeconds(0.3f);
+
         Report_GUI.SetActive(false);
+
         cancelInteractions.enabled = true;
 
         GameManager.gameManager._gameData.IsAIReportMissionTime = false;
@@ -369,3 +386,5 @@ public class W_Health_Machine : MonoBehaviour
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 }
+
+
