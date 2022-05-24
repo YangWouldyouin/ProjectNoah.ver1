@@ -112,6 +112,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
             canPipe_Collider.enabled = true;
         }*/
+
     }
 
     public void OnObserve()
@@ -135,10 +136,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         cabinetCollider.enabled = false;
 
         //S-7 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        Debug.Log("채현파트 완료, 마무리 대화 시작");
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
-
-        Invoke("Comment", 40f);
 
         /*튜토리얼 완료*/
         GameManager.gameManager._gameData.IsEndTuto = true;
@@ -198,22 +196,6 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
     }
 
-    public void Comment()
-    {
-        Debug.Log("마이크랑 AI 티키타카 시작");
 
-        Invoke("Mike", 0.1f);
-        //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
-        Color aiTurnColor = aiButton.GetComponent<Image>().color;
-        aiTurnColor.a = 1.0f;
-        aiButton.GetComponent<Image>().color = aiTurnColor;
-        aiButton.interactable = true;
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(63));
-    }
-
-    public void Mike()
-    {
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
-    }
 
 }

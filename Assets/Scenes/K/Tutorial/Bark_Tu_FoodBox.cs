@@ -190,8 +190,7 @@ pushButton, DisableButton, smashButton;
 
         yield return new WaitForSeconds(21f);
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(9));
-        yield return new WaitForSeconds(50f);
-        StartPuzzle();
+        StartCoroutine(PuzzleStart());
         //Invoke("StartPuzzle", 90f);
     }
     //public void StartComment()
@@ -201,8 +200,24 @@ pushButton, DisableButton, smashButton;
     //    Invoke("StartPuzzle", 90f);
     //}
 
-    public void StartPuzzle()
+    IEnumerator PuzzleStart()
     {
-        gameObject.GetComponent<BoxCollider>().enabled = true;
+        yield return new WaitForSeconds(2f);
+
+        while (true)
+        {
+            if (dialogManager.IsSubtitleStarted)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            else
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+
+                break;
+            }
+        }
     }
+
 }

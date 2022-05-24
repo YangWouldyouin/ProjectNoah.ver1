@@ -98,7 +98,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     {
         if (GameManager.gameManager._gameData.IsBasicTuto && !firstCheck)
         {
-            StartCoroutine(NextPuzzle());
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
             firstCheck = true;
         }
 
@@ -142,12 +142,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         }*/
     }
 
-    IEnumerator NextPuzzle()
-    {
-        yield return new WaitForSeconds(16f);
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
 
-    }
 
     void DisableButton()
     {

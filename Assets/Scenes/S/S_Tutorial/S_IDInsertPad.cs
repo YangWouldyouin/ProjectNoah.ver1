@@ -126,8 +126,6 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
             //紬虞戚希 佃爽澗暗
             canPressCabinetDoor_Collider.enabled = true;
 
-            //S-5 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(21));
 
             IDInsertPad_Collider.enabled = false;
         }
@@ -139,6 +137,28 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
         CameraController.cameraController.CancelObserve();
         //S-4 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(20));
+        StartCoroutine(ComComment());
+    }
+
+    IEnumerator ComComment()
+    {
+        yield return new WaitForSeconds(3f);
+
+        while (true)
+        {
+            if (dialogManager.IsSubtitleStarted)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            else
+            {
+
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(21));
+
+                break;
+            }
+        }
     }
 
     public void OnSniff()

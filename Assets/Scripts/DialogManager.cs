@@ -28,7 +28,7 @@ public class DialogManager : MonoBehaviour
     public float typingSpeed = 0.02f;
     [Header("문장 시간 간격")]
     public float aiSentenceDelay = 1.8f;
-    public int subtitleSentenceDelay;
+    public float subtitleSentenceDelay = 3.6f;
 
     int aiDialogNumber;
     int subtitleNumber;
@@ -265,7 +265,7 @@ public class DialogManager : MonoBehaviour
         }
         // 대화 패널 비활성화
         // 끝날때
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1);
         StartCoroutine(FadeOutCoroutine());
     }
 
