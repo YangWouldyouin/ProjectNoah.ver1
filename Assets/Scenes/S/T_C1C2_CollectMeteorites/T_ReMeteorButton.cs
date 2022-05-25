@@ -130,7 +130,7 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerPressHand();
 
         //C-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(43));
+        //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(43));
 
         T_canMeteorCollectMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
         T_canMeteorCollectMachineOutline_T.OutlineWidth = 8;

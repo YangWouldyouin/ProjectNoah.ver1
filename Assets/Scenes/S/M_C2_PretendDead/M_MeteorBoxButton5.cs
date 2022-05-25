@@ -68,6 +68,10 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
 
         noCenterButton_M_MeteorBoxButton5 = MeteorBoxButton5ObjData_M.CenterButton1;
 
+        /*선언시작*/
+        //IsMeteoritesStorage5Data_M.IsCenterButtonDisabled = true;
+        IsMeteoritesStorage5Data_M.IsObserve = false;
+
     }
 
     void DisableButton()
@@ -115,7 +119,7 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
         {
             IsMeteoritesStorage5_Collider.enabled = false;
 
-            Noah7_Collider.enabled = false; // 노아 콜라이더도 꺼준다.
+            //Noah7_Collider.enabled = false; // 노아 콜라이더도 꺼준다.
 
             MeteorBoxButton5Data_M.IsNotInteractable = true; // 버튼 상호작용 불가능하게
             MeteorBoxButton5Outline_M.OutlineWidth = 0;
@@ -130,7 +134,7 @@ public class M_MeteorBoxButton5 : MonoBehaviour, IInteraction
         {
             IsMeteoritesStorage5_Collider.enabled = true;
 
-            Noah7_Collider.enabled = true;
+            //Noah7_Collider.enabled = true;
 
             MeteorBoxButton5_Collider.enabled = true;
         }

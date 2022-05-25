@@ -26,10 +26,17 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
     public ObjectData T_doMeteorButtonData_T;
     public ObjectData T_Box_ObjData_T;
 
+    public ObjectData AnalyticalMachineData_Observe;
+    public ObjectData MeteorBoxButton1Data_Observe;
+    public ObjectData MeteorBoxButton2Data_Observe;
+    public ObjectData MeteorBoxButton3Data_Observe;
+    public ObjectData MeteorBoxButton4Data_Observe;
+    public ObjectData MeteorBoxButton5Data_Observe;
+
     /*Outline*/
     Outline T_meteorCollectMachineOutline_T;
-    Outline T_doNormalMeteor1Outline_T;
-    Outline T_doImportantMeteorOutline_T;
+    public Outline T_doNormalMeteor1Outline_T;
+    public Outline T_doImportantMeteorOutline_T;
     Outline T_doMeteorButtonOutline_T;
 
     /*Collider*/
@@ -54,8 +61,8 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
 
         /*Outline*/
         T_meteorCollectMachineOutline_T = GetComponent<Outline>();
-        T_doNormalMeteor1Outline_T = T_DoNormalMeteor1_T.GetComponent<Outline>();
-        T_doImportantMeteorOutline_T = T_DoImportantMeteor_T.GetComponent<Outline>();
+        //T_doNormalMeteor1Outline_T = T_DoNormalMeteor1_T.GetComponent<Outline>();
+        //T_doImportantMeteorOutline_T = T_DoImportantMeteor_T.GetComponent<Outline>();
         T_doMeteorButtonOutline_T = T_DoMeteorButton_T.GetComponent<Outline>();
 
         barkButton_T_MeteorCollectMachine_T = T_meteorCollectMachineObjData_T.BarkButton;
@@ -74,6 +81,11 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
         observeButton_T_MeteorCollectMachine_T.onClick.AddListener(OnObserve);
 
         observeDisableButton_T_MeteorCollectMachine_T = T_meteorCollectMachineObjData_T.CenterButton2;
+
+
+        /*선언시작*/
+        T_meteorCollectMachineData_T.IsObserve = false;
+        //T_meteorCollectMachineData_T.IsCenterButtonChanged = false;
     }
 
     void Update()
@@ -94,6 +106,18 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
             T_IScollectMachine_Collider.enabled = false; // 운석 수집기 콜라이더도 꺼준다.
             T_Noah_Collider.enabled = false; // 노아 콜라이더도 꺼준다.
             //Debug.Log("false");
+        }
+
+        //분석기에 관찰하기 중이라면
+        else if (AnalyticalMachineData_Observe.IsObserve || MeteorBoxButton1Data_Observe || MeteorBoxButton2Data_Observe ||
+            MeteorBoxButton3Data_Observe || MeteorBoxButton4Data_Observe || MeteorBoxButton5Data_Observe)
+        {
+            T_Noah_Collider.enabled = false;
+        }
+
+        else
+        {
+            T_Noah_Collider.enabled = true;
         }
 
         if (T_Box_ObjData_T.IsUpDown)

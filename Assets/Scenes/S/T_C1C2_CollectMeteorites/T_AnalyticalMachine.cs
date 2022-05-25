@@ -65,20 +65,28 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
 
         observeButton_T_AnalyticalMachine = analyticalMachineObjData_T.CenterButton1;
         observeButton_T_AnalyticalMachine.onClick.AddListener(OnObserve);
+
+        /*선언시작*/
+        analyticalMachineData_T.IsObserve = false;
+        //analyticalMachineData_T.IsCenterButtonChanged = false;
+
     }
 
     void Update()
     {
+
         //관찰하기 상태가 아니라면 콜라이더 감지를 켜준다.
         if (!analyticalMachineData_T.IsObserve)
         {
             analyticalMachine_Collider.enabled = true;
-            Noah_Obj2_Collider.enabled = true;
+            //Noah_Obj2_Collider.enabled = true;
             isAnalyticalMachineButton_Collider.enabled = true;
 
 /*            isAnalyticalMachinePlateData_T.IsNotInteractable = true; // 접시 상호작용 불 가능하게
             isAnalyticalMachinePlateOutline_T.OutlineWidth = 0;*/
         }
+
+
     }
 
     void DisableButton()
@@ -125,7 +133,7 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
         AnalyticalMachine_Sound.Play();
 
         analyticalMachine_Collider.enabled = false;
-        Noah_Obj2_Collider.enabled = false;
+        //Noah_Obj2_Collider.enabled = false;
         isAnalyticalMachineButton_Collider.enabled = false;
 
         isAnalyticalMachinePlateData_T.IsNotInteractable = false; // 접시 상호작용 가능하게
