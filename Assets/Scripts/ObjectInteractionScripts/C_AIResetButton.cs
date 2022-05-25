@@ -128,6 +128,7 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         AIColor.a = 1.0f;
         aiIcon_AI.GetComponent<Image>().color = AIColor;
         aiIcon_AI.interactable = true;
+
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
 
         StartCoroutine(PrintSecondDialog()); // 1번째 대사 끝날때까지 기다렸다가 2번째 대사 출력
