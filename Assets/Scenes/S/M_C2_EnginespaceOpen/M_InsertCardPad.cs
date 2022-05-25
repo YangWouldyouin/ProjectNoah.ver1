@@ -63,6 +63,8 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
         /*선언시작*/
         insertCardPadData_M.IsObserve = false;
+        insertCardPadData_M.IsCenterButtonChanged = false;
+
 
     }
 
