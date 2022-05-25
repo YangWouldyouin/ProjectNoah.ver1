@@ -66,6 +66,10 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
         canPipeOutline_M = S_canPipe.GetComponent<Outline>();
 
+
+        /*선언 시작*/
+        canpressCabinetBody1Data_M.IsNotInteractable = true;
+
     }
 
     void DisableButton()
