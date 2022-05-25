@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20288,6 +20288,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
+--- !u!1 &467409213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 467409215}
+  - component: {fileID: 467409214}
+  m_Layer: 0
+  m_Name: Steam Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &467409214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467409213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6ce142c1ce6845938b1ce6bff01b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steamAchieveData: {fileID: 11400000, guid: 85a3117d427a4f944852a96038808bb0, type: 2}
+--- !u!4 &467409215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467409213}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1331.4531, y: 118.275185, z: 241.56363}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &467536492
 GameObject:
   m_ObjectHideFlags: 0
@@ -26981,6 +27025,7 @@ MonoBehaviour:
     IsBasicTuto: 0
     IsMiddleTuto: 0
     StopIDConsoleSpeak: 0
+    BoxZoneCheck: 0
     IsRealMiddleTuto: 0
     IsEndTuto: 0
     IsTutorialClear: 0
@@ -27015,6 +27060,9 @@ MonoBehaviour:
     IsEatBadPotato: 0
     IsWirelessUI_firstEnter: 0
     IsWirelessMCTabletCheck: 0
+    IsPhotoTime: 0
+    IsAIReportMissionTime: 0
+  _savePageData:
     IsDisqualifiedEnd0: 0
     IsEatBadPotato0: 0
     IsMakeForestEnd0: 0
@@ -27048,8 +27096,6 @@ MonoBehaviour:
     IsFakeCoordinateDatafile_Tablet0: 0
     IsAIDown_M_C1C30: 0
     IsRevisioncomplaint0: 0
-    IsPhotoTime: 0
-    IsAIReportMissionTime: 0
   IsTrashDoorFixed_L_L1: 0
   IsCanMeteorGet: 0
   IsSmellDone: 0
@@ -65374,6 +65420,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1333451050, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1504452542, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -65509,6 +65559,10 @@ PrefabInstance:
     - target: {fileID: 2239342715147733476, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1472.0195
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295004328191567575, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3105269335064640555, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
@@ -66812,6 +66866,10 @@ PrefabInstance:
       propertyPath: Noah_Bark
       value: 
       objectReference: {fileID: 8300000, guid: ba69a204ef56e174b97786a6a7d0c6fd, type: 3}
+    - target: {fileID: 2963120970095792786, guid: 4a21d8cc5a1259f449fa8379504ce4f5, type: 3}
+      propertyPath: achieveData
+      value: 
+      objectReference: {fileID: 11400000, guid: 85a3117d427a4f944852a96038808bb0, type: 2}
     - target: {fileID: 2963120970095792786, guid: 4a21d8cc5a1259f449fa8379504ce4f5, type: 3}
       propertyPath: BasicUI_Click
       value: 
