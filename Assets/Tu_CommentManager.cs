@@ -81,6 +81,7 @@ public class Tu_CommentManager : MonoBehaviour
             {
                 dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
                 StartCoroutine(Comment());
+                StartCoroutine(Comment_Mike());
 
                 break;
             }
@@ -100,20 +101,39 @@ public class Tu_CommentManager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
 
-            else
+            else if (!dialogManager.IsSubtitleStarted)
             {
-                Debug.Log("마이크랑 AI 티키타카 시작");
-
-                //dialogManager.StartCoroutine(dialogManager.PrintSubtitles(24));
                 Color aiTurnColor = aiButton.GetComponent<Image>().color;
                 aiTurnColor.a = 1.0f;
                 aiButton.GetComponent<Image>().color = aiTurnColor;
                 aiButton.interactable = true;
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(63));
-                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(25));
-                //Invoke("Mike", 0.2f);
 
-                StartCoroutine(NewsTalk());
+                break;
+            }
+
+        }
+
+
+    }
+
+    IEnumerator Comment_Mike()
+    {
+
+        yield return new WaitForSeconds(1.7f);
+
+        while (true)
+        {
+            if (dialogManager.IsSubtitleStarted)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            else
+            {
+                Debug.Log("마이크랑 AI 티키타카 시작");
+
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(25));
 
                 break;
             }
@@ -122,11 +142,11 @@ public class Tu_CommentManager : MonoBehaviour
 
     }
 
-    public void Mike()
+    /*public void Mike()
     {
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(25));
         StartCoroutine(NewsTalk());
-    }
+    }*/
 
 
     //뮤스 팝업창 뜨고 관련 대화
@@ -150,6 +170,7 @@ public class Tu_CommentManager : MonoBehaviour
                 GameManager.gameManager._gameData.afterFirstTalk = true;
                 dialogManager.StartCoroutine(dialogManager.PrintSubtitles(25));
                 StartCoroutine(TuTalkEnd());
+                StartCoroutine(TuTalkEnd_Mike());
 
                 break;
             }
@@ -168,33 +189,48 @@ public class Tu_CommentManager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
 
-            else
+            else if(!dialogManager.IsSubtitleStarted)
             {
                 Debug.Log("마지막 대화 시작");
 
                 GameManager.gameManager._gameData.afterNewsTalk = true;
 
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(64));
-                Invoke("MikeLast", 0.1f);
+                StartCoroutine(AILastTalk());
+
+
+                break;
+            }
+
+        }
+    }
+
+    IEnumerator TuTalkEnd_Mike()
+    {
+        yield return new WaitForSeconds(3.2f);
+
+        while (true)
+        {
+            if (dialogManager.IsSubtitleStarted)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            else
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(26));
 
                 break;
             }
         }
-    }
 
-    void MikeLast()
-    {
-        //GameManager.gameManager._gameData.IsTutorialClear = true;
-        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(26));
-        StartCoroutine(AILastTalk());
 
     }
 
 
     IEnumerator AILastTalk()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         
         while (true)
         {
@@ -203,7 +239,7 @@ public class Tu_CommentManager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
 
-            else
+            else if(!dialogManager.IsSubtitleStarted)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(66));
 
