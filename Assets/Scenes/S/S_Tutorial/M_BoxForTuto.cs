@@ -151,11 +151,17 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
             InteractionButtonController.interactionButtonController.risePosition = boxRisePos;
             InteractionButtonController.interactionButtonController.PlayerRise2();
 
-            if(!IDCardData.IsBite && noMoreTimer == false)
+            // 박스 위치가 맞고 오르기를 했다면 타이머 스타트
+            if(GameManager.gameManager._gameData.BoxZoneCheck == true)
             {
-                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
                 TimerManager.timerManager.TimerStart(120);
                 Invoke("TutoFailCheck", 120f);
+            }
+
+
+            if (!IDCardData.IsBite && noMoreTimer == false)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(18));
 
                 noMoreTimer = true;
             }

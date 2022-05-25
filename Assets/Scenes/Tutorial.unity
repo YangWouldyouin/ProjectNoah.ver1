@@ -10033,6 +10033,7 @@ MonoBehaviour:
     IsBasicTuto: 0
     IsMiddleTuto: 0
     StopIDConsoleSpeak: 0
+    BoxZoneCheck: 0
     IsRealMiddleTuto: 0
     IsEndTuto: 0
     IsTutorialClear: 0
@@ -25166,6 +25167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3ec3842ac7ed049a0b2d0ba641823c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Noah_Collider3D: {fileID: 1397759963577864825}
   IsCantClickBoxData: {fileID: 11400000, guid: 86f86a61a9a3b434cabd3af223c21ff2, type: 2}
   IsCantClickBoxnOutline: {fileID: 1055033588}
 --- !u!1 &1055244889
@@ -26252,13 +26254,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085795123}
-  m_LocalRotation: {x: 0.40790778, y: -0, z: -0, w: 0.9130231}
+  m_LocalRotation: {x: 0.21029112, y: -0, z: -0, w: 0.9776388}
   m_LocalPosition: {x: -30.147, y: 1.103, z: -25.354}
   m_LocalScale: {x: 0.8854836, y: 0.050400868, z: 0.035154294}
   m_Children: []
   m_Father: {fileID: 1143476900}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 48.147, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 24.279, y: 0, z: 0}
 --- !u!65 &1085795125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26270,8 +26272,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.8836968, y: 3.1746871, z: 60}
-  m_Center: {x: -0.7478542, y: 0.12806219, z: -0.25294036}
+  m_Size: {x: 1.548856, y: 8.564297, z: 60.000004}
+  m_Center: {x: -0.14134674, y: -0.59367293, z: -25.43}
 --- !u!23 &1085795126
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44030,6 +44032,102 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2273788, y: 6.440016, z: 2.08181}
   m_Center: {x: -1.0010382, y: 2.720006, z: 0.034068424}
+--- !u!82 &1816639647
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816639641}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1818532791
 GameObject:
   m_ObjectHideFlags: 0
@@ -47121,6 +47219,7 @@ MonoBehaviour:
   nameText: {fileID: 2065916714}
   AIPanel: {fileID: 220267153}
   subtitlePanel: {fileID: 184596018}
+  IsDialogStarted: 0
   IsSubtitleStarted: 0
   typingSpeed: 0.04
   aiSentenceDelay: 1.8

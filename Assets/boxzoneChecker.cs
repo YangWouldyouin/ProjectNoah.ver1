@@ -55,7 +55,7 @@ public class boxzoneChecker : MonoBehaviour
                 EnterCheck = true;
             }
 
-
+            GameManager.gameManager._gameData.BoxZoneCheck = true;
             GoodBoxPosition = true;
 
         }
@@ -69,6 +69,8 @@ public class boxzoneChecker : MonoBehaviour
 
             Debug.Log("부딪히기 해제");
             IDConsoleForBox.IsCenterButtonChanged = false;
+
+            GameManager.gameManager._gameData.BoxZoneCheck = false;
         }
     }
 }

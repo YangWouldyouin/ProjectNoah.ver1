@@ -57,7 +57,11 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         iDConsoleOutline_S = GetComponent<Outline>();
         canIDCardOutline_S = S_canIDCard.GetComponent<Outline>();
 
-        /*BoxCollider*//*
+
+
+        /*BoxCollider*/
+        IDConsole_Collider = GetComponent<BoxCollider>();
+        /*
         IDConsole_Collider = GetComponent<BoxCollider>();
         BoxForConsole_Collider = S_BoxForConsole.GetComponent<BoxCollider>();*/
         IsIDInsertPad_Collider = IsIDInsertPad.GetComponent<BoxCollider>();
@@ -109,6 +113,19 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
             IDConsoleData_S.IsClicked = false;
         }
+
+        if(IDConsoleData_S.IsObserve)
+        {
+            IDConsole_Collider.enabled = false;
+            IsIDInsertPad_Collider.enabled = true;
+        }
+
+        else
+        {
+            IDConsole_Collider.enabled = true;
+            IsIDInsertPad_Collider.enabled = false;
+        }
+
 /*
         if(boxForConsoleData_S.IsUpDown)
         {
@@ -192,8 +209,6 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         /*        IDConsoleData_S.IsNotInteractable = false;
                 iDConsoleOutline_S.OutlineWidth = 8;*/
-
-        IsIDInsertPad_Collider.enabled = true;
 
     }
 

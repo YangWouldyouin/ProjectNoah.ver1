@@ -141,10 +141,16 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
         //S-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
+        Invoke("ByePipeView", 5f);
 
         /*透塘軒杖 刃戟*/
         GameManager.gameManager._gameData.IsEndTuto = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+    }
+
+    void ByePipeView()
+    {
+        CameraController.cameraController.CancelObserve();
     }
 
     public void OnBark()
