@@ -70,6 +70,8 @@ public class PuzzleListUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        SaveSystem.LoadCollectPage("ProjectNoah_SavePageData");
         Puzzle1 = Puzzle1.GetComponent<Image>();
         Puzzle2 = Puzzle2.GetComponent<Image>();
         Puzzle3 = Puzzle3.GetComponent<Image>();

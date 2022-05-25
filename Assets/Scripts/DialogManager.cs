@@ -21,7 +21,7 @@ public class DialogManager : MonoBehaviour
     public GameObject subtitlePanel;
     private Image subtitlePanelImage;
 
-    bool IsDialogStarted = false;
+    public bool IsDialogStarted = false;
     public bool IsSubtitleStarted = false;
 
     [Header("타이핑 시간 간격")]
@@ -95,6 +95,7 @@ public class DialogManager : MonoBehaviour
     // 플레이해보면서 넣고 싶은자리에 적당히넣으면됨
     IEnumerator AIDialogPrinting(int AIIndex)
     {
+        IsDialogStarted = true;
         // ai 오디오 나오는 자리
         a = Random.Range(0, 3);
         dialogSource.clip = aiAudio[a];
@@ -133,6 +134,7 @@ public class DialogManager : MonoBehaviour
     void EndPanelAnim()
     {
         AIPanel.SetActive(false);
+        IsDialogStarted = false;
     }
     void StartPanelAnim()
     {

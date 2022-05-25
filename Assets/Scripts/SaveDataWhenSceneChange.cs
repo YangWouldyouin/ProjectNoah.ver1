@@ -141,17 +141,14 @@ public class SaveDataWhenSceneChange : MonoBehaviour
 
         if (playerEquipment.pushObjectName != "") // 만일 플레이어가 물건을 가지고 다른씬으로 이동하려고 하면
         {
-            //pushObject = GameObject.Find(playerEquipment.pushObjectName).gameObject;
             // 현재 씬의 물건 이름 리스트에서 이름을 비교해서 현재 물건의 인덱스를 찾음
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.pushObjectName));
-            // 현재 씬의 물건 오브젝트 리스트에서 위에서 찾은 인덱스에 해당하는 오브젝트가 비활성태 상태라고 저장함
+            // 현재 씬의 물건 오브젝트 리스트에서 위에서 찾은 인덱스에 해당하는 오브젝트가 비활성화 상태라고 저장함
             currentPortableObjectData.IsObjectActiveList[idx] =  false;
         }
-        else if(playerEquipment.biteObjectName != "") // ���� �ִ� ������Ʈ�� ������
+        else if(playerEquipment.biteObjectName != "") 
         {
-            //biteObject = GameObject.Find(playerEquipment.biteObjectName).gameObject;
             int idx = portableObjectNameList.FindIndex(a => a.Contains(playerEquipment.biteObjectName));
-            // ���� ���ͺ�������Ʈ����Ʈ�� �ش� ������Ʈ�� ���� �������� ����
             currentPortableObjectData.IsObjectActiveList[idx] = false;
         }
 

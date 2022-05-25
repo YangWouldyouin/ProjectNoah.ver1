@@ -129,6 +129,25 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         aiIcon_AI.GetComponent<Image>().color = AIColor;
         aiIcon_AI.interactable = true;
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
+
+        StartCoroutine(PrintSecondDialog()); // 1번째 대사 끝날때까지 기다렸다가 2번째 대사 출력
+    }
+
+    IEnumerator PrintSecondDialog()
+    {
+        yield return new WaitForSeconds(2f);
+        while (true)
+        {
+            if (dialogManager.IsDialogStarted)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+            else
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(2));
+                break;
+            }
+        }
     }
 
     public void OnSniff()
