@@ -63,9 +63,22 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
         /*선언시작*/
         insertCardPadData_M.IsObserve = false;
-        insertCardPadData_M.IsCenterButtonChanged = false;
+        insertCardPadData_M.IsCenterButtonChanged = true;
 
 
+    }
+
+    void Update()
+    {
+       if( insertCardPadData_M.IsCollision)
+        {
+            insertCardPadData_M.IsCenterButtonChanged = false;
+        }
+
+       else
+        {
+            insertCardPadData_M.IsCenterButtonChanged = true;
+        }
     }
 
     void DisableButton()
