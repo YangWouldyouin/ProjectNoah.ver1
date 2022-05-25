@@ -28,6 +28,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public Image fadeImage_CC;
     public Button aiIcon_CC;
 
+    public GameObject dontClick;
+
     public GameObject dialogManager_CC;
     DialogManager dialogManager;
 
@@ -72,6 +74,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             noahAnim_CC.SetBool("IsSleeping", true);
             StartCoroutine(NoahWakeUp()); // 잠들어 있던 노아가 깨어난다
             StartCoroutine(FadeCoroutine()); //화면이 밝아진다
+            Invoke("dontClickoff", 5f);
             aiIcon_CC.interactable = false;
         }
         else
@@ -109,6 +112,11 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             yield return new WaitForSeconds(0.0001f);
         }
         fadeImage_CC.gameObject.SetActive(false);
+    }
+
+    public void dontClickoff()
+    {
+        dontClick.SetActive(false);
     }
 
     void Update()
