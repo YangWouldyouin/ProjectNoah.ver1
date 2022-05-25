@@ -287,7 +287,7 @@ public class SLManager2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("R"))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             savePageData.IsDisqualifiedEnd0 = false;
             savePageData.IsEatBadPotato0 = false;
