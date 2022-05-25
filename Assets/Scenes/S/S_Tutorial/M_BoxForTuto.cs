@@ -126,6 +126,8 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
 
         /* 애니메이션 실행 */
         InteractionButtonController.interactionButtonController.playerPush();
+
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(28));
     }
 
     //InteractionButtonController.interactionButtonController.pushPos = new Vector3(-0.011f, -0.384f, -0.229f);
