@@ -23,4 +23,6 @@ public class BaseCanvas : MonoBehaviour
     public TMPro.TextMeshProUGUI objectNameText;
 
     public PlayerEquipment equipment;
+
+    public PortableObjectData workRoomData;
 }
