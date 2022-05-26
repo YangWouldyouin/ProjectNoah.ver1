@@ -9,7 +9,9 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
     private Button barkButton_L_TDBT_Body, sniffButton_L_TDBT_Body, biteButton_L_TDBT_Body, pushButton_L_TDBT_Body, noCenterButton_L_TDBT_Body;
     ObjData TDBT_BodyData_L;
+
     PlayerEquipment playerEquipment;
+    GameObject portableObject;
 
     public GameObject TDBT_fixPart;
 
@@ -20,6 +22,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
     void Start()
     {
+        portableObject = InteractionButtonController.interactionButtonController.portableObjects;
         dialogManager = dialog_CS.GetComponent<DialogManager>();
 
         if (!GameManager.gameManager._gameData.IsFirstEnterLiving)
@@ -96,6 +99,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         TDBT_fixPart.transform.position = new Vector3(-27.253f, 1.844f, 35.729f);
         TDBT_fixPart.transform.rotation = Quaternion.Euler(0, -90, 0);
         TDBT_fixPart.transform.localScale = new Vector3(50f, 50.00002f, 50.00002f);
+        TDBT_fixPart.transform.parent = portableObject.transform;
 
         //TDBT_fixPartData.enabled = false;
         //TDBT_BodyData_L.enabled = false;
@@ -107,6 +111,8 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
         TDBT_fixPartData.IsBite = false;
         playerEquipment.biteObjectName = "";
+
+
 
         GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 = true;
         GameManager.gameManager._gameData.ActiveMissionList[15] = false;

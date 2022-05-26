@@ -7,6 +7,8 @@ public class E_FA_Body : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pushButton, noCenterButton;
     PlayerEquipment playerEquipment;
+    GameObject portableObject;
+
     ObjData FA_BodyData_E;
 
     public GameObject FA_fuelabsorberfixPart;
@@ -35,6 +37,7 @@ public class E_FA_Body : MonoBehaviour, IInteraction
         }
 
         playerEquipment = BaseCanvas._baseCanvas.equipment;
+        portableObject = InteractionButtonController.interactionButtonController.portableObjects;
 
         FA_BodyData_E = GetComponent<ObjData>();
 
@@ -90,6 +93,7 @@ public class E_FA_Body : MonoBehaviour, IInteraction
 
         FA_fuelabsorberfixPart.GetComponent<Rigidbody>().isKinematic = false;
         FA_fuelabsorberfixPart.transform.parent = null;
+        FA_fuelabsorberfixPart.transform.parent = portableObject.transform;
 
         FA_fuelabsorberfixPartData.IsBite = false;
         playerEquipment.biteObjectName = "";
