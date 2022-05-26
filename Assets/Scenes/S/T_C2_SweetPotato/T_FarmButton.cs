@@ -37,6 +37,8 @@ public class T_FarmButton : MonoBehaviour, IInteraction
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
 
+    PortableObjectData portableData; // 이후 워크룸에서 안보이게 하기 위해
+
     void Start()
     {
         dialogManager = dialogManager_CS.GetComponent<DialogManager>();
@@ -182,6 +184,11 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         T_IsGrownHealthy2.SetActive(true);
         T_IsGrownHealthy3.SetActive(true);
 
+        // 이제 업무공간에 고구마 있으므로 직접 true로 변경
+        portableData.IsObjectActiveList[21] = true;
+        portableData.IsObjectActiveList[22] = true;
+        portableData.IsObjectActiveList[23] = true;
+
         //A-7 알림 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(19));
 
@@ -203,6 +210,11 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         T_IsGrownHealthy5.SetActive(true);
         T_IsGrownHealthy6.SetActive(true);
 
+        // 이제 업무공간에 고구마 있으므로 직접 true로 변경
+        portableData.IsObjectActiveList[18] = true;
+        portableData.IsObjectActiveList[19] = true;
+        portableData.IsObjectActiveList[20] = true;
+
         //A-7 알림 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(19));
 
@@ -223,6 +235,11 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         T_IsGrownHealthy7.SetActive(true);
         T_IsGrownHealthy8.SetActive(true);
         T_IsGrownHealthy9.SetActive(true);
+
+        // 이제 업무공간에 고구마 있으므로 직접 true로 변경
+        portableData.IsObjectActiveList[15] = true;
+        portableData.IsObjectActiveList[16] = true;
+        portableData.IsObjectActiveList[17] = true;
 
         //A-7 알림 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(19));

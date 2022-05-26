@@ -18,13 +18,18 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
     public ObjectData canFixedLine2Data_T;
     Outline canFixedLine2Outline_T;
 
-    public PlayerEquipment playerEquipment_SmartFarm;
+
 
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
 
+    GameObject portableGroup; // 다시 포터블 그룹의 자식으로 넣어주기 위함
+    PlayerEquipment playerEquipment_SmartFarm;
     void Start()
     {
+        playerEquipment_SmartFarm = BaseCanvas._baseCanvas.equipment;
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
+
         dialogManager = dialogManager_CS.GetComponent<DialogManager>();
 
         smartFarmLineHome2Data_T = GetComponent<ObjData>();
@@ -83,9 +88,11 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
             T_canFixedLine2.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
             T_canFixedLine2.transform.parent = null;
 
+
             //멀쩡한 선을 기계에 자동 장착
             T_canFixedLine2.transform.position = new Vector3(-258.06f, 0.674f, 670.384f); //위치 값
             T_canFixedLine2.transform.rotation = Quaternion.Euler(0, -90, 90); // 각도 값 
+            T_canFixedLine2.transform.parent = portableGroup.transform;
             // new player equipment - bite 초기화
             playerEquipment_SmartFarm.biteObjectName = "";
 

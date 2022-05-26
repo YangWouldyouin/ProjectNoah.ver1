@@ -34,6 +34,7 @@ public class W_Health_Machine : MonoBehaviour
     AudioSource Health_Machine_Sound;
     public AudioClip Health_Machine_cheak;
 
+    GameObject portableGroup; // 다시 포터블 그룹의 자식으로 넣어주기 위함
     PlayerEquipment playerEquipment;
 
     //노아 내려가는 애니메이션 필요
@@ -41,6 +42,7 @@ public class W_Health_Machine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
         reportAnim = Report_GUI.GetComponent<Animator>();
         playerEquipment = BaseCanvas._baseCanvas.equipment;
         Health_Machine_Sound = GetComponent<AudioSource>();
@@ -242,6 +244,7 @@ public class W_Health_Machine : MonoBehaviour
 
         healthMachineFixPart_HM.transform.position = new Vector3(-258.092f, 0f, 680.078f);
         healthMachineFixPart_HM.transform.rotation = Quaternion.Euler(-90, 0, 0);
+        healthMachineFixPart_HM.transform.parent = portableGroup.transform;
 
         healthMachineFixPartData.IsNotInteractable = true;
         healthMachineFixPartDataOutline.OutlineWidth = 0;

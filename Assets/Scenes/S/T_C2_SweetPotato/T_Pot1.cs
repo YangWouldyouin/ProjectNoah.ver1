@@ -18,6 +18,7 @@ public class T_Pot1 : MonoBehaviour, IInteraction
     /*ObjData*/
     ObjData Pot1Data_T;
     public ObjectData realPot1Data_T;
+
     public ObjectData InHealthySweetPotato1Data_T;
     public ObjectData InBadSweetPotato1Data_T;
     public ObjectData InSuperDrug1Data_T;
@@ -33,8 +34,14 @@ public class T_Pot1 : MonoBehaviour, IInteraction
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
 
+    PlayerEquipment playerEquipment; // 물기 정보 데이터를 초기화하기 위함
+    PortableObjectData portableData; // 이후 워크룸에서 안보이게 하기 위해
+
     void Start()
     {
+        playerEquipment = BaseCanvas._baseCanvas.equipment;
+        portableData = BaseCanvas._baseCanvas.workRoomData;
+
         dialogManager = dialogManager_CS.GetComponent<DialogManager>();
 
         /*ObjData*/
@@ -108,7 +115,6 @@ public class T_Pot1 : MonoBehaviour, IInteraction
         if (InBadSweetPotato1Data_T.IsBite)
         {
             Invoke("BadPotatoBye1", 2f);
-
         }
 
         /*건강한 고구마를 심고 슈퍼파워 영양제를 뿌리면 새로운 생태계 구축 엔딩*/
@@ -121,13 +127,20 @@ public class T_Pot1 : MonoBehaviour, IInteraction
         {
             Invoke("CanTSeeSuperDrug1", 2f);
         }
-
-
     }
 
     void CanTSeeUnGrown1()
     {
+        // 강제로 물기 취소했기 때문에 물기 관련 변수 직접 초기화
+        playerEquipment.biteObjectName = "";
+        InUnGrownSweetPotato1Data_T.IsBite = false;
+
+        // 앞으로 안보이게 끄기
         T_InUnGrownSweetPotato1.SetActive(false);
+
+        // 이제 업무공간에 덜자란 고구마 없으므로 직접 false로 변경
+        portableData.IsObjectActiveList[14] = false;
+
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(17));
 
@@ -136,7 +149,15 @@ public class T_Pot1 : MonoBehaviour, IInteraction
 
     void BadPotatoBye1()
     {
+        // 강제로 물기 취소했기 때문에 물기 관련 변수 직접 초기화
+        playerEquipment.biteObjectName = "";
+        InBadSweetPotato1Data_T.IsBite = false;
+
         T_InBadSweetPotato1.SetActive(false);
+
+        // 이제 업무공간에 안건강한 고구마 없으므로  직접 false로 변경
+        portableData.IsObjectActiveList[12] = false;
+
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(17));
 
@@ -147,7 +168,15 @@ public class T_Pot1 : MonoBehaviour, IInteraction
 
     void HealthyPotatoBye1()
     {
+        // 강제로 물기 취소했기 때문에 물기 관련 변수 직접 초기화
+        playerEquipment.biteObjectName = "";
+        InHealthySweetPotato1Data_T.IsBite = false;
+
         T_InHealthySweetPotato1.SetActive(false);
+
+        // 이제 업무공간에 고구마 없으므로  직접 false로 변경
+        portableData.IsObjectActiveList[13] = false;
+
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(17));
 
@@ -157,7 +186,15 @@ public class T_Pot1 : MonoBehaviour, IInteraction
 
     void CanTSeeSuperDrug1()
     {
+        // 강제로 물기 취소했기 때문에 물기 관련 변수 직접 초기화
+        playerEquipment.biteObjectName = "";
+        InSuperDrug1Data_T.IsBite = false;
+
         T_InSuperDrug1.SetActive(false);
+
+        // 이제 업무공간에 슈퍼약  없으므로  직접 false로 변경
+        portableData.IsObjectActiveList[11] = false;
+
         Debug.Log("생태계 구축 엔딩");
         GameManager.gameManager._gameData.IsMakeForestEnd = true; // 엔딩으로 향하는 거기때문에 저장
         GameManager.gameManager._gameData.ActiveMissionList[21] = false;

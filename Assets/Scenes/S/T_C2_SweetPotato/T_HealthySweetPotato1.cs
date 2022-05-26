@@ -13,6 +13,8 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
     /*ObjData*/
     ObjData HealthySweetPotato1Data_T;
 
+    PortableObjectData portableData; // 이후 워크룸에서 안보이게 하기 위해
+
     void Start()
     {
         /*ObjData*/
@@ -64,7 +66,11 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerEat();
 
+        // 이제 업무공간에 고구마 없으므로 직접 false로 변경
+        portableData.IsObjectActiveList[13] = false;
+
         // 스탯이 올라간다.
+        NoahStatController.noahStatController.IncreaseStatBar();
 
         GameManager.gameManager._gameData.sweetPotatoEat[1] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
