@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class BaseCanvas : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class BaseCanvas : MonoBehaviour
 
     public GameObject noahPlayer;
     public GameObject noahFBX;
+    public NavMeshAgent agent;
     public GameObject myMouth;
  
     public TMPro.TextMeshProUGUI objectText;

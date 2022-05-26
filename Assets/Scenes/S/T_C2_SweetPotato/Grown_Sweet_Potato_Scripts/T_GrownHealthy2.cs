@@ -13,6 +13,8 @@ public class T_GrownHealthy2 : MonoBehaviour, IInteraction
     /*ObjData*/
     ObjData GrownHealthy2Data_T;
 
+    PortableObjectData portableData; // 이후 워크룸에서 안보이게 하기 위해
+
     void Start()
     {
         /*ObjData*/
@@ -63,6 +65,10 @@ public class T_GrownHealthy2 : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerEat();
+
+        // 스탯 올라가게??
+
+        portableData.IsObjectActiveList[22] = false;
 
         GameManager.gameManager._gameData.sweetPotatoEat[3] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

@@ -142,7 +142,7 @@ public class T_Pot2 : MonoBehaviour, IInteraction
 
         T_InBadSweetPotato2.SetActive(false);
 
-        // 이제 업무공간에 덜자란 고구마 없으므로 직접 false로 변경
+        // 이제 업무공간에 상한 고구마 없으므로 직접 false로 변경
         portableData.IsObjectActiveList[12] = false;
 
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
@@ -161,7 +161,7 @@ public class T_Pot2 : MonoBehaviour, IInteraction
 
         T_InHealthySweetPotato2.SetActive(false);
 
-        // 이제 업무공간에 덜자란 고구마 없으므로 직접 false로 변경
+        // 이제 업무공간에 고구마 없으므로 직접 false로 변경
         portableData.IsObjectActiveList[13] = false;
 
         //A-5 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
