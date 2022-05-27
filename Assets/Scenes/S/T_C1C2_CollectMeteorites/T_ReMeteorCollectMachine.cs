@@ -112,7 +112,7 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
         else if (AnalyticalMachineData_Observe.IsObserve || MeteorBoxButton1Data_Observe || MeteorBoxButton2Data_Observe ||
             MeteorBoxButton3Data_Observe || MeteorBoxButton4Data_Observe || MeteorBoxButton5Data_Observe)
         {
-            T_Noah_Collider.enabled = false;
+            //T_Noah_Collider.enabled = false;
         }
 
         else
