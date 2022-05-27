@@ -75,6 +75,11 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
             insertCardPadData_M.IsCenterButtonChanged = false;
         }
 
+       else if(insertCardPadData_M.IsObserve)
+        {
+            insertCardPadData_M.IsCenterButtonChanged = true;
+        }
+
        else
         {
             insertCardPadData_M.IsCenterButtonChanged = true;
