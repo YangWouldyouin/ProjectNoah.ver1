@@ -33,10 +33,14 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
-        if(currentObjectData.IsObserve)
+        if(currentObjectData!=null)
         {
-            PlayerScripts.playerscripts.boringTime = 0;
+            if (currentObjectData.IsObserve)
+            {
+                PlayerScripts.playerscripts.boringTime = 0;
+            }
         }
+
     }
     private void Start()
     {
