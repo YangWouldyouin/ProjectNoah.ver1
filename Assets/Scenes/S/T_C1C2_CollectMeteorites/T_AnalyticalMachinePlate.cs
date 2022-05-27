@@ -59,6 +59,14 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         noCenterButton_T_AnalyticalMachineButton = analyticalMachinePlateObjData_T.CenterButton1;
     }
 
+    void Update()
+    {
+/*        if(GameManager.gameManager._gameData.IsStartPretendDead)
+        {
+
+        }*/
+    }
+
     void DisableButton()
     {
         barkButton_T_AnalyticalMachineButton.transform.gameObject.SetActive(false);
