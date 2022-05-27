@@ -101,7 +101,7 @@ public class T_Pot1 : MonoBehaviour, IInteraction
     {
         DisableButton();
 
-        InteractionButtonController.interactionButtonController.playerPressHand();
+        InteractionButtonController.interactionButtonController.playerPressHead();
 
         /*덜자란 고구마를 심으면 -> 고구마가 자란다.*/
         if(InUnGrownSweetPotato1Data_T.IsBite)

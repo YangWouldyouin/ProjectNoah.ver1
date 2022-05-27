@@ -67,6 +67,8 @@ public class T_GrownHealthy6 : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerEat();
 
         // ½ºÅÈ ¿Ã¶ó°¡°Ô??
+        //½ºÅÈ »ó½Â
+        NoahStatController.noahStatController.IncreaseStatBar();
 
         portableData.IsObjectActiveList[20] = false;
 

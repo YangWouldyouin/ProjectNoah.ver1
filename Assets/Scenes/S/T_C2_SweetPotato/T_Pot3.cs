@@ -98,7 +98,7 @@ public class T_Pot3 : MonoBehaviour, IInteraction
 
         DisableButton();
 
-        InteractionButtonController.interactionButtonController.playerPressHand();
+        InteractionButtonController.interactionButtonController.playerPressHead();
 
         StartCoroutine(ChangePressFalse());
 
