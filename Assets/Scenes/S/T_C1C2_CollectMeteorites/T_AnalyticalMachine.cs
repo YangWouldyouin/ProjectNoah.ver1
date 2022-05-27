@@ -75,6 +75,12 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
     void Update()
     {
 
+        if(analyticalMachineData_T.IsObserve)
+        {
+            analyticalMachine_Collider.enabled = false;
+            isAnalyticalMachineButton_Collider.enabled = false;
+        }
+
         //관찰하기 상태가 아니라면 콜라이더 감지를 켜준다.
         if (!analyticalMachineData_T.IsObserve)
         {
