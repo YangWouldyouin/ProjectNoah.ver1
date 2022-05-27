@@ -11,6 +11,7 @@ public class T_IronPlateDoor : MonoBehaviour, IInteraction
         pressButton_T_IronPlateDoor, noCenterButton_T_IronPlateDoor;
 
     ObjData ironPlateDoorData_T;
+    public ObjectData IronPlateDoorData_T;
 
 
     void Start()
@@ -31,6 +32,9 @@ public class T_IronPlateDoor : MonoBehaviour, IInteraction
         pressButton_T_IronPlateDoor.onClick.AddListener(OnPushOrPress);
 
         noCenterButton_T_IronPlateDoor = ironPlateDoorData_T.CenterButton1;
+
+        /*선언시작*/
+        IronPlateDoorData_T.IsNotInteractable = true;
     }
 
     void DisableButton()

@@ -89,7 +89,7 @@ public class M_MeteorBoxButton2 : MonoBehaviour, IInteraction
         }
 
         /*버튼에 부딪히면 버튼에 상호작용 가능*/
-        if (MeteorBoxButton2Data_M.IsCollision)
+        if (MeteorBoxButton2Data_M.IsCollision && GameManager.gameManager._gameData.IsStartPretendDead)
         {
             MeteorBoxButton2Data_M.IsNotInteractable = false; // 버튼 상호작용 가능하게
             MeteorBoxButton2Outline_M.OutlineWidth = 8;

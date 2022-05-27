@@ -70,17 +70,17 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
     void Update()
     {
-       if( insertCardPadData_M.IsCollision)
+        if ( insertCardPadData_M.IsCollision)
         {
             insertCardPadData_M.IsCenterButtonChanged = false;
         }
 
-       else if(insertCardPadData_M.IsObserve)
+       else
         {
             insertCardPadData_M.IsCenterButtonChanged = true;
         }
 
-       else
+        if (insertCardPadData_M.IsObserve)
         {
             insertCardPadData_M.IsCenterButtonChanged = true;
         }
