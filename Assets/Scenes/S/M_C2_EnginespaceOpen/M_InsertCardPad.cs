@@ -148,6 +148,30 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
+    IEnumerator canCardBye()
+    {
+        yield return new WaitForSeconds(1f);
+        CameraController.cameraController.CancelObserve();
+    }
+
+    IEnumerator canDoorOpen()
+    {
+        yield return new WaitForSeconds(2f);
+        CameraController.cameraController.CancelObserve();
+        engineDoorAnim_M.SetBool("canEngineDoorOpen", true);
+        engineDoorAnim_M.SetBool("canEngineDoorEnd", true);
+
+        /*엔진실 오픈 퍼즐 완료*/
+        GoToEngine.SetActive(true);
+        GameManager.gameManager._gameData.IsCompleteOpenEngineRoom = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 엔진실/창고 해금 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+        GameManager.gameManager._gameData.ActiveMissionList[5] = false;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
+    }
+
     public void OnPushOrPress()
     {
 
@@ -177,13 +201,15 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
             insertCardPadOutline_M.OutlineWidth = 0;
 
             //카드꽂는 애니메이션 실행
-            Invoke("CardBye", 1f);
+            //Invoke("CardBye", 1f);
+            StartCoroutine(canCardBye());
 
             InsertCardPad_sound.clip = EngineDoor_open;
             InsertCardPad_sound.Play();
 
             //문열리는 애니메이션 실행
-            Invoke("DoorOpen", 2f);
+            //Invoke("DoorOpen", 2f);
+            StartCoroutine(canDoorOpen());
         }
     }
 
