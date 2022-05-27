@@ -127,7 +127,13 @@ public class PlayerScripts : MonoBehaviour
                 }
                 SearchWalkPoint();
                 agent.SetDestination(walkPoint);
-                StartCoroutine(WaitAndAnimation());
+                if(cameraFollow != null)
+                {
+                    StartCoroutine(WaitAndAnimation());
+                }
+
+
+
 
                 //if (!IsWalkPointSet)
                 //{
