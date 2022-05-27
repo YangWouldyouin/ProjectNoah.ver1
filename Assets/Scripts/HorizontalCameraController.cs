@@ -12,7 +12,8 @@ public class HorizontalCameraController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        transform.position = new Vector3(transform.position.x, transform.position.y, target.position.z + offset.z);
+    {        
+        transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Clamp(target.position.z, -5.47f, 4.59f));
+        //transform.position = new Vector3(transform.position.x, transform.position.y, target.position.z + offset.z);
     }
 }

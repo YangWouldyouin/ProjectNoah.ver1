@@ -54,6 +54,7 @@ public class PlayerScripts : MonoBehaviour
     Vector3 walkPoint;
     CameraFollow cameraFollow;
     LivingRoomCameraController livingRoomCamera;
+    HorizontalCameraController horizontalCamera;
     // 엔진실, 리빙룸 추가
 
     float elapsedTime = 0;
@@ -67,6 +68,7 @@ public class PlayerScripts : MonoBehaviour
         mainCamera = Camera.main; // Scene 에서 MainCamera 라고 Tag 가 첫번째로 활성화된 카메라를 나타냄
         cameraFollow = mainCamera.GetComponent<CameraFollow>();
         livingRoomCamera = mainCamera.GetComponent<LivingRoomCameraController>();
+        horizontalCamera= mainCamera.GetComponent<HorizontalCameraController>();
         agent = GetComponent<NavMeshAgent>();
         playerAnim.Init(GetComponentInChildren<Animator>()); // Player 의 자식인 noah_FBX 에 붙어있는 컴포넌트인 animator 초기화
     }
@@ -90,25 +92,45 @@ public class PlayerScripts : MonoBehaviour
             yield return null;
         }
 
-        Vector3 camerapos = new Vector3(Mathf.Clamp(transform.position.x, -262f, -251f), mainCamera.transform.position.y, Mathf.Clamp(transform.position.z, 672f, 688f));
-        while (elapsedTime < waitTime)
-        {
-            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, camerapos, (elapsedTime / waitTime));
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+
 
 
 
         if (cameraFollow != null)
         {
+            Vector3 camerapos = new Vector3(Mathf.Clamp(transform.position.x, -262f, -251f), mainCamera.transform.position.y, Mathf.Clamp(transform.position.z, 672f, 688f));
+            while (elapsedTime < waitTime)
+            {
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, camerapos, (elapsedTime / waitTime));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
             cameraFollow.enabled = true;
         }
 
         if(livingRoomCamera!=null)
         {
+            Vector3 livingCameraPos = new Vector3(Mathf.Clamp(transform.position.x, -39f, -36f), mainCamera.transform.position.y, mainCamera.transform.position.z);
+            while (elapsedTime < waitTime)
+            {
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, livingCameraPos, (elapsedTime / waitTime));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
             livingRoomCamera.enabled = true;
         }
+        if (horizontalCamera != null)
+        {
+            Vector3 engineCameraPos = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, Mathf.Clamp(transform.position.z, -5.47f, 4.59f));
+            while (elapsedTime < waitTime)
+            {
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, engineCameraPos, (elapsedTime / waitTime));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            horizontalCamera.enabled = true;
+        }
+
 
         elapsedTime = 0;
         IsBored = false;
@@ -137,9 +159,14 @@ public class PlayerScripts : MonoBehaviour
                 {
                     livingRoomCamera.enabled = false;
                 }
+                if (horizontalCamera != null)
+                {
+                    horizontalCamera.enabled = false;
+                }
+
                 SearchWalkPoint();
                 agent.SetDestination(walkPoint);
-                if(cameraFollow != null||livingRoomCamera!=null)
+                if(cameraFollow != null||livingRoomCamera!=null|| horizontalCamera!=null)
                 {
                     StartCoroutine(WaitAndAnimation());
                 }
