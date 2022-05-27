@@ -21,7 +21,7 @@ public class SteamStatManager : MonoBehaviour
             return;
         }
 
-        if(steamAchieveData.barkCount==10)
+        if(steamAchieveData.barkCount==50)
         {
             Debug.Log("업적 완료");
             SteamUserStats.SetAchievement("ACT_BARK_50");

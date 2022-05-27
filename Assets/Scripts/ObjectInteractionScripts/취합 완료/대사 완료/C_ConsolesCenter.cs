@@ -79,6 +79,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         }
         else
         {
+            dontClick.SetActive(false);
             fadeImage_CC.gameObject.SetActive(false);
             Color normalColor = aiIcon_CC.GetComponent<Image>().color;
             normalColor.a = 1.0f;
