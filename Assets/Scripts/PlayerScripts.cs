@@ -53,6 +53,7 @@ public class PlayerScripts : MonoBehaviour
 
     Vector3 walkPoint;
     CameraFollow cameraFollow;
+    LivingRoomCameraController livingRoomCamera;
     // 엔진실, 리빙룸 추가
 
     float elapsedTime = 0;
@@ -65,6 +66,7 @@ public class PlayerScripts : MonoBehaviour
         noahAnim = GetComponent<Animator>();
         mainCamera = Camera.main; // Scene 에서 MainCamera 라고 Tag 가 첫번째로 활성화된 카메라를 나타냄
         cameraFollow = mainCamera.GetComponent<CameraFollow>();
+        livingRoomCamera = mainCamera.GetComponent<LivingRoomCameraController>();
         agent = GetComponent<NavMeshAgent>();
         playerAnim.Init(GetComponentInChildren<Animator>()); // Player 의 자식인 noah_FBX 에 붙어있는 컴포넌트인 animator 초기화
     }
@@ -102,6 +104,12 @@ public class PlayerScripts : MonoBehaviour
         {
             cameraFollow.enabled = true;
         }
+
+        if(livingRoomCamera!=null)
+        {
+            livingRoomCamera.enabled = true;
+        }
+
         elapsedTime = 0;
         IsBored = false;
         boringTime = 0;
@@ -125,9 +133,13 @@ public class PlayerScripts : MonoBehaviour
                 {
                     cameraFollow.enabled = false;
                 }
+                if (livingRoomCamera != null)
+                {
+                    livingRoomCamera.enabled = false;
+                }
                 SearchWalkPoint();
                 agent.SetDestination(walkPoint);
-                if(cameraFollow != null)
+                if(cameraFollow != null||livingRoomCamera!=null)
                 {
                     StartCoroutine(WaitAndAnimation());
                 }

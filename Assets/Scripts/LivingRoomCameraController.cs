@@ -13,6 +13,7 @@ public class LivingRoomCameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = new Vector3(target.position.x + offset.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(target.position.x, -39f, -36f), transform.position.y, transform.position.z);
+        //transform.position = new Vector3(target.position.x + offset.x, transform.position.y, transform.position.z);
     }
 }
