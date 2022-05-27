@@ -141,7 +141,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
         //S-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
         Invoke("Comment", 2.5f);
-        Invoke("ByePipeView", 5f);
+        Invoke("ByePipeView", 8f);
 
         /*透塘軒杖 刃戟*/
         GameManager.gameManager._gameData.IsEndTuto = true;
