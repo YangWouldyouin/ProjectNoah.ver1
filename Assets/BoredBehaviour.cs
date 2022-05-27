@@ -1,67 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class BoredBehaviour : StateMachineBehaviour
 {
-    // 현재 플레이어 위치 중심으로 일정 범위
-    NavMeshAgent navMeshAgent;
-    Transform playerTransform;
-
-    public LayerMask whatIsGround;
+ 
     [SerializeField] float _timeUntilBored;
     [SerializeField] int _numberOfBoredAnimations;
     bool _isBored;
     float _idleTime;
-
-    bool IsWalkPointSet;
-    float walkPointRange;
-    Vector3 walkPoint;
 
     [SerializeField] int _boredAnimation;
 
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        navMeshAgent = BaseCanvas._baseCanvas.agent;
-        playerTransform = BaseCanvas._baseCanvas.noahPlayer.transform;
         ResetIdle();
-    }
-
-    void Patrolling(Animator animator)
-    {
-        if(!IsWalkPointSet)
-        {
-            SearchWalkPoint();
-        }
-        if(IsWalkPointSet)
-        {
-            navMeshAgent.SetDestination(walkPoint);
-        }
-
-        Vector3 distanceToWalkPoint = playerTransform.position - walkPoint;
-
-        if(distanceToWalkPoint.magnitude<1f)
-        {
-            IsWalkPointSet = false;
-            _isBored = true;
-            _boredAnimation = Random.Range(1, _numberOfBoredAnimations + 1);
-            _boredAnimation = _boredAnimation * 2 - 1;
-            animator.SetFloat("BoredAnimation", _boredAnimation - 1);
-        }
-    }
-
-    void SearchWalkPoint()
-    {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange );
-        float randomX= Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(playerTransform.position.x + randomX, playerTransform.position.y, playerTransform.position.z + randomZ);
-        if (Physics.Raycast(walkPoint, -playerTransform.up, 2f, whatIsGround))
-        {
-            IsWalkPointSet = true;
-        }
     }
 
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -73,10 +27,11 @@ public class BoredBehaviour : StateMachineBehaviour
 
             if(_idleTime> _timeUntilBored && stateInfo.normalizedTime%1<0.02f)
             {
-                Patrolling(animator);
-
+                _isBored = true;
+                _boredAnimation = Random.Range(1, _numberOfBoredAnimations + 1);
+                _boredAnimation = _boredAnimation * 2 - 1;
+                animator.SetFloat("BoredAnimation", _boredAnimation - 1);
             }
-
         }
         else if(stateInfo.normalizedTime%1>0.98f)
         {
@@ -90,7 +45,6 @@ public class BoredBehaviour : StateMachineBehaviour
         if(_isBored)
         {
             _boredAnimation -= 1;
-
         }
         _isBored = false;
         _idleTime = 0;

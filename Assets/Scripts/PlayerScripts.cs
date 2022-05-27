@@ -44,16 +44,68 @@ public class PlayerScripts : MonoBehaviour
     [HideInInspector]
     public int transitionSpeed;
 
+    bool IsBored;
+    float boringTime;
+    bool IsWalkPointSet;
+
+    [SerializeField] float timeUntilBored;
+    [SerializeField] float walkPointRange;
+
+    Vector3 walkPoint;
+    CameraFollow cameraFollow;
+    // 엔진실, 리빙룸 추가
+
+    float elapsedTime = 0;
+    float waitTime = 2f;
+
     void Start()
     {
         objectNameTag = BaseCanvas._baseCanvas.objectNameTag;
         objectNameText = BaseCanvas._baseCanvas.objectNameText;
         noahAnim = GetComponent<Animator>();
         mainCamera = Camera.main; // Scene 에서 MainCamera 라고 Tag 가 첫번째로 활성화된 카메라를 나타냄
+        cameraFollow = mainCamera.GetComponent<CameraFollow>();
         agent = GetComponent<NavMeshAgent>();
         playerAnim.Init(GetComponentInChildren<Animator>()); // Player 의 자식인 noah_FBX 에 붙어있는 컴포넌트인 animator 초기화
     }
 
+    void SearchWalkPoint()
+    {
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        //if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        //{
+        //    IsWalkPointSet = true;
+        //}
+    }
+
+    IEnumerator WaitAndAnimation()
+    {
+        while (!CheckIfArrived())
+        {
+            yield return null;
+        }
+
+        Vector3 camerapos = new Vector3(Mathf.Clamp(transform.position.x, -262f, -251f), mainCamera.transform.position.y, Mathf.Clamp(transform.position.z, 672f, 688f));
+        while (elapsedTime < waitTime)
+        {
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, camerapos, (elapsedTime / waitTime));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+
+
+        if (cameraFollow != null)
+        {
+            cameraFollow.enabled = true;
+        }
+        elapsedTime = 0;
+        IsBored = false;
+        boringTime = 0;
+    }
     void Update()
     {      
         // 왼쪽 마우스 클릭 && 마우스가 UI 위에 있지 않음
@@ -62,11 +114,39 @@ public class PlayerScripts : MonoBehaviour
             Onclick();
         }
 
+        if(!IsBored)
+        {
+            boringTime += Time.deltaTime;
+
+            if(boringTime> timeUntilBored)
+            {
+                IsBored = true;
+                if(cameraFollow!=null)
+                {
+                    cameraFollow.enabled = false;
+                }
+                SearchWalkPoint();
+                agent.SetDestination(walkPoint);
+                StartCoroutine(WaitAndAnimation());
+
+                //if (!IsWalkPointSet)
+                //{
+                //    SearchWalkPoint();
+                //}
+                //if(IsWalkPointSet)
+                //{
+
+                //}
+                // 노아 이동
+            }
+        }
+
+        //if(targetRot.y-transform.rotation.y>)
         // 회전하는 중이고(참) && 플레이어의 현재 각도와 초기 각도가 다르면??  // Q. 여기 if 문이 뭔일하는지 솔직히 모르겠음
-        //if(turning&&transform.rotation!=targetRot)
-        //{
-        //    transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 15f * Time.deltaTime); // a 각도와 b 각도 사이를 보간해줌
-        //} // NavMeshAgent 의 Velocity 전달, vector --> magnitude
+        if (turning && transform.rotation != targetRot)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 30f * Time.deltaTime); // a 각도와 b 각도 사이를 보간해줌
+        } // NavMeshAgent 의 Velocity 전달, vector --> magnitude
         playerAnim.UpdateAnimation(agent.velocity.sqrMagnitude); // 두 점간의 거리     
     }
 
@@ -150,11 +230,12 @@ public class PlayerScripts : MonoBehaviour
 
                             if (interactionDestinationData != null)
                             {
-
+                                targetRot = objData.InteractionDestination.rotation;
                                 MovePlayer(objData.InteractionDestination.position);
                             }
                             else
                             {
+                                targetRot = objData.transform.rotation;
                                 MovePlayer(objData.transform.position);
                             }
                             StartCoroutine(WaitforPlayerArriving());
@@ -164,6 +245,7 @@ public class PlayerScripts : MonoBehaviour
                 }
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 
                 {
+                    targetRot = hit.transform.rotation;
                     MovePlayer(hit.point);
                 }
 
@@ -219,7 +301,11 @@ public class PlayerScripts : MonoBehaviour
         {
             yield return null;
         }
-        if(objData.InteractionDestination!=null)
+
+        // 안 지루함
+        IsBored = false;
+        boringTime = 0;
+        if (objData.InteractionDestination!=null)
         {
             SetDirection(objData.InteractionDestination);
         }
@@ -265,6 +351,7 @@ public class PlayerScripts : MonoBehaviour
     }
     void MovePlayer(Vector3 targetPosition)
     {
+        boringTime = 0;
         turning = false; // 움직일때마다 turning 을 거짓으로 만듬
         agent.SetDestination(targetPosition);
         TurnOffButton();
@@ -273,6 +360,7 @@ public class PlayerScripts : MonoBehaviour
     /* 플레이어가 NPC 를 바라보도록 각도를 바꿔주는 메서드 */
     public void SetDirection(Transform targetDirection) // targetDirection : NPC 의 각도
     {
+        IsBored = false;
         turning = true;
         transform.rotation = targetDirection.rotation;
     }
