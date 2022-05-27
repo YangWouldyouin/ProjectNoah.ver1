@@ -98,7 +98,7 @@ public class Tu_CommentManager : MonoBehaviour
         {
             if (dialogManager.IsSubtitleStarted)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
             }
 
             else if (!dialogManager.IsSubtitleStarted)
@@ -107,7 +107,7 @@ public class Tu_CommentManager : MonoBehaviour
                 aiTurnColor.a = 1.0f;
                 aiButton.GetComponent<Image>().color = aiTurnColor;
                 aiButton.interactable = true;
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(63));
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(67));
 
                 break;
             }
@@ -120,7 +120,7 @@ public class Tu_CommentManager : MonoBehaviour
     IEnumerator Comment_Mike()
     {
 
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(3f);
 
         while (true)
         {
@@ -133,13 +133,77 @@ public class Tu_CommentManager : MonoBehaviour
             {
                 Debug.Log("마이크랑 AI 티키타카 시작");
 
-                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(25));
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(29));
+                StartCoroutine(AngryAI());
 
                 break;
             }
         }
 
 
+    }
+
+    IEnumerator AngryAI()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        while (true)
+        {
+            if (dialogManager.IsSubtitleStarted)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            else if (!dialogManager.IsSubtitleStarted)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(68));
+                StartCoroutine(YesMike());
+
+                break;
+            }
+        }
+    }
+
+    IEnumerator YesMike()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        while (true)
+        {
+            if (dialogManager.IsDialogStarted)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            else if (!dialogManager.IsDialogStarted)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(30));
+                StartCoroutine(LoadingAI());
+
+                break;
+            }
+        }
+    }
+
+    IEnumerator LoadingAI()
+    {
+        yield return new WaitForSeconds(1f);
+
+        while (true)
+        {
+            if (dialogManager.IsSubtitleStarted)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            else if (!dialogManager.IsSubtitleStarted)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(69));
+                StartCoroutine(NewsTalk());
+
+                break;
+            }
+        }
     }
 
     /*public void Mike()
@@ -149,16 +213,16 @@ public class Tu_CommentManager : MonoBehaviour
     }*/
 
 
-    //뮤스 팝업창 뜨고 관련 대화
+    //뉴스 팝업창 뜨고 관련 대화
     IEnumerator NewsTalk()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
 
         while (true)
         {
             if(dialogManager.IsSubtitleStarted)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(6f);
             }
 
             else
@@ -168,7 +232,7 @@ public class Tu_CommentManager : MonoBehaviour
                 Debug.Log("뉴스대화 시작");
 
                 GameManager.gameManager._gameData.afterFirstTalk = true;
-                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(25));
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(26));
                 StartCoroutine(TuTalkEnd());
                 StartCoroutine(TuTalkEnd_Mike());
 
@@ -186,7 +250,7 @@ public class Tu_CommentManager : MonoBehaviour
         {
             if(dialogManager.IsSubtitleStarted)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(6f);
             }
 
             else if(!dialogManager.IsSubtitleStarted)
@@ -197,7 +261,6 @@ public class Tu_CommentManager : MonoBehaviour
 
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(64));
                 StartCoroutine(AILastTalk());
-
 
                 break;
             }
@@ -213,12 +276,12 @@ public class Tu_CommentManager : MonoBehaviour
         {
             if (dialogManager.IsSubtitleStarted)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(8f);
             }
 
             else
             {
-                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(26));
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(27));
 
                 break;
             }

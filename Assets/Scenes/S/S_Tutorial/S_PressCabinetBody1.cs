@@ -140,13 +140,18 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         cabinetCollider.enabled = false;
 
         //S-7 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』』
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
+        Invoke("Comment", 2.5f);
         Invoke("ByePipeView", 5f);
 
         /*透塘軒杖 刃戟*/
         GameManager.gameManager._gameData.IsEndTuto = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
+
+    public void Comment()
+    {
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(23));
+    }    
 
     void ByePipeView()
     {
