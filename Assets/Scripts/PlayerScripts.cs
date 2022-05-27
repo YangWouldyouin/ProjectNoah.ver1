@@ -56,7 +56,7 @@ public class PlayerScripts : MonoBehaviour
     // 엔진실, 리빙룸 추가
 
     float elapsedTime = 0;
-    float waitTime = 2f;
+    float waitTime = 1.5f;
 
     void Start()
     {
