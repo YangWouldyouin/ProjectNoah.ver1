@@ -31,7 +31,13 @@ public class CameraController : MonoBehaviour
     {
         cameraController = this;
     }
-
+    private void Update()
+    {
+        if(currentObjectData.IsObserve)
+        {
+            PlayerScripts.playerscripts.boringTime = 0;
+        }
+    }
     private void Start()
     {
         objectNameTag = BaseCanvas._baseCanvas.objectNameTag;

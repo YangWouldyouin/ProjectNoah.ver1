@@ -45,7 +45,7 @@ public class PlayerScripts : MonoBehaviour
     public int transitionSpeed;
 
     bool IsBored;
-    float boringTime;
+    public float boringTime;
     bool IsWalkPointSet;
 
     [SerializeField] float timeUntilBored;
