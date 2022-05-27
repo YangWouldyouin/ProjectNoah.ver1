@@ -109,10 +109,10 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
         }
 
         //분석기에 관찰하기 중이라면
-        else if (AnalyticalMachineData_Observe.IsObserve || MeteorBoxButton1Data_Observe || MeteorBoxButton2Data_Observe ||
-            MeteorBoxButton3Data_Observe || MeteorBoxButton4Data_Observe || MeteorBoxButton5Data_Observe)
+        else if (AnalyticalMachineData_Observe.IsObserve || MeteorBoxButton1Data_Observe.IsObserve || MeteorBoxButton2Data_Observe.IsObserve ||
+            MeteorBoxButton3Data_Observe.IsObserve || MeteorBoxButton4Data_Observe.IsObserve || MeteorBoxButton5Data_Observe.IsObserve)
         {
-            //T_Noah_Collider.enabled = false;
+            T_Noah_Collider.enabled = false;
         }
 
         else
