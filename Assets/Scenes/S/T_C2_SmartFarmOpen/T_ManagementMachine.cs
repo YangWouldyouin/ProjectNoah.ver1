@@ -42,6 +42,8 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
 
+    public bool firstCheck;
+
     void Start()
     {
         dialogManager = dialogManager_CS.GetComponent<DialogManager>();
@@ -78,7 +80,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(managementMachineData_T.IsClicked)
+        if(managementMachineData_T.IsClicked && !firstCheck)
         {
             // A-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             // 스마트 팜 해금 퍼즐 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
@@ -86,6 +88,8 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.ActiveMissionList[17] = true;
             MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            firstCheck = true;
         }
 
         if (managementMachineData_T.IsObserve && GameManager.gameManager._gameData.IsIronDisappear_T_C2)
