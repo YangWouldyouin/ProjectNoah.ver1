@@ -113,6 +113,7 @@ public class CancelInteractions : MonoBehaviour
             if (cancelObserveData.objectDATA.IsObserve)
             {
                 cancelObserveData.objectDATA.IsObserve = false;
+                cancelObserveData.objectDATA.IsNotInteractable = false;
             }
         }
         if (upDownObject != null)
