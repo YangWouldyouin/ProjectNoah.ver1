@@ -13,6 +13,13 @@ public class GameData
 
     public int EndingNum;
 
+    [Header("<행성 탐지 퍼즐>")]
+    public int SelectPlanetNum; //선택된 행성 번호
+    public bool SelectPlanetCheck; //행성 선택 체크
+    public bool FakePlanetOpen; //교란칩으로 거짓 행성 해금 판단
+    public bool FakePlanetSelectMission; //거짓 행성 좌표설정 성공
+    public bool PlanetSelectMission; //행성 좌표 설정 성공
+
     [Header("<강아지 상태 더미데이터>")]
     public int IsFakefatigue = 91; //더미피로도
     public int IsFakeStrength = 87; //더미체력

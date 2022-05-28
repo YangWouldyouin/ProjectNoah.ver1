@@ -45,6 +45,9 @@ pressButton, observeButton;
 
         //planetReportButton_PR.onClick.AddListener(ReportPlanet);
         //exitButton_PR.onClick.AddListener(ExitPlanetRader);
+
+        planetRaderData.IsObserve = false;
+        planetRaderData.IsNotInteractable = false;
     }
 
     void Update()
@@ -72,11 +75,11 @@ pressButton, observeButton;
         DisableButton();
 
         /* 취소할 때 참고할 오브젝트 저장 */
-        //PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
+        PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         /* 카메라 컨트롤러에 뷰 전달 */
-        //CameraController.cameraController.currentView = planetRaderData_PR.ObserveView; // 관찰 뷰 : 위쪽
+        CameraController.cameraController.currentView = planetRaderData_PR.ObserveView; // 관찰 뷰 : 위쪽
         /* 관찰 애니메이션 & 카메라 전환 */
-        //InteractionButtonController.interactionButtonController.playerObserve();
+        InteractionButtonController.interactionButtonController.playerObserve();
 
         /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ X-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
 
