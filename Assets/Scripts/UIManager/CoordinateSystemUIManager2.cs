@@ -29,14 +29,16 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
     public SphereCollider PlanetCol5;
     public SphereCollider FakePlanetCol;
 
+    public InGameTime inGameTime;
     public bool PR_TimeCheck = false;
+    public bool MissionScriptCheck = false;
 
     public GameObject dialogManager_PR;
     DialogManager dialogManager;
 
     public void Start()
     {
-        PR_TimeCheck = true;
+        //PR_TimeCheck = true;
         
         MainUI.SetActive(false);
         Open.SetActive(true);
@@ -58,9 +60,9 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
     {
         i = GameManager.gameManager._gameData.SelectPlanetNum;
 
-        if (GameManager.gameManager._gameData.FakePlanetOpen)
+        if (GameManager.gameManager._gameData.IsFakePlanetOpen)
         {
-            if (GameManager.gameManager._gameData.FakePlanetSelectMission == false)
+            if (GameManager.gameManager._gameData.IsFakePlanetSelectMission == false)
             {
                 FakePlanetCol.enabled = true;
 
@@ -68,9 +70,34 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
                 color.a = 0.6f;
                 FakePlanetimg.GetComponent<Image>().color = color;
             }
-            if (GameManager.gameManager._gameData.FakePlanetSelectMission)
+            if (GameManager.gameManager._gameData.IsFakePlanetSelectMission)
             {
                 FakePlanetCol.enabled = false;
+            }
+        }
+
+
+        if ((inGameTime.days + 1) % 4 == 0 && (inGameTime.hours) == 12)
+        {
+            if (MissionScriptCheck == false)
+            {
+                Debug.Log("행성 탐사 임무 시작");
+                PR_TimeCheck = true;
+
+                //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(62));
+                MissionScriptCheck = true;
+            }
+        }
+        if ((inGameTime.days + 1) % 4 == 2 && (inGameTime.hours) == 12)
+        {
+            if (MissionScriptCheck == true)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+                GameManager.gameManager._gameData.IsReportCancleCount += 1;
+                Debug.Log("행성 탐사 임무 종료");
+                PR_TimeCheck = false;
+
+                MissionScriptCheck = false;
             }
         }
     }
@@ -115,7 +142,7 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
 
     public void BTSelect()
     {
-        if(GameManager.gameManager._gameData.SelectPlanetCheck == true)
+        if(GameManager.gameManager._gameData.IsSelectPlanetCheck == true)
         {
             PR_reportUI.SetActive(true);
         }
@@ -133,28 +160,37 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
         {
             Debug.Log("페이크");
             GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
-            GameManager.gameManager._gameData.FakePlanetSelectMission = true;
+            GameManager.gameManager._gameData.IsFakePlanetSelectMission = true;
         }
         else if (i == 0)
         {
             PlanetCol1.enabled = false;
+            GameManager.gameManager._gameData.IsPlanetSelectMission = true;
         }
         else if (i == 1)
         {
             PlanetCol2.enabled = false;
+            GameManager.gameManager._gameData.IsPlanetSelectMission = true;
         }
         else if (i == 2)
         {
             PlanetCol3.enabled = false;
+            GameManager.gameManager._gameData.IsPlanetSelectMission = true;
         }
         else if (i == 3)
         {
             PlanetCol4.enabled = false;
+            GameManager.gameManager._gameData.IsPlanetSelectMission = true;
         }
         else if (i == 4)
         {
             PlanetCol5.enabled = false;
+            GameManager.gameManager._gameData.IsPlanetSelectMission = true;
         }
+
+        MainUI.SetActive(false);
+        Open.SetActive(true);
+        Fold.SetActive(false);
     }
 
     public void Cancle()
@@ -163,6 +199,10 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
 
         PR_reportUI.SetActive(false);
         PR_TimeCheck = false;
+
+        MainUI.SetActive(false);
+        Open.SetActive(true);
+        Fold.SetActive(false);
 
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
 

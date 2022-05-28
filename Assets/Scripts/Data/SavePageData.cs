@@ -19,6 +19,7 @@ public class SavePageData
     [Header("<엔딩수집페이지 체크용 퍼즐/초기화 금지>")]
     public bool IsTutorialClear0;
     public bool IsCWDoorOpened_M_C10;
+    public bool IsPlanetSelectMission0;
     public bool IsPhotoMissionFinish0;
     public bool IsCompleteFindLivingKey0;
     public bool IsCompleteFindEngineKey0;
@@ -40,6 +41,7 @@ public class SavePageData
     public bool IsTabletDestory0;
     public bool IsFakeCoordinateData_Tablet0;
     public bool IsFakeCoordinateDatafile_Tablet0;
+    public bool IsFakePlanetSelectMission0;
     public bool IsAIDown_M_C1C30;
     public bool IsRevisioncomplaint0;
 }

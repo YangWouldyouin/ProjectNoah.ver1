@@ -115,11 +115,11 @@ public class PuzzleListUIManager : MonoBehaviour
             Puzzle2.sprite = Finish_puzzle;
             Puzzle2t.text = "업무공간 해금";
         }
-        //if (GameManager.gameManager._savePageData.IsDisqualifiedEnd)
-        //{
-        //    Puzzle3.sprite = Finish_puzzle;
-        //    Puzzle3t.text = "행성 목적지 정하기";
-        //}
+        if (GameManager.gameManager._savePageData.IsPlanetSelectMission0)
+        {
+            Puzzle3.sprite = Finish_puzzle;
+            Puzzle3t.text = "행성 목적지 정하기";
+        }
         if (GameManager.gameManager._savePageData.IsPhotoMissionFinish0)
         {
             Puzzle4.sprite = Finish_puzzle;
@@ -210,11 +210,11 @@ public class PuzzleListUIManager : MonoBehaviour
             Puzzle21.sprite = Finish_puzzle;
             Puzzle21t.text = "태블릿 발각";
         }
-        //if (GameManager.gameManager._savePageData.IsTabletDestory)
-        //{
-        //    Puzzle22.sprite = Finish_puzzle;
-        //    Puzzle22t.text = "거짓 목적지 정하기";
-        //}
+        if (GameManager.gameManager._savePageData.IsFakePlanetSelectMission0)
+        { 
+            Puzzle22.sprite = Finish_puzzle;
+            Puzzle22t.text = "거짓 목적지 정하기";
+        }
         if (GameManager.gameManager._savePageData.IsFakeCoordinateData_Tablet0)
         {
             Puzzle23.sprite = Finish_puzzle;

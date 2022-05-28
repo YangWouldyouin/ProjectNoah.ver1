@@ -20,7 +20,7 @@ public class PlanetRaderTrigger : MonoBehaviour
 
     public void Update()
     {
-        GameManager.gameManager._gameData.SelectPlanetNum = i;
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,8 +33,9 @@ public class PlanetRaderTrigger : MonoBehaviour
                 normalPlanet_PR[i].SetActive(false);
                 selectPlanet_PR[i].SetActive(true);
                 IsPlanetSelected[i] = true;
+                GameManager.gameManager._gameData.SelectPlanetNum = i;
 
-                GameManager.gameManager._gameData.SelectPlanetCheck = true;
+                GameManager.gameManager._gameData.IsSelectPlanetCheck = true;
             }
         }
     }
@@ -49,7 +50,7 @@ public class PlanetRaderTrigger : MonoBehaviour
                 selectPlanet_PR[i].SetActive(false);
                 IsPlanetSelected[i] = false;
                 
-                GameManager.gameManager._gameData.SelectPlanetCheck = false;
+                GameManager.gameManager._gameData.IsSelectPlanetCheck = false;
             }
         }
     }

@@ -233,6 +233,11 @@ public class GameEndingController : MonoBehaviour
             GameManager.gameManager._savePageData.IsCWDoorOpened_M_C10 = true;
             SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
+        if (GameManager.gameManager._savePageData.IsPlanetSelectMission0 == false && GameManager.gameManager._gameData.IsPlanetSelectMission)
+        {
+            GameManager.gameManager._savePageData.IsPlanetSelectMission0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
+        }
         if (GameManager.gameManager._savePageData.IsPhotoMissionFinish0 == false && GameManager.gameManager._gameData.IsPhotoMissionFinish)
         {
             GameManager.gameManager._savePageData.IsPhotoMissionFinish0 = true;
@@ -341,6 +346,11 @@ public class GameEndingController : MonoBehaviour
         if (GameManager.gameManager._savePageData.IsRevisioncomplaint0 == false && GameManager.gameManager._gameData.IsRevisioncomplaint)
         {
             GameManager.gameManager._savePageData.IsRevisioncomplaint0 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
+        }
+        if (GameManager.gameManager._savePageData.IsFakePlanetSelectMission0 == false && GameManager.gameManager._gameData.IsFakePlanetSelectMission)
+        {
+            GameManager.gameManager._savePageData.IsFakePlanetSelectMission0 = true;
             SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
 
