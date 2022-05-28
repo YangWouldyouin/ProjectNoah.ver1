@@ -84,6 +84,8 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
     {
         /* 밀기 & 누르기 중에 "누르기"일 때!!! */
 
+        GameManager.gameManager._gameData.IsDollListen = true;
+
         DollData_L.IsPushOrPress = true;// 오브젝트의 관찰 변수 true로 바꿈
         DiableButton(); // 상호작용 버튼을 끔
 

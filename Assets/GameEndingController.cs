@@ -167,6 +167,11 @@ public class GameEndingController : MonoBehaviour
         {
             GameManager.gameManager._gameData.IsSaveAllEnd = true;
         }
+
+        if(GameManager.gameManager._gameData.IsAIVSMissionCount >= 2)
+        {
+            GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet = true;
+        }
     }
 
     public void changeEndingScene()

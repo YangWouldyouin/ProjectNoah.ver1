@@ -122,6 +122,7 @@ public class GameData
     public bool IsFakeCoordinateData_Tablet; //태블릿거짓좌표해금 판단
     public bool IsFakeCoordinateDatafile_Tablet; //태블릿거짓좌표다운로드 판단
     public bool IsDontFakeCoordinateDatafile_Tablet; //태블릿 거짓좌표다운로드루트 불가
+    public bool IsDollListen; //인형듣기 체크
 
     [Header("<메인컴퓨터 UI 관련>")]
     public bool Is_MainComputer_WirelessOn; //메인컴퓨터 블루트스 on/off체크
