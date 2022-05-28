@@ -380,7 +380,7 @@ public class InteractionButtonController : MonoBehaviour
     public void PlayerRise2()
     {
         StartCoroutine(RiseAnim2());
-        playerAgent.isStopped = false;
+        //playerAgent.isStopped = false;
     }
 
     IEnumerator RiseAnim1()
@@ -419,15 +419,16 @@ public class InteractionButtonController : MonoBehaviour
                 Vector3 fallrot = noahPlayer.transform.eulerAngles;
                 noahPlayer.transform.eulerAngles = new Vector3(fallrot.x, fallrot.y - 180, fallrot.z);
 
-                noahPlayer.transform.position = new Vector3(noahUpDownObject.transform.localPosition.x, 33.78f, noahUpDownObject.transform.localPosition.z) + transform.forward;
-                playerAgent.updatePosition = true;
-                playerAgent.updateRotation = true;
-                playerAgent.isStopped = false;
-                //Invoke("ChangeFallTrue1", 0.5f);
-                //Invoke("ChangeFallTrue2", 1.1f);
-                //Invoke("ChangeFallTrue3", 1.5f);
+                
+                //playerAgent.updatePosition = true;
+                //playerAgent.updateRotation = true;
+                playerAgent.isStopped = true;
+                Invoke("ChangeFallTrue1", 0.5f);
+                Invoke("ChangeFallTrue2", 1.1f);
+                Invoke("ChangeFallTrue3", 1.5f);
                 //Invoke("ChangeFallTrue4", 2.5f);
-                //Invoke("ChangeFallFalse1", 4.5f);
+                Invoke("ChangeFallFalse1", 2.5f);
+                //Invoke("TurnOnNav", 4f);
             }
             upDownData.objectDATA.IsUpDown = false;
 
@@ -444,31 +445,41 @@ public class InteractionButtonController : MonoBehaviour
 
     void ChangeFallTrue2()
     {
+        //noahPlayer.transform.position = new Vector3(noahUpDownObject.transform.localPosition.x + 3, 0.8883325f, noahUpDownObject.transform.localPosition.z) + transform.forward;
         noahAnim.SetBool("Falling2", true);
+
     }
     void ChangeFallTrue3()
     {
         noahAnim.SetBool("Falling3", true);
+        noahAnim.SetBool("Falling4", true);
+        //noahPlayer.transform.position = new Vector3(noahPlayer.transform.position.x, 0.8883325f, noahPlayer.transform.position.z+1);
     }
     void ChangeFallTrue4()
     {
-        noahAnim.SetBool("Falling4", true);
-        upDownData = noahUpDownObject.GetComponent<ObjData>();
-        Vector3 fallPosition = upDownData.DownPos.position;
-        //noahPlayer.transform.position = new Vector3(fallPosition.x - 2, 35.78f, fallPosition.z);
-        noahPlayer.transform.position = fallPosition;
+
+        //upDownData = noahUpDownObject.GetComponent<ObjData>();
+        //Vector3 fallPosition = upDownData.DownPos.position;
+
+        //noahPlayer.transform.position = fallPosition;
 
 
     }
     void ChangeFallFalse1()
     {
-        noahAnim.SetBool("Falling1", false);
-
+ 
         playerAgent.isStopped = false;
 
 
         playerAgent.updatePosition = true;
         playerAgent.updateRotation = true;
+        noahAnim.SetBool("Falling1", false);
+
+    }
+    
+    void TurnOnNav()
+    {
+
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
