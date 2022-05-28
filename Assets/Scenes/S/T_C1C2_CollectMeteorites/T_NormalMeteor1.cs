@@ -10,6 +10,7 @@ public class T_NormalMeteor1 : MonoBehaviour, IInteraction
         pressButton_T_NormalMeteor1, noCenterButton_T_NormalMeteor1;
 
     ObjData normalMeteor1Data_T;
+    public ObjectData normalMeteor1ObjData_T;
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -48,8 +49,9 @@ public class T_NormalMeteor1 : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (normalMeteor1Data_T.IsClicked)
+        if (normalMeteor1ObjData_T.IsClicked)
         {
+            Debug.Log("나는 말을 할 수 있는 운석이야");
             //C - 3 대사  ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(44));
         }

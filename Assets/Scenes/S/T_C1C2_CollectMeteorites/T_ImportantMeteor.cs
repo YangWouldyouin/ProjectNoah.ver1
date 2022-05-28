@@ -10,6 +10,7 @@ public class T_ImportantMeteor : MonoBehaviour, IInteraction
         pressButton_T_ImportantMeteor, noCenterButton_T_ImportantMeteor;
 
     ObjData importantMeteorData_T;
+    public ObjectData importantMeteorObjData_T;
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -48,7 +49,7 @@ public class T_ImportantMeteor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(importantMeteorData_T.IsClicked)
+        if(importantMeteorObjData_T.IsClicked)
         {
             //C - 3 企紫  』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(44));

@@ -60,6 +60,16 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
     BoxCollider RealcylinderGlassNoNeed1_Collider;
     BoxCollider RealcylinderGlassNoNeed2_Collider;
 
+    /*타이머*/
+    public InGameTime inGameTime;
+
+    public GameObject S_TimerBarFilled;
+    public GameObject S_TimerBackground;
+    public GameObject S_TimerText;
+
+    public bool IsPretendDeadFail2 = false; //제한 시간 내에 안에 퍼즐 실패
+    public bool canTpretendDead2 = false;
+
     void Start()
     {
         Beaker_Hit_Sound = GetComponent<AudioSource>();
@@ -149,6 +159,29 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             ChangeBeaker2.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
 
             M_RealAnswerMeteorForBeaker.SetActive(false);
+        }
+
+        if (IsPretendDeadFail2 == true && canTpretendDead2 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        {
+            GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
+            Debug.Log("시간안에 퍼즐 풀기 실패");
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            canTpretendDead2 = true;
+        }
+
+        //타임 어택 성공시
+        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        {
+            inGameTime.IsTimerStarted = false;
+
+            S_TimerBarFilled.SetActive(false);
+            S_TimerBackground.SetActive(false);
+            S_TimerText.SetActive(false);
+
+            Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
+            //GameManager.gameManager._gameData.IsMiddleTuto = false;
+            //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
         }
     }
 
@@ -264,7 +297,59 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
         //쓰러지는 애니메이션 삽입 예정
 
-        Invoke(" FakeAI2", 3f);
+        //Invoke(" FakeAI2", 3f);
+
+        StartCoroutine(realFakeAI2());
+
+        //StartCoroutine(PreteadTimer2());
+
+        //타이머 시작 3분
+        TimerManager.timerManager.TimerStart(240);
+        Invoke("PretendFailCheck", 240f);
+    }
+
+    IEnumerator PreteadTimer2()
+    {
+
+        yield return new WaitForSeconds(40f);
+
+        //타이머 시작 3분
+        TimerManager.timerManager.TimerStart(180);
+        Invoke("PretendFailCheck", 180f);
+
+    }
+
+    void PretendFailCheck()
+    {
+        IsPretendDeadFail2 = true;
+    }
+
+
+    IEnumerator realFakeAI2()
+    {
+
+        yield return new WaitForSeconds(3f);
+        Debug.Log("AI는 잘 말한다.");
+        //D-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(56));
+
+        GameManager.gameManager._gameData.IsCompletePretendDead = true;
+        GameManager.gameManager._gameData.IsStartOrbitChange = true;
+        GameManager.gameManager._gameData.ActiveMissionList[11] = false;
+        GameManager.gameManager._gameData.ActiveMissionList[12] = true;
+        MissionGenerator.missionGenerator.ActivateMissionList();
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 죽은척하기 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+
+        RealBeaker1_Collider.enabled = false;
+        RealBeaker2_Collider.enabled = false;
+
+        RealcylinderGlassAnswer_Collider.enabled = false;
+        RealcylinderGlassWrong_Collider.enabled = false;
+        RealcylinderGlassNoNeed1_Collider.enabled = false;
+        RealcylinderGlassNoNeed2_Collider.enabled = false;
+
     }
 
     public void OnBite()
