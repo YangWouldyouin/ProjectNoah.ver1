@@ -45,7 +45,7 @@ public class MainSystemUIManager : MonoBehaviour
             MS_onoffBT.color = onoffcolor;
         }
 
-        if (GameManager.gameManager._gameData.IsReturnOfTheEarth)
+        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
         {
             systemAlert.SetActive(true);
             Invoke("systemAlertduration", 3f);

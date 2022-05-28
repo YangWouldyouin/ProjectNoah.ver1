@@ -15,7 +15,7 @@ public class RevisionComplaintUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC && GameManager.gameManager._gameData.IsReturnOfTheEarth)
+        if(GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
         {
             Invoke("seconds3time", 8f);
         }
@@ -29,6 +29,7 @@ public class RevisionComplaintUIManager : MonoBehaviour
     public void OnReportBT()
     {
         GameManager.gameManager._gameData.IsRevisioncomplaint = true;
+        GameManager.gameManager._gameData.IsReturnOfTheEarth = true;
         RC_GUI.SetActive(false);
     }
 

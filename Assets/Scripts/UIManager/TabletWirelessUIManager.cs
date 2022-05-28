@@ -211,10 +211,10 @@ public class TabletWirelessUIManager : MonoBehaviour
                         GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet = true;
 
 
-                        if (GameManager.gameManager._gameData.IsRevisioncomplaint)
-                        {
-                            GameManager.gameManager._gameData.IsReturnOfTheEarth = true;
-                        }
+                        //if (GameManager.gameManager._gameData.IsRevisioncomplaint)
+                        //{
+                        //    GameManager.gameManager._gameData.IsReturnOfTheEarth = true;
+                        //}
 
                         Color FCDTcolor = FakeCoordinateDataText.color;
                         FCDTcolor.a = 0.3f;
