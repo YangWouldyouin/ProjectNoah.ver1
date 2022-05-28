@@ -380,7 +380,7 @@ public class InteractionButtonController : MonoBehaviour
     public void PlayerRise2()
     {
         StartCoroutine(RiseAnim2());
-        //playerAgent.isStopped = false;
+        playerAgent.isStopped = false;
     }
 
     IEnumerator RiseAnim1()
@@ -453,7 +453,7 @@ public class InteractionButtonController : MonoBehaviour
     {
         noahAnim.SetBool("Falling3", true);
         noahAnim.SetBool("Falling4", true);
-        //noahPlayer.transform.position = new Vector3(noahPlayer.transform.position.x, 0.8883325f, noahPlayer.transform.position.z+1);
+        noahPlayer.transform.position = new Vector3(noahPlayer.transform.position.x, 0.8883325f, noahPlayer.transform.position.z+1);
     }
     void ChangeFallTrue4()
     {

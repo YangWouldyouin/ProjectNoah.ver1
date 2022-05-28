@@ -25,7 +25,7 @@ public class PlayerAnimation
     {
 
         animator.SetFloat(animSpeed, speed, 0.1f, Time.deltaTime);
-        animator.SetFloat(animRotate, rotate, 0.1f, Time.deltaTime);
+        animator.SetFloat(animRotate, rotate, 0.05f, Time.deltaTime);
         //animator.SetFloat(animRotate, rotate);
     }
 }

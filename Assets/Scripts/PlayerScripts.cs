@@ -202,7 +202,7 @@ public class PlayerScripts : MonoBehaviour
 
             turnAmount = agent.velocity;
             turnAmount.Normalize();
-            turnAmount = transform.InverseTransformDirection(agent.velocity);
+            turnAmount = transform.InverseTransformDirection(turnAmount);
         }
 
 
