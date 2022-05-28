@@ -84,7 +84,7 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
                 Debug.Log("행성 탐사 임무 시작");
                 PR_TimeCheck = true;
 
-                //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(62));
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(70));
                 MissionScriptCheck = true;
             }
         }
@@ -187,6 +187,8 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
             PlanetCol5.enabled = false;
             GameManager.gameManager._gameData.IsPlanetSelectMission = true;
         }
+
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(71));
 
         MainUI.SetActive(false);
         Open.SetActive(true);
