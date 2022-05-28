@@ -60,8 +60,11 @@ public class PlayerScripts : MonoBehaviour
     float elapsedTime = 0;
     float waitTime = 1.5f;
 
+    public Vector3  turnAmount;
+
     void Start()
     {
+
         objectNameTag = BaseCanvas._baseCanvas.objectNameTag;
         objectNameText = BaseCanvas._baseCanvas.objectNameText;
         noahAnim = GetComponent<Animator>();
@@ -70,6 +73,7 @@ public class PlayerScripts : MonoBehaviour
         livingRoomCamera = mainCamera.GetComponent<LivingRoomCameraController>();
         horizontalCamera= mainCamera.GetComponent<HorizontalCameraController>();
         agent = GetComponent<NavMeshAgent>();
+
         playerAnim.Init(GetComponentInChildren<Animator>()); // Player 의 자식인 noah_FBX 에 붙어있는 컴포넌트인 animator 초기화
     }
 
@@ -188,11 +192,21 @@ public class PlayerScripts : MonoBehaviour
 
         //if(targetRot.y-transform.rotation.y>)
         // 회전하는 중이고(참) && 플레이어의 현재 각도와 초기 각도가 다르면??  // Q. 여기 if 문이 뭔일하는지 솔직히 모르겠음
-        if (turning && transform.rotation != targetRot)
+        //if (turning && transform.rotation != targetRot)
+        //{
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 30f * Time.deltaTime); // a 각도와 b 각도 사이를 보간해줌
+        //} // NavMeshAgent 의 Velocity 전달, vector --> magnitude
+
+        if (agent.velocity.magnitude > 1f)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 30f * Time.deltaTime); // a 각도와 b 각도 사이를 보간해줌
-        } // NavMeshAgent 의 Velocity 전달, vector --> magnitude
-        playerAnim.UpdateAnimation(agent.velocity.sqrMagnitude); // 두 점간의 거리     
+
+            turnAmount = agent.velocity;
+            turnAmount.Normalize();
+            turnAmount = transform.InverseTransformDirection(agent.velocity);
+        }
+
+
+        playerAnim.UpdateAnimation(agent.velocity.sqrMagnitude, Mathf.Atan2(turnAmount.x*1000, turnAmount.z*1000)); // 두 점간의 거리     
     }
 
     // 순서 : PlayerScripts 에서 NPC 클릭 -> Interactable 스크립트 - Interact - actions -> messageAction 실행 - > DialogSystem - ShowMessages 실행 
@@ -398,7 +412,9 @@ public class PlayerScripts : MonoBehaviour
     {
         boringTime = 0;
         turning = false; // 움직일때마다 turning 을 거짓으로 만듬
+        //turnAmount = Mathf.Atan2(targetPosition.x, targetPosition.z);
         agent.SetDestination(targetPosition);
+
         TurnOffButton();
     }
 
