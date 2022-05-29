@@ -30,14 +30,14 @@ public class TabletDiaryUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.gameManager._gameData.IsCompleteOpenEngineRoom && GameManager.gameManager._gameData.IsPlanetSelectMission && GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 && GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 && GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 && GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2)
+        if(GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 && GameManager.gameManager._gameData.IsPlanetSelectMission && GameManager.gameManager._gameData.IsDollListen && GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 && GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 && GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2)
         {
             GameManager.gameManager._gameData.IsAIVSMissionFinish = true;
         }
 
         PageNum.text = CurrentPageNum + "/10";
 
-        if (GameManager.gameManager._gameData.IsCompleteOpenEngineRoom == false)
+        if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == false)
         {
             Secret1.text = "다운로드 진행 중...";
         }
@@ -59,10 +59,9 @@ public class TabletDiaryUIManager : MonoBehaviour
                 + "저녁 즈음 슬쩍 떠보니 아직 알아채지는 못한 것 같다." + "\n" + "말이 많은 것과는 달리 둔한 편이다." + "\n" + "아무튼 이 교란칩을 통해선 존재하지 않는 행성을 목적지로 설정할 수 있다." + "\n" + "이렇게 가상의 행성들을 여러 번 거쳐 선회하면 레비젼에게 들키지 않고 원하는 곳을 향할 수 있다." + "\n" + "이를테면 지구라던지.";
         }
 
-        if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == false)
+        if (GameManager.gameManager._gameData.IsDollListen == false)
         {
             Secret3.text = "다운로드 진행 중...";
-            //IsDollListen
         }
         else
         {
