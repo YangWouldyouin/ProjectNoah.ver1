@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class NoahStatController : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class NoahStatController : MonoBehaviour
     public AudioClip Noah_Sick;
 
     public InGameTime StatTime;
+    NavMeshAgent agent;
 
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class NoahStatController : MonoBehaviour
 
     void Start()
     {
+        agent = BaseCanvas._baseCanvas.agent;
         Noah_Sick_Audio = GetComponent<AudioSource>();
 
         currentNum = GameManager.gameManager._gameData.statNum;
@@ -65,6 +68,14 @@ public class NoahStatController : MonoBehaviour
 
     private void Update()
     {
+        if (StatTime.statNum < 2 && StatTime.statNum > 0)
+        {
+            agent.speed = 1f;
+        }
+        else
+        {
+            agent.speed = 3f;
+        }
         //DecreaseStatByTime();
 
         if (Input.GetKeyDown(KeyCode.Space))
