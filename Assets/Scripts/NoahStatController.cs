@@ -132,7 +132,7 @@ public class NoahStatController : MonoBehaviour
     
     public void IncreaseStatBar()
     {
-
+        SaveSystem.Load("save_001");
         currentNum = GameManager.gameManager._gameData.statNum;
         if(currentNum<10)
         {
@@ -154,7 +154,7 @@ public class NoahStatController : MonoBehaviour
 
     public void DecreaseStatBar()
     {
-
+        SaveSystem.Load("save_001");
         currentNum = GameManager.gameManager._gameData.statNum;
         if(currentNum>0)
         {
