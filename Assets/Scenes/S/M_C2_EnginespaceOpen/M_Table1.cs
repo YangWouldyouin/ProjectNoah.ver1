@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class M_Table1 : MonoBehaviour, IInteraction
 {
+    public ObjectData BoxData1;
+
     /*연관있는 오브젝트*/
     public Vector3 Table1RisePos;
     public GameObject PackOnTable1;
@@ -229,7 +231,7 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
         }
 
-        table1Data_M.IsUpDown = false;
+        BoxData1.IsUpDown = false;
 
 
 

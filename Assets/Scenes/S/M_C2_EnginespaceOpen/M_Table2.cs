@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class M_Table2 : MonoBehaviour, IInteraction
 {
+    public ObjectData BoxData2;
+
     /*연관있는 오브젝트*/
     public Vector3 Table2RisePos;
     public GameObject SuperDrugOnTable2;
@@ -231,7 +233,7 @@ public class M_Table2 : MonoBehaviour, IInteraction
         }
 
 
-        table2Data_M.IsUpDown = false;
+        BoxData2.IsUpDown = false;
 
 
 
