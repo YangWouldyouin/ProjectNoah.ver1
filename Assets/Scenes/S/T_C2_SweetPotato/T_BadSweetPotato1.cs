@@ -74,56 +74,54 @@ public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
 
         GameManager.gameManager._gameData.sweetPotatoEat[0] = true;
         // 상한 고구마 섭취 엔딩
-        GameManager.gameManager._gameData.IsEatBadPotato = true;
-        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-
-        Invoke("EatAfter", 3);
+        
+        Invoke("EatAfter", 3f);
 
         BadSweetPotato1Data_T.IsEaten = false;
-
     }
 
-    void EatAfter()
+    public void EatAfter()
     {
-        InteractionButtonController.interactionButtonController.PlayerDie();
+        GameManager.gameManager._gameData.IsEatBadPotato = true;
+        //InteractionButtonController.interactionButtonController.PlayerDie();
 
-        Dontclick.SetActive(true);
+        //Dontclick.SetActive(true);
 
-        StartCoroutine(SuddenDeath());
-
-        //Invoke("SuddenDeath", 3);
+        //StartCoroutine(SuddenDeath());
+        //Invoke("SuddenDeath", 3f);
     }
 
-    IEnumerator SuddenDeath()
-    {
+    //IEnumerator SuddenDeath()
+    //{
 
-        yield return new WaitForSeconds(3f);
-        Debug.Log("노아는 죽엇다");
+    //    yield return new WaitForSeconds(3f);
+    //    Debug.Log("노아는 죽엇다");
 
-        GameManager.gameManager._gameData.IsSuddenDeath = true;
+    //    GameManager.gameManager._gameData.IsSuddenDeath = true;
 
-        NoahStatController.noahStatController.DecreaseStatBar();
-        NoahStatController.noahStatController.DecreaseStatBar();
-        NoahStatController.noahStatController.DecreaseStatBar();
-        Dontclick.SetActive(false);
+    //    NoahStatController.noahStatController.DecreaseStatBar();
+    //    NoahStatController.noahStatController.DecreaseStatBar();
+    //    NoahStatController.noahStatController.DecreaseStatBar();
+    //    Dontclick.SetActive(false);
 
-        InteractionButtonController.interactionButtonController.PlayerAlive();
+    //    InteractionButtonController.interactionButtonController.PlayerAlive();
 
 
-    }
+    //}
 
-/*        void SuddenDeath()
-    {
-        GameManager.gameManager._gameData.IsSuddenDeath = true;
+    //public void SuddenDeath()
+    //{
+    //    GameManager.gameManager._gameData.IsSuddenDeath = true;
+    //    GameManager.gameManager._gameData.IsEatBadPotato = true;
+    //    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        NoahStatController.noahStatController.DecreaseStatBar();
-        NoahStatController.noahStatController.DecreaseStatBar();
-        NoahStatController.noahStatController.DecreaseStatBar();
-        Dontclick.SetActive(false);
+    //    NoahStatController.noahStatController.DecreaseStatBar();
+    //    NoahStatController.noahStatController.DecreaseStatBar();
+    //    NoahStatController.noahStatController.DecreaseStatBar();
+    //    Dontclick.SetActive(false);
 
-        InteractionButtonController.interactionButtonController.PlayerAlive();
-    }*/
+    //    InteractionButtonController.interactionButtonController.PlayerAlive();
+    //}
 
     public void OnSniff()
     {

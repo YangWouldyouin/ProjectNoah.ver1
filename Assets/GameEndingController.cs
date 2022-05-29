@@ -28,6 +28,17 @@ public class GameEndingController : MonoBehaviour
         GameManager.gameManager._gameData.statNum = 5;
         InteractionButtonController.interactionButtonController.PlayerAlive();
     }
+    public void SuddenDeath2()
+    {
+        GameManager.gameManager._gameData.IsSuddenDeath = true;
+
+        NoahStatController.noahStatController.DecreaseStatBar();
+        NoahStatController.noahStatController.DecreaseStatBar();
+        NoahStatController.noahStatController.DecreaseStatBar();
+        Dontclick.SetActive(false);
+        
+        InteractionButtonController.interactionButtonController.PlayerAlive();
+    }
 
     void Update()
     {
@@ -42,6 +53,17 @@ public class GameEndingController : MonoBehaviour
             Invoke("SuddenDeath", 3f);
         }
 
+        if (GameManager.gameManager._gameData.IsEatBadPotato == true)
+        {
+            GameManager.gameManager._gameData.IsEatBadPotato = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            InteractionButtonController.interactionButtonController.PlayerDie();
+
+            Dontclick.SetActive(true);
+
+            Invoke("SuddenDeath2", 3f);
+        }
 
         if (GameManager.gameManager._gameData.IsInputImportantMeteorEnd == true)
         {
