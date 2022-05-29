@@ -86,12 +86,6 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            PlayerDie();
-            PlayerAlive();
-        }
     }
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -877,8 +871,18 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsSleep2", false);
         noahAnim.SetBool("IsSleep3", false);
         noahAnim.SetBool("IsSleep4", false);
+        PlayerScripts.playerscripts.boringTime = 0;
     }
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    public void WakeUp()
+    {
+        noahAnim.SetBool("IsSleep5", false);
+        PlayerScripts.playerscripts.boringTime = 0;
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
     public void PlayerDie()
     {
         noahAnim.SetBool("Die1", true);
