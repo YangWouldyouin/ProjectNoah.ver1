@@ -15,7 +15,7 @@ pressButton, observeButton;
     Outline planetRaderOutline_PR;
 
     public GameObject Box;
-    ObjData BoxData;
+    public ObjectData  BoxData;
 
 
     // 관찰하기 시 추가 UI가 뜨는 경우, 2초간의 텀이 있다. 이것을 체크하기 위한 변수

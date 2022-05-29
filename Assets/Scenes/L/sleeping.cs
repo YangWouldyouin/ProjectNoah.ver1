@@ -14,9 +14,12 @@ public class sleeping : MonoBehaviour, IInteraction
     public Transform bedPos;
     public Vector3 bedRisePos;
 
+    public GameObject cancelInteractions;
+    CancelInteractions cancelInteract;
 
     void Start()
     {
+
         BedData_obj = Bed.GetComponent<ObjData>();
 
         barkButton = BedData_obj.BarkButton;
@@ -34,6 +37,8 @@ public class sleeping : MonoBehaviour, IInteraction
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
         sleepButton = BedData_obj.CenterButton1;
         sleepButton.onClick.AddListener(OnUp);
+        cancelInteract = cancelInteractions.GetComponent<CancelInteractions>();
+
     }
 
 
@@ -81,8 +86,13 @@ public class sleeping : MonoBehaviour, IInteraction
     public void OnUp()
     {
         DisableButton();
+        if (cancelInteract!=null)
+        {
+            cancelInteract.enabled = false;
+        }
 
-        if(!BedData.IsUpDown)
+
+        if (!BedData.IsUpDown)
         {
             PlayerScripts.playerscripts.currentUpObj = this.gameObject;
             BedData.IsUpDown = true;
@@ -100,17 +110,28 @@ public class sleeping : MonoBehaviour, IInteraction
             //자기 애니메이션
             InteractionButtonController.interactionButtonController.PlayerSleep();
             //일어나기 애니메이션
-            Invoke("WakeUp", 4f);
-
+            //Invoke("WakeUp", 4f);
+            StartCoroutine(StopCancel());
             NoahStatController.noahStatController.IncreaseStatBar();
+
+
         }
     }
 
     public void WakeUp()
     {
-        InteractionButtonController.interactionButtonController.WakeUp();
+
+
     }
 
+    IEnumerator StopCancel()
+    {
+        InteractionButtonController.interactionButtonController.WakeUp();
+        yield return new WaitForSeconds(30f);
+        InteractionButtonController.interactionButtonController.PlayerFall1();
+        yield return new WaitForSeconds(30f);
+        cancelInteract.enabled = true;
+    }
     void IInteraction.OnSmash()
     {
         throw new System.NotImplementedException();
