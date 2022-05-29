@@ -126,7 +126,7 @@ public class sleeping : MonoBehaviour, IInteraction
 
     IEnumerator StopCancel()
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(11.5f);
         InteractionButtonController.interactionButtonController.WakeUp();
         yield return new WaitForSeconds(3f);
         InteractionButtonController.interactionButtonController.PlayerFall1();
