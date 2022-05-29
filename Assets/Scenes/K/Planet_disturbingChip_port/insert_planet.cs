@@ -7,8 +7,8 @@ public class insert_planet : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
-    ObjData insertData;
-    Outline insertLine;
+    ObjData Planet_insertData;
+    Outline Planet_insertLine;
 
     public GameObject RChip01;
     ObjData RChip01Data;
@@ -27,8 +27,8 @@ public class insert_planet : MonoBehaviour, IInteraction
     {
         dialogManager = dialog.GetComponent<DialogManager>();
 
-        insertData = GetComponent<ObjData>();
-        insertLine = GetComponent<Outline>();
+        Planet_insertData = GetComponent<ObjData>();
+        Planet_insertLine = GetComponent<Outline>();
 
         RChip01Data = RChip01.GetComponent<ObjData>();
         RChip01Line = RChip01.GetComponent<Outline>();
@@ -37,19 +37,19 @@ public class insert_planet : MonoBehaviour, IInteraction
         WChip01Line = WChip01.GetComponent<Outline>();
 
 
-        barkButton = insertData.BarkButton;
+        barkButton = Planet_insertData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = insertData.SniffButton;
+        sniffButton = Planet_insertData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = insertData.BiteButton;
+        biteButton = Planet_insertData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
-        pressButton = insertData.PushOrPressButton;
+        pressButton = Planet_insertData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton = insertData.CenterButton1;
+        noCenterButton = Planet_insertData.CenterButton1;
         noCenterButton.onClick.AddListener(OnObserve);
     }
 
@@ -64,14 +64,14 @@ public class insert_planet : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        insertData.IsBark = true;
+        Planet_insertData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        insertData.IsSniff = true;
+        Planet_insertData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -79,7 +79,7 @@ public class insert_planet : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        insertData.IsPushOrPress = true;
+        Planet_insertData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
@@ -117,7 +117,7 @@ public class insert_planet : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        insertData.IsPushOrPress = false;
+        Planet_insertData.IsPushOrPress = false;
     }
 
 
@@ -159,8 +159,8 @@ public class insert_planet : MonoBehaviour, IInteraction
             RChip01Data.IsNotInteractable = false;
             RChip01Line.OutlineWidth = 0;
 
-            insertData.IsNotInteractable = false;
-            insertLine.OutlineWidth = 0;
+            Planet_insertData.IsNotInteractable = false;
+            Planet_insertLine.OutlineWidth = 0;
 
         }
 
@@ -178,8 +178,8 @@ public class insert_planet : MonoBehaviour, IInteraction
             WChip01Data.IsNotInteractable = false;
             WChip01Line.OutlineWidth = 0;
 
-            insertData.IsNotInteractable = false;
-            insertLine.OutlineWidth = 0;
+            Planet_insertData.IsNotInteractable = false;
+            Planet_insertLine.OutlineWidth = 0;
         }
     }
 
