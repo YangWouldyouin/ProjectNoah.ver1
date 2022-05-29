@@ -128,6 +128,8 @@ public class BiteDestroyController_PotatoBoxDoor : MonoBehaviour, IPointerUpHand
 
     void PotatoBoxDoorOpen()
     {
+        DoPotatoBoxDoorData_T.IsBite = false;
+
         // 부모 자식 관계를 해제한다.
         T_PotatoBoxDoor.GetComponent<Rigidbody>().isKinematic = false;
         T_PotatoBoxDoor.transform.parent = null;

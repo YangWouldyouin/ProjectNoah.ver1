@@ -166,12 +166,12 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         }
 
-        if(StartBlack == true && StartOnlyOne == false)
+/*        if(StartBlack == true && StartOnlyOne == false)
         {
             StartCoroutine(SuddenDeath());
             StartOnlyOne = true;
 
-        }
+        }*/
 
 
         if (IsPretendDeadFail1 == true && canTpretendDead1 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
@@ -338,7 +338,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         //여기부터 안됨@@@@@@@@
 
-        //StartCoroutine(SuddenDeath());
+        StartCoroutine(SuddenDeath());
 
         //Invoke("SuddenDeath", 3);
     }

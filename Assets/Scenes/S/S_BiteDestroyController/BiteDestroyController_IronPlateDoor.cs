@@ -123,6 +123,8 @@ public class BiteDestroyController_IronPlateDoor : MonoBehaviour, IPointerUpHand
 
     void IronPlateOpen()
     {
+        DoIronPlateDoorData_T.IsBite = false;
+
         // 부모 자식 관계를 해제한다.
         T_DoIronPlateDoor.GetComponent<Rigidbody>().isKinematic = false;
         T_DoIronPlateDoor.transform.parent = null;
