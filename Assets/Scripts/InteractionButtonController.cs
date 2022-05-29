@@ -52,6 +52,9 @@ public class InteractionButtonController : MonoBehaviour
     [Header("< 스팀 업적 관련 변수 >")]
     public SteamAchieveData achieveData;
 
+    Camera mainCamera;
+    CameraFollow cameraFollow;
+
     void Awake()
     {
         interactionButtonController = this;
@@ -59,6 +62,9 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Start()
     {
+        mainCamera = Camera.main; // Scene 에서 MainCamera 라고 Tag 가 첫번째로 활성화된 카메라를 나타냄
+        cameraFollow = mainCamera.GetComponent<CameraFollow>();
+
         interactionAudio = GetComponent<AudioSource>();
 
         noahPlayer = BaseCanvas._baseCanvas.noahPlayer;
@@ -75,7 +81,13 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim = noahPlayer.GetComponent<Animator>();
     }
 
-
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            PlayerSleep();
+        }
+    }
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 짖기 */
@@ -351,9 +363,66 @@ public class InteractionButtonController : MonoBehaviour
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-    /* 오르기 */  
+    /* 오르기 */
+    //public void PlayerRise1()
+    //{
+    //    /* 스팀 업적 카운트 */
+    //    if (achieveData.upCount < 50)
+    //    {
+    //        achieveData.upCount += 1;
+    //    }
+
+    //    /* 버튼 누르는 소리 */
+    //    interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
+    //    interactionAudio.Play(); // 2. 재생한다.
+
+    //    noahUpDownObject = PlayerScripts.playerscripts.currentObject;
+    //    upDownData = noahUpDownObject.GetComponent<ObjData>();
+    //    upDownData.objectDATA.IsUpDown = true;
+
+    //    if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔
+    //    {
+    //        playerAgent.updatePosition = false;
+    //        playerAgent.updateRotation = false;
+    //        playerAgent.isStopped = true;
+    //        StartCoroutine(RiseAnim1());
+    //    }
+    //}
+
+    //public void PlayerRise2()
+    //{
+    //    StartCoroutine(RiseAnim2());
+    //    playerAgent.isStopped = false;
+    //}
+
+    //IEnumerator RiseAnim1()
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+    //    noahAnim.SetBool("IsRising", true);
+    //    yield return new WaitForSeconds(0.4f);
+    //    noahAnim.SetBool("IsRising2", true);
+    //}
+
+    //IEnumerator RiseAnim2()
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //    noahPlayer.transform.position = risePosition; // 동작 실행중에 플레이어의 위치를 바꿈
+    //    yield return new WaitForSeconds(0.000001f);
+    //    noahAnim.SetBool("IsRising3", true);
+    //    yield return new WaitForSeconds(0.000001f);
+    //    noahAnim.SetBool("IsRising4", true);
+    //    yield return new WaitForSeconds(0.000001f);
+    //    noahAnim.SetBool("IsRising5", true);
+    //    yield return new WaitForSeconds(0.000001f);
+    //    noahAnim.SetBool("IsRising", false);
+    //}
+
     public void PlayerRise1()
     {
+        if(cameraFollow!=null)
+        {
+            cameraFollow.enabled = false;
+        }
         /* 스팀 업적 카운트 */
         if (achieveData.upCount < 50)
         {
@@ -373,41 +442,113 @@ public class InteractionButtonController : MonoBehaviour
             playerAgent.updatePosition = false;
             playerAgent.updateRotation = false;
             playerAgent.isStopped = true;
-            StartCoroutine(RiseAnim1());
+            noahAnim.SetBool("Jump", true);
+            //StartCoroutine(RiseAnim1());
         }
-    }
-
-    public void PlayerRise2()
-    {
-        StartCoroutine(RiseAnim2());
-        playerAgent.isStopped = false;
     }
 
     IEnumerator RiseAnim1()
     {
-        yield return new WaitForSeconds(0.5f);
-        noahAnim.SetBool("IsRising", true);
-        yield return new WaitForSeconds(0.4f);
-        noahAnim.SetBool("IsRising2", true);
-    }
+        //noahPlayer.transform.position = risePosition; // 동작 실행중에 플레이어의 위치를 바꿈
+        yield return new WaitForSeconds(0.025f);
+        noahAnim.SetBool("Jump2", true);
+        //yield return null;
 
+    }
     IEnumerator RiseAnim2()
     {
-        yield return new WaitForSeconds(1f);
-        noahPlayer.transform.position = risePosition; // 동작 실행중에 플레이어의 위치를 바꿈
-        yield return new WaitForSeconds(0.000001f);
-        noahAnim.SetBool("IsRising3", true);
-        yield return new WaitForSeconds(0.000001f);
-        noahAnim.SetBool("IsRising4", true);
-        yield return new WaitForSeconds(0.000001f);
-        noahAnim.SetBool("IsRising5", true);
-        yield return new WaitForSeconds(0.000001f);
-        noahAnim.SetBool("IsRising", false);
+        float i = 0;
+        while (i<1f)
+        {
+            noahPlayer.transform.position = Vector3.Lerp(noahPlayer.transform.position, risePosition, (i/1));
+            Debug.Log("올라김");
+            i += Time.deltaTime;
+            yield return null;
+        }
+        //noahPlayer.transform.position = risePosition; // 동작 실행중에 플레이어의 위치를 바꿈
+        //yield return new WaitForSeconds(0.025f);
+        noahAnim.SetBool("Jump", false);
+    }
+
+    public void PlayerRise2()
+    {
+        StartCoroutine(RiseAnim1());
+        StartCoroutine(RiseAnim2());
+        noahAnim.SetBool("Jump2", false);
+        playerAgent.isStopped = false;
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 내려가기 */
+
+    //public void PlayerFall1()
+    //{
+    //    upDownData = noahUpDownObject.GetComponent<ObjData>();
+    //    if (upDownData.objectDATA.IsUpDown)
+    //    {
+    //        if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔
+    //        {
+    //            Vector3 fallrot = noahPlayer.transform.eulerAngles;
+    //            noahPlayer.transform.eulerAngles = new Vector3(fallrot.x, fallrot.y - 180, fallrot.z);
+
+                
+    //            //playerAgent.updatePosition = true;
+    //            //playerAgent.updateRotation = true;
+    //            playerAgent.isStopped = true;
+    //            Invoke("ChangeFallTrue1", 0.5f);
+    //            Invoke("ChangeFallTrue2", 1.1f);
+    //            Invoke("ChangeFallTrue3", 1.5f);
+    //            //Invoke("ChangeFallTrue4", 2.5f);
+    //            Invoke("ChangeFallFalse1", 2.5f);
+    //            //Invoke("TurnOnNav", 4f);
+    //        }
+    //        upDownData.objectDATA.IsUpDown = false;
+
+    //        noahUpDownObject = null;
+    //        upDownData = null;
+    //    }
+
+    //}
+
+    //void ChangeFallTrue1()
+    //{
+    //    noahAnim.SetBool("Falling1", true);
+    //}
+
+    //void ChangeFallTrue2()
+    //{
+    //    //noahPlayer.transform.position = new Vector3(noahUpDownObject.transform.localPosition.x + 3, 0.8883325f, noahUpDownObject.transform.localPosition.z) + transform.forward;
+    //    noahAnim.SetBool("Falling2", true);
+
+    //}
+    //void ChangeFallTrue3()
+    //{
+    //    noahAnim.SetBool("Falling3", true);
+    //    noahAnim.SetBool("Falling4", true);
+    //    noahPlayer.transform.position = new Vector3(noahPlayer.transform.position.x, 0.8883325f, noahPlayer.transform.position.z+1);
+    //}
+    //void ChangeFallTrue4()
+    //{
+
+    //    //upDownData = noahUpDownObject.GetComponent<ObjData>();
+    //    //Vector3 fallPosition = upDownData.DownPos.position;
+
+    //    //noahPlayer.transform.position = fallPosition;
+
+
+    //}
+    //void ChangeFallFalse1()
+    //{
+ 
+    //    playerAgent.isStopped = false;
+
+
+    //    playerAgent.updatePosition = true;
+    //    playerAgent.updateRotation = true;
+    //    noahAnim.SetBool("Falling1", false);
+
+    //}
 
     public void PlayerFall1()
     {
@@ -419,68 +560,37 @@ public class InteractionButtonController : MonoBehaviour
                 Vector3 fallrot = noahPlayer.transform.eulerAngles;
                 noahPlayer.transform.eulerAngles = new Vector3(fallrot.x, fallrot.y - 180, fallrot.z);
 
-                
+
                 //playerAgent.updatePosition = true;
                 //playerAgent.updateRotation = true;
                 playerAgent.isStopped = true;
-                Invoke("ChangeFallTrue1", 0.5f);
-                Invoke("ChangeFallTrue2", 1.1f);
-                Invoke("ChangeFallTrue3", 1.5f);
-                //Invoke("ChangeFallTrue4", 2.5f);
-                Invoke("ChangeFallFalse1", 2.5f);
-                //Invoke("TurnOnNav", 4f);
+                noahAnim.SetBool("Down", true);
+                StartCoroutine(Down2());
+                noahAnim.SetBool("Down2", false);
             }
             upDownData.objectDATA.IsUpDown = false;
 
             noahUpDownObject = null;
             upDownData = null;
+            if (cameraFollow != null)
+            {
+                cameraFollow.enabled = true;
+            }
         }
-
     }
 
-    void ChangeFallTrue1()
+    IEnumerator Down2()
     {
-        noahAnim.SetBool("Falling1", true);
-    }
-
-    void ChangeFallTrue2()
-    {
-        //noahPlayer.transform.position = new Vector3(noahUpDownObject.transform.localPosition.x + 3, 0.8883325f, noahUpDownObject.transform.localPosition.z) + transform.forward;
-        noahAnim.SetBool("Falling2", true);
-
-    }
-    void ChangeFallTrue3()
-    {
-        noahAnim.SetBool("Falling3", true);
-        noahAnim.SetBool("Falling4", true);
-        noahPlayer.transform.position = new Vector3(noahPlayer.transform.position.x, 0.8883325f, noahPlayer.transform.position.z+1);
-    }
-    void ChangeFallTrue4()
-    {
-
-        //upDownData = noahUpDownObject.GetComponent<ObjData>();
-        //Vector3 fallPosition = upDownData.DownPos.position;
-
-        //noahPlayer.transform.position = fallPosition;
-
-
-    }
-    void ChangeFallFalse1()
-    {
- 
-        playerAgent.isStopped = false;
-
-
+        yield return new WaitForSeconds(0.025f);
+        noahAnim.SetBool("Down2", true); 
+        yield return new WaitForSeconds(0.05f);
+        noahAnim.SetBool("Down", false);
         playerAgent.updatePosition = true;
         playerAgent.updateRotation = true;
-        noahAnim.SetBool("Falling1", false);
+        playerAgent.isStopped = false;
 
     }
-    
-    void TurnOnNav()
-    {
 
-    }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -704,5 +814,30 @@ public class InteractionButtonController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         noahAnim.SetBool("IsInserting", true);
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    public void PlayerSleep()
+    {
+        StartCoroutine(Sleeping());
+    }
+
+    IEnumerator Sleeping()
+    {
+        noahAnim.SetBool("IsSleep1", true);
+        yield return new WaitForSeconds(1f);
+        noahAnim.SetBool("IsSleep2", true);
+        yield return new WaitForSeconds(10f);
+        noahAnim.SetBool("IsSleep3", true);
+        yield return new WaitForSeconds(1f);
+        noahAnim.SetBool("IsSleep4", true);
+        yield return new WaitForSeconds(1f);
+        noahAnim.SetBool("IsSleep5", true);
+        yield return new WaitForSeconds(1f);
+        noahAnim.SetBool("IsSleep1", false);
+        noahAnim.SetBool("IsSleep2", false);
+        noahAnim.SetBool("IsSleep3", false);
+        noahAnim.SetBool("IsSleep4", false);
     }
 }
