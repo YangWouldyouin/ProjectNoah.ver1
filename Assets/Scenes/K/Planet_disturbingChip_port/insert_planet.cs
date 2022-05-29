@@ -10,13 +10,13 @@ public class insert_planet : MonoBehaviour, IInteraction
     ObjData Planet_insertData;
     Outline Planet_insertLine;
 
-    public GameObject RChip01;
-    ObjData RChip01Data;
-    Outline RChip01Line;
+    public GameObject R_Chip;
+    public ObjectData R_ChipData;
+    Outline R_ChipLine;
 
-    public GameObject WChip01;
-    ObjData WChip01Data;
-    Outline WChip01Line;
+    public GameObject W_Chip;
+    public ObjectData W_ChipData;
+    Outline W_ChipLine;
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -30,11 +30,9 @@ public class insert_planet : MonoBehaviour, IInteraction
         Planet_insertData = GetComponent<ObjData>();
         Planet_insertLine = GetComponent<Outline>();
 
-        RChip01Data = RChip01.GetComponent<ObjData>();
-        RChip01Line = RChip01.GetComponent<Outline>();
+        R_ChipLine = R_Chip.GetComponent<Outline>();
 
-        WChip01Data = WChip01.GetComponent<ObjData>();
-        WChip01Line = WChip01.GetComponent<Outline>();
+        W_ChipLine = W_Chip.GetComponent<Outline>();
 
 
         barkButton = Planet_insertData.BarkButton;
@@ -82,8 +80,9 @@ public class insert_planet : MonoBehaviour, IInteraction
         Planet_insertData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
+        StartCoroutine(ChangePressFalse());
 
-        if (RChip01Data.IsBite)
+        if (R_ChipData.IsBite)
         {
             Debug.Log("변화없음");
 
@@ -100,7 +99,7 @@ public class insert_planet : MonoBehaviour, IInteraction
             Invoke("NoChip", 0.5f);
         }
 
-        if (WChip01Data.IsBite)
+        if (W_ChipData.IsBite)
         {
             // dialogManager.StartCoroutine(dialogManager.PrintAIDialog(60));
 
@@ -110,10 +109,9 @@ public class insert_planet : MonoBehaviour, IInteraction
 
             Invoke("NoChip", 0.5f);
         }
-
-        StartCoroutine(ChangePressFalse());
     }
 
+    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
@@ -145,38 +143,38 @@ public class insert_planet : MonoBehaviour, IInteraction
     {
         Debug.Log("칩 꽂았음");
 
-        if (RChip01Data.IsBite)
+        if (R_ChipData.IsBite)
         {
-            RChip01Data.IsBite = false;
+            R_ChipData.IsBite = false;
 
-            RChip01Data.GetComponent<Rigidbody>().isKinematic = false;
-            RChip01Data.transform.parent = null;
+            R_ChipData.GetComponent<Rigidbody>().isKinematic = false;
+            R_Chip.transform.parent = null;
 
-            RChip01Data.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
-            RChip01Data.transform.position = new Vector3(-37.866f, 0.676f, -30.357f);
-            RChip01Data.transform.rotation = Quaternion.Euler(-90, 0, 0);
+            R_Chip.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
+            R_Chip.transform.position = new Vector3(-36.433f, 0.735f, -33.7f);
+            R_Chip.transform.rotation = Quaternion.Euler(90, 0, 0);
 
-            RChip01Data.IsNotInteractable = false;
-            RChip01Line.OutlineWidth = 0;
+            R_ChipData.IsNotInteractable = false;
+            R_ChipLine.OutlineWidth = 0;
 
             Planet_insertData.IsNotInteractable = false;
             Planet_insertLine.OutlineWidth = 0;
 
         }
 
-        if (WChip01Data.IsBite)
+        if (W_ChipData.IsBite)
         {
-            WChip01Data.IsBite = false;
+            W_ChipData.IsBite = false;
 
-            WChip01Data.GetComponent<Rigidbody>().isKinematic = false;
-            WChip01Data.transform.parent = null;
+            W_Chip.GetComponent<Rigidbody>().isKinematic = false;
+            W_Chip.transform.parent = null;
 
-            WChip01Data.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
-            WChip01Data.transform.position = new Vector3(-37.866f, 0.676f, -30.357f);
-            WChip01Data.transform.rotation = Quaternion.Euler(-90, 0, 0);
+            W_Chip.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
+            W_Chip.transform.position = new Vector3(-36.433f, 0.735f, -33.7f);
+            W_Chip.transform.rotation = Quaternion.Euler(90, 0, 0);
 
-            WChip01Data.IsNotInteractable = false;
-            WChip01Line.OutlineWidth = 0;
+            W_ChipData.IsNotInteractable = false;
+            W_ChipLine.OutlineWidth = 0;
 
             Planet_insertData.IsNotInteractable = false;
             Planet_insertLine.OutlineWidth = 0;

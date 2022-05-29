@@ -20,7 +20,7 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
         sniffButton.onClick.AddListener(OnSniff);
 
         biteButton = disturbingChipData.BiteButton;
-        biteButton.onClick.AddListener(OnBite);
+        // biteButton.onClick.AddListener(OnBite);
 
         pressButton = disturbingChipData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);

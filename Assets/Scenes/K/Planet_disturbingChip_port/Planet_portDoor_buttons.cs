@@ -11,7 +11,7 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
     Outline Planet_portDoorLine;
 
     public GameObject Planet_insert;
-    ObjData Planet_insertData;
+    public ObjectData Planet_insertData;
     Outline Planet_insertLine;
 
     public GameObject dialog;
@@ -24,7 +24,6 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
         Planet_portDoorData = GetComponent<ObjData>();
         Planet_portDoorLine = GetComponent<Outline>();
 
-        Planet_insertData = Planet_insert.GetComponent<ObjData>();
         Planet_insertLine = Planet_insert.GetComponent<Outline>();
 
         barkButton = Planet_portDoorData.BarkButton;
