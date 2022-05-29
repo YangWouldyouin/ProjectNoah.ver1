@@ -83,11 +83,11 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     {
         if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10)
         {
-            Debug.Log("사진찍기 업무 시작");
             GameManager.gameManager._gameData.IsPhotoTime = true;
 
             if (MissionScriptCheck == false)
             {
+                Debug.Log("사진찍기 업무 시작");
 
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(46));
                 MissionScriptCheck = true;
@@ -100,11 +100,12 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         }
         if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
         {
-            Debug.Log("사진찍기 업무 종료");
             GameManager.gameManager._gameData.IsPhotoTime = false;
 
             if (MissionScriptCheck == true)
             {
+                Debug.Log("사진찍기 업무 종료");
+
                 GameManager.gameManager._gameData.IsReportCancleCount += 1;
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
                 MissionScriptCheck = false;
