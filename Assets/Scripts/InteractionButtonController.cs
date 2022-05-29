@@ -90,6 +90,7 @@ public class InteractionButtonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             PlayerDie();
+            PlayerAlive();
         }
     }
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -886,6 +887,14 @@ public class InteractionButtonController : MonoBehaviour
 
     public void PlayerAlive()
     {
+        StartCoroutine(PlayerLive());
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    IEnumerator PlayerLive()
+    {
+        yield return new WaitForSeconds(7f);
         noahAnim.SetBool("Die1", false);
         PlayerScripts.playerscripts.boringTime = 0;
     }

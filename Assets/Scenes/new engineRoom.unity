@@ -24140,6 +24140,8 @@ MonoBehaviour:
   S_TimerBarFilled: {fileID: 1823968588}
   S_TimerBackground: {fileID: 1483259061}
   S_TimerText: {fileID: 541710359}
+  IsNoSeeFail2: 0
+  canTSee2: 0
   strangeData_E: {fileID: 11400000, guid: b48c41df8c3cc3549afabdc3d63db21b, type: 2}
   smoke_E: {fileID: 941640560}
   playerLine: {fileID: 2102715930}
@@ -26933,6 +26935,11 @@ MonoBehaviour:
     IsReportCancleCount: 0
     IsAIVSMissionCount: 0
     EndingNum: 0
+    SelectPlanetNum: 0
+    IsSelectPlanetCheck: 0
+    IsFakePlanetOpen: 0
+    IsFakePlanetSelectMission: 0
+    IsPlanetSelectMission: 0
     IsFakefatigue: 91
     IsFakeStrength: 87
     IsFakeThirst: 82
@@ -26963,6 +26970,7 @@ MonoBehaviour:
     IsFirstNoticeEnd: 0
     afterFirstTalk: 0
     afterNewsTalk: 0
+    afterFirstMission: 0
     IsCheckDrug: 0
     IsDetox: 0
     IsFirstUsingStrangeObj: 0
@@ -26994,6 +27002,7 @@ MonoBehaviour:
     IsFakeCoordinateData_Tablet: 0
     IsFakeCoordinateDatafile_Tablet: 0
     IsDontFakeCoordinateDatafile_Tablet: 0
+    IsDollListen: 0
     Is_MainComputer_WirelessOn: 0
     IsFinalBusinessReport_MC: 0
     IsFinalBusinessReportFile_MC: 0
@@ -27082,6 +27091,7 @@ MonoBehaviour:
     IsDefyMissionEnd0: 0
     IsTutorialClear0: 0
     IsCWDoorOpened_M_C10: 0
+    IsPlanetSelectMission0: 0
     IsPhotoMissionFinish0: 0
     IsCompleteFindLivingKey0: 0
     IsCompleteFindEngineKey0: 0
@@ -27102,6 +27112,7 @@ MonoBehaviour:
     IsTabletDestory0: 0
     IsFakeCoordinateData_Tablet0: 0
     IsFakeCoordinateDatafile_Tablet0: 0
+    IsFakePlanetSelectMission0: 0
     IsAIDown_M_C1C30: 0
     IsRevisioncomplaint0: 0
   IsTrashDoorFixed_L_L1: 0
@@ -29688,6 +29699,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &708140664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708140666}
+  - component: {fileID: 708140665}
+  m_Layer: 0
+  m_Name: SavePreviousScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &708140665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708140664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f3243b68d90734d9daca9aded970dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &708140666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708140664}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1331.4531, y: 118.275185, z: 241.56363}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &709460247 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 162648, guid: cc990f4eda1da5b469dbce762b0e70ba, type: 3}
