@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class insert01 : MonoBehaviour, IInteraction
+public class insert_planet : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
@@ -14,24 +14,14 @@ public class insert01 : MonoBehaviour, IInteraction
     ObjData RChip01Data;
     Outline RChip01Line;
 
-    /*
-    public GameObject RChip02;
-    ObjData RChip02Data;
-    Outline RChip02Line;
-    */
-
     public GameObject WChip01;
     ObjData WChip01Data;
     Outline WChip01Line;
 
-    /*
-    public GameObject WChip02;
-    ObjData WChip02Data;
-    Outline WChip02Line;
-    */
-
     public GameObject dialog;
     DialogManager dialogManager;
+
+
 
     void Start()
     {
@@ -43,14 +33,9 @@ public class insert01 : MonoBehaviour, IInteraction
         RChip01Data = RChip01.GetComponent<ObjData>();
         RChip01Line = RChip01.GetComponent<Outline>();
 
-        //RChip02Data = RChip02.GetComponent<ObjData>();
-        //RChip02Line = RChip02.GetComponent<Outline>();
-
         WChip01Data = WChip01.GetComponent<ObjData>();
         WChip01Line = WChip01.GetComponent<Outline>();
 
-        //WChip02Data = WChip02.GetComponent<ObjData>();
-        //WChip02Line = WChip02.GetComponent<Outline>();
 
         barkButton = insertData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -100,28 +85,28 @@ public class insert01 : MonoBehaviour, IInteraction
 
         if (RChip01Data.IsBite)
         {
-            Debug.Log("AI쥬금");
+            Debug.Log("변화없음");
 
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(59));
+            // dialogManager.StartCoroutine(dialogManager.PrintAIDialog(59));
 
-            GameManager.gameManager._gameData.IsAIDown = true;
+/*            GameManager.gameManager._gameData.IsAIDown = true;
             GameManager.gameManager._gameData.IsAIDown_M_C1C3 = true;
             GameManager.gameManager._gameData.IsStartOrbitChange = true;
             GameManager.gameManager._gameData.ActiveMissionList[9] = false;
             GameManager.gameManager._gameData.ActiveMissionList[12] = true;
             MissionGenerator.missionGenerator.ActivateMissionList();
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");*/
 
             Invoke("NoChip", 0.5f);
         }
 
         if (WChip01Data.IsBite)
         {
-            Debug.Log("AI안쥬금");
+            // dialogManager.StartCoroutine(dialogManager.PrintAIDialog(60));
 
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(60));
+            GameManager.gameManager._gameData.IsFakePlanetOpen = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            Debug.Log("가짜 행성 해금");
 
             Invoke("NoChip", 0.5f);
         }
@@ -156,7 +141,7 @@ public class insert01 : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
-    void NoChip() // 칩 꽂아서 비활성화
+    void NoChip() //
     {
         Debug.Log("칩 꽂았음");
 
@@ -168,7 +153,7 @@ public class insert01 : MonoBehaviour, IInteraction
             RChip01Data.transform.parent = null;
 
             RChip01Data.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
-            RChip01Data.transform.position = new Vector3(-37.901f, 0.853f, -30.362f);
+            RChip01Data.transform.position = new Vector3(-37.866f, 0.676f, -30.357f);
             RChip01Data.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
             RChip01Data.IsNotInteractable = false;
@@ -187,7 +172,7 @@ public class insert01 : MonoBehaviour, IInteraction
             WChip01Data.transform.parent = null;
 
             WChip01Data.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
-            WChip01Data.transform.position = new Vector3(-37.901f, 0.853f, -30.362f);
+            WChip01Data.transform.position = new Vector3(-37.866f, 0.676f, -30.357f);
             WChip01Data.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
             WChip01Data.IsNotInteractable = false;
