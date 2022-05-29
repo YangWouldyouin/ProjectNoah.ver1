@@ -894,7 +894,7 @@ public class InteractionButtonController : MonoBehaviour
 
     IEnumerator PlayerLive()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(4f);
         noahAnim.SetBool("Die1", false);
         PlayerScripts.playerscripts.boringTime = 0;
     }
