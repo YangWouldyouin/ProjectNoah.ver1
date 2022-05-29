@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4513672, g: 0.50038254, b: 0.56975245, a: 1}
+  m_IndirectSpecularColor: {r: 0.45136768, g: 0.50038236, b: 0.5697532, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -20150,9 +20150,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 335102416, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 444524503, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 771751067, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 891216180, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 952410431, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 329
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316158693, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1333451050, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
@@ -20356,6 +20376,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2479688831729970856, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492941495208430968, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526966109426019612, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
@@ -25234,6 +25258,7 @@ MonoBehaviour:
     IsFirstNoticeEnd: 0
     afterFirstTalk: 0
     afterNewsTalk: 0
+    afterFirstMission: 0
     IsCheckDrug: 0
     IsDetox: 0
     IsFirstUsingStrangeObj: 0
@@ -76076,7 +76101,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 342996351253066977}
-  m_RootOrder: 70
+  m_RootOrder: 71
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!54 &1392111006
 Rigidbody:
@@ -96905,6 +96930,8 @@ MonoBehaviour:
   S_TimerBarFilled: {fileID: 0}
   S_TimerBackground: {fileID: 0}
   S_TimerText: {fileID: 0}
+  IsNoSeeFail2: 0
+  canTSee2: 0
   strangeData_E: {fileID: 11400000, guid: b48c41df8c3cc3549afabdc3d63db21b, type: 2}
   smoke_E: {fileID: 1392111008}
   playerLine: {fileID: 1397759963577864826}
