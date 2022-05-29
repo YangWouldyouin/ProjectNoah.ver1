@@ -16,7 +16,9 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
     PortableObjectData portableData; // 이후 워크룸에서 안보이게 하기 위해
 
     void Start()
-    {
+    { 
+
+        portableData=BaseCanvas._baseCanvas.workRoomData;
         /*ObjData*/
         HealthySweetPotato1Data_T = GetComponent<ObjData>();
 

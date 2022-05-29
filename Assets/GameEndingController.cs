@@ -25,7 +25,7 @@ public class GameEndingController : MonoBehaviour
 
         Dontclick.SetActive(false);
 
-        GameManager.gameManager._gameData.statNum = 5;
+        inGameTime.statNum = 5;
         InteractionButtonController.interactionButtonController.PlayerAlive();
     }
     public void SuddenDeath2()
@@ -45,7 +45,7 @@ public class GameEndingController : MonoBehaviour
     {
         SavePageManager();
 
-        if(GameManager.gameManager._gameData.statNum <=0)
+        if(inGameTime.statNum <= 0)
         {
             InteractionButtonController.interactionButtonController.PlayerDie();
 
@@ -72,7 +72,7 @@ public class GameEndingController : MonoBehaviour
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //특별 운석 보고 엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
-            GameManager.gameManager._gameData.statNum = 10;
+            inGameTime.statNum = 10;
 
             inGameTime.days = 0;
             inGameTime.hours = 0;
@@ -91,7 +91,7 @@ public class GameEndingController : MonoBehaviour
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //생태계구축엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
-            GameManager.gameManager._gameData.statNum = 10;
+            inGameTime.statNum = 10;
 
             inGameTime.days = 0;
             inGameTime.hours = 0;
@@ -111,7 +111,7 @@ public class GameEndingController : MonoBehaviour
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //명령 불복종 엔딩
             // 스탯, 취소 리포트 개수 리셋
-            GameManager.gameManager._gameData.statNum = 10;
+            inGameTime.statNum = 10;
 
             inGameTime.days = 0;
             inGameTime.hours = 0;
@@ -130,7 +130,7 @@ public class GameEndingController : MonoBehaviour
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //인재부족 엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
-            GameManager.gameManager._gameData.statNum = 10;
+            inGameTime.statNum = 10;
 
             inGameTime.days = 0;
             inGameTime.hours = 0;
@@ -148,7 +148,7 @@ public class GameEndingController : MonoBehaviour
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //실험체 폐기 엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
-            GameManager.gameManager._gameData.statNum = 10;
+            inGameTime.statNum = 10;
 
             inGameTime.days = 0;
             inGameTime.hours = 0;
@@ -166,7 +166,7 @@ public class GameEndingController : MonoBehaviour
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //당신이 구한 하나 엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
-            GameManager.gameManager._gameData.statNum = 10;
+            inGameTime.statNum = 10;
 
             inGameTime.days = 0;
             inGameTime.hours = 0;
@@ -184,7 +184,7 @@ public class GameEndingController : MonoBehaviour
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //당신이 구한 전부 엔딩, 진엔딩, 고발O
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
-            GameManager.gameManager._gameData.statNum = 10;
+            inGameTime.statNum = 10;
 
             inGameTime.days = 0;
             inGameTime.hours = 0;

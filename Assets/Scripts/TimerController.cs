@@ -32,11 +32,12 @@ public class TimerController : MonoBehaviour
     void Update()
     {
         inGameTime.timer += Time.deltaTime;
-        DisplayTime(inGameTime.timer);
-       
+        inGameTime.statTimer+= Time.deltaTime;
+        DisplayTime(inGameTime.timer, inGameTime.statTimer);
+      
     }
 
-    void DisplayTime(float timeToDisplay)
+    void DisplayTime(float timeToDisplay, float timeToLowerStat)
     {
         if(timeToDisplay<0)
         {
@@ -45,13 +46,23 @@ public class TimerController : MonoBehaviour
         inGameTime.days = Mathf.FloorToInt(timeToDisplay / 720);
 
         inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 720) / 30);
+
+     
+
         //inGameTime.days = Mathf.FloorToInt((timeToDisplay % 3600)/60);
 
         //inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 3600) % 60);
 
         //float hours = Mathf.FloorToInt(timeToDisplay / 3600);
 
-        //float minutes = Mathf.FloorToInt((timeToDisplay % /*3600)/60*/);
+        float minutes = Mathf.FloorToInt((timeToLowerStat % 3600)/60);
+        if(minutes==5)
+        {
+            inGameTime.statNum -= 1;
+            inGameTime.statTimer = 0;
+            timeToLowerStat = 0;
+            minutes = 0;
+        }
 
         //float seconds = Mathf.FloorToInt((timeToDisplay % 3600) % 60);
 

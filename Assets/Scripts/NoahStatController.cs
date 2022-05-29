@@ -26,6 +26,8 @@ public class NoahStatController : MonoBehaviour
     AudioSource Noah_Sick_Audio;
     public AudioClip Noah_Sick;
 
+    public InGameTime StatTime;
+
     private void Awake()
     {
         noahStatController = this;
@@ -38,12 +40,12 @@ public class NoahStatController : MonoBehaviour
 
         currentNum = GameManager.gameManager._gameData.statNum;
 
-        for (int i = 0; i < currentNum; i++)
+        for (int i = 0; i < StatTime.statNum; i++)
         {
             statBar[i].enabled = true;
         }
 
-        for (int j = currentNum; j < 10; j++)
+        for (int j = StatTime.statNum; j < 10; j++)
         {
             statBar[j].enabled = false;
         }
@@ -63,7 +65,7 @@ public class NoahStatController : MonoBehaviour
 
     private void Update()
     {
-        DecreaseStatByTime();
+        //DecreaseStatByTime();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -75,7 +77,7 @@ public class NoahStatController : MonoBehaviour
             IncreaseStatBar();
         }
 
-        if (currentNum<10 && currentNum>=5)
+        if (StatTime.statNum< 10 && StatTime.statNum >= 5)
         {
             
             yellowTimeLeft = 0;
@@ -92,7 +94,7 @@ public class NoahStatController : MonoBehaviour
             conditionText.text = "[상태] \"좋음\"";
         }
 
-        if(currentNum < 5 && currentNum >=2)
+        if(StatTime.statNum < 5 && StatTime.statNum >= 2)
         {
 
             redTimeLeft = 0;
@@ -110,7 +112,7 @@ public class NoahStatController : MonoBehaviour
             conditionText.text = "[상태] \"보통\"";
         }
 
-        if(currentNum <2 && currentNum >=0)
+        if(StatTime.statNum < 2 && StatTime.statNum >= 0)
         {
 
             Noah_Sick_Audio.clip = Noah_Sick;
@@ -134,20 +136,20 @@ public class NoahStatController : MonoBehaviour
     
     public void IncreaseStatBar()
     {
-        SaveSystem.Load("save_001");
-        currentNum = GameManager.gameManager._gameData.statNum;
-        if(currentNum<10)
+        //SaveSystem.Load("save_001");
+        //currentNum = GameManager.gameManager._gameData.statNum;
+        if(StatTime.statNum < 10)
         {
-            currentNum += 1;
-            GameManager.gameManager._gameData.statNum = currentNum;
+            StatTime.statNum += 1;
+            GameManager.gameManager._gameData.statNum = StatTime.statNum;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-            for (int i = 0; i < currentNum; i++)
+            for (int i = 0; i < StatTime.statNum; i++)
             {
                 statBar[i].enabled = true;
             }
 
-            for (int j = currentNum; j < 10; j++)
+            for (int j = StatTime.statNum; j < 10; j++)
             {
                 statBar[j].enabled = false;
             }
@@ -158,18 +160,18 @@ public class NoahStatController : MonoBehaviour
     {
         SaveSystem.Load("save_001");
         currentNum = GameManager.gameManager._gameData.statNum;
-        if(currentNum>0)
+        if(StatTime.statNum > 0)
         {
-            currentNum -= 1;
+            StatTime.statNum -= 1;
             GameManager.gameManager._gameData.statNum = currentNum;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-            for (int i = 0; i < currentNum; i++)
+            for (int i = 0; i < StatTime.statNum; i++)
             {
                 statBar[i].enabled = true;
             }
 
-            for (int j = currentNum; j < 10; j++)
+            for (int j = StatTime.statNum; j < 10; j++)
             {
                 statBar[j].enabled = false;
             }
