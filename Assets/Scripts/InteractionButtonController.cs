@@ -227,7 +227,6 @@ public class InteractionButtonController : MonoBehaviour
             noahAnim.SetBool("IsPutDowning", true);
             Invoke("CancelBitingAnimation", 1f);
             Invoke("PutDownObject", 0.3f);
-
         }
     }
     void CancelBitingAnimation()
