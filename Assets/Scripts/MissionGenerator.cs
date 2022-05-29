@@ -72,6 +72,11 @@ public class MissionGenerator : MonoBehaviour
 
         missionDic.Add(30, "엔진실 문 고치기");
 
+        //행선지 좌표 설정
+        missionDic.Add(31, "행선지 설정");
+        missionDic.Add(32, "궤도 시스템 교란");
+        missionDic.Add(33, "거짓 행선지 설정");
+
         //if (GameManager.gameManager._gameData.S_IsAIAwake_M_C1)
         //{
         //    missionList.Add(missionDic[0]);
