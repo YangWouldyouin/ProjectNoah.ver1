@@ -7,12 +7,17 @@ public class LiExBody_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
-    ObjData portBodyData;
+    public ObjectData portBodyData;
+    public ObjectData portDoorData;
+
+    ObjData portBodyObjData;
+
     Outline portBodyLine;
+    Outline portDoorLine;
 
     public GameObject portDoor;
-    ObjData portDoorData;
-    Outline portDoorLine;
+
+
 
     /*
     public GameObject insert02;
@@ -23,28 +28,27 @@ public class LiExBody_buttons : MonoBehaviour, IInteraction
 
     void Start()
     {
-        portBodyData = GetComponent<ObjData>();
+        portBodyObjData = GetComponent<ObjData>();
         portBodyLine = GetComponent<Outline>();
 
-        portDoorData = portDoor.GetComponent<ObjData>();
         portDoorLine = portDoor.GetComponent<Outline>();
 
         //insert02Data = insert02.GetComponent<ObjData>();
         //insert02Line = insert02.GetComponent<Outline>();
 
-        barkButton = portBodyData.BarkButton;
+        barkButton = portBodyObjData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = portBodyData.SniffButton;
+        sniffButton = portBodyObjData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = portBodyData.BiteButton;
+        biteButton = portBodyObjData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
-        pressButton = portBodyData.PushOrPressButton;
+        pressButton = portBodyObjData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        observeButton = portBodyData.CenterButton1;
+        observeButton = portBodyObjData.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
     }
 
@@ -73,7 +77,6 @@ public class LiExBody_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        portBodyData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -90,13 +93,22 @@ public class LiExBody_buttons : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        portBodyData.IsObserve = true;
         DisableButton();
 
         PlayerScripts.playerscripts.currentObserveObj = gameObject;
-        CameraController.cameraController.currentView = portBodyData.ObserveView;
+        CameraController.cameraController.currentView = portBodyObjData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
+        // 업데이트 문에서 계속 돌고 있어서 3초 딜레이 후에 true로 바꿔야함...
+        StartCoroutine(Delay3Seconds());
+
+        //insert02Data.IsNotInteractable = false;
+        //insert02Line.OutlineWidth = 8f;
+    }
+
+    IEnumerator Delay3Seconds()
+    {
+        yield return new WaitForSeconds(3f);
         portBodyData.IsNotInteractable = true;
         portBodyLine.OutlineWidth = 0f;
 
@@ -104,29 +116,17 @@ public class LiExBody_buttons : MonoBehaviour, IInteraction
         portDoorLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
-
-        //insert02Data.IsNotInteractable = false;
-        //insert02Line.OutlineWidth = 8f;
     }
 
     public void OnPushOrPress()
     {
-        portBodyData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
 
-        StartCoroutine(ChangePressFalse());
-    }
-
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        portBodyData.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        portBodyData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
