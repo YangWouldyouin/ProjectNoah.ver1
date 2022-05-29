@@ -11,6 +11,9 @@ public class E_StrangeObj : MonoBehaviour
     public GameObject S_TimerBackground;
     public GameObject S_TimerText;
 
+    public bool IsNoSeeFail2 = false; //제한 시간 내에 안에 퍼즐 실패
+    public bool canTSee2 = false;
+
     private Button barkButton, sniffButton, biteButton, pressButton, smashButton, noCenterButton;
 
     public ObjectData strangeData_E;
@@ -61,6 +64,37 @@ public class E_StrangeObj : MonoBehaviour
         smashButton.onClick.AddListener(OnSmash);
 
         noCenterButton = objData.CenterButton1;
+    }
+
+    void Update()
+    {
+        if (IsNoSeeFail2 == true && canTSee2 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        {
+            GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
+            Debug.Log("시간 안에 퍼즐 풀기 실패");
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            canTSee2 = true;
+        }
+
+        //타임 어택 성공시
+        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        {
+            /*타이머가 꺼진다*/
+            inGameTime.IsTimerStarted = false;
+
+            /*아웃라인이 꺼진다*/
+            inGameTime.IsNoahOutlineTurnOn = false;
+            inGameTime.outlineTimer = 0;
+
+            S_TimerBarFilled.SetActive(false);
+            S_TimerBackground.SetActive(false);
+            S_TimerText.SetActive(false);
+
+            Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
+            //GameManager.gameManager._gameData.IsMiddleTuto = false;
+            //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
+        }
     }
 
     void DisableButton()
@@ -153,6 +187,7 @@ public class E_StrangeObj : MonoBehaviour
         outlineControl.StartOutlineTime(180f);
         TimerManager.timerManager.TimerStart(180);
         //Invoke("TimeCheck", 30);
+        Invoke("FailStrangeObj", 180f);
 
         // 수상한 물건을 플레이어로부터 분리함
         this.GetComponent<Rigidbody>().isKinematic = true;
@@ -173,6 +208,11 @@ public class E_StrangeObj : MonoBehaviour
 
         GameManager.gameManager._gameData.IsHide = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+    }
+
+    void FailStrangeObj()
+    {
+        IsNoSeeFail2 = true;
     }
 
     void TimeCheck()

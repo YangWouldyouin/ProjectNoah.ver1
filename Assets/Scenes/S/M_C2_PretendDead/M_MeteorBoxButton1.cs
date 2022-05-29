@@ -26,7 +26,7 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
 
     /*Outline*/
     Outline IsMeteoritesStorage1Outline_M;
-    Outline MeteorBoxButton1Outline_M;
+    public Outline MeteorBoxButton1Outline_M;
 
     /*애니메이션*/
     public Animator meteorBox1Anim_M;
@@ -52,7 +52,7 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
 
         /*Outline*/
         IsMeteoritesStorage1Outline_M = M_IsMeteoritesStorage1.GetComponent<Outline>();
-        MeteorBoxButton1Outline_M = GetComponent<Outline>();
+        //MeteorBoxButton1Outline_M = GetComponent<Outline>();
 
 
         /*ObjData*/

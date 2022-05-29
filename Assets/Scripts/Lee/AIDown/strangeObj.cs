@@ -26,6 +26,16 @@ public class strangeObj : MonoBehaviour, IInteraction
     [Header("<업무공간 내의 이동가능한 오브젝트 관리를 위한 변수>")]
     public PortableObjectData workRoomExtinguisherData;
 
+    /*타이머*/
+    public InGameTime inGameTime;
+
+    public GameObject S_TimerBarFilled;
+    public GameObject S_TimerBackground;
+    public GameObject S_TimerText;
+
+    public bool IsNoSeeFail1 = false; //제한 시간 내에 안에 퍼즐 실패
+    public bool canTSee1 = false;
+
     void Start()
     {
         outlineControl = outlineController.GetComponent<NoahOutlineController>();
@@ -49,6 +59,38 @@ public class strangeObj : MonoBehaviour, IInteraction
         smashButton.onClick.AddListener(OnSmash);
 
         noCenterButton = objData.CenterButton1;
+    }
+
+
+    void Update()
+    {
+        if (IsNoSeeFail1 == true && canTSee1 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        {
+            GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
+            Debug.Log("시간 안에 퍼즐 풀기 실패");
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            canTSee1 = true;
+        }
+
+        //타임 어택 성공시
+        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        {
+            /*타이머가 꺼진다*/
+            inGameTime.IsTimerStarted = false;
+
+            /*아웃라인이 꺼진다*/
+            inGameTime.IsNoahOutlineTurnOn = false;
+            inGameTime.outlineTimer = 0;
+
+            S_TimerBarFilled.SetActive(false);
+            S_TimerBackground.SetActive(false);
+            S_TimerText.SetActive(false);
+
+            Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
+            //GameManager.gameManager._gameData.IsMiddleTuto = false;
+            //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
+        }
     }
 
     void DisableButton()
@@ -157,6 +199,12 @@ public class strangeObj : MonoBehaviour, IInteraction
         // 3분간 플레이어 아웃라인 활성화
         outlineControl.StartOutlineTime(180f);
         TimerManager.timerManager.TimerStart(180f);
+        Invoke("FailStrangeObj", 180f);
+    }
+
+    void FailStrangeObj()
+    {
+        IsNoSeeFail1 = true;
     }
 
     IEnumerator DelayFor2Seconds()

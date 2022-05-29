@@ -229,6 +229,8 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
         }
 
+        table1Data_M.IsUpDown = false;
+
 
 
 /*        if (!table1Data_M.IsUpDown)

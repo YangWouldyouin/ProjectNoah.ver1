@@ -231,18 +231,21 @@ public class M_Table2 : MonoBehaviour, IInteraction
         }
 
 
+        table2Data_M.IsUpDown = false;
 
-/*        if (!table1Data_M.IsUpDown)
-        {
-            //table1Data_M.IsCenterButtonChanged = true;
-            //Invoke("changeObserve",2f);
-        }
 
-        else
-        {
-            table1Data_M.IsCenterButtonChanged = false;
-        }
-*/
+
+        /*        if (!table1Data_M.IsUpDown)
+                {
+                    //table1Data_M.IsCenterButtonChanged = true;
+                    //Invoke("changeObserve",2f);
+                }
+
+                else
+                {
+                    table1Data_M.IsCenterButtonChanged = false;
+                }
+        */
     }
 
     void changeObserve()
