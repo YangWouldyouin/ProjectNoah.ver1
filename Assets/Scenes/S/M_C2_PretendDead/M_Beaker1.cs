@@ -71,6 +71,8 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
     public bool IsPretendDeadFail1 = false; //제한 시간 내에 안에 퍼즐 실패
     public bool canTpretendDead1 = false;
+    public bool StartBlack = false;
+    public bool StartOnlyOne = false;
 
     void Start()
     {
@@ -119,7 +121,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         Beaker1ObjData_M.IsCenterButtonDisabled = true;
     }
 
-    void FakeAI1()
+/*    void FakeAI1()
     {
         //D-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(56));
@@ -142,7 +144,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         cylinderGlassNoNeed1_Collider.enabled = false;
         cylinderGlassNoNeed2_Collider.enabled = false;
 
-    }
+    }*/
 
     void Update()
     {
@@ -161,6 +163,13 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
             M_AnswerMeteorForBeaker.SetActive(false);
 
+
+        }
+
+        if(StartBlack == true && StartOnlyOne == false)
+        {
+            StartCoroutine(SuddenDeath());
+            StartOnlyOne = true;
 
         }
 
@@ -187,6 +196,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             //GameManager.gameManager._gameData.IsMiddleTuto = false;
             //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
         }
+
     }
 
     void DisableButton()
@@ -294,24 +304,25 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerSniff();
     }
 
+    //실험 끝! 완성된 약을 먹는다면?!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    /*1. 노아가 음식을 먹는다. 2. 쓰러진다. 3.AI가 혼낸다. 4. 꺼지는 화면이 나온다. 5. 켜지는 화면이 나온다. 6. 타이머가 시작된다.*/
+
+
     public void OnEat()
     {
         DisableButton();
-
+        //1. 노아가 음식을 먹는다
         InteractionButtonController.interactionButtonController.playerEat();
 
-        Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
+        // 2.쓰러진다.
+        Invoke("EatAfter", 3);
 
+        //여기까지는 됨@@@@@@@@
+       
         //Invoke(" FakeAI1", 3f);
 
+        //3.AI가 혼낸다.
         StartCoroutine(realFakeAI1());
-
-        //타이머 시작 3분
-        TimerManager.timerManager.TimerStart(60);
-        Invoke("PretendFailCheck", 60f);
-
-
-        Invoke("EatAfter", 3);
 
         Beaker1ObjData_M.IsEaten = false;
 
@@ -321,9 +332,13 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     {
         InteractionButtonController.interactionButtonController.PlayerDie();
 
-        StartScreen.SetActive(true);
+        Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
 
-        StartCoroutine(SuddenDeath());
+        StartBlack = true;
+
+        //여기부터 안됨@@@@@@@@
+
+        //StartCoroutine(SuddenDeath());
 
         //Invoke("SuddenDeath", 3);
     }
@@ -334,6 +349,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         yield return new WaitForSeconds(3f);
         Debug.Log("노아는 죽엇다");
 
+        //5. 켜지는 화면이 나온다.
         StartScreen.SetActive(false);
         EndScreen.SetActive(true);
 
@@ -346,10 +362,16 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
     void End()
     {
+        Debug.Log("타이머 켜짐");
+
         EndScreen.SetActive(false);
+
+        //타이머 시작 3분
+        TimerManager.timerManager.TimerStart(60);
+        Invoke("PretendFailCheck", 60f);
     }
 
-    IEnumerator PreteadTimer1()
+/*    IEnumerator PreteadTimer1()
     {
 
         yield return new WaitForSeconds(40f);
@@ -358,7 +380,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         TimerManager.timerManager.TimerStart(8);
         Invoke("PretendFailCheck", 8f);
 
-    }
+    }*/
 
     void PretendFailCheck()
     {
@@ -368,8 +390,11 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     IEnumerator realFakeAI1()
     {
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         Debug.Log("AI는 잘 말한다.");
+
+        //4.꺼지는 화면이 나온다.
+        StartScreen.SetActive(true);
 
         //D-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(56));

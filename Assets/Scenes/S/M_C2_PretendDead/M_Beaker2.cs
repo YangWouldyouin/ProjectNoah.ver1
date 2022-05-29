@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class M_Beaker2 : MonoBehaviour, IInteraction
 {
+
+    public GameObject StartScreen;
+    public GameObject EndScreen;
+
     /*연관있는 오브젝트*/
     public GameObject M_HiBeaker1;
     public GameObject M_RubberForBeaker2;
@@ -306,6 +310,43 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         //타이머 시작 3분
         TimerManager.timerManager.TimerStart(240);
         Invoke("PretendFailCheck", 240f);
+
+
+        Invoke("EatAfter", 3);
+
+        Beaker2ObjData_M.IsEaten = false;
+    }
+
+    void EatAfter()
+    {
+        InteractionButtonController.interactionButtonController.PlayerDie();
+
+        StartScreen.SetActive(true);
+
+        StartCoroutine(SuddenDeath());
+
+        //Invoke("SuddenDeath", 3);
+    }
+
+    IEnumerator SuddenDeath()
+    {
+
+        yield return new WaitForSeconds(3f);
+        Debug.Log("노아는 죽엇다");
+
+        StartScreen.SetActive(false);
+        EndScreen.SetActive(true);
+
+        InteractionButtonController.interactionButtonController.PlayerAlive();
+
+
+        Invoke("End", 3f);
+
+    }
+
+    void End()
+    {
+        EndScreen.SetActive(false);
     }
 
     IEnumerator PreteadTimer2()

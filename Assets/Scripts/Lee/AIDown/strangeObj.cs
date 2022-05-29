@@ -64,7 +64,7 @@ public class strangeObj : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (IsNoSeeFail1 == true && canTSee1 == false && !GameManager.gameManager._gameData.IsAIDown)
+        if (IsNoSeeFail1 == true && canTSee1 == false && GameManager.gameManager._gameData.IsAIDown == false)
         {
             GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
             Debug.Log("시간 안에 퍼즐 풀기 실패");
@@ -197,9 +197,9 @@ public class strangeObj : MonoBehaviour, IInteraction
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         // 3분간 플레이어 아웃라인 활성화
-        outlineControl.StartOutlineTime(180f);
-        TimerManager.timerManager.TimerStart(180f);
-        Invoke("FailStrangeObj", 180f);
+        outlineControl.StartOutlineTime(10f);
+        TimerManager.timerManager.TimerStart(10f);
+        Invoke("FailStrangeObj", 10f);
     }
 
     void FailStrangeObj()
