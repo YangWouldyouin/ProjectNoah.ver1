@@ -329,7 +329,7 @@ public class W_Health_Machine : MonoBehaviour
             //현재 스탯 상태 메인 컴퓨터에 업로드 
             GameManager.gameManager._gameData.IscurrentHealthData = GameManager.gameManager._gameData.statNum;
 
-            if (GameManager.gameManager._gameData.statNum < 30) 
+            if (GameManager.gameManager._gameData.statNum < 3) 
             {
                 GameManager.gameManager._gameData.IsReportCancleCount += 1;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
