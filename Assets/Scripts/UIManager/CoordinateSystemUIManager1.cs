@@ -106,15 +106,22 @@ public class CoordinateSystemUIManager1 : MonoBehaviour
             PlanetCol1.enabled = false;
         }
 
-        //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(71));
+
 
         MainUI.SetActive(false);
         Open.SetActive(true);
         Fold.SetActive(false);
+
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(73));
+
+        GameManager.gameManager._gameData.afterFirstMission = true;
+        GameManager.gameManager._gameData.ActiveMissionList[23] = false;
+        MissionGenerator.missionGenerator.ActivateMissionList();
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void Cancle()
     {
-
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(74));
     }
 }

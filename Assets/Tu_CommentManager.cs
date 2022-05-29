@@ -26,6 +26,9 @@ public class Tu_CommentManager : MonoBehaviour
     public GameObject condition;
     public GameObject smell;
 
+    public GameObject console;
+    BoxCollider console_collider;
+
     public Button aiButton;
 
     // Start is called before the first frame update
@@ -41,6 +44,8 @@ public class Tu_CommentManager : MonoBehaviour
         cardData.IsBite = false;
         cardData.IsNotInteractable = false;
         timerData.IsTimerStarted = false;
+
+        console_collider = console.GetComponent<BoxCollider>();
 
         StartCoroutine(Dalay1());
 
@@ -62,6 +67,11 @@ public class Tu_CommentManager : MonoBehaviour
             check01 = true;
         }
 
+        if(GameManager.gameManager._gameData.afterFirstMission && !check02)
+        {
+            StartCoroutine(NewsTalk());
+            check02 = true;
+        }
     }
 
 
@@ -199,7 +209,31 @@ public class Tu_CommentManager : MonoBehaviour
             else if (!dialogManager.IsSubtitleStarted)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(69));
-                StartCoroutine(NewsTalk());
+
+                break;
+            }
+        }
+    }
+
+    IEnumerator FirstMission()
+    {
+        yield return new WaitForSeconds(1f);
+
+        while (true)
+        {
+            if (dialogManager.IsDialogStarted)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            else
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(72));
+                GameManager.gameManager._gameData.ActiveMissionList[23] = true;
+                MissionGenerator.missionGenerator.ActivateMissionList();
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+                console_collider.enabled = true;
 
                 break;
             }
@@ -216,7 +250,7 @@ public class Tu_CommentManager : MonoBehaviour
     //뉴스 팝업창 뜨고 관련 대화
     IEnumerator NewsTalk()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(10f);
 
         while (true)
         {

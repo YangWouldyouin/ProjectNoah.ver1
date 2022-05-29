@@ -69,6 +69,8 @@ public class GameData
     public bool afterFirstTalk; //퍼즐 완료 후 마이크와 AI의 대화까지 모두 끝난 후
     public bool afterNewsTalk; //뉴스 팝업 & 우주비행사 관련 대화가 끝난 후
 
+    public bool afterFirstMission; //최초 임무(행선지 설정) 완료 후
+
 
     [Header("<마약탐지 퍼즐>")]
     public bool IsCheckDrug; //마약인 것을 확인
