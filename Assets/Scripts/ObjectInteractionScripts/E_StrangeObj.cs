@@ -68,7 +68,7 @@ public class E_StrangeObj : MonoBehaviour
 
     void Update()
     {
-        if (IsNoSeeFail2 == true && canTSee2 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        if (IsNoSeeFail2 == true && canTSee2 == false && !GameManager.gameManager._gameData.IsAIDown)
         {
             GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
             Debug.Log("시간 안에 퍼즐 풀기 실패");
@@ -78,7 +78,7 @@ public class E_StrangeObj : MonoBehaviour
         }
 
         //타임 어택 성공시
-        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        if (GameManager.gameManager._gameData.IsAIDown)
         {
             /*타이머가 꺼진다*/
             inGameTime.IsTimerStarted = false;

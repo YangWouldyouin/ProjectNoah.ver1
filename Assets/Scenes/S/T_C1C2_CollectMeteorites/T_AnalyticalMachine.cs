@@ -8,7 +8,7 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
     /*연관있는 오브젝트*/
     public GameObject T_IsAnalyticalMachinePlate;
     public GameObject T_IsAnalyticalMachineButton;
-    public GameObject Noah_Obj2;
+    //public GameObject Noah_Obj2;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_AnalyticalMachine, sniffButton_T_AnalyticalMachine, biteButton_T_AnalyticalMachine, 
@@ -29,7 +29,7 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
     /*Collider*/
     BoxCollider analyticalMachine_Collider;
     BoxCollider isAnalyticalMachineButton_Collider; //버튼
-    BoxCollider Noah_Obj2_Collider; //노아
+    //BoxCollider Noah_Obj2_Collider; //노아
 
     AudioSource AnalyticalMachine_Sound;
     public AudioClip AnalyticalMachine_On;
@@ -41,7 +41,7 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
 
         /*Collider*/
         analyticalMachine_Collider = GetComponent<BoxCollider>();
-        Noah_Obj2_Collider = Noah_Obj2.GetComponent<BoxCollider>();
+        //Noah_Obj2_Collider = Noah_Obj2.GetComponent<BoxCollider>();
         isAnalyticalMachineButton_Collider = T_IsAnalyticalMachineButton.GetComponent<BoxCollider>();
 
         /*ObjData*/

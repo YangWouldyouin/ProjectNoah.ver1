@@ -65,6 +65,8 @@ public class DogBadFood3 : MonoBehaviour, IInteraction
 
         //Ω∫≈» ∞®º“
         NoahStatController.noahStatController.DecreaseStatBar();
+        NoahStatController.noahStatController.DecreaseStatBar();
+        NoahStatController.noahStatController.DecreaseStatBar();
     }
 
     public void OnPushOrPress()

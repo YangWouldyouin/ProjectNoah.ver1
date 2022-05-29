@@ -299,6 +299,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
         //쓰러지는 애니메이션 삽입 예정
+        InteractionButtonController.interactionButtonController.PlayerDie();
 
         //Invoke(" FakeAI1", 3f);
 

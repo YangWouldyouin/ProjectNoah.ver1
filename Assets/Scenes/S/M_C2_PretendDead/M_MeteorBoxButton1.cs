@@ -9,7 +9,7 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
 
     /*연관있는 오브젝트*/
     public GameObject M_Box_Obj3;
-    public GameObject M_Noah_Obj3;
+    //public GameObject M_Noah_Obj3;
     public GameObject M_IsMeteoritesStorage1;
 
     /*오브젝트의 상호작용 버튼들*/
@@ -34,7 +34,7 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
     /*Collider*/
     BoxCollider MeteorBoxButton1_Collider;
     BoxCollider Box3_Collider;
-    BoxCollider Noah3_Collider;
+    //BoxCollider Noah3_Collider;
     BoxCollider IsMeteoritesStorage1_Collider;
 
     public GameObject dialog_CS;
@@ -47,7 +47,7 @@ public class M_MeteorBoxButton1 : MonoBehaviour, IInteraction
         /*Collider*/
         MeteorBoxButton1_Collider = GetComponent<BoxCollider>();
         Box3_Collider = M_Box_Obj3.GetComponent<BoxCollider>();
-        Noah3_Collider = M_Noah_Obj3.GetComponent<BoxCollider>();
+        //Noah3_Collider = M_Noah_Obj3.GetComponent<BoxCollider>();
         IsMeteoritesStorage1_Collider = M_IsMeteoritesStorage1.GetComponent<BoxCollider>();
 
         /*Outline*/

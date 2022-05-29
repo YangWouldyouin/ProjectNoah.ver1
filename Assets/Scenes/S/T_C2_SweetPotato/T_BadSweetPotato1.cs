@@ -75,6 +75,9 @@ public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.IsSuddenDeath = true;
         GameManager.gameManager._gameData.IsEatBadPotato = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        InteractionButtonController.interactionButtonController.PlayerDie();
+        NoahStatController.noahStatController.DecreaseStatBar();
     }
 
     public void OnSniff()
