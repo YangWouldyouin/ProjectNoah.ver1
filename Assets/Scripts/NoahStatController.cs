@@ -134,18 +134,21 @@ public class NoahStatController : MonoBehaviour
     {
 
         currentNum = GameManager.gameManager._gameData.statNum;
-        currentNum += 1;
-        GameManager.gameManager._gameData.statNum = currentNum;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-        for (int i = 0; i < currentNum; i++)
+        if(currentNum<10)
         {
-            statBar[i].enabled = true;
-        }
+            currentNum += 1;
+            GameManager.gameManager._gameData.statNum = currentNum;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        for (int j = currentNum; j< 10; j++)
-        {
-            statBar[j].enabled = false;
+            for (int i = 0; i < currentNum; i++)
+            {
+                statBar[i].enabled = true;
+            }
+
+            for (int j = currentNum; j < 10; j++)
+            {
+                statBar[j].enabled = false;
+            }
         }
     }
 
@@ -153,18 +156,21 @@ public class NoahStatController : MonoBehaviour
     {
 
         currentNum = GameManager.gameManager._gameData.statNum;
-        currentNum -= 1;
-        GameManager.gameManager._gameData.statNum = currentNum;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-        for (int i = 0; i < currentNum; i++)
+        if(currentNum>0)
         {
-            statBar[i].enabled = true;
-        }
+            currentNum -= 1;
+            GameManager.gameManager._gameData.statNum = currentNum;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        for (int j = currentNum; j < 10; j++)
-        {
-            statBar[j].enabled = false;
+            for (int i = 0; i < currentNum; i++)
+            {
+                statBar[i].enabled = true;
+            }
+
+            for (int j = currentNum; j < 10; j++)
+            {
+                statBar[j].enabled = false;
+            }
         }
     }
 
