@@ -882,6 +882,11 @@ public class InteractionButtonController : MonoBehaviour
     {
         noahAnim.SetBool("Die1", true);
         PlayerScripts.playerscripts.boringTime = 0; 
+    }
 
+    public void PlayerAlive()
+    {
+        noahAnim.SetBool("Die1", false);
+        PlayerScripts.playerscripts.boringTime = 0;
     }
 }
