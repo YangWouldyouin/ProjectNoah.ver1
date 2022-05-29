@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
 {
+    public GameObject Dontclick;
+
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_T_BadSweetPotato1, sniffButton_T_BadSweetPotato1, biteButton_T_BadSweetPotato1,
         pressButton_T_BadSweetPotato1, eatButton_T_BadSweetPotato1; // eatDisableButton_T_BadSweetPotato1;
@@ -72,13 +74,56 @@ public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
 
         GameManager.gameManager._gameData.sweetPotatoEat[0] = true;
         // 상한 고구마 섭취 엔딩
-        GameManager.gameManager._gameData.IsSuddenDeath = true;
         GameManager.gameManager._gameData.IsEatBadPotato = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        InteractionButtonController.interactionButtonController.PlayerDie();
-        NoahStatController.noahStatController.DecreaseStatBar();
+
+        Invoke("EatAfter", 3);
+
+        BadSweetPotato1Data_T.IsEaten = false;
+
     }
+
+    void EatAfter()
+    {
+        InteractionButtonController.interactionButtonController.PlayerDie();
+
+        Dontclick.SetActive(true);
+
+        StartCoroutine(SuddenDeath());
+
+        //Invoke("SuddenDeath", 3);
+    }
+
+    IEnumerator SuddenDeath()
+    {
+
+        yield return new WaitForSeconds(3f);
+        Debug.Log("노아는 죽엇다");
+
+        GameManager.gameManager._gameData.IsSuddenDeath = true;
+
+        NoahStatController.noahStatController.DecreaseStatBar();
+        NoahStatController.noahStatController.DecreaseStatBar();
+        NoahStatController.noahStatController.DecreaseStatBar();
+        Dontclick.SetActive(false);
+
+        InteractionButtonController.interactionButtonController.PlayerAlive();
+
+
+    }
+
+/*        void SuddenDeath()
+    {
+        GameManager.gameManager._gameData.IsSuddenDeath = true;
+
+        NoahStatController.noahStatController.DecreaseStatBar();
+        NoahStatController.noahStatController.DecreaseStatBar();
+        NoahStatController.noahStatController.DecreaseStatBar();
+        Dontclick.SetActive(false);
+
+        InteractionButtonController.interactionButtonController.PlayerAlive();
+    }*/
 
     public void OnSniff()
     {
