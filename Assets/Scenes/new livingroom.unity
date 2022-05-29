@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45052552, g: 0.50052035, b: 0.5751137, a: 1}
+  m_IndirectSpecularColor: {r: 0.450525, g: 0.50051975, b: 0.575113, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -6282,6 +6282,7 @@ MonoBehaviour:
   BedData: {fileID: 11400000, guid: bec2c7d6e0d40c94cab313bc1b30cbdd, type: 2}
   bedPos: {fileID: 1714956903}
   bedRisePos: {x: 0, y: 0, z: 0}
+  cancelInteractions: {fileID: 234843027}
 --- !u!65 &122643023
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6809,6 +6810,7 @@ MonoBehaviour:
   BedData: {fileID: 11400000, guid: bec2c7d6e0d40c94cab313bc1b30cbdd, type: 2}
   bedPos: {fileID: 841653561}
   bedRisePos: {x: 0, y: 0, z: 0}
+  cancelInteractions: {fileID: 0}
 --- !u!114 &127643364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11443,6 +11445,11 @@ RectTransform:
   m_AnchoredPosition: {x: -0.5, y: -72.60004}
   m_SizeDelta: {x: 122, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &234843027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1997109241220282432, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
+  m_PrefabInstance: {fileID: 757242809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &235290657
 GameObject:
   m_ObjectHideFlags: 0
@@ -31753,7 +31760,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1997109241220282433, guid: 0fd01350297b8a74880c624c0682df7e, type: 3}
   m_PrefabInstance: {fileID: 757242809}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 234843027}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b49a598ac084a6f40a9b4414be880613, type: 3}
@@ -57847,6 +57854,7 @@ MonoBehaviour:
   BedData: {fileID: 11400000, guid: bec2c7d6e0d40c94cab313bc1b30cbdd, type: 2}
   bedPos: {fileID: 247574126}
   bedRisePos: {x: 0, y: 0, z: 0}
+  cancelInteractions: {fileID: 234843027}
 --- !u!114 &1308637062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69948,6 +69956,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &1462550831
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462550829}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.05, y: 0.05, z: 0.05}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.002, y: 0, z: 0.05}
+  m_TimeToStationary: 0.5
 --- !u!82 &1462551205
 AudioSource:
   m_ObjectHideFlags: 0
@@ -88076,6 +88100,7 @@ MonoBehaviour:
   BedData: {fileID: 11400000, guid: bec2c7d6e0d40c94cab313bc1b30cbdd, type: 2}
   bedPos: {fileID: 1019573118}
   bedRisePos: {x: 0, y: 0, z: 0}
+  cancelInteractions: {fileID: 0}
 --- !u!114 &1790993202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90900,6 +90925,7 @@ MonoBehaviour:
   BedData: {fileID: 11400000, guid: bec2c7d6e0d40c94cab313bc1b30cbdd, type: 2}
   bedPos: {fileID: 768693848}
   bedRisePos: {x: 0, y: 0, z: 0}
+  cancelInteractions: {fileID: 0}
 --- !u!114 &1883188849
 MonoBehaviour:
   m_ObjectHideFlags: 0
