@@ -56,6 +56,8 @@ public class InteractionButtonController : MonoBehaviour
     CameraFollow cameraFollow;
     Vector3 camerapos;
 
+    NavMeshObstacle navmeshObstacle;
+
     void Awake()
     {
         interactionButtonController = this;
@@ -626,6 +628,7 @@ public class InteractionButtonController : MonoBehaviour
     /* 누르기 - 상자 등을 밀기 */
     public void playerPush() 
     {
+ 
         /* 스팀 업적 카운트 */
         if (achieveData.pressCount < 50)
         {
@@ -634,13 +637,16 @@ public class InteractionButtonController : MonoBehaviour
 
         if (equipment.biteObjectName == "" && equipment.pushObjectName == "")
         {
+
             /* 버튼 누르는 소리 */
             interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
             interactionAudio.Play(); // 2. 재생한다.);
 
             if (noahBiteObject == null)
             {
+
                 noahPushObject = PlayerScripts.playerscripts.currentObject;
+                navmeshObstacle = noahPushObject.GetComponent<NavMeshObstacle>();
                 if (noahPushObject != null)
                 {
                     // 스크립터블오브젝트 변수에 저장
@@ -669,7 +675,7 @@ public class InteractionButtonController : MonoBehaviour
     {
         noahPushObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
         noahPushObject.GetComponent<Rigidbody>().useGravity = false;
-
+        navmeshObstacle.enabled = false;
         noahPushObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
 
         noahPushObject.transform.localPosition = pushData.PushPos; // sets the position of the object to your mouth position
@@ -678,6 +684,7 @@ public class InteractionButtonController : MonoBehaviour
 
     void ChangePushTrue1()
     {
+
         noahAnim.SetBool("IsPushing", true);
     }
     void ChangePushTrue2()
@@ -703,14 +710,15 @@ public class InteractionButtonController : MonoBehaviour
         noahPushObject.transform.SetParent(null, true);
 
         noahPushObject.transform.localScale = equipment.cancelPushScale;
-        noahPushObject.transform.position = new Vector3(noahPushObject.transform.position.x, equipment.cancelPushPos.y, noahPushObject.transform.position.z);
-        noahPushObject.transform.eulerAngles = equipment.cancelPushRot;
+        //noahPushObject.transform.position = new Vector3(noahPushObject.transform.position.x, equipment.cancelPushPos.y, noahPushObject.transform.position.z);
+        //noahPushObject.transform.eulerAngles = equipment.cancelPushRot;
 
     
         noahPushObject.transform.parent = portableObjects.transform;
 
         noahPushObject = null;
         pushData = null;
+        navmeshObstacle.enabled = true;
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&

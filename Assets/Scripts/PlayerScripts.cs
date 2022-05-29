@@ -61,10 +61,13 @@ public class PlayerScripts : MonoBehaviour
     float waitTime = 1.5f;
 
     public Vector3  turnAmount;
+    PlayerEquipment playerEquipment;
+
+    bool CanMove = true;
 
     void Start()
     {
-
+        playerEquipment = BaseCanvas._baseCanvas.equipment;
         objectNameTag = BaseCanvas._baseCanvas.objectNameTag;
         objectNameText = BaseCanvas._baseCanvas.objectNameText;
         noahAnim = GetComponent<Animator>();
@@ -306,6 +309,7 @@ public class PlayerScripts : MonoBehaviour
                 {
                     targetRot = hit.transform.rotation;
                     MovePlayer(hit.point);
+                    StartCoroutine(WaitAndCancelPush());
                 }
 
 
@@ -358,10 +362,18 @@ public class PlayerScripts : MonoBehaviour
         // 1) 플레이어가 도착하지 않았으면 코루틴으로 딜레이하면서 기다림
         while (!CheckIfArrived())
         {
+            if (playerEquipment.pushObjectName != "")
+            {
+                CanMove = false;
+            }
             yield return null;
         }
-
-        // 안 지루함
+        if(playerEquipment.pushObjectName!="")
+        {
+            InteractionButtonController.interactionButtonController.CancelPush();
+            CanMove = true;
+        }
+         // 안 지루함
         IsBored = false;
         boringTime = 0;
         if (objData.InteractionDestination!=null)
@@ -410,12 +422,16 @@ public class PlayerScripts : MonoBehaviour
     }
     void MovePlayer(Vector3 targetPosition)
     {
-        boringTime = 0;
-        turning = false; // 움직일때마다 turning 을 거짓으로 만듬
-        //turnAmount = Mathf.Atan2(targetPosition.x, targetPosition.z);
-        agent.SetDestination(targetPosition);
+        if(CanMove)
+        {
+            boringTime = 0;
+            turning = false; // 움직일때마다 turning 을 거짓으로 만듬
+                             //turnAmount = Mathf.Atan2(targetPosition.x, targetPosition.z);
+            agent.SetDestination(targetPosition);
 
-        TurnOffButton();
+            TurnOffButton();
+        }
+
     }
 
     /* 플레이어가 NPC 를 바라보도록 각도를 바꿔주는 메서드 */
@@ -433,6 +449,23 @@ public class PlayerScripts : MonoBehaviour
             objectNameTag.transform.position = Input.mousePosition + nameTagOffset;
             objectNameTag.SetActive(true);
             objectNameText.text = objectNameData;
+        }
+    }
+
+    IEnumerator WaitAndCancelPush()
+    {
+        while (!CheckIfArrived())
+        {
+            if (playerEquipment.pushObjectName != "")
+            {
+                CanMove = false;
+            }
+            yield return null;
+        }
+        if (playerEquipment.pushObjectName != "")
+        {
+            InteractionButtonController.interactionButtonController.CancelPush();
+            CanMove = true;
         }
     }
 }
