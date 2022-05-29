@@ -54,6 +54,7 @@ public class InteractionButtonController : MonoBehaviour
 
     Camera mainCamera;
     CameraFollow cameraFollow;
+    Vector3 camerapos;
 
     void Awake()
     {
@@ -83,10 +84,10 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            PlayerSleep();
-        }
+        //if(Input.GetKeyDown(KeyCode.O))
+        //{
+        //    noahAnim.SetBool("Die1", true);
+        //}
     }
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -419,7 +420,8 @@ public class InteractionButtonController : MonoBehaviour
 
     public void PlayerRise1()
     {
-        if(cameraFollow!=null)
+        camerapos = new Vector3(Mathf.Clamp(noahPlayer.transform.position.x, -262f, -251f), mainCamera.transform.position.y, Mathf.Clamp(noahPlayer.transform.position.z, 672f, 688f));
+        if (cameraFollow!=null)
         {
             cameraFollow.enabled = false;
         }
@@ -572,10 +574,10 @@ public class InteractionButtonController : MonoBehaviour
 
             noahUpDownObject = null;
             upDownData = null;
-            if (cameraFollow != null)
-            {
-                cameraFollow.enabled = true;
-            }
+            //if (cameraFollow != null)
+            //{
+            //    StartCoroutine(StartCameraFollow());
+            //}
         }
     }
 
@@ -588,7 +590,34 @@ public class InteractionButtonController : MonoBehaviour
         playerAgent.updatePosition = true;
         playerAgent.updateRotation = true;
         playerAgent.isStopped = false;
+        if (cameraFollow != null)
+        {
+            float elapsedTime = 0;
+            
+            while (elapsedTime < 1.5f)
+            {
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, camerapos, (elapsedTime / 1.5f));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            cameraFollow.enabled = true;
+        }
 
+    }
+    
+
+
+    IEnumerator StartCameraFollow()
+    {
+        float elapsedTime = 0;
+        Vector3 camerapos = new Vector3(Mathf.Clamp(noahPlayer.transform.position.x, -262f, -251f), mainCamera.transform.position.y, Mathf.Clamp(noahPlayer.transform.position.z, 672f, 688f));
+        while (elapsedTime <1.5f)
+        {
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, camerapos, (elapsedTime / 1.5f));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        cameraFollow.enabled = true;
     }
 
 
@@ -839,5 +868,10 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim.SetBool("IsSleep2", false);
         noahAnim.SetBool("IsSleep3", false);
         noahAnim.SetBool("IsSleep4", false);
+    }
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    public void PlayerDie()
+    {
+        noahAnim.SetBool("Die1", true);
     }
 }
