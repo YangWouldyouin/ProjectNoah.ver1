@@ -8,6 +8,7 @@ public class GameEndingController : MonoBehaviour
     public InGameTime inGameTime;
 
     public GameObject fadeout;
+    public GameObject Dontclick;
 
     // Start is called before the first frame update
     void Start()
@@ -16,17 +17,31 @@ public class GameEndingController : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    public void SuddenDeath()
+    {
+        GameManager.gameManager._gameData.IsSuddenDeath = true;
+        GameManager.gameManager._gameData.IsManagerAbilityLack = true;
+
+        Dontclick.SetActive(false);
+
+        GameManager.gameManager._gameData.statNum = 5;
+        InteractionButtonController.interactionButtonController.PlayerAlive();
+    }
+
     void Update()
     {
         SavePageManager();
 
         if(GameManager.gameManager._gameData.statNum <=0)
         {
-            GameManager.gameManager._gameData.IsSuddenDeath = true;
-            GameManager.gameManager._gameData.IsManagerAbilityLack = true;
-            
-            GameManager.gameManager._gameData.statNum = 5;
+            InteractionButtonController.interactionButtonController.PlayerDie();
+
+            Dontclick.SetActive(true);
+
+            Invoke("SuddenDeath", 3f);
         }
+
 
         if (GameManager.gameManager._gameData.IsInputImportantMeteorEnd == true)
         {
