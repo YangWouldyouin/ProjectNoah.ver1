@@ -25,32 +25,28 @@ public class PlanetRaderTrigger1 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        for (i = 0; i < 6; i++)
+        if (other.gameObject == normalPlanet_PR[i])
         {
-            if (other.gameObject == normalPlanet_PR[i])
-            {
-                normalPlanet_PR[i].SetActive(false);
-                selectPlanet_PR[i].SetActive(true);
-                IsPlanetSelected[i] = true;
+            normalPlanet_PR[i].SetActive(false);
+            selectPlanet_PR[i].SetActive(true);
+            IsPlanetSelected[i] = true;
 
-                GameManager.gameManager._gameData.IsSelectPlanetCheck = true;
-            }
+            GameManager.gameManager._gameData.IsSelectPlanetCheck = true;
         }
     }
 
+
     private void OnTriggerExit(Collider other)
     {
-        for (i = 0; i < 6; i++)
+        if (other.gameObject == selectPlanet_PR[i])
         {
-            if (other.gameObject == selectPlanet_PR[i])
-            {
-                normalPlanet_PR[i].SetActive(true);
-                selectPlanet_PR[i].SetActive(false);
-                IsPlanetSelected[i] = false;
-                
-                GameManager.gameManager._gameData.IsSelectPlanetCheck = false;
-            }
+            normalPlanet_PR[i].SetActive(true);
+            selectPlanet_PR[i].SetActive(false);
+            IsPlanetSelected[i] = false;
+
+            GameManager.gameManager._gameData.IsSelectPlanetCheck = false;
         }
+
+
     }
 }
