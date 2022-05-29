@@ -67,13 +67,15 @@ public class NoahStatController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(GameManager.gameManager._gameData.statNum<10)
-            {
-                IncreaseStatBar();
-            }          
-        }  
-        
-        if(currentNum<10 && currentNum>=5)
+            DecreaseStatBar();         
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            IncreaseStatBar();
+        }
+
+        if (currentNum<10 && currentNum>=5)
         {
             
             yellowTimeLeft = 0;
@@ -90,7 +92,7 @@ public class NoahStatController : MonoBehaviour
             conditionText.text = "[상태] \"좋음\"";
         }
 
-        if(currentNum < 5 && currentNum >=1)
+        if(currentNum < 5 && currentNum >=2)
         {
 
             redTimeLeft = 0;
@@ -105,10 +107,10 @@ public class NoahStatController : MonoBehaviour
                 statColor[1].fillAmount = yellowTimeLeft / maxTime;
             }
 
-            conditionText.text = "[상태] \"불안함\"";
+            conditionText.text = "[상태] \"보통\"";
         }
 
-        if(currentNum ==0)
+        if(currentNum <2 && currentNum >=0)
         {
 
             Noah_Sick_Audio.clip = Noah_Sick;
@@ -126,7 +128,7 @@ public class NoahStatController : MonoBehaviour
                 statColor[2].fillAmount = redTimeLeft / maxTime;
             }
 
-            conditionText.text = "[상태] \"사망\"";
+            conditionText.text = "[상태] \"나쁨\"";
         }
     }
     
@@ -182,6 +184,7 @@ public class NoahStatController : MonoBehaviour
             int seconds = Mathf.FloorToInt((timer % 3600) % 60); // 초 단위 체크
             if (seconds >= 300)
             {
+                SaveSystem.Load("save_001");
                 currentNum = GameManager.gameManager._gameData.statNum;
                 currentNum -= 1;
 

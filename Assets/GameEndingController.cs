@@ -35,6 +35,7 @@ public class GameEndingController : MonoBehaviour
         NoahStatController.noahStatController.DecreaseStatBar();
         NoahStatController.noahStatController.DecreaseStatBar();
         NoahStatController.noahStatController.DecreaseStatBar();
+
         Dontclick.SetActive(false);
         
         InteractionButtonController.interactionButtonController.PlayerAlive();
