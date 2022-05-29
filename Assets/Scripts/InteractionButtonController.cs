@@ -86,10 +86,11 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.O))
-        //{
-        //    noahAnim.SetBool("Die1", true);
-        //}
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            PlayerDie();
+        }
     }
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -880,5 +881,7 @@ public class InteractionButtonController : MonoBehaviour
     public void PlayerDie()
     {
         noahAnim.SetBool("Die1", true);
+        PlayerScripts.playerscripts.boringTime = 0; 
+
     }
 }
