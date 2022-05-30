@@ -30,7 +30,7 @@ public class InteractionButtonController : MonoBehaviour
 
     /* 현재 상호작용 중인 오브젝트를 받아오기 위한 변수 */
     [HideInInspector]
-    public GameObject noahBiteObject, noahSmashObject, noahPressObject, noahPushObject, noahSniffObject, 
+    public GameObject noahBiteObject, noahSmashObject, noahPressObject, noahPushObject, noahSniffObject,
         noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
 
     TMPro.TextMeshProUGUI objectText, statText;
@@ -86,7 +86,12 @@ public class InteractionButtonController : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerDie();
+        }
     }
+
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
     /* 짖기 */

@@ -44,7 +44,7 @@ public class PlayerScripts : MonoBehaviour
     [HideInInspector]
     public int transitionSpeed;
 
-    bool IsBored;
+    public bool IsBored;
     public float boringTime;
     bool IsWalkPointSet;
 
