@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -27072,6 +27072,8 @@ MonoBehaviour:
     IsWrongBeakerColorChange2_M_C2: 0
     IsNoNeed1BeakerColorChange2_M_C2: 0
     IsNoNeed2BeakerColorChange2_M_C2: 0
+    IsDrinkBeaker_M_C2: 0
+    IsAITimerStart_M_C2: 0
     Is_Tablet_WirelessOn: 0
     IsFakeHealthData_Tablet: 0
     IsFakeCoordinateData_Tablet: 0
@@ -32634,6 +32636,57 @@ Transform:
   m_Father: {fileID: 1888945461}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &787492324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787492325}
+  - component: {fileID: 787492326}
+  m_Layer: 0
+  m_Name: strangeObjAfter_W
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &787492325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787492324}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 905527512}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787492326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787492324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e76f888067c1a42a779396224819cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineController: {fileID: 2102715932}
+  inGameTime: {fileID: 11400000, guid: b9e9cc0701491bf4d817dc63d1bd0d98, type: 2}
+  S_TimerBarFilled: {fileID: 1823968588}
+  S_TimerBackground: {fileID: 1483259061}
+  S_TimerText: {fileID: 541710359}
+  IsNoSeeFail1: 0
+  canTSee1: 0
+  HideStart: 0
 --- !u!1 &788932485
 GameObject:
   m_ObjectHideFlags: 0
@@ -36564,6 +36617,7 @@ Transform:
   - {fileID: 328591683}
   - {fileID: 1716928975}
   - {fileID: 941640557}
+  - {fileID: 787492325}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
