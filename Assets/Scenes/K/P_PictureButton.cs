@@ -17,6 +17,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
     // 오브젝트 데이터
     ObjData UniverseImageData_P;
+    public ObjectData envirPipeData_CC;
 
     AudioSource TakePic_Sound_P;
     public AudioClip TakePic_sound;
@@ -24,7 +25,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     public GameObject[] UniverseImageList; // 우주 사진 리스트
 
     public GameObject Report_GUI_P; // 보고하기 GUI
-    private bool IsReported = false;
+    //private bool IsReported = false;
 
     public int ran; // 랜덤 사진
 
@@ -83,11 +84,11 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     {
         if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10)
         {
-            GameManager.gameManager._gameData.IsPhotoTime = true;
-
             if (MissionScriptCheck == false)
             {
                 Debug.Log("사진찍기 업무 시작");
+
+                GameManager.gameManager._gameData.IsPhotoTime = true;
 
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(46));
                 MissionScriptCheck = true;
@@ -100,11 +101,11 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         }
         if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
         {
-            GameManager.gameManager._gameData.IsPhotoTime = false;
-
             if (MissionScriptCheck == true)
             {
                 Debug.Log("사진찍기 업무 종료");
+
+                GameManager.gameManager._gameData.IsPhotoTime = false;
 
                 GameManager.gameManager._gameData.IsReportCancleCount += 1;
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
@@ -139,22 +140,33 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
     public void OnPushOrPress()
     {
-        if (GameManager.gameManager._gameData.IsPhotoTime == true)
+        if (envirPipeData_CC.IsBite)
         {
-            ran = Random.Range(0, 5); // 랜덤 사진
-            GameManager.gameManager._gameData.randomUPic = ran;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            Debug.Log("랜덤 사진 저장");
+            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            {
+                ran = Random.Range(0, 5); // 랜덤 사진
+                GameManager.gameManager._gameData.randomUPic = ran;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                Debug.Log("랜덤 사진 저장");
 
-            /* 밀기 & 누르기 중에 "누르기"일 때!!! */
+                /* 밀기 & 누르기 중에 "누르기"일 때!!! */
+                DiableButton();
+                InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
+
+                Invoke("RandomUniversePic", 1f); // 랜덤 우주 사진 설정 + 이미지 보여주기
+
+                TakePic_Sound_P.clip = TakePic_sound;
+                TakePic_Sound_P.Play(); // 효과음 재생
+                Invoke("Report_Popup", 4f); // 보고하기 팝업
+            }
+            else
+            {
+                DiableButton();
+            }
+        }
+        else
+        {
             DiableButton();
-            InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
-
-            Invoke("RandomUniversePic", 1f); // 랜덤 우주 사진 설정 + 이미지 보여주기
-
-            TakePic_Sound_P.clip = TakePic_sound;
-            TakePic_Sound_P.Play(); // 효과음 재생
-            Invoke("Report_Popup", 4f); // 보고하기 팝업
         }
     }
 
@@ -177,7 +189,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     public void Report() // 보고하기 버튼 누르면
     {
         Debug.Log("보고하기");
-        IsReported = true;
+        GameManager.gameManager._gameData.IsPhotoTime = false;
+        //IsReported = true;
 
         Report_GUI_P.SetActive(false); // 창 끄기
         UniverseImage_P.SetActive(false);
@@ -194,9 +207,10 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     {
         Debug.Log("취소하기");
 
+        GameManager.gameManager._gameData.IsPhotoTime = false;
         GameManager.gameManager._gameData.IsReportCancleCount += 1; // 임무 보고 카운트 줄어들기
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        IsReported = true;
+        //IsReported = true;
         Debug.Log("임무 보고 카운트 줄어들기 + 저장");
 
         Report_GUI_P.SetActive(false); // 창 끄기

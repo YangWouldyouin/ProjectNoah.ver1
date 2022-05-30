@@ -17,11 +17,15 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public ObjectData boxData_CC;
     public ObjectData envirPipeData_CC;
     public ObjectData consoleAIResetButtonData_CC;
+    public ObjectData PictureButtonData_CC;
 
 
     /* 기타 필요한 변수들 */
     public Outline consoleAIResetButtonOutline_CC;
     Outline consoleCenterOutline_CC;
+
+    public Outline PictureButtonOutline_CC;
+    Outline PictureOutline_CC;
 
     public Animator noahAnim_CC;
 
@@ -49,6 +53,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         consoleCenterObjData_CC = GetComponent<ObjData>();
 
         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
+        PictureButtonOutline_CC.OutlineWidth = 0;
 
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton_C_Console = consoleCenterObjData_CC.BarkButton;
@@ -208,11 +213,16 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         {
             consoleAIResetButtonData_CC.IsNotInteractable = false;
             consoleAIResetButtonOutline_CC.OutlineWidth = 8;
+            PictureButtonData_CC.IsNotInteractable = false;
+            PictureButtonOutline_CC.OutlineWidth = 8;
+
         }
         else // 파이프를 물지 않았으면
         {
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
             consoleAIResetButtonData_CC.IsNotInteractable = true;
+            PictureButtonData_CC.IsNotInteractable = true;
+            PictureButtonOutline_CC.OutlineWidth = 0;
         }
     }
 
