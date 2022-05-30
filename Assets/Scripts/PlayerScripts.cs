@@ -309,7 +309,6 @@ public class PlayerScripts : MonoBehaviour
                 {
                     targetRot = hit.transform.rotation;
                     MovePlayer(hit.point);
-                    StartCoroutine(WaitAndCancelPush());
                 }
 
 
@@ -362,16 +361,7 @@ public class PlayerScripts : MonoBehaviour
         // 1) 플레이어가 도착하지 않았으면 코루틴으로 딜레이하면서 기다림
         while (!CheckIfArrived())
         {
-            if (playerEquipment.pushObjectName != "")
-            {
-                CanMove = false;
-            }
             yield return null;
-        }
-        if(playerEquipment.pushObjectName!="")
-        {
-            InteractionButtonController.interactionButtonController.CancelPush();
-            CanMove = true;
         }
          // 안 지루함
         IsBored = false;
@@ -422,15 +412,12 @@ public class PlayerScripts : MonoBehaviour
     }
     void MovePlayer(Vector3 targetPosition)
     {
-        if(CanMove)
-        {
-            boringTime = 0;
-            turning = false; // 움직일때마다 turning 을 거짓으로 만듬
-                             //turnAmount = Mathf.Atan2(targetPosition.x, targetPosition.z);
-            agent.SetDestination(targetPosition);
+        boringTime = 0;
+        turning = false; // 움직일때마다 turning 을 거짓으로 만듬
+                         //turnAmount = Mathf.Atan2(targetPosition.x, targetPosition.z);
+        agent.SetDestination(targetPosition);
 
-            TurnOffButton();
-        }
+        TurnOffButton();
 
     }
 
