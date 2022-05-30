@@ -677,6 +677,7 @@ public class InteractionButtonController : MonoBehaviour
         noahPushObject.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
         noahPushObject.GetComponent<Rigidbody>().useGravity = false;
         navmeshObstacle.enabled = false;
+
         noahPushObject.transform.parent = myMouth.transform; //makes the object become a child of the parent so that it moves with the mouth
 
         noahPushObject.transform.localPosition = pushData.PushPos; // sets the position of the object to your mouth position
@@ -699,6 +700,7 @@ public class InteractionButtonController : MonoBehaviour
     public void CancelPush()
     {
         noahPushObject = GameObject.Find(equipment.pushObjectName).gameObject;
+
         equipment.pushObjectName = "";
         pushData = noahPushObject.GetComponent<ObjData>();
         pushData.objectDATA.IsPushOrPress = false;
@@ -708,13 +710,15 @@ public class InteractionButtonController : MonoBehaviour
         interactionAudio.clip = DropBox;
         interactionAudio.Play();
 
+   
+
         noahPushObject.transform.SetParent(null, true);
 
         noahPushObject.transform.localScale = equipment.cancelPushScale;
-        //noahPushObject.transform.position = new Vector3(noahPushObject.transform.position.x, equipment.cancelPushPos.y, noahPushObject.transform.position.z);
-        //noahPushObject.transform.eulerAngles = equipment.cancelPushRot;
+        noahPushObject.transform.position = new Vector3(noahPushObject.transform.position.x, equipment.cancelPushPos.y, noahPushObject.transform.position.z);
+        noahPushObject.transform.eulerAngles = equipment.cancelPushRot;
 
-    
+
         noahPushObject.transform.parent = portableObjects.transform;
 
         noahPushObject = null;

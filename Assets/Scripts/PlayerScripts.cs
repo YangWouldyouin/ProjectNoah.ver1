@@ -308,6 +308,7 @@ public class PlayerScripts : MonoBehaviour
                 else // 상호작용 가능한 오브젝트가 아니면 플레이어만 이동시킴. 
                 {
                     targetRot = hit.transform.rotation;
+                    //MovePlayer(new Vector3(0,0,hit.point.z));
                     MovePlayer(hit.point);
                 }
 

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class T_ManagementMachine : MonoBehaviour, IInteraction
 {
+    public NavMeshObstacle doorObstacle;
     public Animator smartFarmDoorAnim_T;
 
     /*연관있는 오브젝트*/
@@ -159,8 +161,9 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
         if(GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
         {
-            Invoke("SmartFarmOpen", 2f);
 
+            Invoke("SmartFarmOpen", 2f);
+            doorObstacle.enabled = false;
             /*스마트팜 오픈 퍼즐 완료*/
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
             GameManager.gameManager._gameData.ActiveMissionList[17] = false;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class InitializeWorkingScene : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class InitializeWorkingScene : MonoBehaviour
     public GameObject IronPlateDoor; // 스마트팜 합판 
     public GameObject TroubleLine; // 망가진 선
     public Animator smartFarmDoorAnim;
+    public NavMeshObstacle smartFarmOpen;
 
 
 
@@ -40,6 +42,7 @@ public class InitializeWorkingScene : MonoBehaviour
 
 
     [Header("<생활공간 문 반만 열기 완료>")]
+    public GameObject goToLIving; // 생활공간해금
     public GameObject CardKey_WL; // 생활공간 카드키
     public GameObject LivingSpace_CardKeyMachine_W; // 생활공간 카드키 기계
     public Animator HalfLivingDoorAni_M; // 생활공간 문 반만 열리기
@@ -181,6 +184,7 @@ public class InitializeWorkingScene : MonoBehaviour
         /*스마트팜 오픈*/
         LineHome2_Collider = LineHome2.GetComponent<BoxCollider>();
         IronPlateDoor_Collider = IronPlateDoor.GetComponent<BoxCollider>();
+        smartFarmOpen.enabled = false;
 
         /*엔진실 오픈*/
         BrokenArea_Collider = BrokenArea.GetComponent<BoxCollider>();
@@ -296,6 +300,7 @@ public class InitializeWorkingScene : MonoBehaviour
         {
             HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
             HalfLivingDoorAni_M.SetBool("HalfEnd", true);
+            goToLIving.SetActive (true);
 
             CardKey_WL_Collider.enabled = false;
             LivingSpace_CardKeyMachine_W_Collider.enabled = false;
