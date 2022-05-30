@@ -87,7 +87,7 @@ public class M_BeakerAfter : MonoBehaviour
 
         //StartCoroutine(SuddenDeath());
 
-        Invoke("SuddenDeath1", 43);
+        Invoke("SuddenDeath1", 43.5f);
     }
 
     void SuddenDeath1()
@@ -132,8 +132,8 @@ public class M_BeakerAfter : MonoBehaviour
         //EndScreen.SetActive(false);
 
         //타이머 시작 3분
-        TimerManager.timerManager.TimerStart(60);
-        Invoke("PretendFailCheck", 60f);
+        TimerManager.timerManager.TimerStart(180);
+        Invoke("PretendFailCheck", 180f);
     }
 
     void PretendFailCheck()
