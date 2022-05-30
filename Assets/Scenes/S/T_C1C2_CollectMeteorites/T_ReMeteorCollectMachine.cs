@@ -118,6 +118,7 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
         else
         {
             T_Noah_Collider.enabled = true;
+            T_IScollectMachine_Collider.enabled = true;
         }
 
         if (T_Box_ObjData_T.IsUpDown)
@@ -166,7 +167,7 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
 
 
         //콜라이더 감지 끄기
-        T_IScollectMachine_Collider.enabled = false;
+        //T_IScollectMachine_Collider.enabled = false;
         //Box_Collider.enabled = false;
         T_MeteorButton_Collider.enabled = false;
 
@@ -176,8 +177,8 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
         T_doImportantMeteorData_T.IsNotInteractable = false; // 상호작용 가능하게
         T_doImportantMeteorOutline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.
 
-        T_meteorCollectMachineData_T.IsNotInteractable = true; // 상호작용 불가능하게
-        T_meteorCollectMachineOutline_T.OutlineWidth = 0; // 아웃라인도 꺼줍니다.
+        //T_meteorCollectMachineData_T.IsNotInteractable = true; // 상호작용 불가능하게
+        //T_meteorCollectMachineOutline_T.OutlineWidth = 0; // 아웃라인도 꺼줍니다.
     }
 
     public void OnPushOrPress()
