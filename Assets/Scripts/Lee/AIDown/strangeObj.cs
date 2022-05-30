@@ -64,7 +64,8 @@ public class strangeObj : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (IsNoSeeFail1 == true && canTSee1 == false && GameManager.gameManager._gameData.IsAIDown == false)
+        //strangeObjAfter 스크립트로 옮겨감
+        /*if (IsNoSeeFail1 == true && canTSee1 == false && GameManager.gameManager._gameData.IsAIDown == false)
         {
             GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
             Debug.Log("시간 안에 퍼즐 풀기 실패");
@@ -76,10 +77,10 @@ public class strangeObj : MonoBehaviour, IInteraction
         //타임 어택 성공시
         if (GameManager.gameManager._gameData.IsAIDown)
         {
-            /*타이머가 꺼진다*/
+            *//*타이머가 꺼진다*//*
             inGameTime.IsTimerStarted = false;
 
-            /*아웃라인이 꺼진다*/
+            *//*아웃라인이 꺼진다*//*
             inGameTime.IsNoahOutlineTurnOn = false;
             inGameTime.outlineTimer = 0;
 
@@ -90,7 +91,7 @@ public class strangeObj : MonoBehaviour, IInteraction
             Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
             //GameManager.gameManager._gameData.IsMiddleTuto = false;
             //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
-        }
+        }*/
     }
 
     void DisableButton()
@@ -196,16 +197,16 @@ public class strangeObj : MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.IsHide = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        // 3분간 플레이어 아웃라인 활성화
+/*        // 3분간 플레이어 아웃라인 활성화
         outlineControl.StartOutlineTime(10f);
         TimerManager.timerManager.TimerStart(10f);
-        Invoke("FailStrangeObj", 10f);
+        Invoke("FailStrangeObj", 10f);*/
     }
 
-    void FailStrangeObj()
+/*    void FailStrangeObj()
     {
         IsNoSeeFail1 = true;
-    }
+    }*/
 
     IEnumerator DelayFor2Seconds()
     {

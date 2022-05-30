@@ -68,7 +68,8 @@ public class E_StrangeObj : MonoBehaviour
 
     void Update()
     {
-        if (IsNoSeeFail2 == true && canTSee2 == false && !GameManager.gameManager._gameData.IsAIDown)
+        //strangeObjAfter 스크립트로 옮겨감
+/*        if (IsNoSeeFail2 == true && canTSee2 == false && !GameManager.gameManager._gameData.IsAIDown)
         {
             GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
             Debug.Log("시간 안에 퍼즐 풀기 실패");
@@ -80,10 +81,10 @@ public class E_StrangeObj : MonoBehaviour
         //타임 어택 성공시
         if (GameManager.gameManager._gameData.IsAIDown)
         {
-            /*타이머가 꺼진다*/
+            *//*타이머가 꺼진다*//*
             inGameTime.IsTimerStarted = false;
 
-            /*아웃라인이 꺼진다*/
+            *//*아웃라인이 꺼진다*//*
             inGameTime.IsNoahOutlineTurnOn = false;
             inGameTime.outlineTimer = 0;
 
@@ -94,7 +95,7 @@ public class E_StrangeObj : MonoBehaviour
             Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
             //GameManager.gameManager._gameData.IsMiddleTuto = false;
             //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
-        }
+        }*/
     }
 
     void DisableButton()
@@ -183,11 +184,11 @@ public class E_StrangeObj : MonoBehaviour
 
     void ObjSmoke()
     {
-        // 3분간 플레이어 아웃라인 활성화
+/*        // 3분간 플레이어 아웃라인 활성화
         outlineControl.StartOutlineTime(180f);
         TimerManager.timerManager.TimerStart(180);
         //Invoke("TimeCheck", 30);
-        Invoke("FailStrangeObj", 180f);
+        Invoke("FailStrangeObj", 180f);*/
 
         // 수상한 물건을 플레이어로부터 분리함
         this.GetComponent<Rigidbody>().isKinematic = true;
@@ -210,10 +211,10 @@ public class E_StrangeObj : MonoBehaviour
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
-    void FailStrangeObj()
+/*    void FailStrangeObj()
     {
         IsNoSeeFail2 = true;
-    }
+    }*/
 
     void TimeCheck()
     {
