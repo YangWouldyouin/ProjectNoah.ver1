@@ -112,7 +112,7 @@ public class sleeping : MonoBehaviour, IInteraction
             //일어나기 애니메이션
             //Invoke("WakeUp", 4f);
             StartCoroutine(StopCancel());
-            NoahStatController.noahStatController.IncreaseStatBar();
+            NoahStatController.noahStatController.IncreaseStatBar(1);
 
 
         }

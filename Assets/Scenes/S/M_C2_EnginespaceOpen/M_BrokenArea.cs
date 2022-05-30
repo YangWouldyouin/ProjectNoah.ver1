@@ -24,8 +24,11 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
     public GameObject dialog_cs;
     DialogManager dialogManager;
 
+    PlayerEquipment equipment;
+
     void Start()
     {
+        equipment = BaseCanvas._baseCanvas.equipment;
         dialogManager = dialog_cs.GetComponent<DialogManager>();
 
         brokenAreaObjData_M = GetComponent<ObjData>();
@@ -92,6 +95,8 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
             // 해당 위치, 각도, 크기로 바꾸겠다.
             M_canBrokenDoorConduction.transform.position = new Vector3(-260.954f, 1.0869f, 666.558f); //위치 고정
             M_canBrokenDoorConduction.transform.rotation = Quaternion.Euler(0, -90, 90); //각도 고정
+
+            equipment.biteObjectName = "";
 
             // 망가진 문 부분이랑 끼운 전도체의 상호작용을 삭제한다.
             canBrokenDoorConductionData_M.IsNotInteractable = true;

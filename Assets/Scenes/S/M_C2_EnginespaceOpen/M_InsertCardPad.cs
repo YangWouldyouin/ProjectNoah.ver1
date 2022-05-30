@@ -8,6 +8,7 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
     /*연관있는 오브젝트*/
     public GameObject GoToEngine;
     public GameObject M_canEngineCardKey;
+    public GameObject M_canBrokenDoorConduction;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_InsertCardPad, sniffButton_M_InsertCardPad, biteButton_M_InsertCardPad, 
@@ -27,10 +28,15 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
     AudioSource InsertCardPad_sound;
     public AudioClip EngineDoor_open;
     public AudioClip CardKey_Sound;
+    PlayerEquipment equipment;
+
+    PortableObjectData workRoomData;
+    
 
     void Start()
     {
-
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
+        equipment = BaseCanvas._baseCanvas.equipment;
         InsertCardPad_sound = GetComponent<AudioSource>();
 
         /*연관있는 오브젝트*/
@@ -134,6 +140,8 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
     void DoorOpen() // 엔진실 열기 애니메이션
     {
+        M_canBrokenDoorConduction.SetActive(false);
+        workRoomData.IsObjectActiveList[33] = false;
         engineDoorAnim_M.SetBool("canEngineDoorOpen", true);
         engineDoorAnim_M.SetBool("canEngineDoorEnd", true);
 
@@ -183,12 +191,16 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         {
             // 끼우기 성공
             // 부모 자식 관계를 해제한다.
+
+            // 카드키 물기 강제 해제
+                                                                                                                                                                                                                                                                                                                                         
             M_canEngineCardKey.GetComponent<Rigidbody>().isKinematic = false;
             M_canEngineCardKey.transform.parent = null;
 
             // 해당 위치, 각도, 크기로 바꾸겠다.
             M_canEngineCardKey.transform.position = new Vector3(-262.489f, 2.2762f, 666.788f); //위치 고정
             M_canEngineCardKey.transform.rotation = Quaternion.Euler(0, 0, 90); //각도 고정
+            equipment.biteObjectName = "";
 
             InsertCardPad_sound.clip = CardKey_Sound;
             InsertCardPad_sound.Play();
@@ -202,7 +214,7 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
             //카드꽂는 애니메이션 실행
             //Invoke("CardBye", 1f);
-            StartCoroutine(canCardBye());
+            //StartCoroutine(canCardBye());
 
             InsertCardPad_sound.clip = EngineDoor_open;
             InsertCardPad_sound.Play();

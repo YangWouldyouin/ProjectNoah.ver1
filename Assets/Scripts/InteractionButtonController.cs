@@ -254,7 +254,8 @@ public class InteractionButtonController : MonoBehaviour
         {
             achieveData.destroyCount += 1;
         }
-
+        // 물기 초기화
+        equipment.biteObjectName = "";
         /* 버튼 누르는 소리 */
         interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
         interactionAudio.Play(); // 2. 재생한다.

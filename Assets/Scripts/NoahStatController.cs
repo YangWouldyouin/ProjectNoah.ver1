@@ -52,80 +52,58 @@ public class NoahStatController : MonoBehaviour
         {
             statBar[j].enabled = false;
         }
+
+        StartCoroutine(ChangeStatColorAndText());
+        StartCoroutine(TurnOffPanel());
+
     }
 
-    void TurnOffStatPanel()
+    IEnumerator TurnOffPanel()
+    {
+        yield return new WaitForSeconds(10f);
+        conditionText.text = "";
+        statPanel.SetActive(false);
+    }
+
+    IEnumerator ChangeStatColorAndText()
     {
         statPanel.SetActive(true);
-        conditionTimer += Time.deltaTime;
-        int conditionSeconds = Mathf.FloorToInt((timer % 3600) % 60); // 초 단위 체크
-        if (conditionSeconds > 2)
+        if (StatTime.statNum < 10 && StatTime.statNum >= 5)
         {
-            statPanel.SetActive(false);
-            //conditionTimer = 0;
-        }
-    }
-
-    private void Update()
-    {
-        if (StatTime.statNum < 2 && StatTime.statNum > 0)
-        {
-            agent.speed = 1f;
-        }
-        else
-        {
-            agent.speed = 3f;
-        }
-        //DecreaseStatByTime();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DecreaseStatBar();         
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            IncreaseStatBar();
-        }
-
-        if (StatTime.statNum< 10 && StatTime.statNum >= 5)
-        {
-            
+            conditionText.text = "[상태] \"좋음\"";
             yellowTimeLeft = 0;
             redTimeLeft = 0;
 
             statColor[1].fillAmount = 0;
             statColor[2].fillAmount = 0;
-            if (blueTimeLeft<1)
+            while (blueTimeLeft < 1)
             {
-                blueTimeLeft += Time.deltaTime;
                 statColor[0].fillAmount = blueTimeLeft / maxTime;
+                blueTimeLeft += 0.1f;
+                yield return new WaitForSeconds(0.000001f);
             }
-
-            conditionText.text = "[상태] \"좋음\"";
         }
 
-        if(StatTime.statNum < 5 && StatTime.statNum >= 2)
+        if (StatTime.statNum < 5 && StatTime.statNum >= 2)
         {
-
+            conditionText.text = "[상태] \"보통\"";
             redTimeLeft = 0;
             blueTimeLeft = 0;
 
             statColor[0].fillAmount = 0;
             statColor[2].fillAmount = 0;
 
-            if (yellowTimeLeft < 1)
+            while(yellowTimeLeft < 1)
             {
-                yellowTimeLeft += Time.deltaTime;
                 statColor[1].fillAmount = yellowTimeLeft / maxTime;
-            }
-
-            conditionText.text = "[상태] \"보통\"";
+                yellowTimeLeft += 0.01f;
+                yield return new WaitForSeconds(0.01f);
+            }          
         }
 
-        if(StatTime.statNum < 2 && StatTime.statNum >= 0)
+        if (StatTime.statNum < 2 && StatTime.statNum >= 0)
         {
-
+            conditionText.text = "[상태] \"나쁨\"";
             Noah_Sick_Audio.clip = Noah_Sick;
             Noah_Sick_Audio.Play();
 
@@ -135,23 +113,37 @@ public class NoahStatController : MonoBehaviour
             statColor[0].fillAmount = 0;
             statColor[1].fillAmount = 0;
 
-            if (redTimeLeft < 1)
+            while(redTimeLeft < 1)
             {
-                redTimeLeft += Time.deltaTime;
                 statColor[2].fillAmount = redTimeLeft / maxTime;
+                redTimeLeft += 0.01f;
+                yield return new WaitForSeconds(0.01f);
             }
-
-            conditionText.text = "[상태] \"나쁨\"";
         }
     }
+
+    private void Update()
+    {
+        // 스탯이 1이 되면 플레이어 스피드 감소
+        if (StatTime.statNum < 2 && StatTime.statNum > 0)
+        {
+            agent.speed = 1f;
+        }
+        else
+        {
+            agent.speed = 3f;
+        }
+
+        DecreaseStatByTime();
+    }
     
-    public void IncreaseStatBar()
+    public void IncreaseStatBar(int num)
     {
         //SaveSystem.Load("save_001");
         //currentNum = GameManager.gameManager._gameData.statNum;
         if(StatTime.statNum < 10)
         {
-            StatTime.statNum += 1;
+            StatTime.statNum += num;
             GameManager.gameManager._gameData.statNum = StatTime.statNum;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
@@ -164,16 +156,21 @@ public class NoahStatController : MonoBehaviour
             {
                 statBar[j].enabled = false;
             }
+
+            StartCoroutine(ChangeStatColorAndText());
+            StartCoroutine(TurnOffPanel());
         }
+
+
     }
 
-    public void DecreaseStatBar()
+    public void DecreaseStatBar(int num)
     {
         SaveSystem.Load("save_001");
         currentNum = GameManager.gameManager._gameData.statNum;
         if(StatTime.statNum > 0)
         {
-            StatTime.statNum -= 1;
+            StatTime.statNum -= num;
             GameManager.gameManager._gameData.statNum = currentNum;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
@@ -186,34 +183,36 @@ public class NoahStatController : MonoBehaviour
             {
                 statBar[j].enabled = false;
             }
+
+            StartCoroutine(ChangeStatColorAndText());
+            StartCoroutine(TurnOffPanel());
         }
+
     }
 
     void  DecreaseStatByTime()
     {
-        if(currentNum>=1)
+        if(StatTime.statTimer==0 && StatTime.statNum<10)
         {
-            timer += Time.deltaTime;
-            int seconds = Mathf.FloorToInt((timer % 3600) % 60); // 초 단위 체크
-            if (seconds >= 300)
+            SaveSystem.Load("save_001");
+            currentNum = GameManager.gameManager._gameData.statNum;
+            currentNum -= 1;
+
+            for (int i = 0; i < StatTime.statNum; i++)
             {
-                SaveSystem.Load("save_001");
-                currentNum = GameManager.gameManager._gameData.statNum;
-                currentNum -= 1;
-
-                for (int i = 0; i < currentNum; i++)
-                {
-                    statBar[i].enabled = true;
-                }
-
-                for (int j = currentNum; j < 10; j++)
-                {
-                    statBar[j].enabled = false;
-                }
-                GameManager.gameManager._gameData.statNum = currentNum;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                timer = 0;
+                statBar[i].enabled = true;
             }
+
+            for (int j = StatTime.statNum; j < 10; j++)
+            {
+                statBar[j].enabled = false;
+            }
+
+            GameManager.gameManager._gameData.statNum = currentNum;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            StartCoroutine(ChangeStatColorAndText());
+            StartCoroutine(TurnOffPanel());
         }
     }
 

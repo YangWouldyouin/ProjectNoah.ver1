@@ -63,7 +63,7 @@ public class DogGoodFood4: MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.GoodFoodEat[3] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //½ºÅÈ »ó½Â
-        NoahStatController.noahStatController.IncreaseStatBar();
+        NoahStatController.noahStatController.IncreaseStatBar(1);
     }
 
     public void OnPushOrPress()

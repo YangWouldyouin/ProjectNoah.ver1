@@ -18,8 +18,12 @@ public class M_Pack : MonoBehaviour, IInteraction
     public GameObject dialog_CS;
     DialogManager dialogManager;
 
+    PortableObjectData workRoomData;
+   
+
     void Start()
     {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
         dialogManager = dialog_CS.GetComponent<DialogManager>();
 
         packObjData_M = GetComponent<ObjData>();
@@ -106,7 +110,7 @@ public class M_Pack : MonoBehaviour, IInteraction
     {
         yield return new WaitForSeconds(3f);
 
-        Destroy(gameObject, 0f);
+        //Destroy(gameObject, 0f);
 
         this.GetComponent<Rigidbody>().isKinematic = true;
         this.transform.parent = null;
@@ -124,6 +128,15 @@ public class M_Pack : MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.ActiveMissionList[3] = false;
         MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 앞으로 카드팩 업무공간에서 없으므로 체크해제
+        workRoomData.IsObjectActiveList[31] = false;
+        //엔진키는 체크활성화
+        workRoomData.IsObjectActiveList[32] = true;
+
+        gameObject.SetActive(false);
+
+
 
         // 엔진실 카드키 찾기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
 
