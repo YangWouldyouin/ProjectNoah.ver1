@@ -165,7 +165,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             M_RealAnswerMeteorForBeaker.SetActive(false);
         }
 
-        if (IsPretendDeadFail2 == true && canTpretendDead2 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+/*        if (IsPretendDeadFail2 == true && canTpretendDead2 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
         {
             GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
             Debug.Log("시간안에 퍼즐 풀기 실패");
@@ -186,7 +186,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
             //GameManager.gameManager._gameData.IsMiddleTuto = false;
             //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
-        }
+        }*/
     }
 
     void DisableButton()
@@ -298,26 +298,28 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerEat();
 
-        Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
+        Beaker2ObjData_M.IsEaten = false;
+
+        GameManager.gameManager._gameData.IsDrinkBeaker_M_C2 = true;
+
+        //Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
         //쓰러지는 애니메이션 삽입 예정
 
         //Invoke(" FakeAI2", 3f);
 
-        StartCoroutine(realFakeAI2());
+        //StartCoroutine(realFakeAI2());
 
         //StartCoroutine(PreteadTimer2());
 
         //타이머 시작 3분
-        TimerManager.timerManager.TimerStart(240);
+  /*      TimerManager.timerManager.TimerStart(240);
         Invoke("PretendFailCheck", 240f);
 
 
-        Invoke("EatAfter", 3);
-
-        Beaker2ObjData_M.IsEaten = false;
+        Invoke("EatAfter", 3);*/
     }
 
-    void EatAfter()
+   /* void EatAfter()
     {
         InteractionButtonController.interactionButtonController.PlayerDie();
 
@@ -391,7 +393,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         RealcylinderGlassNoNeed1_Collider.enabled = false;
         RealcylinderGlassNoNeed2_Collider.enabled = false;
 
-    }
+    }*/
 
     public void OnBite()
     {

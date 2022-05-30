@@ -174,7 +174,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         }*/
 
 
-        if (IsPretendDeadFail1 == true && canTpretendDead1 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+/*        if (IsPretendDeadFail1 == true && canTpretendDead1 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
         {
             GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
             Debug.Log("시간 안에 퍼즐 풀기 실패");
@@ -195,7 +195,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
             //GameManager.gameManager._gameData.IsMiddleTuto = false;
             //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
-        }
+        }*/
 
     }
 
@@ -311,24 +311,26 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     public void OnEat()
     {
         DisableButton();
-        //1. 노아가 음식을 먹는다
+        //1. 노아가 음식을 먹는다-> 이후론 M_BeakerAfter 코드로
         InteractionButtonController.interactionButtonController.playerEat();
 
-        // 2.쓰러진다.
-        Invoke("EatAfter", 3);
+        Beaker1ObjData_M.IsEaten = false;
+
+        GameManager.gameManager._gameData.IsDrinkBeaker_M_C2 = true;
+
+
+        //Invoke("EatAfter", 3);
 
         //여기까지는 됨@@@@@@@@
        
         //Invoke(" FakeAI1", 3f);
 
         //3.AI가 혼낸다.
-        StartCoroutine(realFakeAI1());
-
-        Beaker1ObjData_M.IsEaten = false;
+        //StartCoroutine(realFakeAI1());
 
     }
 
-    void EatAfter()
+   /* void EatAfter()
     {
         InteractionButtonController.interactionButtonController.PlayerDie();
 
@@ -371,7 +373,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         Invoke("PretendFailCheck", 60f);
     }
 
-/*    IEnumerator PreteadTimer1()
+*//*    IEnumerator PreteadTimer1()
     {
 
         yield return new WaitForSeconds(40f);
@@ -380,7 +382,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         TimerManager.timerManager.TimerStart(8);
         Invoke("PretendFailCheck", 8f);
 
-    }*/
+    }*//*
 
     void PretendFailCheck()
     {
@@ -417,11 +419,11 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         cylinderGlassNoNeed1_Collider.enabled = false;
         cylinderGlassNoNeed2_Collider.enabled = false;
 
-        /*타이머 등장*/
+        *//*타이머 등장*//*
         //StartCoroutine(PreteadTimer1());
 
 
-    }
+    }*/
 
 
     public void OnBite()
