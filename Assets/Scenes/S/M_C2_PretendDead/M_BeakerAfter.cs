@@ -81,6 +81,9 @@ public class M_BeakerAfter : MonoBehaviour
 
         DonTClick.SetActive(true);
 
+        /*노아가 혼자서 안움직이게*/
+        PlayerScripts.playerscripts.IsBored = true;
+
         StartBlack = true;
 
         //여기부터 안됨@@@@@@@@
@@ -130,6 +133,9 @@ public class M_BeakerAfter : MonoBehaviour
         StartScreen.SetActive(false);
         DonTClick.SetActive(false);
         //EndScreen.SetActive(false);
+
+        /*노아 다시 움직이게*/
+        PlayerScripts.playerscripts.IsBored = false;
 
         //타이머 시작 3분
         TimerManager.timerManager.TimerStart(180);
