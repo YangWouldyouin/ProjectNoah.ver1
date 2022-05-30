@@ -27,7 +27,7 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
 
         noCenterButton = disturbingChipData.CenterButton1;
 
-        GameManager.gameManager._gameData.IsHide = true;
+        //GameManager.gameManager._gameData.IsHide = true;
     }
 
     /*public void OnTriggerEnter(Collider other)
