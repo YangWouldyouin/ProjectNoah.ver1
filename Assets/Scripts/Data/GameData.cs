@@ -117,8 +117,11 @@ public class GameData
     public bool IsNoNeed1BeakerColorChange2_M_C2; // 필요없는 약1 때문에 비커 2 색상 변화
     public bool IsNoNeed2BeakerColorChange2_M_C2; // 필요없는 약2 때문에 비커 2 색상 변화
 
+    public bool IsDrinkBeaker_M_C2;
+    public bool IsAITimerStart_M_C2;
 
-    [Header("<태블릿 UI 관련>")]
+
+   [Header("<태블릿 UI 관련>")]
     public bool Is_Tablet_WirelessOn; //태블릿 블루투스 on/off체크
     public bool IsFakeHealthData_Tablet; //태블릿 강아지 더미 상태 데이터
     public bool IsFakeCoordinateData_Tablet; //태블릿거짓좌표해금 판단

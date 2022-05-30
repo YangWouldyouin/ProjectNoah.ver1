@@ -487,9 +487,12 @@ public class SLManager2 : MonoBehaviour
             character.IsNoNeed1BeakerColorChange2_M_C2 = false; // 필요없는 약1 때문에 비커 2 색상 변화
             character.IsNoNeed2BeakerColorChange2_M_C2 = false; // 필요없는 약2 때문에 비커 2 색상 변화
 
+            character.IsDrinkBeaker_M_C2 = false;
+            character.IsAITimerStart_M_C2 = false;
 
-            // 태블릿 UI 관련
-            character.Is_Tablet_WirelessOn = false; //태블릿 블루투스 on/off체크
+
+    // 태블릿 UI 관련
+    character.Is_Tablet_WirelessOn = false; //태블릿 블루투스 on/off체크
             character.IsFakeHealthData_Tablet = false; //태블릿 강아지 더미 상태 데이터
             character.IsFakeCoordinateData_Tablet = false; //태블릿거짓좌표해금 판단
             character.IsFakeCoordinateDatafile_Tablet = false; //태블릿거짓좌표다운로드 판단
