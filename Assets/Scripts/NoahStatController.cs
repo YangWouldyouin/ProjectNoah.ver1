@@ -76,10 +76,11 @@ public class NoahStatController : MonoBehaviour
 
             statColor[1].fillAmount = 0;
             statColor[2].fillAmount = 0;
-            while (blueTimeLeft < 1)
+            while (blueTimeLeft <= 1f)
             {
-                statColor[0].fillAmount = blueTimeLeft / maxTime;
                 blueTimeLeft += 0.1f;
+                statColor[0].fillAmount = blueTimeLeft / maxTime;
+
                 yield return new WaitForSeconds(0.000001f);
             }
         }
@@ -93,11 +94,12 @@ public class NoahStatController : MonoBehaviour
             statColor[0].fillAmount = 0;
             statColor[2].fillAmount = 0;
 
-            while(yellowTimeLeft < 1)
+            while(yellowTimeLeft <= 1f)
             {
+                yellowTimeLeft += 0.1f;
                 statColor[1].fillAmount = yellowTimeLeft / maxTime;
-                yellowTimeLeft += 0.01f;
-                yield return new WaitForSeconds(0.01f);
+     
+                yield return new WaitForSeconds(0.000001f);
             }          
         }
 
@@ -113,11 +115,12 @@ public class NoahStatController : MonoBehaviour
             statColor[0].fillAmount = 0;
             statColor[1].fillAmount = 0;
 
-            while(redTimeLeft < 1)
+            while(redTimeLeft <= 1)
             {
+                redTimeLeft += 0.1f;
                 statColor[2].fillAmount = redTimeLeft / maxTime;
-                redTimeLeft += 0.01f;
-                yield return new WaitForSeconds(0.01f);
+
+                yield return new WaitForSeconds(0.000001f);
             }
         }
     }
@@ -144,6 +147,10 @@ public class NoahStatController : MonoBehaviour
         if(StatTime.statNum < 10)
         {
             StatTime.statNum += num;
+            if(StatTime.statNum>10)
+            {
+                StatTime.statNum = 10;
+            }
             GameManager.gameManager._gameData.statNum = StatTime.statNum;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
@@ -171,6 +178,10 @@ public class NoahStatController : MonoBehaviour
         if(StatTime.statNum > 0)
         {
             StatTime.statNum -= num;
+            if(StatTime.statNum<0)
+            {
+                StatTime.statNum = 0;
+            }
             GameManager.gameManager._gameData.statNum = currentNum;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 

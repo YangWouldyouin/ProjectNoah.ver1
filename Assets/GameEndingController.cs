@@ -18,14 +18,15 @@ public class GameEndingController : MonoBehaviour
 
     // Update is called once per frame
 
-    public void SuddenDeath()
+    IEnumerator SuddenDeath()
     {
+        inGameTime.statNum = 5;
+
+        yield return new WaitForSeconds(3f);
         GameManager.gameManager._gameData.IsSuddenDeath = true;
         GameManager.gameManager._gameData.IsManagerAbilityLack = true;
-
         Dontclick.SetActive(false);
-
-        NoahStatController.noahStatController.IncreaseStatBar(5);
+        NoahStatController.noahStatController.IncreaseStatBar(0);
         InteractionButtonController.interactionButtonController.PlayerAlive();
     }
     public void SuddenDeath2()
@@ -46,10 +47,8 @@ public class GameEndingController : MonoBehaviour
         if(inGameTime.statNum <= 0)
         {
             InteractionButtonController.interactionButtonController.PlayerDie();
-
             Dontclick.SetActive(true);
-
-            Invoke("SuddenDeath", 3f);
+            StartCoroutine(SuddenDeath());
         }
 
         if (GameManager.gameManager._gameData.IsEatBadPotato == true)
@@ -90,6 +89,7 @@ public class GameEndingController : MonoBehaviour
             //생태계구축엔딩
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
             inGameTime.statNum = 10;
+
 
             inGameTime.days = 0;
             inGameTime.hours = 0;

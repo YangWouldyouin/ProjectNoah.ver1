@@ -14,19 +14,20 @@ public class SuddenDeathAlertUIManager : MonoBehaviour
     void Start()
     {
         NumCountText.text = setTime.ToString();
+        SaveSystem.Load( "save_001");
     }
-    
+
     void Update()
     {
         if (GameManager.gameManager._gameData.IsSuddenDeath == true)
         {
             DeathAlert.SetActive(true);
-            
-            if(setTime > 0)
+
+            if (setTime > 0)
             {
                 setTime -= Time.deltaTime;
             }
-            else if (setTime <=0)
+            else if (setTime <= 0)
             {
                 CountEnd();
             }
@@ -72,5 +73,6 @@ public class SuddenDeathAlertUIManager : MonoBehaviour
     public void CountEnd()
     {
         GameManager.gameManager._gameData.IsSuddenDeath = false;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 }
