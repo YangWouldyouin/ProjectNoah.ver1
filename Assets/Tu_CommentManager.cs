@@ -209,6 +209,7 @@ public class Tu_CommentManager : MonoBehaviour
             else if (!dialogManager.IsSubtitleStarted)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(69));
+                StartCoroutine(FirstMission());
 
                 break;
             }
