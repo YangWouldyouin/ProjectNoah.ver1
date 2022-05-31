@@ -100,7 +100,7 @@ pushButton, smashButton, eatButton;
 
         if (GameManager.gameManager._gameData.IsRealMiddleTuto == true)
         {
-            box.GetComponent<BoxCollider>().enabled = false;
+            box.GetComponent<BoxCollider>().enabled = true;
         }
     }
 
