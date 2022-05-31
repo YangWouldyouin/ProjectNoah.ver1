@@ -74,8 +74,11 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
     public bool IsPretendDeadFail2 = false; //제한 시간 내에 안에 퍼즐 실패
     public bool canTpretendDead2 = false;
 
+    PortableObjectData workRoomData;
     void Start()
     {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
+
         Beaker_Hit_Sound = GetComponent<AudioSource>();
 
         dialogManager = dialog_CS.GetComponent<DialogManager>();
@@ -163,6 +166,8 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             ChangeBeaker2.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
 
             M_RealAnswerMeteorForBeaker.SetActive(false);
+            // 앞으로 업무공간에서 메테오보이면 안됨
+            workRoomData.IsObjectActiveList[28] = false;
         }
 
 /*        if (IsPretendDeadFail2 == true && canTpretendDead2 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)

@@ -74,8 +74,11 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     public bool StartBlack = false;
     public bool StartOnlyOne = false;
 
+    PortableObjectData workRoomData;
+
     void Start()
     {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
         Beaker_Hit_Sound = GetComponent<AudioSource>();
 
         dialogManager = dialog_CS.GetComponent<DialogManager>();
@@ -162,6 +165,9 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             ChangeBeaker1.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
 
             M_AnswerMeteorForBeaker.SetActive(false);
+            // 앞으로 업무공간에서 메테오보이면 안됨
+            workRoomData.IsObjectActiveList[28] = false;
+
 
 
         }
@@ -245,6 +251,8 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         if (cylinderGlassAnswerData_M.IsBite)
         {
             M_drugInBeaker1.SetActive(true);
+            // 앞으로 업무공간에서 참@@@@@@@@@@@@@@@@@
+
             Debug.Log("색이 변경되었습니다.");
             ChangeBeaker1.material.color = new Color(173 / 255f, 221 / 255f, 158 / 255f); //부은 약 색으로 비커색이 변한다.
 
@@ -260,6 +268,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             Debug.Log("잘못된 약을 비커1에 넣었습니다.");
             //cylinderInWrong_MB.SetActive(false);
             M_drugInBeaker1.SetActive(true);
+            // 앞으로 업무공간에서 참@@@@@@@@@@@@@@@@@
             ChangeBeaker1.material.color = new Color(255 / 255f, 173 / 255f, 71 / 255f); //부은 약 색으로 비커색이 변한다.
 
             GameManager.gameManager._gameData.IsAnswerBeakerColorChange1_M_C2 = false;
@@ -274,6 +283,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             Debug.Log("필요없는 약1을 비커1에 넣었습니다.");
             //cylinderInWrong_MB.SetActive(false);
             M_drugInBeaker1.SetActive(true);
+            // 앞으로 업무공간에서 참@@@@@@@@@@@@@@@@@
             ChangeBeaker1.material.color = new Color(197 / 255f, 214 / 255f, 255 / 255f); //부은 약 색으로 비커색이 변한다.
 
             GameManager.gameManager._gameData.IsAnswerBeakerColorChange1_M_C2 = false;
@@ -288,6 +298,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             Debug.Log("필요없는 약2를 비커1에 넣었습니다.");
             //cylinderInWrong_MB.SetActive(false);
             M_drugInBeaker1.SetActive(true);
+            // 앞으로 업무공간에서 참@@@@@@@@@@@@@@@@@
             ChangeBeaker1.material.color = new Color(255 / 255f, 144 / 255f, 129 / 255f); //부은 약 색으로 비커색이 변한다.
 
             GameManager.gameManager._gameData.IsAnswerBeakerColorChange1_M_C2 = false;
