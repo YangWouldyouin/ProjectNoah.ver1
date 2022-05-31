@@ -31,6 +31,8 @@ public class Tu_CommentManager : MonoBehaviour
 
     public Button aiButton;
 
+    public GameObject mission;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -117,6 +119,7 @@ public class Tu_CommentManager : MonoBehaviour
                 aiTurnColor.a = 1.0f;
                 aiButton.GetComponent<Image>().color = aiTurnColor;
                 aiButton.interactable = true;
+                //mission.SetActive(true);
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(67));
 
                 break;
