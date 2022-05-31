@@ -97,6 +97,7 @@ public class MissionGenerator : MonoBehaviour
 
     public void ShowMissionList()
     {
+        /* 여기에 버튼 사운드 넣으면 됩니다 */
         missionList.Clear();
 
         foreach (Transform child in missionmom.transform)
