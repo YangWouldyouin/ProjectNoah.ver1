@@ -138,8 +138,8 @@ public class M_BeakerAfter : MonoBehaviour
         PlayerScripts.playerscripts.IsBored = false;
 
         //타이머 시작 3분
-        TimerManager.timerManager.TimerStart(180);
-        Invoke("PretendFailCheck", 180f);
+        TimerManager.timerManager.TimerStart(300);
+        Invoke("PretendFailCheck", 300f);
     }
 
     void PretendFailCheck()

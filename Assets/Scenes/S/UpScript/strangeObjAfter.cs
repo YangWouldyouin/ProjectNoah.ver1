@@ -72,9 +72,9 @@ public class strangeObjAfter : MonoBehaviour
         if(GameManager.gameManager._gameData.IsHide&& HideStart == false)
         {
             // 3분간 플레이어 아웃라인 활성화
-            outlineControl.StartOutlineTime(60f);
-            TimerManager.timerManager.TimerStart(60f);
-            Invoke("FailStrangeObj", 60f);
+            outlineControl.StartOutlineTime(300f);
+            TimerManager.timerManager.TimerStart(300f);
+            Invoke("FailStrangeObj", 300f);
 
             HideStart = true;
         }
