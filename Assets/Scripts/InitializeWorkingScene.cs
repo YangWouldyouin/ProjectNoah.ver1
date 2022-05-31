@@ -9,7 +9,7 @@ public class InitializeWorkingScene : MonoBehaviour
 
     public GameObject dialog;
     DialogManager dialogManager;
-
+    PortableObjectData workRoomData;
 
     [Header("<상태체크기계 고치기>")]
     public GameObject HealthMachine;
@@ -174,6 +174,7 @@ public class InitializeWorkingScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
         dialogManager = dialog.GetComponent<DialogManager>();
 
         GameData intialGameData = SaveSystem.Load("save_001");
@@ -341,11 +342,11 @@ public class InitializeWorkingScene : MonoBehaviour
         /*죽은척하기 퍼즐을 완료하면*/
         if(intialGameData.IsCompletePretendDead)
         {
-            WrongMeteor1.SetActive(false);
-            WrongMeteor2.SetActive(false);
-            WrongMeteor3.SetActive(false);
-            WrongMeteor4.SetActive(false);
-            AnswerMeteor.SetActive(false);
+            workRoomData.IsObjectActiveList[24]= false;
+            workRoomData.IsObjectActiveList[25] = false;
+            workRoomData.IsObjectActiveList[26] = false;
+            workRoomData.IsObjectActiveList[27] = false;
+            workRoomData.IsObjectActiveList[28] = false;
 
             Beaker1_Collider.enabled = false;
             Beaker2_Collider.enabled = false;
