@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class M_BoxForTuto : MonoBehaviour, IInteraction
 {
     public bool noMoreTimer = false;
+    public bool OnlyOneTimer = false;
 
     public GameObject S_TimerBarFilled;
     public GameObject S_TimerBackground;
@@ -152,10 +153,12 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
             InteractionButtonController.interactionButtonController.PlayerRise2();
 
             // 박스 위치가 맞고 오르기를 했다면 타이머 스타트
-            if(GameManager.gameManager._gameData.BoxZoneCheck == true)
+            if(GameManager.gameManager._gameData.BoxZoneCheck == true && OnlyOneTimer == false)
             {
                 TimerManager.timerManager.TimerStart(120);
                 Invoke("TutoFailCheck", 120f);
+
+                OnlyOneTimer = true;
             }
 
 
