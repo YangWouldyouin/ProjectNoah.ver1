@@ -338,7 +338,7 @@ public class InitializeWorkingScene : MonoBehaviour
         }
 
 
-        /*엔진실 열기 퍼즐을 완료하면*/
+        /*죽은척하기 퍼즐을 완료하면*/
         if(intialGameData.IsCompletePretendDead)
         {
             WrongMeteor1.SetActive(false);
@@ -350,6 +350,7 @@ public class InitializeWorkingScene : MonoBehaviour
             Beaker1_Collider.enabled = false;
             Beaker2_Collider.enabled = false;
             CylinderAnswer_Collider.enabled = false;
+            CylinderWrong_Collider.enabled = false;
             CylinderNoNeed1_Collider.enabled = false;
             CylinderNoNeed2_Collider.enabled = false;
             MeteorBoxButton1_Collider.enabled = false;
