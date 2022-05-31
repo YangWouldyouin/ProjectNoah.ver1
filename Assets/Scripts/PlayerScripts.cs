@@ -439,23 +439,6 @@ public class PlayerScripts : MonoBehaviour
             objectNameText.text = objectNameData;
         }
     }
-
-    IEnumerator WaitAndCancelPush()
-    {
-        while (!CheckIfArrived())
-        {
-            if (playerEquipment.pushObjectName != "")
-            {
-                CanMove = false;
-            }
-            yield return null;
-        }
-        if (playerEquipment.pushObjectName != "")
-        {
-            InteractionButtonController.interactionButtonController.CancelPush();
-            CanMove = true;
-        }
-    }
 }
 
 

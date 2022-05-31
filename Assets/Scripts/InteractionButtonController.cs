@@ -56,7 +56,7 @@ public class InteractionButtonController : MonoBehaviour
     CameraFollow cameraFollow;
     Vector3 camerapos;
 
-    NavMeshObstacle navmeshObstacle;
+    public NavMeshObstacle navmeshObstacle;
 
     void Awake()
     {
@@ -643,31 +643,27 @@ public class InteractionButtonController : MonoBehaviour
             interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
             interactionAudio.Play(); // 2. 재생한다.);
 
-            if (noahBiteObject == null)
+            noahPushObject = PlayerScripts.playerscripts.currentObject;
+            navmeshObstacle = noahPushObject.GetComponent<NavMeshObstacle>();
+            if (noahPushObject != null)
             {
+                // 스크립터블오브젝트 변수에 저장
+                equipment.pushObjectName = noahPushObject.name;
 
-                noahPushObject = PlayerScripts.playerscripts.currentObject;
-                navmeshObstacle = noahPushObject.GetComponent<NavMeshObstacle>();
-                if (noahPushObject != null)
-                {
-                    // 스크립터블오브젝트 변수에 저장
-                    equipment.pushObjectName = noahPushObject.name;
+                equipment.cancelPushPos = noahPushObject.transform.position;
+                equipment.cancelPushRot = noahPushObject.transform.eulerAngles;
+                equipment.cancelPushScale = noahPushObject.transform.localScale;
 
-                    equipment.cancelPushPos = noahPushObject.transform.position;
-                    equipment.cancelPushRot = noahPushObject.transform.eulerAngles;
-                    equipment.cancelPushScale = noahPushObject.transform.localScale;
-
-                    Invoke("ChangePushTrue1", 0.5f);
-                    Invoke("ChangePushTrue2", 1f);
+                Invoke("ChangePushTrue1", 0.5f);
+                Invoke("ChangePushTrue2", 1f);
 
 
 
-                    pushData = noahPushObject.GetComponent<ObjData>();
-                    objectText.text = "Noah N.113 - " + pushData.ObjectName;
-                    pushData.objectDATA.IsPushOrPress = true;
+                pushData = noahPushObject.GetComponent<ObjData>();
+                objectText.text = "Noah N.113 - " + pushData.ObjectName;
+                pushData.objectDATA.IsPushOrPress = true;
 
-                    Invoke("AddPushObject", 1f);
-                }
+                Invoke("AddPushObject", 1f);
             }
         }
     }
@@ -700,7 +696,7 @@ public class InteractionButtonController : MonoBehaviour
     public void CancelPush()
     {
         noahPushObject = GameObject.Find(equipment.pushObjectName).gameObject;
-
+        navmeshObstacle = noahPushObject.GetComponent<NavMeshObstacle>();
         equipment.pushObjectName = "";
         pushData = noahPushObject.GetComponent<ObjData>();
         pushData.objectDATA.IsPushOrPress = false;
