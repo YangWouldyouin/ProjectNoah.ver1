@@ -31,9 +31,15 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
     public GameObject dialog_CS;
     DialogManager dialogManager;
 
+    PlayerEquipment playerEquipment;
+
+    GameObject portableGroup;
+
     // Start is called before the first frame update
     void Start()
     {
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
+        playerEquipment = BaseCanvas._baseCanvas.equipment;
         dialogManager = dialog_CS.GetComponent<DialogManager>();
 
         /*ObjData*/
@@ -94,8 +100,9 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         {
             T_RealNormalMeteor1.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
             T_RealNormalMeteor1.transform.parent = null;
-
+            playerEquipment.biteObjectName = "";
             T_RealNormalMeteor1.transform.position = new Vector3(-254.667f, 2.2122f, 690.674f);
+            T_RealNormalMeteor1.transform.parent = portableGroup.transform;
 
             GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -103,7 +110,8 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             // 운석 조각 수집 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
 
             /*죽은 척하기 임무시작 가능하다*/
-            Invoke("StartPretendDead", 100);
+            StartCoroutine(StartPretendDead());
+            //Invoke("StartPretendDead", 100);
 
             Invoke("Report_Popup", 4f);
 
@@ -131,7 +139,8 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             T_RealImportantMeteor.transform.parent = null;
 
             T_RealImportantMeteor.transform.position = new Vector3(-254.667f, 2.2122f, 690.674f);
-
+            T_RealImportantMeteor.transform.parent = portableGroup.transform;
+            playerEquipment.biteObjectName = "";
             Invoke("Report_Popup", 4f);
 
             //상호작용을 꺼준다.
@@ -143,8 +152,9 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         
     }
 
-    void StartPretendDead()
+    IEnumerator StartPretendDead()
     {
+        yield return new WaitForSeconds(100f);
         GameManager.gameManager._gameData.IsStartPretendDead = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
