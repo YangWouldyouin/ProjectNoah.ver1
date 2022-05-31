@@ -76,7 +76,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         sniffButton_S_IDConsole.onClick.AddListener(OnSniff);
 
         biteButton_S_IDConsole = iDConsoleData_S.BiteButton;
-        //biteButton_S_IDConsole.onClick.AddListener(OnBite);
+        biteButton_S_IDConsole.onClick.AddListener(OnBite);
 
         pressButton_S_IDConsole = iDConsoleData_S.PushOrPressButton;
         pressButton_S_IDConsole.onClick.AddListener(OnPushOrPress);
@@ -214,7 +214,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-       
+        DisableButton();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()

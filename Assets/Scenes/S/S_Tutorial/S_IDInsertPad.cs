@@ -34,6 +34,8 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
     public GameObject dialog;
     DialogManager dialogManager;
 
+    public GameObject portable;
+
     void Start()
     {
         /*BoxCollider*/
@@ -102,9 +104,12 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
             RealIDCard.GetComponent<Rigidbody>().isKinematic = false;
             RealIDCard.transform.parent = null;
 
+
+
             // 해당 위치, 각도, 크기로 바꾸겠다.
             RealIDCard.transform.position = new Vector3(-30.153f, 1.054f, -25.293f); //위치 고정
             RealIDCard.transform.rotation = Quaternion.Euler(-53.609f, 0, 90); //각도 고정
+            RealIDCard.transform.parent = portable.transform;
 
             // 카드패드와 카드의 상호작용을 삭제한다.
             realIDCardData_S.IsNotInteractable = true;
