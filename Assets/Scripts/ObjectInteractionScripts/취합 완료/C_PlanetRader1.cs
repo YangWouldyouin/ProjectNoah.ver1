@@ -71,17 +71,20 @@ pressButton, observeButton;
     {
         Debug.Log("관찰");
 
+        planetRaderData_PR.IsObserve = true;
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         DisableButton();
 
         if (BoxData.IsUpDown) // 상자위로 올라갔을 떄
         {
-            planetRaderData_PR.IsObserve = true;
+
             /* 카메라 컨트롤러에 뷰 전달 */
             CameraController.cameraController.currentView = planetRaderData_PR.ObserveView; // 관찰 뷰 : 위쪽
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ X-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+
+            Invoke("secondsf", 3f);
         }
 
         else // 상자 밑일 때
@@ -90,8 +93,6 @@ pressButton, observeButton;
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
         }
-
-        Invoke("secondsf", 3f);
     }
 
     public void secondsf() 
