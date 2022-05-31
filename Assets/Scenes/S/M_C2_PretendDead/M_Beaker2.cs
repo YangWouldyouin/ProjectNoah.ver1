@@ -244,9 +244,6 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         //정답 약을 비커 2에 넣었을 때
         if (RealCylinderGlassAnswerData_M.IsBite)
         {
-            // 물기 변수 초기화
-            equipment.biteObjectName = "";
-
             M_drugInBeaker2.SetActive(true);
             Debug.Log("색이 변경되었습니다.");
             ChangeBeaker2.material.color = new Color(173 / 255f, 221 / 255f, 158 / 255f); //부은 약 색으로 비커색이 변한다.
@@ -260,9 +257,6 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         //틀린 약을 비커 1에 넣었을 때
         if (RealCylinderGlassWrongData_M.IsBite)
         {
-            // 물기 변수 초기화
-            equipment.biteObjectName = "";
-
             Debug.Log("잘못된 약을 비커2에 넣었습니다.");
             //cylinderInWrong_MB.SetActive(false);
             M_drugInBeaker2.SetActive(true);
@@ -277,9 +271,6 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         //필요 없는 약1을 비커 1에 넣었을 때
         if (RealCylinderGlassNoNeed1Data_M.IsBite)
         {
-            // 물기 변수 초기화
-            equipment.biteObjectName = "";
-
             Debug.Log("필요없는 약1을 비커2에 넣었습니다.");
             //cylinderInWrong_MB.SetActive(false);
             M_drugInBeaker2.SetActive(true);
@@ -294,9 +285,6 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         //필요 없는 약2을 비커 1에 넣었을 때
         if (RealCylinderGlassNoNeed2Data_M.IsBite)
         {
-            // 물기 변수 초기화
-            equipment.biteObjectName = "";
-
             Debug.Log("필요없는 약2를 비커2에 넣었습니다.");
             //cylinderInWrong_MB.SetActive(false);
             M_drugInBeaker2.SetActive(true);
