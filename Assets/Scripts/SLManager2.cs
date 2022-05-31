@@ -342,8 +342,6 @@ public class SLManager2 : MonoBehaviour
             character.IsHealthMachineFixed_T_C2 = false;
             character.IsSmartFarmOpen_T_C2 = false;
             character.S_IsAIAwake_M_C1 = false;
-            character.ActiveMissionList[0] = false;
-            character.ActiveMissionList[3] = false;
             character.IsTabletUnlock = false;
             //character.IsBasicTuto = false;
             character.IsMiddleTuto = false;
@@ -376,44 +374,13 @@ public class SLManager2 : MonoBehaviour
             character.S_IsAIAwake_M_C1 = false; // 항상 AI 활성화  
             character.S_IsCWDoorOpened_M_C1 = false; // 항상 조종실에서 업무공간 이동 가능
             character.S_IsHealthMachineFixed_T_C2 = false; // 정기적으로 상태 측정 임무 수행 가능 
-            character.ActiveMissionList[0] = false;
-            character.ActiveMissionList[1] = false;
-            character.ActiveMissionList[2] = false;
-            character.ActiveMissionList[3] = false;
-            character.ActiveMissionList[4] = false;
-            character.ActiveMissionList[5] = false;
-            character.ActiveMissionList[6] = false;
-            character.ActiveMissionList[7] = false;
-            character.ActiveMissionList[8] = false;
-            character.ActiveMissionList[9] = false;
-            character.ActiveMissionList[10] = false;
-            character.ActiveMissionList[11] = false;
-            character.ActiveMissionList[12] = false;
-            character.ActiveMissionList[13] = false;
-            character.ActiveMissionList[14] = false;
-            character.ActiveMissionList[15] = false;
-            character.ActiveMissionList[16] = false;
-            character.ActiveMissionList[17] = false;
-            character.ActiveMissionList[18] = false;
-            character.ActiveMissionList[19] = false;
-            character.ActiveMissionList[20] = false;
-            character.ActiveMissionList[21] = false;
-            character.ActiveMissionList[22] = false;
-            character.ActiveMissionList[23] = false;
-            character.ActiveMissionList[24] = false;
-            character.ActiveMissionList[25] = false;
-            character.ActiveMissionList[26] = false;
-            character.ActiveMissionList[27] = false;
-            character.ActiveMissionList[28] = false;
-            character.ActiveMissionList[29] = false;
-            character.ActiveMissionList[30] = false;
 
-            character.EndMissionList[0] = false;
-            character.EndMissionList[1] = false;
-            character.EndMissionList[2] = false;
-            character.EndMissionList[3] = false;
-            character.EndMissionList[4] = false;
-
+            // 미션 리스트 초기화 
+            for(int i=0; i<34; i++)
+            {
+                character.ActiveMissionList[i] = false;
+                character.EndMissionList[i] = false;
+            }          
 
             /* 1회성 임무 */
             character.IsAIAwake_M_C1 = false; // 항상 AI 활성화  
@@ -516,23 +483,13 @@ public class SLManager2 : MonoBehaviour
             character.IsTabletMoved = false; // 태블릿 AI 미감지 구역에서 벗어났을 때
             character.IsTabletDestory = false; // 태블릿 파괴
 
-            // 고구마 관련
-            character.sweetPotatoEat[0] = false; //고구마 먹은 거 확인
-            character.sweetPotatoEat[1] = false;
-            character.sweetPotatoEat[2] = false;
-            character.sweetPotatoEat[3] = false;
-            character.sweetPotatoEat[4] = false;
-            character.sweetPotatoEat[5] = false;
-            character.sweetPotatoEat[6] = false;
-            character.sweetPotatoEat[7] = false;
-            character.sweetPotatoEat[8] = false;
-            character.sweetPotatoEat[9] = false;
-            character.sweetPotatoEat[10] = false;
-            character.sweetPotatoEat[11] = false;
-            character.sweetPotatoEat[12] = false;
-            character.sweetPotatoEat[13] = false;
-
-
+            // 음식 초기화
+            for(int foodNum=0; foodNum<14; foodNum++)
+            {
+                character.sweetPotatoEat[foodNum] = false; //고구마 먹은 거 확인
+                character.BadFoodEat[foodNum] = false; //나쁜음식 먹은 거 확인                                                     
+                character.GoodFoodEat[foodNum] = false; //음식 먹은 거 확인
+            }
 
             character.Pot1InPotato = false; // 배양기1에 고구마 심은거 확인
             character.Pot2InPotato = false; // 배양기2에 고구마 심은거 확인
@@ -548,42 +505,6 @@ public class SLManager2 : MonoBehaviour
             character.Pot1InHealthyPotato = false; // 배양기1에 건강한 고구마 심은거 확인
             character.Pot2InHealthyPotato = false; // 배양기1에 건강한 고구마 심은거 확인
             character.Pot3InHealthyPotato = false; // 배양기1에 건강한 고구마 심은거 확인
-
-            //나쁜음식 먹은 거 확인
-            character.BadFoodEat[0] = false;
-            character.BadFoodEat[1] = false;
-            character.BadFoodEat[2] = false;
-            character.BadFoodEat[3] = false;
-            character.BadFoodEat[4] = false;
-            character.BadFoodEat[5] = false;
-            character.BadFoodEat[6] = false;
-            character.BadFoodEat[7] = false;
-            character.BadFoodEat[8] = false;
-            character.BadFoodEat[9] = false;
-            character.BadFoodEat[10] = false;
-            character.BadFoodEat[11] = false;
-            character.BadFoodEat[12] = false;
-            character.BadFoodEat[13] = false;
-
-
-
-            //음식 먹은 거 확인
-            character.GoodFoodEat[0] = false;
-            character.GoodFoodEat[1] = false;
-            character.GoodFoodEat[2] = false;
-            character.GoodFoodEat[3] = false;
-            character.GoodFoodEat[4] = false;
-            character.GoodFoodEat[5] = false;
-            character.GoodFoodEat[6] = false;
-            character.GoodFoodEat[7] = false;
-            character.GoodFoodEat[8] = false;
-            character.GoodFoodEat[9] = false;
-            character.GoodFoodEat[10] = false;
-            character.GoodFoodEat[11] = false;
-            character.GoodFoodEat[12] = false;
-            character.GoodFoodEat[13] = false;
-
-
 
             // 운석수집기 문
             character.IsMeteorCollectClose = false; //운석 수집기 문 닫혔는지 확인
