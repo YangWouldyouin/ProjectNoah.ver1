@@ -115,8 +115,10 @@ public class CoordinateSystemUIManager1 : MonoBehaviour
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(73));
 
         GameManager.gameManager._gameData.afterFirstMission = true;
-        GameManager.gameManager._gameData.ActiveMissionList[23] = false;
+
+        GameManager.gameManager._gameData.ActiveMissionList[31] = false;
         MissionGenerator.missionGenerator.ActivateMissionList();
+
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 

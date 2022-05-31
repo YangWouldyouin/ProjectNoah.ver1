@@ -233,8 +233,10 @@ public class Tu_CommentManager : MonoBehaviour
             else
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(72));
-                GameManager.gameManager._gameData.ActiveMissionList[23] = true;
+
+                GameManager.gameManager._gameData.ActiveMissionList[31] = true;
                 MissionGenerator.missionGenerator.ActivateMissionList();
+
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                 console_collider.enabled = true;
