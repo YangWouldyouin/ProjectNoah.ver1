@@ -18,6 +18,7 @@ public class MissionGenerator : MonoBehaviour
     public bool IsOn = false;
     public GameObject missionmom;
     TMPro.TextMeshProUGUI textget;
+
     private void Awake()
     {
         missionGenerator = this;
@@ -113,6 +114,7 @@ public class MissionGenerator : MonoBehaviour
                 }
             }
             StartCoroutine(PrintMissionList());
+
             IsOn = true;
         }
         else
@@ -122,7 +124,6 @@ public class MissionGenerator : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-            
 
             IsOn = false;
         }
@@ -148,7 +149,14 @@ public class MissionGenerator : MonoBehaviour
             newMission.SetActive(true);
             yield return new WaitForSeconds(0.8f);
         }
+        yield return new WaitForSeconds(10f);
+        foreach (Transform child in missionmom.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
+
+
     IEnumerator _typing(string data)
     {
         //yield return new WaitForSeconds(2f);
