@@ -22,8 +22,18 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
     AudioSource drugBag_Rip_Sound;
     public AudioClip drugBag_Rip;
 
+    PortableObjectData workRoomData;
+    PortableObjectData livingRoomData;
+    PortableObjectData engineRoomData;
+    PortableObjectData controlRoomData;
+
     void Start()
     {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
+        livingRoomData = BaseCanvas._baseCanvas.livingRoomData;
+        engineRoomData = BaseCanvas._baseCanvas.engineRoomData;
+        controlRoomData = BaseCanvas._baseCanvas.controlRoomData;
+
         drugBag_Rip_Sound = GetComponent<AudioSource>();
 
         dialogManager = dialog.GetComponent<DialogManager>();
@@ -152,6 +162,7 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
         //gameObject.SetActive(false);
         drug.SetActive(true);
+        workRoomData.IsObjectActiveList[38] = true;
 
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(47));
 
@@ -159,11 +170,24 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
         Destroy(drugSmellArea, 0f);
         Destroy(smellCheckArea, 0f);
-        Destroy(gameObject, 0.5f);
+
+        //Destroy(gameObject, 0.5f);
+        StartCoroutine(DestroyDrugBag());
 
         GameManager.gameManager._gameData.ActiveMissionList[24] = false;
         GameManager.gameManager._gameData.ActiveMissionList[25] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         MissionGenerator.missionGenerator.ActivateMissionList();
+    }
+    IEnumerator DestroyDrugBag()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
+
+        // 앞으로 모든씬에서 안보임
+        workRoomData.IsObjectActiveList[37] = false;
+        livingRoomData.IsObjectActiveList[37] = false;
+        engineRoomData.IsObjectActiveList[37] = false;
+        controlRoomData.IsObjectActiveList[37] = false;
     }
 }

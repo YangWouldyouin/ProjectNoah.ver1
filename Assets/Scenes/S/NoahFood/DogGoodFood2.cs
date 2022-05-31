@@ -12,9 +12,19 @@ public class DogGoodFood2: MonoBehaviour, IInteraction
     /*ObjData*/
     ObjData DogGoodFood2Data;
 
+    PortableObjectData workRoomData;
+    PortableObjectData livingRoomData;
+    PortableObjectData engineRoomData;
+    PortableObjectData controlRoomData;
+
 
     void Start()
     {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
+        livingRoomData = BaseCanvas._baseCanvas.livingRoomData;
+        engineRoomData = BaseCanvas._baseCanvas.engineRoomData;
+        controlRoomData = BaseCanvas._baseCanvas.controlRoomData;
+
         /*ObjData*/
         DogGoodFood2Data = GetComponent<ObjData>();
 
@@ -64,6 +74,12 @@ public class DogGoodFood2: MonoBehaviour, IInteraction
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //½ºÅÈ »ó½Â
         NoahStatController.noahStatController.IncreaseStatBar(1);
+        // ¾ÕÀ¸·Î ¸ðµç¾À¿¡¼­ ¾Èº¸ÀÓ
+        workRoomData.IsObjectActiveList[46] = false;
+        livingRoomData.IsObjectActiveList[46] = false;
+        engineRoomData.IsObjectActiveList[46] = false;
+        controlRoomData.IsObjectActiveList[46] = false;
+
     }
 
     public void OnPushOrPress()

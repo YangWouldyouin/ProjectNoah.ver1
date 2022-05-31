@@ -23,8 +23,15 @@ public class insert01_buttons : MonoBehaviour, IInteraction
     public GameObject dialog;
     DialogManager dialogManager;
 
+    PlayerEquipment equipment;
+    GameObject portableGroup;
+
+
     void Start()
     {
+        equipment = BaseCanvas._baseCanvas.equipment;
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         Insert01Data = GetComponent<ObjData>();
@@ -145,6 +152,9 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         drug.transform.position = new Vector3(-249.0776f, 0.4852f, 669.806f);
         drug.transform.rotation = Quaternion.Euler(0, 0, 90);
         drug.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        drug.transform.parent = portableGroup.transform;
+        equipment.biteObjectName = "";
 
         insertCheck1Data.IsNotInteractable = true;
         Insert01Line.OutlineWidth = 0f;

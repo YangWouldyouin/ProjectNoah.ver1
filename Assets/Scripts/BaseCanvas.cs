@@ -27,4 +27,7 @@ public class BaseCanvas : MonoBehaviour
     public PlayerEquipment equipment;
 
     public PortableObjectData workRoomData;
+    public PortableObjectData livingRoomData;
+    public PortableObjectData engineRoomData;
+    public PortableObjectData controlRoomData;
 }

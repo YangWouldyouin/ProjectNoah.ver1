@@ -12,9 +12,18 @@ public class DogBadFood3 : MonoBehaviour, IInteraction
     /*ObjData*/
     ObjData DogBadFood3Data;
 
+    PortableObjectData workRoomData;
+    PortableObjectData livingRoomData;
+    PortableObjectData engineRoomData;
+    PortableObjectData controlRoomData;
 
     void Start()
     {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
+        livingRoomData = BaseCanvas._baseCanvas.livingRoomData;
+        engineRoomData = BaseCanvas._baseCanvas.engineRoomData;
+        controlRoomData = BaseCanvas._baseCanvas.controlRoomData;
+
         /*ObjData*/
         DogBadFood3Data = GetComponent<ObjData>();
 
@@ -65,6 +74,12 @@ public class DogBadFood3 : MonoBehaviour, IInteraction
 
         //스탯 감소
         NoahStatController.noahStatController.DecreaseStatBar(3);
+
+        // 앞으로 모든씬에서 안보임
+        workRoomData.IsObjectActiveList[48] = false;
+        livingRoomData.IsObjectActiveList[48] = false;
+        engineRoomData.IsObjectActiveList[48] = false;
+        controlRoomData.IsObjectActiveList[48] = false;
     }
 
     public void OnPushOrPress()
