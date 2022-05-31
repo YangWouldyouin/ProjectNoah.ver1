@@ -23,6 +23,9 @@ pushButton, DisableButton, smashButton;
 
     BoxCollider FoodBox_Collider;
 
+    public GameObject IDconsole;
+    BoxCollider IDconsole_collider;
+
     public GameObject dialog;
     DialogManager dialogManager;
 
@@ -35,6 +38,8 @@ pushButton, DisableButton, smashButton;
         dialogManager = dialog.GetComponent<DialogManager>();
 
         FoodBox_Collider = GetComponent<BoxCollider>();
+
+        IDconsole_collider = GetComponent<BoxCollider>();
 
         FoodBoxData_Tu = GetComponent<ObjData>();
         DogFoodData_Tu = DogFood_Tu.GetComponent<ObjData>();
@@ -150,6 +155,7 @@ pushButton, DisableButton, smashButton;
         InteractionButtonController.interactionButtonController.PlayerSmash2();
 
         DogFood_Tu.GetComponent<BoxCollider>().enabled = true;
+        IDconsole_collider.enabled = true;
     }
 
     void SmashInteraction()

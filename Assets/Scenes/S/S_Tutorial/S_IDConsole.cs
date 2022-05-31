@@ -30,8 +30,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     /*    public ObjectData boxForConsoleData_S;*/
     public ObjectData boxData;
 
-   /*æ∆øÙ∂Û¿Œ*/
-   Outline iDConsoleOutline_S;
+    /*æ∆øÙ∂Û¿Œ*/
+    Outline iDConsoleOutline_S;
     Outline canIDCardOutline_S;
 
     /*BoxCollider*/
@@ -120,7 +120,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
             IsIDInsertPad_Collider.enabled = true;
         }
 
-        else
+        else if (GameManager.gameManager._gameData.IsBasicTuto)
         {
             IDConsole_Collider.enabled = true;
             IsIDInsertPad_Collider.enabled = false;
