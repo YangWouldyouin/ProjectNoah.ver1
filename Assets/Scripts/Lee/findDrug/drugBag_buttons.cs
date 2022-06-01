@@ -135,9 +135,10 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.PlayerSmash1();
-        
-        Invoke("NoBag", 2f);
 
+        //Invoke("NoBag", 2f);
+
+        StartCoroutine(NoBag());
         drugBag_Rip_Sound.clip = drugBag_Rip;
         drugBag_Rip_Sound.Play();
 
@@ -150,8 +151,10 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         meshcollider.enabled = false;
     }*/
 
-    void NoBag()
+    IEnumerator NoBag()
     {
+        yield return new WaitForSeconds(2.5f);
+
         MeshCollider meshcollider = drugSmellArea.GetComponent<MeshCollider>();
         meshcollider.enabled = false;
 
@@ -170,9 +173,15 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
 
         Destroy(drugSmellArea, 0f);
         Destroy(smellCheckArea, 0f);
+        gameObject.SetActive(false);
 
+        // 앞으로 모든씬에서 안보임
+        workRoomData.IsObjectActiveList[37] = false;
+        livingRoomData.IsObjectActiveList[37] = false;
+        engineRoomData.IsObjectActiveList[37] = false;
+        controlRoomData.IsObjectActiveList[37] = false;
         //Destroy(gameObject, 0.5f);
-        StartCoroutine(DestroyDrugBag());
+        //StartCoroutine(DestroyDrugBag());
 
         GameManager.gameManager._gameData.ActiveMissionList[24] = false;
         GameManager.gameManager._gameData.ActiveMissionList[25] = true;

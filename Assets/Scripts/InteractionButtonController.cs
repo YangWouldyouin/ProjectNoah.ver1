@@ -268,23 +268,25 @@ public class InteractionButtonController : MonoBehaviour
         noahSmashObject = PlayerScripts.playerscripts.currentObject;
         objData = noahSmashObject.GetComponent<ObjData>();
         objData.objectDATA.IsSmash =  true;
-
-        Invoke("ChangeDestroyTrue", 1f);
+        StartCoroutine(ChangeDestroyTrue());
+        StartCoroutine(ChangeDestroyFalse());
+        //Invoke("ChangeDestroyTrue", 1f);
     }
 
     public void PlayerSmash2()
     {
-        Invoke("ChangeDestroyFalse", 3f);
+        Invoke("ChangeDestroyFalse", 2f);
     }
 
-    void ChangeDestroyTrue()
+    IEnumerator ChangeDestroyTrue()
     {
+        yield return new WaitForSeconds(1f);
         noahAnim.SetBool("IsDestroying", true);
     }
 
-    void ChangeDestroyFalse()
+    IEnumerator ChangeDestroyFalse()
     {
-
+        yield return new WaitForSeconds(2f);
         noahAnim.SetBool("IsDestroying", false);
     }
 
