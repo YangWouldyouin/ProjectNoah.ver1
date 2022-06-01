@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class E_Boxes: MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton,
-pushButton, smashButton, NoCenterButton_M_Box;
+pushButton, NoCenterButton_M_Box;
 
     ObjData BoxesData_E;
 
@@ -76,7 +76,8 @@ pushButton, smashButton, NoCenterButton_M_Box;
     }
     public void OnBite()
     {
-        // throw new System.NotImplementedException();
+        DiableButton();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
     public void OnSniff()
     {

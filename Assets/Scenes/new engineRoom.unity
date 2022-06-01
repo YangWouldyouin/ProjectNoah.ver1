@@ -30939,7 +30939,6 @@ GameObject:
   - component: {fileID: 744541764}
   - component: {fileID: 744541763}
   - component: {fileID: 744541762}
-  - component: {fileID: 744541761}
   m_Layer: 5
   m_Name: Bite Button
   m_TagString: BiteButton1
@@ -30966,27 +30965,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.60009766, y: 75.099976}
   m_SizeDelta: {x: 136, y: 113}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &744541761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744541759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967c6f4f21d2417419f381741421ba52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  biteButton: {fileID: 744541762}
-  smashButton: {fileID: 380014396}
-  barkButton: {fileID: 785255582}
-  sniffButton: {fileID: 106602170}
-  pushOrPressButton: {fileID: 795478515}
-  centerButton1: {fileID: 1191217759}
-  centerDisableButton1: {fileID: 0}
-  centerButton2: {fileID: 0}
-  centerDisableButton2: {fileID: 0}
 --- !u!114 &744541762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51542,6 +51520,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086772608}
   m_CullTransparentMesh: 1
+--- !u!1 &1087489970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087489971}
+  m_Layer: 0
+  m_Name: boxesPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087489971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087489970}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -3.6393483, y: -0.31836146, z: 1.088973}
+  m_LocalScale: {x: 2.4999998, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1143156278}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: -270, z: 0}
 --- !u!1 &1088768168
 GameObject:
   m_ObjectHideFlags: 0
@@ -53519,6 +53527,10 @@ PrefabInstance:
       propertyPath: pushOrPressButton
       value: 
       objectReference: {fileID: 795478515}
+    - target: {fileID: 7174211184612289773, guid: 41ab5a84d06fdec4aa2e7412724d25bc, type: 3}
+      propertyPath: interactionDestination
+      value: 
+      objectReference: {fileID: 1087489971}
     - target: {fileID: 7174211184612289774, guid: 41ab5a84d06fdec4aa2e7412724d25bc, type: 3}
       propertyPath: outlineColor.b
       value: 1
@@ -98612,7 +98624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 30f3c51c3692db74c826b20d153cbba4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3950057
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 30f3c51c3692db74c826b20d153cbba4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -98844,8 +98856,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146687986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 0.34, z: -7.73}
-  m_LocalScale: {x: 11.0600605, y: 1, z: 14.276836}
+  m_LocalPosition: {x: 1.25, y: 0.34, z: -10.06}
+  m_LocalScale: {x: 11.0600605, y: 1, z: 9.816182}
   m_Children: []
   m_Father: {fileID: 105905026}
   m_RootOrder: 0
