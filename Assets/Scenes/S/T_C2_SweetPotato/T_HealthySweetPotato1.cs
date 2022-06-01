@@ -13,12 +13,17 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
     /*ObjData*/
     ObjData HealthySweetPotato1Data_T;
 
-    PortableObjectData portableData; // 이후 워크룸에서 안보이게 하기 위해
-
+    PortableObjectData workRoomData;
+    PortableObjectData livingRoomData;
+    PortableObjectData engineRoomData;
+    PortableObjectData controlRoomData;
     void Start()
-    { 
+    {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
+        livingRoomData = BaseCanvas._baseCanvas.livingRoomData;
+        engineRoomData = BaseCanvas._baseCanvas.engineRoomData;
+        controlRoomData = BaseCanvas._baseCanvas.controlRoomData;
 
-        portableData=BaseCanvas._baseCanvas.workRoomData;
         /*ObjData*/
         HealthySweetPotato1Data_T = GetComponent<ObjData>();
 
@@ -69,7 +74,10 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerEat();
 
         // 이제 업무공간에 고구마 없으므로 직접 false로 변경
-        portableData.IsObjectActiveList[13] = false;
+        workRoomData.IsObjectActiveList[13] = false;
+        livingRoomData.IsObjectActiveList[13] = false;
+        engineRoomData.IsObjectActiveList[13] = false;
+        controlRoomData.IsObjectActiveList[13] = false;
 
         // 스탯이 올라간다.
         NoahStatController.noahStatController.IncreaseStatBar(1);

@@ -13,10 +13,19 @@ public class T_GrownHealthy1 : MonoBehaviour, IInteraction
     /*ObjData*/
     ObjData GrownHealthy1Data_T;
 
-    PortableObjectData portableData; // 이후 워크룸에서 안보이게 하기 위해
+    PortableObjectData workRoomData;
+    PortableObjectData livingRoomData;
+    PortableObjectData engineRoomData;
+    PortableObjectData controlRoomData;
+
 
     void Start()
     {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
+        livingRoomData = BaseCanvas._baseCanvas.livingRoomData;
+        engineRoomData = BaseCanvas._baseCanvas.engineRoomData;
+        controlRoomData = BaseCanvas._baseCanvas.controlRoomData;
+
         /*ObjData*/
         GrownHealthy1Data_T = GetComponent<ObjData>();
 
@@ -70,7 +79,10 @@ public class T_GrownHealthy1 : MonoBehaviour, IInteraction
         //스탯 상승
         NoahStatController.noahStatController.IncreaseStatBar(1);
 
-        portableData.IsObjectActiveList[21] = false;
+        workRoomData.IsObjectActiveList[21] = false;
+        livingRoomData.IsObjectActiveList[21] = false;
+        engineRoomData.IsObjectActiveList[21] = false;
+        controlRoomData.IsObjectActiveList[21] = false;
 
         GameManager.gameManager._gameData.sweetPotatoEat[2] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

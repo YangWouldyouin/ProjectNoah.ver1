@@ -15,11 +15,17 @@ public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
     /*ObjData*/
     ObjData BadSweetPotato1Data_T;
 
-    PortableObjectData portableData; // 이후 워크룸에서 안보이게 하기 위해
+    PortableObjectData workRoomData;
+    PortableObjectData livingRoomData;
+    PortableObjectData engineRoomData;
+    PortableObjectData controlRoomData;
 
     void Start()
     {
-        portableData = BaseCanvas._baseCanvas.workRoomData;
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
+        livingRoomData = BaseCanvas._baseCanvas.livingRoomData;
+        engineRoomData = BaseCanvas._baseCanvas.engineRoomData;
+        controlRoomData = BaseCanvas._baseCanvas.controlRoomData;
 
         /*ObjData*/
         BadSweetPotato1Data_T = GetComponent<ObjData>();
@@ -70,7 +76,10 @@ public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerEat();
 
-        portableData.IsObjectActiveList[12] = false;
+        workRoomData.IsObjectActiveList[12] = false;
+        livingRoomData.IsObjectActiveList[12] = false;
+        engineRoomData.IsObjectActiveList[12] = false;
+        controlRoomData.IsObjectActiveList[12] = false;
 
         GameManager.gameManager._gameData.sweetPotatoEat[0] = true;
         // 상한 고구마 섭취 엔딩

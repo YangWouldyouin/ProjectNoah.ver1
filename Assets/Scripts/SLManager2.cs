@@ -287,6 +287,7 @@ public class SLManager2 : MonoBehaviour
 
     void Update()
     {
+        /* 게임 엔딩 리셋 */
         if (Input.GetKeyDown(KeyCode.R))
         {
             savePageData.IsDisqualifiedEnd0 = false;
@@ -334,10 +335,7 @@ public class SLManager2 : MonoBehaviour
         if (Input.GetKeyDown("l"))
         {
             Debug.Log("리셋 성공");
-
-            character.statNum = 10;
             character.IsAIAwake_M_C1 = false;
-            SaveSystem.Save(character, "save_001");
             character.IsCWDoorOpened_M_C1 = false;
             character.IsHealthMachineFixed_T_C2 = false;
             character.IsSmartFarmOpen_T_C2 = false;
@@ -368,7 +366,6 @@ public class SLManager2 : MonoBehaviour
             character.IsRealHunger = 0; //배고픔
 
             character.IscurrentHealthData = 0; //메인컴퓨터에서 계산하는 스탯 수치
-
 
             /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
             character.S_IsAIAwake_M_C1 = false; // 항상 AI 활성화  
@@ -458,8 +455,8 @@ public class SLManager2 : MonoBehaviour
             character.IsAITimerStart_M_C2 = false;
 
 
-    // 태블릿 UI 관련
-    character.Is_Tablet_WirelessOn = false; //태블릿 블루투스 on/off체크
+            // 태블릿 UI 관련
+            character.Is_Tablet_WirelessOn = false; //태블릿 블루투스 on/off체크
             character.IsFakeHealthData_Tablet = false; //태블릿 강아지 더미 상태 데이터
             character.IsFakeCoordinateData_Tablet = false; //태블릿거짓좌표해금 판단
             character.IsFakeCoordinateDatafile_Tablet = false; //태블릿거짓좌표다운로드 판단
@@ -575,10 +572,11 @@ public class SLManager2 : MonoBehaviour
             character.IsEatBadPotato = false;//상한 고구마 섭취 엔딩
 
             character.IsSuddenDeath = false; //돌연사 체크: 스탯 0 엔딩, 상한 고구마 섭취 엔딩
-            SaveSystem.Save(character, "save_001");
 
             character.IsWirelessUI_firstEnter = false; //블투 페이지 진입 시점 체크
             character.IsWirelessMCTabletCheck = false; //메인컴/태블릿 블투 연결 완료 시점 체크
+
+            SaveSystem.Save(character, "save_001");
 
             /*업무공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
