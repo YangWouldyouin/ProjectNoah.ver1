@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class InitializeWorkingScene : MonoBehaviour
 {
-    public GameObject GoToEngineRoom;
+
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -38,7 +38,7 @@ public class InitializeWorkingScene : MonoBehaviour
     public GameObject Conduction; // 전도체
     public GameObject EngineDoor; // 엔진실 문
     public GameObject InsertCardPad; // 카드 패드
-
+    public GameObject GoToEngineRoom;
 
 
     [Header("<생활공간 문 반만 열기 완료>")]
