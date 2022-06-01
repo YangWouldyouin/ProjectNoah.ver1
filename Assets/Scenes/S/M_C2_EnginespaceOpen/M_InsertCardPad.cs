@@ -31,10 +31,12 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
     PlayerEquipment equipment;
 
     PortableObjectData workRoomData;
+    GameObject portableGroup;
     
 
     void Start()
     {
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
         workRoomData = BaseCanvas._baseCanvas.workRoomData;
         equipment = BaseCanvas._baseCanvas.equipment;
         InsertCardPad_sound = GetComponent<AudioSource>();
@@ -201,6 +203,7 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
             M_canEngineCardKey.transform.position = new Vector3(-262.489f, 2.2762f, 666.788f); //위치 고정
             M_canEngineCardKey.transform.rotation = Quaternion.Euler(0, 0, 90); //각도 고정
             equipment.biteObjectName = "";
+            M_canEngineCardKey.transform.parent = portableGroup.transform;
 
             InsertCardPad_sound.clip = CardKey_Sound;
             InsertCardPad_sound.Play();
