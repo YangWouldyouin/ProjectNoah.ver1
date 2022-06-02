@@ -13,6 +13,7 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
     public GameObject RealIDConsole;
 
 
+
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_S_IDInsertPad, sniffButton_S_IDInsertPad, biteButton_S_IDInsertPad,
         pressButton_S_IDInsertPad, noCenterButton_S_IDInsertPad; // eatDisableButton_T_SuperDrug;
@@ -30,6 +31,7 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
     BoxCollider IDInsertPad_Collider;
     BoxCollider canPressCabinetDoor_Collider;
     BoxCollider realIDInConsole_Collider;
+
 
     public GameObject dialog;
     DialogManager dialogManager;

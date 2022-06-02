@@ -8,6 +8,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
     /*연관있는 오브젝트*/
     public GameObject S_canPipe;
+    public GameObject PlantRader;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_S_PressCabinetBody1, sniffButton_S_PressCabinetBody1, 
@@ -26,6 +27,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
     /*Collider*/
     BoxCollider canPipe_Collider;
     BoxCollider cabinetCollider;
+    BoxCollider PlantRader_Collider;
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -47,6 +49,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         /*연관있는 오브젝트*/
 
         pressCabinetBody1Data_M = GetComponent<ObjData>();
+        PlantRader_Collider = PlantRader.GetComponent<BoxCollider>();
 
 
         barkButton_S_PressCabinetBody1 = pressCabinetBody1Data_M.BarkButton;
@@ -69,6 +72,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
         /*선언 시작*/
         canpressCabinetBody1Data_M.IsNotInteractable = true;
+        PlantRader_Collider.enabled = false;
 
     }
 
@@ -146,6 +150,9 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         /*튜토리얼 완료*/
         GameManager.gameManager._gameData.IsEndTuto = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        /*행성 탐지 시작*/
+        PlantRader_Collider.enabled = true;
     }
 
     public void Comment()
