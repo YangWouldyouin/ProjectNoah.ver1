@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
     Outline currentObjectOutline;
 
     GameObject objectNameTag;
-
+    public bool IsObserve;
     private void Awake()
     {
         cameraController = this;
@@ -59,6 +59,7 @@ public class CameraController : MonoBehaviour
     }
     public void ObserveButtonClick()
     {
+        IsObserve = true;
         currentObserveObject = PlayerScripts.playerscripts.currentObserveObj;
 
         currentObjectOutline = currentObserveObject.GetComponent<Outline>();
@@ -91,6 +92,7 @@ public class CameraController : MonoBehaviour
 
     public void CancelObserve()
     {
+        IsObserve = false;
         objectNameTag.SetActive(true);
         noah.transform.gameObject.SetActive(true);
         objectNameTag.SetActive(false);

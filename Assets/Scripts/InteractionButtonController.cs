@@ -22,6 +22,7 @@ public class InteractionButtonController : MonoBehaviour
     [HideInInspector]
     public Vector3 risePosition;
     public bool IsUp;
+    public bool IsObserve;
 
     /* "끼우기" 상호작용 관련 변수 */
     [HideInInspector]

@@ -357,7 +357,7 @@ public class PlayerScripts : MonoBehaviour
     {
         // 1) 플레이어가 도착하지 않았으면 코루틴으로 딜레이하면서 기다림
 
-        if(InteractionButtonController.interactionButtonController.IsUp)
+        if(InteractionButtonController.interactionButtonController.IsUp||CameraController.cameraController.IsObserve)
         {
             yield return null;
         }
