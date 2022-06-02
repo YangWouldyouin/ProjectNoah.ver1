@@ -45,9 +45,10 @@ public class DialogManager : MonoBehaviour
 
     AudioSource dialogSource;
 
-    public int a;
+    private int audioNum=0;
+    //public int a;
 
-    public AudioClip[] aiAudio;
+    public AudioClip[] aiAudio = new AudioClip[3];
 
     /* 스킵 관련 변수 */
     int i;
@@ -77,7 +78,9 @@ public class DialogManager : MonoBehaviour
 
     public IEnumerator PrintAIDialog(int dialogNum)
     {
-        if(printAIDialogs!=null)
+
+
+        if (printAIDialogs!=null)
         {
             StopCoroutine(printAIDialogs);
             printAIDialogs = AIDialogPrinting(dialogNum);
@@ -97,9 +100,11 @@ public class DialogManager : MonoBehaviour
     {
         IsDialogStarted = true;
         // ai 오디오 나오는 자리
-        a = Random.Range(0, 3);
-        dialogSource.clip = aiAudio[a];
-        
+        audioNum = Random.Range(0, 3);
+        if(aiAudio[audioNum]!=null)
+        {
+            dialogSource.clip = aiAudio[audioNum];
+        }
 
         aiDialogNumber = AIIndex;
         AIPanel.SetActive(true);
