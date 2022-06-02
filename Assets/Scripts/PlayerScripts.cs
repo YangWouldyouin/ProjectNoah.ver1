@@ -60,6 +60,7 @@ public class PlayerScripts : MonoBehaviour
     float elapsedTime = 0;
     float waitTime = 1.5f;
 
+    [HideInInspector]
     public Vector3  turnAmount;
     PlayerEquipment playerEquipment;
 
@@ -270,12 +271,14 @@ public class PlayerScripts : MonoBehaviour
                             }
                         }
                         objectData.IsClicked = true;
-                        Invoke("UnClickPortableObject", 1f);
+                        StartCoroutine(UnClickPortableObject());
+                        //Invoke("UnClickPortableObject", 1f);
 
 
                         if (!objectData.IsNotInteractable)
                         {
-                            Invoke("NameTagAppear", 1f);
+                            //StartCoroutine(NameTagAppear());
+                            //Invoke("NameTagAppear", 1f);
                             if(screenPos.y>500)
                             {
                                 interactionButtons.transform.position = new Vector3(screenPos.x, screenPos.y-200, transform.position.z);
@@ -343,8 +346,9 @@ public class PlayerScripts : MonoBehaviour
     public Transform PlayerobserveView { get { return observeData; } }
     public Transform PlayerobserveBoxView { get { return observePlusData; } }
 
-    void UnClickPortableObject()
+    IEnumerator UnClickPortableObject()
     {
+        yield return new WaitForSeconds(1f);
         if(objectData != null)
         {
             objectData.IsClicked = false;
@@ -370,6 +374,14 @@ public class PlayerScripts : MonoBehaviour
         if (objData.InteractionDestination!=null)
         {
             SetDirection(objData.InteractionDestination);
+        }
+
+        // 네임태그 활성화
+        if (objectNameData != null)
+        {
+            objectNameTag.transform.position = Input.mousePosition + nameTagOffset;
+            objectNameTag.SetActive(true);
+            objectNameText.text = objectNameData;
         }
 
         /* 상호작용 버튼 활성화 */
@@ -418,7 +430,7 @@ public class PlayerScripts : MonoBehaviour
                          //turnAmount = Mathf.Atan2(targetPosition.x, targetPosition.z);
         agent.SetDestination(targetPosition);
 
-        TurnOffButton();
+        //TurnOffButton();
 
     }
 
@@ -430,8 +442,9 @@ public class PlayerScripts : MonoBehaviour
         transform.rotation = targetDirection.rotation;
     }
 
-    void NameTagAppear()
+    IEnumerator NameTagAppear()
     {
+        yield return new WaitForSeconds(1f);
         if (objectNameData != null)
         {
             objectNameTag.transform.position = Input.mousePosition + nameTagOffset;

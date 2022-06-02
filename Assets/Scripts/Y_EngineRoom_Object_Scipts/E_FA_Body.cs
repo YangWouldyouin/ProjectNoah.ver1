@@ -29,9 +29,10 @@ public class E_FA_Body : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsFirstEnterEngine = true;
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
             GameManager.gameManager._gameData.ActiveMissionList[16] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
 
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
 
             //냄새로 엔진실 고치기 시작
         }

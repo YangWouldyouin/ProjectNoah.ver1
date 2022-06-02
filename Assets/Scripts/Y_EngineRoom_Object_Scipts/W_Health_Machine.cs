@@ -9,10 +9,9 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         biteButton_W_Health_Machine, pushButton_W_Health_Machine, upButton_W_Health_Machine, upDisableButton_W_Health_Machine;
 
     ObjData Health_MachineData_W;
-
     ObjectData healthMachineData;
-    public ObjectData healthMachineFixPartData;
 
+    public ObjectData healthMachineFixPartData;
     public GameObject healthMachineFixPart_HM;
     Outline healthMachineFixPartDataOutline;
 
@@ -43,30 +42,8 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
     // Start is called before the first frame update
     void Start()
     {
-
-        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
-        reportAnim = Report_GUI.GetComponent<Animator>();
-        playerEquipment = BaseCanvas._baseCanvas.equipment;
-        Health_Machine_Sound = GetComponent<AudioSource>();
-
-        dialogManager = dialogManager_HM.GetComponent<DialogManager>();
-
-        if (!GameManager.gameManager._gameData.IsFirstEnterWorking)
-        {
-            //W_HM_1
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
-            GameManager.gameManager._gameData.IsFirstEnterWorking = true;
-
-            //냄새로 업무공간 고치기 시작
-            GameManager.gameManager._gameData.ActiveMissionList[13] = true;
-            MissionGenerator.missionGenerator.ActivateMissionList();
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        }
-
-
         Health_MachineData_W = GetComponent<ObjData>();
         healthMachineData = Health_MachineData_W.objectDATA;
-        healthMachineFixPartDataOutline = healthMachineFixPart_HM.GetComponent<Outline>();
 
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_W_Health_Machine = Health_MachineData_W.BarkButton;
@@ -86,6 +63,30 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
         upDisableButton_W_Health_Machine = Health_MachineData_W.CenterDisableButton1;
+
+        healthMachineFixPartDataOutline = healthMachineFixPart_HM.GetComponent<Outline>();
+
+
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
+        playerEquipment = BaseCanvas._baseCanvas.equipment;
+
+        reportAnim = Report_GUI.GetComponent<Animator>();
+
+        Health_Machine_Sound = GetComponent<AudioSource>();
+
+        dialogManager = dialogManager_HM.GetComponent<DialogManager>();
+
+        if (!GameManager.gameManager._gameData.IsFirstEnterWorking)
+        {
+            //W_HM_1
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
+            GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+
+            //냄새로 업무공간 고치기 시작
+            GameManager.gameManager._gameData.ActiveMissionList[13] = true;
+            MissionGenerator.missionGenerator.ActivateMissionList();
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
     }
 
     void Update()
@@ -133,9 +134,6 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
     void DiableButton()
     {
-        // 비활성화 버튼까지 포함하여 위에서 만든 모든 버튼 변수를 끈다.
-
-        // ex. 누르기 버튼, 가운데 버튼이 오르기 버튼인데 처음에 비활성화
         barkButton_W_Health_Machine.transform.gameObject.SetActive(false);
         sniffButton_W_Health_Machine.transform.gameObject.SetActive(false);
         biteButton_W_Health_Machine.transform.gameObject.SetActive(false);
@@ -157,7 +155,8 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
         if (healthMachineFixPartData.IsBite) // 부품을 물었으면
         {
-            Invoke("HealthMachhineDone", 1.5f);
+            StartCoroutine(HealthMachhineDone());
+            //Invoke("HealthMachhineDone", 1.5f);
         }
     }
 
@@ -239,8 +238,9 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
-    public void HealthMachhineDone()
+    IEnumerator HealthMachhineDone()
     {
+        yield return new WaitForSeconds(1.5f);
         healthMachineFixPart_HM.GetComponent<Rigidbody>().isKinematic = false;
         healthMachineFixPart_HM.transform.parent = null;
         healthMachineFixPartData.IsBite = false;
@@ -301,6 +301,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
     {
         Debug.Log("보고하기");
         reportAnim.SetBool("Reportclose", true);
+        reportAnim.SetBool("ReportOpen", false);
         Report_GUI.SetActive(false);
         cancelInteractions.enabled = true;
 
