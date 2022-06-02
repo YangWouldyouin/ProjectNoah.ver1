@@ -100,10 +100,6 @@ public class PlayerScripts : MonoBehaviour
             yield return null;
         }
 
-
-
-
-
         if (cameraFollow != null)
         {
             Vector3 camerapos = new Vector3(Mathf.Clamp(transform.position.x, -262f, -251f), mainCamera.transform.position.y, Mathf.Clamp(transform.position.z, 672f, 688f));
@@ -127,6 +123,7 @@ public class PlayerScripts : MonoBehaviour
             }
             livingRoomCamera.enabled = true;
         }
+
         if (horizontalCamera != null)
         {
             Vector3 engineCameraPos = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, Mathf.Clamp(transform.position.z, -5.47f, 4.59f));
@@ -139,11 +136,11 @@ public class PlayerScripts : MonoBehaviour
             horizontalCamera.enabled = true;
         }
 
-
         elapsedTime = 0;
         IsBored = false;
         boringTime = 0;
     }
+
     void Update()
     {      
         // 왼쪽 마우스 클릭 && 마우스가 UI 위에 있지 않음
@@ -179,9 +176,6 @@ public class PlayerScripts : MonoBehaviour
                     StartCoroutine(WaitAndAnimation());
                 }
 
-
-
-
                 //if (!IsWalkPointSet)
                 //{
                 //    SearchWalkPoint();
@@ -203,12 +197,10 @@ public class PlayerScripts : MonoBehaviour
 
         if (agent.velocity.magnitude > 1f)
         {
-
             turnAmount = agent.velocity;
             turnAmount.Normalize();
             turnAmount = transform.InverseTransformDirection(turnAmount);
         }
-
 
         playerAnim.UpdateAnimation(agent.velocity.sqrMagnitude, Mathf.Atan2(turnAmount.x*1000, turnAmount.z*1000)); // 두 점간의 거리     
     }
@@ -364,9 +356,17 @@ public class PlayerScripts : MonoBehaviour
     IEnumerator WaitforPlayerArriving()
     {
         // 1) 플레이어가 도착하지 않았으면 코루틴으로 딜레이하면서 기다림
-        while (!CheckIfArrived())
+
+        if(InteractionButtonController.interactionButtonController.IsUp)
         {
             yield return null;
+        }
+        else
+        {
+            while (!CheckIfArrived())
+            {
+                yield return null;
+            }
         }
          // 안 지루함
         IsBored = false;

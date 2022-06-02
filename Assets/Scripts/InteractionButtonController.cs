@@ -21,6 +21,7 @@ public class InteractionButtonController : MonoBehaviour
     NavMeshAgent playerAgent;
     [HideInInspector]
     public Vector3 risePosition;
+    public bool IsUp;
 
     /* "끼우기" 상호작용 관련 변수 */
     [HideInInspector]
@@ -446,6 +447,7 @@ public class InteractionButtonController : MonoBehaviour
 
         if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔
         {
+            IsUp = true;
             playerAgent.updatePosition = false;
             playerAgent.updateRotation = false;
             playerAgent.isStopped = true;
@@ -564,6 +566,7 @@ public class InteractionButtonController : MonoBehaviour
         {
             if (playerAgent.enabled) // 오르기 동작은 NabMeshAgent을 사용하면서 원래 플레이어가 이동 가능했던 영역을 벗어나는 것이므로, navmeshagent를 잠시 끔
             {
+                IsUp = false;
                 Vector3 fallrot = noahPlayer.transform.eulerAngles;
                 noahPlayer.transform.eulerAngles = new Vector3(fallrot.x, fallrot.y - 180, fallrot.z);
 

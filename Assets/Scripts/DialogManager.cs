@@ -100,12 +100,12 @@ public class DialogManager : MonoBehaviour
     {
         IsDialogStarted = true;
         // ai 오디오 나오는 자리
-        audioNum = Random.Range(0, 3);
-        if(aiAudio[audioNum]!=null)
-        {
-            dialogSource.clip = aiAudio[audioNum];
-        }
-
+        //audioNum = Random.Range(0, 3);
+        //if(aiAudio[audioNum]!=null)
+        //{
+            
+        //}
+        dialogSource.clip = aiAudio[0];
         aiDialogNumber = AIIndex;
         AIPanel.SetActive(true);
 
