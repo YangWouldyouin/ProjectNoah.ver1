@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class W_Health_Machine : MonoBehaviour
+public class W_Health_Machine : MonoBehaviour, IInteraction
 {
-    private Button barkButton_W_Health_Machine, sniffButton_W_Health_Machine, biteButton_W_Health_Machine, pushButton_W_Health_Machine, upButton_W_Health_Machine, upDisableButton_W_Health_Machine;
+    private Button barkButton_W_Health_Machine, sniffButton_W_Health_Machine, 
+        biteButton_W_Health_Machine, pushButton_W_Health_Machine, upButton_W_Health_Machine, upDisableButton_W_Health_Machine;
 
     ObjData Health_MachineData_W;
 
-    public ObjectData healthMachineData;
+    ObjectData healthMachineData;
     public ObjectData healthMachineFixPartData;
 
     public GameObject healthMachineFixPart_HM;
@@ -42,6 +43,7 @@ public class W_Health_Machine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
         reportAnim = Report_GUI.GetComponent<Animator>();
         playerEquipment = BaseCanvas._baseCanvas.equipment;
@@ -63,6 +65,7 @@ public class W_Health_Machine : MonoBehaviour
 
 
         Health_MachineData_W = GetComponent<ObjData>();
+        healthMachineData = Health_MachineData_W.objectDATA;
         healthMachineFixPartDataOutline = healthMachineFixPart_HM.GetComponent<Outline>();
 
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
