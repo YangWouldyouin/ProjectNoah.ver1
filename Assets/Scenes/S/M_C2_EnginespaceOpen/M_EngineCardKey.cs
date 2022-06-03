@@ -91,7 +91,15 @@ public class M_EngineCardKey : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-
+        // 엔진실 카드키 찾기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+        if (GameManager.gameManager._gameData.ActiveMissionList[3] == true)
+        {
+            /*카드키 찾기 퍼즐 완료*/
+            GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
+            GameManager.gameManager._gameData.ActiveMissionList[3] = false;
+            MissionGenerator.missionGenerator.ActivateMissionList();
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
     }
 
     public void OnEat()

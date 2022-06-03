@@ -123,11 +123,11 @@ public class M_Pack : MonoBehaviour, IInteraction
         M_canCardKey.SetActive(true);
         M_canCardKey.transform.position = gameObject.transform.position;
 
-        /*카드키 찾기 퍼즐 완료*/
+        /*카드키 찾기 퍼즐 완료*//*
         GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
         GameManager.gameManager._gameData.ActiveMissionList[3] = false;
         MissionGenerator.missionGenerator.ActivateMissionList();
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");*/
 
         // 앞으로 카드팩 업무공간에서 없으므로 체크해제
         workRoomData.IsObjectActiveList[31] = false;
