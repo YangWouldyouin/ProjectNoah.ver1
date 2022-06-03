@@ -48,7 +48,7 @@ public class DialogManager : MonoBehaviour
     private int audioNum=0;
     //public int a;
 
-    public AudioClip[] aiAudio = new AudioClip[3];
+    public AudioClip aiAudio;
 
     /* 스킵 관련 변수 */
     int i;
@@ -105,7 +105,7 @@ public class DialogManager : MonoBehaviour
         //{
             
         //}
-        dialogSource.clip = aiAudio[0];
+        dialogSource.clip = aiAudio;
         aiDialogNumber = AIIndex;
         AIPanel.SetActive(true);
 
