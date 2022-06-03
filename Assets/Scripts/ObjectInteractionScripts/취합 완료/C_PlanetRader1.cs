@@ -106,7 +106,7 @@ pressButton, observeButton;
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
 
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(31));
+            Invoke("GgopMike", 3f);
         }
     }
 
@@ -114,6 +114,11 @@ pressButton, observeButton;
     {
         Debug.Log("유아이팝업");
         CS_GUI.SetActive(true);
+    }
+
+    public void GgopMike()
+    {
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(31));
     }
 
 

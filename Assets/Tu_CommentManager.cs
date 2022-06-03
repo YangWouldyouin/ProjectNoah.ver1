@@ -31,7 +31,6 @@ public class Tu_CommentManager : MonoBehaviour
 
     public Button aiButton;
 
-    public GameObject mission;
 
     // Start is called before the first frame update
     void Start()
@@ -133,13 +132,13 @@ public class Tu_CommentManager : MonoBehaviour
     IEnumerator Comment_Mike()
     {
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
 
         while (true)
         {
             if (dialogManager.IsSubtitleStarted)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
             }
 
             else
