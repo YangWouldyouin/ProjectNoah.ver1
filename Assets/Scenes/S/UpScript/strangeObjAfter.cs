@@ -44,7 +44,7 @@ public class strangeObjAfter : MonoBehaviour
             S_TimerText.SetActive(false);
 
             GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
-            Debug.Log("시간 안에 퍼즐 풀기 실패");
+            //Debug.Log("시간 안에 퍼즐 풀기 실패");
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             canTSee1 = true;
@@ -64,7 +64,7 @@ public class strangeObjAfter : MonoBehaviour
             S_TimerBackground.SetActive(false);
             S_TimerText.SetActive(false);
 
-            Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
+            //Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
             //GameManager.gameManager._gameData.IsMiddleTuto = false;
             //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
         }

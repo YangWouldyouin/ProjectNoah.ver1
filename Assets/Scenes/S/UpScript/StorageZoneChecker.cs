@@ -66,7 +66,7 @@ public class StorageZoneChecker : MonoBehaviour
                         }*/
 
 
-            Debug.Log("박스 준비 완");
+            //Debug.Log("박스 준비 완");
             GoodBoxPosition = true;
 
         }
@@ -78,7 +78,7 @@ public class StorageZoneChecker : MonoBehaviour
         {
             GoodBoxPosition = false;
 
-            Debug.Log("부딪히기 해제");
+            //Debug.Log("부딪히기 해제");
             //StorageButtonData.IsCenterButtonChanged = false;
             Target1Data.IsCollision = false;
             Target2Data.IsCollision = false;

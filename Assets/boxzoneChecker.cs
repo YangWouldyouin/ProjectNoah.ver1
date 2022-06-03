@@ -50,7 +50,7 @@ public class boxzoneChecker : MonoBehaviour
             if (!EnterCheck)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintSubtitles(17));
-                Debug.Log("박스 준비 완");
+                //Debug.Log("박스 준비 완");
 
                 EnterCheck = true;
             }
@@ -67,7 +67,7 @@ public class boxzoneChecker : MonoBehaviour
         {
             GoodBoxPosition = false;
 
-            Debug.Log("부딪히기 해제");
+            //Debug.Log("부딪히기 해제");
             IDConsoleForBox.IsCenterButtonChanged = false;
 
             GameManager.gameManager._gameData.BoxZoneCheck = false;
