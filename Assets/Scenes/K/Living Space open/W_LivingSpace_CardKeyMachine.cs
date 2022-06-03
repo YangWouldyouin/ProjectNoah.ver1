@@ -17,9 +17,9 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
     public GameObject CardKey_WL;
     public GameObject LivingDoomDoor_WL;
 
-    ObjData boxData_WL;
-    ObjData CardKeyData_WL;
-    ObjData LivingDoomDoorData_WL;
+    public ObjectData boxData_WL;
+    public ObjectData CardKeyData_WL;
+    public ObjectData LivingDoomDoorData_WL;
 
     /* 오브젝트 아웃라인 */
     Outline CardMachineOutline_M; // 카드머신
@@ -43,9 +43,9 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
         /* 해당 오브젝트의 ObjData를 가져온다. */
         LivingSpace_CardKeyMachine_W = GetComponent<ObjData>();
-        boxData_WL = box_WL.GetComponent<ObjData>();
+/*        boxData_WL = box_WL.GetComponent<ObjData>();
         CardKeyData_WL = CardKey_WL.GetComponent<ObjData>();
-        LivingDoomDoorData_WL = LivingDoomDoor_WL.GetComponent<ObjData>();
+        LivingDoomDoorData_WL = LivingDoomDoor_WL.GetComponent<ObjData>();*/
 
         CardMachineOutline_M = LivingSpace_CardKeyMachine_W.GetComponent<Outline>(); // 카드머신 아웃라인
         LivingCardKeyOutline_M = CardKey_WL.GetComponent<Outline>(); // 카드키 아웃라인
@@ -101,19 +101,21 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
         if (boxData_WL.IsUpDown) // 상자에 올라갔을 때
         {
+            Debug.Log("위");
             // 카메라 컨트롤러에 뷰 전달
             CameraController.cameraController.currentView = LivingSpace_CardKeyMachine_W.ObservePlusView; // 관찰 뷰 : 위쪽
             // 관찰 애니메이션 &카메라 전환
             InteractionButtonController.interactionButtonController.playerObserve();
         }
-        else // 상자에 올라가지 않았을 때
+
+        if(!boxData_WL.IsUpDown) // 상자에 올라가지 않았을 때
         {
+            Debug.Log("아래");
             /* 카메라 컨트롤러에 뷰 전달 */
             CameraController.cameraController.currentView = LivingSpace_CardKeyMachine_W.ObserveView; // 관찰 뷰 : 아래쪽
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
         }
-
     }
 
     public void OnPushOrPress()
@@ -131,12 +133,12 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
         {
             // 누르기 -> 카드키를 카드기계에 삽입 완료
             // 부모-자식 관계 해제
-            CardKeyData_WL.GetComponent<Rigidbody>().isKinematic = false;
-            CardKeyData_WL.transform.parent = null;
+            CardKey_WL.GetComponent<Rigidbody>().isKinematic = false;
+            CardKey_WL.transform.parent = null;
 
             // 카드키 위치, 각도 변환
-            CardKeyData_WL.transform.position = new Vector3(-264.007f, 541.042f, 691.461f); //위치
-            CardKeyData_WL.transform.rotation = Quaternion.Euler(0, 0, 0); //각도
+            CardKey_WL.transform.position = new Vector3(-264.007f, 541.042f, 691.461f); //위치
+            CardKey_WL.transform.rotation = Quaternion.Euler(0, 0, 0); //각도
 
             LivingSpace_CardKeyMachine.clip = CardKey_Sound;
             LivingSpace_CardKeyMachine.Play();
