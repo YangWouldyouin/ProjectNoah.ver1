@@ -96,12 +96,19 @@ public class tablet : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = TabletData_C.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        if (intialGameData.IsFullChargeTablet) // 태블릿 충전 O
+/*        if (intialGameData.IsFullChargeTablet) // 태블릿 충전 O
         {
             Invoke("TabletOn", 3f);
-            /*
+            *//*
              타블렛 화면 진입 > 블루투스 온 > 타블렛 블루투스 = true;
-            */
+            *//*
+        }*/
+
+        if(GameManager.gameManager._gameData.IsFullChargeTablet)
+        {
+            Invoke("TabletOn", 3f);
+           
+             //타블렛 화면 진입 > 블루투스 온 > 타블렛 블루투스 = true;
         }
         else // 태블릿 충전 X
         {
