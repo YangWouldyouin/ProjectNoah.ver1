@@ -17,11 +17,16 @@ pressButton, observeButton;
     public GameObject Box;
     public ObjectData  BoxData;
 
+    public GameObject dialog;
+    DialogManager dialogManager;
+
 
     // 관찰하기 시 추가 UI가 뜨는 경우, 2초간의 텀이 있다. 이것을 체크하기 위한 변수
 
     void Start()
     {
+
+        dialogManager = dialog.GetComponent<DialogManager>();
 
         planetRaderData_PR = GetComponent<ObjData>();
 
@@ -100,6 +105,8 @@ pressButton, observeButton;
             CameraController.cameraController.currentView = planetRaderData_PR.ObservePlusView; // 관찰 뷰 : 아래쪽
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
+
+            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(31));
         }
     }
 
