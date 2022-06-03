@@ -17,7 +17,7 @@ public class tablet : MonoBehaviour, IInteraction
 
     public GameObject LoverPic_C; // 애인 사진
     public ObjectData LoverPicData_C;
-
+    GameData intialGameData;
 
 /*    public GameObject FullEgPad_C; // 충전 된 충전패드
     public GameObject ZeroEgPad_C; // 충전 안 된 충전패드
@@ -27,12 +27,14 @@ public class tablet : MonoBehaviour, IInteraction
     ObjData ZeroEgPadData_C; // 충전 안 된 충전패드*/
 
 
-/*    private float timer = 0f; // 태블릿 감지 타이머
-    public float DestroyTime = 5.0f; // 태블릿을 AI가 감지하기까지 걸리는 시간*/
+    /*    private float timer = 0f; // 태블릿 감지 타이머
+        public float DestroyTime = 5.0f; // 태블릿을 AI가 감지하기까지 걸리는 시간*/
 
 
     void Start()
     {
+        intialGameData = SaveSystem.Load("save_001");
+
         TabletData_C = GetComponent<ObjData>();
       
 
@@ -50,6 +52,8 @@ public class tablet : MonoBehaviour, IInteraction
         observeButton = TabletData_C.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
 
+        // 만약에 충전 완료 변수가 참이면 태블릿 화면을 켜겠다 추가해야함
+        //intialGameData GameManager.gameManager._gameData.IsFullChargeTablet == true
         // GameManager.gameManager._gameData.IsTabletUnlock = false;
     }
 
@@ -92,7 +96,7 @@ public class tablet : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = TabletData_C.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        if (GameManager.gameManager._gameData.IsFullChargeTablet == true) // 태블릿 충전 O
+        if (intialGameData.IsFullChargeTablet) // 태블릿 충전 O
         {
             Invoke("TabletOn", 3f);
             /*
