@@ -18,16 +18,10 @@ public class ObjectData :ScriptableObject
     public bool IsObserve = false;
     public bool IsCollision = false; // 책상 올라가려고 추가한 것이다. UpUP, M_C2_FindEnginespaceKey 코드 참고
 
-    internal T GetComponent<T>()
-    {
-        throw new NotImplementedException();
-    }
-
     public bool IsClicked = false;
 
     public bool IsCenterButtonChanged = false;
     public bool IsCenterButtonDisabled = false; // true면 첫 번째 가운데 버튼 비활성화
     public bool IsCenterPlusButtonDisabled = false; // true면 두 번째 가운데 버튼 비활성화
     public bool IsNotInteractable = false;
-    internal object transform;
 }

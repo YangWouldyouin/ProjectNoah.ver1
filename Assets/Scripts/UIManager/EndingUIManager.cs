@@ -61,7 +61,7 @@ public class EndingUIManager : MonoBehaviour
     public void ChangeMainScreen()
     {
         EndingScreen[ListEndingNum].SetActive(false);
-        SLmanagerLoad();
+        //SLmanagerLoad();
         SceneManager.LoadScene("Main");
     }
 

@@ -147,7 +147,7 @@ public class insert_planet : MonoBehaviour, IInteraction
         {
             R_ChipData.IsBite = false;
 
-            R_ChipData.GetComponent<Rigidbody>().isKinematic = false;
+            R_Chip.GetComponent<Rigidbody>().isKinematic = false;
             R_Chip.transform.parent = null;
 
             R_Chip.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
