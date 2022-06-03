@@ -137,7 +137,7 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
             CardKey_WL.transform.parent = null;
 
             // 카드키 위치, 각도 변환
-            CardKey_WL.transform.position = new Vector3(-264.007f, 541.042f, 691.461f); //위치
+            CardKey_WL.transform.position = new Vector3(-264.18f, 2.811f, 691.467f); //위치
             CardKey_WL.transform.rotation = Quaternion.Euler(0, 0, 0); //각도
 
             LivingSpace_CardKeyMachine.clip = CardKey_Sound;
