@@ -35,7 +35,7 @@ public class TabletDiaryUIManager : MonoBehaviour
             GameManager.gameManager._gameData.IsAIVSMissionFinish = true;
         }
 
-        PageNum.text = CurrentPageNum + "/10";
+        PageNum.text = CurrentPageNum + "/11";
 
         if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == false)
         {
