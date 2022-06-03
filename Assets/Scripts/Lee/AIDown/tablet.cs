@@ -135,6 +135,7 @@ public class tablet : MonoBehaviour, IInteraction
         TabletUI_C.SetActive(true);
         TabletBackBlack_C.SetActive(false);
         TabletBackOn_C.SetActive(true);
+        Debug.Log("È­¸éÄÑÁü");
     }
 
     public void TabletLockOff()

@@ -97,7 +97,7 @@ pushButton, smashButton, NoCenterButton;
             GameManager.gameManager._gameData.IsFullChargeTablet = true; // 태블랫 충전 됨
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             StartCoroutine(delay1Seconds());
-           
+            Debug.Log("충전세이브 완료");
         }
     }
 
