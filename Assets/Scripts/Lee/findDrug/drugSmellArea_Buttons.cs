@@ -93,6 +93,7 @@ public class drugSmellArea_Buttons : MonoBehaviour, IInteraction
 
         //Invoke("followDrug", 2f);
 
+        drugBag.SetActive(true);
         drugBagData.IsNotInteractable = false;
         drugBagLine.OutlineWidth = 8;
 
