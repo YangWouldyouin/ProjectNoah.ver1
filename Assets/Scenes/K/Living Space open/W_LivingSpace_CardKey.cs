@@ -9,6 +9,7 @@ public class W_LivingSpace_CardKey : MonoBehaviour, IInteraction
 pushButton_W_LS_CardKey, upButton_W_LS_CardKey, upDisableButton_W_LS_CardKey, smashButton_W_LS_CardKey;
 
     ObjData LS_CardKeyData_W; // 해당 오브젝트의 ObjData 변수
+    public ObjectData LS_CardKey_W;
 
 
 
@@ -30,6 +31,8 @@ pushButton_W_LS_CardKey, upButton_W_LS_CardKey, upDisableButton_W_LS_CardKey, sm
 
         pushButton_W_LS_CardKey = LS_CardKeyData_W.PushOrPressButton;
         pushButton_W_LS_CardKey.onClick.AddListener(OnPushOrPress);
+
+        LS_CardKey_W.IsCenterButtonChanged = false;
     }
 
     /* 상호작용 버튼을 끄는 함수 */
