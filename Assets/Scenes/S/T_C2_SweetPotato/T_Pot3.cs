@@ -47,7 +47,7 @@ public class T_Pot3 : MonoBehaviour, IInteraction
         sniffButton_T_Pot3.onClick.AddListener(OnSniff);
 
         biteButton_T_Pot3 = Pot3Data_T.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_T_Pot3.onClick.AddListener(OnBite);
 
         pressButton_T_Pot3 = Pot3Data_T.PushOrPressButton;
         pressButton_T_Pot3.onClick.AddListener(OnPushOrPress);
@@ -209,7 +209,8 @@ public class T_Pot3 : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-       
+        DisableButton();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
