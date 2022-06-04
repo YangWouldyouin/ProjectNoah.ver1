@@ -267,6 +267,8 @@ public class InitializeWorkingScene : MonoBehaviour
             IronPlateDoor_Collider.enabled = false;
             TroubleLine.SetActive(false);
             FixedLine2.SetActive(false);
+            workRoomData.IsObjectActiveList[34]= false;
+
             smartFarmDoorAnim.SetBool("FarmDoorMoving", true);
             smartFarmDoorAnim.SetBool("FarmDoorStop", true);
         }

@@ -25,8 +25,10 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
 
     GameObject portableGroup; // 다시 포터블 그룹의 자식으로 넣어주기 위함
     PlayerEquipment playerEquipment_SmartFarm;
+    PortableObjectData workRoomData;
     void Start()
     {
+        workRoomData = BaseCanvas._baseCanvas.workRoomData;
         playerEquipment_SmartFarm = BaseCanvas._baseCanvas.equipment;
         portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
 
@@ -95,7 +97,7 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
             T_canFixedLine2.transform.parent = portableGroup.transform;
             // new player equipment - bite 초기화
             playerEquipment_SmartFarm.biteObjectName = "";
-
+            workRoomData.IsObjectActiveList[35]= false;
             canFixedLine2Data_T.IsNotInteractable = true; // 상호작용 불가능하게
             canFixedLine2Outline_T.OutlineWidth = 0; // 아웃라인도 꺼줍니다.
 
