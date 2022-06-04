@@ -8,7 +8,10 @@ public class W_Cabinet3 : MonoBehaviour, IInteraction
     private Button barkButton_W_Cabinet3, sniffButton_W_Cabinet3, biteButton_W_Cabinet3,
 pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
 
-    ObjData Cabinet3_W, Card_KeyData_W_C3;
+    ObjData Cabinet3_W;
+    public ObjectData Cabinet3Obj_W;
+    ObjData Card_KeyData_W_C3;
+    public ObjectData Card_KeyObj_W_C3;
 
     /* 사용 오브젝트 */
     public GameObject Card_Key_W_C3; // 카드키
@@ -44,6 +47,11 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
         observeButton_W_Cabinet3.onClick.AddListener(OnObserve);
 
         Card_Key_W_C3.SetActive(false); // 카드키 관찰하기 전에 안보이게
+        //처음부터 상호작용 안되고 관찰하기 할때만 상호작용 가능
+        Card_Key3Outline_M.OutlineWidth = 0;
+        Card_KeyObj_W_C3.IsNotInteractable = true;
+        Cabinet3Obj_W.IsObserve = false;
+        Cabinet3Obj_W.IsNotInteractable = false;
     }
 
     /* 상호작용 버튼을 끄는 함수 */
@@ -57,11 +65,20 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
     }
     void Update()
     {
-        if (Cabinet3_W.IsObserve == false && Card_KeyData_W_C3.IsInsert == false) // 캐비닛 관찰하기, 캐비닛 
+/*        if (Cabinet3_W.IsObserve == false && Card_KeyData_W_C3.IsInsert == false) // 캐비닛 관찰하기, 캐비닛 
         {
-            /* 카드키 비활성화 */
+            *//* 카드키 비활성화 *//*
             Card_Key3Outline_M.OutlineWidth = 0;
             Card_KeyData_W_C3.IsNotInteractable = true;
+        }*/
+
+        if(GameManager.gameManager._gameData.IsCompleteFindLivingKey)
+        {
+            /* 카드키 오브젝트 활성화 */
+            Card_Key3Outline_M.OutlineWidth = 8; // 카드키 아웃라인 활성화
+            Card_KeyObj_W_C3.IsNotInteractable = false;
+
+            Card_Key_W_C3.SetActive(true); // 카드키 오브젝트 보이게
         }
     }
 

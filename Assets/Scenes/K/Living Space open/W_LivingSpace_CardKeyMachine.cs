@@ -7,10 +7,11 @@ public class W_LivingSpace_CardKeyMachine : MonoBehaviour, IInteraction
 {
     /* 오브젝트의 상호작용 버튼들 */
     private Button barkButton_W_LS_CardKeyMachine, sniffButton_W_LS_CardKeyMachine, biteButton_W_LS_CardKeyMachine,
-pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W_LS_CardKeyMachine;
+pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W_LS_CardKeyMachine, DisableobserveButton_W_LS_CardKeyMachine;
 
     /* 해당 오브젝트의 ObjData 변수 */
     ObjData LivingSpace_CardKeyMachine_W;
+    public ObjectData LivingSpace_CardKeyMachineData_W;
 
     /* 이 오브젝트와 상호작용 하는 변수들 + 데이터 */
     public GameObject box_WL;
@@ -69,7 +70,13 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
         observeButton_W_LS_CardKeyMachine = LivingSpace_CardKeyMachine_W.CenterButton1;
         observeButton_W_LS_CardKeyMachine.onClick.AddListener(OnObserve);
 
-/*        HalfLivingDoorAni_M.SetBool("HalfOpen", false); // 애니메이션 재생 금지*/
+        DisableobserveButton_W_LS_CardKeyMachine = LivingSpace_CardKeyMachine_W.CenterButton2;
+
+        /*        HalfLivingDoorAni_M.SetBool("HalfOpen", false); // 애니메이션 재생 금지*/
+
+        /*선언시작*/
+        LivingSpace_CardKeyMachineData_W.IsObserve = false;
+        LivingSpace_CardKeyMachineData_W.IsCenterButtonChanged = false;
     }
 
     /* 상호작용 버튼을 끄는 함수 */
@@ -80,12 +87,34 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
         biteButton_W_LS_CardKeyMachine.transform.gameObject.SetActive(false);
         pushButton_W_LS_CardKeyMachine.transform.gameObject.SetActive(false);
         observeButton_W_LS_CardKeyMachine.transform.gameObject.SetActive(false);
+        DisableobserveButton_W_LS_CardKeyMachine.transform.gameObject.SetActive(false);
     }
 
 
 
     void Update()
-    { 
+    {
+        if (LivingSpace_CardKeyMachineData_W.IsObserve)
+        {
+            LivingSpace_CardKeyMachineData_W.IsCenterButtonChanged = true;
+        }
+
+        else
+        {
+            LivingSpace_CardKeyMachineData_W.IsCenterButtonChanged = false;
+        }
+
+        if (LivingSpace_CardKeyMachineData_W.IsObserve)
+        {
+            LivingSpace_CardKeyMachineData_W.IsNotInteractable = false;
+            CardMachineOutline_M.OutlineWidth = 8;
+        }
+
+        if (GameManager.gameManager._gameData.IsCompleteHalfOpenLivingRoom == true)
+        {
+            LivingSpace_CardKeyMachineData_W.IsNotInteractable = true;
+            CardMachineOutline_M.OutlineWidth = 0;
+        }
     }
 
     public void OnBark()
@@ -128,19 +157,20 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
         DiableButton(); // 상호작용 버튼을 끔
 
         /* 애니메이션 */
-        InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
-        StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
+        InteractionButtonController.interactionButtonController.playerPressHead(); // 손으로 누르는 애니메이션
+                                                                                   //StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
 
-        if(CardKeyData_WL.IsBite && boxData_WL.IsUpDown) // 카드키 '물기' && 박스 '오르기' 했을 떄
+        if (CardKeyData_WL.IsBite && boxData_WL.IsUpDown && LivingSpace_CardKeyMachineData_W.IsObserve) // 카드키 '물기' && 박스 '오르기' 했을 떄
         {
+            Debug.Log("카드키 꽂을게요");
             // 누르기 -> 카드키를 카드기계에 삽입 완료
             // 부모-자식 관계 해제
             CardKey_WL.GetComponent<Rigidbody>().isKinematic = false;
             CardKey_WL.transform.parent = null;
 
             // 카드키 위치, 각도 변환
-            CardKey_WL.transform.position = new Vector3(-264.18f, 2.811f, 691.467f); //위치
-            CardKey_WL.transform.rotation = Quaternion.Euler(0, 0, 0); //각도
+            CardKey_WL.transform.position = new Vector3(-264.18f, 2.94f, 691.467f); //위치
+            CardKey_WL.transform.rotation = Quaternion.Euler(0, 0, 90); //각도
 
             LivingSpace_CardKeyMachine.clip = CardKey_Sound;
             LivingSpace_CardKeyMachine.Play();
@@ -149,11 +179,14 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
             CardKeyData_WL.IsNotInteractable = true;
             LivingCardKeyOutline_M.OutlineWidth = 0;
 
-            LivingSpace_CardKeyMachine_W.IsNotInteractable = true;
+            LivingSpace_CardKeyMachineData_W.IsNotInteractable = true;
             CardMachineOutline_M.OutlineWidth = 0;
 
+            Debug.Log("생활공간 문 열리는 애니메이션");
+
             // LivingDoomDoor_WL.GetComponent<Animator>().Play("LivingDoorHalfOpen");
-            Invoke("LivingDoorHalfOpen", 2f); // 문 열리는 애니메이션 실행
+            StartCoroutine(LivingDoorHalfOpen1());
+            //Invoke("LivingDoorHalfOpen", 2f); // 문 열리는 애니메이션 실행
 
             LivingSpace_CardKeyMachine.clip = LivingDoor_Halfopen;
             LivingSpace_CardKeyMachine.Play();
@@ -166,6 +199,8 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
             GameManager.gameManager._gameData.ActiveMissionList[4] = false;
             MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            Debug.Log("생활공간 문 변수 저장");
 
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Y-3대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(29));
@@ -185,7 +220,7 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(27));
             }
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 상자에 올라가지 않았을 때 -> Y-2대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
-            if(boxData_WL.IsUpDown == false)
+            if (boxData_WL.IsUpDown == false)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(28));
             }
@@ -198,7 +233,7 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
     }
 
 
-    IEnumerator LivingDoorHalfOpen()
+    IEnumerator LivingDoorHalfOpen1()
     {
         yield return new WaitForSeconds(2f);
         goToLivingRoom.SetActive(true);
