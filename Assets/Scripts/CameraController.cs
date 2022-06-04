@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
     CameraFollow cameraFollow;
     HorizontalCameraController engineRoomController;
     LivingRoomCameraController livingRoomController;
+    ControlCameraController controlRoomController;
 
     ObjData currentObserveObjectData;
     ObjectData currentObjectData;
@@ -51,6 +52,7 @@ public class CameraController : MonoBehaviour
         cameraFollow = GetComponent<CameraFollow>();
         engineRoomController = GetComponent<HorizontalCameraController>();
         livingRoomController = GetComponent<LivingRoomCameraController>();
+        controlRoomController = GetComponent<ControlCameraController>();
     }
     public void SavePosition()
     {
@@ -84,6 +86,10 @@ public class CameraController : MonoBehaviour
         {
             livingRoomController.enabled = false;
         }
+        if(controlRoomController!=null)
+        {
+            controlRoomController.enabled = false;
+        }
 
         noah.transform.gameObject.SetActive(false);
 
@@ -109,6 +115,11 @@ public class CameraController : MonoBehaviour
         if (livingRoomController != null)
         {
             livingRoomController.enabled = true;
+        }
+
+        if (controlRoomController != null)
+        {
+            controlRoomController.enabled = true;
         }
         currentObserveObject = PlayerScripts.playerscripts.currentObserveObj;
 

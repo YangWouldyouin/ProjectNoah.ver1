@@ -55,6 +55,7 @@ public class PlayerScripts : MonoBehaviour
     CameraFollow cameraFollow;
     LivingRoomCameraController livingRoomCamera;
     HorizontalCameraController horizontalCamera;
+    ControlCameraController controlCamera;
     // 엔진실, 리빙룸 추가
 
     float elapsedTime = 0;
@@ -76,6 +77,7 @@ public class PlayerScripts : MonoBehaviour
         cameraFollow = mainCamera.GetComponent<CameraFollow>();
         livingRoomCamera = mainCamera.GetComponent<LivingRoomCameraController>();
         horizontalCamera= mainCamera.GetComponent<HorizontalCameraController>();
+        controlCamera= mainCamera.GetComponent<ControlCameraController>();
         agent = GetComponent<NavMeshAgent>();
 
         playerAnim.Init(GetComponentInChildren<Animator>()); // Player 의 자식인 noah_FBX 에 붙어있는 컴포넌트인 animator 초기화
@@ -112,7 +114,7 @@ public class PlayerScripts : MonoBehaviour
             cameraFollow.enabled = true;
         }
 
-        if(livingRoomCamera!=null)
+        if (livingRoomCamera != null)
         {
             Vector3 livingCameraPos = new Vector3(Mathf.Clamp(transform.position.x, -39f, -36f), mainCamera.transform.position.y, mainCamera.transform.position.z);
             while (elapsedTime < waitTime)
@@ -134,6 +136,18 @@ public class PlayerScripts : MonoBehaviour
                 yield return null;
             }
             horizontalCamera.enabled = true;
+        }
+
+        if (controlCamera != null)
+        {
+            Vector3 controlCameraPos = new Vector3(Mathf.Clamp(transform.position.x, -31.54f, -25.19f), mainCamera.transform.position.y, mainCamera.transform.position.z);
+            while (elapsedTime < waitTime)
+            {
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, controlCameraPos, (elapsedTime / waitTime));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            controlCamera.enabled = true;
         }
 
         elapsedTime = 0;
@@ -168,10 +182,13 @@ public class PlayerScripts : MonoBehaviour
                 {
                     horizontalCamera.enabled = false;
                 }
-
+                if(controlCamera!=null)
+                {
+                    controlCamera.enabled = false;
+                }
                 SearchWalkPoint();
                 agent.SetDestination(walkPoint);
-                if(cameraFollow != null||livingRoomCamera!=null|| horizontalCamera!=null)
+                if(cameraFollow != null||livingRoomCamera!=null|| horizontalCamera!=null|| controlCamera!=null)
                 {
                     StartCoroutine(WaitAndAnimation());
                 }

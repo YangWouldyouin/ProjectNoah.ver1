@@ -66,6 +66,7 @@ public class DialogManager : MonoBehaviour
         googleSheetManager = GetComponent<GoogleSheetManager>();
         subtitlePanelImage = subtitlePanel.GetComponent<Image>();
         dialogSource = GetComponent<AudioSource>();
+        dialogSource.clip = aiAudio;
     }
 
     public string getTalk(int id, int talkIndex)
@@ -105,7 +106,7 @@ public class DialogManager : MonoBehaviour
         //{
             
         //}
-        dialogSource.clip = aiAudio;
+
         aiDialogNumber = AIIndex;
         AIPanel.SetActive(true);
 

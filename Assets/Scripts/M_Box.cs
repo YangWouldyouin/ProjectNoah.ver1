@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class M_Box : MonoBehaviour, IInteraction
 {
@@ -17,9 +18,12 @@ public class M_Box : MonoBehaviour, IInteraction
     /* 소리 */
     AudioSource Box_Hit_Sound; // 박스
     public AudioClip Box_Hit;
+    NavMeshObstacle obstacle;
 
     void Start()
     {
+        obstacle = GetComponent<NavMeshObstacle>();
+        obstacle.enabled = false;
         boxData.IsUpDown = false;
 
         Box_Hit_Sound = GetComponent<AudioSource>();
@@ -135,4 +139,6 @@ public class M_Box : MonoBehaviour, IInteraction
     {
         throw new System.NotImplementedException();
     }
+
+
 }

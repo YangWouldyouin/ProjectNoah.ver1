@@ -65,6 +65,7 @@ public class InitializeEngineScene : MonoBehaviour
             Full_Eg_Pad_E.SetActive(false);
             Zero_Eg_Pad_E.SetActive(false);
         }
+
         if(intialGameData.IsTabletUnlock) // <최종> 태블릿 잠금화면 해제
         {
             LoverPic_E.SetActive(false);

@@ -38,7 +38,11 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
     InsertDetect insertDetect;
 
     AudioSource Door_open_sound; 
-    public AudioClip Door_open; 
+    public AudioClip Door_open;
+
+    public GameObject controlCameraController;
+    ControlCameraController controllCamera;
+    public GameObject workLight;
 
     public void InsertAreaButton()
     {
@@ -66,6 +70,9 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsCWDoorOpened_M_C1 = true;
             GameManager.gameManager._gameData.ActiveMissionList[1] = false;
             MissionGenerator.missionGenerator.ActivateMissionList();
+            if(controllCamera!=null)
+                controllCamera.enabled = true;
+            workLight.SetActive(true);
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             cockpitDoorData_CWD.IsInsert = false;
@@ -96,6 +103,7 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
     // Start is called before the first frame update
     void Start()
     {
+        controllCamera = controlCameraController.GetComponent<ControlCameraController>();
         Door_open_sound = GetComponent<AudioSource>();
 
         insertDetect = controlDoorDetect.GetComponent<InsertDetect>();
