@@ -55,7 +55,7 @@ public class GameData
 
     public bool IsWLDoorHalfOpened_M_C2; // 항상 업무공간에서 생활공간 이동 가능. 단, 문이 반만 열린채로
     public bool IsWLDoorOpened_M_C2; // 항상 업무공간에서 생활공간 이동 가능
-
+    public bool IsTrashDoorBTFixed_L_L1; // 생활공간 기계 수리 완료
     public bool IsAllDoorOpened; //모든 공간이 해금 완료되었는지
 
 
@@ -225,8 +225,6 @@ public class GameData
     public bool IsRevisioncomplaint; //고발하기
 
     public bool IsCompleteOpenLivingRoom; // 생활공간 문 완전 오픈 완료
-    public bool IsTrashDoorBTFixed_L_L1; //생활공간 고치기
-
     public int randomUPic;
 
 
