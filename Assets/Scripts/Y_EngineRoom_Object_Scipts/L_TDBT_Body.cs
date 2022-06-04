@@ -9,6 +9,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
     private Button barkButton_L_TDBT_Body, sniffButton_L_TDBT_Body, biteButton_L_TDBT_Body, pushButton_L_TDBT_Body, noCenterButton_L_TDBT_Body;
     ObjData TDBT_BodyData_L;
+    ObjectData bodyData;
 
     PlayerEquipment playerEquipment;
     GameObject portableObject;
@@ -40,6 +41,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         playerEquipment = BaseCanvas._baseCanvas.equipment;
 
         TDBT_BodyData_L = GetComponent<ObjData>();
+        bodyData = TDBT_BodyData_L.objectDATA;
 
         TDBT_BodyOutline = GetComponent<Outline>();
         TDBT_fixPartOutline = TDBT_fixPart.GetComponent<Outline>();
@@ -87,12 +89,14 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
         if (TDBT_fixPartData.IsBite) // 부품을 물었으면
         {
-            Invoke("TrashDoorButtonDone", 1.5f);
+            StartCoroutine(TrashDoorButtonDone());
+           // Invoke("TrashDoorButtonDone", 1.5f);
         }
     }
 
-    public void TrashDoorButtonDone()
+    IEnumerator TrashDoorButtonDone()
     {
+        yield return new WaitForSeconds(2f);
         TDBT_fixPart.GetComponent<Rigidbody>().isKinematic = false;
         TDBT_fixPart.transform.parent = null;
 
@@ -105,7 +109,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         //TDBT_BodyData_L.enabled = false;
 
         TDBT_fixPartData.IsNotInteractable = true;
-        TDBT_BodyData_L.IsNotInteractable = true;
+        bodyData.IsNotInteractable = true;
         TDBT_BodyOutline.OutlineWidth = 0;
         TDBT_fixPartOutline.OutlineWidth = 0;
 
@@ -124,7 +128,6 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
     public void OnSniff()
     {
-        TDBT_BodyData_L.IsSniff = true;
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }

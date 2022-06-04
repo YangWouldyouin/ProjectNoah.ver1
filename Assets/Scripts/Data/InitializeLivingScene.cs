@@ -30,8 +30,8 @@ public class InitializeLivingScene : MonoBehaviour
             MissionGenerator.missionGenerator.ActivateMissionList();
         }
 
-        // 엔진실 냄새 기계를 고치면
-        if (intialGameData.IsFuelabsorberFixed_E_E1)
+        // 생활공간 냄새기계를 고치면
+        if (intialGameData.IsTrashDoorBTFixed_L_L1)
         {
             TDBT_fixPart.transform.position = new Vector3(-27.253f, 1.844f, 35.729f);
             TDBT_fixPart.transform.rotation = Quaternion.Euler(0, -90, 0);
