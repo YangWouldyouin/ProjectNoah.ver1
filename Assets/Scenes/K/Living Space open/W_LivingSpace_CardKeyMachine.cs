@@ -37,6 +37,8 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
     public AudioClip LivingDoor_Halfopen;
     public AudioClip CardKey_Sound;
 
+    public GameObject goToLivingRoom;
+
     void Start()
     {
         LivingSpace_CardKeyMachine = GetComponent<AudioSource>();
@@ -195,8 +197,11 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
         LivingSpace_CardKeyMachine_W.IsPushOrPress = false;
     }
 
-    void LivingDoorHalfOpen()
+
+    IEnumerator LivingDoorHalfOpen()
     {
+        yield return new WaitForSeconds(2f);
+        goToLivingRoom.SetActive(true);
         HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
         HalfLivingDoorAni_M.SetBool("HalfEnd", true);
     }
