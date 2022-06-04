@@ -16,6 +16,7 @@ pushButton, smashButton, NoCenterButton;
 
     private float Charge; // 태블릿 - 충전패드 거리 계산
 
+    PlayerEquipment equipment;
     void Start()
     {
         FullEGPad_E = GetComponent<ObjData>();
@@ -104,6 +105,7 @@ pushButton, smashButton, NoCenterButton;
     IEnumerator delay1Seconds()
     {
         yield return new WaitForSeconds(3f);
+        equipment.biteObjectName = "";
         FullEGPad_E.gameObject.SetActive(false);
     }
 
