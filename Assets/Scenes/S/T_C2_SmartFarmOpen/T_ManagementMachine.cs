@@ -161,17 +161,19 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
         if(GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
         {
-
-            Invoke("SmartFarmOpen", 2f);
             doorObstacle.enabled = false;
+            //A-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(14));
+            StartCoroutine(SmartFarmOpen());
+            //Invoke("SmartFarmOpen", 2f);
+
             /*스마트팜 오픈 퍼즐 완료*/
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
             GameManager.gameManager._gameData.ActiveMissionList[17] = false;
             MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-            //A-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(14));
+
 
             // 스마트 팜 해금 퍼즐 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
         }
@@ -184,11 +186,11 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerSniff();
     }
 
-    void SmartFarmOpen()
+    IEnumerator SmartFarmOpen()
     {
+        yield return new WaitForSeconds(2f);
         smartFarmDoorAnim_T.SetBool("FarmDoorMoving", true);
         smartFarmDoorAnim_T.SetBool("FarmDoorStop", true);
-
     }
 
     public void OnPushOrPress()
