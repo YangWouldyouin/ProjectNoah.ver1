@@ -91,7 +91,11 @@ public class portDoor_buttons : MonoBehaviour, IInteraction
 
         StartCoroutine(ChangePressFalse());
 
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(58));
+        if (GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(58));
+        }
+        
     }
 
     IEnumerator ChangePressFalse()
