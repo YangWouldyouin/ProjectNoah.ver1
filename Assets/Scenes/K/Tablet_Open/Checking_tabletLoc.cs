@@ -38,7 +38,7 @@ public class Checking_tabletLoc : MonoBehaviour
 
         if (TabletPos.x > 1 && TabletPos.x < 10 && TabletPos.z < -8 && TabletPos.z > -16) // 타블렛이 안전 영역 안에 있으면
         {
-            Debug.Log("타이머 리셋");
+            //Debug.Log("타이머 리셋");
             timer = 0f; // 5초 안에 안전 영역으로 다시 돌아오면 타이머를 다시 0으로 돌림
         }
         else // 타블렛이 안전 영역 밖에 있으면
