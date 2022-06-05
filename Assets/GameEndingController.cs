@@ -314,6 +314,11 @@ public class GameEndingController : MonoBehaviour
             GameManager.gameManager._savePageData.IsInputNormalMeteor1_T_C20 = true;
             SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
         }
+        if (GameManager.gameManager._savePageData.IsInputImportantMeteor1_T_C20 == false && GameManager.gameManager._gameData.IsInputImportantMeteor1_T_C2)
+        {
+            GameManager.gameManager._savePageData.IsInputImportantMeteor1_T_C20 = true;
+            SaveSystem.SaveCollectPage(GameManager.gameManager._savePageData, "ProjectNoah_SavePageData");
+        }
         if (GameManager.gameManager._savePageData.IsCompletePretendDead0 == false && GameManager.gameManager._gameData.IsCompletePretendDead)
         {
             GameManager.gameManager._savePageData.IsCompletePretendDead0 = true;

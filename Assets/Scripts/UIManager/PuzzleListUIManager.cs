@@ -150,7 +150,7 @@ public class PuzzleListUIManager : MonoBehaviour
             Puzzle9.sprite = Finish_puzzle;
             Puzzle9t.text = "더미데이터 보고";
         }
-        if (GameManager.gameManager._savePageData.IsInputNormalMeteor1_T_C20)
+        if (GameManager.gameManager._savePageData.IsInputNormalMeteor1_T_C20 || GameManager.gameManager._savePageData.IsInputImportantMeteor1_T_C20)
         {
             Puzzle10.sprite = Finish_puzzle;
             Puzzle10t.text = "운석 수집 성공";
