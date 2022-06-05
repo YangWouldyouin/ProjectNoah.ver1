@@ -10,6 +10,8 @@ BiteDestroyController + 오브젝트 이름으로 바꾼다. */
 
 public class BIteDestroyController_TroubleLine2 : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    public GameObject TroubleLine;
+
     /*연관있는 오브젝트*//*
     public GameObject T_DoLineHome2;
 
@@ -112,6 +114,7 @@ public class BIteDestroyController_TroubleLine2 : MonoBehaviour, IPointerUpHandl
 
         // 1.5초 후 물기 애니메이션 + IsBite 변수 참으로 바꿈
         Invoke("DelayBiteAnim", 1f);
+        Invoke("ByeLine", 5f);
     }
 
     void DelayBiteAnim()
@@ -122,6 +125,15 @@ public class BIteDestroyController_TroubleLine2 : MonoBehaviour, IPointerUpHandl
 
 /*        DoDoLineHome2Data_T.IsNotInteractable = false; // 상호작용 가능하게
         DoLineHome2Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.*/
+    }
+
+    void ByeLine()
+    {
+        TroubleLine.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+        TroubleLine.transform.parent = null;
+
+        TroubleLine.SetActive(false);
+
     }
 
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

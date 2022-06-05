@@ -168,6 +168,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             //Invoke("SmartFarmOpen", 2f);
 
             /*½º¸¶Æ®ÆÊ ¿ÀÇÂ ÆÛÁñ ¿Ï·á*/
+            GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2 = true;
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
             GameManager.gameManager._gameData.ActiveMissionList[17] = false;
             MissionGenerator.missionGenerator.ActivateMissionList();
