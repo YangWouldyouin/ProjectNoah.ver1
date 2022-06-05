@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ResetGameManager : MonoBehaviour
@@ -139,6 +140,11 @@ public class ResetGameManager : MonoBehaviour
         {
             workData.IsObjectActiveList[j] = true;
         }
+
+        EditorUtility.SetDirty(controlData);
+        EditorUtility.SetDirty(workData);
+        EditorUtility.SetDirty(engineData);
+        EditorUtility.SetDirty(livingData);
     }
 
     void ResetWorkRoomObjectData()
