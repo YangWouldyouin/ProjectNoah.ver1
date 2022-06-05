@@ -576,6 +576,9 @@ public class SLManager2 : MonoBehaviour
             character.IsWirelessUI_firstEnter = false; //블투 페이지 진입 시점 체크
             character.IsWirelessMCTabletCheck = false; //메인컴/태블릿 블투 연결 완료 시점 체크
 
+            //나중에 추가된 변수들
+            character.IsInputImportantMeteor1_T_C2 = false;
+
             SaveSystem.Save(character, "save_001");
 
             /*업무공간&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
