@@ -164,9 +164,9 @@ pushButton, DisableButton, smashButton;
 
         Destroy(gameObject, 7.2f);
 
-        smell.SetActive(true);
+        //smell.SetActive(true);
 
-        Invoke("ChangeM", 3f);
+        //Invoke("ChangeM", 3f);
     }
 
 
