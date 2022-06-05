@@ -199,6 +199,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         if (GameManager.gameManager._gameData.IsReportImportantMeteor_T_C2 == true)
         {
             GameManager.gameManager._gameData.IsInputImportantMeteorEnd = true;
+            GameManager.gameManager._gameData.IsInputImportantMeteor1_T_C2 = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             Debug.Log("지구귀환엔딩");
         }
