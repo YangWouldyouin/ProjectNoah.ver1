@@ -153,6 +153,8 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         SDrug.transform.position = new Vector3(-249.0776f, 0.1652f, 669.806f);
         SDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
 
+        SDrug.transform.localScale = new Vector3(1, 1, 1);
+
         SDrug.transform.parent = portableGroup.transform;
         equipment.biteObjectName = "";
 

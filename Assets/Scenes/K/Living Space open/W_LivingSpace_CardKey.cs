@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class W_LivingSpace_CardKey : MonoBehaviour, IInteraction
 {
     private Button barkButton_W_LS_CardKey, sniffButton_W_LS_CardKey, biteButton_W_LS_CardKey,
-pushButton_W_LS_CardKey, upButton_W_LS_CardKey, upDisableButton_W_LS_CardKey, smashButton_W_LS_CardKey;
+pushButton_W_LS_CardKey, upButton_W_LS_CardKey, upDisableButton_W_LS_CardKey, smashButton_W_LS_CardKey, centerButton_W_LS_CardKey;
 
     ObjData LS_CardKeyData_W; // 해당 오브젝트의 ObjData 변수
     public ObjectData LS_CardKey_W;
@@ -32,6 +32,8 @@ pushButton_W_LS_CardKey, upButton_W_LS_CardKey, upDisableButton_W_LS_CardKey, sm
         pushButton_W_LS_CardKey = LS_CardKeyData_W.PushOrPressButton;
         pushButton_W_LS_CardKey.onClick.AddListener(OnPushOrPress);
 
+        centerButton_W_LS_CardKey = LS_CardKeyData_W.CenterButton1;
+
         LS_CardKey_W.IsCenterButtonChanged = false;
     }
 
@@ -43,6 +45,8 @@ pushButton_W_LS_CardKey, upButton_W_LS_CardKey, upDisableButton_W_LS_CardKey, sm
         biteButton_W_LS_CardKey.transform.gameObject.SetActive(false);
         smashButton_W_LS_CardKey.transform.gameObject.SetActive(false);
         pushButton_W_LS_CardKey.transform.gameObject.SetActive(false);
+        centerButton_W_LS_CardKey.transform.gameObject.SetActive(false);
+
     }
 
     void Update()
