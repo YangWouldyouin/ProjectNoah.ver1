@@ -17,26 +17,45 @@ public class NoahOutlineController : MonoBehaviour
 
         if(outlineTime.IsNoahOutlineTurnOn)
         {
-            noahOutline.OutlineWidth = 10.0f;
-            StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer));
+            if (!outlineTime.IsNoSeeFail1)
+            {
+                noahOutline.OutlineWidth = 10.0f;
+                StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer, outlineTime.IsNoSeeFail1));
+            }
+
+            if(!outlineTime.IsNoSeeFail2)
+            {
+                noahOutline.OutlineWidth = 10.0f;
+                StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer, outlineTime.IsNoSeeFail2));
+            }
+
+            if (!outlineTime.IsPretendDeadFail1)
+            {
+                noahOutline.OutlineWidth = 10.0f;
+                StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer, outlineTime.IsPretendDeadFail1));
+            }
         }
     }
 
-    public void StartOutlineTime(float outlineSeconds)
+    public void StartOutlineTime(float outlineSeconds, bool IsFinished)
     {
-        noahOutline.OutlineWidth = 10.0f;
-        outlineTime.IsNoahOutlineTurnOn = true;
-        outlineTime.outlineTimer = outlineSeconds;
-        StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer));
+        if(!IsFinished)
+        {
+            noahOutline.OutlineWidth = 10.0f;
+            outlineTime.IsNoahOutlineTurnOn = true;
+            outlineTime.outlineTimer = outlineSeconds;
+            StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer, IsFinished));
+        }
     }
 
-    IEnumerator StartOutlineTimer(float seconds)
+    IEnumerator StartOutlineTimer(float seconds, bool IsFinished)
     {
         while (outlineTime.outlineTimer >= 0 && outlineTime.IsNoahOutlineTurnOn)
         {
             yield return new WaitForSeconds(1f);
             outlineTime.outlineTimer -= 1f;
         }
+        IsFinished = true;
         Debug.Log("이제 못 숨음");
         noahOutline.OutlineWidth = 0.0f;
         outlineTime.IsNoahOutlineTurnOn = false;
@@ -44,8 +63,8 @@ public class NoahOutlineController : MonoBehaviour
         GameManager.gameManager._gameData.IsHide = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        //Destroy(gameObject, 0.5f);
-
         dialog.StartCoroutine(dialogManager.PrintAIDialog(52));
     }
+
+
 }

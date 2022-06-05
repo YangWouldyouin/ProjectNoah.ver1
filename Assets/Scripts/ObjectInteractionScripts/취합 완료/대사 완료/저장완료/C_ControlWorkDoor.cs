@@ -70,12 +70,13 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsCWDoorOpened_M_C1 = true;
             GameManager.gameManager._gameData.ActiveMissionList[1] = false;
             MissionGenerator.missionGenerator.ActivateMissionList();
-            if(controllCamera!=null)
-                controllCamera.enabled = true;
-            workLight.SetActive(true);
+
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             cockpitDoorData_CWD.IsInsert = false;
+            //if (controllCamera != null)
+            //    controllCamera.enabled = true;
+            //workLight.SetActive(true);
         }
     }
 
@@ -85,9 +86,9 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
         {
             // 대사 출력 
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
-
             // 조종실 탈출 미션 추가
-            GameManager.gameManager._gameData.S_IsCWDoorOpened_M_C1 = true;
+            GameManager.gameManager._gameData.ActiveMissionList[1] = true;
+            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 

@@ -87,7 +87,8 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
             GameManager.gameManager._gameData.IsPipeFound_M_C1 = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             CameraController.cameraController.CancelObserve();
-            Invoke("DelayAnim", 2f);
+            StartCoroutine(DelayAnim());
+            //Invoke("DelayAnim", f);
         }
         else
         {
@@ -96,8 +97,9 @@ public class BiteDestroyController_M_Pipe : MonoBehaviour, IPointerUpHandler, IP
 
     }
 
-    void DelayAnim()
+    IEnumerator DelayAnim()
     {
+        yield return new WaitForSeconds(1.5f);
         InteractionButtonController.interactionButtonController.PlayerBite();
     }
 
