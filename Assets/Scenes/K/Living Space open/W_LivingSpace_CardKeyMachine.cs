@@ -77,6 +77,7 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
         /*선언시작*/
         LivingSpace_CardKeyMachineData_W.IsObserve = false;
         LivingSpace_CardKeyMachineData_W.IsCenterButtonChanged = false;
+        LivingSpace_CardKeyMachineData_W.IsNotInteractable = false;
     }
 
     /* 상호작용 버튼을 끄는 함수 */
