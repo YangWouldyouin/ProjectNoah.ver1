@@ -26,6 +26,8 @@ public class insert01_buttons : MonoBehaviour, IInteraction
     PlayerEquipment equipment;
     GameObject portableGroup;
 
+    BoxCollider drugCol;
+
 
     void Start()
     {
@@ -38,6 +40,7 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         Insert01Line = GetComponent<Outline>();
 
         drugLine = drug.GetComponent<Outline>();
+        drugCol = drug.GetComponent<BoxCollider>();
 
         //��ư
         barkButton = Insert01Data.BarkButton;
@@ -60,11 +63,11 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(!drugMachineData.IsObserve)
+        /*if(!drugMachineData.IsObserve)
         {
             insertCheck1Data.IsNotInteractable = true;
             Insert01Line.OutlineWidth = 0f;
-        }
+        }*/
 
     }
 
@@ -161,6 +164,7 @@ public class insert01_buttons : MonoBehaviour, IInteraction
 
         drugData.IsNotInteractable = true;
         drugLine.OutlineWidth = 0f;
+        drugCol.enabled = false;
 
         GameManager.gameManager._gameData.ActiveMissionList[25] = false;
         GameManager.gameManager._gameData.ActiveMissionList[26] = true;

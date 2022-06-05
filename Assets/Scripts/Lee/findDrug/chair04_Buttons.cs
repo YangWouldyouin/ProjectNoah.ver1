@@ -100,7 +100,7 @@ public class chair04_Buttons : MonoBehaviour, IInteraction
             InteractionButtonController.interactionButtonController.PlayerRise2();
 
             specificDrugData.IsNotInteractable = false;
-            //SDrugLine.OutlineWidth = 8f;
+            SDrugLine.OutlineWidth = 8f;
         }
     }
 

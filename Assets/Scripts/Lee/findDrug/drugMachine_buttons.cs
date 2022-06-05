@@ -21,6 +21,9 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
     AudioSource drugMachine_Sound;
     public AudioClip drugMachine_On;
 
+    BoxCollider insert01Col;
+    BoxCollider insert02Col;
+
     void Start()
     {
         drugMachine_Sound = GetComponent<AudioSource>();
@@ -30,6 +33,9 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
 
         insert01Line = insert01.GetComponent<Outline>();
         insert02Line = insert02.GetComponent<Outline>();
+
+        insert01Col = insert01.GetComponent<BoxCollider>();
+        insert02Col = insert02.GetComponent<BoxCollider>();
 
         //��ư
         barkButton = machineData.BarkButton;
@@ -50,23 +56,14 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
 
     void update()
     {
-        /*if (machineData.IsObserve == false)
+        if (machineData.IsObserve == false)
         {
-            insert01Data.IsNotInteractable = true;
-            insert01Line.OutlineWidth = 0f;
+            insert01Col.enabled = false;
+            insert02Col.enabled = false;
 
-            insert02Data.IsNotInteractable = true;
-            insert02Line.OutlineWidth = 0f;
-        }*/
-
-        /*if (machineData.IsObserve)
-        {
-            insert01Data.IsNotInteractable = false;
-            insert01Line.OutlineWidth = 8f;
-
-            insert02Data.IsNotInteractable = false;
-            insert02Line.OutlineWidth = 8f;
-        }*/
+            drugMachine_Sound.clip = drugMachine_On;
+            drugMachine_Sound.Stop();
+        }
     }
 
     void DisableButton()
@@ -118,11 +115,8 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
         /* ���� �ִϸ��̼� & ī�޶� ��ȯ */
         InteractionButtonController.interactionButtonController.playerObserve();
 
-        insertCheck1Data.IsNotInteractable = false;
-        insert01Line.OutlineWidth = 16f;
-
-        insertCheck1Data.IsNotInteractable = false;
-        insert02Line.OutlineWidth = 16f;
+        insert01Col.enabled = true;
+        insert02Col.enabled = true;
 
         drugMachine_Sound.clip = drugMachine_On;
         drugMachine_Sound.Play();

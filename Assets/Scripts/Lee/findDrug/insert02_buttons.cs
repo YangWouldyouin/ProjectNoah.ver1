@@ -57,11 +57,11 @@ public class insert02_buttons : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(!drugMachineData.IsObserve)
+        /*if(!drugMachineData.IsObserve)
         {
             drugInsert2Data.IsNotInteractable = true;
             Insert02Line.OutlineWidth = 0f;
-        }
+        }*/
     }
 
     // Update is called once per frame

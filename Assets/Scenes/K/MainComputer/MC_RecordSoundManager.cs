@@ -194,22 +194,24 @@ public class MC_RecordSoundManager : MonoBehaviour
             Audio_Rec.clip = RecordAudio[currentIndex + 1];
             Audio_Rec.Play();
             IsButton2Clicked = true;
+
+            if (k == 0)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(4));
+            }
+
+            if (k == 1)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(6));
+            }
+
+            if (k == 2)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintSubtitles(8));
+            }
         }
 
-        if (k == 0)
-        {
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(4));
-        }
 
-        if (k == 1)
-        {
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(6));
-        }
-
-        if (k == 2)
-        {
-            dialogManager.StartCoroutine(dialogManager.PrintSubtitles(8));
-        }
     }
 
 }
