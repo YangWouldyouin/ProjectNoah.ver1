@@ -96,10 +96,10 @@ public class M_Pack : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.PlayerSmash1();
 
-        StartCoroutine(canLookCardKey1());
+        //StartCoroutine(canLookCardKey1());
         //StartCoroutine(canLookCardKey2());
 
-        //Invoke(" canLookCardKey", 2f); // 인보크 함수 안 먹 는 다...
+        Invoke("canLookCardKey", 3f); // 인보크 함수 안 먹 는 다...
 
         /* 오브젝트 흔드는 애니메이션 끝냄 */
         InteractionButtonController.interactionButtonController.PlayerSmash2();
@@ -112,6 +112,38 @@ public class M_Pack : MonoBehaviour, IInteraction
 
         //Destroy(gameObject, 0f);
 
+        this.GetComponent<Rigidbody>().isKinematic = true;
+        this.transform.parent = null;
+
+        //위치 고정: 이유는 얘 위치 따라서 카드키 위치 나오니까 카드키가 공중 부양하기 때문에
+        gameObject.transform.position = new Vector3(transform.position.x, 1.5412f, transform.position.z);
+
+        packData_M.IsBite = false;
+
+        M_canCardKey.SetActive(true);
+        M_canCardKey.transform.position = gameObject.transform.position;
+
+        /*카드키 찾기 퍼즐 완료*//*
+        GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
+        GameManager.gameManager._gameData.ActiveMissionList[3] = false;
+        MissionGenerator.missionGenerator.ActivateMissionList();
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");*/
+
+        // 앞으로 카드팩 업무공간에서 없으므로 체크해제
+        workRoomData.IsObjectActiveList[31] = false;
+        //엔진키는 체크활성화
+        workRoomData.IsObjectActiveList[32] = true;
+
+        gameObject.SetActive(false);
+
+
+
+        // 엔진실 카드키 찾기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+
+    }
+
+    void canLookCardKey()
+    {
         this.GetComponent<Rigidbody>().isKinematic = true;
         this.transform.parent = null;
 
