@@ -126,17 +126,22 @@ public class S_IDConsole : MonoBehaviour, IInteraction
             IsIDInsertPad_Collider.enabled = false;
         }
 
-/*
-        if(boxForConsoleData_S.IsUpDown)
+        if(GameManager.gameManager._gameData.IsRealMiddleTuto)
         {
-            IDConsole_Collider.enabled = true;
-            BoxForConsole_Collider.enabled = false;
+            IDConsole_Collider.enabled = false;
         }
 
-        else
-        {
+        /*
+                if(boxForConsoleData_S.IsUpDown)
+                {
+                    IDConsole_Collider.enabled = true;
+                    BoxForConsole_Collider.enabled = false;
+                }
 
-        }*/
+                else
+                {
+
+                }*/
 
         /*노아의 높이가 책상 올라갈 높이가 되는지 확인*//*
         if (IDConsoleData_S.IsCollision)
@@ -151,12 +156,12 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         }*/
 
 
-/*        if (IDConsoleData_S.IsObserve)
-        {
-            IDConsoleData_S.IsNotInteractable = false;
-            iDConsoleOutline_S.OutlineWidth = 8;
+        /*        if (IDConsoleData_S.IsObserve)
+                {
+                    IDConsoleData_S.IsNotInteractable = false;
+                    iDConsoleOutline_S.OutlineWidth = 8;
 
-        }*/
+                }*/
     }
 
 

@@ -117,6 +117,7 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
             realIDCardData_S.IsNotInteractable = true;
             realIDCardOutline_S.OutlineWidth = 0;
 
+            Debug.Log("아 아이디 콘솔 콜라이더 끄고싶어요");
             realIDInConsole_Collider.enabled = false;
             realIDConsoleData_S.IsNotInteractable = true;
             realIDConsoleOutline_S.OutlineWidth = 0;
