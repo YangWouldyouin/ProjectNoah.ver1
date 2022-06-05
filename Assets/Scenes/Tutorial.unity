@@ -9620,6 +9620,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1759098427}
+    - target: {fileID: 102595120, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 335102416, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9631,6 +9635,10 @@ PrefabInstance:
     - target: {fileID: 367054525, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 439926595, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 771751067, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
@@ -9714,7 +9722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 121805374016432837, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 473745847672761151, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 565886689723836008, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9878,7 +9890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2295004328191567575, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2295004328191567575, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -11512,6 +11524,7 @@ MonoBehaviour:
     IsWEDoorOpened_M_C2: 0
     IsWLDoorHalfOpened_M_C2: 0
     IsWLDoorOpened_M_C2: 0
+    IsTrashDoorBTFixed_L_L1: 0
     IsAllDoorOpened: 0
     IsFirstEnterWorking: 0
     IsFirstEnterEngine: 0
@@ -11615,7 +11628,6 @@ MonoBehaviour:
     IsPhotoMissionFinish: 0
     IsRevisioncomplaint: 0
     IsCompleteOpenLivingRoom: 0
-    IsTrashDoorBTFixed_L_L1: 0
     randomUPic: 0
     IsInputImportantMeteorEnd: 0
     IsMakeForestEnd: 0
@@ -11667,7 +11679,6 @@ MonoBehaviour:
     IsFakePlanetSelectMission0: 0
     IsAIDown_M_C1C30: 0
     IsRevisioncomplaint0: 0
-  IsTrashDoorFixed_L_L1: 0
   IsCanMeteorGet: 0
   IsSmellDone: 0
   IsCollectMeteor: 0
@@ -13908,7 +13919,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: -2
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &502253438
 RectTransform:
@@ -17435,9 +17446,9 @@ RectTransform:
   m_Children:
   - {fileID: 1422535990}
   - {fileID: 1065012333}
+  - {fileID: 1421783694}
   - {fileID: 1816372531}
   - {fileID: 1439865750}
-  - {fileID: 1421783694}
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38805,7 +38816,7 @@ RectTransform:
   - {fileID: 2122739682}
   - {fileID: 1240069963}
   m_Father: {fileID: 628799025}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -39610,7 +39621,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 628799025}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -48439,7 +48450,7 @@ RectTransform:
   - {fileID: 1961265005}
   - {fileID: 1218741907}
   m_Father: {fileID: 628799025}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -51888,8 +51899,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02675756, y: 0.029220209, z: 0.05653845}
-  m_Center: {x: -0.0403745, y: 0.014610104, z: -0.025438052}
+  m_Size: {x: 0.014417306, y: 0.029220209, z: 0.05653845}
+  m_Center: {x: -0.03420431, y: 0.014610104, z: -0.025438052}
 --- !u!1 &1915209220
 GameObject:
   m_ObjectHideFlags: 0
@@ -52092,10 +52103,7 @@ MonoBehaviour:
   typingSpeed: 0.04
   aiSentenceDelay: 1.8
   subtitleSentenceDelay: 40
-  aiAudio:
-  - {fileID: 8300000, guid: 8288d9eac4cc1fd4081973c2336df7c3, type: 3}
-  - {fileID: 8300000, guid: dfbf3d0bc2f742040a379f3836f3e2c4, type: 3}
-  - {fileID: 8300000, guid: ecfed91730a99384eb1f4b02d49d7846, type: 3}
+  aiAudio: {fileID: 0}
   IsSkip: 0
 --- !u!82 &1915457786
 AudioSource:

@@ -60,6 +60,7 @@ pressButton, observeButton;
         if (planetRaderData.IsObserve == false)
         {
             CS_GUI.SetActive(false);
+            BoxData.IsNotInteractable = false;
         }
 
 /*        if(planetRaderData.IsCollision)
@@ -86,6 +87,8 @@ pressButton, observeButton;
         Debug.Log("°üÂû");
 
         planetRaderData_PR.IsObserve = true;
+        BoxData.IsNotInteractable = true;
+
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         DisableButton();
 
