@@ -18,4 +18,9 @@ public class InGameTime : ScriptableObject
 
     public int statNum;
     public float statTimer;
+
+    public bool IsNoSeeFail1; // 소화전 1
+    public bool IsNoSeeFail2; // 소화전 2
+
+    public bool IsPretendDeadFail1; // 비커
 }
