@@ -57,7 +57,7 @@ public class ResetGameManager : MonoBehaviour
         ResetControlData();
         ResetEngineRoomObjectData();
 
-        ResetGame();
+        //ResetGame();
     }
 
     void RestIngameData()
