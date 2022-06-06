@@ -14,6 +14,7 @@ public class M_Pack : MonoBehaviour, IInteraction
 
     ObjData packObjData_M;
     public ObjectData packData_M;
+    public ObjectData EngineKeyData_M;
 
     public GameObject dialog_CS;
     DialogManager dialogManager;
@@ -122,6 +123,7 @@ public class M_Pack : MonoBehaviour, IInteraction
 
         M_canCardKey.SetActive(true);
         M_canCardKey.transform.position = gameObject.transform.position;
+        EngineKeyData_M.IsNotInteractable = false;
 
         /*카드키 찾기 퍼즐 완료*//*
         GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
