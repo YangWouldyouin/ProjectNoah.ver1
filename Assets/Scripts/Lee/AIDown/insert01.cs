@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class insert01 : MonoBehaviour, IInteraction
 {
 
-    [Header("<플레이어의 아웃라인을 관리함>")]
+/*    [Header("<플레이어의 아웃라인을 관리함>")]
     public NoahOutlineController outlineController;
-    NoahOutlineController outlineControl;
+    NoahOutlineController outlineControl;*/
 
     //타이머
     public InGameTime inGameTime;
