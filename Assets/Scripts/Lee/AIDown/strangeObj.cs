@@ -197,16 +197,10 @@ public class strangeObj : MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.IsHide = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-/*        // 3분간 플레이어 아웃라인 활성화
-        outlineControl.StartOutlineTime(10f);
-        TimerManager.timerManager.TimerStart(10f);
-        Invoke("FailStrangeObj", 10f);*/
+        // 3분간 플레이어 아웃라인 활성화
+        outlineControl.StartOutlineTime(300f);
+        TimerManager.timerManager.TimerStart(300f);
     }
-
-/*    void FailStrangeObj()
-    {
-        IsNoSeeFail1 = true;
-    }*/
 
     IEnumerator DelayFor2Seconds()
     {

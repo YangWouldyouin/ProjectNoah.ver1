@@ -12,10 +12,6 @@ public class strangeObjAfter : MonoBehaviour
     /*타이머*/
     public InGameTime inGameTime;
 
-    public bool IsNoSeeFail1 = false; //제한 시간 내에 안에 퍼즐 실패
-    public bool canTSee1 = false;
-    public bool HideStart = false;
-
     void Start()
     {
         outlineControl = outlineController.GetComponent<NoahOutlineController>();
@@ -23,30 +19,12 @@ public class strangeObjAfter : MonoBehaviour
 
     void Update()
     {
-        /*태블릿 해금 완료(이 시점을 안 넣으면 평소에 그냥 발견한 거랑 AI가 착각할듯) && 시간이 안 끝났다면 && 업데이트문 반복 방지  &&AI 다운이 성공 못했다면*/
-        if (GameManager.gameManager._gameData.IsTabletUnlock && inGameTime.IsTimerStarted==false &&inGameTime.IsNoSeeFail1==false && canTSee1 == false && GameManager.gameManager._gameData.IsAIDown == false)
-        {
-            /*타이머가 꺼진다*/
-            inGameTime.IsTimerStarted = false;
-            inGameTime.missionTimer = 0;
-
-            /*아웃라인이 꺼진다*/
-            inGameTime.IsNoahOutlineTurnOn = false;
-            inGameTime.outlineTimer = 0;
-
-            GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
-            Debug.Log("시간 안에 퍼즐 풀기 실패");
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-            // AI 꼽주기 
-            canTSee1 = true;
-        }
 
         //타임 어택 성공시
-        if (GameManager.gameManager._gameData.IsAIDown)
+        if (GameManager.gameManager._gameData.IsAIDown && inGameTime.IsTimerStarted)
         {
             Debug.Log("타임어택성공");
-            inGameTime.IsNoSeeFail1 = true;
+            //inGameTime.IsNoSeeFail1 = true;
 
             /*타이머가 꺼진다*/
             inGameTime.IsTimerStarted = false;
