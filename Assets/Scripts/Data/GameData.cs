@@ -271,6 +271,7 @@ public class GameData
 
     //후에 추가된 것
     public bool IsInputImportantMeteor1_T_C2; // 특별 운석 수집기에 넣기 완료
+    public bool IsAIAfterMissionComplete;
 }
 
 

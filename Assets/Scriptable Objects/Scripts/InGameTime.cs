@@ -27,4 +27,7 @@ public class InGameTime : ScriptableObject
 
     public bool IsMissionStart;
     public bool IsMissionClear;
+
+    public bool IsGoToEarthMissionStart;
+    public bool IsGoToEarthMissionClear;
 }

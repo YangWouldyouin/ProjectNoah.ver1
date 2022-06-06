@@ -470,6 +470,7 @@ public class ResetGameManager : MonoBehaviour
 
         //나중에 추가된 것
         character.IsInputImportantMeteor1_T_C2 = false;
+        character.IsAIAfterMissionComplete = false;
 
         SaveSystem.Save(character, "save_001");
     }

@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class insert01 : MonoBehaviour, IInteraction
 {
+
+    [Header("<플레이어의 아웃라인을 관리함>")]
+    public NoahOutlineController outlineController;
+    NoahOutlineController outlineControl;
+
+    //타이머
+    public InGameTime inGameTime;
+
+
+    //본래 애들
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
     ObjData insertData;
@@ -68,6 +78,34 @@ public class insert01 : MonoBehaviour, IInteraction
         noCenterButton.onClick.AddListener(OnObserve);
     }
 
+    void Update()
+    {
+        // 미션 완료 못함 && 타이머 끝남 && 미션 시작함
+        if (inGameTime.IsGoToEarthMissionClear == false && inGameTime.IsTimerStarted == false && inGameTime.IsGoToEarthMissionStart)
+        {
+            Debug.Log("미션 실패");
+            GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+
+        //궤도변경 성공하면 그리고 Update문 반복 돌아서 나중에 변수 초기화 방해할까바 변수하나더 조건으로 걸어서 더이상 안돌게
+        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet 
+            && GameManager.gameManager._gameData.IsAIAfterMissionComplete == false)
+        {
+            inGameTime.IsGoToEarthMissionClear = true;
+            GameManager.gameManager._gameData.IsAIAfterMissionComplete = true;
+        }
+
+            // 미션 완료함 && 타이머 끝나기 전임
+            if (inGameTime.IsGoToEarthMissionClear && inGameTime.IsTimerStarted)
+        {
+            Debug.Log("미션 성공");
+            //inGameTime.IsNoahOutlineTurnOn = false;
+            inGameTime.IsTimerStarted = false;
+            inGameTime.missionTimer = 0;
+        }
+    }
+
     void DisableButton()
     {
         barkButton.transform.gameObject.SetActive(false);
@@ -115,6 +153,9 @@ public class insert01 : MonoBehaviour, IInteraction
 
 
             Invoke("NoChip", 0.5f);
+
+            //AI 다운 후 궤도 변경 미션 시작
+            Invoke("NewTimerStart", 2f);
         }
 
         if (WChip01Data.IsBite)
@@ -135,6 +176,13 @@ public class insert01 : MonoBehaviour, IInteraction
         insertData.IsPushOrPress = false;
     }
 
+    void NewTimerStart()
+    {
+        /* AI가 다운되고 나면 미션 시작 : 제한 시간 5분*/
+        TimerManager.timerManager.TimerStart(300);
+        //outlineControl.StartOutlineTime(300f);
+        inGameTime.IsGoToEarthMissionStart = true;
+    }
 
     public void OnEat()
     {
