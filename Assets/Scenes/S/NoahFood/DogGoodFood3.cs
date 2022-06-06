@@ -73,7 +73,7 @@ public class DogGoodFood3: MonoBehaviour, IInteraction
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         //스탯 상승
-        NoahStatController.noahStatController.IncreaseStatBar(1);
+        NoahStatController.noahStatController.IncreaseStat(1);
         // 앞으로 모든씬에서 안보임
         workRoomData.IsObjectActiveList[47] = false;
         livingRoomData.IsObjectActiveList[47] = false;

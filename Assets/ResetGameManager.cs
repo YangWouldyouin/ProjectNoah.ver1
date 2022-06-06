@@ -49,18 +49,25 @@ public class ResetGameManager : MonoBehaviour
     private void Start()
     {
         //ClearObjectData();
-        RestIngameData();
-
-        ResetPortableObject();
-
-        ResetWorkRoomObjectData();
-        ResetLivingRoomObjectData();
-        ResetControlData();
-        ResetEngineRoomObjectData();
 
         //ResetGame();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            Debug.Log("오브젝트 리셋");
+            RestIngameData();
+
+            ResetPortableObject();
+
+            ResetWorkRoomObjectData();
+            ResetLivingRoomObjectData();
+            ResetControlData();
+            ResetEngineRoomObjectData();
+        }
+    }
     void RestIngameData()
     {
         inGameTime.days = 0;
@@ -140,11 +147,13 @@ public class ResetGameManager : MonoBehaviour
         {
             workData.IsObjectActiveList[j] = true;
         }
-
+#if UNITY_EDITOR
         EditorUtility.SetDirty(controlData);
         EditorUtility.SetDirty(workData);
         EditorUtility.SetDirty(engineData);
         EditorUtility.SetDirty(livingData);
+#endif
+
     }
 
     void ResetWorkRoomObjectData()

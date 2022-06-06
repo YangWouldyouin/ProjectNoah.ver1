@@ -63,6 +63,7 @@ public class TimerManager : MonoBehaviour
             timerBar.fillAmount = inGameTime.missionTimer / inGameTime.maxTimer;
         }
 
+        // 제한 시간이 끝나면
         timerDim.gameObject.SetActive(false);
         timerBar.gameObject.SetActive(false);
         timerText.gameObject.SetActive(false);

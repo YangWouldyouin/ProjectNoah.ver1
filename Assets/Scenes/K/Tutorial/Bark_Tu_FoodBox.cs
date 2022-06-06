@@ -206,7 +206,7 @@ pushButton, DisableButton, smashButton;
 
         while (true)
         {
-            if (dialogManager.IsSubtitleStarted)
+            if (dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(1f);
             }

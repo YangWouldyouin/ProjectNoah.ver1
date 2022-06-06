@@ -80,7 +80,7 @@ public class T_HealthySweetPotato1 : MonoBehaviour, IInteraction
         controlRoomData.IsObjectActiveList[13] = false;
 
         // 스탯이 올라간다.
-        NoahStatController.noahStatController.IncreaseStatBar(1);
+        NoahStatController.noahStatController.IncreaseStat(1);
 
         GameManager.gameManager._gameData.sweetPotatoEat[1] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

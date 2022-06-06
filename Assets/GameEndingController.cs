@@ -26,14 +26,14 @@ public class GameEndingController : MonoBehaviour
         GameManager.gameManager._gameData.IsSuddenDeath = true;
         GameManager.gameManager._gameData.IsManagerAbilityLack = true;
         Dontclick.SetActive(false);
-        NoahStatController.noahStatController.IncreaseStatBar(0);
+        NoahStatController.noahStatController.IncreaseStat(0);
         InteractionButtonController.interactionButtonController.PlayerAlive();
     }
     public void SuddenDeath2()
     {
         GameManager.gameManager._gameData.IsSuddenDeath = true;
 
-        NoahStatController.noahStatController.DecreaseStatBar(3);
+        NoahStatController.noahStatController.DecreaseStat(3);
 
         Dontclick.SetActive(false);
         

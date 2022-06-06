@@ -6,35 +6,22 @@ using UnityEngine.UI;
 
 public class TimerController : MonoBehaviour
 {
-    private float timeValue = 0;
+    public InGameTime inGameTime;
+
     private TMPro.TextMeshProUGUI dayText;
     private TMPro.TextMeshProUGUI hourText;
 
-    public InGameTime inGameTime;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     private void Awake()
     {
-        //textClock = GetComponent<TMPro.TextMeshProUGUI>();
-
         dayText = transform.Find("DayText").GetComponent<TMPro.TextMeshProUGUI>();
         hourText = transform.Find("HourText").GetComponent<TMPro.TextMeshProUGUI>();
-
-
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         inGameTime.timer += Time.deltaTime;
         inGameTime.statTimer+= Time.deltaTime;
-        DisplayTime(inGameTime.timer, inGameTime.statTimer);
-      
+        DisplayTime(inGameTime.timer, inGameTime.statTimer);      
     }
 
     void DisplayTime(float timeToDisplay, float timeToLowerStat)
@@ -43,32 +30,37 @@ public class TimerController : MonoBehaviour
         {
             timeToDisplay = 0;
         }
-        inGameTime.days = Mathf.FloorToInt(timeToDisplay / 720);
 
+        if (timeToLowerStat < 0)
+        {
+            timeToLowerStat = 0;
+        }
+
+        inGameTime.days = Mathf.FloorToInt(timeToDisplay / 720);
         inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 720) / 30);
 
-     
+        dayText.text = string.Format("{0:00}", inGameTime.days + 1);
+        hourText.text = string.Format("{0:00}", inGameTime.hours) + ":00";
 
+
+        inGameTime.maxStatTimer = Mathf.FloorToInt((timeToLowerStat % 3600)/60);
+
+        if(inGameTime.maxStatTimer == 5)
+        {
+            inGameTime.statNum -= 1;
+            inGameTime.statTimer = 0;
+            timeToLowerStat = 0;
+            inGameTime.maxStatTimer = 0;
+        }
         //inGameTime.days = Mathf.FloorToInt((timeToDisplay % 3600)/60);
 
         //inGameTime.hours = Mathf.FloorToInt((timeToDisplay % 3600) % 60);
 
         //float hours = Mathf.FloorToInt(timeToDisplay / 3600);
-
-        float minutes = Mathf.FloorToInt((timeToLowerStat % 3600)/60);
-        if(minutes==5)
-        {
-            inGameTime.statNum -= 1;
-            inGameTime.statTimer = 0;
-            timeToLowerStat = 0;
-            minutes = 0;
-        }
-
         //float seconds = Mathf.FloorToInt((timeToDisplay % 3600) % 60);
 
         //hourText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        dayText.text = string.Format("{0:00}", inGameTime.days + 1);
-        hourText.text = string.Format("{0:00}", inGameTime.hours) +":00";
+
     }
     IEnumerator Count()
     {

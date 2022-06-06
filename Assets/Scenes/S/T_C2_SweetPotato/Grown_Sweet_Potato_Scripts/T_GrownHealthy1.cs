@@ -77,7 +77,7 @@ public class T_GrownHealthy1 : MonoBehaviour, IInteraction
 
         // ½ºÅÈ ¿Ã¶ó°¡°Ô??
         //½ºÅÈ »ó½Â
-        NoahStatController.noahStatController.IncreaseStatBar(1);
+        NoahStatController.noahStatController.IncreaseStat(1);
 
         workRoomData.IsObjectActiveList[21] = false;
         livingRoomData.IsObjectActiveList[21] = false;

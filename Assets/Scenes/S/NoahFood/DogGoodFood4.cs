@@ -71,7 +71,7 @@ public class DogGoodFood4: MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.GoodFoodEat[3] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //스탯 상승
-        NoahStatController.noahStatController.IncreaseStatBar(1);
+        NoahStatController.noahStatController.IncreaseStat(1);
 
         // 앞으로 모든씬에서 안보임
         workRoomData.IsObjectActiveList[55] = false;

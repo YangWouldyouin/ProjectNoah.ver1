@@ -125,20 +125,15 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
 
         /* 애니메이션 보여줌 */
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
-        StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
 
-        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(1));
+
+        dialogManager.StartCoroutine(dialogManager.PrintSubtitles(1)); // 1번째 대사
 
         // 자막 + 음성 나오기
         dollrecordAudio.clip = Doll_L_Audio;
         dollrecordAudio.Play();
     }
-    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        DollData_L.IsPushOrPress = false;
-    }
+
     /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 끝 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
 
     public void OnSniff() // 냄새맡기

@@ -73,7 +73,7 @@ public class DogBadFood2 : MonoBehaviour, IInteraction
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         //스탯 감소
-        NoahStatController.noahStatController.DecreaseStatBar(1);
+        NoahStatController.noahStatController.DecreaseStat(1);
         // 앞으로 모든씬에서 안보임
         workRoomData.IsObjectActiveList[49] = false;
         livingRoomData.IsObjectActiveList[49] = false;

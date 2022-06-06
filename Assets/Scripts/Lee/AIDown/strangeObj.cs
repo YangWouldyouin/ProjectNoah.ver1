@@ -217,6 +217,7 @@ public class strangeObj : MonoBehaviour, IInteraction
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
             GameManager.gameManager._gameData.IsFirstUsingStrangeObj = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else
         {

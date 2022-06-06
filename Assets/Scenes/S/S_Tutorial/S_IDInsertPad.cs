@@ -154,7 +154,7 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
 
         while (true)
         {
-            if (dialogManager.IsSubtitleStarted)
+            if (dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(1f);
             }

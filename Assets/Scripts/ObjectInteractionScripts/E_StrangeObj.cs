@@ -5,12 +5,6 @@ using UnityEngine.UI;
 
 public class E_StrangeObj : MonoBehaviour
 {
-    /*타이머*/
-    public InGameTime inGameTime;
-    public GameObject S_TimerBarFilled;
-    public GameObject S_TimerBackground;
-    public GameObject S_TimerText;
-
     public bool IsNoSeeFail2 = false; //제한 시간 내에 안에 퍼즐 실패
     public bool canTSee2 = false;
 
@@ -42,6 +36,7 @@ public class E_StrangeObj : MonoBehaviour
     void Start()
     {
         StrangeObj_smoke_Sound = GetComponent<AudioSource>();
+        StrangeObj_smoke_Sound.clip = StrangeObj_smoke;
 
         outlineControl = outlineController_E.GetComponent<NoahOutlineController>();
         dialogManager = dialog_E.GetComponent<DialogManager>();
@@ -161,8 +156,8 @@ public class E_StrangeObj : MonoBehaviour
     {
         DisableButton();
         InteractionButtonController.interactionButtonController.PlayerSmash1();
-
-        Invoke("ObjSmoke", 2f);
+        StartCoroutine(ObjSmoke());
+        //Invoke("ObjSmoke", 2f);
 
         InteractionButtonController.interactionButtonController.PlayerSmash2();
 
@@ -170,25 +165,24 @@ public class E_StrangeObj : MonoBehaviour
 
         Destroy(smoke_E, 5f);
 
-        StrangeObj_smoke_Sound.clip = StrangeObj_smoke;
         StrangeObj_smoke_Sound.Play();
 
         GameManager.gameManager._gameData.IsKnowUsingSObj = true;
         GameManager.gameManager._gameData.ActiveMissionList[27] = false;
         MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        //��ư� ������ �ʾ� ��Ȳ�ϴ� AI ���
 
         CameraController.cameraController.CancelObserve();
     }
 
-    void ObjSmoke()
+    IEnumerator ObjSmoke()
     {
-/*        // 3분간 플레이어 아웃라인 활성화
-        outlineControl.StartOutlineTime(180f);
-        TimerManager.timerManager.TimerStart(180);
+        yield return new WaitForSeconds(2f);
+       // 3분간 플레이어 아웃라인 활성화
+        //outlineControl.StartOutlineTime(30f, inGameTime.IsNoSeeFail1);
+        TimerManager.timerManager.TimerStart(30);
         //Invoke("TimeCheck", 30);
-        Invoke("FailStrangeObj", 180f);*/
+        //Invoke("FailStrangeObj", 180f);
 
         // 수상한 물건을 플레이어로부터 분리함
         this.GetComponent<Rigidbody>().isKinematic = true;
@@ -203,27 +197,19 @@ public class E_StrangeObj : MonoBehaviour
         smoke_E.transform.position = gameObject.transform.position;
         smoke_E.Play();
 
-        gameObject.SetActive(false);
         // 이제 엔진실에 수상한 물건이 없어졌으므로 직접 false로 변경
         engineRoomExtinguisherData.IsObjectActiveList[58] = false;
 
         GameManager.gameManager._gameData.IsHide = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        gameObject.SetActive(false);
     }
 
 /*    void FailStrangeObj()
     {
         IsNoSeeFail2 = true;
     }*/
-
-    void TimeCheck()
-    {
-        inGameTime.IsTimerStarted = false;
-
-        S_TimerBarFilled.SetActive(false);
-        S_TimerBackground.SetActive(false);
-        S_TimerText.SetActive(false);
-    }
 
     IEnumerator DelayFor2Seconds()
     {
@@ -234,6 +220,7 @@ public class E_StrangeObj : MonoBehaviour
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
             GameManager.gameManager._gameData.IsFirstUsingStrangeObj = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else
         {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45136768, g: 0.50038236, b: 0.5697532, a: 1}
+  m_IndirectSpecularColor: {r: 0.4513672, g: 0.50038254, b: 0.56975245, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -8163,7 +8163,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 1
       - m_Target: {fileID: 292122484}
         m_TargetAssemblyTypeName: PlanetRaderController, Assembly-CSharp
         m_MethodName: OnRaderLeftButtonClicked
@@ -8175,7 +8175,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &292122485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9622,7 +9622,7 @@ PrefabInstance:
       objectReference: {fileID: 1759098427}
     - target: {fileID: 102595120, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 335102416, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
@@ -9638,7 +9638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439926595, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 771751067, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
@@ -11664,6 +11664,7 @@ MonoBehaviour:
     IsHealthMachineFixed_T_C20: 0
     IsDummyDataReport0: 0
     IsInputNormalMeteor1_T_C20: 0
+    IsInputImportantMeteor1_T_C20: 0
     IsCompletePretendDead0: 0
     IsKnowUsingSObj0: 0
     IsFindDrugDone_T_C20: 0
@@ -34488,7 +34489,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 1
       - m_Target: {fileID: 1287366068}
         m_TargetAssemblyTypeName: PlanetRaderController, Assembly-CSharp
         m_MethodName: OnRaderRightButtonClicked
@@ -34500,7 +34501,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1287366069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46865,17 +46866,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712769171}
   m_CullTransparentMesh: 1
---- !u!114 &1718035946 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 367054525, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
-  m_PrefabInstance: {fileID: 365641744}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1726598439
 GameObject:
   m_ObjectHideFlags: 0
@@ -52329,17 +52319,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AIPanelAnim: {fileID: 1123687520}
   dialogText: {fileID: 365641750}
-  subtitleText: {fileID: 1718035946}
+  talkText: {fileID: 0}
   nameText: {fileID: 2065916714}
   AIPanel: {fileID: 220267153}
   subtitlePanel: {fileID: 184596018}
   IsDialogStarted: 0
-  IsSubtitleStarted: 0
+  IsTalking: 0
   typingSpeed: 0.04
   aiSentenceDelay: 1.8
-  subtitleSentenceDelay: 40
-  aiAudio: {fileID: 0}
-  IsSkip: 0
+  delayAmount: 3.6
+  aiAudio: {fileID: 8300000, guid: 8288d9eac4cc1fd4081973c2336df7c3, type: 3}
 --- !u!82 &1915457786
 AudioSource:
   m_ObjectHideFlags: 0
@@ -52350,8 +52339,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 8288d9eac4cc1fd4081973c2336df7c3, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
@@ -56054,7 +56043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e19e27e248dc749a6ded964fab83c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentNum: 10
   statColor:
   - {fileID: 1660431230}
   - {fileID: 9169149}
@@ -57343,7 +57331,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &2136510082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57954,6 +57942,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portable Objects
       objectReference: {fileID: 0}
+    - target: {fileID: 2510835974685427846, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: dialog_CS
+      value: 
+      objectReference: {fileID: 1915457782}
+    - target: {fileID: 2510835974685427846, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: M_canCardKey
+      value: 
+      objectReference: {fileID: 342996351253066979}
+    - target: {fileID: 2510835974685427846, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: EngineKeyData_M
+      value: 
+      objectReference: {fileID: 11400000, guid: 01d5b741fea00614080278ea280669c9, type: 2}
     - target: {fileID: 2662062218330919182, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -58825,6 +58825,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &342996351253066979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8077890707808397718, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+  m_PrefabInstance: {fileID: 342996351253066976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1397759963577864825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6674814239798694414, guid: c2ae03273b4df5a4fb49a1f2ac6363ac, type: 3}
