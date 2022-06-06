@@ -178,9 +178,13 @@ public class E_StrangeObj : MonoBehaviour
     IEnumerator ObjSmoke()
     {
         yield return new WaitForSeconds(2f);
-       // 3분간 플레이어 아웃라인 활성화
+        // 3분간 플레이어 아웃라인 활성화
+        // 3분간 플레이어 아웃라인 활성화
+        outlineControl.StartOutlineTime(300f);
+        TimerManager.timerManager.TimerStart(300f);
+
         //outlineControl.StartOutlineTime(30f, inGameTime.IsNoSeeFail1);
-        TimerManager.timerManager.TimerStart(30);
+        //TimerManager.timerManager.TimerStart(30);
         //Invoke("TimeCheck", 30);
         //Invoke("FailStrangeObj", 180f);
 

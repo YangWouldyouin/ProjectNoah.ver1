@@ -12,10 +12,6 @@ public class M_BeakerAfter : MonoBehaviour
     /*타이머*/
     public InGameTime inGameTime;
 
-    public GameObject S_TimerBarFilled;
-    public GameObject S_TimerBackground;
-    public GameObject S_TimerText;
-
     public bool IsFirstStart = false;
 
     public bool IsPretendDeadFail1 = false; //제한 시간 내에 안에 퍼즐 실패
@@ -49,10 +45,6 @@ public class M_BeakerAfter : MonoBehaviour
         if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
         {
             inGameTime.IsTimerStarted = false;
-
-            S_TimerBarFilled.SetActive(false);
-            S_TimerBackground.SetActive(false);
-            S_TimerText.SetActive(false);
 
             //Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
             //GameManager.gameManager._gameData.IsMiddleTuto = false;
