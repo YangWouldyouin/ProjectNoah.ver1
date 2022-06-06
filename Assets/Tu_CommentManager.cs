@@ -83,7 +83,7 @@ public class Tu_CommentManager : MonoBehaviour
 
         while (true)
         {
-            if (dialogManager.IsSubtitleStarted)
+            if (dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(1f);
             }
@@ -107,12 +107,12 @@ public class Tu_CommentManager : MonoBehaviour
 
         while (true)
         {
-            if (dialogManager.IsSubtitleStarted)
+            if (dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(0.5f);
             }
 
-            else if (!dialogManager.IsSubtitleStarted)
+            else if (!dialogManager.IsTalking)
             {
                 Color aiTurnColor = aiButton.GetComponent<Image>().color;
                 aiTurnColor.a = 1.0f;
@@ -136,7 +136,7 @@ public class Tu_CommentManager : MonoBehaviour
 
         while (true)
         {
-            if (dialogManager.IsSubtitleStarted)
+            if (dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(2f);
             }
@@ -161,12 +161,12 @@ public class Tu_CommentManager : MonoBehaviour
 
         while (true)
         {
-            if (dialogManager.IsSubtitleStarted)
+            if (dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(0.5f);
             }
 
-            else if (!dialogManager.IsSubtitleStarted)
+            else if (!dialogManager.IsTalking)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(68));
                 StartCoroutine(YesMike());
@@ -203,12 +203,12 @@ public class Tu_CommentManager : MonoBehaviour
 
         while (true)
         {
-            if (dialogManager.IsSubtitleStarted)
+            if (dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(1f);
             }
 
-            else if (!dialogManager.IsSubtitleStarted)
+            else if (!dialogManager.IsTalking)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(69));
                 StartCoroutine(FirstMission());
@@ -259,7 +259,7 @@ public class Tu_CommentManager : MonoBehaviour
 
         while (true)
         {
-            if(dialogManager.IsSubtitleStarted)
+            if(dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(6f);
             }
@@ -287,12 +287,12 @@ public class Tu_CommentManager : MonoBehaviour
 
         while (true)
         {
-            if(dialogManager.IsSubtitleStarted)
+            if(dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(6f);
             }
 
-            else if(!dialogManager.IsSubtitleStarted)
+            else if(!dialogManager.IsTalking)
             {
                 Debug.Log("마지막 대화 시작");
 
@@ -313,7 +313,7 @@ public class Tu_CommentManager : MonoBehaviour
 
         while (true)
         {
-            if (dialogManager.IsSubtitleStarted)
+            if (dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(8f);
             }
@@ -336,12 +336,12 @@ public class Tu_CommentManager : MonoBehaviour
         
         while (true)
         {
-            if(dialogManager.IsSubtitleStarted)
+            if(dialogManager.IsTalking)
             {
                 yield return new WaitForSeconds(1f);
             }
 
-            else if(!dialogManager.IsSubtitleStarted)
+            else if(!dialogManager.IsTalking)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(66));
 

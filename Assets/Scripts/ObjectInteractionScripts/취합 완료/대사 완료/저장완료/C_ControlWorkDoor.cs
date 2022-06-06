@@ -40,8 +40,8 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
     AudioSource Door_open_sound; 
     public AudioClip Door_open;
 
-    public GameObject controlCameraController;
-    ControlCameraController controllCamera;
+    //public GameObject controlCameraController;
+    //ControlCameraController controllCamera;
     public GameObject workLight;
 
     public void InsertAreaButton()
@@ -104,7 +104,7 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
     // Start is called before the first frame update
     void Start()
     {
-        controllCamera = controlCameraController.GetComponent<ControlCameraController>();
+        //controllCamera = controlCameraController.GetComponent<ControlCameraController>();
         Door_open_sound = GetComponent<AudioSource>();
 
         insertDetect = controlDoorDetect.GetComponent<InsertDetect>();
