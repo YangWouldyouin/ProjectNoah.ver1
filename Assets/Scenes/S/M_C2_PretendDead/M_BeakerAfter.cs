@@ -6,15 +6,12 @@ using UnityEngine.UI;
 public class M_BeakerAfter : MonoBehaviour
 {
     public GameObject StartScreen;
-    public GameObject EndScreen;
+    //public GameObject EndScreen;
     public GameObject DonTClick;
 
     /*타이머*/
     public InGameTime inGameTime;
 
-    public bool IsFirstStart = false;
-
-    public bool IsPretendDeadFail1 = false; //제한 시간 내에 안에 퍼즐 실패
     public bool canTpretendDead1 = false;
     public bool StartBlack = false;
     public bool StartOnlyOne = false;
@@ -32,31 +29,38 @@ public class M_BeakerAfter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsPretendDeadFail1 == true && canTpretendDead1 == false && !GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        //미션 실패
+        if (!GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet 
+            && canTpretendDead1 == false && inGameTime.IsTimerStarted == false
+            && inGameTime.IsBeakerEatAfterStart)
         {
+            Debug.Log("미션 실패");
             GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
-            //Debug.Log("시간 안에 퍼즐 풀기 실패");
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
+            //반복 방지
             canTpretendDead1 = true;
         }
 
         //타임 어택 성공시
-        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet 
+            && inGameTime.IsTimerStarted)
         {
             inGameTime.IsTimerStarted = false;
+            inGameTime.missionTimer = 0;
 
             //Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
             //GameManager.gameManager._gameData.IsMiddleTuto = false;
             //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
         }
 
-        if (GameManager.gameManager._gameData.IsDrinkBeaker_M_C2 && IsFirstStart == false)
+        if (GameManager.gameManager._gameData.IsDrinkBeaker_M_C2 
+            && inGameTime.IsBeakerEatAfterStart == false)
         {
             // 2.쓰러진다. 
             Invoke("EatAfter", 3);
 
-            IsFirstStart = true;
+            inGameTime.IsBeakerEatAfterStart = true;
         }
     }
 
@@ -129,15 +133,10 @@ public class M_BeakerAfter : MonoBehaviour
         /*노아 다시 움직이게*/
         PlayerScripts.playerscripts.IsBored = false;
 
-        //타이머 시작 3분
+        //타이머 시작 5분
         TimerManager.timerManager.TimerStart(300);
-        Invoke("PretendFailCheck", 300f);
     }
 
-    void PretendFailCheck()
-    {
-        IsPretendDeadFail1 = true;
-    }
 
     void FakeAI1()
     {
