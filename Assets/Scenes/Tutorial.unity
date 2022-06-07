@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4513672, g: 0.50038254, b: 0.56975245, a: 1}
+  m_IndirectSpecularColor: {r: 0.45136768, g: 0.50038236, b: 0.5697532, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -9622,7 +9622,7 @@ PrefabInstance:
       objectReference: {fileID: 1759098427}
     - target: {fileID: 102595120, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 335102416, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
@@ -9722,11 +9722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 121805374016432837, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 473745847672761151, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 565886689723836008, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9890,7 +9890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2295004328191567575, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2295004328191567575, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -11644,6 +11644,7 @@ MonoBehaviour:
     IsPhotoTime: 0
     IsAIReportMissionTime: 0
     IsInputImportantMeteor1_T_C2: 0
+    IsAIAfterMissionComplete: 0
   _savePageData:
     IsDisqualifiedEnd0: 0
     IsEatBadPotato0: 0
@@ -30436,6 +30437,17 @@ RectTransform:
   m_AnchoredPosition: {x: 677, y: 202}
   m_SizeDelta: {x: 69.48425, y: -142.4136}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1151143461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 367054525, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 365641744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1156042918
 GameObject:
   m_ObjectHideFlags: 0
@@ -52319,7 +52331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AIPanelAnim: {fileID: 1123687520}
   dialogText: {fileID: 365641750}
-  talkText: {fileID: 0}
+  talkText: {fileID: 1151143461}
   nameText: {fileID: 2065916714}
   AIPanel: {fileID: 220267153}
   subtitlePanel: {fileID: 184596018}
@@ -52327,7 +52339,7 @@ MonoBehaviour:
   IsTalking: 0
   typingSpeed: 0.04
   aiSentenceDelay: 1.8
-  delayAmount: 3.6
+  delayAmount: 40
   aiAudio: {fileID: 8300000, guid: 8288d9eac4cc1fd4081973c2336df7c3, type: 3}
 --- !u!82 &1915457786
 AudioSource:
