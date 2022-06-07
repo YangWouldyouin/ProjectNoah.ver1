@@ -56,6 +56,11 @@ public class M_Pack : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(24));
         }
 
+        if(packData_M.IsSmash)
+        {
+            EngineKeyData_M.IsNotInteractable = false;
+        }
+
     }
 
     void DisableButton()
