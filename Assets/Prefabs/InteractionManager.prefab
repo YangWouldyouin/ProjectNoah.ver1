@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2963120970095792787}
   - component: {fileID: 2963120970095792786}
-  - component: {fileID: 3062108360517721092}
+  - component: {fileID: 1290185690}
   m_Layer: 0
   m_Name: InteractionManager
   m_TagString: Untagged
@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portableObjects: {fileID: 0}
   risePosition: {x: 0, y: 0, z: 0}
+  IsUp: 0
+  IsObserve: 0
   insertPosOffset: {x: 0, y: 0, z: 0}
   insertRotOffset: {x: 0, y: 0, z: 0}
   noahBiteObject: {fileID: 0}
@@ -61,7 +63,10 @@ MonoBehaviour:
   BasicUI_Click: {fileID: 8300000, guid: 5d655b7c35100f14cbe7e2600a50a70c, type: 3}
   Noah_Bark: {fileID: 8300000, guid: ba69a204ef56e174b97786a6a7d0c6fd, type: 3}
   Noah_Eat: {fileID: 8300000, guid: ca44d4ea2f8c1ca4285756bda8b17241, type: 3}
---- !u!82 &3062108360517721092
+  DropBox: {fileID: 8300000, guid: 0a2adec97b11fab44905e5951a9a6d6f, type: 3}
+  achieveData: {fileID: 11400000, guid: 85a3117d427a4f944852a96038808bb0, type: 2}
+  navmeshObstacle: {fileID: 0}
+--- !u!82 &1290185690
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,8 +76,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 5d655b7c35100f14cbe7e2600a50a70c, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
