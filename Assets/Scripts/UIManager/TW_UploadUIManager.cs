@@ -21,7 +21,7 @@ public class TW_UploadUIManager : MonoBehaviour
     {
         if(UploadPage.activeSelf == true)
         {
-            Debug.Log("dd");
+            //Debug.Log("dd");
             downloadingText.text = "FileUploading " + 0 + "%";
 
             if (setTime < 99)
@@ -33,7 +33,7 @@ public class TW_UploadUIManager : MonoBehaviour
         }
         else if(UploadPage.activeSelf == false)
         {
-            Debug.Log("ss");
+            //Debug.Log("ss");
             setTime = 0;
             downloadingText.text = "FileUploading " + 0 + "%";
         }
