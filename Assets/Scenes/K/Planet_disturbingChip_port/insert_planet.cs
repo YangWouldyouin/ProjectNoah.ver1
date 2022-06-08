@@ -10,12 +10,14 @@ public class insert_planet : MonoBehaviour, IInteraction
     ObjData Planet_insertData;
     Outline Planet_insertLine;
 
+    ObjData R_ChipObjData;
     public GameObject R_Chip;
-    public ObjectData R_ChipData;
+    //public ObjectData R_ChipData;
     Outline R_ChipLine;
 
+    ObjData W_ChipObjData;
     public GameObject W_Chip;
-    public ObjectData W_ChipData;
+    //public ObjectData W_ChipData;
     Outline W_ChipLine;
 
     public GameObject dialog;
@@ -82,7 +84,7 @@ public class insert_planet : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerPressHead();
         StartCoroutine(ChangePressFalse());
 
-        if (R_ChipData.IsBite)
+        if (R_ChipObjData.IsBite)
         {
             Debug.Log("변화없음");
 
@@ -99,7 +101,7 @@ public class insert_planet : MonoBehaviour, IInteraction
             Invoke("NoChip", 0.5f);
         }
 
-        if (W_ChipData.IsBite)
+        if (W_ChipObjData.IsBite)
         {
             // dialogManager.StartCoroutine(dialogManager.PrintAIDialog(60));
 
@@ -143,9 +145,9 @@ public class insert_planet : MonoBehaviour, IInteraction
     {
         Debug.Log("칩 꽂았음");
 
-        if (R_ChipData.IsBite)
+        if (R_ChipObjData.IsBite)
         {
-            R_ChipData.IsBite = false;
+            R_ChipObjData.IsBite = false;
 
             R_Chip.GetComponent<Rigidbody>().isKinematic = false;
             R_Chip.transform.parent = null;
@@ -154,7 +156,7 @@ public class insert_planet : MonoBehaviour, IInteraction
             R_Chip.transform.position = new Vector3(-36.433f, 0.735f, -33.7f);
             R_Chip.transform.rotation = Quaternion.Euler(90, 0, 0);
 
-            R_ChipData.IsNotInteractable = false;
+            R_ChipObjData.IsNotInteractable = false;
             R_ChipLine.OutlineWidth = 0;
 
             Planet_insertData.IsNotInteractable = false;
@@ -162,9 +164,9 @@ public class insert_planet : MonoBehaviour, IInteraction
 
         }
 
-        if (W_ChipData.IsBite)
+        if (W_ChipObjData.IsBite)
         {
-            W_ChipData.IsBite = false;
+            W_ChipObjData.IsBite = false;
 
             W_Chip.GetComponent<Rigidbody>().isKinematic = false;
             W_Chip.transform.parent = null;
@@ -173,7 +175,7 @@ public class insert_planet : MonoBehaviour, IInteraction
             W_Chip.transform.position = new Vector3(-36.433f, 0.735f, -33.7f);
             W_Chip.transform.rotation = Quaternion.Euler(90, 0, 0);
 
-            W_ChipData.IsNotInteractable = false;
+            W_ChipObjData.IsNotInteractable = false;
             W_ChipLine.OutlineWidth = 0;
 
             Planet_insertData.IsNotInteractable = false;

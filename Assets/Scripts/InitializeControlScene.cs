@@ -24,6 +24,10 @@ public class InitializeControlScene : MonoBehaviour
     BoxCollider RChipCol;
     BoxCollider WChipCol;
 
+    [Header("<Çà¼ºÅ½»ç>")]
+    public GameObject PlanetInsert;
+    BoxCollider PlanetInsertCol;
+
 
 
     // Start is called before the first frame update
@@ -67,6 +71,17 @@ public class InitializeControlScene : MonoBehaviour
             RChip.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
             RChip.transform.position = new Vector3(-7.448f, 34.62f, -1.439f);
             RChip.transform.rotation = Quaternion.Euler(90, 0, 0);
+        }
+
+        if(intialGameData.IsPlanetInsertChip_In)
+        {
+            PlanetInsertCol.enabled = false;
+            WChip.SetActive(true);
+            WChipCol.enabled = false;
+
+            WChip.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
+            WChip.transform.position = new Vector3(-36.433f, 0.735f, -33.7f);
+            WChip.transform.rotation = Quaternion.Euler(90, 0, 0);
         }
     }
 

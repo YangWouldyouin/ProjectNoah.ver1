@@ -10,8 +10,9 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
     ObjData Planet_portDoorData;
     Outline Planet_portDoorLine;
 
+    ObjData Planet_insertObjData;
     public GameObject Planet_insert;
-    public ObjectData Planet_insertData;
+    // public ObjectData Planet_insertData;
     Outline Planet_insertLine;
 
     public GameObject dialog;
@@ -83,7 +84,7 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
         Planet_portDoorData.IsNotInteractable = true;
         Planet_portDoorLine.OutlineWidth = 0f;
 
-        Planet_insertData.IsNotInteractable = false;
+        Planet_insertObjData.IsNotInteractable = false;
         Planet_insertLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
