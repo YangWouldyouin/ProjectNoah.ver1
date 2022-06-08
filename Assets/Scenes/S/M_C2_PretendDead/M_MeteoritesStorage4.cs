@@ -14,7 +14,9 @@ public class M_MeteoritesStorage4 : MonoBehaviour, IInteraction
         observeButton_M_MeteoritesStorage4, observeDisableButton_M_MeteoritesStorage4;
 
     /*ObjData*/
-    ObjData meteoritesStorage4Data_M;
+    ObjData meteoritesStorage4ObjData_M;
+    public ObjectData meteoritesStorage4Data_M;
+
     public ObjectData IsWrongMeteor3Data_M;
 
 
@@ -28,7 +30,7 @@ public class M_MeteoritesStorage4 : MonoBehaviour, IInteraction
     void Start()
     {
         /*ObjData*/
-        meteoritesStorage4Data_M = GetComponent<ObjData>();
+        meteoritesStorage4ObjData_M = GetComponent<ObjData>();
 
         /*Outline*/
         IsWrongMeteor3Outline_M = M_IsWrongMeteor3.GetComponent<Outline>();
@@ -38,22 +40,26 @@ public class M_MeteoritesStorage4 : MonoBehaviour, IInteraction
         IsWrongMeteor3_Collider = M_IsWrongMeteor3.GetComponent<BoxCollider>();
 
         /*버튼 연결*/
-        barkButton_M_MeteoritesStorage4 = meteoritesStorage4Data_M.BarkButton;
+        barkButton_M_MeteoritesStorage4 = meteoritesStorage4ObjData_M.BarkButton;
         barkButton_M_MeteoritesStorage4.onClick.AddListener(OnBark);
 
-        sniffButton_M_MeteoritesStorage4 = meteoritesStorage4Data_M.SniffButton;
+        sniffButton_M_MeteoritesStorage4 = meteoritesStorage4ObjData_M.SniffButton;
         sniffButton_M_MeteoritesStorage4.onClick.AddListener(OnSniff);
 
-        biteButton_M_MeteoritesStorage4 = meteoritesStorage4Data_M.BiteButton;
+        biteButton_M_MeteoritesStorage4 = meteoritesStorage4ObjData_M.BiteButton;
         //biteButton_M_MeteoritesStorage1.onClick.AddListener(OnBiteDestroy);
 
-        pressButton_M_MeteoritesStorage4 = meteoritesStorage4Data_M.PushOrPressButton;
+        pressButton_M_MeteoritesStorage4 = meteoritesStorage4ObjData_M.PushOrPressButton;
         pressButton_M_MeteoritesStorage4.onClick.AddListener(OnPushOrPress);
 
-        observeButton_M_MeteoritesStorage4 = meteoritesStorage4Data_M.CenterButton1;
+        observeButton_M_MeteoritesStorage4 = meteoritesStorage4ObjData_M.CenterButton1;
         observeButton_M_MeteoritesStorage4.onClick.AddListener(OnObserve);
 
-        observeDisableButton_M_MeteoritesStorage4= meteoritesStorage4Data_M.CenterButton1;
+        observeDisableButton_M_MeteoritesStorage4= meteoritesStorage4ObjData_M.CenterButton1;
+
+        /*선언 시작*/
+        meteoritesStorage4Data_M.IsObserve = false;
+        meteoritesStorage4Data_M.IsNotInteractable = false;
     }
 
     void DisableButton()
@@ -84,7 +90,7 @@ public class M_MeteoritesStorage4 : MonoBehaviour, IInteraction
 
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
 
-        CameraController.cameraController.currentView = meteoritesStorage4Data_M.ObserveView;
+        CameraController.cameraController.currentView = meteoritesStorage4ObjData_M.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
 

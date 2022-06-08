@@ -15,6 +15,7 @@ public class M_MeteoritesStorage3 : MonoBehaviour, IInteraction
 
     /*ObjData*/
     ObjData meteoritesStorage3ObjData_M;
+    public ObjectData meteoritesStorage3Data_M;
 
     public ObjectData IsWrongMeteor2Data_M;
 
@@ -55,6 +56,10 @@ public class M_MeteoritesStorage3 : MonoBehaviour, IInteraction
         observeButton_M_MeteoritesStorage3.onClick.AddListener(OnObserve);
 
         observeDisableButton_M_MeteoritesStorage3= meteoritesStorage3ObjData_M.CenterButton1;
+
+        /*선언 시작*/
+        meteoritesStorage3Data_M.IsObserve = false;
+        meteoritesStorage3Data_M.IsNotInteractable = false;
     }
 
     void DisableButton()

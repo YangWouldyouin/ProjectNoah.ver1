@@ -154,7 +154,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
     IEnumerator StartPretendDead()
     {
-        yield return new WaitForSeconds(100f);
+        yield return new WaitForSeconds(30f);
         GameManager.gameManager._gameData.IsStartPretendDead = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
