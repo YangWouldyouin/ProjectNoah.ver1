@@ -305,6 +305,9 @@ public class InitializeWorkingScene : MonoBehaviour
             HalfLivingDoorAni_M.SetBool("HalfEnd", true);
             goToLIving.SetActive (true);
 
+            CardKey_WL.transform.position = new Vector3(-264.18f, 2.94f, 691.467f); //위치
+            CardKey_WL.transform.rotation = Quaternion.Euler(0, 0, 90); //각도
+
             CardKey_WL_Collider.enabled = false;
             LivingSpace_CardKeyMachine_W_Collider.enabled = false;
         }
