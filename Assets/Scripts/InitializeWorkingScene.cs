@@ -251,15 +251,17 @@ public class InitializeWorkingScene : MonoBehaviour
         /*엔진실 문을 수리하면*/
         if (intialGameData.IsEngineDoorFix_M_C2)
         {
-            Conduction.SetActive(false);
+            /*전도체 안보이게*/
+            workRoomData.IsObjectActiveList[33] = false;
         }
 
 
         /*엔진실 카드 키 찾기 퍼즐을 완료하면*/
         if (intialGameData.IsCompleteFindEngineKey)
         {
-            CardPack.SetActive(false);
-            EngineCardKey.SetActive(true);
+            /*카드팩, 카드키 안보이게*/
+            workRoomData.IsObjectActiveList[31] = false;
+            workRoomData.IsObjectActiveList[32] = false;
 
         }
       
@@ -322,11 +324,16 @@ public class InitializeWorkingScene : MonoBehaviour
     {
         if (intialGameData.IsCompleteSmartFarmOpen)
         {
+            /*망가진 전선 안보이게*/
+            workRoomData.IsObjectActiveList[34] = false;
+
+            /*고쳐진 전선 위치 고정*/
+            FixedLine2.transform.position = new Vector3(-258.06f, 0.674f, 670.384f); //위치 값
+            FixedLine2.transform.rotation = Quaternion.Euler(0, -90, 90); // 각도 값 
+
             smartFarmOpen.enabled = false;
             LineHome2_Collider.enabled = false;
             IronPlateDoor_Collider.enabled = false;
-            TroubleLine.SetActive(false);
-            FixedLine2.SetActive(false);
             workRoomData.IsObjectActiveList[34] = false;
 
             smartFarmDoorAnim.SetBool("FarmDoorMoving", true);
@@ -346,8 +353,8 @@ public class InitializeWorkingScene : MonoBehaviour
             engineDoorAnim.SetBool("canEngineDoorEnd", true);
             GoToEngineRoom.SetActive(true);
 
-            EngineCardKey.SetActive(false);
-            Conduction.SetActive(false);
+/*            EngineCardKey.SetActive(false);
+            Conduction.SetActive(false);*/
 
             BrokenArea_Collider.enabled = false;
             EngineDoor_Collider.enabled = false;
@@ -386,7 +393,8 @@ public class InitializeWorkingScene : MonoBehaviour
             analyticalMachineAnim.SetBool("isAnalyticalMachineClose", false);
             analyticalMachineAnim.SetBool("isAnalyticalMachineCloseEnd", false);
 
-            NormalMeteor1.SetActive(false);
+            /*일반 운석 안보이게*/
+            workRoomData.IsObjectActiveList[30] = false;
 
             MeteorButtonData_Save.IsNotInteractable = true;
             MeteorButtonOutline_Save.OutlineWidth = 0;
@@ -406,6 +414,8 @@ public class InitializeWorkingScene : MonoBehaviour
     {
         if (intialGameData.IsCompletePretendDead)
         {
+            /*운석 보관함에 있던 운석들 안보이게*/
+            workRoomData.IsObjectActiveList[31] = false;
             workRoomData.IsObjectActiveList[24] = false;
             workRoomData.IsObjectActiveList[25] = false;
             workRoomData.IsObjectActiveList[26] = false;
@@ -437,7 +447,9 @@ public class InitializeWorkingScene : MonoBehaviour
         {
             smellRangeArea.SetActive(false);
             canSmellArea.SetActive(false);
-            drugBag.SetActive(false);
+
+            /*drugBag 안보이게*/
+            workRoomData.IsObjectActiveList[37] = false;
 
             insert01Col.enabled = false;
             drugCol.enabled = false;
