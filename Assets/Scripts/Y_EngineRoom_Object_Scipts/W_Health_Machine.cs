@@ -148,6 +148,12 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
             }
 
         }
+
+        if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == true)
+        {
+            healthMachineData.IsCenterButtonDisabled = false;
+        }
+
     }
 
     void DiableButton()
