@@ -129,7 +129,7 @@ public class M_BeakerAfter : MonoBehaviour
         StartScreen.SetActive(false);
         DonTClick.SetActive(false);
         //EndScreen.SetActive(false);
-
+        inGameTime.IsAIAwake = false;
         /*노아 다시 움직이게*/
         PlayerScripts.playerscripts.IsBored = false;
 
