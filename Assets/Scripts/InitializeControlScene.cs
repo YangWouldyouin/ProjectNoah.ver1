@@ -53,6 +53,10 @@ public class InitializeControlScene : MonoBehaviour
             controlWorkDoorAnim.SetBool("IsDoorOpened", true);
             ChangeScene.SetActive(true);
         }
+        else
+        {
+            ChangeScene.SetActive(false);
+        }
 
         if(intialGameData.IsAIDown_M_C1C3)
         {
