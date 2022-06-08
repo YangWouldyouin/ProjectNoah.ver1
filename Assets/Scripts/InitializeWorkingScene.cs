@@ -353,6 +353,7 @@ public class InitializeWorkingScene : MonoBehaviour
             engineDoorAnim.SetBool("canEngineDoorEnd", true);
             GoToEngineRoom.SetActive(true);
 
+            //중복임
 /*            EngineCardKey.SetActive(false);
             Conduction.SetActive(false);*/
 
@@ -445,6 +446,7 @@ public class InitializeWorkingScene : MonoBehaviour
     {
         if (intialGameData.IsCheckDrug)
         {
+            /*얘네는 못움직이는 오브젝트들*/
             smellRangeArea.SetActive(false);
             canSmellArea.SetActive(false);
 
