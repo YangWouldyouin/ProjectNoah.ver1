@@ -180,8 +180,6 @@ public class InteractionButtonController : MonoBehaviour
                     biteData = noahBiteObject.GetComponent<ObjData>();
                     biteData.objectDATA.IsBite = true;
 
-
-
                     /* 현재 물고 있는 오브젝트 이름 띄움 */
                     objectText.text = "Noah N.113 - " + biteData.ObjectName;
 

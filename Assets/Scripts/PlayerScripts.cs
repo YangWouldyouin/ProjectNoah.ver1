@@ -388,7 +388,7 @@ public class PlayerScripts : MonoBehaviour
          // 안 지루함
         IsBored = false;
         boringTime = 0;
-        if (objData.InteractionDestination!=null)
+        if (objData.InteractionDestination != null)
         {
             SetDirection(objData.InteractionDestination);
         }
