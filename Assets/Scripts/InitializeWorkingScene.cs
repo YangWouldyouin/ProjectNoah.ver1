@@ -41,6 +41,7 @@ public class InitializeWorkingScene : MonoBehaviour
 
 
     [Header("<생활공간 문 반만 열기 완료>")]
+    public GameObject LivingSpaceDoor; //생활공간 문
     public GameObject goToLIving; // 생활공간해금
     public GameObject CardKey_WL; // 생활공간 카드키
     public GameObject LivingSpace_CardKeyMachine_W; // 생활공간 카드키 기계
@@ -270,17 +271,12 @@ public class InitializeWorkingScene : MonoBehaviour
         HalfLivingDoor(); /* 생활공간 문 반 열기 퍼즐 완료 시 */
 
 
-        // 생활공간 문을 완전히 고치면 - 근데 이거 업무공간 문에도 애니메이션 들어잇어..?
+        // 생활공간 문을 완전히 고치면
         if (intialGameData.IsCompleteOpenLivingRoom)
         {
-            HalfLivingDoorAni_M.SetBool("LivingOpen", true); // 생활공간 문 완전히 열리기
-            HalfLivingDoorAni_M.SetBool("LivingEnd", true);
+            LivingSpaceDoor.transform.position = new Vector3(-263.12f, -0.67f, 694.04f);
         }
-        else
-        {
-            HalfLivingDoorAni_M.SetBool("LivingOpen", false);
-            HalfLivingDoorAni_M.SetBool("LivingEnd", false);
-        }
+
 
         ColectMeteorite();  /*운석 수집 퍼즐을 완료하면*/
 
