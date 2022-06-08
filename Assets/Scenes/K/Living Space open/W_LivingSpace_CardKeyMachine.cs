@@ -45,6 +45,7 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
     void Start()
     {
+        dialogManager = dialogManager_CS.GetComponent<DialogManager>();
         equipment = BaseCanvas._baseCanvas.equipment;
         portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
         LivingSpace_CardKeyMachine = GetComponent<AudioSource>();
