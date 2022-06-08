@@ -276,6 +276,12 @@ public class InitializeWorkingScene : MonoBehaviour
             smartFarmDoorAnim.SetBool("FarmDoorStop", true);
         }
          
+        if(intialGameData.IsEngineDoorFix_M_C2)
+        {
+            Conduction.transform.position = new Vector3(-260.954f, 1.0869f, 666.558f); //위치 고정
+            Conduction.transform.rotation = Quaternion.Euler(0, -90, 90); //각도 고정
+        }
+
 
         /*엔진실 카드 키 찾기 퍼즐을 완료하면*/
         if (intialGameData.IsCompleteFindEngineKey)
