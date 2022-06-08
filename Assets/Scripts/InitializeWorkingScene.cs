@@ -13,6 +13,7 @@ public class InitializeWorkingScene : MonoBehaviour
 
     [Header("<상태체크기계 고치기>")]
     public GameObject HealthMachine;
+    public ObjectData HealthMachineData;
     public GameObject HealthMachineFixData;
     public ObjectData healthMachineFixPartData;
 
@@ -258,6 +259,8 @@ public class InitializeWorkingScene : MonoBehaviour
             HealthMachineFixData.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
             HealthMachineFixData_Collider.enabled = false;
+
+            HealthMachineData.IsCenterButtonDisabled = false;
         }
 
         /*스마트팜 오픈 퍼즐을 완료 하면*/
