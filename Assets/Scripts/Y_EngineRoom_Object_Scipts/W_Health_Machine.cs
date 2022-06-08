@@ -79,7 +79,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
         dialogManager = dialogManager_HM.GetComponent<DialogManager>();
 
-        if (!GameManager.gameManager._gameData.IsFirstEnterWorking)
+        if (!GameManager.gameManager._gameData.IsFirstEnterWorking && GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == false)
         {
             //W_HM_1
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));

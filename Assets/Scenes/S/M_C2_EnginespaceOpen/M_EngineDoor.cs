@@ -62,7 +62,7 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(dontrootmore == false)
+        if(dontrootmore == false && GameManager.gameManager._gameData.IsCompleteOpenEngineRoom == false)
         {
             // 엔진실 카드키 찾기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             // 엔진실 문 고치기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
