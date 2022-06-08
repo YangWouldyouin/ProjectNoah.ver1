@@ -36,7 +36,7 @@ public class InitializeEngineScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //EngineRoomData = BaseCanvas._baseCanvas.EngineRoomData;
+        EngineRoomData = BaseCanvas._baseCanvas.engineRoomData;
 
         dialogManager = dialog.GetComponent<DialogManager>();
 
