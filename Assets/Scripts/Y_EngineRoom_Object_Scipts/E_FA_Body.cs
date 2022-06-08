@@ -19,9 +19,12 @@ public class E_FA_Body : MonoBehaviour, IInteraction
     public GameObject dialog_CS;
     DialogManager dialogManager;
 
+    PortableObjectData engineData;
+
     // Start is called before the first frame update
     void Start()
     {
+        engineData = BaseCanvas._baseCanvas.engineRoomData;
         dialogManager = dialog_CS.GetComponent<DialogManager>();
 
         if (!GameManager.gameManager._gameData.IsFirstEnterEngine)
@@ -84,12 +87,14 @@ public class E_FA_Body : MonoBehaviour, IInteraction
 
         if (FA_fuelabsorberfixPartData.IsBite) // 부품을 물었으면
         {
-            Invoke("fuelabsorberDone", 1.5f); 
+            StartCoroutine(fuelabsorberDone());
+            //Invoke("fuelabsorberDone", 1.5f); 
         }
     }
 
-    public void fuelabsorberDone()
+    IEnumerator fuelabsorberDone()
     {
+        yield return new WaitForSeconds(1.5f);
         FA_fuelabsorber.SetActive(true);
 
         FA_fuelabsorberfixPart.GetComponent<Rigidbody>().isKinematic = false;
@@ -98,7 +103,7 @@ public class E_FA_Body : MonoBehaviour, IInteraction
 
         FA_fuelabsorberfixPartData.IsBite = false;
         playerEquipment.biteObjectName = "";
-
+        engineData.IsObjectActiveList[3]= false;
         GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 = true;
 
         GameManager.gameManager._gameData.ActiveMissionList[16] = false;

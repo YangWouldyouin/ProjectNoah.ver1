@@ -40,8 +40,13 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
     public GameObject goToLivingRoom;
 
+    GameObject portableGroup;
+    PlayerEquipment equipment;
+
     void Start()
     {
+        equipment = BaseCanvas._baseCanvas.equipment;
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
         LivingSpace_CardKeyMachine = GetComponent<AudioSource>();
 
         /* 해당 오브젝트의 ObjData를 가져온다. */
@@ -163,12 +168,16 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
         if (CardKeyData_WL.IsBite && boxData_WL.IsUpDown && LivingSpace_CardKeyMachineData_W.IsObserve) // 카드키 '물기' && 박스 '오르기' 했을 떄
         {
+            /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Y-3대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(29));
+
             Debug.Log("카드키 꽂을게요");
             // 누르기 -> 카드키를 카드기계에 삽입 완료
             // 부모-자식 관계 해제
             CardKey_WL.GetComponent<Rigidbody>().isKinematic = false;
             CardKey_WL.transform.parent = null;
-
+            CardKey_WL.transform.parent = portableGroup.transform;
+            equipment.biteObjectName = "";
             // 카드키 위치, 각도 변환
             CardKey_WL.transform.position = new Vector3(-264.18f, 2.94f, 691.467f); //위치
             CardKey_WL.transform.rotation = Quaternion.Euler(0, 0, 90); //각도
@@ -203,13 +212,11 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
             Debug.Log("생활공간 문 변수 저장");
 
-            /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Y-3대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(29));
 
             if (GameManager.gameManager._gameData.IsWEDoorOpened_M_C2)
             {
-                GameManager.gameManager._gameData.IsAllDoorOpened = true;
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(12));
+                GameManager.gameManager._gameData.IsAllDoorOpened = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
         }

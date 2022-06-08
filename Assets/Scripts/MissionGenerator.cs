@@ -22,9 +22,6 @@ public class MissionGenerator : MonoBehaviour
     private void Awake()
     {
         missionGenerator = this;
-    }
-    private void Start()
-    {
         //튜토리얼
         missionDic.Add(0, "AI 활성화");
         missionDic.Add(1, "업무공간 진입");
@@ -90,6 +87,11 @@ public class MissionGenerator : MonoBehaviour
         //{
         //    missionList.Add(missionDic[2]);
         //}
+
+    }
+    private void Start()
+    {
+
     }
 
 
