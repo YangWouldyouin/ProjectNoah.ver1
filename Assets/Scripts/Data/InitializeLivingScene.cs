@@ -15,6 +15,7 @@ public class InitializeLivingScene : MonoBehaviour
 
     [Header("< 문 완전히 수리 >")]
     public GameObject Doll;
+    public GameObject LivingroomDoor;
     public Animator doorAnim;
 
 
@@ -61,13 +62,11 @@ public class InitializeLivingScene : MonoBehaviour
         if(intialGameData.IsCompleteOpenLivingRoom)
         {
             Doll.transform.position = new Vector3(-33.58f, 0.22f, 33.59f);
-            doorAnim.SetBool("LivingOpen", true); // 생활공간 문 완전히 열리기
-            doorAnim.SetBool("LivingEnd", true);
+            LivingroomDoor.transform.position = new Vector3(-263.12f, -0.67f, 694.04f); // 생활공간 문 완전히 열리기
         }
         else
         {
-            doorAnim.SetBool("LivingOpen", false); 
-            doorAnim.SetBool("LivingEnd", false);
+            LivingroomDoor.transform.position = new Vector3(-260.11f, -0.67f, 694.04f);
         }
     }
 }
