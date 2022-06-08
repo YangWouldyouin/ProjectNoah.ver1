@@ -5,14 +5,12 @@ using UnityEngine.AI;
 
 public class InitializeWorkingScene : MonoBehaviour
 {
-
-
+    GameData intialGameData;
     public GameObject dialog;
     DialogManager dialogManager;
     PortableObjectData workRoomData;
 
     [Header("<상태체크기계 고치기>")]
-    public GameObject HealthMachine;
     public ObjectData HealthMachineData;
     public GameObject HealthMachineFixData;
     public ObjectData healthMachineFixPartData;
@@ -156,7 +154,6 @@ public class InitializeWorkingScene : MonoBehaviour
 
     BoxCollider HealthMachineFixData_Collider;
 
-
     //책상오르기 콜라이더
     BoxCollider PackOnTable1_Collider;
     BoxCollider Beaker1OnTable1_Collider;
@@ -175,10 +172,10 @@ public class InitializeWorkingScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        intialGameData = SaveSystem.Load("save_001");
+
         workRoomData = BaseCanvas._baseCanvas.workRoomData;
         dialogManager = dialog.GetComponent<DialogManager>();
-
-        GameData intialGameData = SaveSystem.Load("save_001");
 
         /*상태체크기계고치기*/
         HealthMachineFixData_Collider = HealthMachineFixData.GetComponent<BoxCollider>();
@@ -186,7 +183,6 @@ public class InitializeWorkingScene : MonoBehaviour
         /*스마트팜 오픈*/
         LineHome2_Collider = LineHome2.GetComponent<BoxCollider>();
         IronPlateDoor_Collider = IronPlateDoor.GetComponent<BoxCollider>();
-        smartFarmOpen.enabled = false;
 
         /*엔진실 오픈*/
         BrokenArea_Collider = BrokenArea.GetComponent<BoxCollider>();
@@ -247,8 +243,66 @@ public class InitializeWorkingScene : MonoBehaviour
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
         }
+   
+        FixHealthMachine(); /*상태체크기계 고치기*/
 
-        /*상태체크기계 고치기*/
+        OpenSmartFarm(); /*스마트팜 오픈 퍼즐을 완료 하면*/
+
+        /*엔진실 문을 수리하면*/
+        if (intialGameData.IsEngineDoorFix_M_C2)
+        {
+            Conduction.SetActive(false);
+        }
+
+
+        /*엔진실 카드 키 찾기 퍼즐을 완료하면*/
+        if (intialGameData.IsCompleteFindEngineKey)
+        {
+            CardPack.SetActive(false);
+            EngineCardKey.SetActive(true);
+
+        }
+      
+        OpenEngineRoom(); /*엔진실 열기 퍼즐을 완료하면*/
+
+        HalfLivingDoor(); /* 생활공간 문 반 열기 퍼즐 완료 시 */
+
+
+        // 생활공간 문을 완전히 고치면 - 근데 이거 업무공간 문에도 애니메이션 들어잇어..?
+        if (intialGameData.IsCompleteOpenLivingRoom)
+        {
+            HalfLivingDoorAni_M.SetBool("LivingOpen", true); // 생활공간 문 완전히 열리기
+            HalfLivingDoorAni_M.SetBool("LivingEnd", true);
+        }
+        else
+        {
+            HalfLivingDoorAni_M.SetBool("LivingOpen", false);
+            HalfLivingDoorAni_M.SetBool("LivingEnd", false);
+        }
+
+        ColectMeteorite();  /*운석 수집 퍼즐을 완료하면*/
+
+        PretendDead(); /*죽은척하기 퍼즐을 완료하면*/
+
+        DetectDrug(); //마약 탐지 완료하면
+
+
+        if (intialGameData.IsFindDrugDone_T_C2)
+        {
+            insert02Col.enabled = false;
+            SDrugCol.enabled = false;
+
+            SDrug.transform.position = new Vector3(-249.0776f, 0.1652f, 669.806f);
+            SDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+
+        UpTable1(); //책상1 오르기를 완료하면
+
+        UpTable2(); //책상2 오르기를 완료하면
+    }
+
+    void FixHealthMachine()
+    {
         if (intialGameData.IsHealthMachineFixed_T_C2)
         {
             HealthMachineFixData.GetComponent<Rigidbody>().isKinematic = false;
@@ -262,37 +316,30 @@ public class InitializeWorkingScene : MonoBehaviour
 
             HealthMachineData.IsCenterButtonDisabled = false;
         }
+    }
 
-        /*스마트팜 오픈 퍼즐을 완료 하면*/
+    void OpenSmartFarm()
+    {
         if (intialGameData.IsCompleteSmartFarmOpen)
         {
+            smartFarmOpen.enabled = false;
             LineHome2_Collider.enabled = false;
             IronPlateDoor_Collider.enabled = false;
             TroubleLine.SetActive(false);
             FixedLine2.SetActive(false);
-            workRoomData.IsObjectActiveList[34]= false;
+            workRoomData.IsObjectActiveList[34] = false;
 
             smartFarmDoorAnim.SetBool("FarmDoorMoving", true);
             smartFarmDoorAnim.SetBool("FarmDoorStop", true);
         }
-         
-         /*엔진실 문을 수리하면*/
-        if(intialGameData.IsEngineDoorFix_M_C2)
+        else
         {
-            Conduction.SetActive(false);
+            smartFarmOpen.enabled = true;
         }
+    }
 
-
-        /*엔진실 카드 키 찾기 퍼즐을 완료하면*/
-        if (intialGameData.IsCompleteFindEngineKey)
-        {
-            CardPack.SetActive(false);
-            EngineCardKey.SetActive(true);
-
-        }
-         
-
-        /*엔진실 열기 퍼즐을 완료하면*/
+    void OpenEngineRoom()
+    {
         if (intialGameData.IsCompleteOpenEngineRoom)
         {
             engineDoorAnim.SetBool("canEngineDoorOpen", true);
@@ -306,13 +353,15 @@ public class InitializeWorkingScene : MonoBehaviour
             EngineDoor_Collider.enabled = false;
             InsertCardPad_Collider.enabled = false;
         }
+    }
 
-        /* 생활공간 문 반 열기 퍼즐 완료 시 */
+    void HalfLivingDoor()
+    {
         if (intialGameData.IsWLDoorHalfOpened_M_C2)
         {
             HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
             HalfLivingDoorAni_M.SetBool("HalfEnd", true);
-            goToLIving.SetActive (true);
+            goToLIving.SetActive(true);
 
             CardKey_WL.transform.position = new Vector3(-264.18f, 2.94f, 691.467f); //위치
             CardKey_WL.transform.rotation = Quaternion.Euler(0, 0, 90); //각도
@@ -320,22 +369,10 @@ public class InitializeWorkingScene : MonoBehaviour
             CardKey_WL_Collider.enabled = false;
             LivingSpace_CardKeyMachine_W_Collider.enabled = false;
         }
+    }
 
-        // 생활공간 문을 완전히 고치면 - 근데 이거 업무공간 문에도 애니메이션 들어잇어..?
-        if (intialGameData.IsCompleteOpenLivingRoom)
-        {
-            HalfLivingDoorAni_M.SetBool("LivingOpen", true); // 생활공간 문 완전히 열리기
-            HalfLivingDoorAni_M.SetBool("LivingEnd", true);
-        }
-
-        else
-        {
-            HalfLivingDoorAni_M.SetBool("LivingOpen", false);
-            HalfLivingDoorAni_M.SetBool("LivingEnd", false);
-        }
-
-
-        /*운석 수집 퍼즐을 완료하면*/
+    void ColectMeteorite()
+    {
         if (intialGameData.IsInputNormalMeteor1_T_C2)
         {
             meteorBoxAnim.SetBool("isMeteorBoxClose", false);
@@ -362,14 +399,14 @@ public class InitializeWorkingScene : MonoBehaviour
 
             AnalyticalMachineData_Save.IsNotInteractable = false;
             AnalyticalMachineOutline_Save.OutlineWidth = 8;
-
         }
+    }
 
-
-        /*죽은척하기 퍼즐을 완료하면*/
-        if(intialGameData.IsCompletePretendDead)
+    void PretendDead()
+    {
+        if (intialGameData.IsCompletePretendDead)
         {
-            workRoomData.IsObjectActiveList[24]= false;
+            workRoomData.IsObjectActiveList[24] = false;
             workRoomData.IsObjectActiveList[25] = false;
             workRoomData.IsObjectActiveList[26] = false;
             workRoomData.IsObjectActiveList[27] = false;
@@ -392,9 +429,11 @@ public class InitializeWorkingScene : MonoBehaviour
             MeteoritesStorage4_Collider.enabled = false;
             MeteoritesStorage5_Collider.enabled = false;
         }
+    }
 
-        //마약 탐지 완료하면
-        if(intialGameData.IsCheckDrug)
+    void DetectDrug()
+    {
+        if (intialGameData.IsCheckDrug)
         {
             smellRangeArea.SetActive(false);
             canSmellArea.SetActive(false);
@@ -407,18 +446,10 @@ public class InitializeWorkingScene : MonoBehaviour
             drug.transform.rotation = Quaternion.Euler(0, 0, 90);
             drug.transform.localScale = new Vector3(1f, 1f, 1f);
         }
+    }
 
-        if(intialGameData.IsFindDrugDone_T_C2)
-        {
-            insert02Col.enabled = false;
-            SDrugCol.enabled = false;
-
-            SDrug.transform.position = new Vector3(-249.0776f, 0.1652f, 669.806f);
-            SDrug.transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-
-
-        //책상1 오르기를 완료하면
+    void UpTable1()
+    {
         if (intialGameData.IsUpTable1)
         {
             /*책상 위에 올라가면 책상 위 오브젝트랑 상호작용 가능하도록*/
@@ -430,8 +461,10 @@ public class InitializeWorkingScene : MonoBehaviour
             cylinder3OnTable1_Collider.enabled = true;
             cylinder4OnTable1_Collider.enabled = true;
         }
+    }
 
-        //책상2 오르기를 완료하면
+    void UpTable2()
+    {
         if (intialGameData.IsUpTable1)
         {
             /*책상 위에 올라가면 책상 위 오브젝트랑 상호작용 가능하도록*/
@@ -441,5 +474,4 @@ public class InitializeWorkingScene : MonoBehaviour
             ConductionOnTable2_Collider.enabled = true;
         }
     }
-
 }
