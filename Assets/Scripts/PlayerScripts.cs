@@ -388,10 +388,6 @@ public class PlayerScripts : MonoBehaviour
          // 안 지루함
         IsBored = false;
         boringTime = 0;
-        if (objData.InteractionDestination != null)
-        {
-            SetDirection(objData.InteractionDestination);
-        }
 
         // 네임태그 활성화
         if (objectNameData != null)
@@ -408,6 +404,11 @@ public class PlayerScripts : MonoBehaviour
         pushOrPressBtn.transform.gameObject.SetActive(true);
         centerBtn.transform.gameObject.SetActive(true);
         // turning = false;
+
+        if (objData.InteractionDestination != null)
+        {
+            SetDirection(objData.InteractionDestination);
+        }
     }
 
     void TurnOffButton()

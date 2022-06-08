@@ -131,9 +131,7 @@ public class CameraController : MonoBehaviour
         currentObjectData.IsObserve = false;
 
         ComeBackView(originPosition, originRotation);
-
-        Invoke("CancelObserving2Animation", 0.5f);
-        Invoke("CancelObservingAnimation", 0.5f);
+        StartCoroutine(CancelObserving2Animation());
     }
 
     /* 전환 효과 없는 카메라 전환 메서드 */
@@ -148,9 +146,12 @@ public class CameraController : MonoBehaviour
         transform.position = originPos;
         transform.rotation = Quaternion.Euler(originRot);
     }
-    void CancelObserving2Animation()
+    IEnumerator CancelObserving2Animation()
     {
+        yield return new WaitForSeconds(0.5f);
         playerAnimation.SetBool("IsObserving2", false);
+        yield return new WaitForSeconds(0.5f);
+        playerAnimation.SetBool("IsObserving", false);
     }
 
     void CancelObservingAnimation()
