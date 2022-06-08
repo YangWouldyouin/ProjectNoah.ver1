@@ -23,6 +23,9 @@ public class insert01 : MonoBehaviour, IInteraction
     ObjData insertData;
     Outline insertLine;
 
+    public ObjectData RChipData;
+    public ObjectData WChipData;
+
     public GameObject RChip01;
     ObjData RChip01Data;
     Outline RChip01Line;
@@ -144,7 +147,7 @@ public class insert01 : MonoBehaviour, IInteraction
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        if (RChip01Data.IsBite)
+        if (RChipData.IsBite)
         {
             Debug.Log("AI¡Í±›");
 
@@ -166,7 +169,7 @@ public class insert01 : MonoBehaviour, IInteraction
             Invoke("NewTimerStart", 2f);
         }
 
-        if (WChip01Data.IsBite)
+        if (WChipData.IsBite)
         {
             Debug.Log("AIæ»¡Í±›");
 
@@ -227,9 +230,9 @@ public class insert01 : MonoBehaviour, IInteraction
     {
         Debug.Log("ƒ® ≤»æ“¿Ω");
 
-        if (RChip01Data.IsBite)
+        if (RChipData.IsBite)
         {
-            RChip01Data.IsBite = false;
+            RChipData.IsBite = false;
 
             RChip01Data.GetComponent<Rigidbody>().isKinematic = false;
             RChip01Data.transform.parent = null;
@@ -246,9 +249,9 @@ public class insert01 : MonoBehaviour, IInteraction
 
         }
 
-        if (WChip01Data.IsBite)
+        if (WChipData.IsBite)
         {
-            WChip01Data.IsBite = false;
+            WChipData.IsBite = false;
 
             WChip01Data.GetComponent<Rigidbody>().isKinematic = false;
             WChip01Data.transform.parent = null;
