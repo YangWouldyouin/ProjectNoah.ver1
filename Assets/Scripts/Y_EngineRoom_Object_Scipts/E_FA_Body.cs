@@ -102,9 +102,9 @@ public class E_FA_Body : MonoBehaviour, IInteraction
         GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 = true;
 
         GameManager.gameManager._gameData.ActiveMissionList[16] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
 
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
 
         FA_fuelabsorberfixPart.SetActive(false);
         gameObject.SetActive(false);

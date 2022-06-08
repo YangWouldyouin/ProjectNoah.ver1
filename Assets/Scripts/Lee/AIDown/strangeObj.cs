@@ -139,8 +139,8 @@ public class strangeObj : MonoBehaviour, IInteraction
 
         GameManager.gameManager._gameData.IsFindStrangeObj = true;
         GameManager.gameManager._gameData.ActiveMissionList[27] = true;
-        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
     public void OnUp()
@@ -168,8 +168,8 @@ public class strangeObj : MonoBehaviour, IInteraction
 
         GameManager.gameManager._gameData.IsKnowUsingSObj = true;
         GameManager.gameManager._gameData.ActiveMissionList[27] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
         //��ư� ������ �ʾ� ��Ȳ�ϴ� AI ���
 
         CameraController.cameraController.CancelObserve();

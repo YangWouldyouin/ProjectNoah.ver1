@@ -90,14 +90,14 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
                 if (GameManager.gameManager._gameData.IsFakePlanetOpen)
                 {
                     GameManager.gameManager._gameData.ActiveMissionList[33] = true;
-                    MissionGenerator.missionGenerator.ActivateMissionList();
                     SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    MissionGenerator.missionGenerator.ActivateMissionList();
                 }
                 else
                 {
                     GameManager.gameManager._gameData.ActiveMissionList[31] = true;
-                    MissionGenerator.missionGenerator.ActivateMissionList();
                     SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    MissionGenerator.missionGenerator.ActivateMissionList();
                 }
             }
         }
@@ -115,14 +115,14 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
                 if (GameManager.gameManager._gameData.IsFakePlanetOpen)
                 {
                     GameManager.gameManager._gameData.ActiveMissionList[33] = false;
-                    MissionGenerator.missionGenerator.ActivateMissionList();
                     SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    MissionGenerator.missionGenerator.ActivateMissionList();
                 }
                 else
                 {
                     GameManager.gameManager._gameData.ActiveMissionList[31] = false;
-                    MissionGenerator.missionGenerator.ActivateMissionList();
                     SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    MissionGenerator.missionGenerator.ActivateMissionList();
                 }
             }
         }
@@ -224,14 +224,14 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
         if (GameManager.gameManager._gameData.IsFakePlanetOpen)
         {
             GameManager.gameManager._gameData.ActiveMissionList[33] = false;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
         else
         {
             GameManager.gameManager._gameData.ActiveMissionList[31] = false;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
     }
 
@@ -254,14 +254,14 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
         if (GameManager.gameManager._gameData.IsFakePlanetOpen)
         {
             GameManager.gameManager._gameData.ActiveMissionList[33] = false;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
         else
         {
             GameManager.gameManager._gameData.ActiveMissionList[31] = false;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
     }
 }

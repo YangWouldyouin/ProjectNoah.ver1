@@ -69,9 +69,10 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
             GameManager.gameManager._gameData.IsCWDoorOpened_M_C1 = true;
             GameManager.gameManager._gameData.ActiveMissionList[1] = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
 
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
 
             cockpitDoorData_CWD.IsInsert = false;
             //if (controllCamera != null)
@@ -88,8 +89,8 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
             // 조종실 탈출 미션 추가
             GameManager.gameManager._gameData.ActiveMissionList[1] = true;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
 
         if(envirPipeData_CWD.IsBite)

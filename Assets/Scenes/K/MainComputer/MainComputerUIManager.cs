@@ -93,8 +93,8 @@ public class MainComputerUIManager : MonoBehaviour
             //메인 컴퓨터와 태블릿 신호 연결 시작 시점
 
             GameManager.gameManager._gameData.ActiveMissionList[28] = true;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
     }
     public void BackMain_Bluetooth() // 블루투스 -> 메인

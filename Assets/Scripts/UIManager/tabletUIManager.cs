@@ -62,8 +62,8 @@ public class tabletUIManager : MonoBehaviour
             //더미데이터 보고(다운로드) 시작 시점
 
             GameManager.gameManager._gameData.ActiveMissionList[29] = true;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
     }
     public void ChangeWireless()
@@ -77,8 +77,8 @@ public class tabletUIManager : MonoBehaviour
             //메인 컴퓨터와 태블릿 신호 연결 시작 시점
 
             GameManager.gameManager._gameData.ActiveMissionList[23] = true;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
     }
 

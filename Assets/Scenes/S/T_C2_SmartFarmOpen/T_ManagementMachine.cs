@@ -88,8 +88,8 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             // Ω∫∏∂∆Æ ∆  «ÿ±› ∆€¡Ò Ω√¿€ ¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(13));
             GameManager.gameManager._gameData.ActiveMissionList[17] = true;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
 
             firstCheck = true;
         }
@@ -171,9 +171,8 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2 = true;
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
             GameManager.gameManager._gameData.ActiveMissionList[17] = false;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
+            MissionGenerator.missionGenerator.ActivateMissionList();
 
 
             // Ω∫∏∂∆Æ ∆  «ÿ±› ∆€¡Ò ≥° ¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø

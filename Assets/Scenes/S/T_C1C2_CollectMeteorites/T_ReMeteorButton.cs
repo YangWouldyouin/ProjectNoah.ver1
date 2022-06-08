@@ -111,8 +111,8 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
 
             // 운석 조각 수집 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             GameManager.gameManager._gameData.ActiveMissionList[22] = true;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
     }
 

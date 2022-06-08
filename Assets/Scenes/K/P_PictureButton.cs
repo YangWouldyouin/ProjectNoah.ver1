@@ -95,8 +95,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
                 //선전용 사진 촬영 보고 시작
 
                 GameManager.gameManager._gameData.ActiveMissionList[23] = true;
-                MissionGenerator.missionGenerator.ActivateMissionList();
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.ActivateMissionList();
             }
         }
         if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
@@ -113,8 +113,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
                 //선전용 사진 촬영 보고 끝
 
                 GameManager.gameManager._gameData.ActiveMissionList[23] = false;
-                MissionGenerator.missionGenerator.ActivateMissionList();
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.ActivateMissionList();
             }
         }
     }
@@ -199,8 +199,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         //선전용 사진 촬영 보고 끝
 
         GameManager.gameManager._gameData.ActiveMissionList[23] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
     public void Cancel() //캔슬 버튼 누르면
@@ -219,8 +219,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         //선전용 사진 촬영 보고 끝
 
         GameManager.gameManager._gameData.ActiveMissionList[23] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
 

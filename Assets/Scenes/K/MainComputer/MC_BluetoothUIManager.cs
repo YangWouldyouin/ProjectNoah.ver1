@@ -141,8 +141,8 @@ public class MC_BluetoothUIManager : MonoBehaviour
                 //메인 컴퓨터와 태블릿 신호 연결 끝 시점
 
                 GameManager.gameManager._gameData.ActiveMissionList[28] = false;
-                MissionGenerator.missionGenerator.ActivateMissionList();
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.ActivateMissionList();
             }
         }
         else

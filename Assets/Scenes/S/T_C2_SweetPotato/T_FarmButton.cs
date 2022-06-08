@@ -198,8 +198,8 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*고구마가 나타난 상태를 저장한다.*/
         GameManager.gameManager._gameData.IsCanSeePotato1 = true;
         GameManager.gameManager._gameData.ActiveMissionList[19] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
 
         // 식물 배양 연구 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
@@ -224,8 +224,8 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*고구마가 나타난 상태를 저장한다.*/
         GameManager.gameManager._gameData.IsCanSeePotato2 = true;
         GameManager.gameManager._gameData.ActiveMissionList[19] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
 
         // 식물 배양 연구 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
@@ -250,8 +250,8 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*고구마가 나타난 상태를 저장한다.*/
         GameManager.gameManager._gameData.IsCanSeePotato3 = true;
         GameManager.gameManager._gameData.ActiveMissionList[19] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
 
         // 식물 배양 연구 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }

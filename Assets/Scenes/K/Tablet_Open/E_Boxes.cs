@@ -101,8 +101,8 @@ pushButton, NoCenterButton_M_Box;
         GameManager.gameManager._gameData.IsNoBoxes = true;
         GameManager.gameManager._gameData.ActiveMissionList[6] = false;
         GameManager.gameManager._gameData.ActiveMissionList[7] = true;
-        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
     /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */

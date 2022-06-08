@@ -121,8 +121,8 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             RealNormalMeteor1Outline_T.OutlineWidth = 0;
 
             GameManager.gameManager._gameData.ActiveMissionList[22] = false;
-            MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
 
 
