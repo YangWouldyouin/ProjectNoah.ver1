@@ -15,9 +15,14 @@ public class Checking_bluetooth : MonoBehaviour
     public GameObject RChip01;
     public GameObject WChip01;
 
+    public GameObject player;
+
     ObjData tabletData;
     ObjData RChip01Data;
     ObjData WChip01Data;
+
+    public ObjectData RChipData;
+    public ObjectData WChipData;
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -44,27 +49,29 @@ public class Checking_bluetooth : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "noahPlayer")
+        if (other.gameObject == player)
         {
             /*if (tabletData.IsBite)
             {
                 GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
             }*/
 
-            if (RChip01Data.IsBite && !GameManager.gameManager._gameData.IsHide)
+            Debug.Log("노아들어옴");
+
+            if (RChipData.IsBite && !GameManager.gameManager._gameData.IsHide)
             {
                 Debug.Log("이상한 칩 감지");
                 GameManager.gameManager._gameData.IsAlert = true;
-                Invoke("NoRChip", 0f);
+                Invoke("NoRChip", 3f);
 
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(57));
             }
 
-            if (WChip01Data.IsBite && !GameManager.gameManager._gameData.IsHide)
+            if (WChipData.IsBite && !GameManager.gameManager._gameData.IsHide)
             {
                 Debug.Log("이상한 칩 감지");
                 GameManager.gameManager._gameData.IsAlert = true;
-                Invoke("NoWChip", 0f);
+                Invoke("NoWChip", 3f);
 
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(57));
             }
@@ -113,6 +120,10 @@ public class Checking_bluetooth : MonoBehaviour
 
     public void NoRChip()
     {
+        RChip01.GetComponent<Rigidbody>().isKinematic = false;
+        RChip01.transform.parent = null;
+        RChipData.IsBite = false;
+
         RChip01.SetActive(false);
         //Destroy(RChip01, 3f);
         GameManager.gameManager._gameData.IsAlert = false;
@@ -120,6 +131,10 @@ public class Checking_bluetooth : MonoBehaviour
 
     public void NoWChip()
     {
+        WChip01.GetComponent<Rigidbody>().isKinematic = false;
+        WChip01.transform.parent = null;
+        WChipData.IsBite = false;
+
         WChip01.SetActive(false);
         //Destroy(WChip01, 3f);
         GameManager.gameManager._gameData.IsAlert = false;

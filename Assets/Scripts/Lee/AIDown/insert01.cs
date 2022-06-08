@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class insert01 : MonoBehaviour, IInteraction
 {
 
-/*    [Header("<플레이어의 아웃라인을 관리함>")]
-    public NoahOutlineController outlineController;
-    NoahOutlineController outlineControl;*/
+    /*    [Header("<플레이어의 아웃라인을 관리함>")]
+        public NoahOutlineController outlineController;
+        NoahOutlineController outlineControl;*/
+
+    //AI 연출
+    public Button aiIcon_AI;
 
     //타이머
     public InGameTime inGameTime;
@@ -86,6 +89,11 @@ public class insert01 : MonoBehaviour, IInteraction
             Debug.Log("미션 실패");
             GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            /*Color AIColor = aiIcon_AI.GetComponent<Image>().color;
+            AIColor.a = 1.0f;
+            aiIcon_AI.GetComponent<Image>().color = AIColor;
+            aiIcon_AI.interactable = true;*/
         }
 
         //궤도변경 성공하면 그리고 Update문 반복 돌아서 나중에 변수 초기화 방해할까바 변수하나더 조건으로 걸어서 더이상 안돌게
@@ -97,7 +105,7 @@ public class insert01 : MonoBehaviour, IInteraction
         }
 
             // 미션 완료함 && 타이머 끝나기 전임
-            if (inGameTime.IsGoToEarthMissionClear && inGameTime.IsTimerStarted)
+        if (inGameTime.IsGoToEarthMissionClear && inGameTime.IsTimerStarted)
         {
             Debug.Log("미션 성공");
             //inGameTime.IsNoahOutlineTurnOn = false;
@@ -150,7 +158,7 @@ public class insert01 : MonoBehaviour, IInteraction
             MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-
+            Invoke("AIDown", 20f);
 
             Invoke("NoChip", 0.5f);
 
@@ -168,6 +176,16 @@ public class insert01 : MonoBehaviour, IInteraction
         }
 
         StartCoroutine(ChangePressFalse());
+    }
+
+    public void AIDown()
+    {
+        Color AIColor = aiIcon_AI.GetComponent<Image>().color;
+        AIColor.a = 0.5f;
+        aiIcon_AI.GetComponent<Image>().color = AIColor;
+        aiIcon_AI.interactable = false;
+
+        //GameManager.gameManager._gameData.IsAIAwake_M_C1 = false;
     }
 
     IEnumerator ChangePressFalse()
