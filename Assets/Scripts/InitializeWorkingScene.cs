@@ -276,10 +276,10 @@ public class InitializeWorkingScene : MonoBehaviour
             smartFarmDoorAnim.SetBool("FarmDoorStop", true);
         }
          
+         /*엔진실 문을 수리하면*/
         if(intialGameData.IsEngineDoorFix_M_C2)
         {
-            Conduction.transform.position = new Vector3(-260.954f, 1.0869f, 666.558f); //위치 고정
-            Conduction.transform.rotation = Quaternion.Euler(0, -90, 90); //각도 고정
+            Conduction.SetActive(false);
         }
 
 
@@ -319,6 +319,19 @@ public class InitializeWorkingScene : MonoBehaviour
 
             CardKey_WL_Collider.enabled = false;
             LivingSpace_CardKeyMachine_W_Collider.enabled = false;
+        }
+
+        // 생활공간 문을 완전히 고치면 - 근데 이거 업무공간 문에도 애니메이션 들어잇어..?
+        if (intialGameData.IsCompleteOpenLivingRoom)
+        {
+            HalfLivingDoorAni_M.SetBool("LivingOpen", true); // 생활공간 문 완전히 열리기
+            HalfLivingDoorAni_M.SetBool("LivingEnd", true);
+        }
+
+        else
+        {
+            HalfLivingDoorAni_M.SetBool("LivingOpen", false);
+            HalfLivingDoorAni_M.SetBool("LivingEnd", false);
         }
 
 
