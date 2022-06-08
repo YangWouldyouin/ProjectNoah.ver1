@@ -58,6 +58,8 @@ public class ResetGameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("오브젝트 리셋");
+            ResetGame();
+
             RestIngameData();
 
             ResetPortableObject();

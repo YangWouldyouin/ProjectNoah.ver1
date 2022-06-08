@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DialogManager : MonoBehaviour
 {
     public static DialogManager dialogManager { get; private set; }
-
+    public InGameTime inGameTime;
     public Animator AIPanelAnim;
 
     public TMPro.TextMeshProUGUI dialogText;
@@ -36,6 +36,8 @@ public class DialogManager : MonoBehaviour
 
     GoogleSheetManager googleSheetManager;
 
+
+
     void awake()
     {
         dialogManager = this;
@@ -57,18 +59,21 @@ public class DialogManager : MonoBehaviour
     }
     public IEnumerator PrintAIDialog(int dialogNum)
     {
-        if (printAIDialogs!=null)
+        if(inGameTime.IsAIAwake)
         {
-            StopCoroutine(printAIDialogs);
-            printAIDialogs = AIDialogPrinting(dialogNum);
-            StartCoroutine(printAIDialogs);
+            if (printAIDialogs != null)
+            {
+                StopCoroutine(printAIDialogs);
+                printAIDialogs = AIDialogPrinting(dialogNum);
+                StartCoroutine(printAIDialogs);
+            }
+            else
+            {
+                printAIDialogs = AIDialogPrinting(dialogNum);
+                StartCoroutine(printAIDialogs);
+            }
+            yield return null;
         }
-        else
-        {
-            printAIDialogs = AIDialogPrinting(dialogNum);
-            StartCoroutine(printAIDialogs);
-        }
-        yield return null;
     }
     /* AI ´Â ¿©±â */
     IEnumerator AIDialogPrinting(int AIIndex)

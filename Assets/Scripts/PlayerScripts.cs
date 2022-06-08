@@ -37,6 +37,7 @@ public class PlayerScripts : MonoBehaviour
     /* 네임태그 관련 변수 */
     GameObject objectNameTag;
     TMPro.TextMeshProUGUI objectNameText;
+    [HideInInspector]
     public Vector3 nameTagOffset;
 
     /* 정리 필요한 변수 */
@@ -56,7 +57,6 @@ public class PlayerScripts : MonoBehaviour
     LivingRoomCameraController livingRoomCamera;
     HorizontalCameraController horizontalCamera;
     ControlCameraController controlCamera;
-    // 엔진실, 리빙룸 추가
 
     float elapsedTime = 0;
     float waitTime = 1.5f;
@@ -64,8 +64,6 @@ public class PlayerScripts : MonoBehaviour
     [HideInInspector]
     public Vector3  turnAmount;
     PlayerEquipment playerEquipment;
-
-    bool CanMove = true;
 
     void Start()
     {
@@ -357,7 +355,7 @@ public class PlayerScripts : MonoBehaviour
 
     IEnumerator UnClickPortableObject()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if(objectData != null)
         {
             objectData.IsClicked = false;

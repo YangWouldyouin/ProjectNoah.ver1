@@ -33,4 +33,6 @@ public class InGameTime : ScriptableObject
 
     public bool IsBeakerEatAfterStart;
     public bool IsBeakerEatAfterClear;
+
+    public bool IsAIAwake;
 }
