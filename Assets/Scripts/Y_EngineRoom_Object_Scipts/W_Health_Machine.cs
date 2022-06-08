@@ -317,7 +317,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
             else
             {
                 Debug.Log("노아 상태 업로드!");
-                GameManager.gameManager._gameData.IscurrentHealthData = GameManager.gameManager._gameData.statNum;
+                GameManager.gameManager._gameData.IscurrentHealthData = inGameTime.statNum;
                 //현재 스탯 상태 메인 컴퓨터에 업로드
             }
         }
@@ -357,9 +357,9 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         else
         {
             //현재 스탯 상태 메인 컴퓨터에 업로드 
-            GameManager.gameManager._gameData.IscurrentHealthData = GameManager.gameManager._gameData.statNum;
+            GameManager.gameManager._gameData.IscurrentHealthData = inGameTime.statNum;
 
-            if (GameManager.gameManager._gameData.statNum < 3) 
+            if (inGameTime.statNum < 3) 
             {
                 GameManager.gameManager._gameData.IsReportCancleCount += 1;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
