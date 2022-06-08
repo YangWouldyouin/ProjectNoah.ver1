@@ -89,7 +89,7 @@ public class ResetGameManager : MonoBehaviour
         inGameTime.IsNoSeeFail1 = false;
         inGameTime.IsNoSeeFail2 = false;
         inGameTime.IsPretendDeadFail1 = false;
-
+        inGameTime.IsAIAwake = true;
         equipment.biteObjectName = "";
         equipment.pushObjectName = "";
     }
