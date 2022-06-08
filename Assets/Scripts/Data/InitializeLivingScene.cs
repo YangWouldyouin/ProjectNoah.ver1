@@ -43,5 +43,10 @@ public class InitializeLivingScene : MonoBehaviour
             TDBT_BodyOutline.OutlineWidth = 0;
             TDBT_fixPartOutline.OutlineWidth = 0;
         }
+        else
+        {
+            TDBT_fixPartData.IsNotInteractable = false;
+            TDBT_fixBodyData.IsNotInteractable = false;
+        }
     }
 }
