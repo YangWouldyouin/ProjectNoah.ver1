@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class M_EngineDoor : MonoBehaviour, IInteraction
 {
     public bool dontrootmore = false;
+    public bool dontrootmore2 = false;
 
     /*오브젝트의 상호작용 버튼들*/
     private Button barkButton_M_EngineDoor, sniffButton_M_EngineDoor, biteButton_M_EngineDoor, pressButton_M_EngineDoor, observeButton_M_EngineDoor;
@@ -61,22 +62,27 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(engineDoorData_M.IsClicked && dontrootmore == false)
+        if(dontrootmore == false)
         {
-            //B-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
-
             // 엔진실 카드키 찾기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             // 엔진실 문 고치기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             // 엔진실/창고 해금 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
 
+            GameManager.gameManager._gameData.ActiveMissionList[2] = true;
             GameManager.gameManager._gameData.ActiveMissionList[3] = true;
             GameManager.gameManager._gameData.ActiveMissionList[30] = true;
-            GameManager.gameManager._gameData.ActiveMissionList[4] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
 
             dontrootmore = true;
+        }
+
+        if (engineDoorData_M.IsClicked && dontrootmore2 == false)
+        {
+            //B-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
+
+            dontrootmore2 = true;
         }
 
         if (GameManager.gameManager._gameData.IsEngineDoorFix_M_C2)

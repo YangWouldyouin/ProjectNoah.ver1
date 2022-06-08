@@ -113,6 +113,7 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
 
             // 엔진실 문 고치기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             GameManager.gameManager._gameData.ActiveMissionList[30] = false;
+            GameManager.gameManager._gameData.ActiveMissionList[5] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
 

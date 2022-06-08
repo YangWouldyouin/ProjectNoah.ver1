@@ -154,6 +154,7 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
         // 엔진실/창고 해금 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
         GameManager.gameManager._gameData.ActiveMissionList[5] = false;
+        GameManager.gameManager._gameData.ActiveMissionList[3] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         MissionGenerator.missionGenerator.ActivateMissionList();
     }
@@ -178,6 +179,7 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
 
         // 엔진실/창고 해금 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
         GameManager.gameManager._gameData.ActiveMissionList[5] = false;
+        GameManager.gameManager._gameData.ActiveMissionList[3] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         MissionGenerator.missionGenerator.ActivateMissionList();
     }
