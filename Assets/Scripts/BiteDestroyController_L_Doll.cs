@@ -78,6 +78,7 @@ public class BiteDestroyController_L_Doll : MonoBehaviour, IPointerUpHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        //StartCoroutine(LivingDoorOpen());// 문 완전히 열리는 애니메이션 실행
         // 물기 버튼이 눌러짐
         isPointerDown = true;
         InteractionButtonController.interactionButtonController.PlayerBite();
@@ -88,7 +89,7 @@ public class BiteDestroyController_L_Doll : MonoBehaviour, IPointerUpHandler, IP
         Debug.Log("인형 빼기");
 
         // LivingDoorOpen();
-        Invoke("LivingDoorOpen", 2f); // 문 완전히 열리는 애니메이션 실행
+       Invoke("LivingDoorOpen", 2f); 
 
         LivingDoor_open_sound.clip = LivingDoor_open;
         LivingDoor_open_sound.Play();
@@ -99,6 +100,7 @@ public class BiteDestroyController_L_Doll : MonoBehaviour, IPointerUpHandler, IP
     }
     void LivingDoorOpen() // 문 열리는 애니메이션
     {
+
         LivingDoorAni_L.SetBool("LivingOpen", true); // 생활공간 문 완전히 열리기
         LivingDoorAni_L.SetBool("LivingEnd", true);
     }

@@ -7,11 +7,17 @@ public class InitializeLivingScene : MonoBehaviour
     public GameObject dialog;
     DialogManager dialogManager;
 
+    [Header("< 쓰레기 기계 수리 >")]
     public GameObject TDBT_fixPart;
     public GameObject TDBT_fixBody;
-
     public ObjectData TDBT_fixPartData, TDBT_fixBodyData;
     Outline TDBT_BodyOutline, TDBT_fixPartOutline;
+
+    [Header("< 문 완전히 수리 >")]
+    public GameObject Doll;
+    public Animator doorAnim;
+
+
 
     void Start()
     {
@@ -47,6 +53,21 @@ public class InitializeLivingScene : MonoBehaviour
         {
             TDBT_fixPartData.IsNotInteractable = false;
             TDBT_fixBodyData.IsNotInteractable = false;
+            TDBT_BodyOutline.OutlineWidth = 0;
+            TDBT_fixPartOutline.OutlineWidth = 0;
+        }
+
+        // 생활공간 문을 완전히 고치면
+        if(intialGameData.IsCompleteOpenLivingRoom)
+        {
+            Doll.transform.position = new Vector3(-33.58f, 0.22f, 33.59f);
+            doorAnim.SetBool("LivingOpen", true); // 생활공간 문 완전히 열리기
+            doorAnim.SetBool("LivingEnd", true);
+        }
+        else
+        {
+            doorAnim.SetBool("LivingOpen", false); 
+            doorAnim.SetBool("LivingEnd", false);
         }
     }
 }
