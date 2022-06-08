@@ -37,12 +37,6 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
     GameObject portableGroup; // 다시 포터블 그룹의 자식으로 넣어주기 위함
     PlayerEquipment playerEquipment;
 
-    public NoahOutlineController outlineController;
-    NoahOutlineController outlineControl;
-
-    //노아 내려가는 애니메이션 필요
-
-    // Start is called before the first frame update
     void Start()
     {
         Health_MachineData_W = GetComponent<ObjData>();
@@ -94,21 +88,6 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
     void Update()
     {
-        // 미션 완료 못함 && 타이머 끝남 && 미션 시작함
-        if(inGameTime.IsMissionClear == false && inGameTime.IsTimerStarted == false &&inGameTime.IsMissionStart)
-        {
-            Debug.Log("미션 실패");
-        }
-
-        // 미션 완료함 && 타이머 끝나기 전임
-        if(inGameTime.IsMissionClear&&inGameTime.IsTimerStarted)
-        {
-            Debug.Log("미션 성공");
-            inGameTime.IsNoahOutlineTurnOn = false;
-            inGameTime.IsTimerStarted = false;
-            inGameTime.missionTimer = 0;
-        }
-
         if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10 && (inGameTime.days +1) >= 3)
         {
             GameManager.gameManager._gameData.IsAIReportMissionTime = true;
@@ -170,11 +149,6 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
     {
         DiableButton();
         InteractionButtonController.interactionButtonController.playerBark();
-
-        /* 짖기 하면 미션 시작 */
-        TimerManager.timerManager.TimerStart(20);
-        outlineControl.StartOutlineTime(20f);
-        inGameTime.IsMissionStart = true;
     }
 
     public void OnPushOrPress()
@@ -193,9 +167,6 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
     {
         DiableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
-
-        /* 냄새를 맡으면 미션 완료 */
-        inGameTime.IsMissionClear= true;
     }
 
     public void OnUp()
