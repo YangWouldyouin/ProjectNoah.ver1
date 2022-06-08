@@ -109,7 +109,11 @@ pressButton, observeButton;
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
 
-            Invoke("GgopMike", 3f);
+            if (!GameManager.gameManager._gameData.IsTutorialClear)
+            {
+                Invoke("GgopMike", 3f);
+            }
+            
         }
     }
 
