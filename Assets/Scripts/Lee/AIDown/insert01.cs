@@ -184,7 +184,8 @@ public class insert01 : MonoBehaviour, IInteraction
         AIColor.a = 0.5f;
         aiIcon_AI.GetComponent<Image>().color = AIColor;
         aiIcon_AI.interactable = false;
-
+        // AI ´ë»ç ¾È³ª¿È
+        inGameTime.IsAIAwake = false;
         //GameManager.gameManager._gameData.IsAIAwake_M_C1 = false;
     }
 
