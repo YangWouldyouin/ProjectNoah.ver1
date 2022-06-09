@@ -69,6 +69,7 @@ public class T_AnalyticalMachine : MonoBehaviour, IInteraction
         /*선언시작*/
         analyticalMachineData_T.IsObserve = false;
         //analyticalMachineData_T.IsCenterButtonChanged = false;
+        analyticalMachineData_T.IsNotInteractable = true;
 
     }
 

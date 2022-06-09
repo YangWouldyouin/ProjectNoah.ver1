@@ -484,4 +484,37 @@ public class InitializeWorkingScene : MonoBehaviour
             ConductionOnTable2_Collider.enabled = true;
         }
     }
+
+    void CanSeeSweetPotato1()
+    {
+        if (intialGameData.IsCanSeePotato1)
+        {
+            /*고구마들 보이게~*/
+            workRoomData.IsObjectActiveList[21] = true;
+            workRoomData.IsObjectActiveList[22] = true;
+            workRoomData.IsObjectActiveList[23] = true;
+        }
+    }
+
+    void CanSeeSweetPotato2()
+    {
+        if (intialGameData.IsCanSeePotato2)
+        {
+            /*고구마들 보이게~*/
+            workRoomData.IsObjectActiveList[18] = true;
+            workRoomData.IsObjectActiveList[19] = true;
+            workRoomData.IsObjectActiveList[20] = true;
+        }
+    }
+
+    void CanSeeSweetPotato3()
+    {
+        if (intialGameData.IsCanSeePotato3)
+        {
+            /*고구마들 보이게~*/
+            workRoomData.IsObjectActiveList[15] = true;
+            workRoomData.IsObjectActiveList[16] = true;
+            workRoomData.IsObjectActiveList[17] = true;
+        }
+    }
 }
