@@ -36,8 +36,15 @@ public class strangeObj : MonoBehaviour, IInteraction
     public bool IsNoSeeFail1 = false; //제한 시간 내에 안에 퍼즐 실패
     public bool canTSee1 = false;
 
+    GameObject[] childExtinguisher = new GameObject[3];
+
     void Start()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            childExtinguisher[i] = transform.GetChild(i).gameObject;
+        }
+
         outlineControl = outlineController.GetComponent<NoahOutlineController>();
         dialogManager = dialog.GetComponent<DialogManager>();
 
@@ -157,12 +164,12 @@ public class strangeObj : MonoBehaviour, IInteraction
     {
         DisableButton();
         InteractionButtonController.interactionButtonController.PlayerSmash1();
-
-        Invoke("ObjSmoke", 3f);
+        StartCoroutine(ObjSmoke());
+        //Invoke("ObjSmoke", 3f);
 
         InteractionButtonController.interactionButtonController.PlayerSmash2();
 
-        StartCoroutine(DelayFor2Seconds());
+        //StartCoroutine(DelayFor2Seconds());
 
         Destroy(smoke, 6f);
 
@@ -175,8 +182,24 @@ public class strangeObj : MonoBehaviour, IInteraction
         CameraController.cameraController.CancelObserve();
     }
 
-    void ObjSmoke()
+    IEnumerator ObjSmoke()
     {
+        yield return new WaitForSeconds(2f);
+        if (!GameManager.gameManager._gameData.IsFirstUsingStrangeObj)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
+            GameManager.gameManager._gameData.IsFirstUsingStrangeObj = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+        else
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(53));
+        }
+        // 3분간 플레이어 아웃라인 활성화
+        // 3분간 플레이어 아웃라인 활성화
+        outlineControl.StartOutlineTime(300f);
+        TimerManager.timerManager.TimerStart(300f);
+
         // 수상한 물건을 플레이어로부터 분리함
         this.GetComponent<Rigidbody>().isKinematic = true;
         this.transform.parent = null;
@@ -190,23 +213,23 @@ public class strangeObj : MonoBehaviour, IInteraction
         smoke.transform.position = gameObject.transform.position;
         smoke.Play();
 
-        gameObject.SetActive(false);
         // 이제 업무공간에 수상한 물건이 없어졌으므로 직접 false로 변경
         workRoomExtinguisherData.IsObjectActiveList[10] = false;
 
         GameManager.gameManager._gameData.IsHide = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        // 3분간 플레이어 아웃라인 활성화
-        outlineControl.StartOutlineTime(300f);
-        TimerManager.timerManager.TimerStart(300f);
+        for (int i = 0; i < 3; i++)
+        {
+            childExtinguisher[i].SetActive(false);
+        }
     }
 
     IEnumerator DelayFor2Seconds()
     {
         // 수상한 물건 파괴하기 시 애니메이션이 나오고 나서 첫 대사를 나오게 하기 위해 1.5초 딜레이함
         // (이상하게 2초로 하면 대사 안나와서 걍 1.5초로 해야함)
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         if (!GameManager.gameManager._gameData.IsFirstUsingStrangeObj)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));

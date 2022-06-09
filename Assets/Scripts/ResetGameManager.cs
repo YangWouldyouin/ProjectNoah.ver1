@@ -476,4 +476,18 @@ public class ResetGameManager : MonoBehaviour
 
         SaveSystem.Save(character, "save_001");
     }
+
+    public void ResetData()
+    {
+        ResetGame();
+
+        RestIngameData();
+
+        ResetPortableObject();
+
+        ResetWorkRoomObjectData();
+        ResetLivingRoomObjectData();
+        ResetControlData();
+        ResetEngineRoomObjectData();
+    }
 }

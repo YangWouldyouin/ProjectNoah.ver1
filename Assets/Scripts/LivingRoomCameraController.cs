@@ -9,6 +9,8 @@ public class LivingRoomCameraController : MonoBehaviour
     void Start()
     {
         target = BaseCanvas._baseCanvas.noahPlayer.transform;
+
+
     }
 
     private void FixedUpdate()

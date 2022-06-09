@@ -33,8 +33,15 @@ public class E_StrangeObj : MonoBehaviour
     [Header("<엔진실 내의 이동가능한 오브젝트 관리를 위한 변수>")]
     public PortableObjectData engineRoomExtinguisherData;
 
+    GameObject[] childExtinguisher = new GameObject[3];
+
     void Start()
     {
+        for(int i=0; i<3; i++)
+        {
+            childExtinguisher[i] = transform.GetChild(i).gameObject;
+        }
+        
         StrangeObj_smoke_Sound = GetComponent<AudioSource>();
         StrangeObj_smoke_Sound.clip = StrangeObj_smoke;
 
@@ -157,11 +164,12 @@ public class E_StrangeObj : MonoBehaviour
         DisableButton();
         InteractionButtonController.interactionButtonController.PlayerSmash1();
         StartCoroutine(ObjSmoke());
+
         //Invoke("ObjSmoke", 2f);
 
         InteractionButtonController.interactionButtonController.PlayerSmash2();
 
-        StartCoroutine(DelayFor2Seconds());
+        //StartCoroutine(DelayFor2Seconds());
 
         Destroy(smoke_E, 5f);
 
@@ -178,6 +186,17 @@ public class E_StrangeObj : MonoBehaviour
     IEnumerator ObjSmoke()
     {
         yield return new WaitForSeconds(2f);
+
+        if (!GameManager.gameManager._gameData.IsFirstUsingStrangeObj)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
+            GameManager.gameManager._gameData.IsFirstUsingStrangeObj = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+        else
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(53));
+        }
         // 3분간 플레이어 아웃라인 활성화
         // 3분간 플레이어 아웃라인 활성화
         outlineControl.StartOutlineTime(300f);
@@ -207,8 +226,13 @@ public class E_StrangeObj : MonoBehaviour
         GameManager.gameManager._gameData.IsHide = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        gameObject.SetActive(false);
-    }
+
+        for (int i = 0; i < 3; i++)
+        {
+            childExtinguisher[i].SetActive(false);
+        }
+        }
+    
 
 /*    void FailStrangeObj()
     {
@@ -219,19 +243,10 @@ public class E_StrangeObj : MonoBehaviour
     {
         // 수상한 물건 파괴하기 시 애니메이션이 나오고 나서 첫 대사를 나오게 하기 위해 1.5초 딜레이함
         // (이상하게 2초로 하면 대사 안나와서 걍 1.5초로 해야함)
-        yield return new WaitForSeconds(1.5f);
-        if (!GameManager.gameManager._gameData.IsFirstUsingStrangeObj)
-        {
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
-            GameManager.gameManager._gameData.IsFirstUsingStrangeObj = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        }
-        else
-        {
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(53));
-        }
+        yield return new WaitForSeconds(3f);
+        //gameObject.SetActive(false);
     }
-
+}
     //void CantHide()
     //{
     //    Debug.Log("이제 못 숨음");
@@ -245,4 +260,5 @@ public class E_StrangeObj : MonoBehaviour
 
     //    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(52));
     //}
-}
+    
+

@@ -21,15 +21,18 @@ public class E_FA_Body : MonoBehaviour, IInteraction
 
     PortableObjectData engineData;
 
+    GameData initialData;
+
     // Start is called before the first frame update
     void Start()
     {
+        initialData = SaveSystem.Load("save_001");
         engineData = BaseCanvas._baseCanvas.engineRoomData;
         dialogManager = dialog_CS.GetComponent<DialogManager>();
 
-        if (!GameManager.gameManager._gameData.IsFirstEnterEngine)
+        if (!initialData.IsFirstEnterEngine)
         {
-            GameManager.gameManager._gameData.IsFirstEnterEngine = true;
+            initialData.IsFirstEnterEngine = true;
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
             GameManager.gameManager._gameData.ActiveMissionList[16] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

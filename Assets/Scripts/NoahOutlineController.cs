@@ -17,23 +17,8 @@ public class NoahOutlineController : MonoBehaviour
 
         if(outlineTime.IsNoahOutlineTurnOn)
         {
-            if (!outlineTime.IsNoSeeFail1)
-            {
-                noahOutline.OutlineWidth = 10.0f;
-                StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer, outlineTime.IsNoSeeFail1));
-            }
-
-            if(!outlineTime.IsNoSeeFail2)
-            {
-                noahOutline.OutlineWidth = 10.0f;
-                StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer, outlineTime.IsNoSeeFail2));
-            }
-
-            if (!outlineTime.IsPretendDeadFail1)
-            {
-                noahOutline.OutlineWidth = 10.0f;
-                StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer, outlineTime.IsPretendDeadFail1));
-            }
+            noahOutline.OutlineWidth = 10.0f;
+            StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer));
         }
     }
 
@@ -55,18 +40,17 @@ public class NoahOutlineController : MonoBehaviour
             noahOutline.OutlineWidth = 10.0f;
             outlineTime.IsNoahOutlineTurnOn = true;
             outlineTime.outlineTimer = outlineSeconds;
-            StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer,outlineTime.IsNoSeeFail1));
+            StartCoroutine(StartOutlineTimer(outlineTime.outlineTimer));
         }
     }
 
-    IEnumerator StartOutlineTimer(float seconds, bool Isfinished)
+    IEnumerator StartOutlineTimer(float seconds)
     {
         while (outlineTime.outlineTimer >= 0 && outlineTime.IsNoahOutlineTurnOn)
         {
             yield return new WaitForSeconds(1f);
             outlineTime.outlineTimer -= 1f;
         }
-        outlineTime.IsNoSeeFail1 = true;
         Debug.Log("이제 못 숨음");
         noahOutline.OutlineWidth = 0.0f;
         outlineTime.IsNoahOutlineTurnOn = false;

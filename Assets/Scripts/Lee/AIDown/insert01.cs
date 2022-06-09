@@ -49,8 +49,15 @@ public class insert01 : MonoBehaviour, IInteraction
     public GameObject dialog;
     DialogManager dialogManager;
 
+    GameObject portableGroup;
+    PlayerEquipment playerEquipmentStrange;
+    PortableObjectData controlData;
     void Start()
     {
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
+        playerEquipmentStrange = BaseCanvas._baseCanvas.equipment;
+        controlData = BaseCanvas._baseCanvas.controlRoomData;
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         insertData = GetComponent<ObjData>();
@@ -236,6 +243,8 @@ public class insert01 : MonoBehaviour, IInteraction
 
             RChip01Data.GetComponent<Rigidbody>().isKinematic = false;
             RChip01Data.transform.parent = null;
+            RChip01Data.transform.parent = portableGroup.transform;
+            playerEquipmentStrange.biteObjectName = "";
 
             RChip01Data.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
             RChip01Data.transform.position = new Vector3(-37.901f, 0.853f, -30.362f);
@@ -255,6 +264,8 @@ public class insert01 : MonoBehaviour, IInteraction
 
             WChip01Data.GetComponent<Rigidbody>().isKinematic = false;
             WChip01Data.transform.parent = null;
+            RChip01Data.transform.parent = portableGroup.transform;
+            playerEquipmentStrange.biteObjectName = "";
 
             WChip01Data.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
             WChip01Data.transform.position = new Vector3(-37.901f, 0.853f, -30.362f);
