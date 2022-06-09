@@ -42,11 +42,9 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
         TDBT_BodyData_L = GetComponent<ObjData>();
         bodyData = TDBT_BodyData_L.objectDATA;
-
+        bodyData.IsNotInteractable = false;
         TDBT_BodyOutline = GetComponent<Outline>();
         TDBT_fixPartOutline = TDBT_fixPart.GetComponent<Outline>();
-
-        TDBT_BodyData_L = GetComponent<ObjData>();
 
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_L_TDBT_Body = TDBT_BodyData_L.BarkButton;

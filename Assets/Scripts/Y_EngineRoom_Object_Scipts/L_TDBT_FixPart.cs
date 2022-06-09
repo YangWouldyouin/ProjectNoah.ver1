@@ -8,10 +8,13 @@ public class L_TDBT_FixPart : MonoBehaviour, IInteraction
     private Button barkButton_L_TDBT_FixPart, sniffButton_L_TDBT_FixPart, biteButton_L_TDBT_FixPart, pushButton_L_TDBT_FixPart, noCenterButton_L_TDBT_FixPart;
 
     ObjData TDBT_FIxPartData_L;
+    ObjectData fixData;
 
     void Start()
     {
         TDBT_FIxPartData_L = GetComponent<ObjData>();
+        fixData = TDBT_FIxPartData_L.objectDATA;
+        fixData.IsNotInteractable = false;
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_L_TDBT_FixPart = TDBT_FIxPartData_L.BarkButton;
         barkButton_L_TDBT_FixPart.onClick.AddListener(OnBark);
