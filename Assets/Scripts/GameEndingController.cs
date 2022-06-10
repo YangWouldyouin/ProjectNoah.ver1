@@ -10,14 +10,6 @@ public class GameEndingController : MonoBehaviour
     public GameObject fadeout;
     public GameObject Dontclick;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-
     IEnumerator SuddenDeath()
     {
         inGameTime.statNum = 5;
@@ -29,6 +21,7 @@ public class GameEndingController : MonoBehaviour
         NoahStatController.noahStatController.IncreaseStat(0);
         InteractionButtonController.interactionButtonController.PlayerAlive();
     }
+
     public void SuddenDeath2()
     {
         GameManager.gameManager._gameData.IsSuddenDeath = true;
@@ -63,6 +56,7 @@ public class GameEndingController : MonoBehaviour
             Invoke("SuddenDeath2", 3f);
         }
 
+        /* ¾À ÀÌµ¿ ¿£µù */
         if (GameManager.gameManager._gameData.IsInputImportantMeteorEnd == true)
         {
             GameManager.gameManager._gameData.EndingNum = 0;

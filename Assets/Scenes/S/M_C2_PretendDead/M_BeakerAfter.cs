@@ -55,21 +55,23 @@ public class M_BeakerAfter : MonoBehaviour
         }
 
         if (GameManager.gameManager._gameData.IsDrinkBeaker_M_C2 
-            && inGameTime.IsBeakerEatAfterStart == false)
+           /* && inGameTime.IsBeakerEatAfterStart == false*/)
         {
             // 2.쓰러진다. 
-            Invoke("EatAfter", 3);
+            //Invoke("EatAfter", 3);
+            StartCoroutine(EatAfter());
 
             inGameTime.IsBeakerEatAfterStart = true;
         }
     }
 
-    void EatAfter()
+   IEnumerator EatAfter()
     {
+        yield return new WaitForSeconds(3f);
         //3.AI가 혼낸다.
-        //StartCoroutine(realFakeAI1());
+        StartCoroutine(realFakeAI1());
 
-        Invoke("FakeAI1", 3f);
+        //Invoke("FakeAI1", 3f);
 
         InteractionButtonController.interactionButtonController.PlayerDie();
 
@@ -84,9 +86,9 @@ public class M_BeakerAfter : MonoBehaviour
 
         //여기부터 안됨@@@@@@@@
 
-        //StartCoroutine(SuddenDeath());
+        StartCoroutine(SuddenDeath());
 
-        Invoke("SuddenDeath1", 43.5f);
+        //Invoke("SuddenDeath1", 43.5f);
     }
 
     void SuddenDeath1()
@@ -118,7 +120,7 @@ public class M_BeakerAfter : MonoBehaviour
         InteractionButtonController.interactionButtonController.PlayerAlive();
 
 
-        Invoke("End", 3f);
+        //Invoke("End", 3f);
 
     }
 
@@ -155,7 +157,7 @@ public class M_BeakerAfter : MonoBehaviour
 
     IEnumerator realFakeAI1()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
         Debug.Log("AI는 잘 말한다.");
 
         //D-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
