@@ -188,7 +188,8 @@ public class insert01_buttons : MonoBehaviour, IInteraction
     public void Cancel()
     {
         Debug.Log("보고하기 취소했음");
-        //GameManager.gameManager._gameData.
+        GameManager.gameManager._gameData.IsReportCancleCount += 1;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //거시기... 보고하기 취소했다는거 카운트하기
         IsReported = true;
         ReportUI.SetActive(false);

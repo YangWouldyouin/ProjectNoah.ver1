@@ -94,17 +94,15 @@ public class insert01 : MonoBehaviour, IInteraction
     void Update()
     {
         //미션 완료 못함 && 타이머 끝남 && 미션 시작함
-        //if (inGameTime.IsGoToEarthMissionClear == false && inGameTime.IsTimerStarted == false && inGameTime.IsGoToEarthMissionStart)
-        //{
-        //    Debug.Log("미션 실패");
-        //    GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
-        //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        if (inGameTime.IsGoToEarthMissionClear == false && inGameTime.IsGoToEarthMissionStart)
+        {
 
-        //    /*Color AIColor = aiIcon_AI.GetComponent<Image>().color;
-        //    AIColor.a = 1.0f;
-        //    aiIcon_AI.GetComponent<Image>().color = AIColor;
-        //    aiIcon_AI.interactable = true;*/
-        //}
+            StartCoroutine(failMission());
+            /*Color AIColor = aiIcon_AI.GetComponent<Image>().color;
+            AIColor.a = 1.0f;
+            aiIcon_AI.GetComponent<Image>().color = AIColor;
+            aiIcon_AI.interactable = true;*/
+        }
 
         //궤도변경 성공하면 그리고 Update문 반복 돌아서 나중에 변수 초기화 방해할까바 변수하나더 조건으로 걸어서 더이상 안돌게
         if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet 
@@ -119,11 +117,28 @@ public class insert01 : MonoBehaviour, IInteraction
         {
             Debug.Log("미션 성공");
             //inGameTime.IsNoahOutlineTurnOn = false;
-            inGameTime.IsTimerStarted = false;
-            inGameTime.missionTimer = 0;
+            //inGameTime.IsTimerStarted = false;
+            //inGameTime.missionTimer = 0;
         }
     }
 
+
+    IEnumerator failMission()
+    {
+
+
+        if(inGameTime.IsTimerStarted == false)
+        {
+            yield return new WaitForSeconds(3f);
+            Debug.Log("미션 실패");
+            GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+        else
+        {
+            yield return null;
+        }
+    }
     void DisableButton()
     {
         barkButton.transform.gameObject.SetActive(false);
@@ -168,12 +183,16 @@ public class insert01 : MonoBehaviour, IInteraction
             MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
+            inGameTime.IsGoToEarthMissionClear1 = true;
+            inGameTime.IsTimerStarted = false;
+
             Invoke("AIDown", 20f);
 
             Invoke("NoChip", 0.5f);
 
             //AI 다운 후 궤도 변경 미션 시작
-            Invoke("NewTimerStart", 2f);
+            StartCoroutine(NewTimerStart());
+            //Invoke("NewTimerStart", 2f);
         }
 
         if (WChipData.IsBite)
@@ -197,14 +216,11 @@ public class insert01 : MonoBehaviour, IInteraction
         //GameManager.gameManager._gameData.IsAIAwake_M_C1 = false;
     }
 
-    IEnumerator ChangePressFalse()
+
+
+   IEnumerator NewTimerStart()
     {
         yield return new WaitForSeconds(2f);
-        insertData.IsPushOrPress = false;
-    }
-
-    void NewTimerStart()
-    {
         /* AI가 다운되고 나면 미션 시작 : 제한 시간 5분*/
         TimerManager.timerManager.TimerStart(300);
         //outlineControl.StartOutlineTime(300f);

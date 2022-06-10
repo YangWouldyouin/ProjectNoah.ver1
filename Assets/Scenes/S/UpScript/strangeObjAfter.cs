@@ -27,8 +27,8 @@ public class strangeObjAfter : MonoBehaviour
             //inGameTime.IsNoSeeFail1 = true;
 
             /*타이머가 꺼진다*/
-            inGameTime.IsTimerStarted = false;
-            inGameTime.missionTimer = 0;
+            //inGameTime.IsTimerStarted = false;
+            //inGameTime.missionTimer = 0;
 
             /*아웃라인이 꺼진다*/
             inGameTime.IsNoahOutlineTurnOn = false;

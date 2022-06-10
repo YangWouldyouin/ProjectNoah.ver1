@@ -105,6 +105,7 @@ public class insert02_buttons : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsDetox = true;
             GameManager.gameManager._gameData.IsFindDrugDone_T_C2 = true;
             GameManager.gameManager._gameData.ActiveMissionList[26] = false;
+            GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
 

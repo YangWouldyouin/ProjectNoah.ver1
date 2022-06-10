@@ -189,6 +189,7 @@ public class strangeObj : MonoBehaviour, IInteraction
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(51));
             GameManager.gameManager._gameData.IsFirstUsingStrangeObj = true;
+            GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else

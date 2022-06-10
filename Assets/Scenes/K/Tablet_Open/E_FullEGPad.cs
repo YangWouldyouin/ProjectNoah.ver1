@@ -15,13 +15,16 @@ pushButton, smashButton, NoCenterButton;
     ObjData TabletData_E;
 
     private float Charge; // 태블릿 - 충전패드 거리 계산
-
+    MeshRenderer padRender;
+    Outline outLine;
     PlayerEquipment equipment;
     void Start()
     {
+        equipment = BaseCanvas._baseCanvas.equipment;
         FullEGPad_E = GetComponent<ObjData>();
         TabletData_E = Tablet_E.GetComponent<ObjData>();
-
+        padRender = GetComponent<MeshRenderer>();
+        outLine = GetComponent<Outline>();
 
         barkButton = FullEGPad_E.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -106,7 +109,9 @@ pushButton, smashButton, NoCenterButton;
     {
         yield return new WaitForSeconds(3f);
         equipment.biteObjectName = "";
-        FullEGPad_E.gameObject.SetActive(false);
+        padRender.enabled = false;
+        
+        //FullEGPad_E.gameObject.SetActive(false);
     }
 
     public void OnEat()
