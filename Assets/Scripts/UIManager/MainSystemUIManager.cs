@@ -103,10 +103,12 @@ public class MainSystemUIManager : MonoBehaviour
         if (GameManager.gameManager._gameData.Is_MainSystem_WirelessOn == false)
         {
             GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else
         {
             GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
     }
 

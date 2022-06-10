@@ -92,10 +92,12 @@ public class TabletWirelessUIManager : MonoBehaviour
         if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn == false)
         {
             GameManager.gameManager._gameData.Is_Tablet_WirelessOn = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn && GameManager.gameManager._gameData.IsWirelessMCTabletCheck == false)
             {
                 GameManager.gameManager._gameData.IsWirelessMCTabletCheck = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //메인 컴퓨터와 태블릿 신호 연결 끝 시점
 
                 GameManager.gameManager._gameData.ActiveMissionList[28] = false;
@@ -136,10 +138,12 @@ public class TabletWirelessUIManager : MonoBehaviour
                 GameManager.gameManager._gameData.IsFakeHealthData_Tablet = true;
                 GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
                 GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                 Color HRTcolor = HealthReportText.color;
                 HRTcolor.a = 0.3f;
                 HealthReportText.color = HRTcolor;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                 //더미데이터 보고(다운로드) 완료 시점
 
@@ -180,9 +184,11 @@ public class TabletWirelessUIManager : MonoBehaviour
 
                         GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
                         GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
+                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(39));
                         GameManager.gameManager._gameData.IsDontFakeCoordinateDatafile_Tablet = true;
+                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                         Color FCDTcolor = FakeCoordinateDataText.color;
                         FCDTcolor.a = 0.3f;
@@ -207,8 +213,10 @@ public class TabletWirelessUIManager : MonoBehaviour
 
                         GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
                         GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = false;
+                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                         GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet = true;
+                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
 
                         //if (GameManager.gameManager._gameData.IsRevisioncomplaint)

@@ -108,6 +108,7 @@ public class MC_BluetoothUIManager : MonoBehaviour
         if (GameManager.gameManager._gameData.IsAIVSMissionCount == 3)
         {
             GameManager.gameManager._gameData.IsFinalBusinessReport_MC = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 
         if (GameManager.gameManager._gameData.IsFinalBusinessReport_MC)
@@ -138,6 +139,7 @@ public class MC_BluetoothUIManager : MonoBehaviour
             if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn && GameManager.gameManager._gameData.IsWirelessMCTabletCheck == false)
             {
                 GameManager.gameManager._gameData.IsWirelessMCTabletCheck = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //메인 컴퓨터와 태블릿 신호 연결 끝 시점
 
                 GameManager.gameManager._gameData.ActiveMissionList[28] = false;
@@ -148,6 +150,7 @@ public class MC_BluetoothUIManager : MonoBehaviour
         else
         {
             GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
     }
 
@@ -179,8 +182,10 @@ public class MC_BluetoothUIManager : MonoBehaviour
 
                     GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
                     GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
+                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                     GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC = true;
+                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                     GameManager.gameManager._gameData.ActiveMissionList[8] = false;
                     SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
