@@ -93,18 +93,18 @@ public class insert01 : MonoBehaviour, IInteraction
 
     void Update()
     {
-        // 미션 완료 못함 && 타이머 끝남 && 미션 시작함
-        if (inGameTime.IsGoToEarthMissionClear == false && inGameTime.IsTimerStarted == false && inGameTime.IsGoToEarthMissionStart)
-        {
-            Debug.Log("미션 실패");
-            GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //미션 완료 못함 && 타이머 끝남 && 미션 시작함
+        //if (inGameTime.IsGoToEarthMissionClear == false && inGameTime.IsTimerStarted == false && inGameTime.IsGoToEarthMissionStart)
+        //{
+        //    Debug.Log("미션 실패");
+        //    GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
+        //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-            /*Color AIColor = aiIcon_AI.GetComponent<Image>().color;
-            AIColor.a = 1.0f;
-            aiIcon_AI.GetComponent<Image>().color = AIColor;
-            aiIcon_AI.interactable = true;*/
-        }
+        //    /*Color AIColor = aiIcon_AI.GetComponent<Image>().color;
+        //    AIColor.a = 1.0f;
+        //    aiIcon_AI.GetComponent<Image>().color = AIColor;
+        //    aiIcon_AI.interactable = true;*/
+        //}
 
         //궤도변경 성공하면 그리고 Update문 반복 돌아서 나중에 변수 초기화 방해할까바 변수하나더 조건으로 걸어서 더이상 안돌게
         if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet 
@@ -184,8 +184,6 @@ public class insert01 : MonoBehaviour, IInteraction
 
             Invoke("NoChip", 0.5f);
         }
-
-        StartCoroutine(ChangePressFalse());
     }
 
     public void AIDown()

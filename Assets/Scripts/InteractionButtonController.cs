@@ -86,13 +86,6 @@ public class InteractionButtonController : MonoBehaviour
         noahAnim = noahPlayer.GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            PlayerDie();
-        }
-    }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 

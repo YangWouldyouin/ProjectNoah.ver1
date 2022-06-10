@@ -55,7 +55,8 @@ public class ResetGameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        OpenDoor();
+        if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("오브젝트 리셋");
             ResetGame();
@@ -499,5 +500,21 @@ public class ResetGameManager : MonoBehaviour
         ResetLivingRoomObjectData();
         ResetControlData();
         ResetEngineRoomObjectData();
+    }
+
+    void OpenDoor()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            character.IsAIAwake_M_C1 = true;
+            character.IsCWDoorOpened_M_C1 = true;
+
+            character.S_IsAIAwake_M_C1 = true;
+
+            /* 임무 시작 여부 (할일목록에 들어갔는지 아닌지) */
+            character.S_IsCWDoorOpened_M_C1 = true;// 항상 조종실에서 업무공간 이동 가능
+            character.IsWEDoorOpened_M_C2 = true; // 항상 업무공간에서 엔진실 이동 가능
+            SaveSystem.Save(character, "save_001");
+        }
     }
 }

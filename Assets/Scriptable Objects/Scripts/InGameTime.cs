@@ -31,6 +31,8 @@ public class InGameTime : ScriptableObject
     public bool IsGoToEarthMissionStart;
     public bool IsGoToEarthMissionClear;
 
+    public bool secondTimer;
+
     public bool IsBeakerEatAfterStart;
     public bool IsBeakerEatAfterClear;
 
