@@ -30,18 +30,18 @@ public class E_FA_Body : MonoBehaviour, IInteraction
         engineData = BaseCanvas._baseCanvas.engineRoomData;
         dialogManager = dialog_CS.GetComponent<DialogManager>();
 
-        if (!initialData.IsFirstEnterEngine)
-        {
-            initialData.IsFirstEnterEngine = true;
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
-            GameManager.gameManager._gameData.ActiveMissionList[16] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+        //if (!initialData.IsFirstEnterEngine)
+        //{
+        //    initialData.IsFirstEnterEngine = true;
+        //    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
+        //    GameManager.gameManager._gameData.ActiveMissionList[16] = true;
+        //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //    MissionGenerator.missionGenerator.ActivateMissionList();
 
 
 
-            //냄새로 엔진실 고치기 시작
-        }
+        //    //냄새로 엔진실 고치기 시작
+        //}
 
         playerEquipment = BaseCanvas._baseCanvas.equipment;
         portableObject = InteractionButtonController.interactionButtonController.portableObjects;

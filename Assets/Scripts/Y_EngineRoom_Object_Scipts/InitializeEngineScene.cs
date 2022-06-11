@@ -37,10 +37,19 @@ public class InitializeEngineScene : MonoBehaviour
     void Start()
     {
         EngineRoomData = BaseCanvas._baseCanvas.engineRoomData;
-
         dialogManager = dialog.GetComponent<DialogManager>();
-
         GameData intialGameData = SaveSystem.Load("save_001");
+
+        if (!intialGameData.IsFirstEnterEngine)
+        {
+            intialGameData.IsFirstEnterEngine = true;
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
+            GameManager.gameManager._gameData.ActiveMissionList[16] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
+            //냄새로 엔진실 고치기 시작
+        }
+
 
         if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
