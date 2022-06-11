@@ -17,6 +17,9 @@ public class portBody_buttons : MonoBehaviour, IInteraction
     public ObjectData portDoorDataOb;
     public ObjectData portBodyDataOb;
 
+    public GameObject controlCenter;
+    public ObjectData controlData;
+
     /*
     public GameObject insert02;
     ObjData insert02Data;
@@ -58,6 +61,9 @@ public class portBody_buttons : MonoBehaviour, IInteraction
             gameObject.GetComponent<BoxCollider>().enabled = true;
             portDoor.GetComponent<BoxCollider>().enabled = false;
 
+            controlCenter.GetComponent<BoxCollider>().enabled = true;
+            controlData.IsNotInteractable = false;
+
             portDoorDataOb.IsNotInteractable = true;
             portDoorLine.OutlineWidth = 0f;
 
@@ -96,6 +102,10 @@ public class portBody_buttons : MonoBehaviour, IInteraction
     {
         portBodyDataOb.IsObserve = true;
         DisableButton();
+
+        // 뒤에 메인 시스템 비활성화
+        controlData.IsNotInteractable = true;
+        controlCenter.GetComponent<BoxCollider>().enabled = false;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
