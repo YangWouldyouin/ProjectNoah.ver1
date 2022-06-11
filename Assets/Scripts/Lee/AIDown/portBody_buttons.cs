@@ -61,7 +61,7 @@ public class portBody_buttons : MonoBehaviour, IInteraction
             gameObject.GetComponent<BoxCollider>().enabled = true;
             portDoor.GetComponent<BoxCollider>().enabled = false;
 
-            controlCenter.GetComponent<BoxCollider>().enabled = true;
+            controlCenter.GetComponent<MeshCollider>().enabled = true;
             controlData.IsNotInteractable = false;
 
             portDoorDataOb.IsNotInteractable = true;
@@ -105,7 +105,7 @@ public class portBody_buttons : MonoBehaviour, IInteraction
 
         // 뒤에 메인 시스템 비활성화
         controlData.IsNotInteractable = true;
-        controlCenter.GetComponent<BoxCollider>().enabled = false;
+        controlCenter.GetComponent<MeshCollider>().enabled = false;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
