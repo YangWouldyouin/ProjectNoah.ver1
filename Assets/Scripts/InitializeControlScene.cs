@@ -33,6 +33,10 @@ public class InitializeControlScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        chipInsertCol = chipInsert.GetComponent<BoxCollider>();
+        RChipCol = RChip.GetComponent<BoxCollider>();
+        WChipCol = WChip.GetComponent<BoxCollider>();
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         GameData intialGameData = SaveSystem.Load("save_001");

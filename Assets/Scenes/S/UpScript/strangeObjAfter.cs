@@ -23,7 +23,7 @@ public class strangeObjAfter : MonoBehaviour
         //타임 어택 성공시
         if (GameManager.gameManager._gameData.IsAIDown && inGameTime.IsTimerStarted)
         {
-            Debug.Log("타임어택성공");
+            //Debug.Log("타임어택성공");
             //inGameTime.IsNoSeeFail1 = true;
 
             /*타이머가 꺼진다*/
