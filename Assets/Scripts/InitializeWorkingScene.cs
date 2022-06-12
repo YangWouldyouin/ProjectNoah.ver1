@@ -262,7 +262,6 @@ public class InitializeWorkingScene : MonoBehaviour
         {
             /*카드팩, 카드키 안보이게*/
             workRoomData.IsObjectActiveList[31] = false;
-            workRoomData.IsObjectActiveList[32] = false;
 
         }
       
@@ -297,6 +296,10 @@ public class InitializeWorkingScene : MonoBehaviour
         UpTable1(); //책상1 오르기를 완료하면
 
         UpTable2(); //책상2 오르기를 완료하면
+
+        CanSeeSweetPotato1(); //1번 배양기에서 고구마를 키우면
+        CanSeeSweetPotato2(); //1번 배양기에서 고구마를 키우면
+        CanSeeSweetPotato3(); //1번 배양기에서 고구마를 키우면
     }
 
     void FixHealthMachine()
@@ -345,6 +348,13 @@ public class InitializeWorkingScene : MonoBehaviour
     {
         if (intialGameData.IsCompleteOpenEngineRoom)
         {
+
+            /*전도체 안보이게*/
+            workRoomData.IsObjectActiveList[33] = false;
+
+            /*카드 안보이게*/
+            workRoomData.IsObjectActiveList[32] = false;
+
             engineDoorAnim.SetBool("canEngineDoorOpen", true);
             engineDoorAnim.SetBool("canEngineDoorEnd", true);
             GoToEngineRoom.SetActive(true);
