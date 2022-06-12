@@ -42,8 +42,6 @@ pushButton, smashButton, NoCenterButton;
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
         NoCenterButton = FullEGPad_E.CenterButton1;
-
-        GameManager.gameManager._gameData.IsFullChargeTablet = false;
     }
     void DiableButton()
     {
