@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -561,11 +561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c99ab17645edeb40a3e608667537bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &300545568 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d15957adcc9763d4d93bf2f4d1da887b, type: 3}
-  m_PrefabInstance: {fileID: 1415057102}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &322176168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,7 +1330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savePagePanel: {fileID: 2023874368}
-  noah: {fileID: 300545568}
 --- !u!114 &1367498071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1353,6 +1347,11 @@ MonoBehaviour:
     IsReportCancleCount: 0
     IsAIVSMissionCount: 0
     EndingNum: 0
+    SelectPlanetNum: 0
+    IsSelectPlanetCheck: 0
+    IsFakePlanetOpen: 0
+    IsFakePlanetSelectMission: 0
+    IsPlanetSelectMission: 0
     IsFakefatigue: 91
     IsFakeStrength: 87
     IsFakeThirst: 84
@@ -1375,6 +1374,7 @@ MonoBehaviour:
     IsWEDoorOpened_M_C2: 0
     IsWLDoorHalfOpened_M_C2: 0
     IsWLDoorOpened_M_C2: 0
+    IsTrashDoorBTFixed_L_L1: 0
     IsAllDoorOpened: 0
     IsFirstEnterWorking: 0
     IsFirstEnterEngine: 0
@@ -1383,6 +1383,7 @@ MonoBehaviour:
     IsFirstNoticeEnd: 0
     afterFirstTalk: 0
     afterNewsTalk: 0
+    afterFirstMission: 0
     IsCheckDrug: 0
     IsDetox: 0
     IsFirstUsingStrangeObj: 0
@@ -1409,11 +1410,14 @@ MonoBehaviour:
     IsWrongBeakerColorChange2_M_C2: 0
     IsNoNeed1BeakerColorChange2_M_C2: 0
     IsNoNeed2BeakerColorChange2_M_C2: 0
+    IsDrinkBeaker_M_C2: 0
+    IsAITimerStart_M_C2: 0
     Is_Tablet_WirelessOn: 0
     IsFakeHealthData_Tablet: 0
     IsFakeCoordinateData_Tablet: 0
     IsFakeCoordinateDatafile_Tablet: 0
     IsDontFakeCoordinateDatafile_Tablet: 0
+    IsDollListen: 0
     Is_MainComputer_WirelessOn: 0
     IsFinalBusinessReport_MC: 0
     IsFinalBusinessReportFile_MC: 0
@@ -1442,6 +1446,8 @@ MonoBehaviour:
     IsMeteorCollectClose: 0
     IsMeteorCollectOpen: 0
     IsLivingRoomDollOut: 0
+    IsUpTable1: 0
+    IsUpTable2: 0
     IsStartCollectMeteorites: 0
     IsStartPretendDead: 0
     IsStartFIndDrug: 0
@@ -1451,6 +1457,7 @@ MonoBehaviour:
     IsBasicTuto: 0
     IsMiddleTuto: 0
     StopIDConsoleSpeak: 0
+    BoxZoneCheck: 0
     IsRealMiddleTuto: 0
     IsEndTuto: 0
     IsTutorialClear: 0
@@ -1471,7 +1478,6 @@ MonoBehaviour:
     IsPhotoMissionFinish: 0
     IsRevisioncomplaint: 0
     IsCompleteOpenLivingRoom: 0
-    IsTrashDoorBTFixed_L_L1: 0
     randomUPic: 0
     IsInputImportantMeteorEnd: 0
     IsMakeForestEnd: 0
@@ -1485,6 +1491,11 @@ MonoBehaviour:
     IsEatBadPotato: 0
     IsWirelessUI_firstEnter: 0
     IsWirelessMCTabletCheck: 0
+    IsPhotoTime: 0
+    IsAIReportMissionTime: 0
+    IsInputImportantMeteor1_T_C2: 0
+    IsAIAfterMissionComplete: 0
+  _savePageData:
     IsDisqualifiedEnd0: 0
     IsEatBadPotato0: 0
     IsMakeForestEnd0: 0
@@ -1496,6 +1507,7 @@ MonoBehaviour:
     IsDefyMissionEnd0: 0
     IsTutorialClear0: 0
     IsCWDoorOpened_M_C10: 0
+    IsPlanetSelectMission0: 0
     IsPhotoMissionFinish0: 0
     IsCompleteFindLivingKey0: 0
     IsCompleteFindEngineKey0: 0
@@ -1503,6 +1515,7 @@ MonoBehaviour:
     IsHealthMachineFixed_T_C20: 0
     IsDummyDataReport0: 0
     IsInputNormalMeteor1_T_C20: 0
+    IsInputImportantMeteor1_T_C20: 0
     IsCompletePretendDead0: 0
     IsKnowUsingSObj0: 0
     IsFindDrugDone_T_C20: 0
@@ -1516,11 +1529,9 @@ MonoBehaviour:
     IsTabletDestory0: 0
     IsFakeCoordinateData_Tablet0: 0
     IsFakeCoordinateDatafile_Tablet0: 0
+    IsFakePlanetSelectMission0: 0
     IsAIDown_M_C1C30: 0
     IsRevisioncomplaint0: 0
-    IsPhotoTime: 0
-    IsAIReportMissionTime: 0
-  IsTrashDoorFixed_L_L1: 0
   IsCanMeteorGet: 0
   IsSmellDone: 0
   IsCollectMeteor: 0
@@ -1888,6 +1899,7 @@ RectTransform:
   - {fileID: 519237129}
   - {fileID: 118636904}
   - {fileID: 716003380}
+  - {fileID: 2141192355}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2327,6 +2339,85 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 716103933415608548, guid: df9d0e0331473c4449f44525b137ea2d, type: 3}
   m_PrefabInstance: {fileID: 716103933556068260}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2141192354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2141192355}
+  - component: {fileID: 2141192357}
+  - component: {fileID: 2141192356}
+  m_Layer: 5
+  m_Name: "Copyright \u24D2"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2141192355
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141192354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1524667827}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 617, y: -411}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2141192356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141192354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 6c0e50d36c2a9f84cb5e354fb446b7d4, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 5
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Copyright \u24D2 2022 WouldYouIn All Rights Reserved."
+--- !u!222 &2141192357
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141192354}
+  m_CullTransparentMesh: 1
 --- !u!1 &2145652701
 GameObject:
   m_ObjectHideFlags: 0
