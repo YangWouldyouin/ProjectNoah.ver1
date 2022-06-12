@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -400,6 +400,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194385319}
   m_CullTransparentMesh: 1
+--- !u!1 &225528702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2157869331425446671, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+  m_PrefabInstance: {fileID: 2157869330767507246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &225528707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225528702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297dee1300509d14bbe50fa7f81607cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingPage: {fileID: 1108874892}
+  open: {fileID: 453347089}
+  load: {fileID: 441820593}
+  projectList: {fileID: 229330979}
+  settings: {fileID: 1626811387}
+  exit: {fileID: 1546988787}
 --- !u!1 &229330976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1268,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034351439}
   m_CullTransparentMesh: 1
+--- !u!223 &1108874892 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2157869330976760346, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+  m_PrefabInstance: {fileID: 2157869330767507246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1367498067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,6 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savePagePanel: {fileID: 2023874368}
+  settingPanel: {fileID: 1108874892}
 --- !u!114 &1367498071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,9 +2148,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 0d0f4dc91b275504792fe2fac692b472, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 85d3e42314d4412488649f573b03c05c, type: 3}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 8fd7ebf9f879787419bce498e645d505, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2129,7 +2158,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1626811387}
   m_OnClick:
     m_PersistentCalls:
@@ -2146,6 +2175,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 0
+      - m_Target: {fileID: 1367498070}
+        m_TargetAssemblyTypeName: MainButtonController, Assembly-CSharp
+        m_MethodName: OnSettingButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1626811387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2166,7 +2207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c6c3b2b038f35b84ca4fa2b373e170f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8fd7ebf9f879787419bce498e645d505, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2765,6 +2806,38 @@ PrefabInstance:
     - target: {fileID: 2157869330976760351, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
       propertyPath: m_Name
       value: Setting
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157869330976760351, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157869331425446669, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157869331425446669, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157869331425446669, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 225528707}
+    - target: {fileID: 2157869331425446669, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157869331425446669, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TurnOffSavePage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157869331425446669, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingPageExit, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157869331425446669, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2157869331620959055, guid: 3ec6a6040ef2ff54581ebddccc148033, type: 3}
       propertyPath: m_TargetGraphic

@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class MainButtonController : MonoBehaviour
 {
     public Canvas savePagePanel;
+
+    public Canvas settingPanel;
+
     GameData gameData;
     Image open, load, projectList, settings, exit;
     AudioSource audios;
@@ -16,7 +19,6 @@ public class MainButtonController : MonoBehaviour
 
     private void Start()
     {
-
         i = 12;
         gameData = SaveSystem.Load("save_001");
         open = transform.GetChild(1).GetComponentInChildren<Image>();
@@ -27,7 +29,27 @@ public class MainButtonController : MonoBehaviour
         audios = GetComponent<AudioSource>();
     }
 
+    public void OnSettingButtonClicked()
+    {
+        StartCoroutine(GoToSetting());
+    }
 
+    IEnumerator GoToSetting()
+    {
+        while (i >= 0)
+        {
+            i -= 1;
+            settings.rectTransform.localScale += new Vector3(0.02f, 0.02f, 0.02f);
+            load.fillAmount = i / 12;
+            exit.fillAmount = i / 12;
+            projectList.fillAmount = i / 12;
+            open.fillAmount = i / 12;
+            yield return new WaitForSeconds(0.02f);
+        }
+        i = 12;
+        yield return new WaitForSeconds(0.5f);
+        settingPanel.gameObject.SetActive(true);
+    }
 
 
 
@@ -63,8 +85,6 @@ public class MainButtonController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("new cockpit");
     }
-
-
 
     public void OnOpenButtonClicked()
     {
