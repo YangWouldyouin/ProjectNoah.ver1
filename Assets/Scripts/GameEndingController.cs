@@ -164,8 +164,7 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            fadeout.SetActive(true);
-            Invoke("changeEndingScene", 1f);
+            Invoke("changeEndingScene0", 20f);
             //SceneManager.LoadScene("EndingScene");
             //¿£µù ¾À ÀÌµ¿
         }
@@ -182,13 +181,12 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            fadeout.SetActive(true);
-            Invoke("changeEndingScene", 1f);
+            Invoke("changeEndingScene0", 3f);
             //SceneManager.LoadScene("EndingScene");
             //¿£µù ¾À ÀÌµ¿
         }
 
-        if(GameManager.gameManager._gameData.IsReturnOfTheEarth == false && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        if(GameManager.gameManager._gameData.IsReturnOfTheEarth == false && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet && GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC == false)
         {
             GameManager.gameManager._gameData.IsSaveOnlyOneEnd = true;
         }
@@ -208,6 +206,13 @@ public class GameEndingController : MonoBehaviour
     {
         SceneManager.LoadScene("EndingScene");
     }
+
+    public void changeEndingScene0()
+    {
+        fadeout.SetActive(true);
+        Invoke("changeEndingScene", 1f);
+    }
+
 
     public void SavePageManager()
     {

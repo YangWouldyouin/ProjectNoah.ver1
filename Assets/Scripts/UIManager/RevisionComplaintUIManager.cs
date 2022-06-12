@@ -17,7 +17,7 @@ public class RevisionComplaintUIManager : MonoBehaviour
     {
         if(GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
         {
-            Invoke("seconds3time", 8f);
+            Invoke("seconds3time", 15f);
         }
     }
 

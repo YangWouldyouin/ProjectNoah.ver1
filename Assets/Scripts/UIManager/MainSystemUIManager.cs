@@ -47,8 +47,7 @@ public class MainSystemUIManager : MonoBehaviour
 
         if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
         {
-            systemAlert.SetActive(true);
-            Invoke("systemAlertduration", 3f);
+            Invoke("systemAlertduration", 10f);
 
             GameManager.gameManager._gameData.ActiveMissionList[12] = false;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -57,6 +56,12 @@ public class MainSystemUIManager : MonoBehaviour
     }
 
     public void systemAlertduration()
+    {
+        systemAlert.SetActive(true);
+        Invoke("systemAlertduration2", 3f);
+    }
+
+    public void systemAlertduration2()
     {
         systemAlert.SetActive(false);
     }
