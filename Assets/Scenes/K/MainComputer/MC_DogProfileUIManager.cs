@@ -88,28 +88,31 @@ public class MC_DogProfileUIManager : MonoBehaviour
 
     public void DogCurrentStatus() // 강아지 현재 상태 불러오기
     {
-        int noahStat = GameManager.gameManager._gameData.statNum; // 노아 현재 스탯 값 불러오기
 
-        /* 피로도 */
-        ranStat = Random.Range(0, 9); // 랜덤 값
-        GameManager.gameManager._gameData.IsRealfatigue = ranStat + noahStat * 10;
-        Sleep_text_D.text = "피로도: " + GameManager.gameManager._gameData.IsRealfatigue.ToString();
+        if(GameManager.gameManager._gameData.IsFakeHealthData_Tablet == false)
+        {
+            int noahStat = GameManager.gameManager._gameData.statNum; // 노아 현재 스탯 값 불러오기
 
-        /* 체력 */
-        ranStat = Random.Range(0, 9); // 랜덤 값
-        GameManager.gameManager._gameData.IsRealStrength = ranStat + noahStat * 10;
-        HP_text_D.text = "체력: " + GameManager.gameManager._gameData.IsRealStrength.ToString();
+            /* 피로도 */
+            ranStat = Random.Range(0, 9); // 랜덤 값
+            GameManager.gameManager._gameData.IsRealfatigue = ranStat + noahStat * 10;
+            Sleep_text_D.text = "피로도: " + GameManager.gameManager._gameData.IsRealfatigue.ToString();
 
-        /* 목마름 */
-        ranStat = Random.Range(0, 9); // 랜덤 값
-        GameManager.gameManager._gameData.IsRealThirst = ranStat + noahStat * 10;
-        Water_text_D.text = "체력: " + GameManager.gameManager._gameData.IsRealThirst.ToString();
+            /* 체력 */
+            ranStat = Random.Range(0, 9); // 랜덤 값
+            GameManager.gameManager._gameData.IsRealStrength = ranStat + noahStat * 10;
+            HP_text_D.text = "체력: " + GameManager.gameManager._gameData.IsRealStrength.ToString();
 
-        /* 허기 */
-        ranStat = Random.Range(0, 9); // 랜덤 값
-        GameManager.gameManager._gameData.IsRealHunger = ranStat + noahStat * 10;
-        Food_text_D.text = "체력: " + GameManager.gameManager._gameData.IsRealHunger.ToString();
+            /* 목마름 */
+            ranStat = Random.Range(0, 9); // 랜덤 값
+            GameManager.gameManager._gameData.IsRealThirst = ranStat + noahStat * 10;
+            Water_text_D.text = "체력: " + GameManager.gameManager._gameData.IsRealThirst.ToString();
 
+            /* 허기 */
+            ranStat = Random.Range(0, 9); // 랜덤 값
+            GameManager.gameManager._gameData.IsRealHunger = ranStat + noahStat * 10;
+            Food_text_D.text = "체력: " + GameManager.gameManager._gameData.IsRealHunger.ToString();
+        }
         /*        if(10 <= noahStat && noahStat <= 90)
                 {
                     *//* 피로도 *//*
