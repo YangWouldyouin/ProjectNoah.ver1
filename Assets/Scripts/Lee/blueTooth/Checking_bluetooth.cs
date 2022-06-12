@@ -51,10 +51,10 @@ public class Checking_bluetooth : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            /*if (tabletData.IsBite)
+            if (tabletData.IsBite)
             {
                 GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
-            }*/
+            }
 
             Debug.Log("노아들어옴");
 
@@ -102,7 +102,7 @@ public class Checking_bluetooth : MonoBehaviour
         {
             if (tabletData.IsBite)
             {
-                GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
+                GameManager.gameManager._gameData.IsCanConnect_C_MS = false;
             }
 
             if (RChip01Data.IsBite || WChip01Data.IsBite)
