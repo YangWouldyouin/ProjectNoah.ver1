@@ -7,17 +7,18 @@ public class insert_planet : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
-    ObjData Planet_insertData;
+    ObjData Planet_insertObjData;
+    public ObjectData Planet_insertData;
     Outline Planet_insertLine;
 
     ObjData R_ChipObjData;
     public GameObject R_Chip;
-    //public ObjectData R_ChipData;
+    public ObjectData R_ChipData;
     Outline R_ChipLine;
 
     ObjData W_ChipObjData;
     public GameObject W_Chip;
-    //public ObjectData W_ChipData;
+    public ObjectData W_ChipData;
     Outline W_ChipLine;
 
     public GameObject dialog;
@@ -29,7 +30,7 @@ public class insert_planet : MonoBehaviour, IInteraction
     {
         dialogManager = dialog.GetComponent<DialogManager>();
 
-        Planet_insertData = GetComponent<ObjData>();
+        Planet_insertObjData = GetComponent<ObjData>();
         Planet_insertLine = GetComponent<Outline>();
 
         R_ChipLine = R_Chip.GetComponent<Outline>();
@@ -37,19 +38,19 @@ public class insert_planet : MonoBehaviour, IInteraction
         W_ChipLine = W_Chip.GetComponent<Outline>();
 
 
-        barkButton = Planet_insertData.BarkButton;
+        barkButton = Planet_insertObjData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = Planet_insertData.SniffButton;
+        sniffButton = Planet_insertObjData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = Planet_insertData.BiteButton;
+        biteButton = Planet_insertObjData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
-        pressButton = Planet_insertData.PushOrPressButton;
+        pressButton = Planet_insertObjData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton = Planet_insertData.CenterButton1;
+        noCenterButton = Planet_insertObjData.CenterButton1;
         noCenterButton.onClick.AddListener(OnObserve);
     }
 
@@ -64,14 +65,14 @@ public class insert_planet : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        Planet_insertData.IsBark = true;
+        Planet_insertObjData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        Planet_insertData.IsSniff = true;
+        Planet_insertObjData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -79,7 +80,7 @@ public class insert_planet : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        Planet_insertData.IsPushOrPress = true;
+        Planet_insertObjData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
         StartCoroutine(ChangePressFalse());
@@ -88,28 +89,17 @@ public class insert_planet : MonoBehaviour, IInteraction
         {
             Debug.Log("변화없음");
 
-            // dialogManager.StartCoroutine(dialogManager.PrintAIDialog(59));
-
-/*            GameManager.gameManager._gameData.IsAIDown = true;
-            GameManager.gameManager._gameData.IsAIDown_M_C1C3 = true;
-            GameManager.gameManager._gameData.IsStartOrbitChange = true;
-            GameManager.gameManager._gameData.ActiveMissionList[9] = false;
-            GameManager.gameManager._gameData.ActiveMissionList[12] = true;
-            MissionGenerator.missionGenerator.ActivateMissionList();
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");*/
-
             Invoke("NoChip", 0.5f);
         }
 
         if (W_ChipObjData.IsBite)
         {
-            // dialogManager.StartCoroutine(dialogManager.PrintAIDialog(60));
-
-            GameManager.gameManager._gameData.IsFakePlanetOpen = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             Debug.Log("가짜 행성 해금");
 
             Invoke("NoChip", 0.5f);
+
+            GameManager.gameManager._gameData.IsFakePlanetOpen = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
     }
 
@@ -117,7 +107,7 @@ public class insert_planet : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        Planet_insertData.IsPushOrPress = false;
+        Planet_insertObjData.IsPushOrPress = false;
     }
 
 
@@ -159,7 +149,7 @@ public class insert_planet : MonoBehaviour, IInteraction
             R_ChipObjData.IsNotInteractable = false;
             R_ChipLine.OutlineWidth = 0;
 
-            Planet_insertData.IsNotInteractable = false;
+            Planet_insertObjData.IsNotInteractable = false;
             Planet_insertLine.OutlineWidth = 0;
 
         }
@@ -178,7 +168,7 @@ public class insert_planet : MonoBehaviour, IInteraction
             W_ChipObjData.IsNotInteractable = false;
             W_ChipLine.OutlineWidth = 0;
 
-            Planet_insertData.IsNotInteractable = false;
+            Planet_insertObjData.IsNotInteractable = false;
             Planet_insertLine.OutlineWidth = 0;
         }
     }

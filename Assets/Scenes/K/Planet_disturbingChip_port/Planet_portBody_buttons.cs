@@ -7,11 +7,13 @@ public class Planet_portBody_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
 
-    ObjData Planet_portBodyData;
+    ObjData Planet_portBodyObjData;
+    public ObjectData Planet_portBodyData;
     Outline Planet_portBodyLine;
 
     public GameObject Planet_portDoor;
-    ObjData Planet_portDoorData;
+    ObjData Planet_portDoorObjData;
+    public ObjectData Planet_portDoorData;
     Outline Planet_portDoorLine;
 
     public ObjectData Planet_portDoorDataOb;
@@ -22,26 +24,26 @@ public class Planet_portBody_buttons : MonoBehaviour, IInteraction
 
     void Start()
     {
-        Planet_portBodyData = GetComponent<ObjData>();
+        Planet_portBodyObjData = GetComponent<ObjData>();
         Planet_portBodyLine = GetComponent<Outline>();
 
-        Planet_portDoorData = Planet_portDoor.GetComponent<ObjData>();
+        Planet_portDoorObjData = Planet_portDoor.GetComponent<ObjData>();
         Planet_portDoorLine = Planet_portDoor.GetComponent<Outline>();
 
 
-        barkButton = Planet_portBodyData.BarkButton;
+        barkButton = Planet_portBodyObjData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = Planet_portBodyData.SniffButton;
+        sniffButton = Planet_portBodyObjData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = Planet_portBodyData.BiteButton;
+        biteButton = Planet_portBodyObjData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
-        pressButton = Planet_portBodyData.PushOrPressButton;
+        pressButton = Planet_portBodyObjData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        observeButton = Planet_portBodyData.CenterButton1;
+        observeButton = Planet_portBodyObjData.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
     }
 
@@ -91,7 +93,7 @@ public class Planet_portBody_buttons : MonoBehaviour, IInteraction
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
         PlayerScripts.playerscripts.currentObserveObj = gameObject;
-        CameraController.cameraController.currentView = Planet_portBodyData.ObserveView;
+        CameraController.cameraController.currentView = Planet_portBodyObjData.ObserveView;
         InteractionButtonController.interactionButtonController.playerObserve();
 
         //portBodyData.IsNotInteractable = true;
@@ -119,7 +121,7 @@ public class Planet_portBody_buttons : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        Planet_portBodyData.IsPushOrPress = false;
+        Planet_portBodyObjData.IsPushOrPress = false;
     }
 
     public void OnSniff()

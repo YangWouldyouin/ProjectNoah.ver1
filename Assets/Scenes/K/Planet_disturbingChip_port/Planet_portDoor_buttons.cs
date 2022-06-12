@@ -7,12 +7,13 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
-    ObjData Planet_portDoorData;
+    ObjData Planet_portDoorObjData;
+    public ObjectData Planet_portDoorData;
     Outline Planet_portDoorLine;
 
     ObjData Planet_insertObjData;
     public GameObject Planet_insert;
-    // public ObjectData Planet_insertData;
+    public ObjectData Planet_insertData;
     Outline Planet_insertLine;
 
     public GameObject dialog;
@@ -22,27 +23,27 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
     {
         dialogManager = dialog.GetComponent<DialogManager>();
 
-        Planet_portDoorData = GetComponent<ObjData>();
+        Planet_portDoorObjData = GetComponent<ObjData>();
         Planet_portDoorLine = GetComponent<Outline>();
 
         Planet_insertLine = Planet_insert.GetComponent<Outline>();
 
-        barkButton = Planet_portDoorData.BarkButton;
+        barkButton = Planet_portDoorObjData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = Planet_portDoorData.SniffButton;
+        sniffButton = Planet_portDoorObjData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = Planet_portDoorData.BiteButton;
+        biteButton = Planet_portDoorObjData.BiteButton;
         biteButton.onClick.AddListener(OnBite);
 
         //smashButton = portDoorData.SmashButton;
         //smashButton.onClick.AddListener(OnSmash);
 
-        pressButton = Planet_portDoorData.PushOrPressButton;
+        pressButton = Planet_portDoorObjData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton = Planet_portDoorData.CenterButton1;
+        noCenterButton = Planet_portDoorObjData.CenterButton1;
 
     }
 
@@ -60,14 +61,14 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        Planet_portDoorData.IsBark = true;
+        Planet_portDoorObjData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        Planet_portDoorData.IsSniff = true;
+        Planet_portDoorObjData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -75,13 +76,13 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        Planet_portDoorData.IsPushOrPress = true;
+        Planet_portDoorObjData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        Planet_portDoorData.transform.localRotation = Quaternion.Euler(5f, 0f, 90f);
+        Planet_portDoorObjData.transform.localRotation = Quaternion.Euler(5f, 0f, 90f);
 
-        Planet_portDoorData.IsNotInteractable = true;
+        Planet_portDoorObjData.IsNotInteractable = true;
         Planet_portDoorLine.OutlineWidth = 0f;
 
         Planet_insertObjData.IsNotInteractable = false;
@@ -97,7 +98,7 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        Planet_portDoorData.IsPushOrPress = false;
+        Planet_portDoorObjData.IsPushOrPress = false;
     }
 
     public void OnEat()
