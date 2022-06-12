@@ -102,7 +102,7 @@ public class Checking_bluetooth : MonoBehaviour
         {
             if (tabletData.IsBite)
             {
-                GameManager.gameManager._gameData.IsCanConnect_C_MS = false;
+                GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
             }
 
             if (RChip01Data.IsBite || WChip01Data.IsBite)
