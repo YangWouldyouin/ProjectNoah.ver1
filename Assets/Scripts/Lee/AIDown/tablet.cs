@@ -17,8 +17,6 @@ public class tablet : MonoBehaviour, IInteraction
 
     public GameObject LoverPic_C; // 애인 사진
     public ObjectData LoverPicData_C;
-    GameData intialGameData;
-
 /*    public GameObject FullEgPad_C; // 충전 된 충전패드
     public GameObject ZeroEgPad_C; // 충전 안 된 충전패드
 
@@ -33,8 +31,6 @@ public class tablet : MonoBehaviour, IInteraction
 
     void Start()
     {
-        intialGameData = SaveSystem.Load("save_001");
-
         TabletData_C = GetComponent<ObjData>();
       
 
@@ -91,6 +87,7 @@ public class tablet : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
+        GameData intialGameData = SaveSystem.Load("save_001");
         DisableButton();
         PlayerScripts.playerscripts.currentObserveObj = gameObject;
         CameraController.cameraController.currentView = TabletData_C.ObserveView;
@@ -104,7 +101,7 @@ public class tablet : MonoBehaviour, IInteraction
             *//*
         }*/
 
-        if(GameManager.gameManager._gameData.IsFullChargeTablet)
+        if (intialGameData.IsFullChargeTablet)
         {
             Invoke("TabletOn", 3f);
            
