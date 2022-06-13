@@ -31,8 +31,13 @@ public class Checking_bluetooth : MonoBehaviour
 
     //public GameObject tablet;
 
+    GameObject portableGroup;
+    PlayerEquipment equipment;
+
     void Start()
     {
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
+        equipment = BaseCanvas._baseCanvas.equipment;
         dialogManager = dialog.GetComponent<DialogManager>();
 
         tabletData = tablet.GetComponent<ObjData>();
@@ -122,6 +127,8 @@ public class Checking_bluetooth : MonoBehaviour
     {
         RChip01.GetComponent<Rigidbody>().isKinematic = false;
         RChip01.transform.parent = null;
+        RChip01.transform.parent = portableGroup.transform;
+        equipment.biteObjectName = "";
         RChipData.IsBite = false;
 
         RChip01.SetActive(false);
@@ -133,6 +140,9 @@ public class Checking_bluetooth : MonoBehaviour
     {
         WChip01.GetComponent<Rigidbody>().isKinematic = false;
         WChip01.transform.parent = null;
+        RChip01.transform.parent = portableGroup.transform;
+        equipment.biteObjectName = "";
+
         WChipData.IsBite = false;
 
         WChip01.SetActive(false);
