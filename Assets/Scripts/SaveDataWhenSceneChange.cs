@@ -137,7 +137,7 @@ public class SaveDataWhenSceneChange : MonoBehaviour
     /* 플레이어가 다른씬으로 이동하려고 할 때 */
     IEnumerator ChangeScene()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return null;
 
         if (playerEquipment.pushObjectName != "") // 만일 플레이어가 물건을 가지고 다른씬으로 이동하려고 하면
         {
