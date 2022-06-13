@@ -21,6 +21,7 @@ public class Checking_bluetooth : MonoBehaviour
     ObjData RChip01Data;
     ObjData WChip01Data;
 
+    public ObjectData TabletData;
     public ObjectData RChipData;
     public ObjectData WChipData;
 
@@ -56,7 +57,7 @@ public class Checking_bluetooth : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            if (tabletData.IsBite)
+            if (TabletData.IsBite)
             {
                 GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
             }
