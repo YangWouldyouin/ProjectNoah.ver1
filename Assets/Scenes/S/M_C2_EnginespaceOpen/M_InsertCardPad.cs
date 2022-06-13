@@ -168,6 +168,9 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
     IEnumerator canDoorOpen()
     {
         yield return new WaitForSeconds(2f);
+
+        M_canBrokenDoorConduction.SetActive(false);
+        workRoomData.IsObjectActiveList[33] = false;
         CameraController.cameraController.CancelObserve();
         engineDoorAnim_M.SetBool("canEngineDoorOpen", true);
         engineDoorAnim_M.SetBool("canEngineDoorEnd", true);
