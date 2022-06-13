@@ -50,8 +50,6 @@ pushButton, NoCenterButton_M_Box;
 
         // 비활성화 버튼은 버튼을 가져오기만 한다. 
         NoCenterButton_M_Box = BoxesData_E.CenterButton1;
-
-        GameManager.gameManager._gameData.IsNoBoxes = false; // 처음엔 상자 있음
     }
 
     void DiableButton()
