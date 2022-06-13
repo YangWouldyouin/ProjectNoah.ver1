@@ -16,6 +16,9 @@ public class strangeObj : MonoBehaviour, IInteraction
     public DialogManager dialog;
     DialogManager dialogManager;
 
+    AudioSource StrangeObj_smoke_Sound;
+    public AudioClip StrangeObj_smoke;
+
     [Header("<플레이어의 아웃라인을 관리함>")]
     public NoahOutlineController outlineController;
     NoahOutlineController outlineControl;
@@ -29,10 +32,6 @@ public class strangeObj : MonoBehaviour, IInteraction
     /*타이머*/
     public InGameTime inGameTime;
 
-    public GameObject S_TimerBarFilled;
-    public GameObject S_TimerBackground;
-    public GameObject S_TimerText;
-
     public bool IsNoSeeFail1 = false; //제한 시간 내에 안에 퍼즐 실패
     public bool canTSee1 = false;
 
@@ -44,6 +43,9 @@ public class strangeObj : MonoBehaviour, IInteraction
         {
             childExtinguisher[i] = transform.GetChild(i).gameObject;
         }
+
+        StrangeObj_smoke_Sound = GetComponent<AudioSource>();
+        StrangeObj_smoke_Sound.clip = StrangeObj_smoke;
 
         outlineControl = outlineController.GetComponent<NoahOutlineController>();
         dialogManager = dialog.GetComponent<DialogManager>();
@@ -66,39 +68,6 @@ public class strangeObj : MonoBehaviour, IInteraction
         smashButton.onClick.AddListener(OnSmash);
 
         noCenterButton = objData.CenterButton1;
-    }
-
-
-    void Update()
-    {
-        //strangeObjAfter 스크립트로 옮겨감
-        /*if (IsNoSeeFail1 == true && canTSee1 == false && GameManager.gameManager._gameData.IsAIDown == false)
-        {
-            GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
-            Debug.Log("시간 안에 퍼즐 풀기 실패");
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-            canTSee1 = true;
-        }
-
-        //타임 어택 성공시
-        if (GameManager.gameManager._gameData.IsAIDown)
-        {
-            *//*타이머가 꺼진다*//*
-            inGameTime.IsTimerStarted = false;
-
-            *//*아웃라인이 꺼진다*//*
-            inGameTime.IsNoahOutlineTurnOn = false;
-            inGameTime.outlineTimer = 0;
-
-            S_TimerBarFilled.SetActive(false);
-            S_TimerBackground.SetActive(false);
-            S_TimerText.SetActive(false);
-
-            Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
-            //GameManager.gameManager._gameData.IsMiddleTuto = false;
-            //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
-        }*/
     }
 
     void DisableButton()
@@ -213,7 +182,7 @@ public class strangeObj : MonoBehaviour, IInteraction
         smoke.transform.localScale = new Vector3(1f, 1f, 1f);
         smoke.transform.position = gameObject.transform.position;
         smoke.Play();
-
+        StrangeObj_smoke_Sound.Play();
         // 이제 업무공간에 수상한 물건이 없어졌으므로 직접 false로 변경
         workRoomExtinguisherData.IsObjectActiveList[10] = false;
 

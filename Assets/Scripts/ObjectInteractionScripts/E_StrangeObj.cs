@@ -69,38 +69,6 @@ public class E_StrangeObj : MonoBehaviour
         noCenterButton = objData.CenterButton1;
     }
 
-    void Update()
-    {
-        //strangeObjAfter 스크립트로 옮겨감
-/*        if (IsNoSeeFail2 == true && canTSee2 == false && !GameManager.gameManager._gameData.IsAIDown)
-        {
-            GameManager.gameManager._gameData.IsDiscardNoahEnd = true;
-            Debug.Log("시간 안에 퍼즐 풀기 실패");
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-            canTSee2 = true;
-        }
-
-        //타임 어택 성공시
-        if (GameManager.gameManager._gameData.IsAIDown)
-        {
-            *//*타이머가 꺼진다*//*
-            inGameTime.IsTimerStarted = false;
-
-            *//*아웃라인이 꺼진다*//*
-            inGameTime.IsNoahOutlineTurnOn = false;
-            inGameTime.outlineTimer = 0;
-
-            S_TimerBarFilled.SetActive(false);
-            S_TimerBackground.SetActive(false);
-            S_TimerText.SetActive(false);
-
-            Debug.Log("노아의 굿엔딩 보기 가능해졌다!");
-            //GameManager.gameManager._gameData.IsMiddleTuto = false;
-            //GameManager.gameManager._gameData.IsRealMiddleTuto = true; //진짜 튜토리얼 중간 성공
-        }*/
-    }
-
     void DisableButton()
     {
         barkButton.transform.gameObject.SetActive(false);
@@ -222,7 +190,7 @@ public class E_StrangeObj : MonoBehaviour
         smoke_E.transform.localScale = new Vector3(1f, 1f, 1f);
         smoke_E.transform.position = gameObject.transform.position;
         smoke_E.Play();
-
+        StrangeObj_smoke_Sound.Play();
         // 이제 엔진실에 수상한 물건이 없어졌으므로 직접 false로 변경
         engineRoomExtinguisherData.IsObjectActiveList[58] = false;
 
