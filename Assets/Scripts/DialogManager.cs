@@ -8,6 +8,7 @@ public class DialogManager : MonoBehaviour
     public static DialogManager dialogManager { get; private set; }
     public InGameTime inGameTime;
     public Animator AIPanelAnim;
+    Animator subtitleAnim;
 
     public TMPro.TextMeshProUGUI dialogText;
 
@@ -44,10 +45,13 @@ public class DialogManager : MonoBehaviour
     }
     private void Start()
     {
+
         googleSheetManager = GetComponent<GoogleSheetManager>();
         talkPanelImage = subtitlePanel.GetComponent<Image>();
         dialogSource = GetComponent<AudioSource>();
         dialogSource.clip = aiAudio;
+        subtitleAnim = subtitlePanel.GetComponent<Animator>();
+
     }
 
     public string GetAI(int id, int talkIndex)
@@ -193,9 +197,13 @@ public class DialogManager : MonoBehaviour
     {
         talkingIndex = index;
         IsTalking = true;
-
         StartCoroutine(_turnOnPanel()); // 대화창을 켬
-        yield return new WaitForSeconds(0.5f); 
+        subtitleAnim.SetBool("IsStart1", true);
+        subtitleAnim.SetBool("IsStart2", true);
+
+
+        yield return new WaitForSeconds(0.5f);
+        subtitleAnim.SetBool("IsStart1", false);
 
         // 한 대화의 문장 개수만큼 반복
         for (int i = 0; i < googleSheetManager.subtitleDic[talkingIndex].Length; i++)
