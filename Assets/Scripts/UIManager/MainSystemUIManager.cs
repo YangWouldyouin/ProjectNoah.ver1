@@ -18,6 +18,7 @@ public class MainSystemUIManager : MonoBehaviour
 
     public Text OnOffText;
 
+    public bool OnetimeCheck = false;
     public void Start()
     {
         MainUI.SetActive(false);
@@ -45,10 +46,10 @@ public class MainSystemUIManager : MonoBehaviour
             MS_onoffBT.color = onoffcolor;
         }
 
-        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet && OnetimeCheck == false)
         {
             Invoke("systemAlertduration", 10f);
-
+            OnetimeCheck = true;
             GameManager.gameManager._gameData.ActiveMissionList[12] = false;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();

@@ -5,6 +5,7 @@ using UnityEngine;
 public class RevisionComplaintUIManager : MonoBehaviour
 {
     public GameObject RC_GUI;
+    public bool OnetimeCheck = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,9 +16,10 @@ public class RevisionComplaintUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
+        if (GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet && OnetimeCheck == false)
         {
             Invoke("seconds3time", 15f);
+            OnetimeCheck = true;
         }
     }
 
