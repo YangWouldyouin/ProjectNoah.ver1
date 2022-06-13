@@ -814,8 +814,15 @@ public class InteractionButtonController : MonoBehaviour
 
         noahAnim.SetBool("IsEating3", true);
         yield return new WaitForSeconds(0.1f);
-        noahEatObject.GetComponent<MeshRenderer>().enabled = false;
-        //noahEatObject.SetActive(false);
+        MeshRenderer foodRender = noahEatObject.GetComponent<MeshRenderer>();
+        if(foodRender!=null)
+        {
+            foodRender.enabled = false;
+        }
+        else
+        {
+            noahEatObject.SetActive(false);
+        }
         yield return new WaitForSeconds(0.9f);
         noahAnim.SetBool("IsEating1", false);
     }
