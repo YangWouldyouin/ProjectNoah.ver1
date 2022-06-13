@@ -137,17 +137,17 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             MainSystem_GUI.gameObject.SetActive(false);
         }
 
-        if(GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == true)
-        {
-            TrackChangeNotification_GUI.SetActive(true);
-            Invoke("TrackChangeGUI_popUp", 3f);
-        }
+        //if(GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == true)
+        //{
+        //    TrackChangeNotification_GUI.SetActive(true);
+        //    Invoke("TrackChangeGUI_popUp", 3f);
+        //}
     }
 
-    public void TrackChangeGUI_popUp()
-    {
-        TrackChangeNotification_GUI.SetActive(false);
-    }
+    //public void TrackChangeGUI_popUp()
+    //{
+    //    TrackChangeNotification_GUI.SetActive(false);
+    //}
 
     /* 상호작용 버튼 끄는 함수 */
     void DiableButton()
