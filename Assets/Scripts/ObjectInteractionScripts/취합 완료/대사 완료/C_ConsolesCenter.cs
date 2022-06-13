@@ -136,7 +136,10 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             consoleCollider.enabled = true;
             MainSystem_GUI.gameObject.SetActive(false);
         }
-
+        else
+        {
+            consoleCollider.enabled = false;
+        }
         //if(GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == true)
         //{
         //    TrackChangeNotification_GUI.SetActive(true);
