@@ -85,14 +85,14 @@ public class insert_planet : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerPressHead();
         StartCoroutine(ChangePressFalse());
 
-        if (R_ChipObjData.IsBite)
+        if (R_ChipData.IsBite)
         {
             Debug.Log("변화없음");
 
             Invoke("NoChip", 0.5f);
         }
 
-        if (W_ChipObjData.IsBite)
+        if (W_ChipData.IsBite)
         {
             Debug.Log("가짜 행성 해금");
 

@@ -7,25 +7,25 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
-    ObjData disturbingChipData;
+    ObjData rightdisturbingChipData;
 
     void Start()
     {
-        disturbingChipData = GetComponent<ObjData>();
+        rightdisturbingChipData = GetComponent<ObjData>();
 
-        barkButton = disturbingChipData.BarkButton;
+        barkButton = rightdisturbingChipData.BarkButton;
         barkButton.onClick.AddListener(OnBark);
 
-        sniffButton = disturbingChipData.SniffButton;
+        sniffButton = rightdisturbingChipData.SniffButton;
         sniffButton.onClick.AddListener(OnSniff);
 
-        biteButton = disturbingChipData.BiteButton;
+        biteButton = rightdisturbingChipData.BiteButton;
         // biteButton.onClick.AddListener(OnBite);
 
-        pressButton = disturbingChipData.PushOrPressButton;
+        pressButton = rightdisturbingChipData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        noCenterButton = disturbingChipData.CenterButton1;
+        noCenterButton = rightdisturbingChipData.CenterButton1;
     }
 
     /*public void OnTriggerEnter(Collider other)
@@ -53,7 +53,7 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (disturbingChipData.IsClicked)
+        if (rightdisturbingChipData.IsClicked)
         {
             if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2)
             {
@@ -62,7 +62,7 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
                 MissionGenerator.missionGenerator.ActivateMissionList();
             }
 
-            disturbingChipData.IsClicked = false;
+            rightdisturbingChipData.IsClicked = false;
         }
     }
 
@@ -77,7 +77,7 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        disturbingChipData.IsBark = true;
+        rightdisturbingChipData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
@@ -99,7 +99,7 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        disturbingChipData.IsPushOrPress = true;
+        rightdisturbingChipData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
 
@@ -109,12 +109,12 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
     IEnumerator ChangePressFalse()
     {
         yield return new WaitForSeconds(2f);
-        disturbingChipData.IsPushOrPress = false;
+        rightdisturbingChipData.IsPushOrPress = false;
     }
 
     public void OnSniff()
     {
-        disturbingChipData.IsSniff = true;
+        rightdisturbingChipData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
