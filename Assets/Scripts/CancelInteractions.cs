@@ -122,6 +122,7 @@ public class CancelInteractions : MonoBehaviour
             if (cancelUpDownData.objectDATA.IsUpDown)
             {
                 cancelUpDownData.objectDATA.IsUpDown = false;
+                cancelUpDownData.objectDATA.IsNotInteractable = false;
             }
         }
         if (playerObject.biteObjectName != "")
@@ -131,6 +132,7 @@ public class CancelInteractions : MonoBehaviour
             {
                 biteData = biteObject.GetComponent<ObjData>();
                 biteData.objectDATA.IsBite = false;
+                biteData.objectDATA.IsNotInteractable = false;
                 playerObject.biteObjectName = "";
             }
         }
@@ -141,6 +143,7 @@ public class CancelInteractions : MonoBehaviour
             {
                 pushData = pushObject.GetComponent<ObjData>();
                 pushData.objectDATA.IsBite = false;
+                pushData.objectDATA.IsNotInteractable = false;
                 playerObject.pushObjectName = "";
             }
         }
