@@ -9,6 +9,7 @@ public class MainButtonController : MonoBehaviour
     public Canvas savePagePanel;
 
     public Canvas settingPanel;
+    public InGameTime inGameTime;
 
     GameData gameData;
     Image open, load, projectList, settings, exit;
@@ -82,6 +83,10 @@ public class MainButtonController : MonoBehaviour
             exit.fillAmount = i / 12;
             yield return new WaitForSeconds(0.02f);
         }
+
+        // 타이머에 이전 시간 넣음
+        inGameTime.timer = gameData.inGameTime;
+
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("new cockpit");
     }
@@ -138,6 +143,11 @@ public class MainButtonController : MonoBehaviour
             open.fillAmount = i / 12;
             yield return new WaitForSeconds(0.02f);
         }
+
+        // 종료전 마지막 시간 넣음
+        gameData.inGameTime = inGameTime.timer;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         yield return new WaitForSeconds(0.5f);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

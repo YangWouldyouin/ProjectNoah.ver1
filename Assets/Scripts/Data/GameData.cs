@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public float inGameTime;
     public int statNum = 10;
     //임무 보고하기 취소 카운트, 3번 이상 취소하기 누르면 게임 오버
     public int IsReportCancleCount = 0;

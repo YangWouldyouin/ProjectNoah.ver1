@@ -14,6 +14,10 @@ public class PauseGameManu : MonoBehaviour
     Image exitElert, mainElert;
     Button exitYesButton, exitNoButton, mainYesButton, mainNoButton;
 
+    public InGameTime inGameTime;
+
+    GameData gameData;
+
     private void Start()
     {
         cancellnteract = cancellnteractions.GetComponent<CancelInteractions>();
@@ -78,6 +82,9 @@ public class PauseGameManu : MonoBehaviour
 
     void OnExitYesButtonClicked()
     {
+        gameData.inGameTime = inGameTime.timer;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         cancellnteract.ResetPlayerEquipement();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
