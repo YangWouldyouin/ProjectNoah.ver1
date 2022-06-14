@@ -11,10 +11,9 @@ public class MainButtonController : MonoBehaviour
     public Canvas settingPanel;
     public InGameTime inGameTime;
 
-    GameData gameData;
     Image open, load, projectList, settings, exit;
     AudioSource audios;
-
+    GameData gameData;
     float i = 12;
 
 
@@ -145,7 +144,7 @@ public class MainButtonController : MonoBehaviour
         }
 
         // 종료전 마지막 시간 넣음
-        gameData.inGameTime = inGameTime.timer;
+        GameManager.gameManager._gameData.inGameTime = inGameTime.timer;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         yield return new WaitForSeconds(0.5f);

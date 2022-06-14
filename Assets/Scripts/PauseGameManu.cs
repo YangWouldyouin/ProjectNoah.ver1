@@ -33,6 +33,7 @@ public class PauseGameManu : MonoBehaviour
 
         exitYesButton = exitElert.transform.GetChild(2).GetComponentInChildren<Button>();
         exitNoButton = exitElert.transform.GetChild(3).GetComponentInChildren<Button>();
+
         exitYesButton.onClick.AddListener(OnExitYesButtonClicked);
         exitNoButton.onClick.AddListener(OnExitNoButtonClicked);
     }
@@ -56,6 +57,9 @@ public class PauseGameManu : MonoBehaviour
     }
     public void GoToMain()
     {
+        GameManager.gameManager._gameData.inGameTime = inGameTime.timer;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         mainElert.gameObject.SetActive(true);
     }
 
@@ -80,9 +84,9 @@ public class PauseGameManu : MonoBehaviour
         exitElert.gameObject.SetActive(true);
     }
 
-    void OnExitYesButtonClicked()
+    public void OnExitYesButtonClicked()
     {
-        gameData.inGameTime = inGameTime.timer;
+        GameManager.gameManager._gameData.inGameTime = inGameTime.timer;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         cancellnteract.ResetPlayerEquipement();
@@ -91,7 +95,7 @@ public class PauseGameManu : MonoBehaviour
 #endif
         Application.Quit();
     }
-    void OnExitNoButtonClicked()
+    public void OnExitNoButtonClicked()
     {
         exitElert.gameObject.SetActive(false);
     }
