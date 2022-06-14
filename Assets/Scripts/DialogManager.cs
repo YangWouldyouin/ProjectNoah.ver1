@@ -198,12 +198,11 @@ public class DialogManager : MonoBehaviour
         talkingIndex = index;
         IsTalking = true;
         StartCoroutine(_turnOnPanel()); // 대화창을 켬
-        subtitleAnim.SetBool("IsStart1", true);
-        subtitleAnim.SetBool("IsStart2", true);
+
 
 
         yield return new WaitForSeconds(0.5f);
-        subtitleAnim.SetBool("IsStart1", false);
+
 
         // 한 대화의 문장 개수만큼 반복
         for (int i = 0; i < googleSheetManager.subtitleDic[talkingIndex].Length; i++)
