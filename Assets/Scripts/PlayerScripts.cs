@@ -28,6 +28,7 @@ public class PlayerScripts : MonoBehaviour
     private Transform interactionDestinationData, observeData, observePlusData;
     private Button centerButton1Data, centerButton2Data, barkBtn, sniffBtn, biteBtn, smashBtn, pushOrPressBtn, centerBtn;
     private Vector3 interactionButtonOffset;
+    public Vector3 nameTagPos =new Vector3(9, 54, 27.52853f);
     private ObjectData objectData;
 
     /* 상호작용 취소할 때 사용하는 변수 */
@@ -390,7 +391,9 @@ public class PlayerScripts : MonoBehaviour
         // 네임태그 활성화
         if (objectNameData != null)
         {
-            objectNameTag.transform.position = Input.mousePosition + nameTagOffset;
+            //objectNameTag.transform.position = Input.mousePosition + nameTagOffset;
+            objectNameTag.transform.SetParent(sniffBtn.transform, true);
+            objectNameTag.transform.localPosition = nameTagPos;
             objectNameTag.SetActive(true);
             objectNameText.text = objectNameData;
         }
@@ -437,6 +440,7 @@ public class PlayerScripts : MonoBehaviour
         {
             centerBtn.transform.gameObject.SetActive(false);
         }
+        objectNameTag.transform.parent = null;
         objectNameTag.SetActive(false);
     }
     void MovePlayer(Vector3 targetPosition)
