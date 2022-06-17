@@ -59,6 +59,8 @@ public class InteractionButtonController : MonoBehaviour
     Vector3 camerapos;
 
     public NavMeshObstacle navmeshObstacle;
+    public Vector3 noahPushPos;
+    public Vector3 noahOriginPos;
 
     void Awake()
     {
@@ -642,6 +644,7 @@ public class InteractionButtonController : MonoBehaviour
 
             noahPushObject = PlayerScripts.playerscripts.currentObject;
             navmeshObstacle = noahPushObject.GetComponent<NavMeshObstacle>();
+
             if (noahPushObject != null)
             {
                 // 스크립터블오브젝트 변수에 저장
@@ -650,6 +653,9 @@ public class InteractionButtonController : MonoBehaviour
                 equipment.cancelPushPos = noahPushObject.transform.position;
                 equipment.cancelPushRot = noahPushObject.transform.eulerAngles;
                 equipment.cancelPushScale = noahPushObject.transform.localScale;
+
+                /**/
+                noahFBX.transform.localPosition = noahPushPos;
 
                 Invoke("ChangePushTrue1", 0.5f);
                 Invoke("ChangePushTrue2", 1f);
@@ -716,7 +722,11 @@ public class InteractionButtonController : MonoBehaviour
 
         noahPushObject = null;
         pushData = null;
+
         navmeshObstacle.enabled = true;
+
+        /**/
+        noahFBX.transform.localPosition = noahOriginPos;
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
