@@ -14,6 +14,14 @@ public class GameData
 
     public int EndingNum;
 
+    [Header("<정기임무 관련>")]
+    public bool IsRM_HealthDataReportbool; //상태체크기계임무진행
+    public bool IsRM_HM_MissionScriptCheck; //상태체크기계 대사 체크
+    public bool IsRM_P_MissionScriptCheck; //사진찍기임무 대사 체크
+    public bool IsRM_PR_TimeCheck; //행성탐사 임무 진행
+    public bool IsRM_PR_MissionScriptCheck; //행성탐사 임무 대사 체크
+
+
     [Header("<행성 탐지 퍼즐>")]
     public int SelectPlanetNum; //선택된 행성 번호
     public bool IsSelectPlanetCheck; //행성 선택 체크

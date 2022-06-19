@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -76879,6 +76879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499511338}
   - component: {fileID: 1499511337}
+  - component: {fileID: 1499511339}
   m_Layer: 0
   m_Name: GameEndingController
   m_TagString: Untagged
@@ -76915,6 +76916,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499511339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499511336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a889d7f39f4004da7fba9e761fac8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inGameTime: {fileID: 11400000, guid: b9e9cc0701491bf4d817dc63d1bd0d98, type: 2}
+  dialogManager_RM: {fileID: 1854744821}
 --- !u!1001 &1500792028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81209,6 +81224,11 @@ MonoBehaviour:
     IsReportCancleCount: 0
     IsAIVSMissionCount: 0
     EndingNum: 0
+    IsRM_HealthDataReportbool: 0
+    IsRM_HM_MissionScriptCheck: 0
+    IsRM_P_MissionScriptCheck: 0
+    IsRM_PR_TimeCheck: 0
+    IsRM_PR_MissionScriptCheck: 0
     SelectPlanetNum: 0
     IsSelectPlanetCheck: 0
     IsFakePlanetOpen: 0
@@ -81218,6 +81238,7 @@ MonoBehaviour:
     IsFakeStrength: 87
     IsFakeThirst: 82
     IsFakeHunger: 88
+    IsHealthMachineUpCheck: 0
     IsRealfatigue: 0
     IsRealStrength: 0
     IsRealThirst: 0
@@ -94301,7 +94322,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.4
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 49b05e88cb7c429418eec59ec60626d8, type: 2}
 --- !u!1 &1889191040

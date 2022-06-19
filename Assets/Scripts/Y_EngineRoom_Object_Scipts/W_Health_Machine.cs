@@ -28,8 +28,8 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
     public InGameTime inGameTime;
 
-    public bool HealthDataReportbool;
-    public bool MissionScriptCheck =false;
+    //public bool HealthDataReportbool;
+    //public bool MissionScriptCheck =false;
 
     AudioSource Health_Machine_Sound;
     public AudioClip Health_Machine_cheak;
@@ -78,6 +78,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
             //W_HM_1
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
             GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             //냄새로 업무공간 고치기 시작
             GameManager.gameManager._gameData.ActiveMissionList[13] = true;
@@ -88,45 +89,45 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10 && (inGameTime.days +1) >= 3)
-        {
-            GameManager.gameManager._gameData.IsAIReportMissionTime = true;
-            HealthDataReportbool = false;
+        //if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10 && (inGameTime.days +1) >= 3)
+        //{
+        //    GameManager.gameManager._gameData.IsAIReportMissionTime = true;
+        //    GameManager.gameManager._gameData.IsRM_HealthDataReportbool = false;
 
-            if (MissionScriptCheck == false)
-            {
-                Debug.Log("상태 체크 정기 업무 시작");
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(62));
-                MissionScriptCheck = true;
-                //중간데이터보고 임무 시작
+        //    if (GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck == false)
+        //    {
+        //        Debug.Log("상태 체크 정기 업무 시작");
+        //        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(62));
+        //        GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck = true;
+        //        //중간데이터보고 임무 시작
 
-                GameManager.gameManager._gameData.ActiveMissionList[14] = true;
-                MissionGenerator.missionGenerator.ActivateMissionList();
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            }
+        //        GameManager.gameManager._gameData.ActiveMissionList[14] = true;
+        //        MissionGenerator.missionGenerator.ActivateMissionList();
+        //        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //    }
 
-        }
+        //}
 
-        if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10 && HealthDataReportbool == false)
-        {
-            GameManager.gameManager._gameData.IsAIReportMissionTime = false;
-            HealthDataReportbool = false;
+        //if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10 && GameManager.gameManager._gameData.IsRM_HealthDataReportbool == false)
+        //{
+        //    GameManager.gameManager._gameData.IsAIReportMissionTime = false;
+        //    //GameManager.gameManager._gameData.IsRM_HealthDataReportbool = false;
 
-            if (MissionScriptCheck == true)
-            {
-                Debug.Log("상태 체크 정기 업무 종료");
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
-                GameManager.gameManager._gameData.IsReportCancleCount += 1;
+        //    if (GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck == true)
+        //    {
+        //        Debug.Log("상태 체크 정기 업무 종료");
+        //        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+        //        GameManager.gameManager._gameData.IsReportCancleCount += 1;
 
-                MissionScriptCheck = false;
-                //중간데이터보고 임무 끝
+        //        GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck = false;
+        //        //중간데이터보고 임무 끝
 
-                GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-                MissionGenerator.missionGenerator.ActivateMissionList();
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            }
+        //        GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+        //        MissionGenerator.missionGenerator.ActivateMissionList();
+        //        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //    }
 
-        }
+        //}
 
         if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == true)
         {
@@ -289,9 +290,11 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
                 GameManager.gameManager._gameData.IsRealStrength = GameManager.gameManager._gameData.IsFakeStrength;
                 GameManager.gameManager._gameData.IsRealThirst = GameManager.gameManager._gameData.IsFakeThirst;
                 GameManager.gameManager._gameData.IsRealHunger = GameManager.gameManager._gameData.IsFakeHunger;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                 GameManager.gameManager._gameData.IsDummyDataReport = true;
                 GameManager.gameManager._gameData.IsHealthMachineUpCheck = false;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
             else
             {
@@ -311,17 +314,21 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         cancelInteractions.enabled = true;
 
         GameManager.gameManager._gameData.IsAIReportMissionTime = false;
-        HealthDataReportbool = true;
+        GameManager.gameManager._gameData.IsRM_HealthDataReportbool = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         if (GameManager.gameManager._gameData.IsFakeHealthData_Tablet)
         {
             GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
             GameManager.gameManager._gameData.IsDummyDataReport = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //더미데이터 메인컴퓨터에 업로드
+
             GameManager.gameManager._gameData.IsRealfatigue = GameManager.gameManager._gameData.IsFakefatigue;
             GameManager.gameManager._gameData.IsRealStrength = GameManager.gameManager._gameData.IsFakeStrength;
             GameManager.gameManager._gameData.IsRealThirst = GameManager.gameManager._gameData.IsFakeThirst;
             GameManager.gameManager._gameData.IsRealHunger = GameManager.gameManager._gameData.IsFakeHunger;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             GameManager.gameManager._gameData.IsHealthMachineUpCheck = false;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -338,6 +345,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         {
             //현재 스탯 상태 메인 컴퓨터에 업로드 
             GameManager.gameManager._gameData.IscurrentHealthData = inGameTime.statNum;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             if (inGameTime.statNum < 3) 
             {
@@ -386,6 +394,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         cancelInteractions.enabled = true;
 
         GameManager.gameManager._gameData.IsAIReportMissionTime = false;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         GameManager.gameManager._gameData.IsReportCancleCount += 1;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

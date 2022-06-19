@@ -30,8 +30,8 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
     public SphereCollider FakePlanetCol;
 
     public InGameTime inGameTime;
-    public bool PR_TimeCheck = false;
-    public bool MissionScriptCheck = false;
+    //public bool PR_TimeCheck = false;
+    //public bool MissionScriptCheck = false;
 
     public GameObject dialogManager_PR;
     DialogManager dialogManager;
@@ -77,60 +77,60 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
         }
 
 
-        if ((inGameTime.days + 1) % 4 == 0 && (inGameTime.hours) == 12)
-        {
-            if (MissionScriptCheck == false)
-            {
-                Debug.Log("행성 탐사 임무 시작");
-                PR_TimeCheck = true;
+        //if ((inGameTime.days + 1) % 4 == 0 && (inGameTime.hours) == 12)
+        //{
+        //    if (GameManager.gameManager._gameData.IsRM_PR_MissionScriptCheck == false)
+        //    {
+        //        Debug.Log("행성 탐사 임무 시작");
+        //        GameManager.gameManager._gameData.IsRM_PR_TimeCheck = true;
 
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(70));
-                MissionScriptCheck = true;
+        //        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(70));
+        //        GameManager.gameManager._gameData.IsRM_PR_MissionScriptCheck = true;
 
-                if (GameManager.gameManager._gameData.IsFakePlanetOpen)
-                {
-                    GameManager.gameManager._gameData.ActiveMissionList[33] = true;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    MissionGenerator.missionGenerator.ActivateMissionList();
-                }
-                else
-                {
-                    GameManager.gameManager._gameData.ActiveMissionList[31] = true;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    MissionGenerator.missionGenerator.ActivateMissionList();
-                }
-            }
-        }
-        if ((inGameTime.days + 1) % 4 == 2 && (inGameTime.hours) == 12)
-        {
-            if (MissionScriptCheck == true)
-            {
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
-                GameManager.gameManager._gameData.IsReportCancleCount += 1;
-                Debug.Log("행성 탐사 임무 종료");
-                PR_TimeCheck = false;
+        //        if (GameManager.gameManager._gameData.IsFakePlanetOpen)
+        //        {
+        //            GameManager.gameManager._gameData.ActiveMissionList[33] = true;
+        //            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //            MissionGenerator.missionGenerator.ActivateMissionList();
+        //        }
+        //        else
+        //        {
+        //            GameManager.gameManager._gameData.ActiveMissionList[31] = true;
+        //            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //            MissionGenerator.missionGenerator.ActivateMissionList();
+        //        }
+        //    }
+        //}
+        //if ((inGameTime.days + 1) % 4 == 2 && (inGameTime.hours) == 12)
+        //{
+        //    if (GameManager.gameManager._gameData.IsRM_PR_MissionScriptCheck == true)
+        //    {
+        //        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
+        //        GameManager.gameManager._gameData.IsReportCancleCount += 1;
+        //        Debug.Log("행성 탐사 임무 종료");
+        //        GameManager.gameManager._gameData.IsRM_PR_TimeCheck = false;
 
-                MissionScriptCheck = false;
+        //        GameManager.gameManager._gameData.IsRM_PR_MissionScriptCheck = false;
 
-                if (GameManager.gameManager._gameData.IsFakePlanetOpen)
-                {
-                    GameManager.gameManager._gameData.ActiveMissionList[33] = false;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    MissionGenerator.missionGenerator.ActivateMissionList();
-                }
-                else
-                {
-                    GameManager.gameManager._gameData.ActiveMissionList[31] = false;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    MissionGenerator.missionGenerator.ActivateMissionList();
-                }
-            }
-        }
+        //        if (GameManager.gameManager._gameData.IsFakePlanetOpen)
+        //        {
+        //            GameManager.gameManager._gameData.ActiveMissionList[33] = false;
+        //            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //            MissionGenerator.missionGenerator.ActivateMissionList();
+        //        }
+        //        else
+        //        {
+        //            GameManager.gameManager._gameData.ActiveMissionList[31] = false;
+        //            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //            MissionGenerator.missionGenerator.ActivateMissionList();
+        //        }
+        //    }
+        //}
     }
 
     public void BTOpen()
     {
-        if (PR_TimeCheck == true)
+        if (GameManager.gameManager._gameData.IsRM_PR_TimeCheck == true)
         {
             MainUI.SetActive(true);
             Open.SetActive(false);
@@ -180,7 +180,8 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
         Debug.Log("보고하기");
 
         PR_reportUI.SetActive(false);
-        PR_TimeCheck = false;
+        GameManager.gameManager._gameData.IsRM_PR_TimeCheck = false;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         if (i == 5)
         {
@@ -188,31 +189,37 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
             FakePlanetCol.enabled = false;
             GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
             GameManager.gameManager._gameData.IsFakePlanetSelectMission = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else if (i == 0)
         {
             PlanetCol1.enabled = false;
             GameManager.gameManager._gameData.IsPlanetSelectMission = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else if (i == 1)
         {
             PlanetCol2.enabled = false;
             GameManager.gameManager._gameData.IsPlanetSelectMission = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else if (i == 2)
         {
             PlanetCol3.enabled = false;
             GameManager.gameManager._gameData.IsPlanetSelectMission = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else if (i == 3)
         {
             PlanetCol4.enabled = false;
             GameManager.gameManager._gameData.IsPlanetSelectMission = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
         else if (i == 4)
         {
             PlanetCol5.enabled = false;
             GameManager.gameManager._gameData.IsPlanetSelectMission = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(71));
@@ -240,7 +247,8 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
         Debug.Log("취소하기");
 
         PR_reportUI.SetActive(false);
-        PR_TimeCheck = false;
+        GameManager.gameManager._gameData.IsRM_PR_TimeCheck = false;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         MainUI.SetActive(false);
         Open.SetActive(true);
