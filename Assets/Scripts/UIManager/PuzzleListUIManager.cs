@@ -138,7 +138,7 @@ public class PuzzleListUIManager : MonoBehaviour
         if (GameManager.gameManager._savePageData.IsSmartFarmOpen_T_C20)
         {
             Puzzle7.sprite = Finish_puzzle;
-            Puzzle7t.text = "¿£Áø½Ç Ä«µåÅ° È¹µæ";
+            Puzzle7t.text = "½º¸¶Æ®ÆÊ ÇØ±Ý";
         }
         if (GameManager.gameManager._savePageData.IsHealthMachineFixed_T_C20)
         {
