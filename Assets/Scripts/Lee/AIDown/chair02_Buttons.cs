@@ -35,6 +35,7 @@ public class chair02_Buttons : MonoBehaviour, IInteraction
         upButton = chairData.CenterButton1;
         upButton.onClick.AddListener(OnUp);
 
+        chair02Data.IsObserve = false;
     }
 
     // Update is called once per frame

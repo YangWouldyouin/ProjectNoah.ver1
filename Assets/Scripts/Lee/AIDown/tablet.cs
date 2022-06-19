@@ -51,6 +51,8 @@ public class tablet : MonoBehaviour, IInteraction
         // 만약에 충전 완료 변수가 참이면 태블릿 화면을 켜겠다 추가해야함
         //intialGameData GameManager.gameManager._gameData.IsFullChargeTablet == true
         // GameManager.gameManager._gameData.IsTabletUnlock = false;
+
+        Tablet_C.IsObserve = false;
     }
 
     void Update()
