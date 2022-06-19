@@ -196,6 +196,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
             Health_Machine_Sound.clip = Health_Machine_cheak;
             Health_Machine_Sound.Play();
 
+            GameManager.gameManager._gameData.IsHealthMachineUpCheck = true;
             StartCoroutine(Delay5seconds());
         }
     }
@@ -290,6 +291,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
                 GameManager.gameManager._gameData.IsRealHunger = GameManager.gameManager._gameData.IsFakeHunger;
 
                 GameManager.gameManager._gameData.IsDummyDataReport = true;
+                GameManager.gameManager._gameData.IsHealthMachineUpCheck = false;
             }
             else
             {
@@ -321,6 +323,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsRealThirst = GameManager.gameManager._gameData.IsFakeThirst;
             GameManager.gameManager._gameData.IsRealHunger = GameManager.gameManager._gameData.IsFakeHunger;
 
+            GameManager.gameManager._gameData.IsHealthMachineUpCheck = false;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //W_HM_3
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));

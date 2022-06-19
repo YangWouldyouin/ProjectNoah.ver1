@@ -26,6 +26,7 @@ public class GameData
     public int IsFakeStrength = 87; //더미체력
     public int IsFakeThirst = 84; //더미목마름
     public int IsFakeHunger = 88; //더미배고픔
+    public bool IsHealthMachineUpCheck;
 
     [Header("<강아지 현재 상태 데이터>")]
     public int IsRealfatigue; //피로도
