@@ -33,7 +33,7 @@ public class InHouseNewsUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inGameTime.timer == 720)
+        if (inGameTime.timer >= 720 && inGameTime.timer <=721)
         {
             Debug.Log("2ÀÏ");
             InhouseNews_GUI.SetActive(true);
@@ -57,7 +57,7 @@ public class InHouseNewsUI : MonoBehaviour
             Invoke("ExitBTNotice", 3f);
             Invoke("NewUIFalse", 230f);
         }
-        else if (inGameTime.timer == 2160)
+        else if (inGameTime.timer >= 2160 && inGameTime.timer <= 2161)
         {
             InhouseNews_GUI.SetActive(true);
             ExitBT.SetActive(false);
@@ -80,7 +80,7 @@ public class InHouseNewsUI : MonoBehaviour
             Invoke("ExitBTNotice", 3f);
             Invoke("NewUIFalse", 230f);
         }
-        else if (inGameTime.timer == 3600)
+        else if (inGameTime.timer >= 3600 && inGameTime.timer <= 3601)
         {
             InhouseNews_GUI.SetActive(true);
             ExitBT.SetActive(false);
@@ -103,7 +103,7 @@ public class InHouseNewsUI : MonoBehaviour
             Invoke("ExitBTNotice", 3f);
             Invoke("NewUIFalse", 230f);
         }
-        else if (inGameTime.timer == 1440)
+        else if (inGameTime.timer >= 1440 && inGameTime.timer <= 1441)
         {
             if (GameManager.gameManager._gameData.IsPhotoTime == true)
             {
@@ -133,7 +133,7 @@ public class InHouseNewsUI : MonoBehaviour
                 Invoke("NewUIFalse", 230f);
             }
         }
-        else if (inGameTime.timer == 2880)
+        else if (inGameTime.timer >= 2880 && inGameTime.timer <= 2881)
         {
             if (GameManager.gameManager._gameData.IsPhotoTime == true)
             {
@@ -163,7 +163,7 @@ public class InHouseNewsUI : MonoBehaviour
                 Invoke("NewUIFalse", 230f);
             }
         }
-        else if (inGameTime.timer == 4320)
+        else if (inGameTime.timer >= 4320 && inGameTime.timer <= 4321)
         {
             if (GameManager.gameManager._gameData.IsPhotoTime == true)
             {
@@ -193,7 +193,7 @@ public class InHouseNewsUI : MonoBehaviour
                 Invoke("NewUIFalse", 230f);
             }
         }
-        else if (inGameTime.timer == 5760)
+        else if (inGameTime.timer >= 5760 && inGameTime.timer <= 5761)
         {
             if (GameManager.gameManager._gameData.IsPhotoTime == true)
             {
@@ -223,7 +223,7 @@ public class InHouseNewsUI : MonoBehaviour
                 Invoke("NewUIFalse", 230f);
             }
         }
-        else if (inGameTime.timer == 7200)
+        else if (inGameTime.timer >= 7200 && inGameTime.timer <= 7201)
         {
             if (GameManager.gameManager._gameData.IsPhotoTime == true)
             {
