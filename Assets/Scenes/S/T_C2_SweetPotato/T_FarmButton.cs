@@ -119,7 +119,13 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         {
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
-            Invoke("AppearSweetPotato1", 60f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+            Invoke("AppearSweetPotato1", 30f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+
+            /*고구마가 나타난 상태를 저장한다.*/
+            GameManager.gameManager._gameData.IsCanSeePotato1 = true;
+            GameManager.gameManager._gameData.ActiveMissionList[19] = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
 
         if(GameManager.gameManager._gameData.Pot1InBadPotato)
@@ -141,7 +147,13 @@ public class T_FarmButton : MonoBehaviour, IInteraction
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
 
-            Invoke("AppearSweetPotato2", 60f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+            Invoke("AppearSweetPotato2", 30f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+
+            /*고구마가 나타난 상태를 저장한다.*/
+            GameManager.gameManager._gameData.IsCanSeePotato2 = true;
+            GameManager.gameManager._gameData.ActiveMissionList[19] = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
 
         if(GameManager.gameManager._gameData.Pot2InBadPotato)
@@ -162,7 +174,13 @@ public class T_FarmButton : MonoBehaviour, IInteraction
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
 
-            Invoke("AppearSweetPotato3", 60f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+            Invoke("AppearSweetPotato3", 30f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+
+            /*고구마가 나타난 상태를 저장한다.*/
+            GameManager.gameManager._gameData.IsCanSeePotato3 = true;
+            GameManager.gameManager._gameData.ActiveMissionList[19] = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
         }
 
         if(GameManager.gameManager._gameData.Pot3InBadPotato)
@@ -195,11 +213,11 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*고구마 먹는 거 방해 안되게 + 이미 한 번 심은 땅에는 다시 못 심게*/
         Pot1_Collider.enabled = false;
 
-        /*고구마가 나타난 상태를 저장한다.*/
+        /*고구마가 나타난 상태를 저장한다.*//*
         GameManager.gameManager._gameData.IsCanSeePotato1 = true;
         GameManager.gameManager._gameData.ActiveMissionList[19] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.ActivateMissionList();*/
 
         // 식물 배양 연구 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
@@ -221,11 +239,11 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*고구마 먹는 거 방해 안되게 + 이미 한 번 심은 땅에는 다시 못 심게*/
         Pot2_Collider.enabled = false;
 
-        /*고구마가 나타난 상태를 저장한다.*/
+        /*고구마가 나타난 상태를 저장한다.*//*
         GameManager.gameManager._gameData.IsCanSeePotato2 = true;
         GameManager.gameManager._gameData.ActiveMissionList[19] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.ActivateMissionList();*/
 
         // 식물 배양 연구 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }
@@ -247,11 +265,11 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*고구마 먹는 거 방해 안되게 + 이미 한 번 심은 땅에는 다시 못 심게*/
         Pot3_Collider.enabled = false;
 
-        /*고구마가 나타난 상태를 저장한다.*/
+        /*고구마가 나타난 상태를 저장한다.*//*
         GameManager.gameManager._gameData.IsCanSeePotato3 = true;
         GameManager.gameManager._gameData.ActiveMissionList[19] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.ActivateMissionList();*/
 
         // 식물 배양 연구 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }

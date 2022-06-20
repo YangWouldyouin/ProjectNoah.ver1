@@ -132,7 +132,8 @@ public class BIteDestroyController_TroubleLine2 : MonoBehaviour, IPointerUpHandl
         TroubleLine.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
         TroubleLine.transform.parent = null;
 
-        TroubleLine.SetActive(false);
+        //Destroy(TroubleLine);
+        //TroubleLine.SetActive(false);
 
     }
 
