@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class M_Table1 : MonoBehaviour, IInteraction
 {
     public ObjectData ChairData1;
+    public ObjectData BoxData1;
 
     /*연관있는 오브젝트*/
     public Vector3 Table1RisePos;
@@ -107,11 +108,11 @@ public class M_Table1 : MonoBehaviour, IInteraction
         }
 
         //오를 수 있는 높이 확인
-        if(ChairData1.IsUpDown)
+        if(ChairData1.IsUpDown || table1Data_M.IsCollision)
         {
             table1Data_M.IsCenterButtonDisabled = false;
         }
-        else if(!ChairData1.IsUpDown)
+        else if(!ChairData1.IsUpDown || table1Data_M.IsCollision)
         {
             table1Data_M.IsCenterButtonDisabled = true;
         }
@@ -242,20 +243,21 @@ public class M_Table1 : MonoBehaviour, IInteraction
         }
 
         ChairData1.IsUpDown = false;
+        BoxData1.IsUpDown = false;
 
 
 
-/*        if (!table1Data_M.IsUpDown)
-        {
-            //table1Data_M.IsCenterButtonChanged = true;
-            //Invoke("changeObserve",2f);
-        }
+        /*        if (!table1Data_M.IsUpDown)
+                {
+                    //table1Data_M.IsCenterButtonChanged = true;
+                    //Invoke("changeObserve",2f);
+                }
 
-        else
-        {
-            table1Data_M.IsCenterButtonChanged = false;
-        }
-*/
+                else
+                {
+                    table1Data_M.IsCenterButtonChanged = false;
+                }
+        */
     }
 
     void changeObserve()

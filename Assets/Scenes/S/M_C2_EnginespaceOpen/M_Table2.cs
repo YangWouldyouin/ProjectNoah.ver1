@@ -7,6 +7,7 @@ public class M_Table2 : MonoBehaviour, IInteraction
 {
     public ObjectData ChairData2;
     public ObjectData ChairData4;
+    public ObjectData BoxData2;
 
     /*연관있는 오브젝트*/
     public Vector3 Table2RisePos;
@@ -94,11 +95,11 @@ public class M_Table2 : MonoBehaviour, IInteraction
         }
 
         //오를 수 있는 높이 확인
-        if (ChairData2.IsUpDown || ChairData4.IsUpDown)
+        if (ChairData2.IsUpDown || ChairData4.IsUpDown || table2Data_M.IsCollision)
         {
             table2Data_M.IsCenterButtonDisabled = false;
         }
-        else if (!ChairData2.IsUpDown || !ChairData4.IsUpDown)
+        else if (!ChairData2.IsUpDown || !ChairData4.IsUpDown || !table2Data_M.IsCollision)
         {
             table2Data_M.IsCenterButtonDisabled = true;
         }
@@ -246,6 +247,7 @@ public class M_Table2 : MonoBehaviour, IInteraction
 
         ChairData2.IsUpDown = false;
         ChairData4.IsUpDown = false;
+        BoxData2.IsUpDown = false;
 
 
 
