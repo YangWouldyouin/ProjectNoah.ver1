@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class M_Table1 : MonoBehaviour, IInteraction
 {
-    public ObjectData BoxData1;
+    public ObjectData ChairData1;
 
     /*연관있는 오브젝트*/
     public Vector3 Table1RisePos;
@@ -106,8 +106,18 @@ public class M_Table1 : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(22));
         }
 
+        //오를 수 있는 높이 확인
+        if(ChairData1.IsUpDown)
+        {
+            table1Data_M.IsCenterButtonDisabled = false;
+        }
+        else if(!ChairData1.IsUpDown)
+        {
+            table1Data_M.IsCenterButtonDisabled = true;
+        }
+
         /*노아의 높이가 책상 올라갈 높이가 되는지 확인*/
-        if (table1Data_M.IsCollision)
+/*        if (table1Data_M.IsCollision)
         {
             table1Data_M.IsCenterButtonDisabled = false;
         }
@@ -120,7 +130,7 @@ public class M_Table1 : MonoBehaviour, IInteraction
         else
         {
             table1Data_M.IsCenterButtonDisabled = true;
-        }
+        }*/
 
 
         if(table1Data_M.IsUpDown==false)
@@ -231,7 +241,7 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
         }
 
-        BoxData1.IsUpDown = false;
+        ChairData1.IsUpDown = false;
 
 
 

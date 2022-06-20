@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class M_Table2 : MonoBehaviour, IInteraction
 {
-    public ObjectData BoxData2;
+    public ObjectData ChairData2;
+    public ObjectData ChairData4;
 
     /*연관있는 오브젝트*/
     public Vector3 Table2RisePos;
@@ -92,24 +93,34 @@ public class M_Table2 : MonoBehaviour, IInteraction
             //B-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         }
 
-        /*노아의 높이가 책상 올라갈 높이가 되는지 확인*/
-        if (table2Data_M.IsCollision)
+        //오를 수 있는 높이 확인
+        if (ChairData2.IsUpDown || ChairData4.IsUpDown)
         {
             table2Data_M.IsCenterButtonDisabled = false;
         }
-
-        else if (table2Data_M.IsUpDown)
-        {
-            table2Data_M.IsCenterButtonDisabled = false;
-        }
-
-        else
+        else if (!ChairData2.IsUpDown || !ChairData4.IsUpDown)
         {
             table2Data_M.IsCenterButtonDisabled = true;
         }
 
+        /*노아의 높이가 책상 올라갈 높이가 되는지 확인*/
+        /*        if (table2Data_M.IsCollision)
+                {
+                    table2Data_M.IsCenterButtonDisabled = false;
+                }
 
-        if(table2Data_M.IsUpDown==false)
+                else if (table2Data_M.IsUpDown)
+                {
+                    table2Data_M.IsCenterButtonDisabled = false;
+                }
+
+                else
+                {
+                    table2Data_M.IsCenterButtonDisabled = true;
+                }*/
+
+
+        if (table2Data_M.IsUpDown==false)
         {
             table2Data_M.IsCenterButtonChanged = false;
 
@@ -233,7 +244,8 @@ public class M_Table2 : MonoBehaviour, IInteraction
         }
 
 
-        BoxData2.IsUpDown = false;
+        ChairData2.IsUpDown = false;
+        ChairData4.IsUpDown = false;
 
 
 

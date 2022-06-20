@@ -297,10 +297,24 @@ public class InitializeWorkingScene : MonoBehaviour
 
         UpTable2(); //책상2 오르기를 완료하면
 
-        CanSeeSweetPotato1(); //1번 배양기에서 고구마를 키우면
-        CanSeeSweetPotato2(); //1번 배양기에서 고구마를 키우면
-        CanSeeSweetPotato3(); //1번 배양기에서 고구마를 키우면
+
+        if(intialGameData.IsCanSeePotato1)
+        {
+            CanSeeSweetPotato1();
+        }
+
+        if (intialGameData.IsCanSeePotato2)
+        {
+            CanSeeSweetPotato2();
+        }
+
+        if (intialGameData.IsCanSeePotato3)
+        {
+            CanSeeSweetPotato3();
+        }
     }
+
+
 
     void FixHealthMachine()
     {
