@@ -207,6 +207,7 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
             /* ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ ∆€¡Ò ≥° ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ */
 
+            GameManager.gameManager._gameData.ActiveMissionList[2] = false;
             GameManager.gameManager._gameData.ActiveMissionList[4] = false;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
