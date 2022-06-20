@@ -61,14 +61,12 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
 
     public void OnBark()
     {
-        Planet_portDoorObjData.IsBark = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerBark();
     }
 
     public void OnSniff()
     {
-        Planet_portDoorObjData.IsSniff = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerSniff();
     }
@@ -76,30 +74,24 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        Planet_portDoorObjData.IsPushOrPress = true;
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        Planet_portDoorObjData.transform.localRotation = Quaternion.Euler(5f, 0f, 90f);
+        gameObject.transform.localRotation = Quaternion.Euler(5f, 0f, 90f);
 
-        Planet_portDoorObjData.IsNotInteractable = true;
+        Planet_portDoorData.IsNotInteractable = true;
         Planet_portDoorLine.OutlineWidth = 0f;
 
-        Planet_insertObjData.IsNotInteractable = false;
+        Planet_insertData.IsNotInteractable = false;
         Planet_insertLine.OutlineWidth = 8f;
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
-        StartCoroutine(ChangePressFalse());
+
 
         // dialogManager.StartCoroutine(dialogManager.PrintAIDialog(58));
     }
 
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        Planet_portDoorObjData.IsPushOrPress = false;
-    }
 
     public void OnEat()
     {
