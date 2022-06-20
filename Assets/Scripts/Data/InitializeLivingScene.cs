@@ -54,8 +54,8 @@ public class InitializeLivingScene : MonoBehaviour
         {
             TDBT_fixPartData.IsNotInteractable = false;
             TDBT_fixBodyData.IsNotInteractable = false;
-            TDBT_BodyOutline.OutlineWidth = 0;
-            TDBT_fixPartOutline.OutlineWidth = 0;
+            TDBT_BodyOutline.OutlineWidth = 8;
+            TDBT_fixPartOutline.OutlineWidth = 8;
         }
 
         // 생활공간 문을 완전히 고치면
