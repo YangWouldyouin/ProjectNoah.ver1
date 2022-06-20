@@ -35,6 +35,11 @@ public class ResetGameManager : MonoBehaviour
     public ObjectData engineKeyData; // 업무공간-엔진실 카드키
     public ObjectData W_extinguisherData;
 
+    public ObjectData cylinderGlassAnswerData;
+    public ObjectData cylinderGlassWrongData;
+    public ObjectData cylinderGlassNoNeed1Data;
+    public ObjectData cylinderGlassNoNeed2Data;
+
     /* 생활공간 오브젝트데이터 초기화 */
     public ObjectData trashBodyData;
     public ObjectData trashPartData;
@@ -176,6 +181,11 @@ public class ResetGameManager : MonoBehaviour
         engineKeyData.IsNotInteractable = false; // 엔진실 카드키
         engineKeyData.IsBite = false;
         E_extinguisherData.IsSmash = false; // 업무공간 소화전
+
+        cylinderGlassAnswerData.IsBite = false; // 죽은척 실린더 초기화
+        cylinderGlassWrongData.IsBite = false;
+        cylinderGlassNoNeed1Data.IsBite = false;
+        cylinderGlassNoNeed2Data.IsBite = false;
     }
 
     void ResetLivingRoomObjectData()

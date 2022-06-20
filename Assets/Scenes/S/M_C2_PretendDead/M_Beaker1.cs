@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class M_Beaker1 : MonoBehaviour, IInteraction
 {
     public GameObject StartScreen;
-    public GameObject EndScreen;
+    //public GameObject EndScreen;
     public GameObject DonTClick;
 
     /*연관있는 오브젝트*/
@@ -267,6 +267,15 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsWrongBeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
+
+            M_cylinderGlassAnswer.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            M_cylinderGlassAnswer.transform.parent = null;
+
+            // 물기 변수 초기화
+            equipment.biteObjectName = "";
+            // 다시 포터블 넣어줌
+            M_cylinderGlassAnswer.transform.parent = portableGroup.transform;
+            M_cylinderGlassAnswer.SetActive(false);
         }
 
         //틀린 약을 비커 1에 넣었을 때
@@ -282,6 +291,15 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsWrongBeakerColorChange1_M_C2 = true;
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
+
+            M_cylinderGlassWrong.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            M_cylinderGlassWrong.transform.parent = null;
+
+            // 물기 변수 초기화
+            equipment.biteObjectName = "";
+            // 다시 포터블 넣어줌
+            M_cylinderGlassWrong.transform.parent = portableGroup.transform;
+            M_cylinderGlassWrong.SetActive(false);
         }
 
         //필요 없는 약1을 비커 1에 넣었을 때
@@ -297,6 +315,15 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsWrongBeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = true;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
+
+            M_cylinderGlassNoNeed1.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            M_cylinderGlassNoNeed1.transform.parent = null;
+
+            // 물기 변수 초기화
+            equipment.biteObjectName = "";
+            // 다시 포터블 넣어줌
+            M_cylinderGlassNoNeed1.transform.parent = portableGroup.transform;
+            M_cylinderGlassNoNeed1.SetActive(false);
         }
 
         //필요 없는 약2을 비커 1에 넣었을 때
@@ -312,6 +339,15 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsWrongBeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = true;
+
+            M_cylinderGlassNoNeed2.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            M_cylinderGlassNoNeed2.transform.parent = null;
+
+            // 물기 변수 초기화
+            equipment.biteObjectName = "";
+            // 다시 포터블 넣어줌
+            M_cylinderGlassNoNeed2.transform.parent = portableGroup.transform;
+            M_cylinderGlassNoNeed2.SetActive(false);
         }
     }
 
@@ -341,6 +377,9 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         gameObject.GetComponent<BoxCollider>().enabled =false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         StartCoroutine(EatAfter());
+        StartCoroutine(SuddenDeath());
+        StartCoroutine(End());
+
     }
 
     IEnumerator EatAfter()
@@ -373,7 +412,9 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.ActiveMissionList[12] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
-            StartCoroutine(SuddenDeath());
+            //StartCoroutine(SuddenDeath());
+            //startTimer = true;
+            //StartCoroutine(WaitFor40());
 
 
         }
@@ -396,21 +437,24 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
     {
         yield return new WaitForSeconds(60f);
         Debug.Log("노아는 죽엇다");
+        StartScreen.SetActive(true);
+
+
 
         //4.꺼지는 화면이 나온다.
         //5. 켜지는 화면이 나온다.
-        StartScreen.SetActive(true);
+
         //EndScreen.SetActive(true);
 
         InteractionButtonController.interactionButtonController.PlayerAlive();
         inGameTime.IsBeakerEatAfterStart = true;
-        StartCoroutine(End());
+        //StartCoroutine(End());
 
     }
 
     IEnumerator End()
     {
-        yield return null;
+        yield return new WaitForSeconds(80f);
         Debug.Log("타이머 켜짐");
 
         StartScreen.SetActive(false);
