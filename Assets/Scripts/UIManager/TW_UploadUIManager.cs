@@ -24,7 +24,7 @@ public class TW_UploadUIManager : MonoBehaviour
             //Debug.Log("dd");
             downloadingText.text = "FileUploading " + 0 + "%";
 
-            if (setTime < 99)
+            if (setTime < 100 && Mathf.Round(setTime) <= 100)
             {
                 setTime += Time.deltaTime * 70;
             }
