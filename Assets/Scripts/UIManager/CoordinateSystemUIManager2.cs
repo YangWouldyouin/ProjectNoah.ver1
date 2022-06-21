@@ -181,6 +181,7 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
 
         PR_reportUI.SetActive(false);
         GameManager.gameManager._gameData.IsRM_PR_TimeCheck = false;
+        GameManager.gameManager._gameData.IsRM_PR_MissionScriptCheck = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         if (i == 5)
@@ -257,6 +258,7 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
 
         GameManager.gameManager._gameData.IsReportCancleCount += 1;
+        GameManager.gameManager._gameData.IsRM_PR_MissionScriptCheck = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         if (GameManager.gameManager._gameData.IsFakePlanetOpen)

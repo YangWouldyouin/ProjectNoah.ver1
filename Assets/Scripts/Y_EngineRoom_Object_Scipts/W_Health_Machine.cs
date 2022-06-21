@@ -315,6 +315,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
         GameManager.gameManager._gameData.IsAIReportMissionTime = false;
         GameManager.gameManager._gameData.IsRM_HealthDataReportbool = true;
+        GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         if (GameManager.gameManager._gameData.IsFakeHealthData_Tablet)
@@ -393,6 +394,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
         cancelInteractions.enabled = true;
 
+        GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck = false;
         GameManager.gameManager._gameData.IsAIReportMissionTime = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 

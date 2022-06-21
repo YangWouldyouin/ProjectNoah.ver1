@@ -191,6 +191,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         Debug.Log("보고하기");
         GameManager.gameManager._gameData.IsPhotoTime = false;
         GameManager.gameManager._gameData.IsPhotoCheck = true;
+        GameManager.gameManager._gameData.IsRM_P_MissionScriptCheck = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //IsReported = true;
 
@@ -210,6 +211,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         Debug.Log("취소하기");
 
         GameManager.gameManager._gameData.IsPhotoTime = false;
+        GameManager.gameManager._gameData.IsRM_P_MissionScriptCheck = false;
         GameManager.gameManager._gameData.IsReportCancleCount += 1; // 임무 보고 카운트 줄어들기
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //IsReported = true;
