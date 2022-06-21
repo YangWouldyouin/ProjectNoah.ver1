@@ -86,6 +86,7 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
         /*선언시작*/
         T_meteorCollectMachineData_T.IsObserve = false;
         //T_meteorCollectMachineData_T.IsCenterButtonChanged = false;
+        T_meteorCollectMachineData_T.IsNotInteractable = true;
     }
 
     void Update()

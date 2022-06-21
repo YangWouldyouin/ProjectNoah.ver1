@@ -59,8 +59,9 @@ public class M_MeteoritesStorage4 : MonoBehaviour, IInteraction
 
         /*선언 시작*/
         meteoritesStorage4Data_M.IsObserve = false;
-        meteoritesStorage4Data_M.IsNotInteractable = false;
+        meteoritesStorage4Data_M.IsNotInteractable = true;
         meteoritesStorage4Data_M.IsCenterButtonDisabled = true;
+        IsWrongMeteor3Data_M.IsNotInteractable = true;
     }
 
     void DisableButton()
