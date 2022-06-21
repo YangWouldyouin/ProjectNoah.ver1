@@ -190,6 +190,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
     {
         Debug.Log("보고하기");
         GameManager.gameManager._gameData.IsPhotoTime = false;
+        GameManager.gameManager._gameData.IsPhotoCheck = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //IsReported = true;
 

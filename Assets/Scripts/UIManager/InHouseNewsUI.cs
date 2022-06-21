@@ -105,7 +105,7 @@ public class InHouseNewsUI : MonoBehaviour
         }
         else if (inGameTime.timer >= 1440 && inGameTime.timer <= 1441)
         {
-            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            if (GameManager.gameManager._gameData.IsPhotoCheck == true)
             {
                 UniListnum = GameManager.gameManager._gameData.randomUPic;
 
@@ -131,11 +131,12 @@ public class InHouseNewsUI : MonoBehaviour
 
                 Invoke("ExitBTNotice", 3f);
                 Invoke("NewUIFalse", 230f);
+                GameManager.gameManager._gameData.IsPhotoCheck = false;
             }
         }
         else if (inGameTime.timer >= 2880 && inGameTime.timer <= 2881)
         {
-            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            if (GameManager.gameManager._gameData.IsPhotoCheck == true)
             {
                 UniListnum = GameManager.gameManager._gameData.randomUPic;
 
@@ -161,11 +162,12 @@ public class InHouseNewsUI : MonoBehaviour
 
                 Invoke("ExitBTNotice", 3f);
                 Invoke("NewUIFalse", 230f);
+                GameManager.gameManager._gameData.IsPhotoCheck = false;
             }
         }
         else if (inGameTime.timer >= 4320 && inGameTime.timer <= 4321)
         {
-            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            if (GameManager.gameManager._gameData.IsPhotoCheck == true)
             {
                 UniListnum = GameManager.gameManager._gameData.randomUPic;
 
@@ -191,11 +193,12 @@ public class InHouseNewsUI : MonoBehaviour
 
                 Invoke("ExitBTNotice", 3f);
                 Invoke("NewUIFalse", 230f);
+                GameManager.gameManager._gameData.IsPhotoCheck = false;
             }
         }
         else if (inGameTime.timer >= 5760 && inGameTime.timer <= 5761)
         {
-            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            if (GameManager.gameManager._gameData.IsPhotoCheck == true)
             {
                 UniListnum = GameManager.gameManager._gameData.randomUPic;
 
@@ -221,11 +224,12 @@ public class InHouseNewsUI : MonoBehaviour
 
                 Invoke("ExitBTNotice", 3f);
                 Invoke("NewUIFalse", 230f);
+                GameManager.gameManager._gameData.IsPhotoCheck = false;
             }
         }
         else if (inGameTime.timer >= 7200 && inGameTime.timer <= 7201)
         {
-            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            if (GameManager.gameManager._gameData.IsPhotoCheck == true)
             {
                 UniListnum = GameManager.gameManager._gameData.randomUPic;
 
@@ -251,6 +255,7 @@ public class InHouseNewsUI : MonoBehaviour
 
                 Invoke("ExitBTNotice", 3f);
                 Invoke("NewUIFalse", 230f);
+                GameManager.gameManager._gameData.IsPhotoCheck = false;
             }
         }
     }
