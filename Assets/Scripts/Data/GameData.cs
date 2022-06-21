@@ -20,6 +20,7 @@ public class GameData
     public bool IsRM_P_MissionScriptCheck; //사진찍기임무 대사 체크
     public bool IsRM_PR_TimeCheck; //행성탐사 임무 진행
     public bool IsRM_PR_MissionScriptCheck; //행성탐사 임무 대사 체크
+    public bool IsPhotoCheck; //사진찍은 거 체크 
 
 
     [Header("<행성 탐지 퍼즐>")]
