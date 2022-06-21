@@ -122,14 +122,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
             IDConsole_Collider.enabled = false;
             IsIDInsertPad_Collider.enabled = true;
+            BoxForConsole_Collider.enabled = false;
         }
-
-        if(!IDConsoleData_S.IsObserve&&dogFoodData.IsEaten)
-        {
-            BoxForConsole_Collider.enabled = true;
-        }
-
-
         else if (GameManager.gameManager._gameData.IsBasicTuto)
         {
             IDConsole_Collider.enabled = true;
@@ -139,6 +133,12 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         if(GameManager.gameManager._gameData.IsRealMiddleTuto)
         {
             IDConsole_Collider.enabled = false;
+        }
+
+
+        if (!IDConsoleData_S.IsObserve && dogFoodData.IsEaten)
+        {
+            BoxForConsole_Collider.enabled = true;
         }
 
         /*
