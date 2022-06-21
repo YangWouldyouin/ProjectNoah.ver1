@@ -71,7 +71,7 @@ public class C_Cabinet : MonoBehaviour, IInteraction
     public void OnBite()
     {
         DiableButton();
-        InteractionButtonController.interactionButtonController.PlayerBite();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
