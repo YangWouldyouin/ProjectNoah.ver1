@@ -14,7 +14,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     /*연관있는 오브젝트*/
     public GameObject S_canIDCard;
     public GameObject IsIDInsertPad;
-    /*    public GameObject S_BoxForConsole;*/
+    public GameObject S_BoxForConsole;
     //public GameObject canPressCabinetDoor; 
 
 
@@ -29,6 +29,9 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     public ObjectData canIDCardData_S;
     /*    public ObjectData boxForConsoleData_S;*/
     public ObjectData boxData;
+    public ObjectData dogFoodData;
+
+
 
     /*아웃라인*/
     Outline iDConsoleOutline_S;
@@ -61,9 +64,9 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         /*BoxCollider*/
         IDConsole_Collider = GetComponent<BoxCollider>();
-        /*
-        IDConsole_Collider = GetComponent<BoxCollider>();
-        BoxForConsole_Collider = S_BoxForConsole.GetComponent<BoxCollider>();*/
+        
+        //IDConsole_Collider = GetComponent<BoxCollider>();
+        BoxForConsole_Collider = S_BoxForConsole.GetComponent<BoxCollider>();
         IsIDInsertPad_Collider = IsIDInsertPad.GetComponent<BoxCollider>();
 
 
@@ -116,9 +119,15 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         if(IDConsoleData_S.IsObserve)
         {
+
             IDConsole_Collider.enabled = false;
             IsIDInsertPad_Collider.enabled = true;
+            if(dogFoodData.IsEaten)
+            {
+                BoxForConsole_Collider.enabled = true;
+            }
         }
+
 
         else if (GameManager.gameManager._gameData.IsBasicTuto)
         {
@@ -208,7 +217,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         CameraController.cameraController.currentView = iDConsoleData_S.ObserveView;
 
         InteractionButtonController.interactionButtonController.playerObserve();
-
+        BoxForConsole_Collider.enabled = false;
         //S-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(19));
 
