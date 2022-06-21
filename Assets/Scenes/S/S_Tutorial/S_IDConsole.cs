@@ -122,10 +122,11 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
             IDConsole_Collider.enabled = false;
             IsIDInsertPad_Collider.enabled = true;
-            if(dogFoodData.IsEaten)
-            {
-                BoxForConsole_Collider.enabled = true;
-            }
+        }
+
+        if(!IDConsoleData_S.IsObserve&&dogFoodData.IsEaten)
+        {
+            BoxForConsole_Collider.enabled = true;
         }
 
 
