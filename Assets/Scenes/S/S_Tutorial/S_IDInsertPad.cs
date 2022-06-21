@@ -61,7 +61,7 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
         sniffButton_S_IDInsertPad.onClick.AddListener(OnSniff);
 
         biteButton_S_IDInsertPad = IDInsertPadData_S.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_S_IDInsertPad.onClick.AddListener(OnBite);
 
         pressButton_S_IDInsertPad = IDInsertPadData_S.PushOrPressButton;
         pressButton_S_IDInsertPad.onClick.AddListener(OnPushOrPress);
@@ -178,7 +178,9 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-       
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
