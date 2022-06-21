@@ -343,8 +343,16 @@ public class SLManager2 : MonoBehaviour
             character.IsTabletUnlock = false;
             //character.IsBasicTuto = false;
             character.IsMiddleTuto = false;
-            
-            
+
+            //정기임무 관련
+            character.IsRM_HealthDataReportbool = false;
+            character.IsRM_HM_MissionScriptCheck = false;
+            character.IsRM_P_MissionScriptCheck = false;
+            character.IsRM_PR_TimeCheck = false;
+            character.IsRM_PR_MissionScriptCheck = false;
+            character.IsPhotoCheck = false;
+
+
             character.statNum = 10;
             //임무 보고하기 취소 카운트, 3번 이상 취소하기 누르면 게임 오버
             character.IsReportCancleCount = 0;
