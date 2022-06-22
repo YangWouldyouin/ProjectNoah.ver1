@@ -45,7 +45,7 @@ public class DialogManager : MonoBehaviour
     }
     private void Start()
     {
-
+        subtitlePanel.SetActive(false);
         googleSheetManager = GetComponent<GoogleSheetManager>();
         talkPanelImage = subtitlePanel.GetComponent<Image>();
         dialogSource = GetComponent<AudioSource>();
@@ -278,6 +278,7 @@ public class DialogManager : MonoBehaviour
     /* 대화 패널 활성화 & 비활성화 */
     IEnumerator _turnOnPanel()
     {
+        subtitlePanel.SetActive(true);
         talkPanelImage.enabled = true;
 
         Color fadeInColor = talkPanelImage.color;
@@ -301,5 +302,6 @@ public class DialogManager : MonoBehaviour
         }
         IsTalking = false;
         talkPanelImage.enabled = false;
+        subtitlePanel.SetActive(false);
     }
 }
