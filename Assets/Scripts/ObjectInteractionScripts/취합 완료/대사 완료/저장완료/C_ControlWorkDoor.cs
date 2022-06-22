@@ -44,6 +44,8 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
     //ControlCameraController controllCamera;
     public GameObject workLight;
 
+    bool firstCheck = false;
+
     public void InsertAreaButton()
     {
         Debug.Log("클릭함1");
@@ -83,7 +85,7 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (cockpitDoorData_CWD.IsClicked && GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        if (cockpitDoorData_CWD.IsClicked && GameManager.gameManager._gameData.IsAIAwake_M_C1&&!firstCheck)
         {
             // 대사 출력 
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
@@ -91,6 +93,7 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.ActiveMissionList[1] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
+            firstCheck = true;
         }
 
         if(envirPipeData_CWD.IsBite)

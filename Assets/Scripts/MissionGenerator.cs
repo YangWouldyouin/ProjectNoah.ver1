@@ -106,7 +106,7 @@ public class MissionGenerator : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-
+        missionmom.SetActive(true);
         if (!IsOn)
         {
             for (int k = 0; k < GameManager.gameManager._gameData.ActiveMissionList.Length; k++)
@@ -145,24 +145,26 @@ public class MissionGenerator : MonoBehaviour
             GameObject newMission = Instantiate(missionPanel, new Vector3(0, 13.25f - i * 55, 0), transform.rotation) as GameObject;
             textget = newMission.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 
-            StartCoroutine(_typing(missionList[i]));
-            //textget.text = missionList[i];
-            newMission.transform.SetParent(GameObject.FindGameObjectWithTag("aa").transform, false);
+            //StartCoroutine(_typing(missionList[i]));
+            textget.text = missionList[i];
+            newMission.transform.SetParent(missionmom.transform, false);
 
             newMission.SetActive(true);
-            yield return new WaitForSeconds(0.8f);
+            //yield return new WaitForSeconds(0.8f);
         }
         yield return new WaitForSeconds(10f);
-        foreach (Transform child in missionmom.transform)
-        {
-            Destroy(child.gameObject);
-        }
+        missionmom.SetActive(false);
+
+        //foreach (Transform child in missionmom.transform)
+        //{
+        //    Destroy(child.gameObject);
+        //}
     }
 
 
     IEnumerator _typing(string data)
     {
-        //yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(1f);
         for (int i = 0; i <= data.Length; i++)
         {
             textget.text = data.Substring(0, i);
