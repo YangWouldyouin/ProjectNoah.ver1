@@ -29,11 +29,9 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         if (!GameManager.gameManager._gameData.IsFirstEnterLiving)
         {
             GameManager.gameManager._gameData.IsFirstEnterLiving = true;
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
-            GameManager.gameManager._gameData.ActiveMissionList[15] = true;
 
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            Invoke("FirstEnter", 4f);
+
 
             //냄새로 생활공간 고치기 시작
         }
@@ -122,6 +120,15 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         MissionGenerator.missionGenerator.ActivateMissionList();
 
         //냄새로 생활공간 고치기 끝
+    }
+
+    public void FirstEnter()
+    {
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
+        GameManager.gameManager._gameData.ActiveMissionList[15] = true;
+
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
     public void OnSniff()

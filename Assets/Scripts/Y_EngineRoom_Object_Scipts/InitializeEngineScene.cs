@@ -43,10 +43,8 @@ public class InitializeEngineScene : MonoBehaviour
         if (!intialGameData.IsFirstEnterEngine)
         {
             intialGameData.IsFirstEnterEngine = true;
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
-            GameManager.gameManager._gameData.ActiveMissionList[16] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            Invoke("FirstEnter", 4f);
+
             //냄새로 엔진실 고치기 시작
         }
 
@@ -92,6 +90,14 @@ public class InitializeEngineScene : MonoBehaviour
             EngineRoomData.IsObjectActiveList[44] = false;
             EngineRoomData.IsObjectActiveList[45] = false;
         }
+    }
+
+    public void FirstEnter()
+    {
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
+        GameManager.gameManager._gameData.ActiveMissionList[16] = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
 }
