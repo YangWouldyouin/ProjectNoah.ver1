@@ -12,12 +12,18 @@ public class MissionGenerator : MonoBehaviour
 
     public Dictionary<int, string> missionDic = new Dictionary<int, string>();
 
+    List<GameObject> currentMissionList = new List<GameObject>();
     public List<string> missionList = new List<string>();
+
     public GameObject missionPanel;
+    TMPro.TextMeshProUGUI textget;
+    Animator missionAnim;
 
     public bool IsOn = false;
     public GameObject missionmom;
-    TMPro.TextMeshProUGUI textget;
+
+
+
 
     private void Awake()
     {
@@ -89,19 +95,13 @@ public class MissionGenerator : MonoBehaviour
         //}
 
     }
-    private void Start()
-    {
-
-    }
-
-
 
 
     public void ShowMissionList()
     {
         /* 여기에 버튼 사운드 넣으면 됩니다 */
         missionList.Clear();
-
+        currentMissionList.Clear();
         foreach (Transform child in missionmom.transform)
         {
             Destroy(child.gameObject);
@@ -140,17 +140,32 @@ public class MissionGenerator : MonoBehaviour
 
     IEnumerator PrintMissionList()
     {
+        // 현재 미션 개수만큼 패널 생성 
         for (int i = 0; i < missionList.Count; i++)
         {
             GameObject newMission = Instantiate(missionPanel, new Vector3(0, 13.25f - i * 55, 0), transform.rotation) as GameObject;
-            textget = newMission.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-
-            //StartCoroutine(_typing(missionList[i]));
-            textget.text = missionList[i];
+            currentMissionList.Add(newMission);
+            //textget = newMission.GetComponentInChildren<TMPro.TextMeshProUGUI>();
             newMission.transform.SetParent(missionmom.transform, false);
 
-            newMission.SetActive(true);
+            //newMission.SetActive(true);
+            //StartCoroutine(_typing(missionList[i]));
+            //yield return new WaitForSeconds(missionList[i].Length + 1f);
+            //textget.text = missionList[i];
+
             //yield return new WaitForSeconds(0.8f);
+        }
+
+        for(int j=0; j< currentMissionList.Count; j++)
+        {
+            currentMissionList[j].SetActive(true);
+            Animator missionAnim = currentMissionList[j].GetComponentInChildren<Animator>();
+            missionAnim.SetBool("IsOpening1", true);
+            missionAnim.SetBool("IsOpening2", true);
+            yield return new WaitForSeconds(1f);
+            textget = currentMissionList[j].GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            StartCoroutine(_typing(missionList[j]));
+            yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(10f);
         missionmom.SetActive(false);
