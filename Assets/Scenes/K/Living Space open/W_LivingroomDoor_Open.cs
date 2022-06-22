@@ -59,6 +59,7 @@ public class W_LivingroomDoor_Open : MonoBehaviour, IInteraction
 
             GameManager.gameManager._gameData.ActiveMissionList[2] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
 
             dontrootmore = true;
         }

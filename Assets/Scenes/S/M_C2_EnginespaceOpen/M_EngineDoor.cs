@@ -84,6 +84,7 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.ActiveMissionList[3] = true;
             GameManager.gameManager._gameData.ActiveMissionList[30] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.ActivateMissionList();
 
             dontrootmore2 = true;
         }
