@@ -84,7 +84,7 @@ pushButton_W_LS_CardKey, upButton_W_LS_CardKey, upDisableButton_W_LS_CardKey, sm
     {
         LS_CardKeyData_W.IsPushOrPress = true;
         DiableButton();
-        InteractionButtonController.interactionButtonController.playerPush(); // 밀기 애니메이션
+        InteractionButtonController.interactionButtonController.playerPressHand();
     }
 
     public void OnSniff()
