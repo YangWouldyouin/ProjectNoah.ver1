@@ -40,6 +40,8 @@ public class ResetGameManager : MonoBehaviour
     public ObjectData cylinderGlassNoNeed1Data;
     public ObjectData cylinderGlassNoNeed2Data;
 
+    public ObjectData drugBagData;
+
     /* 생활공간 오브젝트데이터 초기화 */
     public ObjectData trashBodyData;
     public ObjectData trashPartData;
@@ -186,6 +188,8 @@ public class ResetGameManager : MonoBehaviour
         cylinderGlassWrongData.IsBite = false;
         cylinderGlassNoNeed1Data.IsBite = false;
         cylinderGlassNoNeed2Data.IsBite = false;
+
+        drugBagData.IsNotInteractable = true; // 마약가방 비활성화
     }
 
     void ResetLivingRoomObjectData()
