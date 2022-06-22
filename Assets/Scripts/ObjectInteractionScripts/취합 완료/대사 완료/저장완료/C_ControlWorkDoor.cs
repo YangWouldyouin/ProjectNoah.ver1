@@ -62,7 +62,7 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             Door_open_sound.clip = Door_open;
             Door_open_sound.Play();
 
-            changeScene_CWD.SetActive(true); // 업무공간 이동
+
 
             stopMoving_CWD.transform.gameObject.SetActive(false); // 플레이어 다시 움직일 수 있도록 화면의 투명한 이미지 비활성화
             /* 오른쪽 취소 다시 품 */
@@ -73,6 +73,7 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.ActiveMissionList[1] = false;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
+            StartCoroutine(GoToWork());
 
 
 
@@ -81,6 +82,12 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             //    controllCamera.enabled = true;
             //workLight.SetActive(true);
         }
+    }
+
+    IEnumerator GoToWork()
+    { 
+        yield return new WaitForSeconds(3f);
+        changeScene_CWD.SetActive(true); // 업무공간 이동
     }
 
     void Update()
