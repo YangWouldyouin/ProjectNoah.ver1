@@ -109,7 +109,7 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
 
         GameManager.gameManager._gameData.IsCompleteFindLivingKey = true;
         GameManager.gameManager._gameData.ActiveMissionList[2] = false;
-        GameManager.gameManager._gameData.ActiveMissionList[4] = true;
+        //GameManager.gameManager._gameData.ActiveMissionList[4] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         MissionGenerator.missionGenerator.ActivateMissionList();
 

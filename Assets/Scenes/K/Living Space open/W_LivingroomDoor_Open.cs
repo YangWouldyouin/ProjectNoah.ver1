@@ -12,6 +12,7 @@ public class W_LivingroomDoor_Open : MonoBehaviour, IInteraction
     public ObjectData LivingroomDoorData;
     public GameObject LivingroomDoor;
 
+    public bool dontrootmore = false;
 
 
 
@@ -49,6 +50,17 @@ public class W_LivingroomDoor_Open : MonoBehaviour, IInteraction
         if (GameManager.gameManager._gameData.IsCompleteOpenLivingRoom == true)
         {
             LivingroomDoor.transform.position = new Vector3(-263.12f, -0.67f, 694.04f);
+        }
+
+        if (LivingroomDoorData.IsClicked && dontrootmore == false)
+        {
+            ////B-1 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
+
+            GameManager.gameManager._gameData.ActiveMissionList[2] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            dontrootmore = true;
         }
     }
 

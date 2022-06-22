@@ -68,9 +68,8 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
             // 엔진실 문 고치기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             // 엔진실/창고 해금 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
 
-            GameManager.gameManager._gameData.ActiveMissionList[2] = true;
-            GameManager.gameManager._gameData.ActiveMissionList[3] = true;
-            GameManager.gameManager._gameData.ActiveMissionList[30] = true;
+            GameManager.gameManager._gameData.ActiveMissionList[4] = true;
+            GameManager.gameManager._gameData.ActiveMissionList[5] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
 
@@ -81,6 +80,10 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
         {
             //B-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
+
+            GameManager.gameManager._gameData.ActiveMissionList[3] = true;
+            GameManager.gameManager._gameData.ActiveMissionList[30] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             dontrootmore2 = true;
         }

@@ -108,12 +108,14 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
             BrokenAreaOutline_M.OutlineWidth = 0;
 
             GameManager.gameManager._gameData.IsEngineDoorFix_M_C2 = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
             //B-7 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(26));
 
             // 엔진실 문 고치기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             GameManager.gameManager._gameData.ActiveMissionList[30] = false;
-            GameManager.gameManager._gameData.ActiveMissionList[5] = true;
+            //GameManager.gameManager._gameData.ActiveMissionList[5] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
 
