@@ -81,7 +81,7 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
             //B-1 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
 
-            GameManager.gameManager._gameData.ActiveMissionList[3] = true;
+            //GameManager.gameManager._gameData.ActiveMissionList[3] = true;
             GameManager.gameManager._gameData.ActiveMissionList[30] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.ActivateMissionList();
