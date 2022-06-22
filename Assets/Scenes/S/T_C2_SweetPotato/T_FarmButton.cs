@@ -56,7 +56,7 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         sniffButton_T_FarmButton.onClick.AddListener(OnSniff);
 
         biteButton_T_FarmButton = FarmButtonData_T.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_T_FarmButton.onClick.AddListener(OnBite);
 
         pressButton_T_FarmButton = FarmButtonData_T.PushOrPressButton;
         pressButton_T_FarmButton.onClick.AddListener(OnPushOrPress);
@@ -276,7 +276,9 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-       
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
