@@ -10,6 +10,7 @@ BiteDestroyController + 오브젝트 이름으로 바꾼다. */
 
 public class BIteDestroyController_TroubleLine2 : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    public PlayerEquipment troubleLineEquipment;
     public GameObject TroubleLine;
 
     /*연관있는 오브젝트*//*
@@ -132,7 +133,8 @@ public class BIteDestroyController_TroubleLine2 : MonoBehaviour, IPointerUpHandl
         TroubleLine.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
         TroubleLine.transform.parent = null;
 
-        //Destroy(TroubleLine);
+        troubleLineEquipment.biteObjectName = "";
+        Destroy(TroubleLine);
         //TroubleLine.SetActive(false);
 
     }
