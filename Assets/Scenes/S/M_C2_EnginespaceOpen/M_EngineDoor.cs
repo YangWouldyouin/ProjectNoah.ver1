@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class M_EngineDoor : MonoBehaviour, IInteraction
 {
-    public bool dontrootmore = false;
     public bool dontrootmore2 = false;
 
     /*오브젝트의 상호작용 버튼들*/
@@ -62,20 +61,6 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(dontrootmore == false && GameManager.gameManager._gameData.IsCompleteOpenEngineRoom == false)
-        {
-            // 엔진실 카드키 찾기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-            // 엔진실 문 고치기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-            // 엔진실/창고 해금 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-
-            GameManager.gameManager._gameData.ActiveMissionList[4] = true;
-            GameManager.gameManager._gameData.ActiveMissionList[5] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
-
-            dontrootmore = true;
-        }
-
         if (engineDoorData_M.IsClicked && dontrootmore2 == false)
         {
             //B-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆

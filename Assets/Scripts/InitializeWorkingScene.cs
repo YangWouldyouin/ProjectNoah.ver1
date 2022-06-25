@@ -178,6 +178,14 @@ public class InitializeWorkingScene : MonoBehaviour
         workRoomData = BaseCanvas._baseCanvas.workRoomData;
         dialogManager = dialog.GetComponent<DialogManager>();
 
+        /* 업무공간 처음 들어왔을때 대사 & 미션 */
+        if (!intialGameData.IsFirstEnterWorking && !intialGameData.IsHealthMachineFixed_T_C2)
+        {
+            GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+            Invoke("FirstEnter", 4f);
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+
         /*상태체크기계고치기*/
         HealthMachineFixData_Collider = HealthMachineFixData.GetComponent<BoxCollider>();
 
@@ -314,6 +322,19 @@ public class InitializeWorkingScene : MonoBehaviour
         }
     }
 
+
+
+    void FirstEnter()
+    {
+        //W_HM_1
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
+
+        GameManager.gameManager._gameData.ActiveMissionList[4] = true; // 생활공간 진입
+        GameManager.gameManager._gameData.ActiveMissionList[5] = true; // 엔진실 진입
+        GameManager.gameManager._gameData.ActiveMissionList[13] = true;  //냄새로 업무공간 고치기 시작
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.ActivateMissionList();
+    }
 
 
     void FixHealthMachine()

@@ -49,8 +49,7 @@ public class GameData
     public bool S_IsAIAwake_M_C1; // 항상 AI 활성화  
     public bool S_IsCWDoorOpened_M_C1; // 항상 조종실에서 업무공간 이동 가능
     public bool S_IsHealthMachineFixed_T_C2; // 정기적으로 상태 측정 임무 수행 가능 
-    // public bool[] ActiveMissionList = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
-   // public bool[] EndMissionList = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+
     public bool[] ActiveMissionList = new bool [34];
     public bool[] EndMissionList = new bool[34];
 
@@ -160,7 +159,9 @@ public class GameData
 
 
     [Header("<고구마 관련>")]
-    public bool[] sweetPotatoEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false }; //고구마 먹은 거 확인
+
+    public bool[] sweetPotatoEat = new bool[14]; //고구마 먹은 거 확인
+
     public bool Pot1InPotato; // 배양기1에 고구마 심은거 확인
     public bool Pot2InPotato; // 배양기2에 고구마 심은거 확인
     public bool Pot3InPotato; // 배양기3에 고구마 심은거 확인
@@ -176,9 +177,8 @@ public class GameData
     public bool Pot2InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
     public bool Pot3InHealthyPotato; // 배양기1에 건강한 고구마 심은거 확인
 
-    public bool[] BadFoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //음식 먹은 거 확인
-    public bool[] GoodFoodEat = { false, false, false, false, false, false, false, false, false, false, false, false, false, false };     //음식 먹은 거 확인
-
+    public bool[] BadFoodEat = new bool[14]; //음식 먹은 거 확인
+    public bool[] GoodFoodEat = new bool[14]; //음식 먹은 거 확인
 
 
     [Header("<운석수집기 문>")]

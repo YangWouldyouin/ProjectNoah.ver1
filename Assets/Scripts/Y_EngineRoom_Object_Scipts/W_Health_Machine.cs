@@ -72,15 +72,6 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         Health_Machine_Sound = GetComponent<AudioSource>();
 
         dialogManager = dialogManager_HM.GetComponent<DialogManager>();
-
-        if (!GameManager.gameManager._gameData.IsFirstEnterWorking && GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == false)
-        {
-            GameManager.gameManager._gameData.IsFirstEnterWorking = true;
-
-            Invoke("FirstEnter", 4f);
-
-           
-        }
     }
 
     void Update()
@@ -402,19 +393,6 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
         //중간데이터보고 임무 끝
         GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-    }
-
-    public void FirstEnter()
-    {
-        //W_HM_1
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
-
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-        //냄새로 업무공간 고치기 시작
-        GameManager.gameManager._gameData.ActiveMissionList[13] = true;
         MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
