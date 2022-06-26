@@ -33,21 +33,21 @@ public class CantBoxClick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(IsCantClickBoxData.IsUpDown)
-        {
-            IsCantClickBoxData.IsNotInteractable = true; // 상호작용 가능하게
-            IsCantClickBoxnOutline.OutlineWidth = 0;
-            Box_Collider.enabled = false;
-            Noah_Collider.enabled = false;
-        }
+        //if(IsCantClickBoxData.IsUpDown)
+        //{
+        //    IsCantClickBoxData.IsNotInteractable = true; // 상호작용 가능하게
+        //    IsCantClickBoxnOutline.OutlineWidth = 0;
+        //    Box_Collider.enabled = false;
+        //    Noah_Collider.enabled = false;
+        //}
 
-        else
-        {
-            IsCantClickBoxData.IsNotInteractable = false; // 상호작용 가능하게
-            IsCantClickBoxnOutline.OutlineWidth = 8;
-            Box_Collider.enabled = true;
-            Noah_Collider.enabled = true;
-        }
+        //else
+        //{
+        //    IsCantClickBoxData.IsNotInteractable = false; // 상호작용 가능하게
+        //    IsCantClickBoxnOutline.OutlineWidth = 8;
+        //    Box_Collider.enabled = true;
+        //    Noah_Collider.enabled = true;
+        //}
     
     }
 }

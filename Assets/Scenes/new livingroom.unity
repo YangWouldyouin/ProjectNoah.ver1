@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45052552, g: 0.50052035, b: 0.5751137, a: 1}
+  m_IndirectSpecularColor: {r: 0.450525, g: 0.50051975, b: 0.575113, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -28404,6 +28404,14 @@ PrefabInstance:
       propertyPath: missionPanel
       value: 
       objectReference: {fileID: 821441999}
+    - target: {fileID: 822685086322740496, guid: cfd547bf0ebba5548b0d74d89224534d, type: 3}
+      propertyPath: newMissionPanel
+      value: 
+      objectReference: {fileID: 821442006}
+    - target: {fileID: 822685086322740496, guid: cfd547bf0ebba5548b0d74d89224534d, type: 3}
+      propertyPath: newMissionSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 961e5d64409f7cb4dade4fcc88bfe4e6, type: 3}
     - target: {fileID: 822685086322740497, guid: cfd547bf0ebba5548b0d74d89224534d, type: 3}
       propertyPath: m_Name
       value: MissionManager
@@ -28452,7 +28460,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -8138460194773653223, guid: cfd547bf0ebba5548b0d74d89224534d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cfd547bf0ebba5548b0d74d89224534d, type: 3}
 --- !u!114 &640350812 stripped
 MonoBehaviour:
@@ -36110,7 +36119,7 @@ PrefabInstance:
       objectReference: {fileID: 640350812}
     - target: {fileID: 102595120, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 335102416, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
@@ -36118,7 +36127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439926595, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 771751067, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_IsActive
@@ -36202,11 +36211,11 @@ PrefabInstance:
       objectReference: {fileID: 1741754153}
     - target: {fileID: 121805374016432837, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 473745847672761151, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 565886689723836008, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -36407,6 +36416,10 @@ PrefabInstance:
     - target: {fileID: 3569724259624120081, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3945301243290344122, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4332048120555758448, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -36612,6 +36625,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7656483566259907914, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8024181642961386642, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
       propertyPath: m_text
       value: '60fps
@@ -36787,6 +36804,11 @@ MonoBehaviour:
 --- !u!1 &821442005 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5216737371392313834, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
+  m_PrefabInstance: {fileID: 821441997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &821442006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8613379971443055055, guid: 0b9650a00c67ad84cb0f2fa7bb0b1da4, type: 3}
   m_PrefabInstance: {fileID: 821441997}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &821442016 stripped
@@ -66234,6 +66256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fddee2b57501f4e9f0e26edd9bfdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  troubleLineEquipment: {fileID: 0}
   TroubleLine: {fileID: 0}
   biteButtonTroubleLine2: {fileID: 1413277045}
   smashButtonTroubleLine2: {fileID: 646614528}
@@ -99103,6 +99126,7 @@ MonoBehaviour:
     IsRM_P_MissionScriptCheck: 0
     IsRM_PR_TimeCheck: 0
     IsRM_PR_MissionScriptCheck: 0
+    IsPhotoCheck: 0
     SelectPlanetNum: 0
     IsSelectPlanetCheck: 0
     IsFakePlanetOpen: 0

@@ -15,8 +15,13 @@ public class MissionGenerator : MonoBehaviour
     public GameObject missionmom;
 
     public GameObject missionPanel;
+    public GameObject newMissionPanel;
+
     TMPro.TextMeshProUGUI textget;
     Animator missionAnim;
+    Image[] newMissionImage;
+    public Sprite newMissionSprite;
+    public Sprite currentMissionSprite;
 
     public bool IsOn = false;
     bool IsPrintingFinish = false;
@@ -142,22 +147,35 @@ public class MissionGenerator : MonoBehaviour
         if (!currentData.ActiveMissionList[newMissionNum]) // missionDic[newMissionNum] 이 이미 추가되기전이면
         {
             // 기존 미션 패널 리스트의 맨 마지막에 패널 하나 추가
+            GameObject newMission1 = Instantiate(newMissionPanel, new Vector3(0, 13.25f - missionNameList.Count * 55, 0), transform.rotation) as GameObject;
             GameObject newMission = Instantiate(missionPanel, new Vector3(0, 13.25f - missionNameList.Count * 55, 0), transform.rotation) as GameObject;
             missionPanelList.Add(newMission);
+            newMission1.transform.SetParent(missionmom.transform, false);
             newMission.transform.SetParent(missionmom.transform, false);
-
+            newMissionImage = missionPanelList[missionNameList.Count].GetComponentsInChildren<Image>();
+            newMissionImage[1].sprite = newMissionSprite;
             /* 새 미션 추가 애니메이션 */
             missionPanelList[missionNameList.Count].SetActive(true);
+            Animator addMission1Anim = newMission1.GetComponentInChildren<Animator>();
             Animator addMissionAnim = missionPanelList[missionNameList.Count].GetComponentInChildren<Animator>();
             addMissionAnim.SetBool("IsOpening1", true);
             addMissionAnim.SetBool("IsOpening2", true);
-            yield return new WaitForSeconds(1f);
+
+
+
+            //addMissionAnim.SetBool("IsOpening3", true);
+
             textget = missionPanelList[missionNameList.Count].GetComponentInChildren<TMPro.TextMeshProUGUI>();
-            textget.color = new Color32(238, 192, 230, 255);
+            // textget.color = new Color32(238, 192, 230, 255);
 
             /* 새 미션도 기존 미션 리스트에 추가 */
             missionNameList.Add(missionDic[newMissionNum]);
             StartCoroutine(_typing(missionNameList[missionNameList.Count - 1]));
+            yield return new WaitForSeconds(2f);
+            addMissionAnim.SetBool("IsNewMissionStart", true);
+            newMission1.SetActive(true);
+            addMission1Anim.SetBool("IsOpening1", true);
+            addMission1Anim.SetBool("IsOpening2", true);
 
             yield return new WaitForSeconds(10f);
             GameManager.gameManager._gameData.ActiveMissionList[newMissionNum] = true;
@@ -180,8 +198,8 @@ public class MissionGenerator : MonoBehaviour
     /* 완료한 미션 삭제하는 함수 */
     public void DeleteNewMission(int newMissionNum)
     {
-        currentData = SaveSystem.Load("save_001");
-        StartCoroutine(PrintCurrentMissionList(newMissionNum));
+        //currentData = SaveSystem.Load("save_001");
+        //StartCoroutine(PrintCurrentMissionList(newMissionNum));
     }
 
     IEnumerator DeleteMission(int newMissionNum) // 새 미션 추가 
@@ -229,7 +247,6 @@ public class MissionGenerator : MonoBehaviour
     }
 
     // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
 
     /* 미션 목록 버튼 눌렸을때 함수 */
     public void ShowMissionList()
