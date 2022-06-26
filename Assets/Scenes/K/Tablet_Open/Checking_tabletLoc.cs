@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Checking_tabletLoc : MonoBehaviour
 {
+    public PlayerEquipment tabletEquipment;
+
     private float timer = 0f; // 태블릿 감지 타이머
     public float DestroyTime = 10.0f; // 태블릿을 AI가 감지하기까지 걸리는 시간
 
@@ -52,6 +54,8 @@ public class Checking_tabletLoc : MonoBehaviour
                 // AI: 이상 전파가 감지되었습니다. 해당 기기를 폐기합니다
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(39));
 
+                tabletEquipment.biteObjectName = "";
+                //Destroy(TroubleLine);
                 Tablet_E.SetActive(false);
                 //Destroy(Tablet_E); // 타블렛 파괴
                 GameManager.gameManager._gameData.IsTabletDestory = true; // 반복문에서 빠져나옴
