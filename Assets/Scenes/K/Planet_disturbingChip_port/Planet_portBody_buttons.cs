@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Planet_portBody_buttons : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
+    private Button barkButton, sniffButton, biteButton, pressButton, observeButton, noCenterButton;
 
     ObjData Planet_portBodyObjData;
     public ObjectData Planet_portBodyData;
@@ -43,20 +43,22 @@ public class Planet_portBody_buttons : MonoBehaviour, IInteraction
         pressButton = Planet_portBodyObjData.PushOrPressButton;
         pressButton.onClick.AddListener(OnPushOrPress);
 
-        observeButton = Planet_portBodyObjData.CenterButton1;
-        observeButton.onClick.AddListener(OnObserve);
+        noCenterButton = Planet_portBodyObjData.CenterButton1;
+
+/*        observeButton = Planet_portBodyObjData.CenterButton1;
+        observeButton.onClick.AddListener(OnObserve);*/
     }
 
     void Update()
     {
-        if(Planet_portBodyDataOb.IsObserve == false)
+/*        if(Planet_portBodyDataOb.IsObserve == false)
         {
             gameObject.GetComponent<BoxCollider>().enabled = true;
             Planet_portDoor.GetComponent<BoxCollider>().enabled = false;
 
             Planet_portDoorDataOb.IsNotInteractable = true;
             Planet_portDoorLine.OutlineWidth = 0f;
-        }
+        }*/
     }
 
     void DisableButton()
@@ -65,7 +67,7 @@ public class Planet_portBody_buttons : MonoBehaviour, IInteraction
         sniffButton.transform.gameObject.SetActive(false);
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
-        observeButton.transform.gameObject.SetActive(false);
+        noCenterButton.transform.gameObject.SetActive(false);
     }
 
     public void OnBark()
@@ -87,7 +89,7 @@ public class Planet_portBody_buttons : MonoBehaviour, IInteraction
 
     public void OnObserve()
     {
-        Planet_portBodyDataOb.IsObserve = true;
+/*        Planet_portBodyDataOb.IsObserve = true;
         DisableButton();
 
         gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -101,7 +103,7 @@ public class Planet_portBody_buttons : MonoBehaviour, IInteraction
 
         Planet_portDoor.GetComponent<BoxCollider>().enabled = true;
         Planet_portDoorDataOb.IsNotInteractable = false;
-        Planet_portDoorLine.OutlineWidth = 8f;
+        Planet_portDoorLine.OutlineWidth = 8f;*/
 
         //gameObject.GetComponent<BoxCollider>().enabled = false;
 

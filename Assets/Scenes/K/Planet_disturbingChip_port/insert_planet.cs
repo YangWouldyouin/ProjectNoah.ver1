@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class insert_planet : MonoBehaviour, IInteraction
 {
+    public PlayerEquipment chipEquipment;
+
     private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
     ObjData Planet_insertObjData;
     public ObjectData Planet_insertData;
     Outline Planet_insertLine;
 
-    ObjData R_ChipObjData;
+/*    ObjData R_ChipObjData;
     public GameObject R_Chip;
     public ObjectData R_ChipData;
-    Outline R_ChipLine;
+    Outline R_ChipLine;*/
 
     ObjData W_ChipObjData;
     public GameObject W_Chip;
@@ -33,7 +35,7 @@ public class insert_planet : MonoBehaviour, IInteraction
         Planet_insertObjData = GetComponent<ObjData>();
         Planet_insertLine = GetComponent<Outline>();
 
-        R_ChipLine = R_Chip.GetComponent<Outline>();
+        //R_ChipLine = R_Chip.GetComponent<Outline>();
 
         W_ChipLine = W_Chip.GetComponent<Outline>();
 
@@ -85,18 +87,18 @@ public class insert_planet : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerPressHead();
         StartCoroutine(ChangePressFalse());
 
-        if (R_ChipData.IsBite)
+/*        if (R_ChipData.IsBite)
         {
             Debug.Log("변화없음");
 
-            Invoke("NoChip", 0.5f);
-        }
+            Invoke("R_NoChip", 0.5f);
+        }*/
 
         if (W_ChipData.IsBite)
         {
             Debug.Log("가짜 행성 해금");
 
-            Invoke("NoChip", 0.5f);
+            Invoke("W_NoChip", 0.5f);
 
             GameManager.gameManager._gameData.IsFakePlanetOpen = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -131,13 +133,13 @@ public class insert_planet : MonoBehaviour, IInteraction
         //throw new System.NotImplementedException();
     }
 
-    void NoChip() //
+/*    void R_NoChip() //
     {
         Debug.Log("칩 꽂았음");
 
-        if (R_ChipObjData.IsBite)
+        if (R_ChipData.IsBite)
         {
-            R_ChipObjData.IsBite = false;
+            R_ChipData.IsBite = false;
 
             R_Chip.GetComponent<Rigidbody>().isKinematic = false;
             R_Chip.transform.parent = null;
@@ -146,17 +148,23 @@ public class insert_planet : MonoBehaviour, IInteraction
             R_Chip.transform.position = new Vector3(-36.433f, 0.735f, -33.7f);
             R_Chip.transform.rotation = Quaternion.Euler(90, 0, 0);
 
-            R_ChipObjData.IsNotInteractable = false;
+            R_ChipData.IsNotInteractable = false;
             R_ChipLine.OutlineWidth = 0;
 
             Planet_insertObjData.IsNotInteractable = false;
             Planet_insertLine.OutlineWidth = 0;
 
+            chipEquipment.biteObjectName = "";
+
         }
 
-        if (W_ChipObjData.IsBite)
+    }*/
+
+    void W_NoChip()
+    {
+        if (W_ChipData.IsBite)
         {
-            W_ChipObjData.IsBite = false;
+            W_ChipData.IsBite = false;
 
             W_Chip.GetComponent<Rigidbody>().isKinematic = false;
             W_Chip.transform.parent = null;
@@ -165,11 +173,13 @@ public class insert_planet : MonoBehaviour, IInteraction
             W_Chip.transform.position = new Vector3(-36.433f, 0.735f, -33.7f);
             W_Chip.transform.rotation = Quaternion.Euler(90, 0, 0);
 
-            W_ChipObjData.IsNotInteractable = false;
+            W_ChipData.IsNotInteractable = false;
             W_ChipLine.OutlineWidth = 0;
 
             Planet_insertObjData.IsNotInteractable = false;
             Planet_insertLine.OutlineWidth = 0;
+
+            chipEquipment.biteObjectName = "";
         }
     }
 
