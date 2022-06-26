@@ -13,6 +13,7 @@ public class SplashUIManager : MonoBehaviour
     void Start()
     {
         //setResolution();
+        //Screen.SetResolution(1440, 900, true);
     }
 
     // Update is called once per frame
