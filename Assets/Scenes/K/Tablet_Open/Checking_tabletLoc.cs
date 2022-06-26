@@ -20,6 +20,9 @@ public class Checking_tabletLoc : MonoBehaviour
     public GameObject dialog;
     DialogManager dialogManager;
 
+    public bool firstCheck;
+    public bool secondCheck;
+
     void Start()
     {
         dialogManager = dialog.GetComponent<DialogManager>();
@@ -67,16 +70,20 @@ public class Checking_tabletLoc : MonoBehaviour
     {
         if (other.gameObject.name == "noahPlayer")
         {
-            if (!GameManager.gameManager._gameData.IsFirstExitTablet)
+            if (!GameManager.gameManager._gameData.IsFirstExitTablet && !firstCheck)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(40));
                 GameManager.gameManager._gameData.IsFirstExitTablet = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+                firstCheck = true;
             }
             
-            if (GameManager.gameManager._gameData.IsFirstExitTablet)
+            if (GameManager.gameManager._gameData.IsFirstExitTablet && !secondCheck)
             {
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(41));
+
+                secondCheck = true;
             }
         }
     }

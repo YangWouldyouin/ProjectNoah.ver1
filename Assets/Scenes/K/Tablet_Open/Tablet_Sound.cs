@@ -26,6 +26,7 @@ public class Tablet_Sound : MonoBehaviour
 
     public bool firstCheck;
 
+
     void Start()
     {
         dialogManager = dialog.GetComponent<DialogManager>();
@@ -56,11 +57,18 @@ public class Tablet_Sound : MonoBehaviour
                 Debug.Log("태블릿 소리 영역 진입");
                 TabletSoundLoop();
                 // TabletSoundArea.SetActive(true);
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(38));
+
 
                 GameManager.gameManager._gameData.ActiveMissionList[6] = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 MissionGenerator.missionGenerator.ActivateMissionList();
+
+                if (!firstCheck)
+                {
+                    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(38));
+                    firstCheck = true;
+                }
+
             }
         }
         else
