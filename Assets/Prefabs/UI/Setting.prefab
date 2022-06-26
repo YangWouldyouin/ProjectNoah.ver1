@@ -1552,8 +1552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47acf4c04ff77ab4ba460b41ff5dd4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolutionDropdown: {fileID: 3128344644524681087}
-  fullscreenBtn: {fileID: 5653781964533126251}
 --- !u!1 &2157869331079217547
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,7 +3378,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 678648659608250010}
         m_TargetAssemblyTypeName: Resolution_Option, Assembly-CSharp
-        m_MethodName: FullScreenBtn
+        m_MethodName: SetFullscreen
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3390,7 +3388,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &3366145287244013979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3963,7 +3961,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: 1440 X 900
+    - m_Text: "1440 X 900 (\uAD8C\uC7A5)"
       m_Image: {fileID: 0}
     - m_Text: 1920 X 1080
       m_Image: {fileID: 0}
@@ -3972,8 +3970,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 678648659608250010}
         m_TargetAssemblyTypeName: Resolution_Option, Assembly-CSharp
-        m_MethodName: DropboxOptionChange
-        m_Mode: 3
+        m_MethodName: SetScreenSize
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4061,7 +4059,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1440 X 900
+  m_Text: "1440 X 900 (\uAD8C\uC7A5)"
 --- !u!1 &6275498601536412111
 GameObject:
   m_ObjectHideFlags: 0
