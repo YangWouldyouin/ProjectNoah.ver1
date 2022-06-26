@@ -45,8 +45,8 @@ public class Planet_portDoor_buttons : MonoBehaviour, IInteraction
 
         noCenterButton = Planet_portDoorObjData.CenterButton1;
 
-        Planet_portDoorData.IsNotInteractable = false;
-        gameObject.GetComponent<BoxCollider>().enabled = true;
+        //Planet_portDoorData.IsNotInteractable = false;
+        //gameObject.GetComponent<BoxCollider>().enabled = false;
     }
 
     // Update is called once per frame

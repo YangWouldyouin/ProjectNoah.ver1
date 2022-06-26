@@ -46,6 +46,13 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public Canvas MainSystem_GUI;
     public GameObject TrackChangeNotification_GUI;
 
+    //포트관련
+    public GameObject portDoor;
+    ObjData portDoorData;
+    Outline portDoorLine;
+    public ObjectData portDoorDataOb;
+    BoxCollider portDoorCol;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +61,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
         consoleAIResetButtonOutline_CC.OutlineWidth = 0;
         PictureButtonOutline_CC.OutlineWidth = 0;
+
+        portDoorCol = portDoor.GetComponent<BoxCollider>();
 
         /* 각 상호작용 버튼에 함수를 넣는다 */
         barkButton_C_Console = consoleCenterObjData_CC.BarkButton;
@@ -135,10 +144,22 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             consoleAIResetButtonData_CC.IsNotInteractable = true;
             consoleCollider.enabled = true;
             MainSystem_GUI.gameObject.SetActive(false);
+
+            portDoorCol.enabled = false;
+            portDoorDataOb.IsNotInteractable = true;
+
+            //Debug.Log("너가 문제냐?");
         }
+
+
+
         else
         {
             consoleCollider.enabled = false;
+
+
+            portDoorCol.enabled = true;
+            portDoorDataOb.IsNotInteractable = false;
         }
         //if(GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == true)
         //{
@@ -199,12 +220,15 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
             StartCoroutine(Delay3Seconds());
         }
+
+
         else // 상자에 올라가지 않았으면
         {
             /* 카메라 컨트롤러에 뷰 전달 */
             CameraController.cameraController.currentView = consoleCenterObjData_CC.ObserveView; // 관찰 뷰 : 아래쪽
             /* 관찰 애니메이션 & 카메라 전환 */
             InteractionButtonController.interactionButtonController.playerObserve();
+
         }
     }
 

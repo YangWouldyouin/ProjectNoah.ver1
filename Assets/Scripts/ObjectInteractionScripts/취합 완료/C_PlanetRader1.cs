@@ -20,6 +20,8 @@ pressButton, observeButton;
     public GameObject dialog;
     DialogManager dialogManager;
 
+    public GameObject portDoor;
+
 
     // 관찰하기 시 추가 UI가 뜨는 경우, 2초간의 텀이 있다. 이것을 체크하기 위한 변수
 
@@ -61,6 +63,13 @@ pressButton, observeButton;
         {
             CS_GUI.SetActive(false);
             BoxData.IsNotInteractable = false;
+
+            portDoor.GetComponent<BoxCollider>().enabled = false;
+        }
+
+        else
+        {
+            portDoor.GetComponent<BoxCollider>().enabled = true;
         }
 
 /*        if(planetRaderData.IsCollision)
@@ -116,6 +125,8 @@ pressButton, observeButton;
             
         }
     }
+
+
 
     public void secondsf() 
     {
