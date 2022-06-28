@@ -7,15 +7,16 @@ using UnityEngine.SceneManagement;
 public class PauseGameManu : MonoBehaviour
 {
     public Canvas savePagePanel;
+    public Canvas settingPanel;
+
     public CancelInteractions cancellnteractions;
     CancelInteractions cancellnteract;
 
-    GameObject pauseManu;
+    GameObject pauseManu, copyRightText;
     Image exitElert, mainElert;
     Button exitYesButton, exitNoButton, mainYesButton, mainNoButton;
 
     public InGameTime inGameTime;
-
     GameData gameData;
 
     private void Start()
@@ -23,8 +24,9 @@ public class PauseGameManu : MonoBehaviour
         cancellnteract = cancellnteractions.GetComponent<CancelInteractions>();
  
         pauseManu = GameObject.Find("Stop Game Canvas").transform.GetChild(0).gameObject;
-        exitElert = GameObject.Find("Stop Game Canvas").transform.GetChild(1).GetComponentInChildren<Image>();
-        mainElert = GameObject.Find("Stop Game Canvas").transform.GetChild(2).GetComponentInChildren<Image>();
+        copyRightText = GameObject.Find("Stop Game Canvas").transform.GetChild(1).gameObject;
+        exitElert = GameObject.Find("Stop Game Canvas").transform.GetChild(2).GetComponentInChildren<Image>();
+        mainElert = GameObject.Find("Stop Game Canvas").transform.GetChild(3).GetComponentInChildren<Image>();
 
         mainYesButton = mainElert.transform.GetChild(2).GetComponentInChildren<Button>();
         mainNoButton = mainElert.transform.GetChild(3).GetComponentInChildren<Button>();
@@ -38,21 +40,13 @@ public class PauseGameManu : MonoBehaviour
         exitNoButton.onClick.AddListener(OnExitNoButtonClicked);
     }
 
-    //public GameObject dialogManager_CC;
-    //DialogManager dialogManager;
-
-
-    //private void Start()
-    //{
-    //    dialogManager = dialogManager_CC.GetComponent<DialogManager>();
-
-    //}
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0;
             pauseManu.SetActive(true);
+            copyRightText.SetActive(true);
         }
     }
     public void GoToMain()
@@ -100,9 +94,15 @@ public class PauseGameManu : MonoBehaviour
         exitElert.gameObject.SetActive(false);
     }
 
+    public void OnSettingButtonClicked()
+    {
+        settingPanel.gameObject.SetActive(true);
+    }
+
     public void ResumeGame()
     {
         pauseManu.SetActive(false);
+        copyRightText.SetActive(false);
         Time.timeScale = 1;
         //TimerManager.timerManager.TimerStart(3f);
         
