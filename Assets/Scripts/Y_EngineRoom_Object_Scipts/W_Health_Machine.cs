@@ -251,9 +251,14 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(6));
 
         GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 = true;
-        GameManager.gameManager._gameData.ActiveMissionList[13] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+
+
+        MissionGenerator.missionGenerator.DeleteNewMission(13);
+
+        //GameManager.gameManager._gameData.ActiveMissionList[13] = false;
+        //MissionGenerator.missionGenerator.ActivateMissionList();
 
         //냄새로 업무공간 고치기 끝
     }
