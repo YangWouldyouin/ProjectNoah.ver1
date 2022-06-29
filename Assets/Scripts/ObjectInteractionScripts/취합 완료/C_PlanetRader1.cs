@@ -64,12 +64,12 @@ pressButton, observeButton;
             CS_GUI.SetActive(false);
             BoxData.IsNotInteractable = false;
 
-            portDoor.GetComponent<BoxCollider>().enabled = false;
+            //portDoor.GetComponent<BoxCollider>().enabled = false;
         }
 
         else
         {
-            portDoor.GetComponent<BoxCollider>().enabled = true;
+            //portDoor.GetComponent<BoxCollider>().enabled = true;
         }
 
 /*        if(planetRaderData.IsCollision)
