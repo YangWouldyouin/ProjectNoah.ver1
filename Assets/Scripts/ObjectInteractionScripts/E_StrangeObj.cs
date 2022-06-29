@@ -113,9 +113,10 @@ public class E_StrangeObj : MonoBehaviour
         InteractionButtonController.interactionButtonController.playerSniff();
 
         GameManager.gameManager._gameData.IsFindStrangeObj = true;
-        GameManager.gameManager._gameData.ActiveMissionList[27] = true;
+        //GameManager.gameManager._gameData.ActiveMissionList[27] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.AddNewMission(27);
     }
 
     public void OnUp()
@@ -145,9 +146,10 @@ public class E_StrangeObj : MonoBehaviour
         StrangeObj_smoke_Sound.Play();
 
         GameManager.gameManager._gameData.IsKnowUsingSObj = true;
-        GameManager.gameManager._gameData.ActiveMissionList[27] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[27] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(27);
 
         CameraController.cameraController.CancelObserve();
     }

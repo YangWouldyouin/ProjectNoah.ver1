@@ -40,9 +40,10 @@ public class tabletUIManager : MonoBehaviour
             MainUI.SetActive(true);
             LockUI.SetActive(false);
 
-            GameManager.gameManager._gameData.ActiveMissionList[7] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[7] = false;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.DeleteNewMission(7);
         }
     }
 
@@ -61,9 +62,10 @@ public class tabletUIManager : MonoBehaviour
             CrackUI_firstEnter = true;
             //더미데이터 보고(다운로드) 시작 시점
 
-            GameManager.gameManager._gameData.ActiveMissionList[29] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[29] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(29);
         }
     }
     public void ChangeWireless()
@@ -76,9 +78,10 @@ public class tabletUIManager : MonoBehaviour
             GameManager.gameManager._gameData.IsWirelessUI_firstEnter = true;
             //메인 컴퓨터와 태블릿 신호 연결 시작 시점
 
-            GameManager.gameManager._gameData.ActiveMissionList[23] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[23] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(23);
         }
     }
 

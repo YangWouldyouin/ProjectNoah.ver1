@@ -50,9 +50,10 @@ public class MainSystemUIManager : MonoBehaviour
         {
             Invoke("systemAlertduration", 10f);
             OnetimeCheck = true;
-            GameManager.gameManager._gameData.ActiveMissionList[12] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[12] = false;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.DeleteNewMission(12);
         }
     }
 

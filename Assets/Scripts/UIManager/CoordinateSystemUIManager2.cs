@@ -231,15 +231,17 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
 
         if (GameManager.gameManager._gameData.IsFakePlanetOpen)
         {
-            GameManager.gameManager._gameData.ActiveMissionList[33] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[33] = false;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.DeleteNewMission(33);
         }
         else
         {
-            GameManager.gameManager._gameData.ActiveMissionList[31] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[31] = false;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(31);
         }
     }
 
@@ -263,15 +265,17 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
 
         if (GameManager.gameManager._gameData.IsFakePlanetOpen)
         {
-            GameManager.gameManager._gameData.ActiveMissionList[33] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[33] = false;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.DeleteNewMission(33);
         }
         else
         {
-            GameManager.gameManager._gameData.ActiveMissionList[31] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[31] = false;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.DeleteNewMission(31);
         }
     }
 }

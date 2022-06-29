@@ -100,9 +100,10 @@ public class TabletWirelessUIManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //메인 컴퓨터와 태블릿 신호 연결 끝 시점
 
-                GameManager.gameManager._gameData.ActiveMissionList[28] = false;
+                //GameManager.gameManager._gameData.ActiveMissionList[28] = false;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.ActivateMissionList();
+                ////MissionGenerator.missionGenerator.ActivateMissionList();
+                MissionGenerator.missionGenerator.DeleteNewMission(28);
             }
         }
         else
@@ -147,9 +148,10 @@ public class TabletWirelessUIManager : MonoBehaviour
 
                 //더미데이터 보고(다운로드) 완료 시점
 
-                GameManager.gameManager._gameData.ActiveMissionList[29] = false;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.ActivateMissionList();
+                //GameManager.gameManager._gameData.ActiveMissionList[29] = false;
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                MissionGenerator.missionGenerator.DeleteNewMission(29);
             }
         }
         else

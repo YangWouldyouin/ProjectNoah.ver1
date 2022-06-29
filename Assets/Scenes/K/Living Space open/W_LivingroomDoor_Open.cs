@@ -57,10 +57,10 @@ public class W_LivingroomDoor_Open : MonoBehaviour, IInteraction
             ////B-1 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
             //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
 
-            GameManager.gameManager._gameData.ActiveMissionList[2] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
-
+            //GameManager.gameManager._gameData.ActiveMissionList[2] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(2);
             dontrootmore = true;
         }
     }

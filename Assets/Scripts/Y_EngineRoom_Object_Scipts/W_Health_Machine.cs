@@ -330,9 +330,10 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
             //중간데이터보고 임무 끝
 
-            GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-            MissionGenerator.missionGenerator.ActivateMissionList();
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            MissionGenerator.missionGenerator.DeleteNewMission(14);
         }
         else
         {
@@ -349,9 +350,10 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(37));
 
                 //중간데이터보고 임무 끝
-                GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-                MissionGenerator.missionGenerator.ActivateMissionList();
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.DeleteNewMission(14);
             }
             else
             {
@@ -360,9 +362,10 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
 
                 //중간데이터보고 임무 끝
-                GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-                MissionGenerator.missionGenerator.ActivateMissionList();
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.DeleteNewMission(14);
             }
         }
     }
@@ -397,9 +400,10 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
 
         //중간데이터보고 임무 끝
-        GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.DeleteNewMission(14);
     }
 }
 

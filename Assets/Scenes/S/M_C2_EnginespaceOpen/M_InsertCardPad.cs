@@ -153,10 +153,12 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         // 엔진실/창고 해금 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-        GameManager.gameManager._gameData.ActiveMissionList[5] = false;
-        GameManager.gameManager._gameData.ActiveMissionList[3] = false;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //GameManager.gameManager._gameData.ActiveMissionList[5] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[3] = false;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(5);
+        MissionGenerator.missionGenerator.DeleteNewMission(3);
     }
 
     IEnumerator canCardBye()
@@ -181,10 +183,13 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         // 엔진실/창고 해금 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-        GameManager.gameManager._gameData.ActiveMissionList[5] = false;
-        GameManager.gameManager._gameData.ActiveMissionList[3] = false;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //GameManager.gameManager._gameData.ActiveMissionList[5] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[3] = false;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(5);
+        MissionGenerator.missionGenerator.DeleteNewMission(3);
+
     }
 
     public void OnPushOrPress()

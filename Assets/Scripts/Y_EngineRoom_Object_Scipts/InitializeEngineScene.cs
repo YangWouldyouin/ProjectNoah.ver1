@@ -52,9 +52,10 @@ public class InitializeEngineScene : MonoBehaviour
         if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
-            GameManager.gameManager._gameData.ActiveMissionList[0] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(0);
         }
 
         /* ø¨∑· ∆€¡Ò */
@@ -95,9 +96,10 @@ public class InitializeEngineScene : MonoBehaviour
     public void FirstEnter()
     {
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
-        GameManager.gameManager._gameData.ActiveMissionList[16] = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //GameManager.gameManager._gameData.ActiveMissionList[16] = true;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.AddNewMission(16);
     }
 
 }

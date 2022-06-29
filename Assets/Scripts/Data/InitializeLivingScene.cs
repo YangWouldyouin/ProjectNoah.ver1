@@ -32,9 +32,10 @@ public class InitializeLivingScene : MonoBehaviour
         if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
-            GameManager.gameManager._gameData.ActiveMissionList[0] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(0);
         }
 
         // 생활공간 냄새기계를 고치면

@@ -116,9 +116,10 @@ public class CoordinateSystemUIManager1 : MonoBehaviour
 
         GameManager.gameManager._gameData.afterFirstMission = true;
 
-        GameManager.gameManager._gameData.ActiveMissionList[31] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[31] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(31);
     }
 
     public void Cancle()

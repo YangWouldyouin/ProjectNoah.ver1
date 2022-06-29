@@ -87,9 +87,11 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             // A-1 ¥ÎªÁ √‚∑¬ °Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ°Ÿ
             // Ω∫∏∂∆Æ ∆  «ÿ±› ∆€¡Ò Ω√¿€ ¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(13));
-            GameManager.gameManager._gameData.ActiveMissionList[17] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[17] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(17);
+
 
             firstCheck = true;
         }
@@ -170,9 +172,11 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             /*Ω∫∏∂∆Æ∆  ø¿«¬ ∆€¡Ò øœ∑·*/
             GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2 = true;
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
-            GameManager.gameManager._gameData.ActiveMissionList[17] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[17] = false;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.DeleteNewMission(17);
+
 
 
             // Ω∫∏∂∆Æ ∆  «ÿ±› ∆€¡Ò ≥° ¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø¢ø

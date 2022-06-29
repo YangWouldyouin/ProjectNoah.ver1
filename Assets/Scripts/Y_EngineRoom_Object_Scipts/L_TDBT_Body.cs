@@ -28,7 +28,7 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
         if (!GameManager.gameManager._gameData.IsFirstEnterLiving)
         {
-            GameManager.gameManager._gameData.IsFirstEnterLiving = true;
+
 
             Invoke("FirstEnter", 4f);
 
@@ -115,20 +115,23 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
 
 
         GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 = true;
-        GameManager.gameManager._gameData.ActiveMissionList[15] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[15] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
-
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(15);
         //냄새로 생활공간 고치기 끝
     }
 
     public void FirstEnter()
     {
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
-        GameManager.gameManager._gameData.ActiveMissionList[15] = true;
+        //GameManager.gameManager._gameData.ActiveMissionList[15] = true;
 
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.AddNewMission(15);
+        GameManager.gameManager._gameData.IsFirstEnterLiving = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
     }
 
     public void OnSniff()

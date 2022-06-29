@@ -70,9 +70,10 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(4));
 
             GameManager.gameManager._gameData.IsCWDoorOpened_M_C1 = true;
-            GameManager.gameManager._gameData.ActiveMissionList[1] = false;
+            //GameManager.gameManager._gameData.ActiveMissionList[1] = false;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.DeleteNewMission(1);
             StartCoroutine(GoToWork());
 
 
@@ -97,9 +98,11 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
             // 대사 출력 
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
             // 조종실 탈출 미션 추가
-            GameManager.gameManager._gameData.ActiveMissionList[1] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[1] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(1);
+
             firstCheck = true;
         }
 

@@ -167,6 +167,8 @@ public class MissionGenerator : MonoBehaviour
         {
             yield return null;
         }
+
+  
         int idx = missionNameList.FindIndex(a => a.Contains(missionDic[deleteMissionNum]));
         newMissionImage = missionPanelList[idx].GetComponentsInChildren<Image>();
         Animator addMissionAnim = missionPanelList[idx].GetComponentInChildren<Animator>();
@@ -180,10 +182,12 @@ public class MissionGenerator : MonoBehaviour
         addMissionAnim.SetBool("IsOpening2", true);
 
         //StartCoroutine(_typing(missionNameList[missionNameList.Count - 1], missionNameList.Count - 1));
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        addMissionAnim.SetBool("IsOpening3", true);
+        addMissionAnim.SetBool("IsOpening1", false);
         addMissionAnim.SetBool("IsNewMissionStart", true);
         missionText[idx].text = "";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         missionPanelList[idx].SetActive(false);
 
         //newMissionBack.SetActive(true);

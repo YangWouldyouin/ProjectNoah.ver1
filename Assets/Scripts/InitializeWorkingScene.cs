@@ -181,8 +181,9 @@ public class InitializeWorkingScene : MonoBehaviour
         /* 업무공간 처음 들어왔을때 대사 & 미션 */
         if (!intialGameData.IsFirstEnterWorking && !intialGameData.IsHealthMachineFixed_T_C2)
         {
-            GameManager.gameManager._gameData.IsFirstEnterWorking = true;
             Invoke("FirstEnter", 4f);
+            GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 
@@ -248,9 +249,10 @@ public class InitializeWorkingScene : MonoBehaviour
         if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
-            GameManager.gameManager._gameData.ActiveMissionList[0] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(0);
         }
    
         FixHealthMachine(); /*상태체크기계 고치기*/
@@ -333,6 +335,10 @@ public class InitializeWorkingScene : MonoBehaviour
         GameManager.gameManager._gameData.ActiveMissionList[5] = true; // 엔진실 진입
         GameManager.gameManager._gameData.ActiveMissionList[13] = true;  //냄새로 업무공간 고치기 시작
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        //MissionGenerator.missionGenerator.AddNewMission(4);
+        //MissionGenerator.missionGenerator.AddNewMission(5);
+        //MissionGenerator.missionGenerator.AddNewMission(13);
         MissionGenerator.missionGenerator.ActivateMissionList();
     }
 

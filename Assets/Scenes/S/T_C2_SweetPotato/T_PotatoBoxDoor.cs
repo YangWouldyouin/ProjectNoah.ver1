@@ -57,11 +57,15 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
             // 영양분 섭취 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             // 식물 배양 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             // 영양제 투약 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-            GameManager.gameManager._gameData.ActiveMissionList[18] = true;
-            GameManager.gameManager._gameData.ActiveMissionList[19] = true;
-            GameManager.gameManager._gameData.ActiveMissionList[21] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[18] = true;
+            //GameManager.gameManager._gameData.ActiveMissionList[19] = true;
+            //GameManager.gameManager._gameData.ActiveMissionList[21] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(18);
+            MissionGenerator.missionGenerator.AddNewMission(19);
+            MissionGenerator.missionGenerator.AddNewMission(20);
+
         }
 
     }

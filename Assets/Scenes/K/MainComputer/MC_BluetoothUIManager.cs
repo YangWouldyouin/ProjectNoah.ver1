@@ -142,9 +142,10 @@ public class MC_BluetoothUIManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //메인 컴퓨터와 태블릿 신호 연결 끝 시점
 
-                GameManager.gameManager._gameData.ActiveMissionList[28] = false;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.ActivateMissionList();
+                //GameManager.gameManager._gameData.ActiveMissionList[28] = false;
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                MissionGenerator.missionGenerator.DeleteNewMission(28);
             }
         }
         else
@@ -187,9 +188,10 @@ public class MC_BluetoothUIManager : MonoBehaviour
                     GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC = true;
                     SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-                    GameManager.gameManager._gameData.ActiveMissionList[8] = false;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    MissionGenerator.missionGenerator.ActivateMissionList();
+                    //GameManager.gameManager._gameData.ActiveMissionList[8] = false;
+                    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    //MissionGenerator.missionGenerator.ActivateMissionList();
+                    MissionGenerator.missionGenerator.DeleteNewMission(8);
                 }
             }
             else

@@ -57,9 +57,10 @@ public class rightDisturbingChip_buttons : MonoBehaviour, IInteraction
         {
             if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2)
             {
-                GameManager.gameManager._gameData.ActiveMissionList[9] = true;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.ActivateMissionList();
+                //GameManager.gameManager._gameData.ActiveMissionList[9] = true;
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                MissionGenerator.missionGenerator.AddNewMission(9);
             }
 
             rightdisturbingChipData.IsClicked = false;

@@ -82,9 +82,10 @@ public class BiteDestroyController_EngineKey : MonoBehaviour, IPointerUpHandler,
             Debug.Log("카드를 찾아서 미션 완료");
             /*카드키 찾기 퍼즐 완료*/
             GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
-            GameManager.gameManager._gameData.ActiveMissionList[3] = false;
+            //GameManager.gameManager._gameData.ActiveMissionList[3] = false;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.DeleteNewMission(3);
         }
     }
 

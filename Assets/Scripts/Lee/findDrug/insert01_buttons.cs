@@ -166,10 +166,12 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         drugLine.OutlineWidth = 0f;
         drugCol.enabled = false;
 
-        GameManager.gameManager._gameData.ActiveMissionList[25] = false;
-        GameManager.gameManager._gameData.ActiveMissionList[26] = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //GameManager.gameManager._gameData.ActiveMissionList[25] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[26] = true;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(25);
+        MissionGenerator.missionGenerator.AddNewMission(26);
     }
 
     public void Report()

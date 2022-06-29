@@ -44,9 +44,10 @@ public class InitializeControlScene : MonoBehaviour
         if(GameManager.gameManager._gameData.IsAIVSMissionCount >=2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(8));
-            GameManager.gameManager._gameData.ActiveMissionList[0] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(0);
         }
 
         if(GameManager.gameManager._gameData.IsPipeFound_M_C1)

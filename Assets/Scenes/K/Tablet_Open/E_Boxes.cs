@@ -100,10 +100,18 @@ pushButton, NoCenterButton_M_Box;
 
         GameManager.gameManager._gameData.IsNoBoxes = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(6);
+        StartCoroutine(DelayAdding());
 
-        GameManager.gameManager._gameData.ActiveMissionList[6] = false;
-        GameManager.gameManager._gameData.ActiveMissionList[7] = true;
+        //GameManager.gameManager._gameData.ActiveMissionList[6] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[7] = true;
+    }
+
+    IEnumerator DelayAdding()
+    {
+        yield return new WaitForSeconds(3f);
+        MissionGenerator.missionGenerator.AddNewMission(7);
     }
 
     /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */

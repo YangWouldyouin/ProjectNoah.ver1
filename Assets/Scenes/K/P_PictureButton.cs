@@ -201,9 +201,10 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(61));
         //선전용 사진 촬영 보고 끝
 
-        GameManager.gameManager._gameData.ActiveMissionList[23] = false;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //GameManager.gameManager._gameData.ActiveMissionList[23] = false;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(23);
     }
 
     public void Cancel() //캔슬 버튼 누르면
@@ -222,9 +223,10 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
         //선전용 사진 촬영 보고 끝
 
-        GameManager.gameManager._gameData.ActiveMissionList[23] = false;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //GameManager.gameManager._gameData.ActiveMissionList[23] = false;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(23);
     }
 
 

@@ -120,13 +120,15 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             RealNormalMeteor1Data_T.IsNotInteractable = true; // 상호작용 불가능하게
             RealNormalMeteor1Outline_T.OutlineWidth = 0;
 
-            GameManager.gameManager._gameData.ActiveMissionList[22] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //GameManager.gameManager._gameData.ActiveMissionList[22] = false;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.DeleteNewMission(22);
+
         }
 
 
-        if(RealimportantMeteorData_T.IsBite)
+        if (RealimportantMeteorData_T.IsBite)
         {
             /*중요 운석을 넣었는지 확인*/
             GameManager.gameManager._gameData.IsReportImportantMeteor_T_C2 = true;
@@ -162,9 +164,11 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(55));
 
         // 죽은척하기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-        GameManager.gameManager._gameData.ActiveMissionList[11] = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //GameManager.gameManager._gameData.ActiveMissionList[11] = true;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.AddNewMission(11);
+
     }
 
     public void OnSniff()

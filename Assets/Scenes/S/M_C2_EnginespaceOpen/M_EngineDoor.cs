@@ -67,10 +67,10 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
 
             //GameManager.gameManager._gameData.ActiveMissionList[3] = true;
-            GameManager.gameManager._gameData.ActiveMissionList[30] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
-
+            //GameManager.gameManager._gameData.ActiveMissionList[30] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(30);
             dontrootmore2 = true;
         }
 

@@ -59,10 +59,10 @@ public class Tablet_Sound : MonoBehaviour
                 // TabletSoundArea.SetActive(true);
 
 
-                GameManager.gameManager._gameData.ActiveMissionList[6] = true;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.ActivateMissionList();
-
+                //GameManager.gameManager._gameData.ActiveMissionList[6] = true;
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                MissionGenerator.missionGenerator.AddNewMission(6);
                 if (!firstCheck)
                 {
                     dialogManager.StartCoroutine(dialogManager.PrintAIDialog(38));

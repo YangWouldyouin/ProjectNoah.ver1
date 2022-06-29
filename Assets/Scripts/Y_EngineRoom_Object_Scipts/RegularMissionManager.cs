@@ -35,9 +35,10 @@ public class RegularMissionManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //중간데이터보고 임무 시작
 
-                GameManager.gameManager._gameData.ActiveMissionList[14] = true;
-                MissionGenerator.missionGenerator.ActivateMissionList();
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //GameManager.gameManager._gameData.ActiveMissionList[14] = true;
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.AddNewMission(14);
             }
 
         }
@@ -59,9 +60,10 @@ public class RegularMissionManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //중간데이터보고 임무 끝
 
-                GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-                MissionGenerator.missionGenerator.ActivateMissionList();
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                MissionGenerator.missionGenerator.DeleteNewMission(14);
             }
 
         }
@@ -81,9 +83,10 @@ public class RegularMissionManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //선전용 사진 촬영 보고 시작
 
-                GameManager.gameManager._gameData.ActiveMissionList[23] = true;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.ActivateMissionList();
+                //GameManager.gameManager._gameData.ActiveMissionList[23] = true;
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                MissionGenerator.missionGenerator.AddNewMission(23);
             }
         }
         if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
@@ -101,9 +104,10 @@ public class RegularMissionManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //선전용 사진 촬영 보고 끝
 
-                GameManager.gameManager._gameData.ActiveMissionList[23] = false;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.ActivateMissionList();
+                //GameManager.gameManager._gameData.ActiveMissionList[23] = false;
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //MissionGenerator.missionGenerator.ActivateMissionList();
+                MissionGenerator.missionGenerator.DeleteNewMission(23);
             }
         }
 
@@ -122,15 +126,17 @@ public class RegularMissionManager : MonoBehaviour
 
                 if (GameManager.gameManager._gameData.IsFakePlanetOpen)
                 {
-                    GameManager.gameManager._gameData.ActiveMissionList[33] = true;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    MissionGenerator.missionGenerator.ActivateMissionList();
+                    //GameManager.gameManager._gameData.ActiveMissionList[33] = true;
+                    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    //MissionGenerator.missionGenerator.ActivateMissionList();
+                    MissionGenerator.missionGenerator.AddNewMission(33);
                 }
                 else
                 {
-                    GameManager.gameManager._gameData.ActiveMissionList[31] = true;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    MissionGenerator.missionGenerator.ActivateMissionList();
+                    //GameManager.gameManager._gameData.ActiveMissionList[31] = true;
+                    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    //MissionGenerator.missionGenerator.ActivateMissionList();
+                    MissionGenerator.missionGenerator.AddNewMission(31);
                 }
             }
         }
@@ -149,15 +155,17 @@ public class RegularMissionManager : MonoBehaviour
 
                 if (GameManager.gameManager._gameData.IsFakePlanetOpen)
                 {
-                    GameManager.gameManager._gameData.ActiveMissionList[33] = false;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    MissionGenerator.missionGenerator.ActivateMissionList();
+                    //GameManager.gameManager._gameData.ActiveMissionList[33] = false;
+                    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    //MissionGenerator.missionGenerator.ActivateMissionList();
+                    MissionGenerator.missionGenerator.DeleteNewMission(33);
                 }
                 else
                 {
-                    GameManager.gameManager._gameData.ActiveMissionList[31] = false;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                    MissionGenerator.missionGenerator.ActivateMissionList();
+                    //GameManager.gameManager._gameData.ActiveMissionList[31] = false;
+                    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    //MissionGenerator.missionGenerator.ActivateMissionList();
+                    MissionGenerator.missionGenerator.DeleteNewMission(31);
                 }
             }
         }
@@ -175,9 +183,10 @@ public class RegularMissionManager : MonoBehaviour
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(42));
 
             // 운석 조각 수집 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-            GameManager.gameManager._gameData.ActiveMissionList[22] = true;
+            //GameManager.gameManager._gameData.ActiveMissionList[22] = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            MissionGenerator.missionGenerator.AddNewMission(22);
         }
     }
 }

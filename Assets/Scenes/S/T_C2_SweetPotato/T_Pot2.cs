@@ -184,9 +184,11 @@ public class T_Pot2 : MonoBehaviour, IInteraction
 
         Debug.Log("생태계 구축 엔딩");
         GameManager.gameManager._gameData.IsMakeForestEnd = true; // 엔딩으로 향하는 거기때문에 저장
-        GameManager.gameManager._gameData.ActiveMissionList[21] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[21] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(21);
+
 
         // 영양제 투약 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
     }

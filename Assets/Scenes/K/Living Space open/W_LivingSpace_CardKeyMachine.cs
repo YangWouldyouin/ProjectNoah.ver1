@@ -207,11 +207,12 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
 
             /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 끝 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
 
-            GameManager.gameManager._gameData.ActiveMissionList[2] = false;
-            GameManager.gameManager._gameData.ActiveMissionList[4] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.ActivateMissionList();
-
+            //GameManager.gameManager._gameData.ActiveMissionList[2] = false;
+            //GameManager.gameManager._gameData.ActiveMissionList[4] = false;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //MissionGenerator.missionGenerator.ActivateMissionList();
+            //MissionGenerator.missionGenerator.DeleteNewMission(2);
+            MissionGenerator.missionGenerator.DeleteNewMission(4);
             Debug.Log("생활공간 문 변수 저장");
 
 

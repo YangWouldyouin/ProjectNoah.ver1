@@ -98,12 +98,14 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Z-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
 
         /* 임무 리스트에 "AI 깨우기" 미션 삭제 */
-        GameManager.gameManager._gameData.ActiveMissionList[0] = false;
-        GameManager.gameManager._gameData.ActiveMissionList[1] = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //GameManager.gameManager._gameData.ActiveMissionList[0] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[1] = true;
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         ///* 임무 리스트 한번 활성화 */
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(0);
+        MissionGenerator.missionGenerator.AddNewMission(1);
 
         /* 조종실 문 활성화 */
         controlDoorOutline.OutlineWidth = 8;

@@ -92,9 +92,10 @@ public class M_EngineCardKey : MonoBehaviour, IInteraction
     public void OnBite()
     {
         GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
-        GameManager.gameManager._gameData.ActiveMissionList[3] = false;
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        //GameManager.gameManager._gameData.ActiveMissionList[3] = false;
+        //MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.DeleteNewMission(3);
     }
 
     public void OnEat()

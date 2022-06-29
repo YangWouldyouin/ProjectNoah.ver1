@@ -108,10 +108,10 @@ public class E_FA_Body : MonoBehaviour, IInteraction
         playerEquipment.biteObjectName = "";
         engineData.IsObjectActiveList[3]= false;
         GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 = true;
-        GameManager.gameManager._gameData.ActiveMissionList[16] = false;
+        //GameManager.gameManager._gameData.ActiveMissionList[16] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.ActivateMissionList();
-
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.DeleteNewMission(16);
         FA_fuelabsorberfixPart.SetActive(false);
         gameObject.SetActive(false);
 
