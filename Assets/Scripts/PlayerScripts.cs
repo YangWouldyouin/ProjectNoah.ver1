@@ -103,7 +103,7 @@ public class PlayerScripts : MonoBehaviour
 
         if (cameraFollow != null)
         {
-            Vector3 camerapos = new Vector3(Mathf.Clamp(transform.position.x, -262f, -251f), mainCamera.transform.position.y, Mathf.Clamp(transform.position.z, 672f, 688f));
+            Vector3 camerapos = new Vector3(Mathf.Clamp(transform.position.x, -264f, -251f), mainCamera.transform.position.y, Mathf.Clamp(transform.position.z, 670.1f, 690.52f));
             while (elapsedTime < waitTime)
             {
                 mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, camerapos, (elapsedTime / waitTime));
