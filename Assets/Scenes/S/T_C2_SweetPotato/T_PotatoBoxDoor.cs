@@ -63,11 +63,23 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
             MissionGenerator.missionGenerator.AddNewMission(18);
-            MissionGenerator.missionGenerator.AddNewMission(19);
-            MissionGenerator.missionGenerator.AddNewMission(20);
+            StartCoroutine(SecondMission());
+            StartCoroutine(ThirdMission());
+            //MissionGenerator.missionGenerator.AddNewMission(20);
 
         }
 
+    }
+    IEnumerator SecondMission()
+    {
+        yield return new WaitForSeconds(3f);
+        MissionGenerator.missionGenerator.AddNewMission(19);
+    }
+
+    IEnumerator ThirdMission()
+    {
+        yield return new WaitForSeconds(6f);
+        MissionGenerator.missionGenerator.AddNewMission(20);
     }
 
     void DisableButton()

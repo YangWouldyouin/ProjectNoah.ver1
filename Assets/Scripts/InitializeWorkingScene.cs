@@ -331,17 +331,26 @@ public class InitializeWorkingScene : MonoBehaviour
         //W_HM_1
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
 
-        GameManager.gameManager._gameData.ActiveMissionList[4] = true; // 생활공간 진입
-        GameManager.gameManager._gameData.ActiveMissionList[5] = true; // 엔진실 진입
-        GameManager.gameManager._gameData.ActiveMissionList[13] = true;  //냄새로 업무공간 고치기 시작
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //GameManager.gameManager._gameData.ActiveMissionList[4] = true; // 생활공간 진입
+        //GameManager.gameManager._gameData.ActiveMissionList[5] = true; // 엔진실 진입
+        //GameManager.gameManager._gameData.ActiveMissionList[13] = true;  //냄새로 업무공간 고치기 시작
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        //MissionGenerator.missionGenerator.AddNewMission(4);
-        //MissionGenerator.missionGenerator.AddNewMission(5);
-        //MissionGenerator.missionGenerator.AddNewMission(13);
-        MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.AddNewMission(4);
+        StartCoroutine(AddSecondMission());
+        StartCoroutine(AddThirdMission());
     }
 
+    IEnumerator AddSecondMission()
+    {
+        yield return new WaitForSeconds(3f);
+        MissionGenerator.missionGenerator.AddNewMission(5);
+    }
+    IEnumerator AddThirdMission()
+    {
+        yield return new WaitForSeconds(6f);
+        MissionGenerator.missionGenerator.AddNewMission(13);
+    }
 
     void FixHealthMachine()
     {

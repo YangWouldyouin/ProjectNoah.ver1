@@ -158,6 +158,13 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //MissionGenerator.missionGenerator.ActivateMissionList();
         MissionGenerator.missionGenerator.DeleteNewMission(5);
+        StartCoroutine(DeleteThird());
+
+    }
+
+    IEnumerator DeleteThird()
+    {
+        yield return new WaitForSeconds(3f);
         MissionGenerator.missionGenerator.DeleteNewMission(3);
     }
 
@@ -188,7 +195,8 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //MissionGenerator.missionGenerator.ActivateMissionList();
         MissionGenerator.missionGenerator.DeleteNewMission(5);
-        MissionGenerator.missionGenerator.DeleteNewMission(3);
+        StartCoroutine(DeleteThird());
+        //MissionGenerator.missionGenerator.DeleteNewMission(3);
 
     }
 
