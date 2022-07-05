@@ -136,7 +136,7 @@ public class MissionGenerator : MonoBehaviour
             addMission1Anim.SetBool("IsOpening2", true);
 
             yield return new WaitForSeconds(10f);
-
+            missionmom.SetActive(false);
             IsPrintingFinish = false;
 
         }
@@ -147,6 +147,7 @@ public class MissionGenerator : MonoBehaviour
                 yield return null;
             }
             yield return new WaitForSeconds(10f);
+            missionmom.SetActive(false);
             IsPrintingFinish = false;
         }
     }
@@ -199,7 +200,7 @@ public class MissionGenerator : MonoBehaviour
         //addMission1Anim.SetBool("IsOpening2", true);
 
         yield return new WaitForSeconds(10f);
-
+        missionmom.SetActive(false);
         IsPrintingFinish = false;
     }
 
