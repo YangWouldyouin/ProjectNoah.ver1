@@ -25,7 +25,9 @@ public class MissionGenerator : MonoBehaviour
 
     public bool IsOn = false;
     bool IsPrintingFinish = false;
-    GameData currentData;
+    GameData currentData, addData, deleteData;
+
+    // 변수를 추가해서 add 이든 delete 이든 둘 중 하나를 하고 있으면 이전꺼를 끝낼때까지 기다리게!!!
 
     private void Awake()
     {
@@ -87,20 +89,23 @@ public class MissionGenerator : MonoBehaviour
     /* 새 미션 추가하는 함수 */
     public void AddNewMission(int newMissionNum)
     {
-        currentData = SaveSystem.Load("save_001");
-        StartCoroutine(PrintCurrentMissionList(newMissionNum, AddNew(newMissionNum)));
+        StartCoroutine(PrintCurrentMissionList(newMissionNum, AddNew(newMissionNum), addData));
     }
 
     IEnumerator AddNew(int newMissionNum) // 새 미션 추가 
     {
-        // 기존 미션 목록이 다 출력될때까지 기다림
-        while (!IsPrintingFinish)
+        while (!IsPrintingFinish) // 기존 미션 목록이 다 출력될때까지 기다림
         {
             yield return null;
         }
 
-        if (!currentData.ActiveMissionList[newMissionNum]) // missionDic[newMissionNum] 이 이미 추가되기전이면
+        addData = SaveSystem.Load("save_001");
+
+        if (!addData.ActiveMissionList[newMissionNum]) // missionDic[newMissionNum] 이 이미 추가되기전이면
         {
+            GameManager.gameManager._gameData.ActiveMissionList[newMissionNum] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
             // 기존 미션 패널 리스트의 맨 마지막에 패널 하나 추가
             GameObject newMission = Instantiate(missionPanel, new Vector3(0, 13.25f - missionNameList.Count * 55, 0), transform.rotation) as GameObject;
             GameObject newMissionBack = Instantiate(newMissionPanel, new Vector3(0, 13.25f - missionNameList.Count * 55, 0), transform.rotation) as GameObject;
@@ -119,12 +124,7 @@ public class MissionGenerator : MonoBehaviour
             addMissionAnim.SetBool("IsOpening1", true);
             addMissionAnim.SetBool("IsOpening2", true);
 
-
-
-            //addMissionAnim.SetBool("IsOpening3", true);
-
             textget = missionPanelList[missionNameList.Count].GetComponentInChildren<TMPro.TextMeshProUGUI>();
-            // textget.color = new Color32(238, 192, 230, 255);
 
             /* 새 미션도 기존 미션 리스트에 추가 */
             missionNameList.Add(missionDic[newMissionNum]);
@@ -136,9 +136,9 @@ public class MissionGenerator : MonoBehaviour
             addMission1Anim.SetBool("IsOpening2", true);
 
             yield return new WaitForSeconds(10f);
-            GameManager.gameManager._gameData.ActiveMissionList[newMissionNum] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
             IsPrintingFinish = false;
+
         }
         else // missionDic[newMissionNum] 이 이미 추가되었으면
         {
@@ -156,8 +156,8 @@ public class MissionGenerator : MonoBehaviour
     /* 완료한 미션 삭제하는 함수 */
     public void DeleteNewMission(int deleteMissionNum)
     {
-        currentData = SaveSystem.Load("save_001");
-        StartCoroutine(PrintCurrentMissionList(deleteMissionNum, DeleteMission(deleteMissionNum)));
+        deleteData = SaveSystem.Load("save_001");
+        StartCoroutine(PrintCurrentMissionList(deleteMissionNum, DeleteMission(deleteMissionNum), deleteData));
     }
 
     IEnumerator DeleteMission(int deleteMissionNum) // 완료 미션 삭제
@@ -172,8 +172,12 @@ public class MissionGenerator : MonoBehaviour
         int idx = missionNameList.FindIndex(a => a.Contains(missionDic[deleteMissionNum]));
         newMissionImage = missionPanelList[idx].GetComponentsInChildren<Image>();
         Animator addMissionAnim = missionPanelList[idx].GetComponentInChildren<Animator>();
+
+        GameManager.gameManager._gameData.ActiveMissionList[deleteMissionNum] = false;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         // 완료한 미션 삭제 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         //newMissionImage[1].sprite = newMissionSprite;
         //Animator addMission1Anim = newMissionBack.GetComponentInChildren<Animator>();
@@ -196,8 +200,6 @@ public class MissionGenerator : MonoBehaviour
 
         yield return new WaitForSeconds(10f);
 
-        GameManager.gameManager._gameData.ActiveMissionList[deleteMissionNum] = false;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         IsPrintingFinish = false;
     }
 
@@ -289,12 +291,15 @@ public class MissionGenerator : MonoBehaviour
         }
     }
 
-    IEnumerator PrintCurrentMissionList(int newMissionNum, IEnumerator AddOrDelete)  // 기존 미션 목록들 출력 
+    IEnumerator PrintCurrentMissionList(int newMissionNum, IEnumerator AddOrDelete, GameData gameData)  // 기존 미션 목록들 출력 
     {
+        currentData = SaveSystem.Load("save_001");
+
         // 이전 목록 삭제
         missionNameList.Clear();  // 여기에 버튼 사운드 넣으면 됩니다
         missionPanelList.Clear();
         missionText.Clear();
+
         foreach (Transform child in missionmom.transform)
         {
             Destroy(child.gameObject);

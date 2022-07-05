@@ -21,7 +21,9 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     public Button aiIcon_AI;
 
     AudioSource AIresetbutton_click_sound; 
-    public AudioClip AIresetbutton_Click; 
+    public AudioClip AIresetbutton_Click;
+
+    bool IsAdding = false;
 
 
     // Start is called before the first frame update
@@ -105,7 +107,8 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         ///* 임무 리스트 한번 활성화 */
         //MissionGenerator.missionGenerator.ActivateMissionList();
         MissionGenerator.missionGenerator.DeleteNewMission(0);
-        MissionGenerator.missionGenerator.AddNewMission(1);
+        StartCoroutine(WaitDeleting());
+   
 
         /* 조종실 문 활성화 */
         controlDoorOutline.OutlineWidth = 8;
@@ -113,6 +116,11 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         Debug.Log("조종실 문 활성화");
 
         /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Z-2대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+    }
+    IEnumerator WaitDeleting()
+    {
+        yield return new WaitForSeconds(6f);
+        MissionGenerator.missionGenerator.AddNewMission(1);
     }
 
     void DelayAnim()

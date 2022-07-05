@@ -198,8 +198,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         {
             /* 임무 리스트에 "AI 깨우기" 미션 추가 */
             MissionGenerator.missionGenerator.AddNewMission(0);
-            GameManager.gameManager._gameData.ActiveMissionList[0] = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         }
         //else
