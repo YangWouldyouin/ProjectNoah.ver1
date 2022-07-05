@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Kino;
 
 public class Tu_CommentManager : MonoBehaviour
 {
@@ -31,10 +32,16 @@ public class Tu_CommentManager : MonoBehaviour
 
     public Button aiButton;
 
+    private Camera mainCamera;
+    AnalogGlitch analogEffect;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = Camera.main;
+        analogEffect = mainCamera.GetComponent<AnalogGlitch>();
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         GameManager.gameManager._gameData.IsBasicTuto = false;
@@ -367,20 +374,44 @@ public class Tu_CommentManager : MonoBehaviour
 
     void StartPassing()
     {
+        StartCoroutine(GlitchEffect());
+        StartCoroutine(EndEffect());
         PassAnim.SetActive(true);
+
         Destroy(PassAnim, 4f);
+    }
+    IEnumerator GlitchEffect()
+    {
+        float i = 0;
+        while (i <= 0.5f)
+        {
+            yield return new WaitForSeconds(1f);
+            i += 0.1f;
+            analogEffect.scanLineJitter = i;
+            analogEffect.horizontalShake = i;
+        }
+    }
+
+    IEnumerator EndEffect()
+    {
+        yield return new WaitForSeconds(5f);
+        float k= 0.5f;
+        while (k >=0.1f)
+        {
+            yield return new WaitForSeconds(1f);
+            k-= 0.1f;
+            analogEffect.scanLineJitter = k;
+            analogEffect.horizontalShake = k;
+        }
     }
 
 
-
-
-
-/*    void Delay()
-    {
-        StartAnim.SetActive(true);
-        Destroy(StartAnim, 4f);
-        Destroy(LoadingAnim, 3f);
-    }*/
+    /*    void Delay()
+        {
+            StartAnim.SetActive(true);
+            Destroy(StartAnim, 4f);
+            Destroy(LoadingAnim, 3f);
+        }*/
 
     IEnumerator Dalay1()
     {
@@ -394,10 +425,12 @@ public class Tu_CommentManager : MonoBehaviour
     void TutoBye()
     {
         GameManager.gameManager._gameData.statNum = 10;
+        GameManager.gameManager._gameData.ActiveMissionList[31] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         timerData.days = 0;
         timerData.hours = 0;
         timerData.timer = 0;
+
 
         //slManagerload();
         SceneManager.LoadScene("new cockpit");
