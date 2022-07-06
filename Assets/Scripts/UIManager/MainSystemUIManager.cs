@@ -48,7 +48,7 @@ public class MainSystemUIManager : MonoBehaviour
 
         if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet && OnetimeCheck == false)
         {
-            Invoke("systemAlertduration", 10f);
+            Invoke("systemAlertduration", 8f);
             OnetimeCheck = true;
             //GameManager.gameManager._gameData.ActiveMissionList[12] = false;
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

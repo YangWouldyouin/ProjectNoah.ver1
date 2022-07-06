@@ -81,7 +81,7 @@ public class tabletUIManager : MonoBehaviour
             //GameManager.gameManager._gameData.ActiveMissionList[23] = true;
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.AddNewMission(23);
+            MissionGenerator.missionGenerator.AddNewMission(28);
         }
     }
 
