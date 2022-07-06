@@ -189,16 +189,19 @@ public class GameEndingController : MonoBehaviour
         if(GameManager.gameManager._gameData.IsReturnOfTheEarth == false && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet && GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC == false)
         {
             GameManager.gameManager._gameData.IsSaveOnlyOneEnd = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 
         if (GameManager.gameManager._gameData.IsReturnOfTheEarth)
         {
             GameManager.gameManager._gameData.IsSaveAllEnd = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 
         if(GameManager.gameManager._gameData.IsAIVSMissionCount >= 2)
         {
             GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
     }
 
