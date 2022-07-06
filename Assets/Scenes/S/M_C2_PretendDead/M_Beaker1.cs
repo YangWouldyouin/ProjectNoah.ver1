@@ -439,7 +439,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
     IEnumerator SuddenDeath()
     {
-        yield return new WaitForSeconds(50f);
+        yield return new WaitForSeconds(53f);
         Debug.Log("노아는 죽엇다");
         StartScreen.SetActive(true);
 
@@ -458,7 +458,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
     IEnumerator End()
     {
-        yield return new WaitForSeconds(55f);
+        yield return new WaitForSeconds(57f);
         Debug.Log("타이머 켜짐");
 
         StartScreen.SetActive(false);
