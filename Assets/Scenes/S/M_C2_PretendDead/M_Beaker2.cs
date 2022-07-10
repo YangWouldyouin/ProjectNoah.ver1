@@ -126,7 +126,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         eatButton_M_Beaker2 = Beaker2Data_M.CenterButton1;
         eatButton_M_Beaker2.onClick.AddListener(OnEat);
 
-        eatDisableButton_M_Beaker2 = Beaker2Data_M.CenterButton1;
+        eatDisableButton_M_Beaker2 = Beaker2Data_M.CenterDisableButton1;
 
         Beaker2ObjData_M.IsCenterButtonDisabled = true;
 
@@ -159,7 +159,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (GameManager.gameManager._gameData.IsAnswerInBeaker2_M_C2 && GameManager.gameManager._gameData.IsAnswerBeakerColorChange1_M_C2)
+        if (GameManager.gameManager._gameData.IsAnswerInBeaker2_M_C2 && GameManager.gameManager._gameData.IsAnswerBeakerColorChange2_M_C2)
         {
             //옳은 약을 만들었다면 운석이 상호작용이 불가능해진다.
             //answerMeteor_MB.SetActive(false);
@@ -234,7 +234,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             M_RealAnswerMeteorForBeaker.transform.parent = null;
 
             //운석이 비커 안으로 이동한다.
-            M_RealAnswerMeteorForBeaker.transform.position = new Vector3(-248.367f, 1.5762f, 683.427f); //위치 값
+            M_RealAnswerMeteorForBeaker.transform.position = new Vector3(-247.778f, 1.5762f, 683.427f); //위치 값
             M_RealAnswerMeteorForBeaker.transform.rotation = Quaternion.Euler(-90, 0, 0); //로테이션 값
             // 물기 변수 초기화
             equipment.biteObjectName = "";
