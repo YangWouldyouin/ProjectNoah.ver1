@@ -193,15 +193,15 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
-        //// AI 깨우기 미션 완료 전이면 
-        if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
-        {
-            /* 임무 리스트에 "AI 깨우기" 미션 추가 */
-            MissionGenerator.missionGenerator.AddNewMission(0);
-            //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        ////// AI 깨우기 미션 완료 전이면 
+        //if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        //{
+        //    /* 임무 리스트에 "AI 깨우기" 미션 추가 */
+        //    MissionGenerator.missionGenerator.AddNewMission(0);
+        //    //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+        //    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        }
+        //}
         //else
         //{
         //    /* 임무 리스트에 "AI 깨우기" 미션 삭제 */

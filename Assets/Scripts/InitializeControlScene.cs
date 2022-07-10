@@ -41,7 +41,17 @@ public class InitializeControlScene : MonoBehaviour
 
         GameData intialGameData = SaveSystem.Load("save_001");
 
-        if(GameManager.gameManager._gameData.IsAIVSMissionCount >=2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
+        //// AI 깨우기 미션 완료 전이면 
+        if (!intialGameData.IsAIAwake_M_C1)
+        {
+            /* 임무 리스트에 "AI 깨우기" 미션 추가 */
+            StartCoroutine(delay1sec());
+            //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        }
+
+        if (GameManager.gameManager._gameData.IsAIVSMissionCount >=2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(8));
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
@@ -90,4 +100,9 @@ public class InitializeControlScene : MonoBehaviour
         }
     }
 
+    IEnumerator delay1sec()
+    {
+        yield return new WaitForSeconds(5f);
+        MissionGenerator.missionGenerator.AddNewMission(0);
+    }
 }

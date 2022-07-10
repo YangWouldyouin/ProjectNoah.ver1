@@ -42,9 +42,10 @@ public class InitializeEngineScene : MonoBehaviour
 
         if (!intialGameData.IsFirstEnterEngine)
         {
-            intialGameData.IsFirstEnterEngine = true;
-            Invoke("FirstEnter", 4f);
-
+            GameManager.gameManager._gameData.IsFirstEnterEngine = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //Invoke("FirstEnter", 4f);
+            StartCoroutine(FirstEnter());
             //냄새로 엔진실 고치기 시작
         }
 
@@ -93,8 +94,9 @@ public class InitializeEngineScene : MonoBehaviour
         }
     }
 
-    public void FirstEnter()
+    IEnumerator FirstEnter()
     {
+        yield return new WaitForSeconds(4f);
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(11));
         //GameManager.gameManager._gameData.ActiveMissionList[16] = true;
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
