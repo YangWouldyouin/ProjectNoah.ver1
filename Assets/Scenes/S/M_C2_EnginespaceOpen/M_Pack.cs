@@ -110,6 +110,11 @@ public class M_Pack : MonoBehaviour, IInteraction
         /* 오브젝트 흔드는 애니메이션 끝냄 */
         InteractionButtonController.interactionButtonController.PlayerSmash2();
 
+        GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
+        //GameManager.gameManager._gameData.ActiveMissionList[3] = false;
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        MissionGenerator.missionGenerator.DeleteNewMission(3);
     }
 
     IEnumerator canLookCardKey1()
