@@ -241,7 +241,7 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
             //GameManager.gameManager._gameData.ActiveMissionList[31] = false;
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.AddNewMission(31);
+            MissionGenerator.missionGenerator.DeleteNewMission(31);
         }
     }
 
