@@ -292,14 +292,14 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
 
-            M_cylinderGlassWrong.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
-            M_cylinderGlassWrong.transform.parent = null;
+            //M_cylinderGlassWrong.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            //M_cylinderGlassWrong.transform.parent = null;
 
-            // 물기 변수 초기화
-            equipment.biteObjectName = "";
-            // 다시 포터블 넣어줌
-            M_cylinderGlassWrong.transform.parent = portableGroup.transform;
-            M_cylinderGlassWrong.SetActive(false);
+            //// 물기 변수 초기화
+            //equipment.biteObjectName = "";
+            //// 다시 포터블 넣어줌
+            //M_cylinderGlassWrong.transform.parent = portableGroup.transform;
+            //M_cylinderGlassWrong.SetActive(false);
         }
 
         //필요 없는 약1을 비커 1에 넣었을 때
@@ -316,14 +316,14 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = true;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
 
-            M_cylinderGlassNoNeed1.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
-            M_cylinderGlassNoNeed1.transform.parent = null;
+            //M_cylinderGlassNoNeed1.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            //M_cylinderGlassNoNeed1.transform.parent = null;
 
-            // 물기 변수 초기화
-            equipment.biteObjectName = "";
-            // 다시 포터블 넣어줌
-            M_cylinderGlassNoNeed1.transform.parent = portableGroup.transform;
-            M_cylinderGlassNoNeed1.SetActive(false);
+            //// 물기 변수 초기화
+            //equipment.biteObjectName = "";
+            //// 다시 포터블 넣어줌
+            //M_cylinderGlassNoNeed1.transform.parent = portableGroup.transform;
+            //M_cylinderGlassNoNeed1.SetActive(false);
         }
 
         //필요 없는 약2을 비커 1에 넣었을 때
@@ -340,14 +340,14 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = true;
 
-            M_cylinderGlassNoNeed2.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
-            M_cylinderGlassNoNeed2.transform.parent = null;
+            //M_cylinderGlassNoNeed2.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            //M_cylinderGlassNoNeed2.transform.parent = null;
 
-            // 물기 변수 초기화
-            equipment.biteObjectName = "";
-            // 다시 포터블 넣어줌
-            M_cylinderGlassNoNeed2.transform.parent = portableGroup.transform;
-            M_cylinderGlassNoNeed2.SetActive(false);
+            //// 물기 변수 초기화
+            //equipment.biteObjectName = "";
+            //// 다시 포터블 넣어줌
+            //M_cylinderGlassNoNeed2.transform.parent = portableGroup.transform;
+            //M_cylinderGlassNoNeed2.SetActive(false);
         }
     }
 
