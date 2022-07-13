@@ -60,7 +60,7 @@ public class InitializeEngineScene : MonoBehaviour
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.AddNewMission(0);
+            MissionGenerator.missionGenerator.AddNewMission(8);
         }
 
         /* ø¨∑· ∆€¡Ò */

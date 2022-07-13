@@ -53,8 +53,7 @@ public class InitializeControlScene : MonoBehaviour
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
 
-            /* 임무 리스트에 "AI 깨우기" 미션 추가 */
-            StartCoroutine(delay1sec());
+            MissionGenerator.missionGenerator.AddNewMission(8);
         }
 
         if(intialGameData.IsPipeFound_M_C1)
