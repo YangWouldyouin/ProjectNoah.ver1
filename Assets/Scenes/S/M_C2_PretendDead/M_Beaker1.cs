@@ -156,23 +156,23 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (GameManager.gameManager._gameData.IsAnswerInBeaker1_M_C2 && GameManager.gameManager._gameData.IsAnswerBeakerColorChange1_M_C2)
-        {
-            //옳은 약을 만들었다면 운석이 상호작용이 불가능해진다.
-            //answerMeteor_MB.SetActive(false);
-            AnswerMeteorForBeaker1Data.IsNotInteractable = true; // 상호작용 가능하게
-            AnswerMeteorForBeakerOutline_M.OutlineWidth = 0;
+        //if (GameManager.gameManager._gameData.IsAnswerInBeaker1_M_C2 && GameManager.gameManager._gameData.IsAnswerBeakerColorChange1_M_C2)
+        //{
+        //    //옳은 약을 만들었다면 운석이 상호작용이 불가능해진다.
+        //    //answerMeteor_MB.SetActive(false);
+        //    AnswerMeteorForBeaker1Data.IsNotInteractable = true; // 상호작용 가능하게
+        //    AnswerMeteorForBeakerOutline_M.OutlineWidth = 0;
 
-            //대신 비커 중앙의 마시기가 활성화 된다.
-            Beaker1ObjData_M.IsCenterButtonDisabled = false;
+        //    //대신 비커 중앙의 마시기가 활성화 된다.
+        //    Beaker1ObjData_M.IsCenterButtonDisabled = false;
 
-            //색이 변한다.
-            ChangeBeaker1.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
+        //    //색이 변한다.
+        //    ChangeBeaker1.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
 
-            M_AnswerMeteorForBeaker.SetActive(false);
-            // 앞으로 업무공간에서 메테오보이면 안됨
-            workRoomData.IsObjectActiveList[28] = false;
-        }
+        //    M_AnswerMeteorForBeaker.SetActive(false);
+        //    // 앞으로 업무공간에서 메테오보이면 안됨
+        //    workRoomData.IsObjectActiveList[28] = false;
+        //}
 
 /*        if(StartBlack == true && StartOnlyOne == false)
         {
@@ -252,7 +252,48 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             M_AnswerMeteorForBeaker.transform.parent = portableGroup.transform;
 
             GameManager.gameManager._gameData.IsAnswerInBeaker1_M_C2 = true;
+            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            // 정답약을 넣었는지 확인
+            if (GameManager.gameManager._gameData.IsAnswerDrugInBeaker1_M_C2)
+            {
+                M_drugInBeaker1.SetActive(true);
+                Debug.Log("색이 변경되었습니다.");
+                //ChangeBeaker2.material.color = new Color(173 / 255f, 221 / 255f, 158 / 255f); //부은 약 색으로 비커색이 변한다.
+
+                GameManager.gameManager._gameData.IsAnswerBeakerColorChange1_M_C2 = true;
+                GameManager.gameManager._gameData.IsWrongBeakerColorChange1_M_C2 = false;
+                GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
+                GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
+                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+                //옳은 약을 만들었다면 운석이 상호작용이 불가능해진다.
+                //answerMeteor_MB.SetActive(false);
+                AnswerMeteorForBeaker1Data.IsNotInteractable = true;
+                AnswerMeteorForBeakerOutline_M.OutlineWidth = 0;
+
+                //대신 비커 중앙의 마시기가 활성화 된다.
+                Beaker1ObjData_M.IsCenterButtonDisabled = false;
+
+                //색이 변한다.
+                ChangeBeaker1.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
+
+                MeshRenderer meteoRenderer = M_AnswerMeteorForBeaker.GetComponent<MeshRenderer>();
+                meteoRenderer.enabled = false;
+                M_AnswerMeteorForBeaker.SetActive(false);
+                // 앞으로 업무공간에서 메테오보이면 안됨
+                workRoomData.IsObjectActiveList[28] = false;
+
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
         }
+
+
+
+
+
+
+
 
         //정답 약을 비커 1에 넣었을 때
         if (cylinderGlassAnswerData_M.IsBite)
@@ -268,14 +309,34 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
 
-            M_cylinderGlassAnswer.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
-            M_cylinderGlassAnswer.transform.parent = null;
+            // 정답운석이 비커에 들어있으면
+            if(GameManager.gameManager._gameData.IsAnswerInBeaker1_M_C2)
+            {
+                //옳은 약을 만들었다면 운석이 상호작용이 불가능해진다.
+                //answerMeteor_MB.SetActive(false);
+                AnswerMeteorForBeaker1Data.IsNotInteractable = true;
+                AnswerMeteorForBeakerOutline_M.OutlineWidth = 0;
 
-            // 물기 변수 초기화
-            equipment.biteObjectName = "";
-            // 다시 포터블 넣어줌
-            M_cylinderGlassAnswer.transform.parent = portableGroup.transform;
-            M_cylinderGlassAnswer.SetActive(false);
+                //대신 비커 중앙의 마시기가 활성화 된다.
+                Beaker1ObjData_M.IsCenterButtonDisabled = false;
+
+                //색이 변한다.
+                ChangeBeaker1.material.color = new Color(246 / 255f, 27 / 255f, 193 / 255f);
+
+                MeshRenderer meteoRenderer = M_AnswerMeteorForBeaker.GetComponent<MeshRenderer>();
+                meteoRenderer.enabled = false;
+                // 앞으로 업무공간에서 메테오보이면 안됨
+                workRoomData.IsObjectActiveList[28] = false;
+
+                M_cylinderGlassAnswer.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+                M_cylinderGlassAnswer.transform.parent = null;
+
+                // 물기 변수 초기화
+                equipment.biteObjectName = "";
+                // 다시 포터블 넣어줌
+                M_cylinderGlassAnswer.transform.parent = portableGroup.transform;
+                M_cylinderGlassAnswer.SetActive(false);
+            }
         }
 
         //틀린 약을 비커 1에 넣었을 때
