@@ -100,6 +100,9 @@ public class insert_planet : MonoBehaviour, IInteraction
 
             Invoke("W_NoChip", 0.5f);
 
+            GameManager.gameManager._gameData.IsPlanetInsertChip_In = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
             GameManager.gameManager._gameData.IsFakePlanetOpen = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
