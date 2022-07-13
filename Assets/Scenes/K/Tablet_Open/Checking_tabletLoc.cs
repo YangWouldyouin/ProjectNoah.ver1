@@ -62,6 +62,7 @@ public class Checking_tabletLoc : MonoBehaviour
                 Tablet_E.SetActive(false);
                 //Destroy(Tablet_E); // Å¸ºí·¿ ÆÄ±«
                 GameManager.gameManager._gameData.IsTabletDestory = true; // ¹Ýº¹¹®¿¡¼­ ºüÁ®³ª¿È
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
         }
     }
