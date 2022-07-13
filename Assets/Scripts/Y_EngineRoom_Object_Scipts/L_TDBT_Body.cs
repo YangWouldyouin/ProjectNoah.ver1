@@ -26,15 +26,6 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         portableObject = InteractionButtonController.interactionButtonController.portableObjects;
         dialogManager = dialog_CS.GetComponent<DialogManager>();
 
-        if (!GameManager.gameManager._gameData.IsFirstEnterLiving)
-        {
-
-
-            Invoke("FirstEnter", 4f);
-
-
-            //냄새로 생활공간 고치기 시작
-        }
 
         playerEquipment = BaseCanvas._baseCanvas.equipment;
 
@@ -122,17 +113,6 @@ public class L_TDBT_Body : MonoBehaviour, IInteraction
         //냄새로 생활공간 고치기 끝
     }
 
-    public void FirstEnter()
-    {
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
-        //GameManager.gameManager._gameData.ActiveMissionList[15] = true;
-
-        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        //MissionGenerator.missionGenerator.ActivateMissionList();
-        MissionGenerator.missionGenerator.AddNewMission(15);
-        GameManager.gameManager._gameData.IsFirstEnterLiving = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-    }
 
     public void OnSniff()
     {

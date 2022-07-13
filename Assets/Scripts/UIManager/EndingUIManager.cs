@@ -234,6 +234,9 @@ public class EndingUIManager : MonoBehaviour
         character.IsAnswerInBeaker1_M_C2 = false; // 비커 1에 맞는 운석을 넣었는지
         character.IsAnswerInBeaker2_M_C2 = false; // 비커 2에 맞는 운석을 넣었는지
 
+        character.IsAnswerDrugInBeaker1_M_C2 = false; // 비커 1에 맞는 약을 넣었는지
+        character.IsAnswerDrugInBeaker2_M_C2 = false;// 비커 2에 맞는 약을 넣었는지
+
         character.IsAnswerBeakerColorChange1_M_C2 = false; // 정답 약 때문에 비커 1 색상 변화
         character.IsWrongBeakerColorChange1_M_C2 = false; // 틀린 약 때문에 비커 1 색상 변화
         character.IsNoNeed1BeakerColorChange1_M_C2 = false; // 필요없는 약1 때문에 비커 1 색상 변화

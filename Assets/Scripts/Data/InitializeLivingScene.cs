@@ -17,7 +17,17 @@ public class InitializeLivingScene : MonoBehaviour
     public GameObject Doll;
     public GameObject LivingroomDoor;
     public Animator doorAnim;
+    public void FirstEnter()
+    {
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(10));
+        //GameManager.gameManager._gameData.ActiveMissionList[15] = true;
 
+        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //MissionGenerator.missionGenerator.ActivateMissionList();
+        MissionGenerator.missionGenerator.AddNewMission(15);
+        GameManager.gameManager._gameData.IsFirstEnterLiving = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+    }
 
 
     void Start()
@@ -28,6 +38,23 @@ public class InitializeLivingScene : MonoBehaviour
         TDBT_fixPartOutline = TDBT_fixPart.GetComponent<Outline>();
 
         GameData intialGameData = SaveSystem.Load("save_001");
+
+        if (!intialGameData.IsFirstEnterLiving)
+        {
+            // 생활공간 미션 전부 삭제
+            GameManager.gameManager._gameData.ActiveMissionList[2] = false; // 생활공간 카드키 탐색
+            GameManager.gameManager._gameData.ActiveMissionList[4] = false; // 생활공간 진입
+
+            // 생활공간 해금 관련 변수 전부 true로
+            GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2 = true; // 항상 업무공간에서 생활공간 이동 가능. 단, 문이 반만 열린채로
+            GameManager.gameManager._gameData.IsCompleteFindLivingKey = true;
+            GameManager.gameManager._gameData.IsCompleteHalfOpenLivingRoom = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            //냄새로 생활공간 고치기 시작
+            Invoke("FirstEnter", 4f);
+        }
+
 
         if (intialGameData.IsAIVSMissionCount >= 2 && !intialGameData.IsFirstNoticeEnd)
         {

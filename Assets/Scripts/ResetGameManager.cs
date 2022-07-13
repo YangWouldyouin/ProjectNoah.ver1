@@ -365,6 +365,9 @@ public class ResetGameManager : MonoBehaviour
         character.IsBiteimportantMeteor_T_C2 = false; // 중요 운석을 물었는지
         character.IsBiteNormalMeteor1_T_C2 = false; // 일반 운석을 물었는지
 
+        character.IsAnswerDrugInBeaker1_M_C2 = false; // 비커 1에 맞는 약을 넣었는지
+        character.IsAnswerDrugInBeaker2_M_C2 = false;// 비커 2에 맞는 약을 넣었는지
+
         character.IsAnswerInBeaker1_M_C2 = false; // 비커 1에 맞는 운석을 넣었는지
         character.IsAnswerInBeaker2_M_C2 = false; // 비커 2에 맞는 운석을 넣었는지
 
