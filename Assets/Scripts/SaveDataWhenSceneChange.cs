@@ -26,6 +26,8 @@ public class SaveDataWhenSceneChange : MonoBehaviour
     [SerializeField] GameObject myHead;
     [SerializeField] Animator noahAnimator;
 
+    GameData intialGameData;
+
     void Awake()
     {
         /* 현재 씬에 해당하는 물건 리스트를 가져옴 */
@@ -130,6 +132,18 @@ public class SaveDataWhenSceneChange : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            //업무공간 첫미션이 전부 나오기 전에 조종실로 나가면 
+            intialGameData = SaveSystem.Load("save_001");
+            if(!intialGameData.IsFirstEnterWorking)
+            {
+                GameManager.gameManager._gameData.ActiveMissionList[4] = true; // 생활공간 진입
+                GameManager.gameManager._gameData.ActiveMissionList[5] = true; // 엔진실 진입
+                GameManager.gameManager._gameData.ActiveMissionList[13] = true;  //냄새로 업무공간 고치기 시작
+
+                GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+
             StartCoroutine(ChangeScene());
         }
     }

@@ -110,7 +110,7 @@ pushButton, NoCenterButton_M_Box;
 
     IEnumerator DelayAdding()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         MissionGenerator.missionGenerator.AddNewMission(7);
     }
 

@@ -116,7 +116,8 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
             // 엔진실 문 고치기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             //GameManager.gameManager._gameData.ActiveMissionList[30] = false;
             MissionGenerator.missionGenerator.DeleteNewMission(30);
-            MissionGenerator.missionGenerator.AddNewMission(3);
+            StartCoroutine(Delay2Sec());
+            
             //GameManager.gameManager._gameData.ActiveMissionList[3] = true;
             //GameManager.gameManager._gameData.ActiveMissionList[5] = true;
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -131,6 +132,11 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
 
         }
 
+        IEnumerator Delay2Sec()
+        {
+            yield return new WaitForSeconds(2f);
+            MissionGenerator.missionGenerator.AddNewMission(3);
+        }
 
 /*        if (biteRubberData_M.IsBite)
         {

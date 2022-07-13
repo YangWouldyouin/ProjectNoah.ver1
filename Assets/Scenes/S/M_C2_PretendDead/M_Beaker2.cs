@@ -407,12 +407,17 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
             MissionGenerator.missionGenerator.DeleteNewMission(11);
-            MissionGenerator.missionGenerator.AddNewMission(12);
-
+            StartCoroutine(Delay2Sec());
             StartCoroutine(SuddenDeath());
 
 
         }
+    }
+
+    IEnumerator Delay2Sec()
+    {
+        yield return new WaitForSeconds(2f);
+        MissionGenerator.missionGenerator.AddNewMission(12);
     }
 
     IEnumerator WaitFor40()

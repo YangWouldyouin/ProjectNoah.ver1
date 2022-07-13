@@ -182,9 +182,6 @@ public class InitializeWorkingScene : MonoBehaviour
         if (!intialGameData.IsFirstEnterWorking && !intialGameData.IsHealthMachineFixed_T_C2)
         {
             Invoke("FirstEnter", 4f);
-            GameManager.gameManager._gameData.IsFirstEnterWorking = true;
-
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
 
         /*상태체크기계고치기*/
@@ -343,13 +340,15 @@ public class InitializeWorkingScene : MonoBehaviour
 
     IEnumerator AddSecondMission()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         MissionGenerator.missionGenerator.AddNewMission(5);
     }
     IEnumerator AddThirdMission()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(4f);
         MissionGenerator.missionGenerator.AddNewMission(13);
+        GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     void FixHealthMachine()

@@ -171,6 +171,12 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //MissionGenerator.missionGenerator.ActivateMissionList();
         MissionGenerator.missionGenerator.DeleteNewMission(25);
+        StartCoroutine(Delay2Sec());
+    }
+
+    IEnumerator Delay2Sec()
+    {
+        yield return new WaitForSeconds(2f);
         MissionGenerator.missionGenerator.AddNewMission(26);
     }
 

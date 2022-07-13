@@ -129,7 +129,7 @@ public class MissionGenerator : MonoBehaviour
             /* 새 미션도 기존 미션 리스트에 추가 */
             missionNameList.Add(missionDic[newMissionNum]);
             StartCoroutine(_typing(missionNameList[missionNameList.Count - 1], missionNameList.Count-1));
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
             addMissionAnim.SetBool("IsNewMissionStart", true);
             newMissionBack.SetActive(true);
             addMission1Anim.SetBool("IsOpening1", true);
@@ -199,7 +199,7 @@ public class MissionGenerator : MonoBehaviour
         //addMission1Anim.SetBool("IsOpening1", true);
         //addMission1Anim.SetBool("IsOpening2", true);
 
-        yield return new WaitForSeconds(10f);
+        //yield return new WaitForSeconds(1f);
         missionmom.SetActive(false);
         IsPrintingFinish = false;
     }

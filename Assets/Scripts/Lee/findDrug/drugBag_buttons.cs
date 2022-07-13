@@ -188,6 +188,13 @@ public class drugBag_buttons : MonoBehaviour, IInteraction
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //MissionGenerator.missionGenerator.ActivateMissionList();
         MissionGenerator.missionGenerator.DeleteNewMission(24);
+        StartCoroutine(Delay2Sec());
+
+    }
+
+    IEnumerator Delay2Sec()
+    {
+        yield return new WaitForSeconds(2f);
         MissionGenerator.missionGenerator.AddNewMission(25);
     }
     IEnumerator DestroyDrugBag()

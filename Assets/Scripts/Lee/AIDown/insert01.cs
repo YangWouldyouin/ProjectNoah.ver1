@@ -183,7 +183,7 @@ public class insert01 : MonoBehaviour, IInteraction
             //MissionGenerator.missionGenerator.ActivateMissionList();
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.DeleteNewMission(9);
-            MissionGenerator.missionGenerator.AddNewMission(12);
+            StartCoroutine(Delay2Sec());
 
             inGameTime.IsGoToEarthMissionClear1 = true;
             inGameTime.IsTimerStarted = false;
@@ -207,6 +207,11 @@ public class insert01 : MonoBehaviour, IInteraction
         }
     }
 
+    IEnumerator Delay2Sec()
+    {
+        yield return new WaitForSeconds(2f);
+        MissionGenerator.missionGenerator.AddNewMission(12);
+    }
     public void AIDown()
     {
         Color AIColor = aiIcon_AI.GetComponent<Image>().color;

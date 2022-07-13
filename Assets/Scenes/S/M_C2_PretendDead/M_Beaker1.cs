@@ -414,14 +414,19 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             //MissionGenerator.missionGenerator.ActivateMissionList();
 
             MissionGenerator.missionGenerator.DeleteNewMission(11);
-            MissionGenerator.missionGenerator.AddNewMission(12);
+            StartCoroutine(Delay2Sec());
+ 
 
             //StartCoroutine(SuddenDeath());
             //startTimer = true;
             //StartCoroutine(WaitFor40());
-
-
         }
+    }
+
+    IEnumerator Delay2Sec()
+    {
+        yield return new WaitForSeconds(2f);
+        MissionGenerator.missionGenerator.AddNewMission(12);
     }
 
     IEnumerator WaitFor40()

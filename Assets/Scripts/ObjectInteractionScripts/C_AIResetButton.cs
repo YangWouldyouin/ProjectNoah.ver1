@@ -119,7 +119,7 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     }
     IEnumerator WaitDeleting()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(2f);
         MissionGenerator.missionGenerator.AddNewMission(1);
     }
 

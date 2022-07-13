@@ -72,13 +72,13 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
     }
     IEnumerator SecondMission()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         MissionGenerator.missionGenerator.AddNewMission(19);
     }
 
     IEnumerator ThirdMission()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(4f);
         MissionGenerator.missionGenerator.AddNewMission(20);
     }
 
