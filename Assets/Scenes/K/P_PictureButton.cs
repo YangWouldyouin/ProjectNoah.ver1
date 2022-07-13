@@ -192,6 +192,7 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         GameManager.gameManager._gameData.IsPhotoTime = false;
         GameManager.gameManager._gameData.IsPhotoCheck = true;
         GameManager.gameManager._gameData.IsRM_P_MissionScriptCheck = false;
+        GameManager.gameManager._gameData.IsPhotoMissionFinish = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //IsReported = true;
 

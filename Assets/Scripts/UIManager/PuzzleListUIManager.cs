@@ -123,7 +123,7 @@ public class PuzzleListUIManager : MonoBehaviour
         if (GameManager.gameManager._savePageData.IsPhotoMissionFinish0)
         {
             Puzzle4.sprite = Finish_puzzle;
-            Puzzle4t.text = "선전용 우주선 사진 찍기";
+            Puzzle4t.text = "선전용 사진 찍기";
         }
         if (GameManager.gameManager._savePageData.IsCompleteFindLivingKey0)
         {
@@ -223,7 +223,7 @@ public class PuzzleListUIManager : MonoBehaviour
         if (GameManager.gameManager._savePageData.IsFakeCoordinateDatafile_Tablet0)
         {
             Puzzle25.sprite = Finish_puzzle;
-            Puzzle25t.text = "거짓 궤도 좌표 다운로드";
+            Puzzle25t.text = "거짓 좌표 다운로드";
         }
         if (GameManager.gameManager._savePageData.IsAIDown_M_C1C30)
         {
