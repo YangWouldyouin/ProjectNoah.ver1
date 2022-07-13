@@ -284,6 +284,20 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
                 // 앞으로 업무공간에서 메테오보이면 안됨
                 workRoomData.IsObjectActiveList[28] = false;
 
+
+                //추가된 부분@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                //실린더 제자리로
+                M_cylinderGlassAnswer.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+                M_cylinderGlassAnswer.transform.parent = null;
+                M_cylinderGlassAnswer.transform.position = new Vector3(-247.277f, 1.39397f, 683.715f); //위치 값
+                M_cylinderGlassAnswer.transform.rotation = Quaternion.Euler(0, 0, 0); //로테이션 값
+
+                // 물기 변수 초기화
+                equipment.biteObjectName = "";
+                // 다시 포터블 넣어줌
+                M_cylinderGlassAnswer.transform.parent = portableGroup.transform;
+
+
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
         }
@@ -303,6 +317,18 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
 
             GameManager.gameManager._gameData.IsAnswerDrugInBeaker1_M_C2 = true;
+
+            //추가된 부분@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //실린더 제자리로
+            M_cylinderGlassAnswer.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            M_cylinderGlassAnswer.transform.parent = null;
+            M_cylinderGlassAnswer.transform.position = new Vector3(-247.277f, 1.39397f, 683.715f); //위치 값
+            M_cylinderGlassAnswer.transform.rotation = Quaternion.Euler(0, 0, 0); //로테이션 값
+
+            // 물기 변수 초기화
+            equipment.biteObjectName = "";
+            // 다시 포터블 넣어줌
+            M_cylinderGlassAnswer.transform.parent = portableGroup.transform;
 
             // 정답운석이 비커에 들어있으면
             if (GameManager.gameManager._gameData.IsAnswerInBeaker1_M_C2)
@@ -348,8 +374,18 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
 
-            //M_cylinderGlassWrong.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
-            //M_cylinderGlassWrong.transform.parent = null;
+
+            //추가된 부분@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //실린더 제자리로
+            M_cylinderGlassWrong.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            M_cylinderGlassWrong.transform.parent = null;
+            M_cylinderGlassWrong.transform.position = new Vector3(-247.277f, 1.39397f, 683.438f); //위치 값
+            M_cylinderGlassWrong.transform.rotation = Quaternion.Euler(0, 0, 0); //로테이션 값
+
+            // 물기 변수 초기화
+            equipment.biteObjectName = "";
+            // 다시 포터블 넣어줌
+            M_cylinderGlassWrong.transform.parent = portableGroup.transform;
 
             //// 물기 변수 초기화
             //equipment.biteObjectName = "";
@@ -371,6 +407,19 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsWrongBeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = true;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
+
+
+            //추가된 부분@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //실린더 제자리로
+            M_cylinderGlassNoNeed1.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            M_cylinderGlassNoNeed1.transform.parent = null;
+            M_cylinderGlassNoNeed1.transform.position = new Vector3(-247.277f, 1.39397f, 684.2311f); //위치 값
+            M_cylinderGlassNoNeed1.transform.rotation = Quaternion.Euler(0, 0, 0); //로테이션 값
+
+            // 물기 변수 초기화
+            equipment.biteObjectName = "";
+            // 다시 포터블 넣어줌
+            M_cylinderGlassNoNeed1.transform.parent = portableGroup.transform;
 
             //M_cylinderGlassNoNeed1.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
             //M_cylinderGlassNoNeed1.transform.parent = null;
@@ -395,6 +444,19 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsWrongBeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = true;
+
+            //추가된 부분@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //실린더 제자리로
+            M_cylinderGlassNoNeed2.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
+            M_cylinderGlassNoNeed2.transform.parent = null;
+            M_cylinderGlassNoNeed2.transform.position = new Vector3(-247.277f, 1.39397f, 683.9581f); //위치 값
+            M_cylinderGlassNoNeed2.transform.rotation = Quaternion.Euler(0, 0, 0); //로테이션 값
+
+            // 물기 변수 초기화
+            equipment.biteObjectName = "";
+            // 다시 포터블 넣어줌
+            M_cylinderGlassNoNeed2.transform.parent = portableGroup.transform;
+
 
             //M_cylinderGlassNoNeed2.GetComponent<Rigidbody>().isKinematic = false; // 모계에서 벗어나게 한다.
             //M_cylinderGlassNoNeed2.transform.parent = null;
