@@ -243,7 +243,7 @@ public class InitializeWorkingScene : MonoBehaviour
         Line2OnTable2_Collider = Line2OnTable2.GetComponent<BoxCollider>();
         ConductionOnTable2_Collider = ConductionOnTable2.GetComponent<BoxCollider>();
 
-        if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
+        if (intialGameData.IsAIVSMissionCount >= 2 && !intialGameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;

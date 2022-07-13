@@ -140,7 +140,7 @@ public class NoahStatController : MonoBehaviour
     {
         statPanel.SetActive(true);
 
-        if (StatTime.statNum < 10 && StatTime.statNum >= 5)
+        if (StatTime.statNum <= 10 && StatTime.statNum >= 5)
         {
             conditionText.text = "[상태] \"좋음\"";
 

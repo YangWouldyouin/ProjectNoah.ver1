@@ -28,8 +28,6 @@ public class InitializeControlScene : MonoBehaviour
     public GameObject PlanetInsert;
     BoxCollider PlanetInsertCol;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -46,21 +44,20 @@ public class InitializeControlScene : MonoBehaviour
         {
             /* 임무 리스트에 "AI 깨우기" 미션 추가 */
             StartCoroutine(delay1sec());
-            //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
         }
 
-        if (GameManager.gameManager._gameData.IsAIVSMissionCount >=2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
+        if (intialGameData.IsAIVSMissionCount >=2 && !intialGameData.IsFirstNoticeEnd)
         {
             //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(8));
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.AddNewMission(0);
+
+            /* 임무 리스트에 "AI 깨우기" 미션 추가 */
+            StartCoroutine(delay1sec());
         }
 
-        if(GameManager.gameManager._gameData.IsPipeFound_M_C1)
+        if(intialGameData.IsPipeFound_M_C1)
         {
             pipe_C.transform.position = new Vector3(-27.07f, 0.05f, -30f);
             pipe_C.transform.eulerAngles = new Vector3(0, -90, 180);

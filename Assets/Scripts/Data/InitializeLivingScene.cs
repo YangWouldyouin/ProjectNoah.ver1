@@ -29,7 +29,7 @@ public class InitializeLivingScene : MonoBehaviour
 
         GameData intialGameData = SaveSystem.Load("save_001");
 
-        if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2 && !GameManager.gameManager._gameData.IsFirstNoticeEnd)
+        if (intialGameData.IsAIVSMissionCount >= 2 && !intialGameData.IsFirstNoticeEnd)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;

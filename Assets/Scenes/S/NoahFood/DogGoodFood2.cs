@@ -17,7 +17,6 @@ public class DogGoodFood2: MonoBehaviour, IInteraction
     PortableObjectData engineRoomData;
     PortableObjectData controlRoomData;
 
-
     void Start()
     {
         workRoomData = BaseCanvas._baseCanvas.workRoomData;
