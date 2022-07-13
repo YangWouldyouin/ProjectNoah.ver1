@@ -20,7 +20,8 @@ public class M_Pack : MonoBehaviour, IInteraction
     DialogManager dialogManager;
 
     PortableObjectData workRoomData;
-   
+
+    public bool One_Speack3 = false;
 
     void Start()
     {
@@ -50,10 +51,11 @@ public class M_Pack : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(packData_M.IsClicked)
+        if(packData_M.IsClicked && One_Speack3 == false)
         {
             //B-5 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(24));
+            One_Speack3 = true;
         }
 
         if(packData_M.IsSmash)

@@ -44,6 +44,9 @@ public class M_Table1 : MonoBehaviour, IInteraction
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
 
+    public bool One_Speack1=false;
+    public bool One_Speack2 = false;
+
     void Start()
     {
         dialogManager = dialogManager_CS.GetComponent<DialogManager>();
@@ -101,10 +104,19 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(table1Data_M.IsClicked)
+        if(table1Data_M.IsClicked && One_Speack1 == false)
         {
             //B-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(22));
+            One_Speack1 = true;
+        }
+
+        if(table1Data_M.IsUpDown && One_Speack2 == false)
+        {
+            //B-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
+
+            One_Speack2 = true;
         }
 
         //오를 수 있는 높이 확인
@@ -202,9 +214,6 @@ public class M_Table1 : MonoBehaviour, IInteraction
         //Invoke("changeObserve", 3f);
 
         table1Data_M.IsObserve = false; //걍 오르기만 햇는데 관찰하기가 알아서 체크 되길래 넣어준거
-
-        //B-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(23));
 
         /*책상 위에 올라가면 책상 위 오브젝트랑 상호작용 가능하도록*/
         PackOnTable1_Collider.enabled = true;
