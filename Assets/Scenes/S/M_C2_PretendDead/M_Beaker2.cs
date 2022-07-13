@@ -288,6 +288,8 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange2_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange2_M_C2 = false;
 
+            GameManager.gameManager._gameData.IsAnswerDrugInBeaker2_M_C2 = true;
+
             // 운석이 비커에 들어있으면
             if (GameManager.gameManager._gameData.IsAnswerInBeaker2_M_C2)
             {

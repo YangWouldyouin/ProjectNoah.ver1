@@ -309,8 +309,10 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsNoNeed1BeakerColorChange1_M_C2 = false;
             GameManager.gameManager._gameData.IsNoNeed2BeakerColorChange1_M_C2 = false;
 
+            GameManager.gameManager._gameData.IsAnswerDrugInBeaker1_M_C2 = true;
+
             // 정답운석이 비커에 들어있으면
-            if(GameManager.gameManager._gameData.IsAnswerInBeaker1_M_C2)
+            if (GameManager.gameManager._gameData.IsAnswerInBeaker1_M_C2)
             {
                 //옳은 약을 만들었다면 운석이 상호작용이 불가능해진다.
                 //answerMeteor_MB.SetActive(false);
