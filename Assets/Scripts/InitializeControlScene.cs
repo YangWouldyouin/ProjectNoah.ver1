@@ -46,7 +46,7 @@ public class InitializeControlScene : MonoBehaviour
             StartCoroutine(delay1sec());
         }
 
-        if (intialGameData.IsAIVSMissionCount >=2 && !intialGameData.IsFirstNoticeEnd)
+        if (intialGameData.IsAIVSMissionCount >=3 && !intialGameData.IsFirstNoticeEnd)
         {
             //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(8));
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
