@@ -42,7 +42,11 @@ public class InitializeEngineScene : MonoBehaviour
 
         if (!intialGameData.IsFirstEnterEngine)
         {
+            GameManager.gameManager._gameData.ActiveMissionList[3] = false; // 엔진실 카드키 탐색
+            GameManager.gameManager._gameData.ActiveMissionList[5] = false; // 엔진실 진입완료
+            GameManager.gameManager._gameData.ActiveMissionList[30] = false; // 엔진실 문 고치기
             GameManager.gameManager._gameData.IsFirstEnterEngine = true;
+
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //Invoke("FirstEnter", 4f);
             StartCoroutine(FirstEnter());
