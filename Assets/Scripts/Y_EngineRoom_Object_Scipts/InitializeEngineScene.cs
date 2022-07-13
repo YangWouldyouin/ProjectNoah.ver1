@@ -92,6 +92,11 @@ public class InitializeEngineScene : MonoBehaviour
             EngineRoomData.IsObjectActiveList[44] = false;
             EngineRoomData.IsObjectActiveList[45] = false;
         }
+
+        if (intialGameData.IsTabletDestory) // 태블릿 삭제 
+        {
+            Tablet_E.SetActive(false);
+        }
     }
 
     IEnumerator FirstEnter()
