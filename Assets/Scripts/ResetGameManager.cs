@@ -40,6 +40,13 @@ public class ResetGameManager : MonoBehaviour
     public ObjectData cylinderGlassNoNeed1Data;
     public ObjectData cylinderGlassNoNeed2Data;
 
+    public ObjectData answerMeteoData;
+    public ObjectData wrongMeteo1Data;
+    public ObjectData wrongMeteo2Data;
+    public ObjectData wrongMeteo3Data;
+    public ObjectData wrongMeteo4Data;
+
+
     public ObjectData drugBagData;
 
     /* 생활공간 오브젝트데이터 초기화 */
@@ -184,10 +191,18 @@ public class ResetGameManager : MonoBehaviour
         engineKeyData.IsBite = false;
         E_extinguisherData.IsSmash = false; // 업무공간 소화전
 
+
         cylinderGlassAnswerData.IsBite = false; // 죽은척 실린더 초기화
         cylinderGlassWrongData.IsBite = false;
         cylinderGlassNoNeed1Data.IsBite = false;
         cylinderGlassNoNeed2Data.IsBite = false;
+
+        // 메테오 초기화~~~
+        answerMeteoData.IsBite = false;
+        wrongMeteo1Data.IsBite = false;
+        wrongMeteo2Data.IsBite = false;
+        wrongMeteo3Data.IsBite = false;
+        wrongMeteo4Data.IsBite = false;
 
         drugBagData.IsNotInteractable = true; // 마약가방 비활성화
     }

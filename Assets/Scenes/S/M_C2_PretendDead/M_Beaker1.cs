@@ -288,13 +288,6 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             }
         }
 
-
-
-
-
-
-
-
         //정답 약을 비커 1에 넣었을 때
         if (cylinderGlassAnswerData_M.IsBite)
         {
