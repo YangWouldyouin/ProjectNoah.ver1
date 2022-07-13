@@ -61,7 +61,7 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (engineDoorData_M.IsClicked && dontrootmore2 == false)
+        if (engineDoorData_M.IsClicked && dontrootmore2 == false && GameManager.gameManager._gameData.IsCompleteOpenEngineRoom == false)
         {
             //B-1 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
