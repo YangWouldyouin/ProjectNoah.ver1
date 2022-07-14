@@ -8,6 +8,10 @@ public class M_Table1 : MonoBehaviour, IInteraction
     public ObjectData ChairData1;
     public ObjectData BoxData1;
 
+    public GameObject Chair1;
+
+    BoxCollider Chair1_Collider;
+
     /*연관있는 오브젝트*/
     public Vector3 Table1RisePos;
     public GameObject PackOnTable1;
@@ -63,6 +67,7 @@ public class M_Table1 : MonoBehaviour, IInteraction
         cylinder2OnTable1_Collider = cylinder2OnTable1.GetComponent<BoxCollider>();
         cylinder3OnTable1_Collider = cylinder3OnTable1.GetComponent<BoxCollider>();
         cylinder4OnTable1_Collider = cylinder4OnTable1.GetComponent<BoxCollider>();
+        Chair1_Collider  = Chair1.GetComponent<BoxCollider>();
 
         /*버튼 연결*/
         barkButton_M_Table1 = table1ObjData_M.BarkButton;
@@ -165,11 +170,13 @@ public class M_Table1 : MonoBehaviour, IInteraction
         if(table1Data_M.IsObserve)
         {
             Table1_Collider.enabled = false;
+            Chair1_Collider.enabled = false;
         }
 
         else
         {
             Table1_Collider.enabled = true;
+            Chair1_Collider.enabled = true;
         }
 
         if(canPackData_M.IsBite)

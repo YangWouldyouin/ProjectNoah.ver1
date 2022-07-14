@@ -9,6 +9,14 @@ public class M_Table2 : MonoBehaviour, IInteraction
     public ObjectData ChairData4;
     public ObjectData BoxData2;
 
+    public GameObject Chair2;
+    public GameObject Chair4;
+    public GameObject MainComputer;
+
+    BoxCollider Chair2_Collider;
+    BoxCollider Chair4_Collider;
+    BoxCollider MainComputer_Collider;
+
     /*연관있는 오브젝트*/
     public Vector3 Table2RisePos;
     public GameObject SuperDrugOnTable2;
@@ -52,6 +60,9 @@ public class M_Table2 : MonoBehaviour, IInteraction
         NoahFoodOnTable2_Collider = NoahFoodOnTable2.GetComponent<BoxCollider>();
         Line2OnTable2_Collider = Line2OnTable2.GetComponent<BoxCollider>();
         ConductionOnTable2_Collider = ConductionOnTable2.GetComponent<BoxCollider>();
+        Chair2_Collider = Chair2.GetComponent<BoxCollider>();
+        Chair4_Collider = Chair4.GetComponent<BoxCollider>();
+        MainComputer_Collider = MainComputer.GetComponent<BoxCollider>();
 
         /*버튼 연결*/
         barkButton_M_Table2 = table2ObjData_M.BarkButton;
@@ -148,11 +159,17 @@ public class M_Table2 : MonoBehaviour, IInteraction
         if(table2Data_M.IsObserve)
         {
             Table2_Collider.enabled = false;
+            Chair2_Collider.enabled = false;
+            Chair4_Collider.enabled = false;
+            MainComputer_Collider.enabled = false;
         }
 
         else
         {
             Table2_Collider.enabled = true;
+            Chair2_Collider.enabled = true;
+            Chair4_Collider.enabled = true;
+            MainComputer_Collider.enabled = true;
         }
 
         if(superDrugData_M.IsBite)
