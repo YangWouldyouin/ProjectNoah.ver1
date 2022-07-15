@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 5f66bf8060dbf124db5c5715c7edb9a2, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &888670
 GameObject:
   m_ObjectHideFlags: 0
@@ -8126,6 +8126,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 443158, guid: cb9768457f589b842baee5f952a061f3, type: 3}
   m_PrefabInstance: {fileID: 170427030}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &170427032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 117120, guid: cb9768457f589b842baee5f952a061f3, type: 3}
+  m_PrefabInstance: {fileID: 170427030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &170427033
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170427032}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.5, y: 2.5, z: 0.38}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 2.5, y: 2.5, z: -0.39}
+  m_TimeToStationary: 0.5
 --- !u!1 &172794379
 GameObject:
   m_ObjectHideFlags: 0
@@ -17459,7 +17480,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 1.04, y: 0.5, z: 1.12}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -47574,6 +47595,11 @@ MonoBehaviour:
   cylinderGlassWrongData: {fileID: 0}
   cylinderGlassNoNeed1Data: {fileID: 0}
   cylinderGlassNoNeed2Data: {fileID: 0}
+  answerMeteoData: {fileID: 0}
+  wrongMeteo1Data: {fileID: 0}
+  wrongMeteo2Data: {fileID: 0}
+  wrongMeteo3Data: {fileID: 0}
+  wrongMeteo4Data: {fileID: 0}
   drugBagData: {fileID: 0}
   trashBodyData: {fileID: 11400000, guid: de29cb7cb126070418b0ad1c89511d6e, type: 2}
   trashPartData: {fileID: 11400000, guid: d94adaa0bdf587f4cbeb19aa42684c5a, type: 2}
@@ -57231,7 +57257,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 1.615, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -58746,6 +58772,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &1161083130
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161083128}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.00001, y: 0.05, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.002, y: 0, z: 0.05}
+  m_TimeToStationary: 0.5
 --- !u!1 &1161273068
 GameObject:
   m_ObjectHideFlags: 0
@@ -81496,6 +81538,8 @@ MonoBehaviour:
     IsBiteNormalMeteor1_T_C2: 0
     IsAnswerInBeaker1_M_C2: 0
     IsAnswerInBeaker2_M_C2: 0
+    IsAnswerDrugInBeaker1_M_C2: 0
+    IsAnswerDrugInBeaker2_M_C2: 0
     IsAnswerBeakerColorChange1_M_C2: 0
     IsWrongBeakerColorChange1_M_C2: 0
     IsNoNeed1BeakerColorChange1_M_C2: 0
@@ -91947,6 +91991,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 443158, guid: cb9768457f589b842baee5f952a061f3, type: 3}
   m_PrefabInstance: {fileID: 1840546419}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1840546421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 117120, guid: cb9768457f589b842baee5f952a061f3, type: 3}
+  m_PrefabInstance: {fileID: 1840546419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1840546422
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840546421}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.5, y: 2.5, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 2.5, y: 2.5, z: -0.64}
+  m_TimeToStationary: 0.5
 --- !u!1 &1840548387
 GameObject:
   m_ObjectHideFlags: 0
@@ -105133,7 +105198,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 1.445, y: 0.74, z: 1.155}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -108957,7 +109022,7 @@ PrefabInstance:
       objectReference: {fileID: 1189736242}
     - target: {fileID: 8890935285840894126, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8890935285949628184, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_Name
