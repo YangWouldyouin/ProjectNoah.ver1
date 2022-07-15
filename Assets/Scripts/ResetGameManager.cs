@@ -319,7 +319,7 @@ public class ResetGameManager : MonoBehaviour
         for (int i = 0; i < 34; i++)
         {
             character.ActiveMissionList[i] = false;
-            character.EndMissionList[i] = false;
+            character.CompleteMissionList[i] = false;
         }
 
         /* 1회성 임무 */

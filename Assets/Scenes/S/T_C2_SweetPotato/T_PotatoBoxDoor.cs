@@ -46,30 +46,31 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
         pressButton_T_PotatoBox.onClick.AddListener(OnPushOrPress);
 
         noCenterButton_T_PotatoBox = PotatoBoxDoorData_T.CenterButton1;
+    }
 
-        if (IsPotatoBoxDoorData_T.IsClicked && DontClickPotato == false)
+    void Update()
+    {
+        if (IsPotatoBoxDoorData_T.IsClicked && !DontClickPotato )
         {
             //A-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(15));
 
+            GameData gameData = SaveSystem.Load("save_001");
+            if(!gameData.CompleteMissionList[18])
+            {
+                // 영양분 섭취 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+                // 식물 배양 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+                // 영양제 투약 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+                MissionGenerator.missionGenerator.AddNewMission(18);
+                StartCoroutine(SecondMission());
+                StartCoroutine(ThirdMission());
+                GameManager.gameManager._gameData.CompleteMissionList[18] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
             DontClickPotato = true;
-
-            // 영양분 섭취 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-            // 식물 배양 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-            // 영양제 투약 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-            //GameManager.gameManager._gameData.ActiveMissionList[18] = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[19] = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[21] = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.AddNewMission(18);
-            StartCoroutine(SecondMission());
-            StartCoroutine(ThirdMission());
-            //MissionGenerator.missionGenerator.AddNewMission(20);
-
         }
-
     }
+
     IEnumerator SecondMission()
     {
         yield return new WaitForSeconds(2f);
@@ -89,11 +90,6 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
         biteButton_T_PotatoBoxDoor.transform.gameObject.SetActive(false);
         pressButton_T_PotatoBox.transform.gameObject.SetActive(false);
         noCenterButton_T_PotatoBox.transform.gameObject.SetActive(false);
-
-    }
-
-    void Update()
-    {
     }
 
     public void OnSmash()
@@ -143,8 +139,6 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
     {
        
     }
-
-
 
     public void OnUp()
     {

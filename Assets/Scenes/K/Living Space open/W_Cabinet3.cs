@@ -15,7 +15,7 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
 
     /* 사용 오브젝트 */
     public GameObject Card_Key_W_C3; // 카드키
-
+    public GameObject livingDoor;
 
     /* 오브젝트 아웃라인 */
     private Outline Cabinet3Outline_M; // 캐비닛
@@ -94,12 +94,10 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
     /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 시작 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     public void OnObserve()
     {
-        Cabinet3_W.IsObserve = true;
         DiableButton();
         PlayerScripts.playerscripts.currentObserveObj = this.gameObject;
         CameraController.cameraController.currentView = Cabinet3_W.ObserveView; // 관찰 뷰 : 위쪽
         InteractionButtonController.interactionButtonController.playerObserve(); // 관찰 애니메이션 & 카메라 전환
-
 
         /* 카드키 오브젝트 활성화 */
         Card_Key3Outline_M.OutlineWidth = 8; // 카드키 아웃라인 활성화
@@ -107,13 +105,19 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
 
         Card_Key_W_C3.SetActive(true); // 카드키 오브젝트 보이게
 
-        GameManager.gameManager._gameData.IsCompleteFindLivingKey = true;
-        //GameManager.gameManager._gameData.ActiveMissionList[2] = false;
-        //GameManager.gameManager._gameData.ActiveMissionList[4] = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        //MissionGenerator.missionGenerator.ActivateMissionList();
+        // 업데이트문에서 오브젝트 터치로 미션 추가하는 것들은 이후 터치 안되게 콜라이더 끄기
+        BoxCollider livingCollider = livingDoor.GetComponent<BoxCollider>();
+        livingCollider.enabled = false;
 
-        MissionGenerator.missionGenerator.DeleteNewMission(2);
+        GameManager.gameManager._gameData.IsCompleteFindLivingKey = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 미션이 추가되어있는지 확인 후 삭제
+        GameData mission2Data = SaveSystem.Load("save_001");
+        if(mission2Data.ActiveMissionList[2])
+        {
+            MissionGenerator.missionGenerator.DeleteNewMission(2);
+        }
     }
 
     public void OnPushOrPress()

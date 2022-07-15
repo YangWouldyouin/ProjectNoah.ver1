@@ -61,16 +61,21 @@ public class M_EngineDoor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (engineDoorData_M.IsClicked && dontrootmore2 == false && GameManager.gameManager._gameData.IsCompleteOpenEngineRoom == false)
+        if (engineDoorData_M.IsClicked && dontrootmore2 == false )
         {
             //B-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
+            GameData gameData = SaveSystem.Load("save_001");
+            {
+                // 아직 미션 추가 전인지 확인 후 추가
+                if (!gameData.CompleteMissionList[30])
+                {
+                    MissionGenerator.missionGenerator.AddNewMission(30);
+                    GameManager.gameManager._gameData.CompleteMissionList[30]= true;
+                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                }
+            }
 
-            //GameManager.gameManager._gameData.ActiveMissionList[3] = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[30] = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.AddNewMission(30);
             dontrootmore2 = true;
         }
 

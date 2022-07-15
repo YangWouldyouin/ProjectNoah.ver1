@@ -116,7 +116,13 @@ public class M_Pack : MonoBehaviour, IInteraction
         //GameManager.gameManager._gameData.ActiveMissionList[3] = false;
         //MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.DeleteNewMission(3);
+
+        // 미션이 추가되어있는지 확인 후 삭제
+        GameData mission2Data = SaveSystem.Load("save_001");
+        if (mission2Data.ActiveMissionList[3])
+        {
+            MissionGenerator.missionGenerator.DeleteNewMission(3);
+        }
     }
 
     IEnumerator canLookCardKey1()

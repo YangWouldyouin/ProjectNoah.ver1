@@ -526,10 +526,8 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
             GameManager.gameManager._gameData.IsCompletePretendDead = true;
             GameManager.gameManager._gameData.IsStartOrbitChange = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[11] = false;
-            //GameManager.gameManager._gameData.ActiveMissionList[12] = true;
+
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
 
             MissionGenerator.missionGenerator.DeleteNewMission(11);
             StartCoroutine(Delay2Sec());

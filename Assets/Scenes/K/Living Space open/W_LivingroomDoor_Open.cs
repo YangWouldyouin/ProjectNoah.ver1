@@ -12,11 +12,8 @@ public class W_LivingroomDoor_Open : MonoBehaviour, IInteraction
     public ObjectData LivingroomDoorData;
     public GameObject LivingroomDoor;
 
-    public bool dontrootmore = false;
+    bool dontrootmore = false;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         /*ObjData*/
@@ -52,15 +49,21 @@ public class W_LivingroomDoor_Open : MonoBehaviour, IInteraction
             LivingroomDoor.transform.position = new Vector3(-263.12f, -0.67f, 694.04f);
         }
 
-        if (LivingroomDoorData.IsClicked && dontrootmore == false)
+        if (LivingroomDoorData.IsClicked && !dontrootmore )
         {
             ////B-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(20));
 
-            //GameManager.gameManager._gameData.ActiveMissionList[2] = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.AddNewMission(2);
+            GameData gameData = SaveSystem.Load("save_001");
+            {
+                // 아직 미션 추가 전인지 확인 후 추가
+                if (!gameData.CompleteMissionList[2])
+                {
+                    MissionGenerator.missionGenerator.AddNewMission(2);
+                    GameManager.gameManager._gameData.CompleteMissionList[2] = true;
+                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                }
+            }
             dontrootmore = true;
         }
     }

@@ -114,28 +114,37 @@ public class M_BrokenArea : MonoBehaviour,IInteraction
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(26));
 
             // 엔진실 문 고치기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-            //GameManager.gameManager._gameData.ActiveMissionList[30] = false;
-            MissionGenerator.missionGenerator.DeleteNewMission(30);
+
+            // 미션이 추가되어있는지 확인 후 삭제
+            GameData mission2Data = SaveSystem.Load("save_001");
+            if (mission2Data.ActiveMissionList[30])
+            {
+                MissionGenerator.missionGenerator.DeleteNewMission(30);
+            }
+
             StartCoroutine(Delay2Sec());
             
-            //GameManager.gameManager._gameData.ActiveMissionList[3] = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[5] = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
-
             if (GameManager.gameManager._gameData.IsWLDoorHalfOpened_M_C2 || GameManager.gameManager._gameData.IsWLDoorOpened_M_C2)
             {
                 GameManager.gameManager._gameData.IsAllDoorOpened = true;
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(12));
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
-
         }
 
         IEnumerator Delay2Sec()
         {
             yield return new WaitForSeconds(2f);
-            MissionGenerator.missionGenerator.AddNewMission(3);
+            GameData gameData = SaveSystem.Load("save_001");
+            {
+                // 아직 미션 추가 전인지 확인 후 추가
+                if (!gameData.CompleteMissionList[3])
+                {
+                    MissionGenerator.missionGenerator.AddNewMission(3);
+                    GameManager.gameManager._gameData.CompleteMissionList[3] = true;
+                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                }
+            }
         }
 
 /*        if (biteRubberData_M.IsBite)

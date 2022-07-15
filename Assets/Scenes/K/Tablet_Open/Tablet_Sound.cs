@@ -26,16 +26,10 @@ public class Tablet_Sound : MonoBehaviour
 
     public bool firstCheck;
 
-
     void Start()
     {
         dialogManager = dialog.GetComponent<DialogManager>();
-
         Tablet_Data = Tablet.GetComponent<ObjData>();
-    }
-
-    void Update()
-    {
     }
 
     public void TabletSoundLoop() // 태블릿에서 소리 들리기
@@ -48,7 +42,8 @@ public class Tablet_Sound : MonoBehaviour
     /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 끝 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     public void OnTriggerEnter(Collider other)
     {
-        if(GameManager.gameManager._gameData.IsNoBoxes == false)
+        GameData gameData = SaveSystem.Load("save_001");
+        if (!gameData.IsNoBoxes )
         {
             TabletSoundArea.SetActive(true);
 
@@ -58,17 +53,13 @@ public class Tablet_Sound : MonoBehaviour
                 TabletSoundLoop();
                 // TabletSoundArea.SetActive(true);
 
-
-                //GameManager.gameManager._gameData.ActiveMissionList[6] = true;
-                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                //MissionGenerator.missionGenerator.ActivateMissionList();
-                MissionGenerator.missionGenerator.AddNewMission(6);
-                if (!firstCheck)
+                if (!gameData.CompleteMissionList[6])
                 {
+                    MissionGenerator.missionGenerator.AddNewMission(6);
                     dialogManager.StartCoroutine(dialogManager.PrintAIDialog(38));
-                    firstCheck = true;
-                }
-
+                    GameManager.gameManager._gameData.CompleteMissionList[6] = true;
+                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                }              
             }
         }
         else
@@ -79,24 +70,19 @@ public class Tablet_Sound : MonoBehaviour
     }
     public void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == Player_Noah && IsTabletSoundListen == true)
+        if (other.gameObject == Player_Noah && IsTabletSoundListen)
         {
             Invoke("FollowTablet", 2f);
             Debug.Log("태블릿 소리 감지");
-            PrintSomething(); // 상태창에 "[소리] 이상한 기계음
-
-            
+            PrintSomething(); // 상태창에 "[소리] 이상한 기계음         
         }
     }
-
 
     void PrintSomething()
     {
         samplePanel.SetActive(true); // 상태창을 활성화한다. 
         sampleText.text = "[소리] 이상한 기계음";
     }
-
-
 
     public void OnTriggerExit(Collider other)
     {
@@ -111,6 +97,7 @@ public class Tablet_Sound : MonoBehaviour
         }
     }
 
+    /* 이것 땜에 이동 이상해짐 */
     public void FollowTablet() // 노아가 태블릿 쪽을 바라봄
     {
         // TabletSoundArea_Data.IsNotInteractable = true;

@@ -31,23 +31,24 @@ public class checkSmellRange : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            Debug.Log("�������!!");
-
             smellRange = Random.Range(0, 3);
 
             if (smellRange <= 1)
             {
                 smellArea.SetActive(true);
                 PrintUI();
-
-                MissionGenerator.missionGenerator.AddNewMission(24);
-                //GameManager.gameManager._gameData.ActiveMissionList[24] = true;
-                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                //MissionGenerator.missionGenerator.ActivateMissionList();
+                GameData gameData = SaveSystem.Load("save_001");
+                {
+                    // 아직 미션 추가 전인지 확인 후 추가
+                    if (!gameData.CompleteMissionList[24])
+                    {
+                        MissionGenerator.missionGenerator.AddNewMission(24);
+                        GameManager.gameManager._gameData.CompleteMissionList[24] = true;
+                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                    }
+                }
             }
-        }
-
-        
+        }      
     }
 
     void PrintUI()

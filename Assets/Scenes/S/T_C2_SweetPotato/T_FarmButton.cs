@@ -79,12 +79,8 @@ public class T_FarmButton : MonoBehaviour, IInteraction
             || BadPotatoEatData_T.IsEaten && EatPotato == false)
         {
             // 영양분 섭취 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-            EatPotato = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[18] = false;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
             MissionGenerator.missionGenerator.DeleteNewMission(18);
-
+            EatPotato = true;
         }
     }
 
@@ -108,8 +104,6 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        //FarmButtonData_T.IsPushOrPress = true;
-
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
@@ -117,28 +111,29 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         /*항상 pot 순서대로  덜자란 고구마를 심고, 상한 고구마를 심고, 성숙한 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
 
         /*Pot1*/
-        if (GameManager.gameManager._gameData.Pot1InPotato)
+        GameData gameData = SaveSystem.Load("save_001");
+        if (gameData.Pot1InPotato)
         {
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
             Invoke("AppearSweetPotato1", 3f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
 
-            /*고구마가 나타난 상태를 저장한다.*/
-            GameManager.gameManager._gameData.IsCanSeePotato1 = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[19] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.DeleteNewMission(19);
-
+            if(!gameData.IsCanSeePotato1&& !gameData.IsCanSeePotato2 && !gameData.IsCanSeePotato3)
+            {
+                MissionGenerator.missionGenerator.DeleteNewMission(19);
+                /*고구마가 나타난 상태를 저장한다.*/
+                GameManager.gameManager._gameData.IsCanSeePotato1 = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
         }
 
-        if (GameManager.gameManager._gameData.Pot1InBadPotato)
+        if (gameData.Pot1InBadPotato)
         {
             //A-6 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
         }
 
-        if(GameManager.gameManager._gameData.Pot1InHealthyPotato)
+        if(gameData.Pot1InHealthyPotato)
         {
             //A-6대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
@@ -146,7 +141,7 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
 
         /*Pot2*/
-        if(GameManager.gameManager._gameData.Pot2InPotato)
+        if(gameData.Pot2InPotato)
         {
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
@@ -155,27 +150,25 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
             /*고구마가 나타난 상태를 저장한다.*/
             GameManager.gameManager._gameData.IsCanSeePotato2 = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[19] = false;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList*/();
-            MissionGenerator.missionGenerator.DeleteNewMission(19);
 
+            MissionGenerator.missionGenerator.DeleteNewMission(19);
         }
 
-        if (GameManager.gameManager._gameData.Pot2InBadPotato)
+        if (gameData.Pot2InBadPotato)
         {
             //A-6 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
         }
 
-        if(GameManager.gameManager._gameData.Pot2InHealthyPotato)
+        if(gameData.Pot2InHealthyPotato)
         {
             //A-6대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
         }
 
         /*Pot3*/
-        if(GameManager.gameManager._gameData.Pot3InPotato)
+        if(gameData.Pot3InPotato)
         {
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
@@ -191,13 +184,13 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
         }
 
-        if (GameManager.gameManager._gameData.Pot3InBadPotato)
+        if (gameData.Pot3InBadPotato)
         {
             //A-6 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
         }
 
-        if(GameManager.gameManager._gameData.Pot3InHealthyPotato)
+        if(gameData.Pot3InHealthyPotato)
         {
             //A-6대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));

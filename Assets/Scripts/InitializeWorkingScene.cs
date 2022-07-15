@@ -283,6 +283,8 @@ public class InitializeWorkingScene : MonoBehaviour
         if (intialGameData.IsCompleteOpenLivingRoom)
         {
             LivingSpaceDoor.transform.position = new Vector3(-263.12f, -0.67f, 694.04f);
+            BoxCollider livingDoorCollider = LivingSpaceDoor.GetComponent<BoxCollider>();
+            livingDoorCollider.enabled = false;
         }
 
 
@@ -345,12 +347,16 @@ public class InitializeWorkingScene : MonoBehaviour
         //W_HM_1
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
 
-        //GameManager.gameManager._gameData.ActiveMissionList[4] = true; // 생활공간 진입
-        //GameManager.gameManager._gameData.ActiveMissionList[5] = true; // 엔진실 진입
-        //GameManager.gameManager._gameData.ActiveMissionList[13] = true;  //냄새로 업무공간 고치기 시작
-        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-        MissionGenerator.missionGenerator.AddNewMission(4);
+        GameData gameData = SaveSystem.Load("save_001");
+        {
+            // 아직 미션 추가 전인지 확인 후 추가
+            if (!gameData.CompleteMissionList[4]) // 생활공간 진입
+            {
+                MissionGenerator.missionGenerator.AddNewMission(4);
+                GameManager.gameManager._gameData.CompleteMissionList[4] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+        }
         StartCoroutine(AddSecondMission());
         StartCoroutine(AddThirdMission());
     }
@@ -358,14 +364,32 @@ public class InitializeWorkingScene : MonoBehaviour
     IEnumerator AddSecondMission()
     {
         yield return new WaitForSeconds(2f);
-        MissionGenerator.missionGenerator.AddNewMission(5);
+        GameData gameData = SaveSystem.Load("save_001");
+        {
+            // 아직 미션 추가 전인지 확인 후 추가
+            if (!gameData.CompleteMissionList[5]) // 엔진실 진입
+            {
+                MissionGenerator.missionGenerator.AddNewMission(5);
+                GameManager.gameManager._gameData.CompleteMissionList[5] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+        }
     }
+
     IEnumerator AddThirdMission()
     {
         yield return new WaitForSeconds(4f);
-        MissionGenerator.missionGenerator.AddNewMission(13);
-        GameManager.gameManager._gameData.IsFirstEnterWorking = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        GameData gameData = SaveSystem.Load("save_001");
+        {
+            // 아직 미션 추가 전인지 확인 후 추가
+            if (!gameData.CompleteMissionList[13]) //냄새로 업무공간 고치기 시작
+            {
+                MissionGenerator.missionGenerator.AddNewMission(13);
+                GameManager.gameManager._gameData.CompleteMissionList[13] = true;
+                GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+        }
     }
 
     void FixHealthMachine()

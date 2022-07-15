@@ -75,16 +75,17 @@ public class BiteDestroyController_EngineKey : MonoBehaviour, IPointerUpHandler,
     {
         isPointerDown = true;
         InteractionButtonController.interactionButtonController.PlayerBite();
+        Debug.Log("카드를 찾아서 미션 완료");
+        /*카드키 찾기 퍼즐 완료*/
+        GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         // 엔진실 카드키 찾기 임무리스트 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
-        if (GameManager.gameManager._gameData.ActiveMissionList[3] == true)
+
+        // 미션이 추가되어있는지 확인 후 삭제
+        GameData mission2Data = SaveSystem.Load("save_001");
+        if (mission2Data.ActiveMissionList[3])
         {
-            Debug.Log("카드를 찾아서 미션 완료");
-            /*카드키 찾기 퍼즐 완료*/
-            GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[3] = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
             MissionGenerator.missionGenerator.DeleteNewMission(3);
         }
     }

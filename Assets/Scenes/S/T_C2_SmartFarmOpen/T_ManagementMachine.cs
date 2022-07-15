@@ -44,7 +44,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
 
-    public bool firstCheck;
+    bool firstCheck;
 
     void Start()
     {
@@ -82,17 +82,21 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(managementMachineData_T.IsClicked && !GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
+        if(managementMachineData_T.IsClicked && !firstCheck)
         {
-            // A-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-            // 스마트 팜 해금 퍼즐 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(13));
-            //GameManager.gameManager._gameData.ActiveMissionList[17] = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.AddNewMission(17);
-
-
+            GameData gameData = SaveSystem.Load("save_001");
+            {
+                // 아직 미션 추가 전인지 확인 후 추가
+                if (!gameData.CompleteMissionList[17])
+                {
+                    // A-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+                    // 스마트 팜 해금 퍼즐 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+                    MissionGenerator.missionGenerator.AddNewMission(17);
+                    GameManager.gameManager._gameData.CompleteMissionList[17] = true;
+                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                }
+            }
             firstCheck = true;
         }
 
@@ -158,33 +162,29 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
     public void OnBark()
     {
         DisableButton();
-
         InteractionButtonController.interactionButtonController.playerBark();
 
-        if(GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
+        GameData gameData = SaveSystem.Load("save_001");
+
+        if (gameData.IsSmartFarmFix_T_C2)
         {
             doorObstacle.enabled = false;
             //A-2 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(14));
             StartCoroutine(SmartFarmOpen());
-            //Invoke("SmartFarmOpen", 2f);
 
+            // 미션이 추가되어있는지 확인 후 삭제
+            if (!gameData.ActiveMissionList[7])
+            {
+                MissionGenerator.missionGenerator.DeleteNewMission(17);
+            }
             /*스마트팜 오픈 퍼즐 완료*/
             GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2 = true;
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[17] = false;
-
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //홈라인 상호작용 불가능하게
             canDoLineHome2Data_T.IsNotInteractable = true; // 상호작용 불가능하게
             canLineHome2Outline_T.OutlineWidth = 0; // 아웃라인도 꺼줍니다.
-
-            //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.DeleteNewMission(17);
-
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-
-
             // 스마트 팜 해금 퍼즐 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
         }
     }

@@ -50,8 +50,8 @@ public class GameData
     public bool S_IsCWDoorOpened_M_C1; // 항상 조종실에서 업무공간 이동 가능
     public bool S_IsHealthMachineFixed_T_C2; // 정기적으로 상태 측정 임무 수행 가능 
 
-    public bool[] ActiveMissionList = new bool [34];
-    public bool[] EndMissionList = new bool[34];
+    public bool[] ActiveMissionList = new bool [34]; // 미션이 활성화되었는지( true : 미션 활성화, false : 미션 비활성화 )
+    public bool[] CompleteMissionList = new bool[34]; // 미션이 완료되었는지( true : 미션 완료, false : 미션 완료 전 )
 
     [Header("<1회성 임무>")]
     public bool IsAIAwake_M_C1; // 항상 AI 활성화  

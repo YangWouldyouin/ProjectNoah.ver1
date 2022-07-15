@@ -88,11 +88,9 @@ pushButton, NoCenterButton_M_Box;
     /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 끝 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     public void OnPushOrPress()
     {
-        BoxesObjData_E.IsPushOrPress = true;
         DiableButton();
         // 머리로 누르는 애니메이션  
         InteractionButtonController.interactionButtonController.playerPressHead(); 
-        StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
 
         Invoke("DestroyBoxAnim", 1f); // 1초 뒤 박스 무너지는 애니메이션 실행
         Box_Collapse_Sound.Play();
@@ -100,25 +98,28 @@ pushButton, NoCenterButton_M_Box;
 
         GameManager.gameManager._gameData.IsNoBoxes = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        //MissionGenerator.missionGenerator.ActivateMissionList();
-        MissionGenerator.missionGenerator.DeleteNewMission(6);
-        StartCoroutine(DelayAdding());
 
-        //GameManager.gameManager._gameData.ActiveMissionList[6] = false;
-        //GameManager.gameManager._gameData.ActiveMissionList[7] = true;
+        // 미션이 추가되어있는지 확인 후 삭제
+        GameData gameData = SaveSystem.Load("save_001");
+        if (gameData.ActiveMissionList[6])
+        {
+            MissionGenerator.missionGenerator.DeleteNewMission(6);
+        }
+        StartCoroutine(DelayAdding());
     }
 
     IEnumerator DelayAdding()
     {
         yield return new WaitForSeconds(2f);
-        MissionGenerator.missionGenerator.AddNewMission(7);
-    }
 
-    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        BoxesObjData_E.IsPushOrPress = false;
+        GameData gameData = SaveSystem.Load("save_001");
+        // 아직 미션 추가 전인지 확인 후 추가
+        if (!gameData.CompleteMissionList[7])
+        {
+            MissionGenerator.missionGenerator.AddNewMission(7);
+            GameManager.gameManager._gameData.CompleteMissionList[7] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
     }
 
     void DestroyBoxAnim() // 박스 무너지는 애니메이션

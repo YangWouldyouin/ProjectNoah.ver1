@@ -40,11 +40,6 @@ public class MainComputerUIManager : MonoBehaviour
 
     }
 
-    void Update()
-    {
-    }
-
-
     /* 메인 화면 */
     public void ChangeJournal() // 메인 -> 연구일지 목록
     {
@@ -87,15 +82,14 @@ public class MainComputerUIManager : MonoBehaviour
         MainMenu_UI.SetActive(false);
         Wireless_UI.SetActive(true);
 
-        if (GameManager.gameManager._gameData.IsWirelessUI_firstEnter == false)
+        GameData  gameData  = SaveSystem.Load("save_001");
+        if (!gameData.CompleteMissionList[28])
         {
-            GameManager.gameManager._gameData.IsWirelessUI_firstEnter = true;
-            //메인 컴퓨터와 태블릿 신호 연결 시작 시점
-
-            //GameManager.gameManager._gameData.ActiveMissionList[28] = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
             MissionGenerator.missionGenerator.AddNewMission(28);
+            GameManager.gameManager._gameData.CompleteMissionList[28] = true;
+            GameManager.gameManager._gameData.IsWirelessUI_firstEnter = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            //메인 컴퓨터와 태블릿 신호 연결 시작 시점
         }
     }
     public void BackMain_Bluetooth() // 블루투스 -> 메인

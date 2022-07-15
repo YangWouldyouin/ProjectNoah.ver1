@@ -165,11 +165,11 @@ public class EndingUIManager : MonoBehaviour
         character.ActiveMissionList[28] = false;
         character.ActiveMissionList[29] = false;
 
-        character.EndMissionList[0] = false;
-        character.EndMissionList[1] = false;
-        character.EndMissionList[2] = false;
-        character.EndMissionList[3] = false;
-        character.EndMissionList[4] = false;
+        character.CompleteMissionList[0] = false;
+        character.CompleteMissionList[1] = false;
+        character.CompleteMissionList[2] = false;
+        character.CompleteMissionList[3] = false;
+        character.CompleteMissionList[4] = false;
 
 
         /* 1회성 임무 */
