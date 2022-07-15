@@ -53,9 +53,12 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     public ObjectData portDoorDataOb;
     BoxCollider portDoorCol;
 
+    GameData initialData;
+
     // Start is called before the first frame update
     void Start()
     {
+        initialData =  SaveSystem.Load("save_001");
         consoleCollider = GetComponent<MeshCollider>();
         consoleCenterObjData_CC = GetComponent<ObjData>();
 
@@ -82,7 +85,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
         dialogManager = dialogManager_CC.GetComponent<DialogManager>();
 
-        if (!GameManager.gameManager._gameData.IsAIAwake_M_C1)
+        if (!initialData.IsAIAwake_M_C1)
         {
             // 플로우차트 처음 시작 때 넣고 싶은 연출들을 넣는다.  
             noahAnim_CC.SetBool("IsSleeping", true);
