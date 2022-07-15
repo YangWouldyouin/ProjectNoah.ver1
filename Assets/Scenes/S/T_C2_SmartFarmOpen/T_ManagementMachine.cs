@@ -82,7 +82,7 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(managementMachineData_T.IsClicked && !firstCheck)
+        if(managementMachineData_T.IsClicked && !GameManager.gameManager._gameData.IsSmartFarmFix_T_C2)
         {
             // A-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             // 스마트 팜 해금 퍼즐 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
@@ -173,9 +173,15 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsSmartFarmOpen_T_C2 = true;
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
             //GameManager.gameManager._gameData.ActiveMissionList[17] = false;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            //홈라인 상호작용 불가능하게
+            canDoLineHome2Data_T.IsNotInteractable = true; // 상호작용 불가능하게
+            canLineHome2Outline_T.OutlineWidth = 0; // 아웃라인도 꺼줍니다.
+
             //MissionGenerator.missionGenerator.ActivateMissionList();
             MissionGenerator.missionGenerator.DeleteNewMission(17);
+
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
 
 

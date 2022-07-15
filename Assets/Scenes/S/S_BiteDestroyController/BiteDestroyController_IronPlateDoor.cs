@@ -106,7 +106,7 @@ public class BiteDestroyController_IronPlateDoor : MonoBehaviour, IPointerUpHand
         isPointerDown = true;
 
         // 물고나서 나올 상호작용들을 적는다.
-        CameraController.cameraController.CancelObserve();
+        //CameraController.cameraController.CancelObserve();
         // ( ex. 관찰 취소 : 현재 관찰하기를 취소하면 앉았다 일어나는 애니메이션이 있어서 
         // 1.5초 정도 딜레이를 주어야 함 )
 

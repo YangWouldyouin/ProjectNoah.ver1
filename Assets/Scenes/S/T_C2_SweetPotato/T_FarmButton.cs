@@ -121,7 +121,7 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         {
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
-            Invoke("AppearSweetPotato1", 30f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+            Invoke("AppearSweetPotato1", 3f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
 
             /*고구마가 나타난 상태를 저장한다.*/
             GameManager.gameManager._gameData.IsCanSeePotato1 = true;
@@ -151,7 +151,7 @@ public class T_FarmButton : MonoBehaviour, IInteraction
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
 
-            Invoke("AppearSweetPotato2", 30f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+            Invoke("AppearSweetPotato2", 3f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
 
             /*고구마가 나타난 상태를 저장한다.*/
             GameManager.gameManager._gameData.IsCanSeePotato2 = true;
@@ -180,7 +180,7 @@ public class T_FarmButton : MonoBehaviour, IInteraction
             //A-6 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(18));
 
-            Invoke("AppearSweetPotato3", 30f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
+            Invoke("AppearSweetPotato3", 3f); //리얼 타임으로 5분 뒤에 미리 땅에 성장 시킨 고구마들이 켜져서 보이게 된다.
 
             /*고구마가 나타난 상태를 저장한다.*/
             GameManager.gameManager._gameData.IsCanSeePotato3 = true;

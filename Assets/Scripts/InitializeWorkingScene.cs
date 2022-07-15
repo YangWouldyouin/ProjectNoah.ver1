@@ -254,6 +254,8 @@ public class InitializeWorkingScene : MonoBehaviour
    
         FixHealthMachine(); /*상태체크기계 고치기*/
 
+        FixSmartFarm();
+
         OpenSmartFarm(); /*스마트팜 오픈 퍼즐을 완료 하면*/
 
         /*엔진실 문을 수리하면*/
@@ -308,16 +310,31 @@ public class InitializeWorkingScene : MonoBehaviour
         if(intialGameData.IsCanSeePotato1)
         {
             CanSeeSweetPotato1();
+
+            /*고구마들 보이게~*/
+            workRoomData.IsObjectActiveList[21] = true;
+            workRoomData.IsObjectActiveList[22] = true;
+            workRoomData.IsObjectActiveList[23] = true;
         }
 
         if (intialGameData.IsCanSeePotato2)
         {
             CanSeeSweetPotato2();
+
+            /*고구마들 보이게~*/
+            workRoomData.IsObjectActiveList[18] = true;
+            workRoomData.IsObjectActiveList[19] = true;
+            workRoomData.IsObjectActiveList[20] = true;
         }
 
         if (intialGameData.IsCanSeePotato3)
         {
             CanSeeSweetPotato3();
+
+            /*고구마들 보이게~*/
+            workRoomData.IsObjectActiveList[15] = true;
+            workRoomData.IsObjectActiveList[16] = true;
+            workRoomData.IsObjectActiveList[17] = true;
         }
     }
 
@@ -368,8 +385,22 @@ public class InitializeWorkingScene : MonoBehaviour
         }
     }
 
+    void FixSmartFarm()
+    {
+        if(intialGameData.IsSmartFarmFix_T_C2)
+        {
+            LineHome2_Collider.enabled = false;
+            IronPlateDoor_Collider.enabled = false;
+
+            IronPlateDoor.transform.position = new Vector3(-258.15f, 0.2092f, 670.1605f); //위치 고정
+            IronPlateDoor.transform.rotation = Quaternion.Euler(7.034f, 90, 90); //각도 고정
+            IronPlateDoor.transform.localScale = new Vector3(-2.882732f, -115.34f, -93.69196f); // 크기 고정
+        }
+    }
+
     void OpenSmartFarm()
     {
+
         if (intialGameData.IsCompleteSmartFarmOpen)
         {
             /*망가진 전선 안보이게*/
@@ -380,8 +411,6 @@ public class InitializeWorkingScene : MonoBehaviour
             FixedLine2.transform.rotation = Quaternion.Euler(0, -90, 90); // 각도 값 
 
             smartFarmOpen.enabled = false;
-            LineHome2_Collider.enabled = false;
-            IronPlateDoor_Collider.enabled = false;
             workRoomData.IsObjectActiveList[34] = false;
 
             smartFarmDoorAnim.SetBool("FarmDoorMoving", true);

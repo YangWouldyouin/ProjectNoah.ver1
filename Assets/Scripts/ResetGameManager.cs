@@ -158,6 +158,7 @@ public class ResetGameManager : MonoBehaviour
         workData.IsObjectActiveList[12] = true;
         workData.IsObjectActiveList[13] = true;
         workData.IsObjectActiveList[14] = true;
+        workData.IsObjectActiveList[34] = true;
 
         for (int k = 24; k < 32; k++)
         {
