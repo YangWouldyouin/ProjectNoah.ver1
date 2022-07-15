@@ -16,6 +16,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     public GameObject IsIDInsertPad;
     public GameObject S_BoxForConsole;
     //public GameObject canPressCabinetDoor; 
+    public GameObject noah_For_Col;
 
 
     /*오브젝트의 상호작용 버튼들*/
@@ -42,6 +43,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     BoxCollider BoxForConsole_Collider;
     //BoxCollider canPressCabinetDoor_Collider;
     BoxCollider IsIDInsertPad_Collider;
+    BoxCollider Noah_Collider;
 
     public bool firstCheck = false;
 
@@ -68,6 +70,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         //IDConsole_Collider = GetComponent<BoxCollider>();
         BoxForConsole_Collider = S_BoxForConsole.GetComponent<BoxCollider>();
         IsIDInsertPad_Collider = IsIDInsertPad.GetComponent<BoxCollider>();
+
+        Noah_Collider= noah_For_Col.GetComponent<BoxCollider>();
 
 
         //canPressCabinetDoor_Collider = canPressCabinetDoor.GetComponent<BoxCollider>();
@@ -123,6 +127,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
             IDConsole_Collider.enabled = false;
             IsIDInsertPad_Collider.enabled = true;
             BoxForConsole_Collider.enabled = false;
+            Noah_Collider.enabled = false;
         }
         else if (GameManager.gameManager._gameData.IsBasicTuto)
         {
@@ -139,6 +144,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         if (!IDConsoleData_S.IsObserve && dogFoodData.IsEaten)
         {
             BoxForConsole_Collider.enabled = true;
+            Noah_Collider.enabled = true;
         }
 
         /*
