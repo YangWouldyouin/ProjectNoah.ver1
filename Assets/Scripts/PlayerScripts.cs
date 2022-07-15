@@ -157,7 +157,7 @@ public class PlayerScripts : MonoBehaviour
     void Update()
     {      
         // 왼쪽 마우스 클릭 && 마우스가 UI 위에 있지 않음
-        if(Input.GetMouseButtonDown(0)&&!Extensions.IsMouseOverUI()&&(!agent.isStopped))
+        if(Input.GetMouseButtonDown(0)&&!Extensions.IsMouseOverUI()/*&&(!agent.isStopped)*/)
         {
             Onclick();
         }
