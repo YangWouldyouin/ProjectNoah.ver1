@@ -387,6 +387,8 @@ public class SLManager2 : MonoBehaviour
             character.IsAIAfterMissionComplete = false;
             character.IsAIAfterMissionComplete = false;
             character.IsFinishedEatingSweetPotatoes = false;
+            character.IsOutTroubleLine2_T_C2 = false;
+            character.IsIronDisappear_T_C2 = false;
 
             SaveSystem.Save(character, "save_001");
         }

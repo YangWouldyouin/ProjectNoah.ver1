@@ -526,6 +526,7 @@ public class ResetGameManager : MonoBehaviour
         character.IsInputImportantMeteor1_T_C2 = false;
         character.IsAIAfterMissionComplete = false;
         character.IsFinishedEatingSweetPotatoes = false;
+        character.IsIronDisappear_T_C2 = false;
 
         SaveSystem.Save(character, "save_001");
     }

@@ -183,8 +183,8 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsCompleteSmartFarmOpen = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //홈라인 상호작용 불가능하게
-            canDoLineHome2Data_T.IsNotInteractable = true; // 상호작용 불가능하게
-            canLineHome2Outline_T.OutlineWidth = 0; // 아웃라인도 꺼줍니다.
+            //canDoLineHome2Data_T.IsNotInteractable = true; // 상호작용 불가능하게
+            //canLineHome2Outline_T.OutlineWidth = 0; // 아웃라인도 꺼줍니다.
             // 스마트 팜 해금 퍼즐 끝 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
         }
     }

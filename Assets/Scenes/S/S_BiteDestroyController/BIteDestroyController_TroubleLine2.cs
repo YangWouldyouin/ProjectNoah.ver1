@@ -123,9 +123,10 @@ public class BIteDestroyController_TroubleLine2 : MonoBehaviour, IPointerUpHandl
         InteractionButtonController.interactionButtonController.PlayerBite();
 
         GameManager.gameManager._gameData.IsOutTroubleLine2_T_C2 = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-/*        DoDoLineHome2Data_T.IsNotInteractable = false; // 상호작용 가능하게
-        DoLineHome2Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.*/
+        /*        DoDoLineHome2Data_T.IsNotInteractable = false; // 상호작용 가능하게
+                DoLineHome2Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.*/
     }
 
     void ByeLine()

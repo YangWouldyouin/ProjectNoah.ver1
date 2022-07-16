@@ -108,6 +108,7 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
 
             Invoke("CameraBye", 1f);
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(65));
+
         }
     }
 
@@ -115,6 +116,7 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
     {
         CameraController.cameraController.CancelObserve();
         GameManager.gameManager._gameData.IsSmartFarmFix_T_C2 = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnSmash()

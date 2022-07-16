@@ -141,6 +141,7 @@ public class BiteDestroyController_IronPlateDoor : MonoBehaviour, IPointerUpHand
         //콜라이더도 끈다.
         ironPlateCollider_T.enabled = false;
         GameManager.gameManager._gameData.IsIronDisappear_T_C2 = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
 
