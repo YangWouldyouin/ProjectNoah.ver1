@@ -92,6 +92,7 @@ public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
     public void EatAfter()
     {
         GameManager.gameManager._gameData.IsEatBadPotato = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //InteractionButtonController.interactionButtonController.PlayerDie();
 
         //Dontclick.SetActive(true);

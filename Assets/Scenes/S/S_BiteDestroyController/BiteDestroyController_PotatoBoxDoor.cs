@@ -152,6 +152,9 @@ public class BiteDestroyController_PotatoBoxDoor : MonoBehaviour, IPointerUpHand
         PotatoBoxDoorCollider_T.enabled = false;
         potatoEquipment.biteObjectName = "";
         //GameManager.gameManager._gameData.IsIronDisappear_T_C2 = true;
+
+        GameManager.gameManager._gameData.IsBrokenPotatoDoor = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
 

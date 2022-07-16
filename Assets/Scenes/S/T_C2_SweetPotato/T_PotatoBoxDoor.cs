@@ -50,7 +50,7 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (IsPotatoBoxDoorData_T.IsClicked && !DontClickPotato )
+        if (IsPotatoBoxDoorData_T.IsClicked && !GameManager.gameManager._gameData.IsBrokenPotatoDoor)
         {
             //A-3 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(15));
@@ -63,7 +63,7 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
                 // 영양제 투약 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
                 MissionGenerator.missionGenerator.AddNewMission(18);
                 StartCoroutine(SecondMission());
-                StartCoroutine(ThirdMission());
+                //StartCoroutine(ThirdMission()); // 얘는 아직 기능이 없는 퍼즐임
                 GameManager.gameManager._gameData.CompleteMissionList[18] = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }

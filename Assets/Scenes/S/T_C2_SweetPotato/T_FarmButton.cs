@@ -75,12 +75,13 @@ public class T_FarmButton : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(HeathlyPotatoEatData_T.IsEaten && EatPotato == false 
-            || BadPotatoEatData_T.IsEaten && EatPotato == false)
+        if(HeathlyPotatoEatData_T.IsEaten && GameManager.gameManager._gameData.IsFinishedEatingSweetPotatoes == false
+            || BadPotatoEatData_T.IsEaten && GameManager.gameManager._gameData.IsFinishedEatingSweetPotatoes == false)
         {
             // 영양분 섭취 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
             MissionGenerator.missionGenerator.DeleteNewMission(18);
-            EatPotato = true;
+            Debug.Log("먹어버림");
+            GameManager.gameManager._gameData.IsFinishedEatingSweetPotatoes = true;
         }
     }
 
