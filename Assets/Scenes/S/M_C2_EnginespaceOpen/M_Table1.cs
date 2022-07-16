@@ -93,6 +93,7 @@ public class M_Table1 : MonoBehaviour, IInteraction
 
 
         /*선언시작*/
+        ChairData1.IsUpDown = false;
 
         table1Data_M.IsUpDown = false;
         table1Data_M.IsObserve = false;
@@ -127,6 +128,7 @@ public class M_Table1 : MonoBehaviour, IInteraction
         //오를 수 있는 높이 확인
         if(ChairData1.IsUpDown || table1Data_M.IsCollision)
         {
+            table1Data_M.IsUpDown = false;
             table1Data_M.IsCenterButtonDisabled = false;
         }
         else if(!ChairData1.IsUpDown || table1Data_M.IsCollision)
@@ -230,6 +232,8 @@ public class M_Table1 : MonoBehaviour, IInteraction
         cylinder2OnTable1_Collider.enabled = true;
         cylinder3OnTable1_Collider.enabled = true;
         cylinder4OnTable1_Collider.enabled = true;
+
+        ChairData1.IsUpDown = false;
 
         /*테이블에 잘 올라갔으면 저장해서 게임 껐다켜도 테이블 위 물건들 항상 상호작용 가능하게*/
         GameManager.gameManager._gameData.IsUpTable1 = true;

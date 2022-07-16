@@ -88,6 +88,9 @@ public class M_Table2 : MonoBehaviour, IInteraction
 
         /*선언시작*/
 
+        ChairData2.IsUpDown = false;
+        ChairData4.IsUpDown = false;
+
         table2Data_M.IsUpDown = false;
         table2Data_M.IsObserve = false;
         table2Data_M.IsCollision = false;
@@ -108,6 +111,7 @@ public class M_Table2 : MonoBehaviour, IInteraction
         //오를 수 있는 높이 확인
         if (ChairData2.IsUpDown || ChairData4.IsUpDown || table2Data_M.IsCollision)
         {
+            table2Data_M.IsUpDown = false;
             table2Data_M.IsCenterButtonDisabled = false;
         }
         else if (!ChairData2.IsUpDown || !ChairData4.IsUpDown || !table2Data_M.IsCollision)
@@ -130,7 +134,6 @@ public class M_Table2 : MonoBehaviour, IInteraction
                 {
                     table2Data_M.IsCenterButtonDisabled = true;
                 }*/
-
 
         if (table2Data_M.IsUpDown==false)
         {
@@ -233,6 +236,9 @@ public class M_Table2 : MonoBehaviour, IInteraction
         NoahFoodOnTable2_Collider.enabled = true;
         Line2OnTable2_Collider.enabled = true;
         ConductionOnTable2_Collider.enabled = true;
+
+        ChairData2.IsUpDown = false;
+        ChairData4.IsUpDown = false;
 
         /*테이블에 잘 올라갔으면 저장해서 게임 껐다켜도 테이블 위 물건들 항상 상호작용 가능하게*/
         GameManager.gameManager._gameData.IsUpTable2 = true;
