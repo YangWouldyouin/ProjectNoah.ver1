@@ -22,7 +22,7 @@ public class InitializeWorkingScene : MonoBehaviour
     public GameObject TroubleLine; // 망가진 선
     public Animator smartFarmDoorAnim;
     public NavMeshObstacle smartFarmOpen;
-
+    public GameObject DoPotatoDoor; // 망가진 선
 
 
     [Header("<엔진실 카드키 찾기>")]
@@ -251,7 +251,7 @@ public class InitializeWorkingScene : MonoBehaviour
             //MissionGenerator.missionGenerator.ActivateMissionList();
             MissionGenerator.missionGenerator.AddNewMission(8);
         }
-   
+
         FixHealthMachine(); /*상태체크기계 고치기*/
 
         FixSmartFarm();
@@ -273,7 +273,7 @@ public class InitializeWorkingScene : MonoBehaviour
             workRoomData.IsObjectActiveList[31] = false;
 
         }
-      
+
         OpenEngineRoom(); /*엔진실 열기 퍼즐을 완료하면*/
 
         HalfLivingDoor(); /* 생활공간 문 반 열기 퍼즐 완료 시 */
@@ -308,8 +308,13 @@ public class InitializeWorkingScene : MonoBehaviour
 
         UpTable2(); //책상2 오르기를 완료하면
 
+        OpenFarmDoor();
 
-        if(intialGameData.IsCanSeePotato1)
+        ByeTroubleLine();
+
+        OpenPotatoDoor();
+
+        if (intialGameData.IsCanSeePotato1)
         {
             CanSeeSweetPotato1();
 
@@ -338,8 +343,9 @@ public class InitializeWorkingScene : MonoBehaviour
             workRoomData.IsObjectActiveList[16] = true;
             workRoomData.IsObjectActiveList[17] = true;
         }
-    }
 
+
+    }
 
 
     void FirstEnter()
@@ -409,16 +415,43 @@ public class InitializeWorkingScene : MonoBehaviour
         }
     }
 
+    void OpenPotatoDoor()
+    {
+        if(intialGameData.IsBrokenPotatoDoor)
+        {
+            // 해당 위치, 각도, 크기로 바꾸겠다.
+            DoPotatoDoor.transform.position = new Vector3(-267.07f, 0.0562f, 671.847f); //위치 고정
+            DoPotatoDoor.transform.rotation = Quaternion.Euler(182.235f, -89.98401f, 180f); //각도 고정
+            DoPotatoDoor.transform.localScale = new Vector3(57.88517f, 4.21771f, 56.0183f); // 크기 고정
+        }
+    }
+
+    void OpenFarmDoor()
+    {
+        if (intialGameData.IsIronDisappear_T_C2)
+        {
+            IronPlateDoor.transform.position = new Vector3(-258.15f, 0.2092f, 670.1605f); //위치 고정
+            IronPlateDoor.transform.rotation = Quaternion.Euler(7.034f, 90, 90); //각도 고정
+            IronPlateDoor.transform.localScale = new Vector3(-2.882732f, -115.34f, -93.69196f); // 크기 고정
+        }
+    }
+
+    void ByeTroubleLine()
+    {
+        if (intialGameData.IsOutTroubleLine2_T_C2)
+        {
+            /*망가진 전선 안보이게*/
+            workRoomData.IsObjectActiveList[34] = false;
+            workRoomData.IsObjectActiveList[34] = false;
+        }
+    }
+
     void FixSmartFarm()
     {
         if(intialGameData.IsSmartFarmFix_T_C2)
         {
-            LineHome2_Collider.enabled = false;
+            //LineHome2_Collider.enabled = false;
             IronPlateDoor_Collider.enabled = false;
-
-            IronPlateDoor.transform.position = new Vector3(-258.15f, 0.2092f, 670.1605f); //위치 고정
-            IronPlateDoor.transform.rotation = Quaternion.Euler(7.034f, 90, 90); //각도 고정
-            IronPlateDoor.transform.localScale = new Vector3(-2.882732f, -115.34f, -93.69196f); // 크기 고정
         }
     }
 
@@ -427,15 +460,15 @@ public class InitializeWorkingScene : MonoBehaviour
 
         if (intialGameData.IsCompleteSmartFarmOpen)
         {
-            /*망가진 전선 안보이게*/
+            /*망가진 전선 안보이게*//*
             workRoomData.IsObjectActiveList[34] = false;
-
+*/
             /*고쳐진 전선 위치 고정*/
             FixedLine2.transform.position = new Vector3(-258.06f, 0.674f, 670.384f); //위치 값
             FixedLine2.transform.rotation = Quaternion.Euler(0, -90, 90); // 각도 값 
 
             smartFarmOpen.enabled = false;
-            workRoomData.IsObjectActiveList[34] = false;
+            //workRoomData.IsObjectActiveList[34] = false;
 
             smartFarmDoorAnim.SetBool("FarmDoorMoving", true);
             smartFarmDoorAnim.SetBool("FarmDoorStop", true);

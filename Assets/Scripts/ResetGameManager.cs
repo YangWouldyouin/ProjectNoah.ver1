@@ -527,6 +527,7 @@ public class ResetGameManager : MonoBehaviour
         character.IsAIAfterMissionComplete = false;
         character.IsFinishedEatingSweetPotatoes = false;
         character.IsIronDisappear_T_C2 = false;
+        character.IsBrokenPotatoDoor = false;
 
         SaveSystem.Save(character, "save_001");
     }

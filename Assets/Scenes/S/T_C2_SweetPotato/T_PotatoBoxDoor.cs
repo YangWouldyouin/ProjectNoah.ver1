@@ -17,9 +17,15 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
     /*ObjData*/
     ObjData PotatoBoxDoorData_T;
     public ObjectData IsPotatoBoxDoorData_T;
+    public ObjectData PotatoBoxBodyData_T;
+
+    public Outline PotatoBoxDoorOutline_T;
+    public Outline PotatoBoxBodyOutline_T;
 
     public GameObject dialogManager_CS;
     DialogManager dialogManager;
+
+    BoxCollider PotatoBoxDoorCollider_T;
 
     void Start()
     {
@@ -28,6 +34,8 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
         IsPotatoBoxDoorData_T.IsNotInteractable = false;
 
         dialogManager = dialogManager_CS.GetComponent<DialogManager>();
+
+        PotatoBoxDoorCollider_T = GetComponent<BoxCollider>();
 
         /*ObjData*/
         PotatoBoxDoorData_T = GetComponent<ObjData>();
@@ -110,7 +118,34 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
 
         DisableButton();
 
-        InteractionButtonController.interactionButtonController.playerPressHead();
+        InteractionButtonController.interactionButtonController.playerPressHand();
+
+        Invoke("OpenDoor", 3f);
+
+    }
+
+    void OpenDoor()
+    {
+        // 해당 위치, 각도, 크기로 바꾸겠다.
+        gameObject.transform.position = new Vector3(-267.07f, 0.0562f, 671.847f); //위치 고정
+        gameObject.transform.rotation = Quaternion.Euler(182.235f, -89.98401f, 180f); //각도 고정
+        gameObject.transform.localScale = new Vector3(57.88517f, 4.21771f, 56.0183f); // 크기 고정
+
+        // 합판 더 이상 상호작용 불가
+        IsPotatoBoxDoorData_T.IsNotInteractable = true;
+        PotatoBoxDoorOutline_T.OutlineWidth = 0;
+
+        Debug.Log("몸에 상호작용 가능해요");
+        // 몸체에 상호작용 가능
+        PotatoBoxBodyData_T.IsNotInteractable = false;
+        PotatoBoxBodyOutline_T.OutlineWidth = 8;
+
+        //콜라이더도 끈다.
+        PotatoBoxDoorCollider_T.enabled = false;
+        //potatoEquipment.biteObjectName = "";
+
+        GameManager.gameManager._gameData.IsBrokenPotatoDoor = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnSniff()
