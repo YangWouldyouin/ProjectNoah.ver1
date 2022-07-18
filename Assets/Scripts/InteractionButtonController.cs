@@ -789,6 +789,22 @@ public class InteractionButtonController : MonoBehaviour
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
+    public void PlayerCanNotPush()
+    {
+        StartCoroutine(CanNotPush());
+    }
+
+    IEnumerator CanNotPush()
+    {
+        yield return new WaitForSeconds(0.5f);
+        statPanel.SetActive(true);
+        statText.text = " 누를 수 없는 오브젝트 입니다. ";
+        yield return new WaitForSeconds(3f);
+        statPanel.SetActive(false);
+    }
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
     /* 먹기 */
     public void playerEat()
     {
