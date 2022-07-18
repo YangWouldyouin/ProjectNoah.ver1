@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class C_AIResetButton : MonoBehaviour, IInteraction
 {
-    public Outline controlDoorOutline;
+    //public Outline controlDoorOutline;
     Outline AIButtonOutline;
     ObjData AIButtonObjData;
 
-    private Button barkButton, sniffButton, biteButton,
-    pressButton, noCenterButton;
+    private Button barkButton, sniffButton, biteButton, pressButton, noCenterButton;
 
     public ObjectData controlDoorData;
     public ObjectData AIButtonData;
@@ -23,12 +22,18 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
     AudioSource AIresetbutton_click_sound; 
     public AudioClip AIresetbutton_Click;
 
-    bool IsAdding = false;
+
+    [Header("< 조종실 문 >")]
+    public GameObject controlDoor;
+    public GameObject changeScene_CWD;
+    public AudioClip Door_open;
+    private Animator cockpitDoorAnim_CWD;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        cockpitDoorAnim_CWD = controlDoor.GetComponent<Animator>();
         AIresetbutton_click_sound = GetComponent<AudioSource>();
 
         AIButtonOutline = GetComponent<Outline>();
@@ -49,6 +54,8 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         noCenterButton = AIButtonObjData.CenterButton1;
 
         dialogManager = dialogManager_AI.GetComponent<DialogManager>();
+
+        AIresetbutton_click_sound.clip = AIresetbutton_Click;
     }
 
     /* 상호작용 버튼 끄는 함수 */
@@ -83,53 +90,72 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
 
         // 탑뷰로 돌아감
         CameraController.cameraController.CancelObserve();
+
         // AI 리셋 버튼 비활성화 (서브 오브젝트)
         AIButtonOutline.OutlineWidth = 0;
         AIButtonData.IsNotInteractable = true;
-        /* 애니메이션 보여줌 */
-
-        AIresetbutton_click_sound.clip = AIresetbutton_Click;
-        AIresetbutton_click_sound.Play();
-
-        Invoke("DelayAnim", 1.5f);
 
         /* "AI 깨우기 완료" 게임 중간 저장 */
         GameManager.gameManager._gameData.IsAIAwake_M_C1 = true;
+        GameManager.gameManager._gameData.IsCWDoorOpened_M_C1 = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-        /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Z-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
-
         /* 임무 리스트에 "AI 깨우기" 미션 삭제 */
-        //GameManager.gameManager._gameData.ActiveMissionList[0] = false;
-        //GameManager.gameManager._gameData.ActiveMissionList[1] = true;
-        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-        ///* 임무 리스트 한번 활성화 */
-        //MissionGenerator.missionGenerator.ActivateMissionList();
         MissionGenerator.missionGenerator.DeleteNewMission(0);
-        StartCoroutine(WaitDeleting());
-   
+        //StartCoroutine(WaitDeleting());
+
+        // 탑뷰로 돌아갈때까지 기다렸다가 누르는 애니메이션
+
+
+        /* 애니메이션 보여줌 */
+        StartCoroutine(DelayPressAnim());
+
+        /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Z-1대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
+        //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(4));
+        //StartCoroutine(GoToWork());
+
+        //AIresetbutton_click_sound.clip = Door_open;
+        //AIresetbutton_click_sound.Play();
+
 
         /* 조종실 문 활성화 */
-        controlDoorOutline.OutlineWidth = 8;
-        controlDoorData.IsNotInteractable = false;
-        Debug.Log("조종실 문 활성화");
+        //controlDoorOutline.OutlineWidth = 8;
+        //controlDoorData.IsNotInteractable = false;
+        //Debug.Log("조종실 문 활성화");
 
         /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Z-2대사 삽입 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     }
+
     IEnumerator WaitDeleting()
     {
         yield return new WaitForSeconds(2f);
         MissionGenerator.missionGenerator.AddNewMission(1);
     }
 
-    void DelayAnim()
+    IEnumerator GoToWork()
     {
-        InteractionButtonController.interactionButtonController.playerPressHead();
-       
-        // AI 대사 넣기
-        StartCoroutine(DelayAIDialog());
+        yield return new WaitForSeconds(3f);
+        changeScene_CWD.SetActive(true); // 업무공간 이동
     }
+
+
+
+    IEnumerator DelayPressAnim()
+    {
+        yield return new WaitForSeconds(2f);
+        InteractionButtonController.interactionButtonController.playerPressHead();
+        yield return new WaitForSeconds(0.5f);
+        AIresetbutton_click_sound.Play();
+        StartCoroutine(DelayAIDialog());
+        yield return new WaitForSeconds(0.5f);
+        cockpitDoorAnim_CWD.SetBool("IsDoorOpenStart", true); // 문 열리는 애니메이션
+        cockpitDoorAnim_CWD.SetBool("IsDoorOpened", true);
+        AIresetbutton_click_sound.clip = Door_open;
+        AIresetbutton_click_sound.Play();
+        changeScene_CWD.SetActive(true); // 업무공간 이동
+    }
+
+
 
     IEnumerator DelayAIDialog()
     {
@@ -138,9 +164,7 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         AIColor.a = 1.0f;
         aiIcon_AI.GetComponent<Image>().color = AIColor;
         aiIcon_AI.interactable = true;
-
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(1));
-
         StartCoroutine(PrintSecondDialog()); // 1번째 대사 끝날때까지 기다렸다가 2번째 대사 출력
     }
 

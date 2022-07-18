@@ -93,27 +93,27 @@ public class C_ControlWorkDoor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (cockpitDoorData_CWD.IsClicked && GameManager.gameManager._gameData.IsAIAwake_M_C1&&!firstCheck)
-        {
-            // 대사 출력 
-            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
-            // 조종실 탈출 미션 추가
-            //GameManager.gameManager._gameData.ActiveMissionList[1] = true;
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.AddNewMission(1);
+        //if (cockpitDoorData_CWD.IsClicked && GameManager.gameManager._gameData.IsAIAwake_M_C1&&!firstCheck)
+        //{
+        //    // 대사 출력 
+        //    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(3));
+        //    // 조종실 탈출 미션 추가
+        //    //GameManager.gameManager._gameData.ActiveMissionList[1] = true;
+        //    //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //    //MissionGenerator.missionGenerator.ActivateMissionList();
+        //    MissionGenerator.missionGenerator.AddNewMission(1);
 
-            firstCheck = true;
-        }
+        //    firstCheck = true;
+        //}
 
-        if(envirPipeData_CWD.IsBite)
-        {
-            cockpitDoorData_CWD.IsCenterButtonDisabled = false;
-        }
-        else
-        {
-            cockpitDoorData_CWD.IsCenterButtonDisabled = true;
-        }
+        //if(envirPipeData_CWD.IsBite)
+        //{
+        //    cockpitDoorData_CWD.IsCenterButtonDisabled = false;
+        //}
+        //else
+        //{
+        //    cockpitDoorData_CWD.IsCenterButtonDisabled = true;
+        //}
     }
     // Start is called before the first frame update
     void Start()

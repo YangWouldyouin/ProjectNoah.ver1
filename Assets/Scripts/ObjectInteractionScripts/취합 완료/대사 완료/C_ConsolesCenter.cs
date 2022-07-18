@@ -238,7 +238,14 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
     IEnumerator Delay3Seconds()
     {
         yield return new WaitForSeconds(3f);
-        MainSystem_GUI.gameObject.SetActive(true);
+
+        // 메인 컴퓨터 UI AI 활성화 전에는 끔
+        GameData gameData = SaveSystem.Load("save_001");
+        if(gameData.IsAIAwake_M_C1)
+        {
+            MainSystem_GUI.gameObject.SetActive(true);
+        }
+        
         consoleCollider.enabled = false;
         if (envirPipeData_CC.IsBite) // 파이프를 물었으면
         {
@@ -250,6 +257,11 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         }
         else // 파이프를 물지 않았으면
         {
+            if (!gameData.IsAIAwake_M_C1||GameManager.gameManager._gameData.IsPhotoTime)
+            {
+                StartCoroutine(turnOffHint());
+            }
+
             consoleAIResetButtonOutline_CC.OutlineWidth = 0;
             consoleAIResetButtonData_CC.IsNotInteractable = true;
             PictureButtonData_CC.IsNotInteractable = true;
@@ -257,6 +269,16 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         }
     }
 
+    IEnumerator turnOffHint()
+    {
+        TMPro.TextMeshProUGUI objectText = BaseCanvas._baseCanvas.statText;
+        objectText.text = "버튼과 닿지 않습니다.";
+        GameObject hintPanel = BaseCanvas._baseCanvas.statPanel;
+        hintPanel.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+        hintPanel.SetActive(false);
+    }
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     /* "물기" 가 안되는 오브젝트 일 때!! */

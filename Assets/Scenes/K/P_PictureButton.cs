@@ -140,9 +140,9 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
 
     public void OnPushOrPress()
     {
-        if (envirPipeData_CC.IsBite)
+        if(GameManager.gameManager._gameData.IsPhotoTime == true)
         {
-            if (GameManager.gameManager._gameData.IsPhotoTime == true)
+            if(envirPipeData_CC.IsBite)
             {
                 ran = Random.Range(0, 5); // 랜덤 사진
                 GameManager.gameManager._gameData.randomUPic = ran;
@@ -162,13 +162,57 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
             else
             {
                 DiableButton();
+                StartCoroutine(turnOffHint());
             }
+
         }
         else
         {
             DiableButton();
         }
+
+
+        //if (envirPipeData_CC.IsBite)
+        //{
+        //    if (GameManager.gameManager._gameData.IsPhotoTime == true)
+        //    {
+        //        ran = Random.Range(0, 5); // 랜덤 사진
+        //        GameManager.gameManager._gameData.randomUPic = ran;
+        //        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //        Debug.Log("랜덤 사진 저장");
+
+        //        /* 밀기 & 누르기 중에 "누르기"일 때!!! */
+        //        DiableButton();
+        //        InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
+
+        //        Invoke("RandomUniversePic", 1f); // 랜덤 우주 사진 설정 + 이미지 보여주기
+
+        //        TakePic_Sound_P.clip = TakePic_sound;
+        //        TakePic_Sound_P.Play(); // 효과음 재생
+        //        Invoke("Report_Popup", 4f); // 보고하기 팝업
+        //    }
+        //    else
+        //    {
+        //        DiableButton();
+
+        //    }
+        //}
+        //else
+        //{
+        //    DiableButton();
+        //}
     }
+    IEnumerator turnOffHint()
+    {
+        TMPro.TextMeshProUGUI objectText = BaseCanvas._baseCanvas.statText;
+        objectText.text = "버튼과 닿지 않습니다.";
+        GameObject hintPanel = BaseCanvas._baseCanvas.statPanel;
+        hintPanel.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+        hintPanel.SetActive(false);
+    }
+
 
     /* UI 스크립트 */
     public void RandomUniversePic() // 랜덤 우주 사진 보여주기
