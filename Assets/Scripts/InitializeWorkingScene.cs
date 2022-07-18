@@ -283,6 +283,7 @@ public class InitializeWorkingScene : MonoBehaviour
         if (intialGameData.IsCompleteOpenLivingRoom)
         {
             LivingSpaceDoor.transform.position = new Vector3(-263.12f, -0.67f, 694.04f);
+            // 생활공간 문 더 이상 상호작용 x
             BoxCollider livingDoorCollider = LivingSpaceDoor.GetComponent<BoxCollider>();
             livingDoorCollider.enabled = false;
         }
@@ -514,6 +515,10 @@ public class InitializeWorkingScene : MonoBehaviour
 
             CardKey_WL.transform.position = new Vector3(-264.18f, 2.94f, 691.467f); //위치
             CardKey_WL.transform.rotation = Quaternion.Euler(0, 0, 90); //각도
+
+            // 생활공간문 더이상 상호작용 x
+            BoxCollider livingDoorCollider = LivingSpaceDoor.GetComponent<BoxCollider>();
+            livingDoorCollider.enabled = false;
 
             CardKey_WL_Collider.enabled = false;
             LivingSpace_CardKeyMachine_W_Collider.enabled = false;

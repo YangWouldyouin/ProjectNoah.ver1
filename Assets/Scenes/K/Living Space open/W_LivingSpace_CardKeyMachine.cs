@@ -249,6 +249,10 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
         goToLivingRoom.SetActive(true);
         HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
         HalfLivingDoorAni_M.SetBool("HalfEnd", true);
+
+        // 생활공간 문 더이상 상호작용 x
+        BoxCollider livingDoorCollider = LivingDoomDoor_WL.GetComponent<BoxCollider>();
+        livingDoorCollider.enabled = false;
     }
 
     public void OnSniff()
