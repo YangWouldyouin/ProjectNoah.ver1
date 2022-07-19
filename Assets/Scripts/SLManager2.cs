@@ -390,6 +390,7 @@ public class SLManager2 : MonoBehaviour
             character.IsOutTroubleLine2_T_C2 = false;
             character.IsIronDisappear_T_C2 = false;
             character.IsBrokenPotatoDoor = false;
+            character.IsNoticePotatoBody = false;
 
             SaveSystem.Save(character, "save_001");
         }

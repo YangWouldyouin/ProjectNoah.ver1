@@ -288,6 +288,7 @@ public class GameData
     public bool IsAIAfterMissionComplete;
     public bool IsFinishedEatingSweetPotatoes;
     public bool IsBrokenPotatoDoor;
+    public bool IsNoticePotatoBody;
 }
 
 

@@ -47,7 +47,7 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
         sniffButton_T_PotatoBoxBody.onClick.AddListener(OnSniff);
 
         biteButton_T_PotatoBoxBody = potatoBoxBodyData_T.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_T_PotatoBoxBody.onClick.AddListener(OnBite);
 
         pressButton_T_PotatoBoxBody = potatoBoxBodyData_T.PushOrPressButton;
         pressButton_T_PotatoBoxBody.onClick.AddListener(OnPushOrPress);
@@ -86,6 +86,8 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
     public void OnSmash()
     {
 
+        DisableButton();
+        InteractionButtonController.interactionButtonController.PlayerCanNotSmash();
     }
 
     void ByePotatoBox()
@@ -106,7 +108,7 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
 
         DisableButton();
 
-        InteractionButtonController.interactionButtonController.playerPressHead();
+        InteractionButtonController.interactionButtonController.PlayerCanNotPush();
     }
 
     public void OnSniff()
@@ -141,13 +143,23 @@ public class T_PotatoBoxBody : MonoBehaviour, IInteraction
 
         PotatoBoxBody_Collider.enabled = false;
 
-        //A-4 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
-        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(16));
+        if(!GameManager.gameManager._gameData.IsNoticePotatoBody)
+        {
+            //A-4 企紫 窒径 』』』』』』』』』』』』』』』』』』』』』
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(16));
+
+            GameManager.gameManager._gameData.IsNoticePotatoBody = true;
+
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        }
+
     }
 
     public void OnBite()
     {
-        
+        DisableButton();
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
