@@ -72,7 +72,7 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
         sniffButton_T_MeteorCollectMachine_T.onClick.AddListener(OnSniff);
 
         biteButton_T_MeteorCollectMachine_T = T_meteorCollectMachineObjData_T.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_T_MeteorCollectMachine_T.onClick.AddListener(OnBite);
 
         pressButton_T_MeteorCollectMachine_T = T_meteorCollectMachineObjData_T.PushOrPressButton;
         pressButton_T_MeteorCollectMachine_T.onClick.AddListener(OnPushOrPress);
@@ -199,7 +199,9 @@ public class T_ReMeteorCollectMachine : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
+        DisableButton();
 
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()

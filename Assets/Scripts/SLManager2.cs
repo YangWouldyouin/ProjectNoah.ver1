@@ -391,6 +391,8 @@ public class SLManager2 : MonoBehaviour
             character.IsIronDisappear_T_C2 = false;
             character.IsBrokenPotatoDoor = false;
             character.IsNoticePotatoBody = false;
+            character.IsMeteorCollectMachineOpen = false;
+            character.IsAnalyticalMachineOpen = false;
 
             SaveSystem.Save(character, "save_001");
         }

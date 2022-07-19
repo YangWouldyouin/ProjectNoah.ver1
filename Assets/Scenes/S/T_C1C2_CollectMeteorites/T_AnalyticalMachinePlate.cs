@@ -57,7 +57,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         sniffButton_T_AnalyticalMachineButton.onClick.AddListener(OnSniff);
 
         biteButton_T_AnalyticalMachineButton = analyticalMachinePlateObjData_T.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_T_AnalyticalMachineButton.onClick.AddListener(OnBite);
 
         pressButton_T_AnalyticalMachineButton = analyticalMachinePlateObjData_T.PushOrPressButton;
         pressButton_T_AnalyticalMachineButton.onClick.AddListener(OnPushOrPress);
@@ -208,7 +208,9 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
     }
     public void OnBite()
     {
-       
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()

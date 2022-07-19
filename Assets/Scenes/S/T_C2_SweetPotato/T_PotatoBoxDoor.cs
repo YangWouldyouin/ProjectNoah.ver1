@@ -48,7 +48,7 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
         sniffButton_T_PotatoBoxDoor.onClick.AddListener(OnSniff);
 
         biteButton_T_PotatoBoxDoor = PotatoBoxDoorData_T.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_T_PotatoBoxDoor.onClick.AddListener(OnBite);
 
         pressButton_T_PotatoBox = PotatoBoxDoorData_T.PushOrPressButton;
         pressButton_T_PotatoBox.onClick.AddListener(OnPushOrPress);
@@ -102,7 +102,9 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
 
     public void OnSmash()
     {
+        DisableButton();
 
+        InteractionButtonController.interactionButtonController.PlayerCanNotSmash();
     }
 
     public void OnBark()
@@ -162,7 +164,9 @@ public class T_PotatoBoxDoor : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()

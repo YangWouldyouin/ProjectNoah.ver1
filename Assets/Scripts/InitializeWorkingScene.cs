@@ -527,18 +527,37 @@ public class InitializeWorkingScene : MonoBehaviour
 
     void ColectMeteorite()
     {
-        if (intialGameData.IsInputNormalMeteor1_T_C2)
+        //운석 수집기 문을 열었다면
+        if(intialGameData.IsMeteorCollectMachineOpen)
         {
             meteorBoxAnim.SetBool("isMeteorBoxClose", false);
             meteorBoxAnim.SetBool("isMeteorBoxCloseEnd", false);
             meteorBoxAnim.SetBool("isMeteorBoxOpen", true);
             meteorBoxAnim.SetBool("isMeteorBoxOpenEnd", true);
 
+            MeteorButtonData_Save.IsNotInteractable = true;
+            MeteorButtonOutline_Save.OutlineWidth = 0;
 
+            MeteorCollectMachineData_Save.IsNotInteractable = false;
+            MeteorCollectMachineOutline_Save.OutlineWidth = 8;
+        }
+
+        if(intialGameData.IsAnalyticalMachineOpen)
+        {
             analyticalMachineAnim.SetBool("isAnalyticalMachineOpen", true);
             analyticalMachineAnim.SetBool("isAnalyticalMachineOpenEnd", true);
             analyticalMachineAnim.SetBool("isAnalyticalMachineClose", false);
             analyticalMachineAnim.SetBool("isAnalyticalMachineCloseEnd", false);
+
+            AnalyticalMachineButtonData_Save.IsNotInteractable = true;
+            AnalyticalMachineButtonOutline_Save.OutlineWidth = 0;
+
+            AnalyticalMachineData_Save.IsNotInteractable = false;
+            AnalyticalMachineOutline_Save.OutlineWidth = 8;
+        }
+
+        if (intialGameData.IsInputNormalMeteor1_T_C2)
+        {
 
             /*일반 운석 안보이게*/
             workRoomData.IsObjectActiveList[30] = false;

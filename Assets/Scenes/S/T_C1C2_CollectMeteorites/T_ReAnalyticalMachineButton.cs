@@ -64,7 +64,7 @@ public class T_ReAnalyticalMachineButton : MonoBehaviour, IInteraction
         sniffButton_T_RealAnalyticalMachineButton.onClick.AddListener(OnSniff);
 
         biteButton_T_RealAnalyticalMachineButton = realAnalyticalMachineButtonObjData_T.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_T_RealAnalyticalMachineButton.onClick.AddListener(OnBite);
 
         pressButton_T_RealAnalyticalMachineButton = realAnalyticalMachineButtonObjData_T.PushOrPressButton;
         pressButton_T_RealAnalyticalMachineButton.onClick.AddListener(OnPushOrPress);
@@ -91,6 +91,14 @@ public class T_ReAnalyticalMachineButton : MonoBehaviour, IInteraction
             realAnalyticalMachineButtonOutline_T.OutlineWidth = 0;
 
             realAnalyticalMachineData_T.IsCenterButtonDisabled = true;
+        }
+
+        if(GameManager.gameManager._gameData.IsAnalyticalMachineOpen)
+        {
+            realAnalyticalMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
+            realAnalyticalMachineOutline_T.OutlineWidth = 8;
+
+            realAnalyticalMachine_Collider.enabled = true;
         }
     }
 
@@ -124,6 +132,10 @@ public class T_ReAnalyticalMachineButton : MonoBehaviour, IInteraction
         realAnalyticalMachineOutline_T.OutlineWidth = 8;
 
         realAnalyticalMachine_Collider.enabled = true;
+
+        //운석 분석기 열린거 저장
+        GameManager.gameManager._gameData.IsAnalyticalMachineOpen = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnSniff()
@@ -136,7 +148,9 @@ public class T_ReAnalyticalMachineButton : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-       
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()

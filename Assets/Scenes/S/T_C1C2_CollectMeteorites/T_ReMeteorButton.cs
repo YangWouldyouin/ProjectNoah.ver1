@@ -63,6 +63,7 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
         sniffButton_T_MeteorButton_T.onClick.AddListener(OnSniff);
 
         biteButton_T_MeteorButton_T = T_meteorButtonObjData_T.BiteButton;
+        biteButton_T_MeteorButton_T.onClick.AddListener(OnBite);
 
         pressButton_T_MeteorButton_T = T_meteorButtonObjData_T.PushOrPressButton;
         pressButton_T_MeteorButton_T.onClick.AddListener(OnPushOrPress);
@@ -140,6 +141,10 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
         Debug.Log("아 문이 열릴겁니다.");
         T_meteorBoxAnim_T.SetBool("isMeteorBoxOpen", true);
         T_meteorBoxAnim_T.SetBool("isMeteorBoxOpenEnd", true);
+
+        //운석 수집기 열린거 저장
+        GameManager.gameManager._gameData.IsMeteorCollectMachineOpen = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void OnSniff()
@@ -151,7 +156,9 @@ public class T_ReMeteorButton : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()

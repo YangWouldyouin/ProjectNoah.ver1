@@ -286,9 +286,11 @@ public class GameData
     //후에 추가된 것
     public bool IsInputImportantMeteor1_T_C2; // 특별 운석 수집기에 넣기 완료
     public bool IsAIAfterMissionComplete;
-    public bool IsFinishedEatingSweetPotatoes;
-    public bool IsBrokenPotatoDoor;
-    public bool IsNoticePotatoBody;
+    public bool IsFinishedEatingSweetPotatoes; 
+    public bool IsBrokenPotatoDoor; // 고구마 문 부서졌는지 확인
+    public bool IsNoticePotatoBody; // 고구마 상자 대사 1번 출력용
+    public bool IsMeteorCollectMachineOpen; // 운석 수집기 열렸는지
+    public bool IsAnalyticalMachineOpen; //운석 분석기 열렸는지
 }
 
 
