@@ -46,7 +46,7 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
         observeButton_W_Cabinet3 = Cabinet3_W.CenterButton1; // CenterButton1에 '관찰하기'버튼 삽입
         observeButton_W_Cabinet3.onClick.AddListener(OnObserve);
 
-        Card_Key_W_C3.SetActive(false); // 카드키 관찰하기 전에 안보이게
+        //Card_Key_W_C3.SetActive(false); // 카드키 관찰하기 전에 안보이게
         //처음부터 상호작용 안되고 관찰하기 할때만 상호작용 가능
         Card_Key3Outline_M.OutlineWidth = 0;
         Card_KeyObj_W_C3.IsNotInteractable = true;
@@ -125,7 +125,7 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
         Cabinet3_W.IsPushOrPress = true;
         DiableButton();
         // 머리로 누르는 애니메이션  
-        InteractionButtonController.interactionButtonController.playerPressHead(); 
+        InteractionButtonController.interactionButtonController.PlayerCanNotPush();
 
 
         /* 2초 뒤에 IsPushOrPress 를 false 로 바꿈 */
@@ -151,6 +151,10 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
 
     public void OnBite()
     {
+        DiableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
+
         // throw new System.NotImplementedException();
     }
     public void OnInsert()
