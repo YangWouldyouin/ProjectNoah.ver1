@@ -60,7 +60,7 @@ public class M_MeteorBoxButton3 : MonoBehaviour, IInteraction
         sniffButton_M_MeteorBoxButton3.onClick.AddListener(OnSniff);
 
         biteButton_M_MeteorBoxButton3 = MeteorBoxButton3ObjData_M.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_M_MeteorBoxButton3.onClick.AddListener(OnBite);
 
         pressButton_M_MeteorBoxButton3 = MeteorBoxButton3ObjData_M.PushOrPressButton;
         pressButton_M_MeteorBoxButton3.onClick.AddListener(OnPushOrPress);
@@ -183,7 +183,9 @@ public class M_MeteorBoxButton3 : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-       
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()

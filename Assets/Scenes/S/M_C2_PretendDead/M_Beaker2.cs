@@ -118,7 +118,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         sniffButton_M_Beaker2.onClick.AddListener(OnSniff);
 
         biteButton_M_Beaker2 = Beaker2Data_M.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_M_Beaker2.onClick.AddListener(OnBite);
 
         pressButton_M_Beaker2 = Beaker2Data_M.PushOrPressButton;
         pressButton_M_Beaker2.onClick.AddListener(OnPushOrPress);
@@ -669,7 +669,9 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-       
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnInsert()

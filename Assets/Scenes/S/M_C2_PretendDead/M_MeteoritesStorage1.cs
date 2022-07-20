@@ -48,7 +48,7 @@ public class M_MeteoritesStorage1 : MonoBehaviour, IInteraction
         sniffButton_M_MeteoritesStorage1.onClick.AddListener(OnSniff);
 
         biteButton_M_MeteoritesStorage1 = meteoritesStorage1ObjData_M.BiteButton;
-        //biteButton_M_MeteoritesStorage1.onClick.AddListener(OnBiteDestroy);
+        biteButton_M_MeteoritesStorage1.onClick.AddListener(OnBite);
 
         pressButton_M_MeteoritesStorage1 = meteoritesStorage1ObjData_M.PushOrPressButton;
         pressButton_M_MeteoritesStorage1.onClick.AddListener(OnPushOrPress);
@@ -122,7 +122,9 @@ public class M_MeteoritesStorage1 : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
-        
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()

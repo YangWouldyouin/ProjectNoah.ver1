@@ -59,7 +59,7 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
         sniffButton_S_PressCabinetBody1.onClick.AddListener(OnSniff);
 
         biteButton_S_PressCabinetBody1 = pressCabinetBody1Data_M.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_S_PressCabinetBody1.onClick.AddListener(OnBite);
 
         pressButton_S_PressCabinetBody1 = pressCabinetBody1Data_M.PushOrPressButton;
         pressButton_S_PressCabinetBody1.onClick.AddListener(OnPushOrPress);
@@ -174,6 +174,9 @@ public class S_PressCabinetBody1 : MonoBehaviour,IInteraction
 
     public void OnBiteDestroy()
     {
+        DisableButton();
+
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
 

@@ -87,7 +87,7 @@ public class M_Pack : MonoBehaviour, IInteraction
 
         DisableButton();
 
-        InteractionButtonController.interactionButtonController.playerPressHand();
+        InteractionButtonController.interactionButtonController.PlayerCanNotPush();
     }
 
 

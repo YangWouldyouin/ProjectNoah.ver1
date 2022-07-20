@@ -236,7 +236,9 @@ public class S_IDConsole : MonoBehaviour, IInteraction
     public void OnBite()
     {
         DisableButton();
+
         InteractionButtonController.interactionButtonController.PlayerCanNotBite();
+
     }
 
     public void OnEat()
