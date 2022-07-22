@@ -208,7 +208,7 @@ public class MC_BluetoothUIManager : MonoBehaviour
                     MCW_alertUI.SetActive(true);
 
                     MCW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
-                    MCW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다.";
+                    MCW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다." + "\n" + "연결 가능 기기: 태블릿";
 
                     StartCoroutine(MCW_Alert_onetime());
                 }
