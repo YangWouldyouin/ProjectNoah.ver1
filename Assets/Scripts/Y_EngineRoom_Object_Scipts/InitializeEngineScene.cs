@@ -54,7 +54,7 @@ public class InitializeEngineScene : MonoBehaviour
         }
 
 
-        if (intialGameData.IsAIVSMissionCount >= 3 && !intialGameData.IsFirstNoticeEnd)
+        if (intialGameData.IsAIVSMissionCount >= 3 && !intialGameData.IsFirstNoticeEnd && !GameManager.gameManager._gameData.IsTabletDestory)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;

@@ -243,7 +243,7 @@ public class InitializeWorkingScene : MonoBehaviour
         Line2OnTable2_Collider = Line2OnTable2.GetComponent<BoxCollider>();
         ConductionOnTable2_Collider = ConductionOnTable2.GetComponent<BoxCollider>();
 
-        if (intialGameData.IsAIVSMissionCount >= 3 && !intialGameData.IsFirstNoticeEnd)
+        if (intialGameData.IsAIVSMissionCount >= 3 && !intialGameData.IsFirstNoticeEnd && !GameManager.gameManager._gameData.IsTabletDestory)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
@@ -295,8 +295,9 @@ public class InitializeWorkingScene : MonoBehaviour
 
         DetectDrug(); //마약 탐지 완료하면
 
+        drugBag.SetActive(false);
 
-        if (intialGameData.IsFindDrugDone_T_C2)
+        if (intialGameData.IsDetox)
         {
             insert02Col.enabled = false;
             SDrugCol.enabled = false;
