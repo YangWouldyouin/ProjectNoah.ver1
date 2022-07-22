@@ -14,7 +14,7 @@ public class C_Cabinet : MonoBehaviour, IInteraction
     ObjData CabinetData_C;
 
     BoxCollider cabinetBoxC;
-
+    BoxCollider pipeBoxC;
     public GameObject pipe;
 
     // Start is called before the first frame update
@@ -37,12 +37,15 @@ public class C_Cabinet : MonoBehaviour, IInteraction
         observeButton_C_Cabinet = CabinetData_C.CenterButton1;
         observeButton_C_Cabinet.onClick.AddListener(OnObserve);
 
-        if(!GameManager.gameManager._gameData.IsPipeFound_M_C1)
-        {
-            pipe.SetActive(false);
-        }
+        //if(!GameManager.gameManager._gameData.IsPipeFound_M_C1)
+        //{
+        //    pipe.SetActive(false);
+        //}
         
         cabinetBoxC = GetComponent<BoxCollider>();
+        pipeBoxC = pipe.GetComponent<BoxCollider>();
+
+        pipeBoxC.enabled = false;
     }
 
     void Update()
@@ -87,7 +90,8 @@ public class C_Cabinet : MonoBehaviour, IInteraction
     public void OnObserve()
     {
         cabinetBoxC.enabled = false;
-        pipe.SetActive(true);
+        pipeBoxC.enabled = true;
+        //pipe.SetActive(true);
         /* 상호작용 버튼을 끔 */
         DiableButton();
 
