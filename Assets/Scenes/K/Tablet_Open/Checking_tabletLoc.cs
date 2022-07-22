@@ -22,7 +22,10 @@ public class Checking_tabletLoc : MonoBehaviour
 
     public bool firstCheck;
     public bool secondCheck;
+    public bool secondCheck2;
     public bool tabletDeleteCheck = false;
+
+    float seconds;
 
     void Start()
     {
@@ -49,9 +52,12 @@ public class Checking_tabletLoc : MonoBehaviour
         }
         else // 타블렛이 안전 영역 밖에 있으면
         {
-            timer += Time.deltaTime; // 타이머 시작 
-            float seconds = Mathf.FloorToInt((timer % 3600) % 60); // 초 단위 체크
-            Debug.Log(seconds);
+            if(GameManager.gameManager._gameData.IsTabletDestory == false)
+            {
+                timer += Time.deltaTime; // 타이머 시작 
+                seconds = Mathf.FloorToInt((timer % 3600) % 60); // 초 단위 체크
+                Debug.Log(seconds);
+            }
             if (seconds >= DestroyTime && tabletDeleteCheck == false) // 5초가 지나면
             {
                 Debug.Log("타블렛 파괴");
@@ -76,22 +82,36 @@ public class Checking_tabletLoc : MonoBehaviour
         {
             if (!GameManager.gameManager._gameData.IsFirstExitTablet && !firstCheck)
             {
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(40));
                 GameManager.gameManager._gameData.IsFirstExitTablet = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
                 firstCheck = true;
             }
-            
-            if (GameManager.gameManager._gameData.IsFirstExitTablet && !secondCheck)
-            {
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(41));
 
+            if (GameManager.gameManager._gameData.IsFirstExitTablet && !secondCheck && secondCheck2)
+            {
+                //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(41));
                 secondCheck = true;
             }
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "noahPlayer")
+        {
+            if (!GameManager.gameManager._gameData.IsFirstExitTablet && !firstCheck)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(40));
+                //firstCheck = true;
+            }
+            if (GameManager.gameManager._gameData.IsFirstExitTablet && !secondCheck && firstCheck)
+            {
+                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(41));
+                secondCheck2 = true;
+            }
+        }
+    }
     //public void OnTriggerEnter(Collider other)
     //{
     //    if (other.gameObject.name == "noahPlayer" && tabletData.IsBite)
