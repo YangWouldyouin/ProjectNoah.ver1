@@ -21,6 +21,9 @@ public class GameData
     public bool IsRM_PR_TimeCheck; //행성탐사 임무 진행
     public bool IsRM_PR_MissionScriptCheck; //행성탐사 임무 대사 체크
     public bool IsPhotoCheck; //사진찍은 거 체크 
+    public bool IsHDRtimeCheck; //상태체크기계임무시간체크
+    public bool IsPtimeCheck; //사진찍기임무시간체크
+    public bool IsPRtimeCheck; //행성탐사임무시간체크
 
 
     [Header("<행성 탐지 퍼즐>")]

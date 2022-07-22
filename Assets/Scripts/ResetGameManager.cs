@@ -286,9 +286,11 @@ public class ResetGameManager : MonoBehaviour
         character.IsRM_PR_TimeCheck = false;
         character.IsRM_PR_MissionScriptCheck = false;
         character.IsPhotoCheck = false;
+        character.IsHDRtimeCheck = false; //상태체크기계임무시간체크
+        character.IsPtimeCheck = false; //사진찍기임무시간체크
+        character.IsPRtimeCheck = false; //행성탐사임무시간체크
 
-
-        character.statNum = 10;
+    character.statNum = 10;
         //임무 보고하기 취소 카운트, 3번 이상 취소하기 누르면 게임 오버
         character.IsReportCancleCount = 0;
         //AI 상반 임무 카운트, 2 이상 될 시 태블릿 궤도 좌표 해금

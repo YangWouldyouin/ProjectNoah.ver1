@@ -21,10 +21,11 @@ public class RegularMissionManager : MonoBehaviour
     {
         //상태체크 임무 
 
-        if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10 && (inGameTime.days + 1) >= 3)
+        if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10 && (inGameTime.days + 1) >= 3 && !GameManager.gameManager._gameData.IsHDRtimeCheck)
         {
             GameManager.gameManager._gameData.IsAIReportMissionTime = true;
             GameManager.gameManager._gameData.IsRM_HealthDataReportbool = false;
+            GameManager.gameManager._gameData.IsHDRtimeCheck = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             if (GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck == false)
@@ -41,6 +42,11 @@ public class RegularMissionManager : MonoBehaviour
                 MissionGenerator.missionGenerator.AddNewMission(14);
             }
 
+        }
+
+        if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 11 && (inGameTime.days + 1) >= 3 && GameManager.gameManager._gameData.IsHDRtimeCheck)
+        {
+            GameManager.gameManager._gameData.IsHDRtimeCheck = false;
         }
 
         if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10 && GameManager.gameManager._gameData.IsRM_HealthDataReportbool == false)
@@ -68,8 +74,11 @@ public class RegularMissionManager : MonoBehaviour
 
         }
 
+
+
+
         //사진찍기임무
-        if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10)
+        if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10 && !GameManager.gameManager._gameData.IsPtimeCheck)
         {
             if (GameManager.gameManager._gameData.IsRM_P_MissionScriptCheck == false)
             {
@@ -88,7 +97,14 @@ public class RegularMissionManager : MonoBehaviour
                 //MissionGenerator.missionGenerator.ActivateMissionList();
                 MissionGenerator.missionGenerator.AddNewMission(23);
             }
+            GameManager.gameManager._gameData.IsPtimeCheck = true;
         }
+
+        if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 11 && GameManager.gameManager._gameData.IsPtimeCheck)
+        {
+            GameManager.gameManager._gameData.IsPtimeCheck = false;
+        }
+
         if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10)
         {
             if (GameManager.gameManager._gameData.IsRM_P_MissionScriptCheck == true)
@@ -111,9 +127,13 @@ public class RegularMissionManager : MonoBehaviour
             }
         }
 
+
+
+
         //행성탐사 임무
-        if ((inGameTime.days + 1) % 4 == 0 && (inGameTime.hours) == 12)
+        if ((inGameTime.days + 1) % 4 == 0 && (inGameTime.hours) == 12 && !GameManager.gameManager._gameData.IsPRtimeCheck)
         {
+            GameManager.gameManager._gameData.IsPRtimeCheck = true;
             if (GameManager.gameManager._gameData.IsRM_PR_MissionScriptCheck == false)
             {
                 Debug.Log("행성 탐사 임무 시작");
@@ -139,7 +159,14 @@ public class RegularMissionManager : MonoBehaviour
                     MissionGenerator.missionGenerator.AddNewMission(31);
                 }
             }
+
         }
+
+        if ((inGameTime.days + 1) % 4 == 0 && (inGameTime.hours) == 13 && GameManager.gameManager._gameData.IsPRtimeCheck)
+        {
+            GameManager.gameManager._gameData.IsPRtimeCheck = false;
+        }
+
         if ((inGameTime.days + 1) % 4 == 2 && (inGameTime.hours) == 12)
         {
             if (GameManager.gameManager._gameData.IsRM_PR_MissionScriptCheck == true)
