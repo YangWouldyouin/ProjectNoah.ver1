@@ -22,6 +22,7 @@ public class Checking_tabletLoc : MonoBehaviour
 
     public bool firstCheck;
     public bool secondCheck;
+    public bool tabletDeleteCheck = false;
 
     void Start()
     {
@@ -51,16 +52,18 @@ public class Checking_tabletLoc : MonoBehaviour
             timer += Time.deltaTime; // 타이머 시작 
             float seconds = Mathf.FloorToInt((timer % 3600) % 60); // 초 단위 체크
             Debug.Log(seconds);
-            if (seconds >= DestroyTime) // 5초가 지나면
+            if (seconds >= DestroyTime && tabletDeleteCheck == false) // 5초가 지나면
             {
                 Debug.Log("타블렛 파괴");
                 // AI: 이상 전파가 감지되었습니다. 해당 기기를 폐기합니다
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(39));
 
-                tabletEquipment.biteObjectName = "";
+                //tabletEquipment.biteObjectName = "";
                 //Destroy(TroubleLine);
-                Tablet_E.SetActive(false);
+                //Tablet_E.SetActive(false);
                 //Destroy(Tablet_E); // 타블렛 파괴
+                tabletDeleteCheck = true;
+
                 GameManager.gameManager._gameData.IsTabletDestory = true; // 반복문에서 빠져나옴
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }

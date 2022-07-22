@@ -99,7 +99,7 @@ public class InitializeEngineScene : MonoBehaviour
 
         if (intialGameData.IsTabletDestory) // 태블릿 삭제 
         {
-            Tablet_E.SetActive(false);
+            //Tablet_E.SetActive(false);
         }
     }
 

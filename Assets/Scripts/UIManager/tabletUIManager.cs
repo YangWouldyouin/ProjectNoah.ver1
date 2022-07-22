@@ -10,6 +10,9 @@ public class tabletUIManager : MonoBehaviour
     public GameObject CrackUI;
     public GameObject WirelessUI;
     public GameObject LockUI;
+    public GameObject BatteryUI;
+    public GameObject deleteUI;
+
 
     public Text Locked;
 

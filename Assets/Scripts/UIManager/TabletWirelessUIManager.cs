@@ -159,7 +159,7 @@ public class TabletWirelessUIManager : MonoBehaviour
             TW_alertUI.SetActive(true);
 
             TW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
-            TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다.";
+            TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다." + "\n" + "연결 가능 기기: 메인 컴퓨터, 메인 시스템";
 
             Invoke("TW_Alert_onetime", 2f);
         }
@@ -240,7 +240,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                     TW_alertUI.SetActive(true);
 
                     TW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
-                    TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다.";
+                    TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다." + "\n" + "연결 가능 기기: 메인 컴퓨터, 메인 시스템";
 
                     Invoke("TW_Alert_onetime", 3f);
                 }
@@ -249,7 +249,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                     TW_alertUI.SetActive(true);
 
                     TW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
-                    TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다.";
+                    TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다." + "\n" + "연결 가능 기기: 메인 컴퓨터, 메인 시스템";
 
                     Invoke("TW_Alert_onetime", 3f);
                 }

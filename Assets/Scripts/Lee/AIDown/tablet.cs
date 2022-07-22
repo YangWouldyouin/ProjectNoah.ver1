@@ -14,6 +14,8 @@ public class tablet : MonoBehaviour, IInteraction
     public GameObject TabletUI_C; // 태블릿 UI
     public GameObject TabletBackBlack_C; // 태블릿 비활성화 화면 (오브젝트 상태 화면)
     public GameObject TabletBackOn_C; // 태블릿 활성화 화면 (관찰하기 화면)
+    public GameObject TabletBatteryUI_C; // 충전 전 0% 화면
+    public GameObject TabletDeleteUI_C; // AI 발각 후 데이터 말소 화면
 
     public GameObject LoverPic_C; // 애인 사진
     public ObjectData LoverPicData_C;
@@ -62,6 +64,8 @@ public class tablet : MonoBehaviour, IInteraction
             TabletUI_C.SetActive(false);
             TabletBackBlack_C.SetActive(true);
             TabletBackOn_C.SetActive(false);
+            TabletBatteryUI_C.SetActive(false);
+            TabletDeleteUI_C.SetActive(false);
         }
     }
 
@@ -103,16 +107,25 @@ public class tablet : MonoBehaviour, IInteraction
             *//*
         }*/
 
-        if (intialGameData.IsFullChargeTablet)
+        if (intialGameData.IsTabletDestory)
         {
-            Invoke("TabletOn", 3f);
-           
-             //타블렛 화면 진입 > 블루투스 온 > 타블렛 블루투스 = true;
+            Invoke("TabletDelete", 3f); 
         }
-        else // 태블릿 충전 X
+        else
         {
-            // 화면 켜지지 않음
+            if (intialGameData.IsFullChargeTablet)
+            {
+                Invoke("TabletOn", 3f);
+
+                //타블렛 화면 진입 > 블루투스 온 > 타블렛 블루투스 = true;
+            }
+            else // 태블릿 충전 X
+            {
+                Invoke("TabletOff", 3f);
+                // 화면 켜지지 않음
+            }
         }
+
 
         if (LoverPicData_C.IsBite)
         {
@@ -134,7 +147,19 @@ public class tablet : MonoBehaviour, IInteraction
         TabletUI_C.SetActive(true);
         TabletBackBlack_C.SetActive(false);
         TabletBackOn_C.SetActive(true);
+        TabletBatteryUI_C.SetActive(false);
+        TabletDeleteUI_C.SetActive(false);
         Debug.Log("화면켜짐");
+    }
+
+    public void TabletOff()
+    {
+        TabletBatteryUI_C.SetActive(true);
+    }
+
+    public void TabletDelete()
+    {
+        TabletDeleteUI_C.SetActive(true);
     }
 
     public void TabletLockOff()
