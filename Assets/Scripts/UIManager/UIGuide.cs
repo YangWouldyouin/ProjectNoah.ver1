@@ -24,6 +24,8 @@ public class UIGuide : MonoBehaviour
         Contents2.SetActive(false);
         NextBT.SetActive(true);
         PrevBT.SetActive(false);
+
+        Time.timeScale = 0f;
     }
 
     public void GuideExitBT()
@@ -33,6 +35,8 @@ public class UIGuide : MonoBehaviour
         Contents2.SetActive(false);
         NextBT.SetActive(false);
         PrevBT.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
     public void OnNextBT()
