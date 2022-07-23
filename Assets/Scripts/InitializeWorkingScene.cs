@@ -173,6 +173,9 @@ public class InitializeWorkingScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.gameManager._gameData.currentRoom = 2;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         intialGameData = SaveSystem.Load("save_001");
 
         workRoomData = BaseCanvas._baseCanvas.workRoomData;

@@ -27,6 +27,8 @@ public class CameraController : MonoBehaviour
     Outline currentObjectOutline;
 
     GameObject objectNameTag;
+
+    TMPro.TextMeshProUGUI cameraNumText;
     public bool IsObserve;
     private void Awake()
     {
@@ -48,6 +50,8 @@ public class CameraController : MonoBehaviour
         objectNameTag = BaseCanvas._baseCanvas.objectNameTag;
         noah = BaseCanvas._baseCanvas.noahFBX;
         playerAnimation = BaseCanvas._baseCanvas.noahPlayer.GetComponent<Animator>();
+
+        cameraNumText = BaseCanvas._baseCanvas.CameraNumText;
 
         cameraFollow = GetComponent<CameraFollow>();
         engineRoomController = GetComponent<HorizontalCameraController>();
@@ -132,6 +136,23 @@ public class CameraController : MonoBehaviour
 
         ComeBackView(originPosition, originRotation);
         StartCoroutine(CancelObserving2Animation());
+
+        if (GameManager.gameManager._gameData.currentRoom == 1)
+        {
+            cameraNumText.text = "60fps" + "\n" + "Camera_1; control_room";
+        }
+        else if (GameManager.gameManager._gameData.currentRoom == 2)
+        {
+            cameraNumText.text = "60fps" + "\n" + "Camera_2; work_room";
+        }
+        else if (GameManager.gameManager._gameData.currentRoom == 3)
+        {
+            cameraNumText.text = "60fps" + "\n" + "Camera_3; living_room";
+        }
+        else if (GameManager.gameManager._gameData.currentRoom == 4)
+        {
+            cameraNumText.text = "60fps" + "\n" + "Camera_4; engine_room";
+        }
     }
 
     /* 전환 효과 없는 카메라 전환 메서드 */

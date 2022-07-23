@@ -30,4 +30,6 @@ public class BaseCanvas : MonoBehaviour
     public PortableObjectData livingRoomData;
     public PortableObjectData engineRoomData;
     public PortableObjectData controlRoomData;
+
+    public TMPro.TextMeshProUGUI CameraNumText;
 }

@@ -7,6 +7,7 @@ public class GameData
 {
     public float inGameTime;
     public int statNum = 10;
+    public int currentRoom = 0;
     //임무 보고하기 취소 카운트, 3번 이상 취소하기 누르면 게임 오버
     public int IsReportCancleCount = 0;
     //AI 상반 임무 카운트, 2 이상 될 시 태블릿 궤도 좌표 해금

@@ -36,6 +36,9 @@ public class InitializeEngineScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.gameManager._gameData.currentRoom = 4;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         EngineRoomData = BaseCanvas._baseCanvas.engineRoomData;
         dialogManager = dialog.GetComponent<DialogManager>();
         GameData intialGameData = SaveSystem.Load("save_001");

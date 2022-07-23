@@ -35,7 +35,7 @@ public class InteractionButtonController : MonoBehaviour
     public GameObject noahBiteObject, noahSmashObject, noahPressObject, noahPushObject, noahSniffObject,
         noahBarkObject, noahUpDownObject, noahInsertObject, noahObserveObject, noahEatObject;
 
-    TMPro.TextMeshProUGUI objectText, statText;
+    TMPro.TextMeshProUGUI objectText, statText, cameraNumText;
     GameObject statPanel;
 
     ObjData objData, biteData, upDownData, pushData, pressData;
@@ -82,6 +82,8 @@ public class InteractionButtonController : MonoBehaviour
         statText = BaseCanvas._baseCanvas.statText;
         statPanel = BaseCanvas._baseCanvas.statPanel;
         myMouth = BaseCanvas._baseCanvas.myMouth;
+
+        cameraNumText = BaseCanvas._baseCanvas.CameraNumText;
 
         playerRigidbody = noahPlayer.GetComponent<Rigidbody>();
         playerAgent = noahPlayer.GetComponent<NavMeshAgent>();
@@ -360,6 +362,8 @@ public class InteractionButtonController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         noahAnim.SetBool("IsObserving", false);
         CameraController.cameraController.ObserveButtonClick(); // CameraController 스크립트의 관찰하기 함수를 실행한다. 
+
+        cameraNumText.text = "60fps" + "\n" + "Camera_5; noah_action_cam";
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&

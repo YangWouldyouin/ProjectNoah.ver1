@@ -32,6 +32,9 @@ public class InitializeLivingScene : MonoBehaviour
 
     void Start()
     {
+        GameManager.gameManager._gameData.currentRoom = 3;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         dialogManager = dialog.GetComponent<DialogManager>();
 
         TDBT_BodyOutline = TDBT_fixBody.GetComponent<Outline>();
