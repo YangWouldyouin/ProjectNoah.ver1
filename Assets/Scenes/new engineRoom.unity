@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20478,6 +20478,7 @@ MonoBehaviour:
   dialog: {fileID: 1854744821}
   firstCheck: 0
   secondCheck: 0
+  secondCheck2: 0
   tabletDeleteCheck: 0
 --- !u!54 &439284674
 Rigidbody:
@@ -81474,6 +81475,7 @@ MonoBehaviour:
   _gameData:
     inGameTime: 0
     statNum: 100
+    currentRoom: 0
     IsReportCancleCount: 0
     IsAIVSMissionCount: 0
     EndingNum: 0
@@ -81483,6 +81485,9 @@ MonoBehaviour:
     IsRM_PR_TimeCheck: 0
     IsRM_PR_MissionScriptCheck: 0
     IsPhotoCheck: 0
+    IsHDRtimeCheck: 0
+    IsPtimeCheck: 0
+    IsPRtimeCheck: 0
     SelectPlanetNum: 0
     IsSelectPlanetCheck: 0
     IsFakePlanetOpen: 0
@@ -107397,6 +107402,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6776906046410990940, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: FullEgPad_C
+      value: 
+      objectReference: {fileID: 987357307}
+    - target: {fileID: 6776906046410990940, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: FullEgPadData_C
+      value: 
+      objectReference: {fileID: 11400000, guid: e00b31233a58ca1488f0aa448d05f535, type: 2}
     - target: {fileID: 6776906046410990941, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: smellText
       value: "[\uB0C4\uC0C8] \uC5F0\uB8CC \uB0C4\uC0C8, \uC6DC \uCF54\uD2BC \uD5A5"
@@ -107919,7 +107932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8620904916579061651, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8620904917657985058, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_IsActive

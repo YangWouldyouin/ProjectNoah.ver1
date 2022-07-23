@@ -11,8 +11,8 @@ pushButton, smashButton, NoCenterButton;
     ObjData FullEGPad_E;
 
     /* 상호작용 오브젝트 */
-    public GameObject Tablet_E;
-    ObjData TabletData_E;
+/*    public GameObject Tablet_E;
+    ObjData TabletData_E;*/
 
     private float Charge; // 태블릿 - 충전패드 거리 계산
     MeshRenderer padRender;
@@ -22,7 +22,7 @@ pushButton, smashButton, NoCenterButton;
     {
         equipment = BaseCanvas._baseCanvas.equipment;
         FullEGPad_E = GetComponent<ObjData>();
-        TabletData_E = Tablet_E.GetComponent<ObjData>();
+        // TabletData_E = Tablet_E.GetComponent<ObjData>();
         padRender = GetComponent<MeshRenderer>();
         outLine = GetComponent<Outline>();
 
@@ -91,7 +91,7 @@ pushButton, smashButton, NoCenterButton;
         }*/
     }
 
-    public void OnTriggerEnter(Collider other)
+/*    public void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Tablet_E")
         {
@@ -110,7 +110,7 @@ pushButton, smashButton, NoCenterButton;
         padRender.enabled = false;
         
         //FullEGPad_E.gameObject.SetActive(false);
-    }
+    }*/
 
     public void OnEat()
     {

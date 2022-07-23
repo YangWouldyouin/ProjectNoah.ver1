@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class tablet : MonoBehaviour, IInteraction
 {
-    private Button barkButton, sniffButton, biteButton, pressButton, observeButton;
+    private Button barkButton, sniffButton, biteButton, pressButton, observeButton, DiableButton;
 
     ObjData TabletData_C;
     public ObjectData Tablet_C;
@@ -18,13 +18,13 @@ public class tablet : MonoBehaviour, IInteraction
     public GameObject TabletDeleteUI_C; // AI 발각 후 데이터 말소 화면
 
     public GameObject LoverPic_C; // 애인 사진
-    public ObjectData LoverPicData_C;
-/*    public GameObject FullEgPad_C; // 충전 된 충전패드
-    public GameObject ZeroEgPad_C; // 충전 안 된 충전패드
+    public GameObject FullEgPad_C; // 충전 된 충전패드
+    // public GameObject ZeroEgPad_C; // 충전 안 된 충전패드
 
-    *//* 오브젝트 데이터 *//*
-    ObjData FullEgPadData_C; // 충전 된 충전패드
-    ObjData ZeroEgPadData_C; // 충전 안 된 충전패드*/
+    /* 오브젝트 데이터 */
+    public ObjectData LoverPicData_C;
+    public ObjectData FullEgPadData_C; // 충전 된 충전패드
+    // ObjData ZeroEgPadData_C; // 충전 안 된 충전패드
 
 
     /*    private float timer = 0f; // 태블릿 감지 타이머
@@ -34,7 +34,6 @@ public class tablet : MonoBehaviour, IInteraction
     void Start()
     {
         TabletData_C = GetComponent<ObjData>();
-      
 
         barkButton = TabletData_C.BarkButton;
         barkButton.onClick.AddListener(OnBark);
@@ -49,6 +48,9 @@ public class tablet : MonoBehaviour, IInteraction
 
         observeButton = TabletData_C.CenterButton1;
         observeButton.onClick.AddListener(OnObserve);
+
+        // 비활성화 버튼은 버튼을 가져오기만 한다. 
+        DiableButton = TabletData_C.CenterButton1;
 
         // 만약에 충전 완료 변수가 참이면 태블릿 화면을 켜겠다 추가해야함
         //intialGameData GameManager.gameManager._gameData.IsFullChargeTablet == true
@@ -67,6 +69,10 @@ public class tablet : MonoBehaviour, IInteraction
             TabletBatteryUI_C.SetActive(false);
             TabletDeleteUI_C.SetActive(false);
         }
+        if(GameManager.gameManager._gameData.IsFullChargeTablet == false)
+        {
+            FullEgPad_C.gameObject.SetActive(true);
+        }
     }
 
     void DisableButton()
@@ -76,6 +82,7 @@ public class tablet : MonoBehaviour, IInteraction
         biteButton.transform.gameObject.SetActive(false);
         pressButton.transform.gameObject.SetActive(false);
         observeButton.transform.gameObject.SetActive(false);
+        DiableButton.transform.gameObject.SetActive(false);
     }
 
 
@@ -171,9 +178,33 @@ public class tablet : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        DisableButton();
-        InteractionButtonController.interactionButtonController.playerPressHand();
+        /* 밀기 & 누르기 중에 "누르기"일 때!!! */
+        FullEgPadData_C.IsPushOrPress = true;// 오브젝트의 관찰 변수 true로 바꿈
+        DisableButton(); // 상호작용 버튼을 끔
+
+        /* 애니메이션 보여줌 */
+        InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
+        StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
+
+        Debug.Log("충전완료");
+        GameManager.gameManager._gameData.IsFullChargeTablet = true; // 태블랫 충전 됨
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        Debug.Log("충전세이브 완료");
     }
+
+    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
+    IEnumerator ChangePressFalse()
+    {
+        yield return new WaitForSeconds(2f);
+        FullEgPadData_C.IsPushOrPress = false;
+
+        // FullEgPad_C.gameObject.SetActive(false);
+        Destroy(FullEgPad_C);
+        Debug.Log("충전패드 비활성화");
+    }
+
+
+
     public void OnSniff()
     {
         DisableButton();
