@@ -91,7 +91,7 @@ public class MC_DogProfileUIManager : MonoBehaviour
 
         if(GameManager.gameManager._gameData.IsFakeHealthData_Tablet == false && GameManager.gameManager._gameData.IsHealthMachineUpCheck == true)
         {
-            int noahStat = GameManager.gameManager._gameData.statNum; // 노아 현재 스탯 값 불러오기
+            int noahStat = GameManager.gameManager._gameData.IscurrentHealthData; // 노아 현재 스탯 값 불러오기
 
             ranStat = Random.Range(0, 9); // 랜덤 값
             GameManager.gameManager._gameData.IsRealfatigue = ranStat + noahStat * 10;

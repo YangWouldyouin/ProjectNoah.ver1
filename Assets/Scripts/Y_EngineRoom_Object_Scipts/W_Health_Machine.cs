@@ -341,7 +341,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IscurrentHealthData = inGameTime.statNum;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
-            if (inGameTime.statNum < 3) 
+            if (inGameTime.statNum <= 3) 
             {
                 GameManager.gameManager._gameData.IsReportCancleCount += 1;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
