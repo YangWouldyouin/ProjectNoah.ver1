@@ -197,14 +197,14 @@ public class insert01 : MonoBehaviour, IInteraction
             //Invoke("NewTimerStart", 2f);
         }
 
-        if (WChipData.IsBite)
+        /*if (WChipData.IsBite)
         {
             Debug.Log("AIæ»¡Í±›");
 
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(60));
 
             Invoke("NoChip", 0.5f);
-        }
+        }*/
     }
 
     IEnumerator Delay2Sec()
@@ -279,7 +279,7 @@ public class insert01 : MonoBehaviour, IInteraction
 
         }
 
-        if (WChipData.IsBite)
+        /*if (WChipData.IsBite)
         {
             WChipData.IsBite = false;
 
@@ -297,7 +297,7 @@ public class insert01 : MonoBehaviour, IInteraction
 
             insertData.IsNotInteractable = false;
             insertLine.OutlineWidth = 0;
-        }
+        }*/
     }
 
     public void OnBite()

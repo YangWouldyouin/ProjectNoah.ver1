@@ -83,7 +83,7 @@ public class InitializeControlScene : MonoBehaviour
             RChipCol.enabled = false;
 
             RChip.transform.localScale = new Vector3(15.89634f, 15.89634f, 2.835073f);
-            RChip.transform.position = new Vector3(-7.448f, 34.62f, -1.439f);
+            RChip.transform.position = new Vector3(-37.901f, 0.853f, -30.362f);
             RChip.transform.rotation = Quaternion.Euler(90, 0, 0);
         }
 
