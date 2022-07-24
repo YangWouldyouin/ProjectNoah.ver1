@@ -64,6 +64,8 @@ public class InteractionButtonController : MonoBehaviour
 
     Image preventBite;
 
+    BoxCollider noahCollider;
+
     void Awake()
     {
         interactionButtonController = this;
@@ -90,7 +92,7 @@ public class InteractionButtonController : MonoBehaviour
         playerRigidbody = noahPlayer.GetComponent<Rigidbody>();
         playerAgent = noahPlayer.GetComponent<NavMeshAgent>();
         noahAnim = noahPlayer.GetComponent<Animator>();
-
+        noahCollider = noahPlayer.GetComponent<BoxCollider>();
         preventBite = BaseCanvas._baseCanvas.PreventBiting;
     }
 
@@ -345,6 +347,7 @@ public class InteractionButtonController : MonoBehaviour
     /* 관찰하기 */
     public void playerObserve()
     {
+        noahCollider.enabled = false;
         /* 스팀 업적 카운트 */
         if (achieveData.observeCount < 50)
         {

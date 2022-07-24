@@ -12,6 +12,7 @@ public class CancelInteractions : MonoBehaviour
     GameObject noahPlayer;
     NavMeshAgent agent;
     Animator playerAnimation;
+    BoxCollider noahCollider;
 
     GameObject upDownObject, biteObject, pushObject, noahNovepushobject, observeObject;
 
@@ -28,6 +29,7 @@ public class CancelInteractions : MonoBehaviour
         agent = noahPlayer.GetComponent<NavMeshAgent>();
         playerObject = BaseCanvas._baseCanvas.equipment;
         CancelObjectText = BaseCanvas._baseCanvas.objectText;
+        noahCollider = noahPlayer.GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -53,6 +55,7 @@ public class CancelInteractions : MonoBehaviour
                 ObjData cancelObserveData = observeObject.GetComponent<ObjData>();
                 if (cancelObserveData.objectDATA.IsObserve)
                 {
+                    noahCollider.enabled = true;
                     CameraController.cameraController.CancelObserve();
                     break;
                 }
@@ -112,6 +115,7 @@ public class CancelInteractions : MonoBehaviour
             ObjData cancelObserveData = observeObject.GetComponent<ObjData>();
             if (cancelObserveData.objectDATA.IsObserve)
             {
+                noahCollider.enabled = true;
                 cancelObserveData.objectDATA.IsObserve = false;
                 cancelObserveData.objectDATA.IsNotInteractable = false;
             }
