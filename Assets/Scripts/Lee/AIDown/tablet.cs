@@ -36,6 +36,8 @@ public class tablet : MonoBehaviour, IInteraction
 
     void Start()
     {
+        equipment = BaseCanvas._baseCanvas.equipment;
+        portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
         TabletData_C = GetComponent<ObjData>();
 
         barkButton = TabletData_C.BarkButton;
