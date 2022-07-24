@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855465377}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7db6eb3bc703fa49bfe79305858f390, type: 3}
   m_Name: 
@@ -1419,6 +1419,7 @@ MonoBehaviour:
   _gameData:
     inGameTime: 0
     statNum: 10
+    currentRoom: 0
     IsReportCancleCount: 0
     IsAIVSMissionCount: 0
     EndingNum: 0
@@ -1428,6 +1429,9 @@ MonoBehaviour:
     IsRM_PR_TimeCheck: 0
     IsRM_PR_MissionScriptCheck: 0
     IsPhotoCheck: 0
+    IsHDRtimeCheck: 0
+    IsPtimeCheck: 0
+    IsPRtimeCheck: 0
     SelectPlanetNum: 0
     IsSelectPlanetCheck: 0
     IsFakePlanetOpen: 0
@@ -1447,7 +1451,7 @@ MonoBehaviour:
     S_IsCWDoorOpened_M_C1: 0
     S_IsHealthMachineFixed_T_C2: 0
     ActiveMissionList: 000000000000000000000000000000000000000000000000000000000000
-    EndMissionList: 0000000000
+    CompleteMissionList: 00000000000000000000000000000000000000000000000000000000000000000000
     IsAIAwake_M_C1: 0
     IsPipeFound_M_C1: 0
     IsCWDoorOpened_M_C1: 0
@@ -1579,6 +1583,11 @@ MonoBehaviour:
     IsAIReportMissionTime: 0
     IsInputImportantMeteor1_T_C2: 0
     IsAIAfterMissionComplete: 0
+    IsFinishedEatingSweetPotatoes: 0
+    IsBrokenPotatoDoor: 0
+    IsNoticePotatoBody: 0
+    IsMeteorCollectMachineOpen: 0
+    IsAnalyticalMachineOpen: 0
   _savePageData:
     IsDisqualifiedEnd0: 0
     IsEatBadPotato0: 0

@@ -34,7 +34,10 @@ public class Tu_CommentManager : MonoBehaviour
 
     private Camera mainCamera;
     AnalogGlitch analogEffect;
-    
+
+    public InGameTime inGameTime;
+    public GameObject skipText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +82,12 @@ public class Tu_CommentManager : MonoBehaviour
         {
             StartCoroutine(NewsTalk());
             check02 = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TuEnd();
+            skipText.SetActive(false);
         }
     }
 
@@ -424,7 +433,7 @@ public class Tu_CommentManager : MonoBehaviour
 
     void TutoBye()
     {
-        GameManager.gameManager._gameData.statNum = 10;
+        inGameTime.statNum = 10;
         GameManager.gameManager._gameData.ActiveMissionList[31] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         timerData.days = 0;
