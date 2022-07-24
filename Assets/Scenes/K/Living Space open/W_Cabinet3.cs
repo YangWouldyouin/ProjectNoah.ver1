@@ -49,7 +49,7 @@ pushButton_W_Cabinet3, observeButton_W_Cabinet3, smashButton_W_Cabinet3;
         //Card_Key_W_C3.SetActive(false); // 카드키 관찰하기 전에 안보이게
         //처음부터 상호작용 안되고 관찰하기 할때만 상호작용 가능
         Card_Key3Outline_M.OutlineWidth = 0;
-        Card_KeyObj_W_C3.IsNotInteractable = true;
+        //Card_KeyObj_W_C3.IsNotInteractable = true;
         Cabinet3Obj_W.IsObserve = false;
         Cabinet3Obj_W.IsNotInteractable = false;
     }
