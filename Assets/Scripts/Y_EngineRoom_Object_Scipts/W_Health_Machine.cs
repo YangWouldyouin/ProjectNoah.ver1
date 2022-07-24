@@ -28,6 +28,10 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
     public InGameTime inGameTime;
 
+    public Outline HM_Outline;
+
+    Color color;
+
     //public bool HealthDataReportbool;
     //public bool MissionScriptCheck =false;
 
@@ -41,6 +45,8 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
     {
         Health_MachineData_W = GetComponent<ObjData>();
         healthMachineData = Health_MachineData_W.objectDATA;
+        HM_Outline = GetComponent<Outline>();
+        
 
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_W_Health_Machine = Health_MachineData_W.BarkButton;
@@ -119,6 +125,13 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == true)
         {
             healthMachineData.IsCenterButtonDisabled = false;
+            ColorUtility.TryParseHtmlString("#28FFFF", out color);
+            HM_Outline.OutlineColor = color;
+        }
+        if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == false)
+        {
+            ColorUtility.TryParseHtmlString("#FF8600", out color);
+            HM_Outline.OutlineColor = color;
         }
 
     }
