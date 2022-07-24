@@ -32,4 +32,6 @@ public class BaseCanvas : MonoBehaviour
     public PortableObjectData controlRoomData;
 
     public TMPro.TextMeshProUGUI CameraNumText;
+
+    public Image PreventBiting;
 }
