@@ -94,7 +94,7 @@ public class GameEndingController : MonoBehaviour
             //SceneManager.LoadScene("EndingScene");
         }
 
-        if (GameManager.gameManager._gameData.IsReportCancleCount >= 3)
+        if (GameManager.gameManager._gameData.IsReportCancleCount >= 5)
         {
             GameManager.gameManager._gameData.IsDefyMissionEnd = true;
             Debug.Log("Game Over");
