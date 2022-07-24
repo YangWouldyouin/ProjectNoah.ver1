@@ -62,6 +62,8 @@ public class InteractionButtonController : MonoBehaviour
     public Vector3 noahPushPos;
     public Vector3 noahOriginPos;
 
+    Image preventBite;
+
     void Awake()
     {
         interactionButtonController = this;
@@ -88,6 +90,8 @@ public class InteractionButtonController : MonoBehaviour
         playerRigidbody = noahPlayer.GetComponent<Rigidbody>();
         playerAgent = noahPlayer.GetComponent<NavMeshAgent>();
         noahAnim = noahPlayer.GetComponent<Animator>();
+
+        preventBite = BaseCanvas._baseCanvas.PreventBiting;
     }
 
 
@@ -152,6 +156,7 @@ public class InteractionButtonController : MonoBehaviour
     {
         if(equipment.biteObjectName=="" && equipment.pushObjectName=="") // 물기 2번 or 물기 밀기 같이 방지
         {
+            preventBite.transform.gameObject.SetActive(true);
             /* 스팀 업적 카운트 */
             if (achieveData.biteCount < 50)
             {
@@ -208,6 +213,7 @@ public class InteractionButtonController : MonoBehaviour
     void ChangeBiteFalse()
     {
         noahAnim.SetBool("IsBiting", false);
+        preventBite.transform.gameObject.SetActive(false);
     }
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
