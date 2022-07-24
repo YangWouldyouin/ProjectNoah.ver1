@@ -53,7 +53,7 @@ public class E_FA_FIxPart : MonoBehaviour, IInteraction
     public void OnPushOrPress()
     {
         DiableButton();
-        InteractionButtonController.interactionButtonController.playerPressHead();
+        //InteractionButtonController.interactionButtonController.playerPressHead();
         InteractionButtonController.interactionButtonController.PlayerCanNotPush();
     }
 

@@ -54,7 +54,7 @@ public class W_Health_Machine_FixPart : MonoBehaviour, IInteraction
     public void OnPushOrPress()
     {
         DiableButton();
-        InteractionButtonController.interactionButtonController.playerPressHead();
+        //InteractionButtonController.interactionButtonController.playerPressHead();
         InteractionButtonController.interactionButtonController.PlayerCanNotPush();
     }
 

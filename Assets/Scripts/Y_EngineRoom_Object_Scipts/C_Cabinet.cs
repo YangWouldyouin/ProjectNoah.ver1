@@ -112,7 +112,7 @@ public class C_Cabinet : MonoBehaviour, IInteraction
         DiableButton();
 
         /* 애니메이션 보여줌 */
-        InteractionButtonController.interactionButtonController.playerPressHead();
+        //InteractionButtonController.interactionButtonController.playerPressHead();
         InteractionButtonController.interactionButtonController.PlayerCanNotPush();
     }
 

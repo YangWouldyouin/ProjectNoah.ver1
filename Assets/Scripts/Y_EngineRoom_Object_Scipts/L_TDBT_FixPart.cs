@@ -52,7 +52,7 @@ public class L_TDBT_FixPart : MonoBehaviour, IInteraction
     public void OnPushOrPress()
     {
         DiableButton();
-        InteractionButtonController.interactionButtonController.playerPressHand();
+        //InteractionButtonController.interactionButtonController.playerPressHand();
         InteractionButtonController.interactionButtonController.PlayerCanNotPush();
     }
 
