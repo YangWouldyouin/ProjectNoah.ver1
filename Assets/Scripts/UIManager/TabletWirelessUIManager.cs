@@ -214,7 +214,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                         TW_Alert_BodyText.GetComponent<Text>().text = "[메인시스템]에 [귀환 좌표 데이터]를 성공적으로 업로드했습니다.";
                         Download_Complete_Sound.Play();
 
-                        Is_Tablet_WirelessOn = false;
+                        GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
                         GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = false;
                         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
