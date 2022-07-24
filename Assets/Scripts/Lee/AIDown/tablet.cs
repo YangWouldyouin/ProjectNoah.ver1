@@ -7,6 +7,9 @@ public class tablet : MonoBehaviour, IInteraction
 {
     private Button barkButton, sniffButton, biteButton, pressButton, observeButton, DiableButton;
 
+    PlayerEquipment equipment;
+    GameObject portableGroup;
+
     ObjData TabletData_C;
     public ObjectData Tablet_C;
 
@@ -186,6 +189,15 @@ public class tablet : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
         StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
 
+        // 끼우기 성공
+        // 부모 자식 관계를 해제한다.
+        FullEgPad_C.GetComponent<Rigidbody>().isKinematic = false;
+        FullEgPad_C.transform.parent = null;
+
+        FullEgPad_C.SetActive(false);
+        FullEgPad_C.transform.parent = portableGroup.transform;
+        equipment.biteObjectName = "";
+
         Debug.Log("충전완료");
         GameManager.gameManager._gameData.IsFullChargeTablet = true; // 태블랫 충전 됨
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -199,8 +211,8 @@ public class tablet : MonoBehaviour, IInteraction
         FullEgPadData_C.IsPushOrPress = false;
 
         // FullEgPad_C.gameObject.SetActive(false);
-        Destroy(FullEgPad_C);
-        Debug.Log("충전패드 비활성화");
+        //Debug.Log("충전패드 비활성화");
+
     }
 
 
