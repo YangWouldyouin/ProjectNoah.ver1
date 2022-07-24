@@ -66,8 +66,7 @@ pressButton, observeButton;
 
             portDoor.GetComponent<BoxCollider>().enabled = false;
         }
-
-        else
+        else if (planetRaderData.IsObserve && GameManager.gameManager._gameData.IsTutorialClear)
         {
             portDoor.GetComponent<BoxCollider>().enabled = true;
         }
@@ -75,11 +74,6 @@ pressButton, observeButton;
         if(!GameManager.gameManager._gameData.IsTutorialClear)
         {
             portDoor.GetComponent<BoxCollider>().enabled = false;
-        }
-
-        else
-        {
-            portDoor.GetComponent<BoxCollider>().enabled = true;
         }
 
 /*        if(planetRaderData.IsCollision)
