@@ -42,6 +42,9 @@ public class LiExDoor_buttons : MonoBehaviour, IInteraction
         noCenterButton = portDoorObjData.CenterButton1;
         portDoorData.IsNotInteractable = true;
         portDoorLine.OutlineWidth = 0f;
+
+        ExDataa.IsNotInteractable = true;
+        ExLine.OutlineWidth = 0f;
     }
 
     // Update is called once per frame
