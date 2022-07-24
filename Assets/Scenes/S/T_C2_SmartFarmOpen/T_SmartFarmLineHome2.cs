@@ -47,7 +47,7 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
         sniffButton_T_SmartFarmLineHome2.onClick.AddListener(OnSniff);
 
         biteButton_T_SmartFarmLineHome2 = smartFarmLineHome2Data_T.BiteButton;
-        //biteButton_M_Rubber.onClick.AddListener(OnBiteDestroy);
+        biteButton_T_SmartFarmLineHome2.onClick.AddListener(OnBite);
 
         pressButton_T_SmartFarmLineHome2 = smartFarmLineHome2Data_T.PushOrPressButton;
         pressButton_T_SmartFarmLineHome2.onClick.AddListener(OnPushOrPress);
@@ -131,7 +131,9 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
 
     public void OnBite()
     {
+        DisableButton();
 
+        InteractionButtonController.interactionButtonController.PlayerCanNotBite();
     }
 
     public void OnEat()
