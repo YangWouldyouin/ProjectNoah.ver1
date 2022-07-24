@@ -123,6 +123,8 @@ public class C_Cabinet : MonoBehaviour, IInteraction
     public void OnSniff()
     {
         //throw new System.NotImplementedException();
+        InteractionButtonController.interactionButtonController.playerSniff();
+        DiableButton();
     }
 
     public void OnUp()
