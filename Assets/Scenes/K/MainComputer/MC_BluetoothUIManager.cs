@@ -76,7 +76,7 @@ public class MC_BluetoothUIManager : MonoBehaviour
     public Text MCW_Alert_BodyText;
     public Text MCW_Alert_UploadText;
 
-    public bool Is_MainComputer_WirelessOn = false;
+   // public bool Is_MainComputer_WirelessOn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -92,7 +92,7 @@ public class MC_BluetoothUIManager : MonoBehaviour
 
     void Update()
     {
-        if (Is_MainComputer_WirelessOn)
+        if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
         {
             OnOffText.GetComponent<Text>().text = "무선 연결        ON";
             Color onoffcolor = MCW_onoffBT.color;
@@ -136,13 +136,13 @@ public class MC_BluetoothUIManager : MonoBehaviour
 
     public void MCW_WirelessCheck()
     {
-        if (!Is_MainComputer_WirelessOn)
+        if (!GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
         {
-            Is_MainComputer_WirelessOn = true;
+            GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
 
             GameData wirelessData = SaveSystem.Load("save_001");
-            TabletWirelessUIManager tabletWirelessUIManager = new TabletWirelessUIManager();
-            if (tabletWirelessUIManager.Is_Tablet_WirelessOn && Is_MainComputer_WirelessOn && !wirelessData.IsWirelessMCTabletCheck )
+            //TabletWirelessUIManager tabletWirelessUIManager = new TabletWirelessUIManager();
+            if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn && !wirelessData.IsWirelessMCTabletCheck )
             {
                 GameManager.gameManager._gameData.IsWirelessMCTabletCheck = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
@@ -156,13 +156,14 @@ public class MC_BluetoothUIManager : MonoBehaviour
         }
         else
         {
-            Is_MainComputer_WirelessOn = false;
+            GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         }
     }
 
     public void MCW_SelectFile()
     {
-        if (Is_MainComputer_WirelessOn)
+        if (GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
         {
             MCW_MainUI.SetActive(false);
             MCW_UploadSelectUI.SetActive(true);
@@ -174,9 +175,9 @@ public class MC_BluetoothUIManager : MonoBehaviour
     {
         if (GameManager.gameManager._gameData.IsFinalBusinessReport_MC)
         {
-            TabletWirelessUIManager tabletWirelessUIManager = new TabletWirelessUIManager();
+            //TabletWirelessUIManager tabletWirelessUIManager = new TabletWirelessUIManager();
 
-            if (tabletWirelessUIManager.Is_Tablet_WirelessOn && Is_MainComputer_WirelessOn)
+            if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
             {
                 GameData gameData = SaveSystem.Load("save_001");
 
@@ -191,8 +192,8 @@ public class MC_BluetoothUIManager : MonoBehaviour
                     MCW_Alert_TitleText.GetComponent<Text>().text = "Complete!";
                     MCW_Alert_BodyText.GetComponent<Text>().text = "[태블릿]에 [업무 보고 파일 최종본]을 성공적으로 업로드했습니다.";
 
-                    tabletWirelessUIManager.Is_Tablet_WirelessOn = false;
-                    Is_MainComputer_WirelessOn = false;
+                    GameManager.gameManager._gameData.Is_Tablet_WirelessOn = false;
+                    GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = false;
 
                     MissionGenerator.missionGenerator.DeleteNewMission(8);
                     GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC = true;
