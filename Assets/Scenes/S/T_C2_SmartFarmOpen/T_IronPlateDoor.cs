@@ -59,7 +59,7 @@ public class T_IronPlateDoor : MonoBehaviour, IInteraction
 
         DisableButton();
 
-        InteractionButtonController.interactionButtonController.playerPressHand();
+        InteractionButtonController.interactionButtonController.PlayerCanNotPush();
 
     }
 
