@@ -53,6 +53,7 @@ public class L_TDBT_FixPart : MonoBehaviour, IInteraction
     {
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHand();
+        InteractionButtonController.interactionButtonController.PlayerCanNotPush();
     }
 
     public void OnSniff()

@@ -54,6 +54,7 @@ public class E_FA_FIxPart : MonoBehaviour, IInteraction
     {
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
+        InteractionButtonController.interactionButtonController.PlayerCanNotPush();
     }
 
     public void OnSniff()

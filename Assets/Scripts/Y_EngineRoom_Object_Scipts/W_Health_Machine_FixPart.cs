@@ -55,6 +55,7 @@ public class W_Health_Machine_FixPart : MonoBehaviour, IInteraction
     {
         DiableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
+        InteractionButtonController.interactionButtonController.PlayerCanNotPush();
     }
 
     public void OnSniff()
