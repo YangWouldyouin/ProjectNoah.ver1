@@ -207,6 +207,8 @@ public class GameEndingController : MonoBehaviour
 
     public void changeEndingScene()
     {
+        SteamStatManager.steamEndingCountAchieve?.Invoke(); //½ºÆÀ ¾÷Àû
+
         SceneManager.LoadScene("EndingScene");
     }
 

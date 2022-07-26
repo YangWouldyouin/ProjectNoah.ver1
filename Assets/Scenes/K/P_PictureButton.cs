@@ -240,6 +240,8 @@ pushButton_P_PictureButton, noCenterButton_P_PictureButton,smashButton_P_Picture
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //IsReported = true;
 
+        SteamStatManager.steamAchieve3Time.Invoke(1, "EGG_PICTURE_3");//½ºÆÀ ¾÷Àû
+
         Report_GUI_P.SetActive(false); // Ã¢ ²ô±â
         UniverseImage_P.SetActive(false);
         /* ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ W-2´ë»ç »ðÀÔ ¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾¢¾ */

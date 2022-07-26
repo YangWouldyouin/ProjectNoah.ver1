@@ -318,6 +318,8 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         Report_GUI.SetActive(false);
         cancelInteractions.enabled = true;
 
+        SteamStatManager.steamAchieve3Time.Invoke(0, "EGG_HEALTH_DATA_3"); //½ºÆÀ ¾÷Àû
+
         GameManager.gameManager._gameData.IsAIReportMissionTime = false;
         GameManager.gameManager._gameData.IsRM_HealthDataReportbool = true;
         GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck = false;
