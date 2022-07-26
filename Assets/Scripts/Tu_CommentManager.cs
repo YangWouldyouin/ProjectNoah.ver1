@@ -373,6 +373,10 @@ public class Tu_CommentManager : MonoBehaviour
     {
         EndAnim.SetActive(true);
         GameManager.gameManager._gameData.IsTutorialClear = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        /* 스팀업적 : 인수인계 완료 */
+        SteamStatManager.steamAchieve1Time.Invoke(0, "END_TUTORIAL_CLEAR");
 
         Invoke("TutoBye", 3f);
 

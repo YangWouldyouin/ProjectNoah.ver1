@@ -125,6 +125,7 @@ public class SLManager2 : MonoBehaviour
             savePageData.IsFakeCoordinateDatafile_Tablet0 = false;
             savePageData.IsAIDown_M_C1C30 = false;
             savePageData.IsRevisioncomplaint0 = false;
+
             Debug.Log("엔딩 리셋 성공");
             SaveSystem.SaveCollectPage(savePageData, "ProjectNoah_SavePageData");
         }
