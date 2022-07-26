@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class SteamAchieveData : ScriptableObject
 {
-    /* 행동 50번 업적 */
+    [Header("<행동 50번 업적>")]
     public int[] steam50Achieve = new int[8];
     //[Header("왈월왕멍")]
     //public int barkCount; // 0
@@ -24,7 +24,7 @@ public class SteamAchieveData : ScriptableObject
     //[Header(" 등반 욕구")]
     //public int upCount; // 7
 
-    /* 한번만 체크하면 되는 업적 */
+    [Header("<한번만 체크하면 되는 업적>")]
     public bool[] steamAchieveOnce = new bool[8];
     //public bool END_TUTORIAL_CLEAR; // 0
     //public bool END_TUTORIAL_FAIL; // 1
@@ -35,21 +35,23 @@ public class SteamAchieveData : ScriptableObject
     //public bool EGG_WRONG_FOOD; // 6
     //public bool EGG_METEOR_3; // 7
 
-    /* 임무 3회 업적 */
+    [Header("<임무 3회 업적(생체보고, 사진찍기)>")]
     public int[] steamMission3Time = new int[2];
     //public int healthDataCount; /* 생체 보고 3회 */
     //public int pictureCount; /* 사진 찍기 3회 */
     //public bool EGG_HEALTH_DATA_3;
     //public bool EGG_PICTURE_3;
 
-    /* 첫 엔딩 업적, 5번째 엔딩 업적, day7 업적 한번에 */
+    [Header("<첫 엔딩 업적, 5번째 엔딩 업적, day7 업적 한번에>")]
     public int endingCount;
     //public bool END_FIRST_ENDING;
     //public bool END_FIFTH_ENDING;
+    [Header("day7 업적 한번만 체크용")]
     public bool END_FAST_ENDING; // day7 업적 한번만 체크
 
-    /* 모든 음성 파일 듣기 업적 */
+    [Header("<모든 음성 파일 듣기 업적>")]
     public int hearCount;
+    [Header("중복 듣기 카운트 방지(음성 파일 하나당 1번만 카운트)")]
     public bool[] IsHearCheck = new bool[8]; // 중복 듣기 카운트 방지
     //public bool EGG_NOAH_HEAR;
 }
