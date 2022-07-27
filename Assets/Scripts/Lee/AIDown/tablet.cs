@@ -147,11 +147,11 @@ public class tablet : MonoBehaviour, IInteraction
             //Invoke("TabletLockOff", 1f);
             Debug.Log("태블릿 잠금해제");
         }
-        /*else
+        else
         {
-            GameManager.gameManager._gameData.IsTabletUnlock = false;
-            // SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        }*/
+            /* 스팀업적 : 틀린 사진으로 타블렛 해금 시도 */
+            SteamStatManager.steamAchieve1Time.Invoke(3, "EGG_WHO_ARE_YOU");
+        }
     }
 
     public void TabletOn()

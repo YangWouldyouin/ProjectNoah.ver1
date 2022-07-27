@@ -98,6 +98,10 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
         // 자막 + 음성 나오기
         dollrecordAudio.clip = Doll_E_Audio;
         dollrecordAudio.Play();
+
+        /* 스팀업적 : 모든 음성파일듣기 */
+        SteamStatManager.steamNoahHearAchieve?.Invoke(0);
+
         /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 인형 대사 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
     }
     /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */

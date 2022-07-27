@@ -132,6 +132,10 @@ pushButton_L_Doll, upButton_L_Doll, upDisableButton_L_Doll, smashButton_L_Doll, 
         // 자막 + 음성 나오기
         dollrecordAudio.clip = Doll_L_Audio;
         dollrecordAudio.Play();
+
+        /* 스팀업적 : 모든 음성파일듣기 */
+        SteamStatManager.steamNoahHearAchieve?.Invoke(1);
+
     }
 
     /* ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ 퍼즐 끝 ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ */
