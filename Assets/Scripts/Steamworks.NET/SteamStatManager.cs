@@ -52,7 +52,7 @@ public class SteamStatManager : MonoBehaviour
     }
 
     /* ½ºÆÀ¾÷Àû : Æ©Åä ¿Ï·á */
-    //SteamStatManager.steamEndingAchieve.Invoke(0, "END_TUTORIAL_CLEAR");
+    //SteamStatManager.steamAchieve1Time.Invoke(0, "END_TUTORIAL_CLEAR");
     public void AchieveEnding(int achieveOnceIndex, string achieveName)
     {
         if(!steamAchieveData.steamAchieveOnce[achieveOnceIndex])
