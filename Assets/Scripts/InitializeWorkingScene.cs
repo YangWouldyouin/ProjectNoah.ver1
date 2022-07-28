@@ -457,6 +457,10 @@ public class InitializeWorkingScene : MonoBehaviour
         {
             //LineHome2_Collider.enabled = false;
             IronPlateDoor_Collider.enabled = false;
+
+            /*고쳐진 전선 위치 고정*/
+            FixedLine2.transform.position = new Vector3(-258.06f, 0.674f, 670.384f); //위치 값
+            FixedLine2.transform.rotation = Quaternion.Euler(0, -90, 90); // 각도 값 
         }
     }
 
@@ -468,9 +472,7 @@ public class InitializeWorkingScene : MonoBehaviour
             /*망가진 전선 안보이게*//*
             workRoomData.IsObjectActiveList[34] = false;
 */
-            /*고쳐진 전선 위치 고정*/
-            FixedLine2.transform.position = new Vector3(-258.06f, 0.674f, 670.384f); //위치 값
-            FixedLine2.transform.rotation = Quaternion.Euler(0, -90, 90); // 각도 값 
+
 
             smartFarmOpen.enabled = false;
             //workRoomData.IsObjectActiveList[34] = false;

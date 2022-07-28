@@ -148,6 +148,13 @@ public class T_ManagementMachine : MonoBehaviour, IInteraction
             OpenPot3Data_T.IsNotInteractable = false; // 상호작용 가능하게
             OpenPot3Outline_T.OutlineWidth = 8; // 아웃라인도 켜줍니다.
         }
+
+        if (managementMachineData_T.IsClicked && GameManager.gameManager._gameData.IsSmartFarmFix_T_C2 && !GameManager.gameManager._gameData.IsCompleteSmartFarmOpen)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(65));
+        }
+
+
     }
     void DisableButton()
     {

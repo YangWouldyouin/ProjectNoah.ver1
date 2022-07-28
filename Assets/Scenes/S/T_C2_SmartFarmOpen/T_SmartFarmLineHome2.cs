@@ -55,6 +55,8 @@ public class T_SmartFarmLineHome2 : MonoBehaviour, IInteraction
         noCenterButton_T_SmartFarmLineHome2 = smartFarmLineHome2Data_T.CenterButton1;
     }
 
+
+
     void DisableButton()
     {
         barkButton_T_SmartFarmLineHome2.transform.gameObject.SetActive(false);
