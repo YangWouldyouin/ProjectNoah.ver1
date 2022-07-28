@@ -36,12 +36,14 @@ public class RegularMissionManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //중간데이터보고 임무 시작
 
-                //GameManager.gameManager._gameData.ActiveMissionList[14] = true;
-                //MissionGenerator.missionGenerator.ActivateMissionList();
-                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.AddNewMission(14);
+                GameData gameData = SaveSystem.Load("save_001");
+                if (!gameData.CompleteMissionList[14])
+                {
+                    MissionGenerator.missionGenerator.AddNewMission(14);
+                    GameManager.gameManager._gameData.CompleteMissionList[14] = true;
+                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                }
             }
-
         }
 
         if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 11 && (inGameTime.days + 1) >= 3 && GameManager.gameManager._gameData.IsHDRtimeCheck)

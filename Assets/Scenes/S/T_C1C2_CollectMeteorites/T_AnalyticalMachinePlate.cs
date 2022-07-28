@@ -118,11 +118,17 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             RealNormalMeteor1Data_T.IsNotInteractable = true; // 상호작용 불가능하게
             RealNormalMeteor1Outline_T.OutlineWidth = 0;
 
-            MissionGenerator.missionGenerator.DeleteNewMission(22);
+            // 미션이 추가되어있는지 확인 후 삭제 (22번이 정기 미션이어서 시간 안됬는데 미션수행할경우 안들어있어서 오류발생)
+            GameData mission2Data = SaveSystem.Load("save_001");
+            if (mission2Data.ActiveMissionList[22])
+            {
+                MissionGenerator.missionGenerator.DeleteNewMission(22);
+            }
 
             /* 스팀업적 : 일단 모으고 보기 완료 */
             SteamStatManager.steamAchieve1Time.Invoke(7, "EGG_METEOR_3");
         }
+
         if (RealimportantMeteorData_T.IsBite)
         {
             /*중요 운석을 넣었는지 확인*/
