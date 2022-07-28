@@ -78,7 +78,7 @@ public class T_ReAnalyticalMachineButton : MonoBehaviour, IInteraction
          운석 냄새를 먼저 맡아야 된다는 것을 AI가 알려준다.*/
 
         //높이가 되면 수집기계의 가운데 버튼을 켜준다.
-        if (realAnalyticalMachineButtonData_T.IsCollision && GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2)
+        if (realAnalyticalMachineButtonData_T.IsCollision /*&& GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2*/)
         {
             realAnalyticalMachineButtonData_T.IsNotInteractable = false; // 상호작용 가능하게
             realAnalyticalMachineButtonOutline_T.OutlineWidth = 8;
@@ -93,7 +93,7 @@ public class T_ReAnalyticalMachineButton : MonoBehaviour, IInteraction
             realAnalyticalMachineData_T.IsCenterButtonDisabled = true;
         }
 
-        if(GameManager.gameManager._gameData.IsAnalyticalMachineOpen)
+        if (GameManager.gameManager._gameData.IsAnalyticalMachineOpen)
         {
             realAnalyticalMachineData_T.IsNotInteractable = false; // 상호작용 가능하게
             realAnalyticalMachineOutline_T.OutlineWidth = 8;

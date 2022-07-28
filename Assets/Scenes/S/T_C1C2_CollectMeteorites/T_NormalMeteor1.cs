@@ -49,12 +49,12 @@ public class T_NormalMeteor1 : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (normalMeteor1ObjData_T.IsClicked && !GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2)
+/*        if (normalMeteor1ObjData_T.IsClicked && !GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2)
         {
             Debug.Log("나는 말을 할 수 있는 운석이야");
             //C - 3 대사  ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(44));
-        }
+        }*/
     }
 
     public void OnBark()
@@ -92,9 +92,9 @@ public class T_NormalMeteor1 : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerSniff();
 
-        GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2 = true;
+/*        GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2 = true;
 
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");*/
     }
 
 

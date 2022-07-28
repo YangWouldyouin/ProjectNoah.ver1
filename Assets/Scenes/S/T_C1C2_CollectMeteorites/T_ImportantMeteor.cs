@@ -49,11 +49,11 @@ public class T_ImportantMeteor : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if(importantMeteorObjData_T.IsClicked && !GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2)
+/*        if(importantMeteorObjData_T.IsClicked && !GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2)
         {
             //C - 3 企紫  』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』 』
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(44));
-        }
+        }*/
     }
 
     public void OnBark()
@@ -91,9 +91,9 @@ public class T_ImportantMeteor : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.playerSniff();
 
-        GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2 = true;
+/*        GameManager.gameManager._gameData.IsIsReallySmellDone_T_C2 = true;
 
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");*/
     }
 
     public void OnSmash()

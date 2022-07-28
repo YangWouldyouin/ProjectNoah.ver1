@@ -20,6 +20,9 @@ public class GameEndingController : MonoBehaviour
         Dontclick.SetActive(false);
         NoahStatController.noahStatController.IncreaseStat(0);
         InteractionButtonController.interactionButtonController.PlayerAlive();
+
+        /* 스팀업적 : 예상치 못한 사고:돌연사 완료 */
+        SteamStatManager.steamAchieve1Time.Invoke(2, "END_SUDDEN_DEATH");
     }
 
     public void SuddenDeath2()

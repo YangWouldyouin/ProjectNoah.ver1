@@ -80,6 +80,9 @@ public class DogBadFood3 : MonoBehaviour, IInteraction
         livingRoomData.IsObjectActiveList[48] = false;
         engineRoomData.IsObjectActiveList[48] = false;
         controlRoomData.IsObjectActiveList[48] = false;
+
+        /* 스팀업적 : 아무거나 먹지 말랬지 완료 */
+        SteamStatManager.steamAchieve1Time.Invoke(6, "EGG_WRONG_FOOD");
     }
 
     public void OnPushOrPress()

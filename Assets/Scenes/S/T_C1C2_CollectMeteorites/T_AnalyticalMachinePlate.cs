@@ -119,6 +119,9 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             RealNormalMeteor1Outline_T.OutlineWidth = 0;
 
             MissionGenerator.missionGenerator.DeleteNewMission(22);
+
+            /* 스팀업적 : 일단 모으고 보기 완료 */
+            SteamStatManager.steamAchieve1Time.Invoke(7, "EGG_METEOR_3");
         }
         if (RealimportantMeteorData_T.IsBite)
         {
@@ -141,6 +144,9 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
             RealimportantMeteorData_T.IsNotInteractable = true; // 상호작용 불가능하게
             RealimportantMeteorOutline_T.OutlineWidth = 0;
+
+            /* 스팀업적 : 일단 모으고 보기 완료 */
+            SteamStatManager.steamAchieve1Time.Invoke(7, "EGG_METEOR_3");
         }      
     }
 
