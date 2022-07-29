@@ -166,18 +166,27 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         drugLine.OutlineWidth = 0f;
         drugCol.enabled = false;
 
-        //GameManager.gameManager._gameData.ActiveMissionList[25] = false;
-        //GameManager.gameManager._gameData.ActiveMissionList[26] = true;
-        //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        //MissionGenerator.missionGenerator.ActivateMissionList();
-        MissionGenerator.missionGenerator.DeleteNewMission(25);
+        // 미션이 추가되어있는지 확인 후 삭제
+        GameData missionData = SaveSystem.Load("save_001");
+        if (missionData.ActiveMissionList[25])
+        {
+            MissionGenerator.missionGenerator.DeleteNewMission(25);
+        }
+
         StartCoroutine(Delay2Sec());
     }
 
     IEnumerator Delay2Sec()
     {
         yield return new WaitForSeconds(2f);
-        MissionGenerator.missionGenerator.AddNewMission(26);
+
+        GameData missionData = SaveSystem.Load("save_001");
+        if (!missionData.CompleteMissionList[26])
+        {
+            MissionGenerator.missionGenerator.AddNewMission(26);
+            GameManager.gameManager._gameData.CompleteMissionList[26] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
     }
 
     public void Report()

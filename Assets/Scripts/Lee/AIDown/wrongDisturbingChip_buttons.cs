@@ -27,6 +27,7 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
 
         noCenterButton = wrongdisturbingChipData.CenterButton1;
 
+        //this.onClick.AddListener(OnWrongChipClicked);
         //GameManager.gameManager._gameData.IsHide = true;
     }
 
@@ -55,17 +56,30 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
 
     void Update()
     {
-        if (wrongdisturbingChipData.IsClicked)
-        {
-            if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2)
-            {
-                //GameManager.gameManager._gameData.ActiveMissionList[9] = true;
-                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                //MissionGenerator.missionGenerator.ActivateMissionList();
-                MissionGenerator.missionGenerator.AddNewMission(9);
-            }
+        // UI eventListener 로 바꾸기
+        //if (wrongdisturbingChipData.IsClicked)
+        //{
+        //    if (GameManager.gameManager._gameData.IsAIVSMissionCount >= 2)
+        //    {
+        //        MissionGenerator.missionGenerator.AddNewMission(9);
+        //    }
 
-            wrongdisturbingChipData.IsClicked = false;
+        //    wrongdisturbingChipData.IsClicked = false;
+        //}
+    }
+
+    void OnWrongChipClicked(GameObject sender)
+    {
+        GameData gameData = SaveSystem.Load("save_001");
+        if (gameData.IsAIVSMissionCount >= 2)
+        {
+            if(!gameData.CompleteMissionList[9])
+            {
+                MissionGenerator.missionGenerator.AddNewMission(9);
+                GameManager.gameManager._gameData.CompleteMissionList[9] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+            SteamStatManager.steamAchieve1Time.Invoke(5, "EGG_POTION_DETECTION");
         }
     }
 

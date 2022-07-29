@@ -178,11 +178,18 @@ public class insert01 : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsAIDown = true;
             GameManager.gameManager._gameData.IsAIDown_M_C1C3 = true;
             GameManager.gameManager._gameData.IsStartOrbitChange = true;
-            //GameManager.gameManager._gameData.ActiveMissionList[9] = false;
-            //GameManager.gameManager._gameData.ActiveMissionList[12] = true;
-            //MissionGenerator.missionGenerator.ActivateMissionList();
+
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.DeleteNewMission(9);
+
+            // 미션이 추가되어있는지 확인 후 삭제
+            GameData missionData = SaveSystem.Load("save_001");
+            if (missionData.ActiveMissionList[9])
+            {
+                MissionGenerator.missionGenerator.DeleteNewMission(9);
+            }
+
+            SteamStatManager.steamAchieve1Time.Invoke(4, "EGG_ONLY_US");
+
             StartCoroutine(Delay2Sec());
 
             inGameTime.IsGoToEarthMissionClear1 = true;

@@ -108,7 +108,15 @@ public class insert02_buttons : MonoBehaviour, IInteraction
             GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
-            MissionGenerator.missionGenerator.DeleteNewMission(26);
+
+            // 미션이 추가되어있는지 확인 후 삭제
+            GameData gameData = SaveSystem.Load("save_001");
+            if (gameData.ActiveMissionList[26])
+            {
+                MissionGenerator.missionGenerator.DeleteNewMission(26);
+            }
+
+
 
             Invoke("NoSDrug", 0.5f);
         }
