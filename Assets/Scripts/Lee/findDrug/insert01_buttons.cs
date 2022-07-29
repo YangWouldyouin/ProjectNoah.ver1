@@ -101,7 +101,8 @@ public class insert01_buttons : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.playerPressHead();
 
         if (drugData.IsBite)
-        {            
+        {
+            SteamStatManager.steamAchieve1Time.Invoke(5, "EGG_POTION_DETECTION");
             GameManager.gameManager._gameData.IsCheckDrug = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
