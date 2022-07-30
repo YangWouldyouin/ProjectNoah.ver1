@@ -48,6 +48,7 @@ public class ResetGameManager : MonoBehaviour
 
 
     public ObjectData drugBagData;
+    public ObjectData drugData;
 
     /* 생활공간 오브젝트데이터 초기화 */
     public ObjectData trashBodyData;
@@ -206,6 +207,7 @@ public class ResetGameManager : MonoBehaviour
         wrongMeteo4Data.IsBite = false;
 
         drugBagData.IsNotInteractable = true; // 마약가방 비활성화
+        drugData.IsNotInteractable = false; // 마약 다시 활성화
     }
 
     void ResetLivingRoomObjectData()
