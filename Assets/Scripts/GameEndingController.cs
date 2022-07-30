@@ -73,10 +73,14 @@ public class GameEndingController : MonoBehaviour
             inGameTime.timer = 0;
 
             fadeout.SetActive(true);
-            Invoke("changeEndingScene", 1f);
-            //SceneManager.LoadScene("EndingScene");
-            //엔딩 씬 이동
 
+            // 스팀 엔딩 중복 체크 방지
+            if(!GameManager.gameManager._gameData.steamEndingCheck[0])
+            {
+                GameManager.gameManager._gameData.steamEndingCheck[0] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                Invoke("changeEndingScene", 1f);
+            }
         }
 
         if (GameManager.gameManager._gameData.IsMakeForestEnd == true)
@@ -87,14 +91,19 @@ public class GameEndingController : MonoBehaviour
             //스탯, 취소 리포트 개수 리셋 (게임 리셋)
             inGameTime.statNum = 10;
 
-
             inGameTime.days = 0;
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
             fadeout.SetActive(true);
-            Invoke("changeEndingScene", 1f);
-            //SceneManager.LoadScene("EndingScene");
+
+            // 스팀 엔딩 중복 체크 방지
+            if (!GameManager.gameManager._gameData.steamEndingCheck[1])
+            {
+                GameManager.gameManager._gameData.steamEndingCheck[1] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                Invoke("changeEndingScene", 1f);
+            }
         }
 
         if (GameManager.gameManager._gameData.IsReportCancleCount >= 5)
@@ -113,10 +122,15 @@ public class GameEndingController : MonoBehaviour
             inGameTime.timer = 0;
 
             fadeout.SetActive(true);
-            Invoke("changeEndingScene", 1f);
-            //SceneManager.LoadScene("EndingScene");
-            // 리포트 게임 엔딩씬으로 이동
-            // 게임 오버
+
+            // 스팀 엔딩 중복 체크 방지
+            if (!GameManager.gameManager._gameData.steamEndingCheck[2])
+            {
+                GameManager.gameManager._gameData.steamEndingCheck[2] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                Invoke("changeEndingScene", 1f);
+            }
+
         }
 
         if (GameManager.gameManager._gameData.IsDisqualifiedEnd == true)
@@ -132,9 +146,14 @@ public class GameEndingController : MonoBehaviour
             inGameTime.timer = 0;
 
             fadeout.SetActive(true);
-            Invoke("changeEndingScene", 1f);
-            //SceneManager.LoadScene("EndingScene");
-            //엔딩 씬 이동
+
+            // 스팀 엔딩 중복 체크 방지
+            if (!GameManager.gameManager._gameData.steamEndingCheck[3])
+            {
+                GameManager.gameManager._gameData.steamEndingCheck[3] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                Invoke("changeEndingScene", 1f);
+            }
         }
 
         if (GameManager.gameManager._gameData.IsDiscardNoahEnd == true)
@@ -150,9 +169,14 @@ public class GameEndingController : MonoBehaviour
             inGameTime.timer = 0;
 
             fadeout.SetActive(true);
-            Invoke("changeEndingScene", 1f);
-            //SceneManager.LoadScene("EndingScene");
-            //엔딩 씬 이동
+
+            // 스팀 엔딩 중복 체크 방지
+            if (!GameManager.gameManager._gameData.steamEndingCheck[4])
+            {
+                GameManager.gameManager._gameData.steamEndingCheck[4] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                Invoke("changeEndingScene", 1f);
+            }
         }
 
         if (GameManager.gameManager._gameData.IsSaveOnlyOneEnd == true)
@@ -167,9 +191,14 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            Invoke("changeEndingScene0", 20f);
-            //SceneManager.LoadScene("EndingScene");
-            //엔딩 씬 이동
+
+            // 스팀 엔딩 중복 체크 방지
+            if (!GameManager.gameManager._gameData.steamEndingCheck[5])
+            {
+                GameManager.gameManager._gameData.steamEndingCheck[5] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                Invoke("changeEndingScene0", 20f);
+            }
         }
 
         if (GameManager.gameManager._gameData.IsSaveAllEnd == true)
@@ -184,10 +213,17 @@ public class GameEndingController : MonoBehaviour
             inGameTime.hours = 0;
             inGameTime.timer = 0;
 
-            Invoke("changeEndingScene0", 3f);
-            //SceneManager.LoadScene("EndingScene");
-            //엔딩 씬 이동
+            // 스팀 엔딩 중복 체크 방지
+            if (!GameManager.gameManager._gameData.steamEndingCheck[6])
+            {
+                GameManager.gameManager._gameData.steamEndingCheck[6] = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                Invoke("changeEndingScene0", 3f);
+            }
         }
+
+
+
 
         if(GameManager.gameManager._gameData.IsReturnOfTheEarth == false && GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet && GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC == false)
         {
@@ -220,7 +256,6 @@ public class GameEndingController : MonoBehaviour
         fadeout.SetActive(true);
         Invoke("changeEndingScene", 1f);
     }
-
 
     public void SavePageManager()
     {

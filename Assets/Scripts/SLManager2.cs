@@ -395,6 +395,12 @@ public class SLManager2 : MonoBehaviour
             character.IsMeteorCollectMachineOpen = false;
             character.IsAnalyticalMachineOpen = false;
 
+            // 스팀 엔딩 리셋
+            for (int endingIndex = 0; endingIndex < 7; endingIndex++)
+            {
+                character.steamEndingCheck[endingIndex] = false;
+            }
+
             SaveSystem.Save(character, "save_001");
         }
     }

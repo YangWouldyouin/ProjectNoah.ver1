@@ -295,6 +295,9 @@ public class GameData
     public bool IsNoticePotatoBody; // 고구마 상자 대사 1번 출력용
     public bool IsMeteorCollectMachineOpen; // 운석 수집기 열렸는지
     public bool IsAnalyticalMachineOpen; //운석 분석기 열렸는지
+
+    [Header("<기타>")]
+    public bool[] steamEndingCheck = new bool[7];
 }
 
 

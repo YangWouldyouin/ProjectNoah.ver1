@@ -536,6 +536,11 @@ public class ResetGameManager : MonoBehaviour
         character.IsMeteorCollectMachineOpen = false;
         character.IsAnalyticalMachineOpen = false;
 
+        for(int endingIndex=0; endingIndex<7; endingIndex++)
+        {
+            character.steamEndingCheck[endingIndex] = false;
+        }
+
         SaveSystem.Save(character, "save_001");
     }
 
