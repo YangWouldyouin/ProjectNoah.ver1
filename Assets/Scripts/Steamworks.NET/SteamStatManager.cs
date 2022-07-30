@@ -16,13 +16,6 @@ public class SteamStatManager : MonoBehaviour
 
     void Start()
     {
-        // 스탯 리셋하고 싶을 때
-        //if (!SteamManager.Initialized)
-        //{
-        //    return;
-        //}
-        //SteamUserStats.ResetAllStats(true);
-
         InteractionButtonController.steam50Achieve += Achieve50;
         steamAchieve1Time += AchieveEnding;
         steamAchieve3Time += mission3Time;
@@ -63,13 +56,8 @@ public class SteamStatManager : MonoBehaviour
         }
     }
 
-
     /* 스팀업적 : 건강검진 3회 */
     //SteamStatManager.steamAchieve3Time.Invoke(0, "EGG_HEALTH_DATA_3");
-
-    /* 스팀업적 : 사진 3회 */
-    //SteamStatManager.steamAchieve3Time.Invoke(1, "EGG_PICTURE_3");
-
     public void mission3Time(int missionIndex, string achieveName)
     {
         if(steamAchieveData.steamMission3Time[missionIndex] <3)
@@ -122,7 +110,7 @@ public class SteamStatManager : MonoBehaviour
             steamAchieveData.IsHearCheck[audioIndex] = true;
         }
 
-        if(steamAchieveData.hearCount==8) // 음성파일 8개 모두 들었으면
+        if(steamAchieveData.hearCount==2) // 음성파일 8개 모두 들었으면
         {
             SteamUserStats.SetAchievement("EGG_NOAH_HEAR"); // 모든 음성파일 듣기 업적
             SteamUserStats.StoreStats();
