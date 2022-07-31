@@ -36,13 +36,15 @@ public class RegularMissionManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //중간데이터보고 임무 시작
 
-                GameData gameData = SaveSystem.Load("save_001");
-                if (!gameData.CompleteMissionList[14])
-                {
-                    MissionGenerator.missionGenerator.AddNewMission(14);
-                    GameManager.gameManager._gameData.CompleteMissionList[14] = true;
-                    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                }
+                MissionGenerator.missionGenerator.AddNewMission(14);
+
+                //GameData gameData = SaveSystem.Load("save_001");
+                //if (!gameData.CompleteMissionList[14])
+                //{
+                //    MissionGenerator.missionGenerator.AddNewMission(14);
+                //    GameManager.gameManager._gameData.CompleteMissionList[14] = true;
+                //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //}
             }
         }
 
@@ -68,9 +70,6 @@ public class RegularMissionManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //중간데이터보고 임무 끝
 
-                //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-                //MissionGenerator.missionGenerator.ActivateMissionList();
-                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 MissionGenerator.missionGenerator.DeleteNewMission(14);
             }
 
@@ -94,10 +93,14 @@ public class RegularMissionManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //선전용 사진 촬영 보고 시작
 
-                //GameManager.gameManager._gameData.ActiveMissionList[23] = true;
-                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                //MissionGenerator.missionGenerator.ActivateMissionList();
                 MissionGenerator.missionGenerator.AddNewMission(23);
+                //GameData gameData = SaveSystem.Load("save_001");
+                //if (!gameData.CompleteMissionList[23])
+                //{
+                //    MissionGenerator.missionGenerator.AddNewMission(23);
+                //    GameManager.gameManager._gameData.CompleteMissionList[23] = true;
+                //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //}
             }
             GameManager.gameManager._gameData.IsPtimeCheck = true;
         }
@@ -122,9 +125,6 @@ public class RegularMissionManager : MonoBehaviour
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //선전용 사진 촬영 보고 끝
 
-                //GameManager.gameManager._gameData.ActiveMissionList[23] = false;
-                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                //MissionGenerator.missionGenerator.ActivateMissionList();
                 MissionGenerator.missionGenerator.DeleteNewMission(23);
             }
         }

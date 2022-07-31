@@ -41,12 +41,15 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
     GameObject portableGroup; // 다시 포터블 그룹의 자식으로 넣어주기 위함
     PlayerEquipment playerEquipment;
 
+    TMPro.TextMeshProUGUI CancelObjectText;
+
     void Start()
     {
         Health_MachineData_W = GetComponent<ObjData>();
         healthMachineData = Health_MachineData_W.objectDATA;
         HM_Outline = GetComponent<Outline>();
-        
+
+        CancelObjectText = BaseCanvas._baseCanvas.objectText;
 
         /* ObjData 로부터 상호작용 버튼을 가져온다. */
         barkButton_W_Health_Machine = Health_MachineData_W.BarkButton;
@@ -246,6 +249,9 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
     IEnumerator HealthMachhineDone()
     {
         yield return new WaitForSeconds(1.5f);
+
+        CancelObjectText.text = "Noah N.113";
+
         healthMachineFixPart_HM.GetComponent<Rigidbody>().isKinematic = false;
         healthMachineFixPart_HM.transform.parent = null;
         healthMachineFixPartData.IsBite = false;
