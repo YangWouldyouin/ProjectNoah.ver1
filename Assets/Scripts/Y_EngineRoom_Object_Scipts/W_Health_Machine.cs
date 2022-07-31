@@ -265,7 +265,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
         healthMachineData.IsCenterButtonDisabled = false;
         playerEquipment.biteObjectName = "";
-        BaseCanvas._baseCanvas.objectText.text = "";
+
         //W_HM_2
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(6));
 
