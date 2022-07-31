@@ -13,6 +13,8 @@ public class NoahStatController : MonoBehaviour
 
     [SerializeField] TMPro.TextMeshProUGUI conditionText;
 
+    [SerializeField] float noahOriginalSpeed=3f;
+
     const float MAX_TIME = 1f;
     float timeLeft = 0f;
 
@@ -48,7 +50,7 @@ public class NoahStatController : MonoBehaviour
         }
         else
         {
-            agent.speed = 3f;
+            agent.speed = noahOriginalSpeed;
         }
 
         DecreaseStatByTime();
