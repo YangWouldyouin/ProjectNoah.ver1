@@ -24,4 +24,6 @@ public class ObjectData :ScriptableObject
     public bool IsCenterButtonDisabled = false; // true면 첫 번째 가운데 버튼 비활성화
     public bool IsCenterPlusButtonDisabled = false; // true면 두 번째 가운데 버튼 비활성화
     public bool IsNotInteractable = false;
+
+    public bool IsSky= false; // 물었다 내려놓을 때 붕뜨는 애들 방지
 }

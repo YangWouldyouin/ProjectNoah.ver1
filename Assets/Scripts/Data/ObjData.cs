@@ -55,6 +55,9 @@ public class ObjData : MonoBehaviour
     [SerializeField] Vector3 bitePos;
     [SerializeField] Vector3 biteRot;
 
+    [Header("< 내려놓기 위치 >")]
+    [SerializeField] Vector3 cancelBitePos;
+
     [Header("< 밀기 위치, 각도 >")]
     [SerializeField] Vector3 pushPos;
     [SerializeField] Vector3 pushRot;
@@ -99,6 +102,8 @@ public class ObjData : MonoBehaviour
     public Vector3 BitePos { get { return bitePos; } }
     public Vector3 BiteRot { get { return biteRot; } }
 
+    public Vector3 CancelBitePos { get { return cancelBitePos; } }
+
     public Vector3 PushPos { get { return pushPos; } }
     public Vector3 PushRot { get { return pushRot; } }
 
@@ -119,8 +124,6 @@ public class ObjData : MonoBehaviour
     public bool IsObserve = false;
     public bool IsCollision = false; // 책상 올라가려고 추가한 것이다. UpUP, M_C2_FindEnginespaceKey 코드 참고
     public bool IsClicked = false;
-
-
 
     Outline outline; // 마우스 오버시 오브젝트 외곽선
     private void Start()

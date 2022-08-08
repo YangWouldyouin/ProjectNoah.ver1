@@ -239,7 +239,16 @@ public class InteractionButtonController : MonoBehaviour
         noahBiteObject.transform.parent = null;
 
         noahBiteObject.transform.localScale = equipment.cancelBiteScale;
-        noahBiteObject.transform.position = new Vector3(noahBiteObject.transform.position.x, equipment.cancelBitePos.y, noahBiteObject.transform.position.z);
+
+        // 내려놓을 때 붕뜨는 오브젝트이면
+        if(biteData.objectDATA.IsSky)
+        {
+            noahBiteObject.transform.position = new Vector3(noahBiteObject.transform.position.x, biteData.CancelBitePos.y, noahBiteObject.transform.position.z);
+        }
+        else
+        {
+            noahBiteObject.transform.position = new Vector3(noahBiteObject.transform.position.x, equipment.cancelBitePos.y, noahBiteObject.transform.position.z);
+        }
         noahBiteObject.transform.eulerAngles = equipment.cancelBiteRot;
         
         noahBiteObject.transform.parent = portableObjects.transform;
