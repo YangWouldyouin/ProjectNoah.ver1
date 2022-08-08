@@ -244,12 +244,14 @@ public class InteractionButtonController : MonoBehaviour
         if(biteData.objectDATA.IsSky)
         {
             noahBiteObject.transform.position = new Vector3(noahBiteObject.transform.position.x, biteData.CancelBitePos.y, noahBiteObject.transform.position.z);
+            noahBiteObject.transform.eulerAngles = biteData.BiteRot;
         }
         else
         {
             noahBiteObject.transform.position = new Vector3(noahBiteObject.transform.position.x, equipment.cancelBitePos.y, noahBiteObject.transform.position.z);
+            noahBiteObject.transform.eulerAngles = equipment.cancelBiteRot;
         }
-        noahBiteObject.transform.eulerAngles = equipment.cancelBiteRot;
+
         
         noahBiteObject.transform.parent = portableObjects.transform;
 
