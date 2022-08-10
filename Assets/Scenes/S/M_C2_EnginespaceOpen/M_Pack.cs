@@ -113,8 +113,6 @@ public class M_Pack : MonoBehaviour, IInteraction
         InteractionButtonController.interactionButtonController.PlayerSmash2();
 
         GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
-        //GameManager.gameManager._gameData.ActiveMissionList[3] = false;
-        //MissionGenerator.missionGenerator.ActivateMissionList();
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
         // 미션이 추가되어있는지 확인 후 삭제
@@ -140,7 +138,7 @@ public class M_Pack : MonoBehaviour, IInteraction
         packData_M.IsBite = false;
 
         M_canCardKey.SetActive(true);
-        M_canCardKey.transform.position = gameObject.transform.position;
+        M_canCardKey.transform.position = new Vector3(transform.position.x, 0.08f, transform.position.z);
         EngineKeyData_M.IsNotInteractable = false;
 
         /*카드키 찾기 퍼즐 완료*//*
@@ -169,11 +167,30 @@ public class M_Pack : MonoBehaviour, IInteraction
 
         //위치 고정: 이유는 얘 위치 따라서 카드키 위치 나오니까 카드키가 공중 부양하기 때문에
         gameObject.transform.position = new Vector3(transform.position.x, 1.5412f, transform.position.z);
-
         packData_M.IsBite = false;
-
         M_canCardKey.SetActive(true);
-        M_canCardKey.transform.position = gameObject.transform.position;
+
+        // 일단 노아입에 넣기
+
+        //M_canCardKey.transform.position = new Vector3(transform.position.x, 0.08f, transform.position.z);
+        //M_canCardKey.transform.eulerAngles = new Vector3(90, 0, 0);
+        PlayerEquipment equipment = BaseCanvas._baseCanvas.equipment;
+        equipment.biteObjectName = M_canCardKey.name;
+        equipment.cancelBiteRot = M_canCardKey.transform.eulerAngles;
+        equipment.cancelBiteScale = M_canCardKey.transform.localScale;
+        ObjectData cardData = M_canCardKey.GetComponent<ObjData>().objectDATA;
+        cardData.IsBite = true;
+
+
+        M_canCardKey.GetComponent<Rigidbody>().isKinematic = true;   //makes the rigidbody not be acted upon by forces
+        M_canCardKey.GetComponent<Rigidbody>().useGravity = false;
+
+        GameObject myMouth = BaseCanvas._baseCanvas.myMouth;
+
+        M_canCardKey.transform.SetParent(myMouth.transform, true);
+
+        M_canCardKey.transform.localPosition = new Vector3(-0.072f, -0.012f, -0.003f);
+        M_canCardKey.transform.localEulerAngles = new Vector3(-101.002f, 42.158f, -47.048f);
 
         /*카드키 찾기 퍼즐 완료*//*
         GameManager.gameManager._gameData.IsCompleteFindEngineKey = true;
