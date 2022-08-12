@@ -176,7 +176,7 @@ public class M_Pack : MonoBehaviour, IInteraction
         //M_canCardKey.transform.eulerAngles = new Vector3(90, 0, 0);
         PlayerEquipment equipment = BaseCanvas._baseCanvas.equipment;
         equipment.biteObjectName = M_canCardKey.name;
-        equipment.cancelBiteRot = M_canCardKey.transform.eulerAngles;
+        equipment.cancelBiteRot = new Vector3(90, 0, 0);
         equipment.cancelBiteScale = M_canCardKey.transform.localScale;
         ObjectData cardData = M_canCardKey.GetComponent<ObjData>().objectDATA;
         cardData.IsBite = true;
