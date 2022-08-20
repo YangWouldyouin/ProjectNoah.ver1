@@ -326,6 +326,13 @@ public class ResetGameManager : MonoBehaviour
             character.CompleteMissionList[i] = false;
         }
 
+        // 미션 리스트 초기화 
+        for (int j = 0; j < 3; j++)
+        {
+            character.ActiveRegularMissionList[j] = false;
+            character.CompleteRegularMissionList[j] = false;
+        }
+
         /* 1회성 임무 */
         character.IsAIAwake_M_C1 = false; // 항상 AI 활성화  
         character.IsPipeFound_M_C1 = false; // 조종실에서 파이프 찾았으면 이제 보이는 곳에 두기

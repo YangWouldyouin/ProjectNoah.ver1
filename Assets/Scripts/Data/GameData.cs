@@ -57,6 +57,9 @@ public class GameData
     public bool[] ActiveMissionList = new bool [34]; // 미션이 활성화되었는지( true : 미션 활성화, false : 미션 비활성화 )
     public bool[] CompleteMissionList = new bool[34]; // 미션이 완료되었는지( true : 미션 완료, false : 미션 완료 전 )
 
+    public bool[] ActiveRegularMissionList = new bool[3]; // 미션이 활성화되었는지( true : 미션 활성화, false : 미션 비활성화 )
+    public bool[] CompleteRegularMissionList = new bool[3]; // 미션이 완료되었는지( true : 미션 완료, false : 미션 완료 전 )
+
     [Header("<1회성 임무>")]
     public bool IsAIAwake_M_C1; // 항상 AI 활성화  
     public bool IsPipeFound_M_C1; // 조종실에서 파이프 찾았으면 이제 보이는 곳에 두기
