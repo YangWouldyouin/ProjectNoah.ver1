@@ -141,7 +141,7 @@ public class ResetGameManager : MonoBehaviour
         engineData.IsObjectActiveList[8] = true;
         engineData.IsObjectActiveList[9] = true;
         engineData.IsObjectActiveList[39] = true;
-        engineData.IsObjectActiveList[40] = true;
+        //engineData.IsObjectActiveList[40] = true;
         engineData.IsObjectActiveList[58] = true;
 
         /* 생활공간 초기화 */
