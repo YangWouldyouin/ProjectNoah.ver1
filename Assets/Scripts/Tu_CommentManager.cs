@@ -42,6 +42,9 @@ public class Tu_CommentManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.gameManager._gameData.currentRoom = 1;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
         mainCamera = Camera.main;
         analogEffect = mainCamera.GetComponent<AnalogGlitch>();
 
