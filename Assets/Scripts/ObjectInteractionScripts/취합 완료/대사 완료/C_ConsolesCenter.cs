@@ -55,6 +55,8 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
     GameData initialData;
 
+    public BoxCollider noahCol;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,6 +152,7 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
 
             portDoorCol.enabled = false;
             portDoorDataOb.IsNotInteractable = true;
+            noahCol.enabled = true;
 
             //Debug.Log("너가 문제냐?");
         }
