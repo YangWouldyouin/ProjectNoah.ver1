@@ -344,6 +344,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -5954,6 +5955,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -8372,6 +8374,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -11774,6 +11777,8 @@ MonoBehaviour:
     S_IsHealthMachineFixed_T_C2: 0
     ActiveMissionList: 00000000000000000000000000000000000000000000000000000000000000000000
     CompleteMissionList: 00000000000000000000000000000000000000000000000000000000000000000000
+    ActiveRegularMissionList: 000000
+    CompleteRegularMissionList: 000000
     IsAIAwake_M_C1: 0
     IsPipeFound_M_C1: 0
     IsCWDoorOpened_M_C1: 0
@@ -14036,6 +14041,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -27158,6 +27164,7 @@ MonoBehaviour:
   downPos: {fileID: 211248331}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: -0.011, y: -0.384, z: -0.229}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -28551,6 +28558,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -32497,6 +32505,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: -0.09, y: 0.001, z: 0.001}
   biteRot: {x: 90, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -35192,6 +35201,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -36932,6 +36942,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -41741,6 +41752,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -42220,6 +42232,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -47758,6 +47771,7 @@ MonoBehaviour:
   newMissionSprite: {fileID: 21300000, guid: 961e5d64409f7cb4dade4fcc88bfe4e6, type: 3}
   currentMissionSprite: {fileID: 0}
   IsOn: 0
+  inGameTime: {fileID: 0}
 --- !u!4 &1759098428
 Transform:
   m_ObjectHideFlags: 0
@@ -47853,6 +47867,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -49122,6 +49137,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -52583,6 +52599,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -54645,6 +54662,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -57965,6 +57983,7 @@ MonoBehaviour:
   downPos: {fileID: 0}
   bitePos: {x: 0, y: 0, z: 0}
   biteRot: {x: 0, y: 0, z: 0}
+  cancelBitePos: {x: 0, y: 0, z: 0}
   pushPos: {x: 0, y: 0, z: 0}
   pushRot: {x: 0, y: 0, z: 0}
   IsCenterButtonDisabled: 0
@@ -58746,6 +58765,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6776906046410990940, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: FullEgPad_C
+      value: 
+      objectReference: {fileID: 342996351253066980}
+    - target: {fileID: 6776906046410990940, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: FullEgPadData_C
+      value: 
+      objectReference: {fileID: 11400000, guid: e00b31233a58ca1488f0aa448d05f535, type: 2}
+    - target: {fileID: 6776906046410990940, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: normalPic1Data_C
+      value: 
+      objectReference: {fileID: 11400000, guid: c8caede15b167464a8e9182a27f1acc4, type: 2}
+    - target: {fileID: 6776906046410990940, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: normalPic2Data_C
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c4f04241e129364cb9c9644291091e2, type: 2}
+    - target: {fileID: 6776906046410990940, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: normalPic3Data_C
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b43ea94d3fe6cd488fdb906fb96fdc3, type: 2}
+    - target: {fileID: 6776906046410990940, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+      propertyPath: normalPic4Data_C
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c1d55072c354174caa18a62008c27e1, type: 2}
     - target: {fileID: 6794362082667838140, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -59428,6 +59471,11 @@ AudioSource:
 --- !u!1 &342996351253066979 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8077890707808397718, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
+  m_PrefabInstance: {fileID: 342996351253066976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &342996351253066980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8620904918235789514, guid: 1c80b0d2e6ec457489e436d6cfb0ed80, type: 3}
   m_PrefabInstance: {fileID: 342996351253066976}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1397759963577864825 stripped

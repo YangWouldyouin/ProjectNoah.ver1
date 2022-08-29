@@ -273,12 +273,11 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
 
-
-        MissionGenerator.missionGenerator.DeleteNewMission(13);
-
-        //GameManager.gameManager._gameData.ActiveMissionList[13] = false;
-        //MissionGenerator.missionGenerator.ActivateMissionList();
-
+        GameData gameData = SaveSystem.Load("save_001");
+        if (gameData.ActiveMissionList[13])
+        {
+            MissionGenerator.missionGenerator.DeleteNewMission(13);
+        }
         //냄새로 업무공간 고치기 끝
     }
 
@@ -318,7 +317,6 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
     public void Report()
     {
-        Debug.Log("보고하기");
         reportAnim.SetBool("Reportclose", true);
         reportAnim.SetBool("ReportOpen", false);
         Report_GUI.SetActive(false);
@@ -348,13 +346,6 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //W_HM_3
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
-
-            //중간데이터보고 임무 끝
-
-            //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-            //MissionGenerator.missionGenerator.ActivateMissionList();
-            //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            MissionGenerator.missionGenerator.DeleteNewMission(14);
         }
         else
         {
@@ -366,44 +357,34 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
             {
                 GameManager.gameManager._gameData.IsReportCancleCount += 1;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
                 //W_HM_5
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(37));
-
-                //중간데이터보고 임무 끝
-                //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-                //MissionGenerator.missionGenerator.ActivateMissionList();
-                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.DeleteNewMission(14);
             }
             else
             {
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //W_HM_3
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(35));
-
-                //중간데이터보고 임무 끝
-                //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
-                //MissionGenerator.missionGenerator.ActivateMissionList();
-                //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                MissionGenerator.missionGenerator.DeleteNewMission(14);
             }
         }
+  
+        GameData gameData = SaveSystem.Load("save_001");
+        if (gameData.ActiveMissionList[14])
+        {
+            MissionGenerator.missionGenerator.DeleteNewMission(14);
+        }
+        //중간데이터보고 임무 끝
     }
 
     public void Cancle()
     {
-        Debug.Log("취소하기");
-
         reportAnim.SetBool("ReportClose", true);
         reportAnim.SetBool("ReportOpen", false);
         StartCoroutine(CancelReport());
-
     }
 
     IEnumerator CancelReport()
     {
-
         yield return new WaitForSeconds(0.3f);
 
         Report_GUI.SetActive(false);
@@ -421,10 +402,20 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(36));
 
         //중간데이터보고 임무 끝
+        GameData gameData = SaveSystem.Load("save_001");
+        if (gameData.ActiveMissionList[14])
+        {
+            MissionGenerator.missionGenerator.DeleteNewMission(14);
+        }
         //GameManager.gameManager._gameData.ActiveMissionList[14] = false;
         //MissionGenerator.missionGenerator.ActivateMissionList();
         //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        MissionGenerator.missionGenerator.DeleteNewMission(14);
+
+        //GameData gameData = SaveSystem.Load("save_001");
+        //if (gameData.ActiveRegularMissionList[0])
+        //{
+        //    MissionGenerator.missionGenerator.DeleteRegularMission(0);
+        //}
     }
 }
 

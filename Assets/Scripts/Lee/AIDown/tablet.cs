@@ -26,6 +26,10 @@ public class tablet : MonoBehaviour, IInteraction
 
     /* 오브젝트 데이터 */
     public ObjectData LoverPicData_C;
+    public ObjectData normalPic1Data_C;
+    public ObjectData normalPic2Data_C;
+    public ObjectData normalPic3Data_C;
+    public ObjectData normalPic4Data_C;
     public ObjectData FullEgPadData_C; // 충전 된 충전패드
     // ObjData ZeroEgPadData_C; // 충전 안 된 충전패드
 
@@ -147,7 +151,9 @@ public class tablet : MonoBehaviour, IInteraction
             //Invoke("TabletLockOff", 1f);
             Debug.Log("태블릿 잠금해제");
         }
-        else
+
+
+        if(normalPic1Data_C.IsBite|| normalPic2Data_C.IsBite || normalPic3Data_C.IsBite || normalPic4Data_C.IsBite)
         {
             /* 스팀업적 : 틀린 사진으로 타블렛 해금 시도 */
             SteamStatManager.steamAchieve1Time.Invoke(3, "EGG_WHO_ARE_YOU");

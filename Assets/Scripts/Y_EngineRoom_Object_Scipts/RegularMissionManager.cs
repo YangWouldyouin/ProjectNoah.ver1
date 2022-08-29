@@ -16,11 +16,16 @@ public class RegularMissionManager : MonoBehaviour
         dialogManager = dialogManager_RM.GetComponent<DialogManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //상태체크 임무 
+        HealthCheck();        //상태체크 임무 
+        TakePhoto();         //사진찍기임무
+        FindPlanet();       //행성탐사 임무
+        meteoriteMission();     //운석임무 시작 체크
+    }
 
+    private void HealthCheck()
+    {
         if ((inGameTime.days + 1) % 2 != 0 && (inGameTime.hours) == 10 && (inGameTime.days + 1) >= 3 && !GameManager.gameManager._gameData.IsHDRtimeCheck)
         {
             GameManager.gameManager._gameData.IsAIReportMissionTime = true;
@@ -34,16 +39,29 @@ public class RegularMissionManager : MonoBehaviour
                 dialogManager.StartCoroutine(dialogManager.PrintAIDialog(62));
                 GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-                //중간데이터보고 임무 시작
+
+                /* 정기미션 하다가 맘*/
+                //GameData gameData = SaveSystem.Load("save_001");
+                //{
+                //    // 아직 미션 추가 전인지 확인 후 추가
+                //    if (!gameData.CompleteRegularMissionList[0])
+                //    {
+                //        MissionGenerator.missionGenerator.AddRegularMission(0, (int)(inGameTime.days) + 2);
+                //        GameManager.gameManager._gameData.CompleteRegularMissionList[0] = true;
+                //        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //    }
+                //}
 
                 MissionGenerator.missionGenerator.AddNewMission(14);
-
                 //GameData gameData = SaveSystem.Load("save_001");
-                //if (!gameData.CompleteMissionList[14])
                 //{
-                //    MissionGenerator.missionGenerator.AddNewMission(14);
-                //    GameManager.gameManager._gameData.CompleteMissionList[14] = true;
-                //    SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //    // 아직 미션 추가 전인지 확인 후 추가
+                //    if (!gameData.CompleteMissionList[14])
+                //    {
+                //        MissionGenerator.missionGenerator.AddNewMission(14);
+                //        GameManager.gameManager._gameData.CompleteMissionList[14] = true;
+                //        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+                //    }
                 //}
             }
         }
@@ -69,16 +87,18 @@ public class RegularMissionManager : MonoBehaviour
                 GameManager.gameManager._gameData.IsRM_HM_MissionScriptCheck = false;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                 //중간데이터보고 임무 끝
-
                 MissionGenerator.missionGenerator.DeleteNewMission(14);
+                //GameData gameData = SaveSystem.Load("save_001");
+                //if (gameData.ActiveMissionList[14])
+                //{
+                //    MissionGenerator.missionGenerator.DeleteNewMission(14);
+                //}
             }
-
         }
+    }
 
-
-
-
-        //사진찍기임무
+    private void TakePhoto()
+    {
         if ((inGameTime.days + 1) % 2 == 0 && (inGameTime.hours) == 10 && !GameManager.gameManager._gameData.IsPtimeCheck)
         {
             if (GameManager.gameManager._gameData.IsRM_P_MissionScriptCheck == false)
@@ -128,11 +148,10 @@ public class RegularMissionManager : MonoBehaviour
                 MissionGenerator.missionGenerator.DeleteNewMission(23);
             }
         }
+    }
 
-
-
-
-        //행성탐사 임무
+    private void FindPlanet()
+    {
         if ((inGameTime.days + 1) % 4 == 0 && (inGameTime.hours) == 12 && !GameManager.gameManager._gameData.IsPRtimeCheck)
         {
             GameManager.gameManager._gameData.IsPRtimeCheck = true;
@@ -199,8 +218,10 @@ public class RegularMissionManager : MonoBehaviour
             }
         }
 
-        //운석임무 시작 체크
+    }
 
+    private void meteoriteMission()
+    {
         if (inGameTime.timer >= 3300 && inGameTime.timer <= 3301 && MeteorMissionEnd == false)
         {
             MeteorMissionEnd = true;

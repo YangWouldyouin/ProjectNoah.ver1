@@ -89,7 +89,7 @@ public class Tu_CommentManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TuEnd();
+            SkipTutorial();
             skipText.SetActive(false);
         }
     }
@@ -386,6 +386,16 @@ public class Tu_CommentManager : MonoBehaviour
         //튜토리얼 찐으로 끝남 체크
         //화면 연출
         //튜토 씬 끄고 게임 본격적으로 시작
+    }
+
+    void SkipTutorial()
+    {
+        EndAnim.SetActive(true);
+        GameManager.gameManager._gameData.IsTutorialClear = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+
+        Invoke("TutoBye", 3f);
     }
 
     void StartPassing()

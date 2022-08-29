@@ -12,6 +12,7 @@ public class MissionGenerator : MonoBehaviour
     List<GameObject> missionPanelList = new List<GameObject>();
     List<string> missionNameList = new List<string>();
     List<TMPro.TextMeshProUGUI> missionText = new List<TMPro.TextMeshProUGUI>();
+    List<TMPro.TextMeshProUGUI> DDayText = new List<TMPro.TextMeshProUGUI>();
 
     public GameObject missionmom;
     public GameObject missionPanel;
@@ -26,8 +27,10 @@ public class MissionGenerator : MonoBehaviour
     public bool IsOn = false;
     bool IsPrintingFinish = false;
     GameData currentData, addData, deleteData;
+    public InGameTime inGameTime;
 
     // 변수를 추가해서 add 이든 delete 이든 둘 중 하나를 하고 있으면 이전꺼를 끝낼때까지 기다리게!!!
+    public Dictionary<int, string> regularDic = new Dictionary<int, string>();
 
     private void Awake()
     {
@@ -37,14 +40,14 @@ public class MissionGenerator : MonoBehaviour
         missionDic.Add(1, "업무공간 진입");
 
         //메인_공간 해금
-        missionDic.Add(2, "생활공간 카드키 탐색"); // 진짜 수정끝
-        missionDic.Add(3, "엔진실 카드키 탐색"); // 진짜 수정끝
-        missionDic.Add(4, "생활공간 진입"); // 진짜 수정끝
-        missionDic.Add(5, "엔진실 진입"); // 진짜 수정끝
+        missionDic.Add(2, "생활공간 카드키 탐색"); 
+        missionDic.Add(3, "엔진실 카드키 탐색"); 
+        missionDic.Add(4, "생활공간 진입"); 
+        missionDic.Add(5, "엔진실 진입"); 
 
         //메인_스토리진행
-        missionDic.Add(6, "소리의 근원 찾기"); // 진짜 수정끝
-        missionDic.Add(7, "태블릿 잠금 해제"); // 진짜 수정끝
+        missionDic.Add(6, "소리의 근원 찾기"); 
+        missionDic.Add(7, "태블릿 잠금 해제"); 
         missionDic.Add(8, "고발 자료 다운로드");
         missionDic.Add(9, "AI 다운 시키기");
         missionDic.Add(10, "칩 용도 파악");
@@ -53,37 +56,47 @@ public class MissionGenerator : MonoBehaviour
 
         //임무_냄새로 고치기 관련
         missionDic.Add(13, "상태 체크 기계 수리");
-        missionDic.Add(14, "노아 생체 데이터 보고");
+        missionDic.Add(14, "노아 생체 데이터 보고");     // 정기임무
         missionDic.Add(15, "쓰레기 배출구 수리");
         missionDic.Add(16, "엔진 연료 주입구 수리");
 
         //임무_스마트팜 관련
-        missionDic.Add(17, "스마트팜 수리"); // 진짜 수정끝
+        missionDic.Add(17, "스마트팜 수리"); 
         missionDic.Add(18, "영양분 섭취"); 
         missionDic.Add(19, "식물 배양 연구");
         missionDic.Add(20, "배양 실험 결과 보고");
         missionDic.Add(21, "영양제 투약");
 
         //기타 임무
-        missionDic.Add(22, "운석 분석 데이터 보고");
-        missionDic.Add(23, "선전용 사진 촬영");
+        missionDic.Add(22, "운석 분석 데이터 보고"); 
+        missionDic.Add(23, "선전용 사진 촬영"); // 정기임무
 
         //상반된 퍼즐_마약 탐지 & 이상한 물건 발견
-        missionDic.Add(24, "냄새의 근원 찾기"); // 진짜 수정끝
+        missionDic.Add(24, "냄새의 근원 찾기"); 
         missionDic.Add(25, "약물 분석");
         missionDic.Add(26, "약물 처리");
         missionDic.Add(27, "물건 용도 파악");
 
         //상반된 퍼즐_더미 데이터 보고
-        missionDic.Add(28, "메인 컴퓨터와 태블릿 연결"); /* 2차 수정 필요 MC_BluetoothUIManager*/
+        missionDic.Add(28, "메인 컴퓨터와 태블릿 연결"); 
         missionDic.Add(29, "더미 데이터 보고");
 
         missionDic.Add(30, "엔진실 문 고치기"); 
 
         //행선지 좌표 설정
-        missionDic.Add(31, "행선지 설정");
+        missionDic.Add(31, "행선지 설정"); // 정기임무
         missionDic.Add(32, "궤도 시스템 교란");
-        missionDic.Add(33, "거짓 행선지 설정");
+        missionDic.Add(33, "거짓 행선지 설정"); // 정기임무
+
+        regularDic.Add(14, "4일 10시");
+        ///* 정기 미션 체크 */
+        //GameData gameData = SaveSystem.Load("save_001");
+
+        //// 생체데이터 보고 추가 
+        //if (gameData.ActiveRegularMissionList[0])
+        //{
+        //    regularDic.Add(0, "노아 생체 데이터 보고 D-DAY : " + (int)(inGameTime.days) + 2 + " 10H");
+        //}
     }
 
     /* 새 미션 추가하는 함수 */
@@ -112,8 +125,10 @@ public class MissionGenerator : MonoBehaviour
             missionPanelList.Add(newMission);
             newMissionBack.transform.SetParent(missionmom.transform, false);
             newMission.transform.SetParent(missionmom.transform, false);
-            missionText.Add(newMission.GetComponentInChildren<TMPro.TextMeshProUGUI>());
 
+            missionText.Add(newMission.transform.GetChild(0).GetComponentInChildren<TMPro.TextMeshProUGUI>()); // 미션 이름
+
+            DDayText.Add(newMission.transform.GetChild(1).GetComponentInChildren<TMPro.TextMeshProUGUI>()); // 제한 시간
             newMissionImage = missionPanelList[missionNameList.Count].GetComponentsInChildren<Image>();
             newMissionImage[1].sprite = newMissionSprite;
 
@@ -124,11 +139,18 @@ public class MissionGenerator : MonoBehaviour
             addMissionAnim.SetBool("IsOpening1", true);
             addMissionAnim.SetBool("IsOpening2", true);
 
-            textget = missionPanelList[missionNameList.Count].GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            textget = missionPanelList[missionNameList.Count].transform.GetChild(0).GetComponentInChildren<TMPro.TextMeshProUGUI>();
 
             /* 새 미션도 기존 미션 리스트에 추가 */
             missionNameList.Add(missionDic[newMissionNum]);
             StartCoroutine(_typing(missionNameList[missionNameList.Count - 1], missionNameList.Count-1));
+
+            /* 제한시간이 있는 미션이면 */
+            //if(regularDic.ContainsKey(newMissionNum))
+            //{
+            //    StartCoroutine(_typingDDay(regularDic[missionNameList.Count - 1], missionNameList.Count - 1));
+            //}
+
             yield return new WaitForSeconds(0.2f);
             addMissionAnim.SetBool("IsNewMissionStart", true);
             newMissionBack.SetActive(true);
@@ -205,6 +227,125 @@ public class MissionGenerator : MonoBehaviour
 
     // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
+        // 1750 : day 3 10H
+
+    /* 정기 미션 추가 */
+    public void AddRegularMission(int index, int day)
+    {
+        //string missionName = day +"일 10시";
+        string missionName = string.Format("< color =#EEC045><size=14>{0}일 10시</size></color> ", day);
+        regularDic.Add(index, "노아 생체 데이터 보고" + missionName);
+        StartCoroutine(PrintCurrentMissionList(index, AddNewRegular(index, day), addData));
+    }
+    IEnumerator AddNewRegular(int index, int day) // 새 미션 추가 
+    {
+        while (!IsPrintingFinish) // 기존 미션 목록이 다 출력될때까지 기다림
+        {
+            yield return null;
+        }
+
+        addData = SaveSystem.Load("save_001");
+
+        if (!addData.ActiveRegularMissionList[index]) // missionDic[newMissionNum] 이 이미 추가되기전이면
+        {
+            GameManager.gameManager._gameData.ActiveRegularMissionList[index] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            // 기존 미션 패널 리스트의 맨 마지막에 패널 하나 추가
+            GameObject newMission = Instantiate(missionPanel, new Vector3(0, 13.25f - missionNameList.Count * 55, 0), transform.rotation) as GameObject;
+            GameObject newMissionBack = Instantiate(newMissionPanel, new Vector3(0, 13.25f - missionNameList.Count * 55, 0), transform.rotation) as GameObject;
+            missionPanelList.Add(newMission);
+            newMissionBack.transform.SetParent(missionmom.transform, false);
+            newMission.transform.SetParent(missionmom.transform, false);
+            missionText.Add(newMission.GetComponentInChildren<TMPro.TextMeshProUGUI>());
+
+            newMissionImage = missionPanelList[missionNameList.Count].GetComponentsInChildren<Image>();
+            newMissionImage[1].sprite = newMissionSprite;
+
+            /* 새 미션 추가 애니메이션 */
+            missionPanelList[missionNameList.Count].SetActive(true);
+            Animator addMission1Anim = newMissionBack.GetComponentInChildren<Animator>();
+            Animator addMissionAnim = missionPanelList[missionNameList.Count].GetComponentInChildren<Animator>();
+            addMissionAnim.SetBool("IsOpening1", true);
+            addMissionAnim.SetBool("IsOpening2", true);
+
+            textget = missionPanelList[missionNameList.Count].GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
+            /* 새 미션도 기존 미션 리스트에 추가 */
+            missionNameList.Add(regularDic[index]);
+            StartCoroutine(_typing(missionNameList[missionNameList.Count - 1], missionNameList.Count - 1));
+            yield return new WaitForSeconds(0.2f);
+            addMissionAnim.SetBool("IsNewMissionStart", true);
+            newMissionBack.SetActive(true);
+            addMission1Anim.SetBool("IsOpening1", true);
+            addMission1Anim.SetBool("IsOpening2", true);
+
+            yield return new WaitForSeconds(10f);
+            missionmom.SetActive(false);
+            IsPrintingFinish = false;
+        }
+        else // missionDic[newMissionNum] 이 이미 추가되었으면
+        {
+            while (!IsPrintingFinish)
+            {
+                yield return null;
+            }
+            yield return new WaitForSeconds(10f);
+            missionmom.SetActive(false);
+            IsPrintingFinish = false;
+        }
+    }
+    public void DeleteRegularMission(int deleteMissionNum)
+    {
+        deleteData = SaveSystem.Load("save_001");
+        StartCoroutine(PrintCurrentMissionList(deleteMissionNum, DeleteRegular(deleteMissionNum), deleteData));
+    }
+    IEnumerator DeleteRegular(int deleteMissionNum) // 완료 미션 삭제
+    {
+        // 기존 미션 목록이 다 출력될때까지 기다림
+        while (!IsPrintingFinish)
+        {
+            yield return null;
+        }
+
+        int idx = missionNameList.FindIndex(a => a.Contains(regularDic[deleteMissionNum]));
+        newMissionImage = missionPanelList[idx].GetComponentsInChildren<Image>();
+        Animator addMissionAnim = missionPanelList[idx].GetComponentInChildren<Animator>();
+
+        GameManager.gameManager._gameData.ActiveRegularMissionList[deleteMissionNum] = false;
+
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        // 완료한 미션 삭제 
+        yield return new WaitForSeconds(1f);
+
+        //newMissionImage[1].sprite = newMissionSprite;
+        //Animator addMission1Anim = newMissionBack.GetComponentInChildren<Animator>();
+
+        addMissionAnim.SetBool("IsOpening1", true);
+        addMissionAnim.SetBool("IsOpening2", true);
+
+        //StartCoroutine(_typing(missionNameList[missionNameList.Count - 1], missionNameList.Count - 1));
+        yield return new WaitForSeconds(1f);
+        addMissionAnim.SetBool("IsOpening3", true);
+        addMissionAnim.SetBool("IsOpening1", false);
+        addMissionAnim.SetBool("IsNewMissionStart", true);
+        missionText[idx].text = "";
+        yield return new WaitForSeconds(0.5f);
+        missionPanelList[idx].SetActive(false);
+
+        //newMissionBack.SetActive(true);
+        //addMission1Anim.SetBool("IsOpening1", true);
+        //addMission1Anim.SetBool("IsOpening2", true);
+
+        //yield return new WaitForSeconds(1f);
+        missionmom.SetActive(false);
+        regularDic.Remove(deleteMissionNum); // 딕셔너리에서 삭제
+        IsPrintingFinish = false;
+    }
+
+    // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
     /* 미션 목록 버튼 눌렸을때 함수 */
     public void ShowMissionList()
     {
@@ -230,6 +371,14 @@ public class MissionGenerator : MonoBehaviour
                     missionNameList.Add(missionDic[k]);
                 }
             }
+
+            //for(int l=0; l<3; l++)
+            //{
+            //    if (currentData.ActiveRegularMissionList[l])
+            //    {
+            //        missionNameList.Add(regularDic[l]);
+            //    }
+            //}
             StartCoroutine(PrintMissionList());
 
             IsOn = true;
@@ -291,6 +440,16 @@ public class MissionGenerator : MonoBehaviour
         }
     }
 
+    IEnumerator _typingDDay(string data, int missionIndex)
+    {
+        for (int i = 0; i <= data.Length; i++)
+        {
+            DDayText[missionIndex].text = data.Substring(0, i);
+            //textget.text = data.Substring(0, i);
+            yield return new WaitForSeconds(0.0005f);
+        }
+    }
+
     IEnumerator PrintCurrentMissionList(int newMissionNum, IEnumerator AddOrDelete, GameData gameData)  // 기존 미션 목록들 출력 
     {
         currentData = SaveSystem.Load("save_001");
@@ -299,6 +458,7 @@ public class MissionGenerator : MonoBehaviour
         missionNameList.Clear();  // 여기에 버튼 사운드 넣으면 됩니다
         missionPanelList.Clear();
         missionText.Clear();
+
 
         foreach (Transform child in missionmom.transform)
         {
@@ -343,4 +503,8 @@ public class MissionGenerator : MonoBehaviour
         IsPrintingFinish = true;
         StartCoroutine(AddOrDelete);
     }
+
+
+
+    
 }
