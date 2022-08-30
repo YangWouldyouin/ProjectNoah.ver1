@@ -152,7 +152,9 @@ public class C_AIResetButton : MonoBehaviour, IInteraction
         cockpitDoorAnim_CWD.SetBool("IsDoorOpened", true);
         AIresetbutton_click_sound.clip = Door_open;
         AIresetbutton_click_sound.Play();
-        changeScene_CWD.SetActive(true); // 업무공간 이동
+        BoxCollider workRoomCol = changeScene_CWD.GetComponent<BoxCollider>();
+        workRoomCol.enabled = true; // 업무공간 이동
+        //changeScene_CWD.SetActive(true); // 업무공간 이동
     }
 
 

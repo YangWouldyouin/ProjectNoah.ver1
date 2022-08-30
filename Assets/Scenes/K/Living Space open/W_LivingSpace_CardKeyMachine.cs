@@ -246,7 +246,10 @@ pushButton_W_LS_CardKeyMachine, observeButton_W_LS_CardKeyMachine, smashButton_W
     IEnumerator LivingDoorHalfOpen1()
     {
         yield return new WaitForSeconds(2f);
-        goToLivingRoom.SetActive(true);
+
+        BoxCollider livingCol = goToLivingRoom.GetComponent<BoxCollider>();
+        livingCol.enabled = true;
+        //goToLivingRoom.SetActive(true);
         HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
         HalfLivingDoorAni_M.SetBool("HalfEnd", true);
 

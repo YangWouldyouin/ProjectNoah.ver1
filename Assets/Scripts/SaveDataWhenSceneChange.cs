@@ -130,11 +130,12 @@ public class SaveDataWhenSceneChange : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+
         if (other.tag == "Player")
         {
-            //업무공간 첫미션이 전부 나오기 전에 조종실로 나가면 
+            //업무공간 첫미션이 전부 나오기 전에 조종실로 나가면 && 현재 업무공간이면
             intialGameData = SaveSystem.Load("save_001");
-            if(!intialGameData.IsFirstEnterWorking)
+            if(!intialGameData.IsFirstEnterWorking&& SceneManager.GetActiveScene().buildIndex==4)
             {
                 GameManager.gameManager._gameData.ActiveMissionList[4] = true; // 생활공간 진입
                 GameManager.gameManager._gameData.ActiveMissionList[5] = true; // 엔진실 진입

@@ -357,17 +357,17 @@ public class InitializeWorkingScene : MonoBehaviour
     {
         //W_HM_1
         dialogManager.StartCoroutine(dialogManager.PrintAIDialog(5));
-
-        GameData gameData = SaveSystem.Load("save_001");
-        {
-            // 아직 미션 추가 전인지 확인 후 추가
-            if (!gameData.CompleteMissionList[4]) // 생활공간 진입
-            {
-                MissionGenerator.missionGenerator.AddNewMission(4);
-                GameManager.gameManager._gameData.CompleteMissionList[4] = true;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            }
-        }
+        MissionGenerator.missionGenerator.AddNewMission(4);
+        //GameData gameData = SaveSystem.Load("save_001");
+        //{
+        //    // 아직 미션 추가 전인지 확인 후 추가
+        //    if (!gameData.CompleteMissionList[4]) // 생활공간 진입
+        //    {
+        //        MissionGenerator.missionGenerator.AddNewMission(4);
+        //        GameManager.gameManager._gameData.CompleteMissionList[4] = true;
+        //        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //    }
+        //}
         StartCoroutine(AddSecondMission());
         StartCoroutine(AddThirdMission());
     }
@@ -375,32 +375,38 @@ public class InitializeWorkingScene : MonoBehaviour
     IEnumerator AddSecondMission()
     {
         yield return new WaitForSeconds(2f);
-        GameData gameData = SaveSystem.Load("save_001");
-        {
-            // 아직 미션 추가 전인지 확인 후 추가
-            if (!gameData.CompleteMissionList[5]) // 엔진실 진입
-            {
-                MissionGenerator.missionGenerator.AddNewMission(5);
-                GameManager.gameManager._gameData.CompleteMissionList[5] = true;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            }
-        }
+        MissionGenerator.missionGenerator.AddNewMission(5);
+
+        //GameData gameData = SaveSystem.Load("save_001");
+        //{
+        //    // 아직 미션 추가 전인지 확인 후 추가
+        //    if (!gameData.CompleteMissionList[5]) // 엔진실 진입
+        //    {
+        //        MissionGenerator.missionGenerator.AddNewMission(5);
+        //        GameManager.gameManager._gameData.CompleteMissionList[5] = true;
+        //        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //    }
+        //}
     }
 
     IEnumerator AddThirdMission()
     {
         yield return new WaitForSeconds(4f);
-        GameData gameData = SaveSystem.Load("save_001");
-        {
-            // 아직 미션 추가 전인지 확인 후 추가
-            if (!gameData.CompleteMissionList[13]) //냄새로 업무공간 고치기 시작
-            {
-                MissionGenerator.missionGenerator.AddNewMission(13);
-                GameManager.gameManager._gameData.CompleteMissionList[13] = true;
-                GameManager.gameManager._gameData.IsFirstEnterWorking = true;
-                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            }
-        }
+        MissionGenerator.missionGenerator.AddNewMission(13);
+        GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        //GameData gameData = SaveSystem.Load("save_001");
+        //{
+        //    // 아직 미션 추가 전인지 확인 후 추가
+        //    if (!gameData.CompleteMissionList[13]) //냄새로 업무공간 고치기 시작
+        //    {
+        //        MissionGenerator.missionGenerator.AddNewMission(13);
+        //        GameManager.gameManager._gameData.CompleteMissionList[13] = true;
+        //        GameManager.gameManager._gameData.IsFirstEnterWorking = true;
+        //        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        //    }
+        //}
     }
 
     void FixHealthMachine()
@@ -499,7 +505,10 @@ public class InitializeWorkingScene : MonoBehaviour
 
             engineDoorAnim.SetBool("canEngineDoorOpen", true);
             engineDoorAnim.SetBool("canEngineDoorEnd", true);
-            GoToEngineRoom.SetActive(true);
+
+            BoxCollider engineCol = GoToEngineRoom.GetComponent<BoxCollider>();
+            engineCol.enabled = true;
+            //GoToEngineRoom.SetActive(true);
 
             //중복임
 /*            EngineCardKey.SetActive(false);
@@ -517,7 +526,9 @@ public class InitializeWorkingScene : MonoBehaviour
         {
             HalfLivingDoorAni_M.SetBool("HalfOpen", true); // 생활공간 문 반만 열리기
             HalfLivingDoorAni_M.SetBool("HalfEnd", true);
-            goToLIving.SetActive(true);
+            BoxCollider livingCol = goToLIving.GetComponent<BoxCollider>();
+            livingCol.enabled = true;
+            //goToLIving.SetActive(true);
 
             CardKey_WL.transform.position = new Vector3(-264.18f, 2.94f, 691.467f); //위치
             CardKey_WL.transform.rotation = Quaternion.Euler(0, 0, 90); //각도

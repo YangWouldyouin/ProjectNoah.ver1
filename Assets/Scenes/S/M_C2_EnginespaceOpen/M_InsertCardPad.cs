@@ -148,7 +148,9 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         engineDoorAnim_M.SetBool("canEngineDoorEnd", true);
 
         /*¿£Áø½Ç ¿ÀÇÂ ÆÛÁñ ¿Ï·á*/
-        GoToEngine.SetActive(true);
+        //GoToEngine.SetActive(true);
+        BoxCollider engineCol = GoToEngine.GetComponent<BoxCollider>();
+        engineCol.enabled = true;
         GameManager.gameManager._gameData.IsCompleteOpenEngineRoom = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
@@ -192,7 +194,9 @@ public class M_InsertCardPad : MonoBehaviour, IInteraction
         engineDoorAnim_M.SetBool("canEngineDoorEnd", true);
 
         /*¿£Áø½Ç ¿ÀÇÂ ÆÛÁñ ¿Ï·á*/
-        GoToEngine.SetActive(true);
+        BoxCollider engineCol = GoToEngine.GetComponent<BoxCollider>();
+        engineCol.enabled = true;
+        //GoToEngine.SetActive(true);
         GameManager.gameManager._gameData.IsCompleteOpenEngineRoom = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 

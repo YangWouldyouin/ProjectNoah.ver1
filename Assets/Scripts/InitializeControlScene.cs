@@ -69,11 +69,15 @@ public class InitializeControlScene : MonoBehaviour
         {
             controlWorkDoorAnim.SetBool("IsDoorOpenStart", true);
             controlWorkDoorAnim.SetBool("IsDoorOpened", true);
-            ChangeScene.SetActive(true);
+            BoxCollider workCol = ChangeScene.GetComponent<BoxCollider>();
+            workCol.enabled = true;
+            //ChangeScene.SetActive(true);
         }
         else
         {
-            ChangeScene.SetActive(false);
+            BoxCollider workCol = ChangeScene.GetComponent<BoxCollider>();
+            workCol.enabled = false;
+            //ChangeScene.SetActive(false);
         }
 
         if(intialGameData.IsAIDown_M_C1C3)
