@@ -573,13 +573,13 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.PlayerAlive();
         inGameTime.IsBeakerEatAfterStart = true;
-        //StartCoroutine(End());
+        StartCoroutine(End());
 
     }
 
     IEnumerator End()
     {
-        yield return new WaitForSeconds(57f);
+        yield return new WaitForSeconds(5f);
         Debug.Log("타이머 켜짐");
 
         StartScreen.SetActive(false);

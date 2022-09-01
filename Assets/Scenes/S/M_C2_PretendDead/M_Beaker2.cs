@@ -563,6 +563,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
 
 
+
         //4.꺼지는 화면이 나온다.
         //5. 켜지는 화면이 나온다.
 
@@ -570,14 +571,14 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
         InteractionButtonController.interactionButtonController.PlayerAlive();
         inGameTime.IsBeakerEatAfterStart = true;
-        //StartCoroutine(End());
+        StartCoroutine(End());
 
     }
 
 
     IEnumerator End()
     {
-        yield return new WaitForSeconds(55f);
+        yield return new WaitForSeconds(5f);
         Debug.Log("타이머 켜짐");
 
         StartScreen.SetActive(false);
