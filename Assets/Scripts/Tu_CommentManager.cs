@@ -38,6 +38,8 @@ public class Tu_CommentManager : MonoBehaviour
     public InGameTime inGameTime;
     public GameObject skipText;
 
+    private bool IsSkip = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -87,13 +89,46 @@ public class Tu_CommentManager : MonoBehaviour
             check02 = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SkipTutorial();
-            skipText.SetActive(false);
-        }
+        /* 튜토리얼 스킵 */
+        SkipTutoBySpace();
     }
 
+
+    void SkipTutoBySpace()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            IsSkip = true;
+            StartCoroutine(WaitFor3Sec());
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            IsSkip = false;
+        }
+
+    }
+    IEnumerator WaitFor3Sec()
+    {
+        int i;
+        for (i = 0; i < 3; i++)
+        {
+            if(IsSkip)
+            {
+                yield return new WaitForSecondsRealtime(1f);
+                if (i == 2)
+                {
+                    SkipTutorial();
+                    skipText.SetActive(false);
+                    yield return null;
+                }
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+    }
+    
 
     //임무 완료 후 칭찬하고 AI 부르는 마이크
     IEnumerator CallingAI()
