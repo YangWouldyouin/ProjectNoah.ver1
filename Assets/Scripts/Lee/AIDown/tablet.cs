@@ -189,41 +189,28 @@ public class tablet : MonoBehaviour, IInteraction
 
     public void OnPushOrPress()
     {
-        /* 밀기 & 누르기 중에 "누르기"일 때!!! */
-        FullEgPadData_C.IsPushOrPress = true;// 오브젝트의 관찰 변수 true로 바꿈
         DisableButton(); // 상호작용 버튼을 끔
 
         /* 애니메이션 보여줌 */
         InteractionButtonController.interactionButtonController.playerPressHand(); // 손으로 누르는 애니메이션
-        StartCoroutine(ChangePressFalse()); // 2초 뒤에 IsPushOrPress 를 false 로 바꿈
 
-        // 끼우기 성공
-        // 부모 자식 관계를 해제한다.
-        FullEgPad_C.GetComponent<Rigidbody>().isKinematic = false;
-        FullEgPad_C.transform.parent = null;
+        if (FullEgPadData_C.IsBite)
+        {
+            // 부모 자식 관계를 해제한다.
+            FullEgPad_C.GetComponent<Rigidbody>().isKinematic = false;
+            FullEgPad_C.transform.parent = null;
 
-        FullEgPad_C.SetActive(false);
-        FullEgPad_C.transform.parent = portableGroup.transform;
-        equipment.biteObjectName = "";
+            FullEgPad_C.SetActive(false);
+            FullEgPad_C.transform.parent = portableGroup.transform;
+            equipment.biteObjectName = "";
 
-        Debug.Log("충전완료");
-        GameManager.gameManager._gameData.IsFullChargeTablet = true; // 태블랫 충전 됨
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        Debug.Log("충전세이브 완료");
+            Debug.Log("충전완료");
+            GameManager.gameManager._gameData.IsFullChargeTablet = true; // 태블랫 충전 됨
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            Debug.Log("충전세이브 완료");
+            FullEgPadData_C.IsBite = false;
+        }
     }
-
-    /* 2초 뒤에 누르기 변수를 false 로 바꾸는 코루틴 */
-    IEnumerator ChangePressFalse()
-    {
-        yield return new WaitForSeconds(2f);
-        FullEgPadData_C.IsPushOrPress = false;
-
-        // FullEgPad_C.gameObject.SetActive(false);
-        //Debug.Log("충전패드 비활성화");
-
-    }
-
-
 
     public void OnSniff()
     {
