@@ -13,6 +13,8 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     /*연관있는 오브젝트*/
     public GameObject S_canIDCard;
+
+    BoxCollider cardCol;
     public GameObject IsIDInsertPad;
     public GameObject S_BoxForConsole;
     //public GameObject canPressCabinetDoor; 
@@ -52,7 +54,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     void Start()
     {
-
+        cardCol = S_canIDCard.GetComponent<BoxCollider>();
         dialogManager = dialog.GetComponent<DialogManager>();
 
         /*ObjData*/
@@ -107,6 +109,9 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
     void Update()
     {
+
+
+
         if (GameManager.gameManager._gameData.IsBasicTuto && !firstCheck)
         {
             dialogManager.StartCoroutine(dialogManager.PrintSubtitles(15));
@@ -123,7 +128,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
 
         if(IDConsoleData_S.IsObserve)
         {
-
+            cardCol.enabled = false;
             IDConsole_Collider.enabled = false;
             IsIDInsertPad_Collider.enabled = true;
             BoxForConsole_Collider.enabled = false;
@@ -145,6 +150,7 @@ public class S_IDConsole : MonoBehaviour, IInteraction
         {
             BoxForConsole_Collider.enabled = true;
             Noah_Collider.enabled = true;
+            cardCol.enabled = true;
         }
 
         /*

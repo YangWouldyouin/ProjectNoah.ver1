@@ -486,6 +486,7 @@ public class Tu_CommentManager : MonoBehaviour
     void TutoBye()
     {
         inGameTime.statNum = 10;
+        
         GameManager.gameManager._gameData.ActiveMissionList[31] = false;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         timerData.days = 0;
