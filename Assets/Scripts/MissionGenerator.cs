@@ -9,10 +9,6 @@ public class MissionGenerator : MonoBehaviour
 
     Dictionary<int, string> missionDic = new Dictionary<int, string>(); // 미션 텍스트
 
-
-
-
-
     List<GameObject> missionPanelList = new List<GameObject>();
 
     List<string> missionNameList = new List<string>();
@@ -101,6 +97,84 @@ public class MissionGenerator : MonoBehaviour
         //}
     }
 
+    /* 조종실탈출전용 - 일정시간 지나도 미션 비활성화 안됨 */
+    public void AddFirstMission(int newMissionNum)
+    {
+        StartCoroutine(PrintCurrentMissionList(newMissionNum, AddFirstNew(newMissionNum), addData));
+    }
+
+    IEnumerator AddFirstNew(int newMissionNum) // 새 미션 추가 
+    {
+        while (!IsPrintingFinish) // 기존 미션 목록이 다 출력될때까지 기다림
+        {
+            yield return null;
+        }
+
+        addData = SaveSystem.Load("save_001");
+
+        if (!addData.ActiveMissionList[newMissionNum]) // missionDic[newMissionNum] 이 이미 추가되기전이면
+        {
+            GameManager.gameManager._gameData.ActiveMissionList[newMissionNum] = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+
+
+            // 기존 미션 패널 리스트의 맨 마지막에 패널 하나 추가
+            GameObject newMission = Instantiate(missionPanel, new Vector3(0, 13.25f - missionNameList.Count * 55, 0), transform.rotation) as GameObject;
+            GameObject newMissionBack = Instantiate(newMissionPanel, new Vector3(0, 13.25f - missionNameList.Count * 55, 0), transform.rotation) as GameObject;
+
+
+            missionPanelList.Add(newMission);
+            newMissionBack.transform.SetParent(missionmom.transform, false);
+            newMission.transform.SetParent(missionmom.transform, false);
+
+
+
+            missionText.Add(newMission.GetComponentInChildren<TMPro.TextMeshProUGUI>()); // 미션 이름
+
+
+
+
+            newMissionImage = missionPanelList[missionNameList.Count].GetComponentsInChildren<Image>();
+            newMissionImage[1].sprite = newMissionSprite;
+
+
+            /* 새 미션 추가 애니메이션 */
+            missionPanelList[missionNameList.Count].SetActive(true);
+            Animator addMission1Anim = newMissionBack.GetComponentInChildren<Animator>();
+            Animator addMissionAnim = missionPanelList[missionNameList.Count].GetComponentInChildren<Animator>();
+            addMissionAnim.SetBool("IsOpening1", true);
+            addMissionAnim.SetBool("IsOpening2", true);
+
+            textget = missionPanelList[missionNameList.Count].transform.GetChild(0).GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
+            /* 새 미션도 기존 미션 리스트에 추가 */
+            missionNameList.Add(missionDic[newMissionNum]);
+            StartCoroutine(_typing(missionNameList[missionNameList.Count - 1], missionNameList.Count - 1));
+
+
+            yield return new WaitForSeconds(0.2f);
+            addMissionAnim.SetBool("IsNewMissionStart", true);
+            newMissionBack.SetActive(true);
+            addMission1Anim.SetBool("IsOpening1", true);
+            addMission1Anim.SetBool("IsOpening2", true);
+
+            yield return new WaitForSeconds(10f);
+            //missionmom.SetActive(false);
+            IsPrintingFinish = false;
+        }
+        else // missionDic[newMissionNum] 이 이미 추가되었으면
+        {
+            while (!IsPrintingFinish)
+            {
+                yield return null;
+            }
+            yield return new WaitForSeconds(10f);
+            //missionmom.SetActive(false);
+            IsPrintingFinish = false;
+        }
+    }
+
     /* 새 미션 추가하는 함수 */
     public void AddNewMission(int newMissionNum)
     {
@@ -178,6 +252,8 @@ public class MissionGenerator : MonoBehaviour
             IsPrintingFinish = false;
         }
     }
+
+
 
     // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -384,9 +460,5 @@ public class MissionGenerator : MonoBehaviour
 
         IsPrintingFinish = true;
         StartCoroutine(AddOrDelete);
-    }
-
-
-
-    
+    }    
 }

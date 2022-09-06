@@ -106,6 +106,7 @@ public class InitializeControlScene : MonoBehaviour
     IEnumerator delay1sec()
     {
         yield return new WaitForSeconds(5f);
-        MissionGenerator.missionGenerator.AddNewMission(0);
+        //MissionGenerator.missionGenerator.AddNewMission(0);
+        MissionGenerator.missionGenerator.AddFirstMission(0);
     }
 }
