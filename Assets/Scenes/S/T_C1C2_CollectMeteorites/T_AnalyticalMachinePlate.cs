@@ -126,7 +126,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             }
 
             /* 스팀업적 : 일단 모으고 보기 완료 */
-            SteamStatManager.steamAchieve1Time.Invoke(7, "EGG_METEOR_3");
+            //SteamStatManager.steamAchieve1Time.Invoke(7, "EGG_METEOR_3");
         }
 
         if (RealimportantMeteorData_T.IsBite)
@@ -152,7 +152,7 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
             RealimportantMeteorOutline_T.OutlineWidth = 0;
 
             /* 스팀업적 : 일단 모으고 보기 완료 */
-            SteamStatManager.steamAchieve1Time.Invoke(7, "EGG_METEOR_3");
+            //SteamStatManager.steamAchieve1Time.Invoke(7, "EGG_METEOR_3");
         }      
     }
 

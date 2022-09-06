@@ -79,7 +79,7 @@ public class wrongDisturbingChip_buttons : MonoBehaviour, IInteraction
                 GameManager.gameManager._gameData.CompleteMissionList[9] = true;
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
-            SteamStatManager.steamAchieve1Time.Invoke(5, "EGG_POTION_DETECTION");
+            //SteamStatManager.steamAchieve1Time.Invoke(5, "EGG_POTION_DETECTION");
         }
     }
 

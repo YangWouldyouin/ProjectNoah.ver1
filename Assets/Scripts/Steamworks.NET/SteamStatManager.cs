@@ -16,11 +16,11 @@ public class SteamStatManager : MonoBehaviour
 
     void Start()
     {
-        InteractionButtonController.steam50Achieve += Achieve50;
-        steamAchieve1Time += AchieveEnding;
-        steamAchieve3Time += mission3Time;
-        steamEndingCountAchieve += EndingCount;
-        steamNoahHearAchieve += HearCount;
+        //InteractionButtonController.steam50Achieve += Achieve50;
+        //steamAchieve1Time += AchieveEnding;
+        //steamAchieve3Time += mission3Time;
+        //steamEndingCountAchieve += EndingCount;
+        //steamNoahHearAchieve += HearCount;
     }
 
     void Update()

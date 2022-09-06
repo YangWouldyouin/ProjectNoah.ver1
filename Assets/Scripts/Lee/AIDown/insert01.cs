@@ -188,7 +188,7 @@ public class insert01 : MonoBehaviour, IInteraction
                 MissionGenerator.missionGenerator.DeleteNewMission(9);
             }
 
-            SteamStatManager.steamAchieve1Time.Invoke(4, "EGG_ONLY_US");
+            //SteamStatManager.steamAchieve1Time.Invoke(4, "EGG_ONLY_US");
 
             StartCoroutine(Delay2Sec());
 

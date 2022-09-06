@@ -92,7 +92,7 @@ public class T_BadSweetPotato1 : MonoBehaviour, IInteraction
     public void EatAfter()
     {
         /* 스팀업적 : 예상치 못한 사고:돌연사 완료 */
-        SteamStatManager.steamAchieve1Time.Invoke(2, "END_SUDDEN_DEATH");
+        //SteamStatManager.steamAchieve1Time.Invoke(2, "END_SUDDEN_DEATH");
 
         GameManager.gameManager._gameData.IsEatBadPotato = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");

@@ -156,7 +156,7 @@ public class tablet : MonoBehaviour, IInteraction
         if(normalPic1Data_C.IsBite|| normalPic2Data_C.IsBite || normalPic3Data_C.IsBite || normalPic4Data_C.IsBite)
         {
             /* 스팀업적 : 틀린 사진으로 타블렛 해금 시도 */
-            SteamStatManager.steamAchieve1Time.Invoke(3, "EGG_WHO_ARE_YOU");
+            //SteamStatManager.steamAchieve1Time.Invoke(3, "EGG_WHO_ARE_YOU");
         }
     }
 

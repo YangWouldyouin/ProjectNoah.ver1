@@ -70,7 +70,7 @@ public class M_BoxForTuto : MonoBehaviour, IInteraction
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             /* 스팀업적 : 사고친 신입 완료 */
-            SteamStatManager.steamAchieve1Time.Invoke(1, "END_TUTORIAL_FAIL");
+            //SteamStatManager.steamAchieve1Time.Invoke(1, "END_TUTORIAL_FAIL");
 
             FailTuto = true;
         }

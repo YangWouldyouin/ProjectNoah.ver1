@@ -102,7 +102,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerBark() 
     {
         /* 스팀 업적 카운트 */
-        steam50Achieve.Invoke(0, "ACT_BARK_50");
+        //steam50Achieve.Invoke(0, "ACT_BARK_50");
 
         /* 버튼 누르는 소리 */
         interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
@@ -156,7 +156,7 @@ public class InteractionButtonController : MonoBehaviour
         if(equipment.biteObjectName=="" && equipment.pushObjectName=="") // 물기 2번 or 물기 밀기 같이 방지
         {
             /* 스팀 업적 카운트 */
-            steam50Achieve.Invoke(1, "ACT_BITE_50");
+            //steam50Achieve.Invoke(1, "ACT_BITE_50");
 
             preventBite.transform.gameObject.SetActive(true);
 
@@ -265,7 +265,7 @@ public class InteractionButtonController : MonoBehaviour
     public void PlayerSmash1()
     {
         /* 스팀 업적 카운트 */
-        steam50Achieve.Invoke(5, "ACT_DESTROY_50");
+        //steam50Achieve.Invoke(5, "ACT_DESTROY_50");
         // 물기 초기화
         equipment.biteObjectName = "";
         /* 버튼 누르는 소리 */
@@ -319,7 +319,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerSniff()
     {
         /* 스팀 업적 카운트 */
-        steam50Achieve.Invoke(3, "ACT_SNIFF_50");
+        //steam50Achieve.Invoke(3, "ACT_SNIFF_50");
         /* 버튼 누르는 소리 */
         interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
         interactionAudio.Play(); // 2. 재생한다.
@@ -346,7 +346,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerObserve()
     {
         /* 스팀 업적 카운트 */
-        steam50Achieve.Invoke(6, "ACT_OBSERVE_50");
+        //steam50Achieve.Invoke(6, "ACT_OBSERVE_50");
 
         noahCollider.enabled = false;
 
@@ -436,7 +436,7 @@ public class InteractionButtonController : MonoBehaviour
         }
 
         /* 스팀 업적 카운트 */
-        steam50Achieve.Invoke(7, "ACT_UP_50");
+        //steam50Achieve.Invoke(7, "ACT_UP_50");
 
         /* 버튼 누르는 소리 */
         interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
@@ -637,7 +637,7 @@ public class InteractionButtonController : MonoBehaviour
         if (equipment.biteObjectName == "" && equipment.pushObjectName == "")
         {
             /* 스팀 업적 카운트 */
-            steam50Achieve.Invoke(2, "ACT_PRESS_50");
+            //steam50Achieve.Invoke(2, "ACT_PRESS_50");
 
             /* 버튼 누르는 소리 */
             interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
@@ -735,7 +735,7 @@ public class InteractionButtonController : MonoBehaviour
     {
         /* 스팀 업적 카운트 */
         /* 스팀 업적 카운트 */
-        steam50Achieve.Invoke(2, "ACT_PRESS_50");
+        //steam50Achieve.Invoke(2, "ACT_PRESS_50");
 
         /* 버튼 누르는 소리 */
         interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
@@ -805,7 +805,7 @@ public class InteractionButtonController : MonoBehaviour
     public void playerEat()
     {
         /* 스팀 업적 카운트 */
-        steam50Achieve.Invoke(4, "ACT_EAT_50");
+        //steam50Achieve.Invoke(4, "ACT_EAT_50");
 
         /* 버튼 누르는 소리 */
         interactionAudio.clip = BasicUI_Click; // 1. 오디오소스에 플레이하고 싶은 소리 클립을 넣는다. 
