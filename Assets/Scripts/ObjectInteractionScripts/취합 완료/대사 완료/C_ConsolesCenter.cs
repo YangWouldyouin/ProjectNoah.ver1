@@ -153,17 +153,10 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             portDoorCol.enabled = false;
             portDoorDataOb.IsNotInteractable = true;
             noahCol.enabled = true;
-
-            //Debug.Log("너가 문제냐?");
         }
-
-
-
         else
         {
             consoleCollider.enabled = false;
-
-
             portDoorCol.enabled = true;
             portDoorDataOb.IsNotInteractable = false;
         }
@@ -227,7 +220,6 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
             StartCoroutine(Delay3Seconds());
         }
 
-
         else // 상자에 올라가지 않았으면
         {
             /* 카메라 컨트롤러에 뷰 전달 */
@@ -250,26 +242,12 @@ public class C_ConsolesCenter : MonoBehaviour, IInteraction
         }
         
         consoleCollider.enabled = false;
-        if (envirPipeData_CC.IsBite) // 파이프를 물었으면
-        {
-            consoleAIResetButtonData_CC.IsNotInteractable = false;
-            consoleAIResetButtonOutline_CC.OutlineWidth = 8;
-            PictureButtonData_CC.IsNotInteractable = false;
-            PictureButtonOutline_CC.OutlineWidth = 8;
 
-        }
-        else // 파이프를 물지 않았으면
-        {
-            if (!gameData.IsAIAwake_M_C1||GameManager.gameManager._gameData.IsPhotoTime)
-            {
-                StartCoroutine(turnOffHint());
-            }
-
-            consoleAIResetButtonOutline_CC.OutlineWidth = 0;
-            consoleAIResetButtonData_CC.IsNotInteractable = true;
-            PictureButtonData_CC.IsNotInteractable = true;
-            PictureButtonOutline_CC.OutlineWidth = 0;
-        }
+        // AI 버튼, 사진찍기 버튼 활성화
+        consoleAIResetButtonData_CC.IsNotInteractable = false;
+        consoleAIResetButtonOutline_CC.OutlineWidth = 8;
+        PictureButtonData_CC.IsNotInteractable = false;
+        PictureButtonOutline_CC.OutlineWidth = 8;
     }
 
     IEnumerator turnOffHint()

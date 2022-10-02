@@ -132,7 +132,7 @@ public class ResetGameManager : MonoBehaviour
 
         /* 조종실 초기화 */
         controlData.IsObjectActiveList[0] = true;
-        controlData.IsObjectActiveList[1] = true;
+        //controlData.IsObjectActiveList[1] = true; 파이프 삭제
 
         /* 엔진실 초기화 */
         engineData.IsObjectActiveList[3] = true;
