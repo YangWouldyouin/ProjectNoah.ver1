@@ -114,6 +114,8 @@ public class E_StrangeObj : MonoBehaviour
 
         GameManager.gameManager._gameData.IsFindStrangeObj = true;
         //GameManager.gameManager._gameData.ActiveMissionList[27] = true;
+
+        GameManager.gameManager._gameData.CompleteMissionList[27] = true;
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //MissionGenerator.missionGenerator.ActivateMissionList();
         MissionGenerator.missionGenerator.AddNewMission(27);
@@ -146,10 +148,14 @@ public class E_StrangeObj : MonoBehaviour
         StrangeObj_smoke_Sound.Play();
 
         GameManager.gameManager._gameData.IsKnowUsingSObj = true;
-        //GameManager.gameManager._gameData.ActiveMissionList[27] = false;
+
+        GameData gameData = SaveSystem.Load("save_001");
+        if (gameData.CompleteMissionList[27])
+        {
+            MissionGenerator.missionGenerator.DeleteNewMission(27);
+            GameManager.gameManager._gameData.CompleteMissionList[27] = false;
+        }
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-        //MissionGenerator.missionGenerator.ActivateMissionList();
-        MissionGenerator.missionGenerator.DeleteNewMission(27);
 
         CameraController.cameraController.CancelObserve();
     }
