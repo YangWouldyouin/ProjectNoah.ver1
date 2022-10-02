@@ -7,6 +7,7 @@ public class Tutorial_Fadeinout : MonoBehaviour
 {
     public GameObject Intro_GUI;
     public Text introtext;
+    //public GameObject skipText;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class Tutorial_Fadeinout : MonoBehaviour
     }
     public void introEnd()
     {
+        //skipText.SetActive(true);
         Intro_GUI.SetActive(false);
     }
 }

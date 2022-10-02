@@ -480,7 +480,14 @@ public class Tu_CommentManager : MonoBehaviour
         StartAnim.SetActive(true);
         Destroy(StartAnim, 4f);
         Destroy(LoadingAnim, 3f);
+        StartCoroutine(ShowSkip());
 
+    }
+
+    IEnumerator ShowSkip()
+    {
+        yield return new WaitForSeconds(7f);
+        skipText.SetActive(true);
     }
 
     void TutoBye()
