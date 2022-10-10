@@ -19,6 +19,7 @@ public class tablet : MonoBehaviour, IInteraction
     public GameObject TabletBackOn_C; // 태블릿 활성화 화면 (관찰하기 화면)
     public GameObject TabletBatteryUI_C; // 충전 전 0% 화면
     public GameObject TabletDeleteUI_C; // AI 발각 후 데이터 말소 화면
+    public Text lockedText;
 
     public GameObject LoverPic_C; // 애인 사진
     public GameObject FullEgPad_C; // 충전 된 충전패드
@@ -142,20 +143,17 @@ public class tablet : MonoBehaviour, IInteraction
             }
         }
 
-
+        /* 태블릿 잠금 해제 */
         if (LoverPicData_C.IsBite)
         {
             GameManager.gameManager._gameData.IsTabletUnlock = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-
-            //Invoke("TabletLockOff", 1f);
-            Debug.Log("태블릿 잠금해제");
+            lockedText.text = "UnLocked!";
         }
 
-
-        if(normalPic1Data_C.IsBite|| normalPic2Data_C.IsBite || normalPic3Data_C.IsBite || normalPic4Data_C.IsBite)
+        /* 스팀업적 : 틀린 사진으로 타블렛 해금 시도 */
+        if (normalPic1Data_C.IsBite|| normalPic2Data_C.IsBite || normalPic3Data_C.IsBite || normalPic4Data_C.IsBite)
         {
-            /* 스팀업적 : 틀린 사진으로 타블렛 해금 시도 */
             SteamStatManager.steamAchieve1Time.Invoke(3, "EGG_WHO_ARE_YOU");
         }
     }
@@ -179,13 +177,6 @@ public class tablet : MonoBehaviour, IInteraction
     {
         TabletDeleteUI_C.SetActive(true);
     }
-
-    public void TabletLockOff()
-    {
-        GameManager.gameManager._gameData.IsTabletUnlock = true;
-        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-    }
-
 
     public void OnPushOrPress()
     {

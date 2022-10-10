@@ -25,6 +25,8 @@ public class tabletUIManager : MonoBehaviour
         WirelessUI.SetActive(false);
         MainUI.SetActive(false);
         LockUI.SetActive(true);
+
+        ChangeMain();
     }
 
     /* ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ ∆€¡Ò ≥° ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ¢æ */
