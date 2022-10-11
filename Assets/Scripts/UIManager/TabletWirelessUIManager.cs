@@ -168,11 +168,13 @@ public class TabletWirelessUIManager : MonoBehaviour
 
     public void TW_ChangeUpload_FakeCoordinateData()
     {
+        GameData gameData = SaveSystem.Load("save_001");
+
         if (GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet == true)
         {
             if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
             {
-                if (GameManager.gameManager._gameData.IsCanConnect_C_MS == false)
+                if (gameData.IsCanConnect_C_MS == false)
                 {
                     if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == false)
                     {
@@ -199,9 +201,9 @@ public class TabletWirelessUIManager : MonoBehaviour
                     }
                 }
             }
-            else if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainSystem_WirelessOn)
+            else if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && gameData.Is_MainSystem_WirelessOn)
             {
-                if (GameManager.gameManager._gameData.IsCanConnect_C_MS == true)
+                if (gameData.IsCanConnect_C_MS)
                 {
                     if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet == false && GameManager.gameManager._gameData.IsDontFakeCoordinateDatafile_Tablet == false)
                     {
@@ -245,7 +247,7 @@ public class TabletWirelessUIManager : MonoBehaviour
 
                     Invoke("TW_Alert_onetime", 3f);
                 }
-                else if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainSystem_WirelessOn && GameManager.gameManager._gameData.IsCanConnect_C_MS == true)
+                else if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && gameData.Is_MainSystem_WirelessOn && gameData.IsCanConnect_C_MS )
                 {
                     TW_alertUI.SetActive(true);
 

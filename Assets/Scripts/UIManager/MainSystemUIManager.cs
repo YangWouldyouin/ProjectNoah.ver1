@@ -27,11 +27,10 @@ public class MainSystemUIManager : MonoBehaviour
         alert.SetActive(false);
         Fold.SetActive(false);
         Open.SetActive(true);
-    }
 
-    public void Update()
-    {
-        if (GameManager.gameManager._gameData.Is_MainSystem_WirelessOn == true)
+        GameData gameData = SaveSystem.Load("save_001");
+
+        if (gameData.Is_MainSystem_WirelessOn)
         {
             OnOffText.GetComponent<Text>().text = "무선 연결        ON";
             Color onoffcolor = MS_onoffBT.color;
@@ -45,6 +44,28 @@ public class MainSystemUIManager : MonoBehaviour
             onoffcolor.a = 0.3f;
             MS_onoffBT.color = onoffcolor;
         }
+    }
+
+    public void Update()
+    {
+        //if (GameManager.gameManager._gameData.Is_MainSystem_WirelessOn)
+        //{
+        //    OnOffText.GetComponent<Text>().text = "무선 연결        ON";
+        //    Color onoffcolor = MS_onoffBT.color;
+        //    onoffcolor.a = 1f;
+        //    MS_onoffBT.color = onoffcolor;
+        //}
+        //else
+        //{
+        //    OnOffText.GetComponent<Text>().text = "무선 연결        OFF";
+        //    Color onoffcolor = MS_onoffBT.color;
+        //    onoffcolor.a = 0.3f;
+        //    MS_onoffBT.color = onoffcolor;
+        //}
+
+
+
+
 
         if (GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet && OnetimeCheck == false)
         {
@@ -107,16 +128,27 @@ public class MainSystemUIManager : MonoBehaviour
 
     public void MS_WirelessCheck()
     {
-        if (GameManager.gameManager._gameData.Is_MainSystem_WirelessOn == false)
+        GameData gameData = SaveSystem.Load("save_001");
+
+        if (gameData.Is_MainSystem_WirelessOn == false)
         {
             GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = true;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            OnOffText.GetComponent<Text>().text = "무선 연결        ON";
+            Color onoffcolor = MS_onoffBT.color;
+            onoffcolor.a = 1f;
+            MS_onoffBT.color = onoffcolor;
+
         }
         else
         {
             GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = false;
-            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            OnOffText.GetComponent<Text>().text = "무선 연결        OFF";
+            Color onoffcolor = MS_onoffBT.color;
+            onoffcolor.a = 0.3f;
+            MS_onoffBT.color = onoffcolor;
         }
+
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
     }
 
     public void UploadBT()

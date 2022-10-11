@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Checking_bluetooth : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     //public GameObject dialogManager_CCB;
     //DialogManager dialogManager;
     
@@ -35,6 +33,9 @@ public class Checking_bluetooth : MonoBehaviour
     GameObject portableGroup;
     PlayerEquipment equipment;
 
+    private bool IsAlert = false;
+    private bool IsCheck = false;
+
     void Start()
     {
         portableGroup = InteractionButtonController.interactionButtonController.portableObjects;
@@ -44,44 +45,56 @@ public class Checking_bluetooth : MonoBehaviour
         tabletData = tablet.GetComponent<ObjData>();
         RChip01Data = RChip01.GetComponent<ObjData>();
         WChip01Data = WChip01.GetComponent<ObjData>();
-        //dialogManager = dialogManager_CCB.GetComponent<DialogManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerStay(Collider other)
     {
-        
+        if(!IsCheck && other.gameObject.name == "Tablet_E")
+        {
+            GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            IsCheck = true;
+        }
     }
-
     public void OnTriggerEnter(Collider other)
     {
+        // - 노아가 타블렛 물고 영역 안에 있을 때
+        // - 타블렛이 영역 안에 있을 때
+        if ((other.gameObject == player) && TabletData.IsBite)
+        {
+            GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+        }
+
         if (other.gameObject == player)
         {
-            if (TabletData.IsBite)
+            if (RChipData.IsBite )
             {
-                GameManager.gameManager._gameData.IsCanConnect_C_MS = true;
+                GameData gameData = SaveSystem.Load("save_001");
+                if(!gameData.IsHide)
+                {
+                    Debug.Log("이상한 칩 감지");
+                    IsAlert = true;
+                    StartCoroutine(DestroyChip(RChip01, RChipData));
+                    //Invoke("NoRChip", 3f);
+                    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(57));
+                }
             }
 
-            Debug.Log("노아들어옴");
-
-            if (RChipData.IsBite && !GameManager.gameManager._gameData.IsHide)
+            if (WChipData.IsBite)
             {
-                Debug.Log("이상한 칩 감지");
-                GameManager.gameManager._gameData.IsAlert = true;
-                Invoke("NoRChip", 3f);
-
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(57));
-            }
-
-            if (WChipData.IsBite && !GameManager.gameManager._gameData.IsHide)
-            {
-                Debug.Log("이상한 칩 감지");
-                GameManager.gameManager._gameData.IsAlert = true;
-                Invoke("NoWChip", 3f);
-
-                dialogManager.StartCoroutine(dialogManager.PrintAIDialog(57));
+                GameData gameData = SaveSystem.Load("save_001");
+                if(!gameData.IsHide)
+                {
+                    Debug.Log("이상한 칩 감지");
+                    IsAlert = true;
+                    StartCoroutine(DestroyChip(WChip01, WChipData));
+                    //Invoke("NoWChip", 3f);
+                    dialogManager.StartCoroutine(dialogManager.PrintAIDialog(57));
+                }
             }
         }
+
 
        /*if (other.tag == "chip")
         {
@@ -102,26 +115,37 @@ public class Checking_bluetooth : MonoBehaviour
         }*/
     }
 
+    
     public void OnTriggerExit(Collider other)
     {
+
         if (other.gameObject.name == "noahPlayer")
         {
             if (tabletData.IsBite)
             {
                 GameManager.gameManager._gameData.IsCanConnect_C_MS = false;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
 
             if (RChip01Data.IsBite || WChip01Data.IsBite)
             {
                 Debug.Log("이상한 칩 나감");
-                GameManager.gameManager._gameData.IsAlert = false;
-            }
-
-            else
-            {
-
+                IsAlert = false;
             }
         }
+    }
+
+    IEnumerator DestroyChip(GameObject _chip, ObjectData _objectData)
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        _chip.GetComponent<Rigidbody>().isKinematic = false;
+        _chip.transform.parent = null;
+        _chip.transform.parent = portableGroup.transform;
+        equipment.biteObjectName = "";
+        _objectData.IsBite = false;
+
+        _chip.SetActive(false);
+        IsAlert = false;
     }
 
     public void NoRChip()
@@ -133,8 +157,7 @@ public class Checking_bluetooth : MonoBehaviour
         RChipData.IsBite = false;
 
         RChip01.SetActive(false);
-        //Destroy(RChip01, 3f);
-        GameManager.gameManager._gameData.IsAlert = false;
+        IsAlert = false;
     }
 
     public void NoWChip()
@@ -147,7 +170,6 @@ public class Checking_bluetooth : MonoBehaviour
         WChipData.IsBite = false;
 
         WChip01.SetActive(false);
-        //Destroy(WChip01, 3f);
-        GameManager.gameManager._gameData.IsAlert = false;
+        IsAlert = false;
     }
 }
