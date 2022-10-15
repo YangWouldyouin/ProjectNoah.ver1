@@ -120,6 +120,10 @@ public class CoordinateSystemUIManager1 : MonoBehaviour
         SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
         //MissionGenerator.missionGenerator.ActivateMissionList();
         MissionGenerator.missionGenerator.DeleteNewMission(31);
+
+        // 관찰 해제
+        // 탑뷰로 돌아감
+        CameraController.cameraController.CancelObserve();
     }
 
     public void Cancle()
