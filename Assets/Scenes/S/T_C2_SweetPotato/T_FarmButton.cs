@@ -83,6 +83,7 @@ public class T_FarmButton : MonoBehaviour, IInteraction
             Debug.Log("먹어버림");
             GameManager.gameManager._gameData.IsFinishedEatingSweetPotatoes = true;
         }
+
     }
 
     public void OnBark()
@@ -108,6 +109,13 @@ public class T_FarmButton : MonoBehaviour, IInteraction
         DisableButton();
 
         InteractionButtonController.interactionButtonController.playerPressHand();
+
+        //스마트팜 고치기 전에는 버튼 눌렀을 때 고쳐야합니다 문구 뜨게 하기
+        if (GameManager.gameManager._gameData.IsCompleteSmartFarmOpen == false)
+        {
+            dialogManager.StartCoroutine(dialogManager.PrintAIDialog(75));
+        }
+
 
         /*항상 pot 순서대로  덜자란 고구마를 심고, 상한 고구마를 심고, 성숙한 고구마를 심고 && 스마트팜 관리 기계 버튼을 누른다면*/
 
