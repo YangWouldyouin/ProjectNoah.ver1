@@ -139,7 +139,8 @@ public class MC_BluetoothUIManager : MonoBehaviour
         if (!GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
         {
             GameManager.gameManager._gameData.Is_MainComputer_WirelessOn = true;
-
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            
             GameData wirelessData = SaveSystem.Load("save_001");
             //TabletWirelessUIManager tabletWirelessUIManager = new TabletWirelessUIManager();
             if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn && !wirelessData.IsWirelessMCTabletCheck )

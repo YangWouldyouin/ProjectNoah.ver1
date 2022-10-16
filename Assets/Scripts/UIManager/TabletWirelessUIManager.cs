@@ -96,6 +96,7 @@ public class TabletWirelessUIManager : MonoBehaviour
         if (!GameManager.gameManager._gameData.Is_Tablet_WirelessOn)
         {
             GameManager.gameManager._gameData.Is_Tablet_WirelessOn = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             GameData tabletData = SaveSystem.Load("save_001");
 

@@ -133,6 +133,8 @@ public class MainSystemUIManager : MonoBehaviour
         if (gameData.Is_MainSystem_WirelessOn == false)
         {
             GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
             OnOffText.GetComponent<Text>().text = "무선 연결        ON";
             Color onoffcolor = MS_onoffBT.color;
             onoffcolor.a = 1f;
@@ -142,6 +144,8 @@ public class MainSystemUIManager : MonoBehaviour
         else
         {
             GameManager.gameManager._gameData.Is_MainSystem_WirelessOn = false;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
             OnOffText.GetComponent<Text>().text = "무선 연결        OFF";
             Color onoffcolor = MS_onoffBT.color;
             onoffcolor.a = 0.3f;
