@@ -105,7 +105,6 @@ public class Tu_CommentManager : MonoBehaviour
         {
             IsSkip = false;
         }
-
     }
     IEnumerator WaitFor3Sec()
     {

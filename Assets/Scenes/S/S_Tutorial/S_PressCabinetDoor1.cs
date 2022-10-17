@@ -68,11 +68,6 @@ public class S_PressCabinetDoor1 : MonoBehaviour,IInteraction
         noCenterButton_S_PressCabinetDoor1.transform.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void OnBark()
     {
         DisableButton();

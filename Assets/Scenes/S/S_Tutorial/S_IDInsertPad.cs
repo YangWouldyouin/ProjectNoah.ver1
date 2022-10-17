@@ -31,7 +31,7 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
     BoxCollider IDInsertPad_Collider;
     BoxCollider canPressCabinetDoor_Collider;
     BoxCollider realIDInConsole_Collider;
-
+    public BoxCollider PlantRader_Collider;
 
     public GameObject dialog;
     DialogManager dialogManager;
@@ -132,10 +132,18 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
 
             //콜라이더 켜주는거
-            canPressCabinetDoor_Collider.enabled = true;
+            // canPressCabinetDoor_Collider.enabled = true;
 
 
             IDInsertPad_Collider.enabled = false;
+
+            /*튜토리얼 완료*/
+            GameManager.gameManager._gameData.IsEndTuto = true;
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            /*행성 탐지 시작*/
+            PlantRader_Collider.enabled = true;
+
         }
 
     }
@@ -145,7 +153,8 @@ public class S_IDInsertPad : MonoBehaviour, IInteraction
         CameraController.cameraController.CancelObserve();
         //S-4 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
         dialogManager.StartCoroutine(dialogManager.PrintSubtitles(20));
-        StartCoroutine(ComComment());
+        // 캐비닛 대사 1
+        //StartCoroutine(ComComment());
     }
 
     IEnumerator ComComment()
