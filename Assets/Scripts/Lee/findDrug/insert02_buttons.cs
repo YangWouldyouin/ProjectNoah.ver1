@@ -24,6 +24,9 @@ public class insert02_buttons : MonoBehaviour, IInteraction
     PlayerEquipment equipment;
     GameObject portableGroup;
 
+    public GameObject samplePanel;
+    public TMPro.TextMeshProUGUI sampleText;
+
     void Start()
     {
         equipment = BaseCanvas._baseCanvas.equipment;
@@ -96,8 +99,17 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         DisableButton();
         InteractionButtonController.interactionButtonController.playerPressHead();
 
-        if (specificDrugData.IsBite)
+        //GameData missionData = SaveSystem.Load("save_001");
+
+        if (specificDrugData.IsBite && !GameManager.gameManager._gameData.IsCheckDrug)
         {
+            PrintUI();
+        }
+
+        if (specificDrugData.IsBite  && GameManager.gameManager._gameData.IsCheckDrug)
+        {
+            //if(GameManager.gameManager._gameData.IsFindDrugDone_T_C2 || GameManager.gameManager._gameData.)
+
             D_LEDColor.material.color = Color.blue; //�˻� ��� ���� ��ȯ
 
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(49));
@@ -168,13 +180,19 @@ public class insert02_buttons : MonoBehaviour, IInteraction
         SDrug.transform.parent = portableGroup.transform;
         equipment.biteObjectName = "";
 
-        specificDrugData.IsNotInteractable = false;
+        specificDrugData.IsNotInteractable = true;
         SDrugLine.OutlineWidth = 0;
 
-        Insert02Data.IsNotInteractable = false;
+        Insert02Data.IsNotInteractable = true;
         Insert02Line.OutlineWidth = 0;
 
 
+    }
+
+    void PrintUI()
+    {
+        samplePanel.SetActive(true);
+        sampleText.text = "[알림] 해독할 약물 없음";
     }
 
     public void OnBite()

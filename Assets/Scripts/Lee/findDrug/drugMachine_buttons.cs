@@ -61,6 +61,9 @@ public class drugMachine_buttons : MonoBehaviour, IInteraction
             insert01Col.enabled = false;
             insert02Col.enabled = false;
 
+            insert01Line.OutlineWidth = 0;
+            insert02Line.OutlineWidth = 0;
+
             drugMachine_Sound.clip = drugMachine_On;
             drugMachine_Sound.Stop();
         }
