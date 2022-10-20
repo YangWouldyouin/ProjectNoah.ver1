@@ -191,6 +191,13 @@ public class CoordinateSystemUIManager2 : MonoBehaviour
             GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
             GameManager.gameManager._gameData.IsFakePlanetSelectMission = true;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+            GameData gameData = SaveSystem.Load("save_001");
+            if (gameData.IsAIVSMissionCount >= 2)
+            {
+                GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
         }
         else if (i == 0)
         {

@@ -119,7 +119,6 @@ public class insert02_buttons : MonoBehaviour, IInteraction
             //GameManager.gameManager._gameData.ActiveMissionList[26] = false;
             GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
-            //MissionGenerator.missionGenerator.ActivateMissionList();
 
             // 미션이 추가되어있는지 확인 후 삭제
             GameData gameData = SaveSystem.Load("save_001");
@@ -127,7 +126,11 @@ public class insert02_buttons : MonoBehaviour, IInteraction
             {
                 MissionGenerator.missionGenerator.DeleteNewMission(26);
             }
-
+            if (gameData.IsAIVSMissionCount >= 2)
+            {
+                GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
 
 
             Invoke("NoSDrug", 0.5f);

@@ -170,6 +170,13 @@ public class E_StrangeObj : MonoBehaviour
             GameManager.gameManager._gameData.IsFirstUsingStrangeObj = true;
             GameManager.gameManager._gameData.IsAIVSMissionCount += 1;
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            GameData gameData = SaveSystem.Load("save_001");
+            if (gameData.IsAIVSMissionCount >= 2)
+            {
+                GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+
         }
         else
         {

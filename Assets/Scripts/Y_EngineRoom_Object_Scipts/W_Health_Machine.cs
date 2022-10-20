@@ -336,6 +336,13 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //더미데이터 메인컴퓨터에 업로드
 
+            GameData Data = SaveSystem.Load("save_001");
+            if (Data.IsAIVSMissionCount >= 2)
+            {
+                GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet = true;
+                SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+            }
+
             GameManager.gameManager._gameData.IsRealfatigue = GameManager.gameManager._gameData.IsFakefatigue;
             GameManager.gameManager._gameData.IsRealStrength = GameManager.gameManager._gameData.IsFakeStrength;
             GameManager.gameManager._gameData.IsRealThirst = GameManager.gameManager._gameData.IsFakeThirst;
