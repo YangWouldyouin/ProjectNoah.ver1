@@ -72,8 +72,11 @@ public class TabletWirelessUIManager : MonoBehaviour
         }
 
         /* 수정 필요 */
-        if (GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet )
+        if (GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet)
         {
+            FakeCoordinateDataText.GetComponent<Text>().text = "귀환 좌표 데이터";
+            SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
             if (GameManager.gameManager._gameData.IsDontFakeCoordinateDatafile_Tablet || GameManager.gameManager._gameData.IsFakeCoordinateDatafile_Tablet)
             {
                 Color HRTcolor = FakeCoordinateDataText.color;
@@ -82,12 +85,23 @@ public class TabletWirelessUIManager : MonoBehaviour
             }
             else
             {
-                FakeCoordinateDataText.GetComponent<Text>().text = "귀환 좌표 데이터";
-
                 Color FCDTcolor = FakeCoordinateDataText.color;
                 FCDTcolor.a = 1f;
                 FakeCoordinateDataText.color = FCDTcolor;
             }
+        }
+
+        if(GameManager.gameManager._gameData.IsFakeHealthData_Tablet == false)
+        {
+            Color HRTcolor = HealthReportText.color;
+            HRTcolor.a = 1f;
+            HealthReportText.color = HRTcolor;
+        }
+        else
+        {
+            Color HRTcolor = HealthReportText.color;
+            HRTcolor.a = 0.3f;
+            HealthReportText.color = HRTcolor;
         }
     }
 
@@ -155,15 +169,22 @@ public class TabletWirelessUIManager : MonoBehaviour
                 //더미데이터 보고(다운로드) 완료 시점
                 MissionGenerator.missionGenerator.DeleteNewMission(29);
             }
+            if(GameManager.gameManager._gameData.IsFakeHealthData_Tablet)
+            {
+
+            }
         }
-        else
+        else if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn == false || GameManager.gameManager._gameData.Is_MainComputer_WirelessOn == false)
         {
-            TW_alertUI.SetActive(true);
+            if(GameManager.gameManager._gameData.IsFakeHealthData_Tablet == false)
+            {
+                TW_alertUI.SetActive(true);
 
-            TW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
-            TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다." + "\n" + "연결 가능 기기: 메인 컴퓨터, 메인 시스템";
+                TW_Alert_TitleText.GetComponent<Text>().text = "Warning!";
+                TW_Alert_BodyText.GetComponent<Text>().text = "연결된 기기가 없습니다." + "\n" + "연결 가능 기기: 메인 컴퓨터";
 
-            Invoke("TW_Alert_onetime", 2f);
+                Invoke("TW_Alert_onetime", 2f);
+            }
         }
     }
 
@@ -171,7 +192,7 @@ public class TabletWirelessUIManager : MonoBehaviour
     {
         GameData gameData = SaveSystem.Load("save_001");
 
-        if (GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet == true)
+        if (GameManager.gameManager._gameData.IsFakeCoordinateData_Tablet == true && GameManager.gameManager._gameData.IsDontFakeCoordinateDatafile_Tablet == false)
         {
             if (GameManager.gameManager._gameData.Is_Tablet_WirelessOn && GameManager.gameManager._gameData.Is_MainComputer_WirelessOn)
             {
@@ -199,6 +220,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                         Color FCDTcolor = FakeCoordinateDataText.color;
                         FCDTcolor.a = 0.3f;
                         FakeCoordinateDataText.color = FCDTcolor;
+                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                     }
                 }
             }
@@ -233,6 +255,7 @@ public class TabletWirelessUIManager : MonoBehaviour
                         Color FCDTcolor = FakeCoordinateDataText.color;
                         FCDTcolor.a = 0.3f;
                         FakeCoordinateDataText.color = FCDTcolor;
+                        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
                     }
 
                 }

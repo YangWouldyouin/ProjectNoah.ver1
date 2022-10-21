@@ -18,6 +18,7 @@ public class TabletDiaryUIManager : MonoBehaviour
     public Text Secret4;
     public Text Secret5;
     public Text Secret6;
+    public Text Secret7;
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +31,12 @@ public class TabletDiaryUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 && GameManager.gameManager._gameData.IsPlanetSelectMission && GameManager.gameManager._gameData.IsDollListen && GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 && GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 && GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2)
+        if(GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 && GameManager.gameManager._gameData.IsPlanetSelectMission && GameManager.gameManager._gameData.IsDollListen && GameManager.gameManager._gameData.IsFuelabsorberFixed_E_E1 && GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 && GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 && GameManager.gameManager._gameData.IsPhotoMissionFinish)
         {
             GameManager.gameManager._gameData.IsAIVSMissionFinish = true;
         }
 
-        PageNum.text = CurrentPageNum + "/11";
+        PageNum.text = CurrentPageNum + "/12";
 
         if (GameManager.gameManager._gameData.IsHealthMachineFixed_T_C2 == false)
         {
@@ -80,24 +81,35 @@ public class TabletDiaryUIManager : MonoBehaviour
                 + "무언가 열심히 설명해주었는데 솔직히 이 분야는 내 전문이 아니어서 기억이 잘 안 난다." + "\n" + "대충 오렌지 향기가 나는 약물을 함께 섞으면 중화된다 한 것 같다." + "\n" + "수잔은 고마워하며 당장 마이크의 뒷덜미를 잡고 긴 설교를 시작했다." + "\n" + "나도 수잔에게 걸리지 않도록 조심해야 겠다.";
         }
 
-        if (GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 == false)
+        if (GameManager.gameManager._gameData.IsPhotoMissionFinish == false)
         {
             Secret5.text = "다운로드 진행 중...";
         }
         else
         {
-            Secret5.text = "샐비어의 도움을 받아 레비젼이 저지른 만행을 기록할 수 있었다." + "\n" + "이 기록에는 현재까지의, 탐사 초기를 제한 거의 모든 반윤리적인 행위에 대한 내용이 담겨있다." + "\n" + "이것만 있다면 ‘위대한 선구자’인 레비젼도 큰 타격을 받을 수 밖에 없을 것이다." + "\n"
-                + "고발을 위한 준비는 모두 끝냈다." + "\n" + "언론인이라는 샐비어의 동생에게 이 파일을 보내기만 한다면 그 후 일은 무사히 풀릴 것이다. 그래, 이 파일을 지구로 무사히 보낼 수만 있다면…" + "\n" +"자료는 업무공간의 컴퓨터에 담겨 있다." + "\n" + "문제는 지구로 자료를 보낼 수 있는 통신 기능을 갖춘 곳은 조종실 뿐이란 것이다." + "\n" + "문제는 지구로 자료를 보낼 수 있는 통신 기능을 갖춘 곳은 조종실 뿐이고, 자료는 업무공간의 컴퓨터에 담겨 있다는 것이다." + "\n" + "무선 연결로 파일을 전송하기엔 둘 사이의 거리가 너무 멀다."
-                + "\n" + "귀환까지는 시간이 남아있고, 아직까진 회사도 나를 대놓고 의심하진 않으니 이 기회를 놓치기 전에 빨리 방법을 찾아야겠다." + "\n" + "+" + "\n" + "저녁을 먹고서 다른 동료들은 모두 개인 시간을 가지느라 바쁜 틈을 타 샐비어에게 고민을 토로하였다." + "\n" + "그러자 타블렛을 이용해보라는 의견을 주었다. 나쁘지 않은 생각인 것 같다." +"\n" + "타블렛의 무선연결 기능을 활용하면 멀리서도 데이터를 주고 받을 수 있을테니까." + "\n" + "누구 여친이길래 이렇게 똑똑하고 사랑스러운 것인지.";
+            Secret5.text = "오늘 오전 작은 사고가 있었다." + "\n" + "트렐러니와 샐비어가 실험을 진행하다 작은 화재가 일어난 것이다." + "\n" + "구역마다 비치된 소화기로 금새 진화하였지만 책상엔 그을음이 남아있다." + "\n"
+                + "하지만 중요한 것은 그게 아니다. (물론 트렐러니가 짜증을 내고, 실험 중 안전 수칙에 대해 수잔의 잔소리가 몇시간 내내 이어졌지만.)" + "\n" + "소화기 연기가 우리를 덮을 동안 선내 시스템이 우릴 제대로 인식하지 못한 것이다." 
+                + "\n" + "우리는 생체 신호를 통해 선체에게 인식되고 연결되는데 소화기의 연기가 이를 방해하는 모양이다." + "\n"+ "잘하면 감시를 피할 때 사용할 수 있지 않을까?";
         }
 
-        if (GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 == false)
+        if (GameManager.gameManager._gameData.IsTrashDoorBTFixed_L_L1 == false)
         {
             Secret6.text = "다운로드 진행 중...";
         }
         else
         {
-            Secret6.text = "항상 그렇듯, 오늘도 수리를 핑계로 대며 시스템을 살짝 손보았다." + "\n" + "시스템 설정 권한은 나에게 있어 보안 설정도 건들 수 있었다." + "\n" + "물론 아주 사소한 옵션만 변경할 수 있었지만 이것이 어딘가 싶다." + "\n"
+            Secret6.text = "샐비어의 도움을 받아 레비젼이 저지른 만행을 기록할 수 있었다." + "\n" + "이 기록에는 현재까지의, 탐사 초기를 제한 거의 모든 반윤리적인 행위에 대한 내용이 담겨있다." + "\n" + "이것만 있다면 ‘위대한 선구자’인 레비젼도 큰 타격을 받을 수 밖에 없을 것이다." + "\n"
+                + "고발을 위한 준비는 모두 끝냈다. 언론인이라는 샐비어의 동생에게 이 파일을 보내기만 한다면 그 후 일은 무사히 풀릴 것이다. 그래, 이 파일을 지구로 무사히 보낼 수만 있다면…" + "\n" +"자료는 업무공간의 컴퓨터에 담겨 있다." + "\n" + "문제는 지구로 자료를 보낼 수 있는 통신 기능을 갖춘 곳은 조종실 뿐이란 것이다." + "\n" + "문제는 지구로 자료를 보낼 수 있는 통신 기능을 갖춘 곳은 조종실 뿐이고, 자료는 업무공간의 컴퓨터에 담겨 있다는 것이다." + "\n" + "무선 연결로 파일을 전송하기엔 둘 사이의 거리가 너무 멀다."
+                + "\n" + "귀환까지는 시간이 남아있고, 아직까진 회사도 나를 대놓고 의심하진 않으니 이 기회를 놓치기 전에 빨리 방법을 찾아야겠다." + "\n" + "+" + "\n" + "저녁을 먹고서 다른 동료들은 모두 개인 시간을 가지느라 바쁜 틈을 타 샐비어에게 고민을 토로하였다." + "\n" + "그러자 타블렛을 이용해보라는 의견을 주었다. 나쁘지 않은 생각인 것 같다." +"\n" + "타블렛의 무선연결 기능을 활용하면 멀리서도 데이터를 주고 받을 수 있을테니까." + "\n" + "누구 여친이길래 이렇게 똑똑하고 사랑스러운 것인지.";
+        }
+
+        if (GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 == false)
+        {
+            Secret7.text = "다운로드 진행 중...";
+        }
+        else
+        {
+            Secret7.text = "항상 그렇듯, 오늘도 수리를 핑계로 대며 시스템을 살짝 손보았다." + "\n" + "시스템 설정 권한은 나에게 있어 보안 설정도 건들 수 있었다." + "\n" + "물론 아주 사소한 옵션만 변경할 수 있었지만 이것이 어딘가 싶다." + "\n"
                 + "나중에 이 사실이 밝혀진다면 나에게 기술자 직책을 부여한 인사팀은 아주 속이 터질 것이다." + "\n" + "\n" + "변경한 설정 덕분에 내 태블릿을 통한 무선 연결은 회사의 추적을 피할 수 있게 되었다." + "\n" + "태블릿을 엔진실 밖으로 이동시키지 못해 걸린 제약들이 많았는데 이젠 좀 더 대담하게 작업할 수 있을 것이다." + "\n" + "엔진실 내에선 메인 컴퓨터와 연결이 가능한 것 같다. 벽 하나를 둔 거리이기 때문일 것이다."
                 + "\n" + "무선 연결 방법은 매우 간단하여, 태블릿의 무선 연결 버튼을 누르기만 하면 된다.";
         }
@@ -106,7 +118,7 @@ public class TabletDiaryUIManager : MonoBehaviour
 
     public void NextBT()
     {
-        if (CurrentPageNum < 11)
+        if (CurrentPageNum < 12)
         {
             CurrentPageNum += 1;
             DiaryList[CurrentPageNum - 2].SetActive(false);
