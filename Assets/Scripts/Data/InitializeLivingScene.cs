@@ -66,7 +66,6 @@ public class InitializeLivingScene : MonoBehaviour
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
             MissionGenerator.missionGenerator.AddNewMission(8);
-            intialGameData.IsFirstNoticeEnd = true;
         }
 
         // 생활공간 냄새기계를 고치면

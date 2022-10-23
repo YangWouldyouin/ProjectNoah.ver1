@@ -53,7 +53,6 @@ public class InitializeControlScene : MonoBehaviour
             //MissionGenerator.missionGenerator.ActivateMissionList();
 
             MissionGenerator.missionGenerator.AddNewMission(8);
-            intialGameData.IsFirstNoticeEnd = true;
         }
 
         if(intialGameData.IsCWDoorOpened_M_C1)
