@@ -57,13 +57,14 @@ public class InitializeEngineScene : MonoBehaviour
         }
 
 
-        if (intialGameData.IsAIVSMissionCount >= 3 && !intialGameData.IsFirstNoticeEnd && !GameManager.gameManager._gameData.IsTabletDestory)
+        if (intialGameData.IsAIVSMissionCount >= 3 && !intialGameData.IsFirstNoticeEnd && !GameManager.gameManager._gameData.IsTabletDestory && !GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC)
         {
             dialogManager.StartCoroutine(dialogManager.PrintAIDialog(54));
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
             //SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             //MissionGenerator.missionGenerator.ActivateMissionList();
             MissionGenerator.missionGenerator.AddNewMission(8);
+            intialGameData.IsFirstNoticeEnd = true;
         }
 
         /* ø¨∑· ∆€¡Ò */

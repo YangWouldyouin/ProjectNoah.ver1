@@ -45,7 +45,7 @@ public class InitializeControlScene : MonoBehaviour
             StartCoroutine(delay1sec());
         }
 
-        if (intialGameData.IsAIVSMissionCount >=3 && !intialGameData.IsFirstNoticeEnd)
+        if (intialGameData.IsAIVSMissionCount >=3 && !intialGameData.IsFirstNoticeEnd && !GameManager.gameManager._gameData.IsTabletDestory && !GameManager.gameManager._gameData.IsFinalBusinessReportFile_MC)
         {
             //dialogManager.StartCoroutine(dialogManager.PrintAIDialog(8));
             //GameManager.gameManager._gameData.ActiveMissionList[0] = true;
@@ -53,6 +53,7 @@ public class InitializeControlScene : MonoBehaviour
             //MissionGenerator.missionGenerator.ActivateMissionList();
 
             MissionGenerator.missionGenerator.AddNewMission(8);
+            intialGameData.IsFirstNoticeEnd = true;
         }
 
         if(intialGameData.IsCWDoorOpened_M_C1)

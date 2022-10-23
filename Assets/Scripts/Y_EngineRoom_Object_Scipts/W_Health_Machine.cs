@@ -304,6 +304,7 @@ public class W_Health_Machine : MonoBehaviour, IInteraction
 
                 GameManager.gameManager._gameData.IsDummyDataReport = true;
                 GameManager.gameManager._gameData.IsHealthMachineUpCheck = false;
+                MissionGenerator.missionGenerator.DeleteNewMission(29);
                 SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             }
             else
