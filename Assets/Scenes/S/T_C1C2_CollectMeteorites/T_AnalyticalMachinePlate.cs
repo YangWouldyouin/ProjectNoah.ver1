@@ -67,10 +67,17 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
     void Update()
     {
-/*        if(GameManager.gameManager._gameData.IsStartPretendDead)
-        {
+        /*        if(GameManager.gameManager._gameData.IsStartPretendDead)
+                {
 
-        }*/
+                }*/
+
+        if (GameManager.gameManager._gameData.IsInputNormalMeteor1_T_C2 && GameManager.gameManager._gameData.IsStartPretendDead == false)
+        {
+            /*죽은 척하기 임무시작 가능하다*/
+            //StartCoroutine(StartPretendDead());
+            Invoke("StartPretendDeadinvoke", 10f);
+        }
     }
 
     void DisableButton()
@@ -108,10 +115,10 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
             // 운석 조각 수집 임무리스트 완료 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
 
-            /*죽은 척하기 임무시작 가능하다*/
-            StartCoroutine(StartPretendDead());
-
             Invoke("Report_Popup", 4f);
+
+            /*죽은 척하기 임무시작 가능하다*//*
+            StartCoroutine(StartPretendDead());*/
 
             //상호작용을 꺼준다.
 
@@ -156,6 +163,19 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
         }      
     }
 
+    void StartPretendDeadinvoke()
+    {
+        GameManager.gameManager._gameData.IsStartPretendDead = true;
+        SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
+
+        //D-1 대사 출력 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+        dialogManager.StartCoroutine(dialogManager.PrintAIDialog(55));
+
+        // 죽은척하기 임무리스트 시작 ♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧♧
+
+        MissionGenerator.missionGenerator.AddNewMission(11);
+    }
+
     IEnumerator StartPretendDead()
     {
         yield return new WaitForSeconds(30f);
@@ -179,11 +199,14 @@ public class T_AnalyticalMachinePlate : MonoBehaviour, IInteraction
 
     public void Report_Popup()
     {
-        if (IsReported)
+        if (IsReported) //이미 보고를 했다면
         {
             Report_GUI.SetActive(false);
+
+            /* 스팀업적 : 일단 모으고 보기 완료 *//*
+            SteamStatManager.steamAchieve1Time.Invoke(7, "EGG_METEOR_3");*/
         }
-        else
+        else // 보고를 한 번도 하지 않았다면
         {
             Report_GUI.SetActive(true);
         }

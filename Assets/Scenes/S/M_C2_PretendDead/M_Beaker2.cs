@@ -485,6 +485,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
         gameObject.GetComponent<BoxCollider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         StartCoroutine(EatAfter());
+        StartCoroutine(SuddenDeath());
 
         //Debug.Log("노아의 스탯이0, 죽은척을 하는 중입니다.");
         //쓰러지는 애니메이션 삽입 예정
@@ -532,7 +533,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
             SaveSystem.Save(GameManager.gameManager._gameData, "save_001");
             MissionGenerator.missionGenerator.DeleteNewMission(11);
             StartCoroutine(Delay2Sec());
-            StartCoroutine(SuddenDeath());
+            //StartCoroutine(SuddenDeath());
         }
     }
 
@@ -557,7 +558,7 @@ public class M_Beaker2 : MonoBehaviour, IInteraction
 
     IEnumerator SuddenDeath()
     {
-        yield return new WaitForSeconds(50f);
+        yield return new WaitForSeconds(53f);
         Debug.Log("노아는 죽엇다");
         StartScreen.SetActive(true);
 

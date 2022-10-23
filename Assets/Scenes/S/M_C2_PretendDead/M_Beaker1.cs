@@ -259,7 +259,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
             {
                 M_drugInBeaker1.SetActive(true);
                 Debug.Log("색이 변경되었습니다.");
-                //ChangeBeaker2.material.color = new Color(173 / 255f, 221 / 255f, 158 / 255f); //부은 약 색으로 비커색이 변한다.
+                //ChangeBeaker1.material.color = new Color(173 / 255f, 221 / 255f, 158 / 255f); //부은 약 색으로 비커색이 변한다.
 
                 GameManager.gameManager._gameData.IsAnswerBeakerColorChange1_M_C2 = true;
                 GameManager.gameManager._gameData.IsWrongBeakerColorChange1_M_C2 = false;
@@ -496,7 +496,7 @@ public class M_Beaker1 : MonoBehaviour, IInteraction
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         StartCoroutine(EatAfter());
         StartCoroutine(SuddenDeath());
-        StartCoroutine(End());
+        //StartCoroutine(End());
 
     }
 
