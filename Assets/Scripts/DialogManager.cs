@@ -63,21 +63,25 @@ public class DialogManager : MonoBehaviour
     }
     public IEnumerator PrintAIDialog(int dialogNum)
     {
-        if(inGameTime.IsAIAwake)
+        GameData gameData = SaveSystem.Load("save_001");
+        if(!gameData.IsAIDown_M_C1C3)
         {
-            if (printAIDialogs != null)
+            if (inGameTime.IsAIAwake)
             {
-                StopCoroutine(printAIDialogs);
-                printAIDialogs = AIDialogPrinting(dialogNum);
-                StartCoroutine(printAIDialogs);
+                if (printAIDialogs != null)
+                {
+                    StopCoroutine(printAIDialogs);
+                    printAIDialogs = AIDialogPrinting(dialogNum);
+                    StartCoroutine(printAIDialogs);
+                }
+                else
+                {
+                    printAIDialogs = AIDialogPrinting(dialogNum);
+                    StartCoroutine(printAIDialogs);
+                }
+                yield return null;
             }
-            else
-            {
-                printAIDialogs = AIDialogPrinting(dialogNum);
-                StartCoroutine(printAIDialogs);
-            }
-            yield return null;
-        }
+        } 
     }
     /* AI ´Â ¿©±â */
     IEnumerator AIDialogPrinting(int AIIndex)
